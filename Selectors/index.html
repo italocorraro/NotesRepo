@@ -1,1 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="../source/redirect.js" defer></script>
 
+        <title>Appunti | Selettori</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../source/notes_general.css" type="text/css">
+
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../source/navstyle.css" type="text/css">
+        <script src="../source/Navigazione2.js"></script>
+    </head>
+
+    <body class="content">
+        <header class="main_header">
+            <h1>Appunti sui selettori in CSS</h1>
+
+            <aside class="sidebar_right">
+                <nav>
+                    <h3>Table of Contents</h3>
+                    <ol>
+                        <li><a href="#foundamentals">Selettori Fondamentali</a>
+                            <ol>
+                                <li><a href="#cross_select">AND logico</a></li>
+                                <li><a href="#grouping">OR logico</a></li>
+                            </ol>
+                        </li>
+                        <li><a href="#combinators">Combinatori di Selettori</a>
+                            <ol>
+                                <li><a href="#descendant">Combinatore di Discendenza</a></li>
+                                <li><a href="#child">Combinatore Figlio</a></li>
+                                <li><a href="#next_sibling">Combinatore Fratello Prossimo</a></li>
+                                <li><a href="#subsequent_siblings">Combinatore Fratelli Minori</a></li>
+                            </ol>
+                        </li>
+
+                        <li><a href="#pseudo_classes">Selettori di Pseudo-Classi</a></li>
+                        <li><a href="#pseudo_elements">Selettori di Pseudo-Elementi</a></li>
+                        <li><a href="#attributes">Selettori di Attributo</a></li>
+                        <li><a href="#specificity">Gerarchie dei Selettori</a></li>
+                        <li><a href="#namespace">Regole di @namespace</a></li>
+                    </ol>
+                </nav>
+            </aside>
+
+            <section>
+                <p>In questa pagina sono coperti i selttori utilizzati in CSS, la loro gerarchia e funzione.</p>
+                <h2>Overview</h2>
+                <section>
+                    <p>I selettori hanno lo scopo di isolare uno o più elementi o loro parti all'interno dell'html per applicarvi uno stile.</p>
+                </section>
+            </section>
+        </header>
+
+        <main>
+            <article>
+                <h2 id="foundamentals">Selettori Fondamentali</h2>
+                <section>
+                    <p>I selettori fondamentali sono 4:</p>
+                    <ul>
+                        <li>selettore per <i>elemento</i>, seleziona in base all'elemento:<p>
+                            p {font-size: 20px;}
+                        </p></li>
+                        <li>selettore per <i>classe</i>, seleziona in base alla classe assegnata:<p>
+                            .classSelector {font-size: large;}
+                        </p></li>
+                        <li>selettore per <i>id</i>, seleziona in base all'id assegnato:<p>
+                            #idSelector {font-size: 2rem}
+                        </p><p class="notabene">
+                            l'attributo id dovrebbe essere identificatore unico! Non ci dovrebbero mai essere 2 elementi con lo stesso id!
+                        </p></li>
+                        <li>selettore universale, seleziona tutto:<p>
+                            * {font-size: 1vw}
+                            </p><p class="notabene">
+                                il selettore universale prende tutti gli elementi ma NON gli pseudo-elementi; 
+                                inoltre è quello con la priorità più bassa tra i selettori.
+                            </p>
+                        </li>
+                    </ul>
+                    <article>
+                        <h3 id="cross_select">Selezione Incrociata (AND logico)</h2>
+                        <p>Dopo il selettore per elementi o universale, si possono scrivere uno dietro l'altro gli altri selettori per restringere la selezione:
+                            <ul>
+                            <li><i>p.classSelect1</i> seleziona solo i paragrafi di classe <i>classSelect1</i></li>
+                            <li><i>div#idSelector</i> seleziona solo i &lt;div&gt; con id <i>idSelector</i></li>
+                            <li><i>*.classSelect1.classSelect2#idSelector</i> seleziona solo un elemento appartenente alle classi e con l'id indicati; inoltre, 
+                                <p>in questo caso, il selettore universale è ridondante; bastava <i>.classSelect1.classSelect2#idSelector.</i></p>
+                                <p>Anche se il selettore per id è già molto specifico, le classi accessorie si possono usare per modificare l'aspetto 
+                                    dell'elemento in modo selettivo e dinamico aggiungendole e togliendole con uno script.</p></li>
+                            </ul>
+                        </p>
+                    </article>
+                    <article>
+                        <h3 id="grouping">Raggruppamento (OR logico)</h3>
+                        <p>I selettori possono essere raggruppati con "," per applicare a più elementi e selezioni diverse la stessa selezione di stili:</p>
+                        <ul>
+                        <li><i>p.main_paragraph, #yo_mama, .apply_at_me {font-weight: bold}</i><p>seleziona contemporaneamente i paragrafi con 
+                            classe <i>main_paragraph</i>, l'elemento con id <i>yo_mama</i> e anche l'elemento con classe <i>apply_at_me</i> e 
+                            applica a tutti lo stile di testo in grassetto.</p></li></ul>
+                    </article>
+                </section>
+            </article>
+
+            <article>
+                <h2 id="combinators">Combinatori di Selettori</h2>
+                <section>
+                    <p>I combinatori sono usati per selezionare elementi in base alla loro relazione con altri</p>
+                    <article>
+                        <h3 id="descendant">Combinatore di Discendenza (' ')</h2>
+                        <p><i> </i> (singolo spazio) seleziona tutti i discendenti di un elemento:</p>
+                        <ul><li><i>p div</i> seleziona tutti i &lt;div&gt; all'interno degli elementi &lt;p&gt;</li></ul>
+                    </article>
+                    <article>
+                        <h3 id="child">Combinatore Figlio ('&gt;')</h2>
+                        <p><i>&gt;</i> seleziona solo i discendenti DIRETTI di un elemento:</p>
+                        <ul><li><i>p &gt; div</i> seleziona tutti i &lt;div&gt; che discendono DIRETTAMENTE degli elementi &lt;p&gt;
+                        (solo figli, niente nipoti)</li></ul>
+                    </article>
+                    <article>
+                        <h3 id="next_sibling">Combinatore Fratello Prossimo (Prossimità) ('+')</h2>
+                        <p><i>+</i> seleziona gli elementi DIRETTAMENTE successivi (non interni) a un altro:</p>
+                        <ul><li><i>p + div</i> seleziona tutti i &lt;div&gt; che si trovano esattamente dopo (non dentro) degli elementi &lt;p&gt;; 
+                            tra di loro non dev'esserci nessun altro elemento (cioè hanno lo stesso elemento genitore e sono fratelli più prossimi)</li></ul>
+                    </article>
+                    <article>
+                        <h3 id="subsequent_siblings">Combinatore Fratelli Minori ('~')</h2>
+                        <p><i>~</i> seleziona tutti gli elementi successivi (non interni) a un altro</p>
+                        <ul><li><i>p ~ div</i> seleziona tutti i &lt;div&gt; che si trovano dopo (non dentro; non devono essere 
+                            necessariamente il primo successivo, anche il secondo, terzo...) degli elementi &lt;p&gt;; 
+                            tra di loro può anche esserci un altro elemento, anche diverso 
+                            (cioè hanno lo stesso elemento genitore e sono fratelli minori del primo elemento)</li></ul>
+                    </article>
+                </section>
+            </article>
+
+            <article>
+                <h2 id="pseudo_classes">Selettori di Pseudo-Classi</h2>
+                <section>
+                    <p>Le pseudo-classi sono stati speciali in cui si trova un elemento.</p>
+                    <article>
+                        <h3>Pseudo-Classi di Interazione</h2>
+                        <ul>
+                            <li><i>:hover</i></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Pseudo-Classi di Posizione nel DOM</h2>
+                        <ul>
+                            <li><i>:first-child</i></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Pseudo-Classi di Contenuto</h2>
+                        <ul>
+                            <li><i>:has('*')</i></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Pseudo-Classi dei Form e Input</h2>
+                        <ul>
+                            <li><i>:checked</i></li>
+                        </ul>
+                    </article>
+                </section>
+            </article>
+
+            <article>
+                <h2 id="pseudo_elements">Selettori di Pseudo-Elementi</h2>
+                <section>
+                    <p>Gli pseudo-elementi indicano una specifica parte di un elemento.</p>
+                </section>
+            </article>
+
+            <article>
+                <h2 id="attributes">Selettori di Attributo</h2>
+                <section>
+                    <p>Coming soon</p>
+                </section>
+            </article>
+
+            <article>
+                <h2 id="specificity">Gerarchie dei Selettori</h2>
+                <section>
+                    <p>Coming soon</p>
+                </section>
+            </article>
+
+            <article>
+                <h2 id="namespace">Regole di @namespace</h2>
+                <section>
+                    <p>Coming soon</p>
+                </section>
+            </article>
+            <!--
+            <article>
+                <h2 id="foundamentals">Selettori Fondamentali</h2>
+                <section>
+                    <p>I selettori</p>
+                </section>
+            </article>-->
+        </main>
+
+        <script src="../source/functionalities.js"></script>
+    </body>
+</html>
