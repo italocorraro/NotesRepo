@@ -172,8 +172,6 @@ pre {
     display: block;
     overflow-x: auto;
     max-width: fit-content;
-    background-color: #f5eed5;
-    border: 0.2rem dotted #e7e79d;
 }
 pre, .htmlStyle, .cssStyle {
     font-family: monospace;
@@ -206,6 +204,7 @@ pre, .htmlStyle, .cssStyle {
     }
 }
 .htmlStyle {
+    
     & i, &.tag {
         color: rgb(43, 37, 203);
     }
@@ -248,7 +247,14 @@ pre, .htmlStyle, .cssStyle {
         font-weight: normal;
     }
 }
-
+pre.htmlStyle {
+    background-color: #f5eed5;
+    border: 0.2rem dotted #e7e79d;
+}
+pre.cssStyle {
+    background-color: #f5eed5;
+    border: 0.2rem dotted #b8cfe6;
+}
 @media only screen and (max-width: 900px) {
     *[id] {
     scroll-margin-top: 80px;
