@@ -27,6 +27,7 @@ body.content {
     font-size: 1.5rem;
     overflow-y: auto;
     overflow-x: hidden;
+    overflow-wrap: anywhere;
     background-color: antiquewhite;
     & > header, main {
         background-color: rgba(250, 250, 234, 0.795);
@@ -51,7 +52,7 @@ aside.sidebar_right {
     border-radius: 0.3rem;
     float: right;
     height: 100%;
-    width: 35%;
+    width: 45%;
     background-color: antiquewhite;
     padding: 0 0 0.6vw 0.4rem;
     & h3 {
@@ -69,7 +70,7 @@ aside.sidebar_right {
 }
 header.main_header section {
     display: block;
-    width: 65%;
+    width: 55%;
     padding-right: 10px;
     & * {
         width: 100%;
@@ -89,6 +90,7 @@ h1 {
 }
 h2 {
     font-size: 2.5rem;
+    cursor: pointer;
 }
 h3 {
     font-size: 2rem;
@@ -161,35 +163,92 @@ li ul, li ol {
         background-color: rgb(239, 189, 39);
     }
 }
+input, button, select {
+    font-size: 1.5rem;
+}
 pre {
-    padding: 0.4rem 0.3rem 0.6rem;
+    padding: 0.4rem 0.4rem 0.6rem 0.3rem;
     margin: 0.4vw 0 0.8vw;
     display: block;
     overflow-x: auto;
+    max-width: fit-content;
     background-color: #f5eed5;
     border: 0.2rem dotted #e7e79d;
 }
-pre, kbd {& i {
-    color: rgb(43, 37, 203);
-    text-emphasis: none;
+pre, .htmlStyle, .cssStyle {
+    font-family: monospace;
     font-style: normal;
-}}
-pre, kbd {& s {
-    color: rgb(206, 142, 23);
-    text-decoration: none
-}}
-pre, kbd {& q {
-    color: rgb(40, 217, 240);
-    text-emphasis: none;
     text-decoration: none;
-    &::before,
-    &::after {
-        content: none;
+    text-emphasis: none;
+    font-weight: normal;
+    overflow-wrap: anywhere;
+    & i {
+        text-emphasis: none;
+        font-style: normal;
     }
-}}
-span.normalMe {
-    color: black;
+    & s {
+        text-decoration: none;
+    }
+    & q {
+        text-emphasis: none;
+        text-decoration: none;
+        &::before,
+        &::after {
+            content: none;
+        }
+        & b {
+            font-weight: normal;
+            text-emphasis: none;
+        }
+    }
+    & u {
+        text-decoration: none;
+    }
 }
+.htmlStyle {
+    & i, &.tag {
+        color: rgb(43, 37, 203);
+    }
+    & s, &.val {
+        color: rgb(206, 142, 23);
+        & span {color: rgb(206, 142, 23);}
+    }
+    & q, &.att {
+        color: rgb(40, 217, 240);
+    }
+    & span {
+        color: black;
+    }
+}
+.cssStyle {
+    & i, &.sy {
+        color: rgb(206, 142, 23);
+    }
+    & s, &.sm {
+        color: rgb(2, 144, 163);
+    }
+    & q {
+        color: black ;
+    }
+    & span {
+        color: rgb(238, 0, 255);
+    }
+    & b {
+        color: rgb(20, 168, 119);
+        font-weight: normal;
+    }
+    & rt {
+        color: rgb(20, 168, 82);
+    }
+    & u {
+        color: blue;
+    }
+    & strong {
+        color: rgb(80, 82, 191);
+        font-weight: normal;
+    }
+}
+
 @media only screen and (max-width: 900px) {
     *[id] {
     scroll-margin-top: 80px;
