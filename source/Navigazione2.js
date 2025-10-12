@@ -105,15 +105,20 @@ let navigazione = `
             
         </ul>
     </div>
-
-
+<!--        Barra di Navigazione (schermi piccoli) -->
     <div class="headbar"></div>
+
     <div class="navtoggle" id="navtoggle2">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
-  `;
+
+    <div id="toctoggle">
+        <div class="square1"></div>
+        <div class="square2"></div>
+    </div>
+ `;
 
 $(function() {
     $("body").prepend(navigazione);
@@ -126,9 +131,17 @@ $(function() {
 
     // Aggiunta evento hamburger dopo caricamento dinamico
     $("#navtoggle2").click(function() {
-      $(this).toggleClass("change");
-      $("#navbar").toggleClass("navactive");
+        $("#toctoggle").toggleClass("off");
+        $(this).toggleClass("change");
+        $("#navbar").toggleClass("navactive");
     });
+
+    $("#toctoggle").click(function () {
+        $("#navtoggle2").toggleClass("off");
+        $(this).toggleClass("tochange");
+        $("aside.sidebar_right").toggleClass("tocactive");
+    });
+
 })
 
 
