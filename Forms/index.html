@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
     <head>
         <script src="../source/redirect.js" defer></script>
 
@@ -11,7 +11,10 @@
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="../source/navstyle.css" type="text/css">
         <script src="../source/Navigazione2.js"></script>
-
+        <script src="snippets.js"></script>
+        <script src="../source/highlight.js"></script>
+        
+        
         <style>
         .clearfix::after {
             content: '';
@@ -26,10 +29,12 @@
         }
         .solobox {
             cursor: pointer;
-            display: inline-block; 
-            width: 2vw; 
-            height: 2vw; 
-            border: 0.2vw solid yellowgreen;
+            display: block; 
+            width: 2rem; 
+            height: 2rem; 
+            border: 0.2em solid yellowgreen;
+            border-radius: 0.2em;
+            margin-right: 0.2em;
         }
         #search_res > span {
             color: blue;
@@ -60,6 +65,9 @@
                 <section>
                     <p>I form sono elementi utilizzati per raccogliere dati immessi dall'utente per essere poi processati; 
                         tendenzialmente a svolgere quest'ultima parte è un server.</p>
+                    <p class="notabene">Gli input hanno un formato pre-assegnato che varia in base al browser.</p>
+                    <p class="nota">Gli elementi legati a un form hanno diverse pseudo-classi legate all'interazione con loro; vedi <a>qui</a>.</p>
+                    <p class="nota">Un form ha generalmente necessità di essere validato prima dell'invio dei dati al server; la sezione sulla validazione dati è coperta <a>qui</a>.</p>
                 </section>
             </section>
         </header>
@@ -69,36 +77,34 @@
 
             <!-- Porzione indipendente del corpo 1 -->
             <article>
-                <h2 id="form">L'elemento &lt;form&gt;</h2>
+                <h2>L'elemento &lt;form&gt;</h2>
                 <!-- Sezione collassabile -->
                 <section>
-                    <p>Un <i class="htmlStyle tag">form</i> è un container per diversi elementi di input;
-                        non è necessariamente visibile (non ha formati di border di default).</p>
+                    <p>Un <code class="tag">form</code> è un container per diversi elementi di input;
+                        non è necessariamente visibile (non ha formati di default).</p>
                     <article>
-                        <h3 id="action">L'attributo action</h3>
-                        <p>Ad esempio <kbd class="htmlStyle">&lt;form action="/action_page.php"&gt;</kbd> indica dove inviare i dati per processarli</p>
+                        <h3>L'attributo action</h3>
+                        <p>Ad esempio <u id="htmlCode1"></u> indica dove inviare i dati per processarli</p>
                         <p class="notabene">se omesso, di default i dati verranno mandati alla pagina che li ha generati.</p>
                         <p>Si può decidere dove mostrare il risultato dell'elaborazione dei dati utilizzando 
                             l'attributo target esattamente come si fa per un elemento ancora</p>
                         <p id="form_test">Facciamo un esempio:
-<!--HTML-->
-<kbd class="htmlStyle"><pre class="htmlStyle">&lt;form&gt;
-  &lt;input type="text" name="campo_nome" value=""&gt;
-  &lt;input type="submit" value="Invia"&gt;
-&lt;/form&gt;</pre></kbd>
-
-                            <form action="#form_test">
+                            <s id="htmlCodeForm"></s>
+                            <form action="#form_test" class="htmlCodeForm">
                                 <input type="text" name="campo_nome" value="">
                                 <input type="submit" value="Invia">
                             </form></p>
                         <p>Una volta compilato il form, possiamo inviare e osservare che i dati immessi appaiono 
-                        a destra di <kbd class="htmlStyle">?</kbd> nell'url della pagina poiché i dati sono stati, 
+                        a destra di <code>?</code> nell'url della pagina poiché i dati sono stati, 
                         di default, mandati alla pagina stessa che li ha generati. Fai una prova.
                         <div id="deposit_1" style="color: blue; background-color: rgba(192, 228, 15, 0.1); width: fit-content;"></div>
                         </p>
+                        <p class="nota">JavaScript è in grado di gestire localmente i dati inviati da un form a una pagina;
+                            il metodo (usato anche qui) viene discusso nella sezione JS riguardo le <a>URL API</a>.
+                        </p>
                     </article>
                     <article>
-                        <h3 id="method">L'attributo method</h3>
+                        <h3>L'attributo method</h3>
                         <p>L'attributo method permette di specificare il tipo di richiesta http da usare per inviare i dati.<br>
                             Di default il metodo è GET.</p>
                         <p class="notabene">GET passa i dati nell'head della richiesta, quindi sono VISIBILI dall'URL; 
@@ -109,11 +115,11 @@
                         <h3 href="otherform">Altri attributi</h3>
                         <p>
                             <ul>
-                                <li>L'attributo <i class="htmlStyle att">autocomplete</i> accetta solo <i class="htmlStyle">"on"</i> o <i class="htmlStyle">"off"</i> e determina se lasciare al 
+                                <li>L'attributo <code class="att">autocomplete</code> accetta solo <code class="string">"on"</code> o <code class="string">"off"</code> e determina se lasciare al 
                                     browser il permesso di compilare automaticamente il form in base ai dati in memoria</li>
-                                <li>L'attributo <i class="htmlStyle att">novalidate</i> è un attributo boolenao e specifica in sua presenza di non validare l'input</li>
-                                <li>L'attributo <i class="htmlStyle att">name</i> è utile per referenziare il form e i suoi dati; accetta testo</li>
-                                <li>L'attributo <i class="htmlStyle att">rel</i> specifica la relazione tra il form e il destinatario</li>
+                                <li>L'attributo <code class="att">novalidate</code> è un attributo boolenao e specifica in sua presenza di non validare l'input</li>
+                                <li>L'attributo <code class="att">name</code> è utile per referenziare il form e i suoi dati; accetta testo</li>
+                                <li>L'attributo <code class="att">rel</code> specifica la relazione tra il form e il destinatario</li>
                             </ul>
                         </p>
                     </article>
@@ -133,49 +139,45 @@
                         <h3>Il tipo testo</h3>
                         <p>
                             L'input di tipo testuale è un input testuale a linea singola; questo è il suo aspetto preso da solo:
-<!--HTML-->
-<kbd class="htmlStyle"><pre class="htmlStyle">&lt;input type="text" style="width: 70%; font-size: 1.2rem; margin: 0.4vw 0;"&gt;</pre></kbd>
-
-                            <input type="text" style="width: 70%; font-size: 1.2rem; margin: 0.4vw 0;"><br>
+                            <s id="htmlCodeText"></s>
+                            <input type="text" style="width: 70%;" class="htmlCodeText"><br>
                             Ha una larghezza limitata di default (qui è stato ingrandito).
-                            <p class="notabene">il <kbd class="htmlStyle"> type="text"</kbd> è il tipo di default per ogni elemento <kbd class="htmlStyle">&lt;input&gt;</kbd></p>
-                        </p><p>Il tipo testo e gli altri input testuali accettano l'attributo <i class="htmlStyle att">placeholder</i>
+                            <p class="notabene">il tipo <code class="string">"text"</code> è il tipo di default per ogni elemento <u id="htmlCodeInput"></u></p>
+                        </p><p>Il tipo testo e gli altri input testuali accettano l'attributo <code class="att">placeholder</code>
                             che mostra un testo "finto" all'utente che sparisce quando l'input viene riempito:</p>
-                            <pre class="htmlStyle">&lt;input type="text" placeholder="Scrivi qui"&gt;</pre>
-                            <input type="text" placeholder="Scrivi qui">
+                            <s id="htmlCodePlaceholder"></s>
+                            <input type="text" placeholder="Scrivi qui" class="htmlCodePlaceholder">
                     </article>
                     <article>
                         <h3>Il tipo password</h3>
                         <p>Vengono oscurati i caratteri inseriti:</p>
-<kbd class="htmlStyle"><pre class="htmlStyle">&lt;input type="password" style="width: 70%;" placeholder="Inserire password"&gt;</pre></kbd>
-                        <input type="password" style="width: 70%;" placeholder="Inserire password">
+                        <s id="htmlCodePassword"></s>
+                        <input type="password" style="width: 70%;" placeholder="Inserire password" class="htmlCodePassword">
                     </article>
                     <article>
                         <h3>Il tipo submit</h3>
                         <p>Simile a un pulsante; serve a inviare i dati immessi nel form a un form-handler (tipicamente un server):</p>
-<pre class="htmlStyle">&lt;input type="submit" value="invia"&gt;</pre>
-                        <input type="submit" value="invia"> (non funziona senza form)<p></p>
+                        <s id="htmlCodeSubmit"></s>
+                        <input type="submit" value="invia" class="htmlCodeSubmit"> (non funziona senza form)<p></p>
 
                         <div class="clearfix" style="display: grid; grid-template-columns: 60% 38%; gap: 0 1.8vw;"> 
                             <div>Si può usare anche un'immagine come pulsante di submit:
-<pre class="htmlStyle">&lt;form style="max-width: 30vw; max-height: 80rem;"&gt;
-    &lt;input type="text" name="test_immagine" value="" style="max-width: 30vw;"&gt;&lt;br&gt;
-    &lt;input type="image" src="https://www.publicdomainpictures.net/pictures/210000/velka/red-arrow-14836430521Cn.jpg" alt="Submit" style="max-height: 20rem; max-width: 40vw;"&gt;
-&lt;/form&gt;</pre>Questo a destra è il pulsante di submit:<p class="notabene">questo invece funziona</p></div>
-                            <form style="max-width: 30vw; max-height: 80rem; align-self: center;">
+                            <s id="htmlCodeImage"></s>
+                            Questo a destra è il pulsante di submit: <p class="notabene">questo invece funziona</p></div>
+                            <form style="max-width: 30vw; max-height: 80rem; align-self: center;" class="htmlCodeImage">
                                 <input type="text" name="test_immagine" value="" style="max-width: 30vw;"><br>
                                 <input type="image" src="https://www.publicdomainpictures.net/pictures/210000/velka/red-arrow-14836430521Cn.jpg" alt="Submit" style="max-height: 20rem; max-width: 30vw;">
                             </form>
                         </div>
+                        <p class="nota">per una validazione tramite JavaScript il submit è tipicamente sostituito da un bottone normale
+                            che inizia lo script di validazione; se la validazione va a buon fine, è lo script stesso ad eseguire il submit.
+                        </p>
                     </article>
                     <article>
                         <h3>Il tipo reset</h2>
                         <p>L'input di tipo reset riporta ai valori di default tutti i campi del form:</p>
-<pre class="htmlStyle">&lt;form&gt;
-    &lt;input type="text" value="default"&gt;
-    &lt;input type="reset" value="Reset"&gt;
-&lt;/form&gt;</pre>
-                        <form>
+                        <s id="htmlCodeReset"></s>
+                        <form class="htmlCodeReset">
                             <input type="text" value="default">
                             <input type="reset" value="Reset">
                         </form>
@@ -184,16 +186,9 @@
                     <article>
                         <h3>Il tipo radio</h3>
                         <p>L'input di tipo radio definisce una checkbox di cui solo 1 
-                            tra quelle con lo stesso <i class="htmlStyle att">name</i> è selezionabile:</p>
-<pre class="htmlStyle">&lt;form&gt;
-    &lt;input type="radio" id="html" name="fav_language" value="HTML"&gt;
-    &lt;label for="html"&gt;HTML&lt;/label&gt;&lt;br&gt;
-    &lt;input type="radio" id="css" name="fav_language" value="CSS"&gt;
-    &lt;label for="css"&gt;CSS&lt;/label&gt;&lt;br&gt;
-    &lt;input type="radio" id="javascript" name="fav_language" value="JavaScript"&gt;
-    &lt;label for="javascript"&gt;JavaScript&lt;/label&gt;
-&lt;/form&gt;</pre>
-                            <form>
+                            tra quelle con lo stesso <code class="att">name</code> è selezionabile:</p>
+                            <s id="htmlCodeRadio"></s>
+                            <form class="htmlCodeRadio">
                                 <input type="radio" id="html" name="fav_language" value="HTML">
                                 <label for="html">HTML</label><br>
                                 <input type="radio" id="css" name="fav_language" value="CSS">
@@ -205,59 +200,36 @@
                     <article>
                         <h3>Il tipo checkbox</h3>
                         <p>L'input di tipo checkbox è una semplice checkbox indipendente:</p>
-<pre class="htmlStyle">&lt;form action="#il-tipo-checkbox"&gt;
-    &lt;input type="checkbox" id="mela" name="mela" value="mela"&gt;
-    &lt;label for="mela"&gt; Hai una mela?&lt;/label&gt;&lt;br&gt;
-    &lt;input type="checkbox" id="pera" name="pera" value="pera"&gt;
-    &lt;label for="pera"&gt; Hai una pera?&lt;/label&gt;&lt;br&gt;
-    &lt;input type="checkbox" style="display: none;" id="castagne" name="castagne" value="castagne"&gt;
-    &lt;label for="castagne" class="colourme"&gt;Clicca qui se hai delle castagne&lt;/label&gt;&lt;br&gt;
-    &lt;input type="checkbox" style="display: none;" id="patate" name="patate" value="patate"&gt;
-    &lt;label for="patate" class="colourme solobox"&gt;&lt;/label&gt;
-    &lt;span&gt; Hai delle patate?&lt;/span&gt;&lt;br&gt;
-    &lt;input type="submit" value="invia"&gt;
-&lt;/form&gt;</pre>
-                        <form id="checkbox-basket" action="#checkbox-basket">
+                        <s id="htmlCodeCheckbox"></s>
+                        <form id="checkbox-basket" action="#checkbox-basket" class="htmlCodeCheckbox">
                             <input type="checkbox" id="mele" name="check_1" value="mele">
                             <label for="mele"> Hai delle mele?</label><br>
                             <input type="checkbox" id="pere" name="check_2" value="pere">
                             <label for="pere"> Hai delle pere?</label><br>
                             <input type="checkbox" style="display: none;" id="castagne" name="check_3" value="castagne">
                             <label for="castagne" class="colourme">Clicca qui se hai delle castagne</label><br>
-                            <input type="checkbox" style="display: none;" id="patate" name="check_4" value="patate">
-                            <label for="patate" class="colourme solobox"></label>
-                            <span> Hai delle patate?</span><br>
+                            <div style="display: flex; align-items: center; margin: 0.2em 0;">
+                                <input type="checkbox" style="display: none;" id="patate" name="check_4" value="patate">
+                                <label for="patate" class="colourme solobox"></label>
+                                <span> Hai delle patate?</span>
+                            </div>
                             <input type="submit" value="invia">
                         </form>
                         <div id="chbx_test"></div>
-                        <p class="notabene">Nelle ultime due checkbox si è nascosto l'<i class="htmlStyle tag">input</i> per usare invece la 
-                            <i class="htmlStyle tag">label</i> come loro estensione grazie all'uso del selettore <i class="cssStyle sm">:checked</i>!<br>
-                            Infatti, "Hai delle patate?" non funge da estensione alla checkbox finale!</p>
-                            <p>Questo è il CSS che genera questo comportamento (nessuno script!):
-                            
-<pre class="cssStyle">:checked + label.colourme {
-    background-color: brown;
-}
-label.colourme {
-    background-color: goldenrod;
-}
-.solobox {
-    cursor: pointer;
-    display: inline-block; 
-    width: 2vw; 
-    height: 2vw; 
-    border: 0.2vw solid yellowgreen;
-}</pre>
+                        <p class="osservazione">Nelle ultime due checkbox si è nascosto l'<code class="tag">input</code> per usare invece la 
+                            <code class="tag">label</code> come loro estensione grazie all'uso del selettore <code class="sm">:checked</code>.<br>
+                            Infatti, "Hai delle patate?" non funge da estensione alla checkbox finale.<br>
+                            Questo è il CSS che genera questo comportamento (nessuno script!):
+                            <rp id="cssCodeCheckbox"></rp>
+                        </p><p class="nota">
+                            degli pseudo-attributi legati agli stati degli input si parla meglio <a href="../Selectors/#pseudo-classi-di-interazione">qui</a>.
                         </p>
                     </article>
                     <article>
                         <h3>Il tipo search</h2>
                         <p>Questo input è utilizzato per le ricerche, ma si comporta come un tipo testo fuso con submit:</p>
-                        <pre class="htmlStyle">&lt;form action="#il-tipo-search"&gt;
-    &lt;label for="gsearch"&gt;Cerca qualcosa:&lt;/label&gt;
-    &lt;input type="search" id="gsearch" name="gsearch" placeholder="Cerca..."&gt;
-&lt;/form&gt;</pre>
-                        <form action="#il-tipo-search">
+                        <s id="htmlCodeSearch"></s>
+                        <form action="#il-tipo-search" class="htmlCodeSearch">
                             <label for="gsearch">Cerca qualcosa:</label>
                             <input type="search" id="gsearch" name="gsearch" placeholder="Cerca...">
                         </form>
@@ -269,27 +241,27 @@ label.colourme {
                             diverso in base al browser:</p>
                         <ul>
                             <li><b>Tipo nascosto:</b> non visibile; contiene di solito dati che non vanno modificati dall'utente:
-                            <pre class="htmlStyle">&lt;input type="hidden" id="custId" name="custId" value="3487"&gt;</pre></li>
+                            <s id="htmlCodeHidden"></s></li>
                             <li><b>Tipo colore:</b> input che accetta solo colori:
-                            <pre class="htmlStyle">&lt;input type="color" id="color" name="color"&gt;</pre>
-                            <input type="color" id="color" name="color">
+                            <s id="htmlCodeColor"></s>
+                            <input type="color" id="color" name="color" class="htmlCodeColor">
                             </li>
                             <li><b>Tipo data:</b> accetta una certa data:
-                            <pre class="htmlStyle">&lt;input type="date" id="data" name="data"&gt;</pre>
-                            <input type="date" id="birthday" name="birthday">
+                            <s id="htmlCodeDate"></s>
+                            <input type="date" id="birthday" name="birthday" class="htmlCodeDate">
                             </li>
                             <li><b>Tipo data-locale:</b> uguale a sopra, ma senza time-zone:
-                            <pre class="htmlStyle">&lt;input type="datetime-local" id="data-locale" name="data-locale"&gt;</pre>
-                            <input type="datetime-local" id="data-locale" name="data-locale">
+                            <s id="htmlCodeLocalDate"></s>
+                            <input type="datetime-local" id="data-locale" name="data-locale" class="htmlCodeLocalDate">
                             </li>
                             <li><b>Tipo email:</b> accetta solo indirizzi email:
-                            <pre class="htmlStyle">&lt;input type="email" id="email" name="email" placeholder="eg: nome.cognome@gmail.com"&gt;</pre>
-                            <input type="email" id="email" name="email" placeholder="eg: nome.cognome@gmail.com">
+                            <s id="htmlCodeEmail"></s>
+                            <input type="email" id="email" name="email" placeholder="eg: nome.cognome@gmail.com" class="htmlCodeEmail">
                             </li>
                         </ul>
                     </article>
                     <article>
-                        <h3>Restizioni agli input</h3>
+                        <h3>Restrizioni agli input</h3>
                         <p>Gli input possono essere ristretti tramite alcuni attributi:</p>
                         <ul></ul>
                     </article>
@@ -298,10 +270,10 @@ label.colourme {
 
             <!-- Porzione indipendente del corpo 3 -->
             <article>
-                <h2 id="label">L'elemento &lt;label&gt;</h2>
+                <h2>L'elemento &lt;label&gt;</h2>
                 <section>
-                    <p>La <i class="htmlStyle tag">label</i> fornisce una dicitura associata ad un <i class="htmlStyle tag">input.</i></p>
-                    <p>L'area di selezione della label estende quella dell'input di tipo bottone, radio o checkbox; <br>
+                    <p>La <code class="tag">label</code> fornisce una dicitura associata ad un <code class="tag">input.</code></p>
+                    <p>L'area di selezione della label estende quella dell'input di tipo bottone, radio o checkbox; 
                         utile per quando sono troppo piccoli per essere selezionati o li si vuole nascondere alla vista per avere più libertà nello assegnare stili,
                          usando appunto la label in sostituzione del box booleano (come si è detto sopra, ha limitazioni dovute al browser), 
                          ma restituendo sempre un valore del tipo dell'input.</p>
@@ -310,10 +282,9 @@ label.colourme {
                         <input type="checkbox" id="checci" style="transform: scale(0.4); float: right;">
                         <i style="width: 0.1rem; height: 2rem;float: right; border-right: 0.4rem solid red; "></i>
                     </p>
-                    <p class="notabene">Perché funzioni correttamente, il valore dell'attributo <i class="htmlStyle att">for</i> della label 
-                        deve essere uguale all'<i class="htmlStyle att">id</i> dell'elemento a cui è riferita: <br>
-                        <kbd class="htmlStyle">&lt;input type="checkbox" id="ceci"&gt;<br>
-                        &lt;label for="ceci"&gt;laber per checkbox ceci&lt;/label&gt;</kbd></p>
+                    <p class="notabene">Perché funzioni correttamente, il valore dell'attributo <code class="att">for</code> della label 
+                        deve essere uguale all'<code class="att">id</code> dell'elemento a cui è riferita: <br>
+                        <s id="htmlCodeLabel"></s></p>
                 </section>
             </article>
 
@@ -322,10 +293,10 @@ label.colourme {
                 <h2 id="button">L'elemento &lt;button&gt;</h2>
                 <section>
                     <p>Il button costituisce uno degli elementi più utilizzati, in particolare come trigger per uno script. Un esempio:</p>
-                    <button type="button" class="joke">Cliccami per farmi cambiare colore!</button>
+                    <button type="button" class="htmlCodeJoke joke">Cliccami per farmi cambiare colore!</button>
                     <div></div>
                     <p class="notabene">indicare il tipo dell'elemento button come button è buona norma per migliorare la compatibilità tra browser: <br>
-                        <kbd class="htmlStyle">&lt;button type="button" onclick="my_function()"&gt;Click Me!&lt;/button&gt;</kbd>
+                    <s id="htmlCodeJoke"></s>
                     </p>
                 </section>
             </article>
@@ -333,29 +304,24 @@ label.colourme {
             <article>
                 <h2>L'elemento &lt;select&gt;</h2>
                 <section>
-                    <p>L'elemento select è usato come contenitore per una lista dropdown di elementi <i class="htmlStyle">&lt;option&gt;</i>; ciascuno con assegnato il proprio valore.
-                    <kbd class="htmlStyle">
-<!--HTML-->
-<pre class="htmlStyle">&lt;label for="cars"&gt;Scegli una macchina:&lt;/label&gt;
-&lt;select id="cars" name="cars" size="1"&gt;
-    &lt;option value="volvo"&gt;Volvo&lt;/option&gt;
-    &lt;option value="Fiat"&gt;Fiat&lt;/option&gt;
-&lt;/select&gt;</pre></kbd>
-
+                    <p>L'elemento select è usato come contenitore per una lista dropdown di elementi <code class="tag">option</code>; ciascuno con assegnato il proprio valore:
+                    <s id="htmlCodeSelect1"></s>
                     <ul>
                         <li>Il risultato è:
-                        <label for="cars">Scegli una macchina</label>
-                        <select id="cars" name="cars">
-                            <option value="volvo">Volvo</option>
-                            <option value="Fiat">Fiat</option>
-                        </select></li>
-                        <li>L'attributo <i class="htmlStyle att">size</i> indica il numero di elementi da mostrare: 
+                        <form class="htmlCodeSelect1">
+                            <label for="cars">Scegli una macchina</label>
+                            <select id="cars" name="cars" size="1">
+                                <option value="volvo">Volvo</option>
+                                <option value="Fiat">Fiat</option>
+                            </select>
+                        </form></li>
+                        <li>L'attributo <code class="att">size</code> indica il numero di elementi da mostrare: 
                         <select id="cars" name="cars" size="2">
                             <option value="volvo">Volvo</option>
                             <option value="Fiat">Fiat</option>
                         </select>
                             Con 2 come size</li>
-                            <li>Si possono concedere più selezioni con l'attributo booleano (non prende valori) <i class="htmlStyle att">multiple</i><br>
+                            <li>Si possono concedere più selezioni con l'attributo booleano (non prende valori) <code class="att">multiple</code><br>
                                 per selezionare più opzioni bisogna tenere premuto <kbd>ctrl</kbd>: 
                             <select id="cars" name="cars" size="2" multiple>
                             <option value="volvo">Volvo</option>
@@ -364,26 +330,12 @@ label.colourme {
                     </ul></p>
                     <article>
                 <h3>L'elemento &lt;optgroup&gt;</h3>
-                <p><i class="htmlStyle">&lt;optgroup&gt;</i> fa da container per più elementi <i class="htmlStyle">&lt;option&gt;</i> in una lista <i class="htmlStyle">&lt;select&gt;</i>;
-                    a questo elemento si assegna un attributo <i class="htmlStyle att">label</i>, 
+                <p><code class="tag">optgroup</code> fa da container per più elementi <code class="tag">option</code> in una lista <code class="tag">select</code>;
+                    a questo elemento si assegna un attributo <code class="att">label</code>, 
                     il cui valore è riportato come titolo del gruppo di opzioni:</p>
-<!--HTML-->
-<kbd class="htmlStyle"><pre class="htmlStyle">&lt;form&gt;
-    &lt;select id="browsers" style="font-size: 1.5rem;"&gt;
-        &lt;optgroup label="Primo Gruppo"&gt;
-            &lt;option value="Edge"&gt;Edge&lt;/option&gt;
-            &lt;option value="Chrome"&gt;Chrome&lt;/option&gt;
-        &lt;/optgroup&gt;
-        &lt;optgroup label="Secondo Gruppo"&gt;
-            &lt;option value="Firefox"&gt;Firefox&lt;/option&gt;
-            &lt;option value="Opera"&gt;Opera&lt;/option&gt;
-            &lt;option value="Safari"&gt;Safari&lt;/option&gt;
-        &lt;/optgroup&gt;
-    &lt;/select&gt;
-&lt;/form&gt;</pre></kbd>
-
+                    <s id="htmlCodeOptgroup"></s>
                 <p>
-                <form>
+                <form class="htmlCodeOptgroup">
                     <select id="browsers" style="font-size: 1.5rem;">
                         <optgroup label="Primo Gruppo">
                             <option value="Edge">Edge</option>
@@ -403,13 +355,10 @@ label.colourme {
 
             <article>
                 <h2>L'elemento &lt;textarea&gt;</h2><section>
-                <p>L'elemento <i class="htmlStyle tag">textarea</i> definisce una sezione di testo modificabile sia in contenuto che in dimensioni:
-<!--HTML-->
-<pre class="htmlStyle"><kbd class="htmlStyle">&lt;textarea name="message" rows="10" cols="10"&gt;
-Questo messaggio è modificabile.&lt;/textarea&gt;</kbd></pre>
-
+                <p>L'elemento <code class="tag">textarea</code> definisce una sezione di testo modificabile sia in contenuto che in dimensioni:
+                <s id="htmlCodeTextarea"></s>
                 <div class="clearfix">
-                <textarea  name="message" rows="4" cols="30" style="float: left; margin-right: 2rem; ">Questo messaggio è modificabile.
+                <textarea  name="message" rows="4" cols="30" style="float: left; margin-right: 2rem;" class="htmlCodeTextarea">Questo messaggio è modificabile.
                 </textarea>
                 gli attributi <i class="htmlStyle att">rows</i> e <i class="htmlStyle att">cols</i> servono a modificare le dimensioni iniziali dell'area di testo.
                 </div></p>
@@ -417,26 +366,16 @@ Questo messaggio è modificabile.&lt;/textarea&gt;</kbd></pre>
 
             <article>
                 <h2>Gli elementi &lt;fieldset&gt; e &lt;legend&gt;</h2><section>
-                <p><i class="htmlStyle tag">fieldset</i> raggruppa dei dati in un form, mentre legend gli da una caption:</p>
-<!--HTML-->
-<kbd class="htmlStyle"><pre class="htmlStyle">&lt;form&gt;
-  &lt;fieldset&gt;
-    &lt;legend&gt;Personalia:&lt;/legend&gt;
-    &lt;label for="fname"&gt;First name:&lt;/label&gt;&lt;br&gt;
-    &lt;input type="text" id="fname" name="fname" value="Nome"&gt;&lt;br&gt;
-    &lt;label for="lname"&gt;Last name:&lt;/label&gt;&lt;br&gt;
-    &lt;input type="text" id="lname" name="lname" value="Cognome"&gt;&lt;br&gt;
-  &lt;/fieldset&gt;
-&lt;/form&gt;</pre></kbd>
-
+                <p><code class="tag">fieldset</code> raggruppa dei dati in un form, mentre legend gli da una caption:</p>
+                <s id="htmlCodeFieldset"></s>
                 <p>
-                    <form>
-                        <fieldset>
-                            <legend>Personalia:</legend>
-                            <label for="fname">First name:</label><br>
-                            <input type="text" id="fname" name="fname" value="Nome"><br>
-                            <label for="lname">Last name:</label><br>
-                            <input type="text" id="lname" name="lname" value="Cognome"><br>
+                    <form class="htmlCodeFieldset">
+                        <fieldset style="border: 0.1em solid chocolate;">
+                            <legend>Dati Personali:</legend>
+                            <label for="fname">Nome:</label><br>
+                            <input type="text" id="fname" name="fname" value="" placeholder="Inserire nome"><br>
+                            <label for="lname">Cognome:</label><br>
+                            <input type="text" id="lname" name="lname" value="" placeholder="Inserire cognome"><br>
                         </fieldset>
                     </form>
                 </p>
@@ -445,20 +384,9 @@ Questo messaggio è modificabile.&lt;/textarea&gt;</kbd></pre>
             <article>
                 <h2>L'elemento &lt;datalist&gt;</h2><section>
                 <p>Questo elemento specifica una lista di opzioni predefinite tra cui scegliere:</p>
-<!--HTML-->
-<kbd class="htmlStyle"><pre class="htmlStyle">&lt;form action="/action_page.php"&gt;
-  &lt;input list="browsers"&gt;
-  &lt;datalist id="browsers"&gt;
-    &lt;option value="Edge"&gt;&lt;/option&gt;
-    &lt;option value="Firefox"&gt;&lt;/option&gt;
-    &lt;option value="Chrome"&gt;&lt;/option&gt;
-    &lt;option value="Opera"&gt;&lt;/option&gt;
-    &lt;option value="Safari"&gt;Apple?&lt;/option&gt;
-  &lt;/datalist&gt;
-&lt;/form&gt;</pre></kbd>
-
-            <p>Il contenuto di <i class="htmlStyle">&lt;option&gt;</i> viene mostrato sotto il valore come una piccola descrizione:
-                <form action="/action_page.php">
+                <s id="htmlCodeDatalist"></s>
+            <p>Il contenuto di <code class="tag">option</code> viene mostrato sotto il valore come una piccola descrizione:
+                <form class="htmlCodeDatalist">
                     <input list="browsers">
                     <datalist id="browsers">
                         <option value="Edge">Mircodoft standarf</option>
@@ -468,25 +396,17 @@ Questo messaggio è modificabile.&lt;/textarea&gt;</kbd></pre>
                         <option value="Safari">Apple? LOL</option>
                     </datalist>
                 </form>
-            </p><p class="notabene">l'attributo <i class="htmlStyle att">list</i> dell'<i class="htmlStyle">&lt;input&gt;</i> deve essere lo stesso dell'<i class="htmlStyle att">id</i> del <i class="htmlStyle">&lt;datalist&gt;</i></p>
+            </p><p class="notabene">l'attributo <code class="att">list</code> dell'<code class="tag">input</code> deve essere lo stesso dell'<code class="att">id</code> del <code class="tag">datalist</code></p>
             </section></article>
 
             <article>
                 <h2>L'elemento &lt;output&gt;</h2><section>
                 <p>
                     L'elemento <i class="htmlStyle">&lt;output&gt;</i> serve a generare il risultato di un'operazione tramite script con input forniti dall'utente
-                </p>
-<!--HTML-->
-<kbd class="htmlStyle"><pre class="htmlStyle">&lt;form oninput="x.value=parseInt(a.value)+parseInt(b.value)"&gt; 0
-    &lt;input type="range"  id="a" name="a" value="50"&gt;
-    100 +
-    &lt;input type="number" id="b" name="b" value="50"&gt;
-      =
-    &lt;output name="x" for="a b"&gt;&lt;/output&gt;
-&lt;/form&gt;</pre></kbd>
-
+                </p>        
+                <s id="htmlCodeOutput"></s>
                 <p>
-                    <form oninput="x.value=parseInt(a.value)+parseInt(b.value)"> 0
+                    <form oninput="x.value=parseInt(a.value)+parseInt(b.value)" class="htmlCodeOutput"> 0
                         <input type="range"  id="a" name="a" value="50">
                         100 +
                         <input type="number" id="b" name="b" value="50">
@@ -566,7 +486,9 @@ Questo messaggio è modificabile.&lt;/textarea&gt;</kbd></pre>
                     $(this).next("div").append(`<p style="font-weight: bold;">Era necessario fermarti</p>`);
                 }
             });
-        </script>
 
+            
+        </script>
+        
     </body>
 </html>
