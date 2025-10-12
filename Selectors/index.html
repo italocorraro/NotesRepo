@@ -11,6 +11,8 @@
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="../source/navstyle.css" type="text/css">
         <script src="../source/Navigazione2.js"></script>
+        <script src="snippets.js"></script>
+        <script src="../source/highlight.js"></script>
     </head>
 
     <body class="content">
@@ -36,19 +38,19 @@
                 <section>
                     <p>I selettori fondamentali sono 4:</p>
                     <ul>
-                        <li>selettore per <i class="cssStyle sm">elemento</i>, seleziona in base all'elemento:<p>
-                            <pre class="cssStyle">p {font-size: 20px;}</pre>
+                        <li>selettore per <code class="sel">elemento</code>, seleziona in base all'elemento:<p>
+                            <rp id="cssCodeElem"></rp>
                         </p></li>
-                        <li>selettore per <i class="cssStyle sm">classe</i>, seleziona in base alla classe assegnata:<p>
-                            <pre class="cssStyle">.classSelector {font-size: large;}</pre>
+                        <li>selettore per <code class="sel">classe</code>, seleziona in base alla classe assegnata:<p>
+                            <rp id="cssCodeClass"></rp>
                         </p></li>
-                        <li>selettore per <i class="cssStyle sm">id</i>, seleziona in base all'id assegnato:<p>
-                            <pre class="cssStyle">#idSelector {font-size: 2rem;}</pre> 
+                        <li>selettore per <code class="sel">id</code>, seleziona in base all'id assegnato:<p>
+                            <rp id="cssCodeID"></rp> 
                         </p><p class="notabene">
-                            l'attributo id dovrebbe essere identificatore unico! Non ci dovrebbero mai essere 2 elementi con lo stesso id!
+                            l'attributo <code class="att">id</code> dovrebbe essere identificatore unico! Non ci dovrebbero mai essere 2 elementi con lo stesso id!
                         </p></li>
                         <li>selettore universale, seleziona tutto:<p>
-                            <pre class="cssStyle">* {font-size: 1vw;}</pre> 
+                            <rp id="cssCodeUniv"></rp> 
                             </p><p class="notabene">
                                 il selettore universale prende tutti gli elementi ma NON gli pseudo-elementi; 
                                 inoltre è quello con la priorità più bassa tra i selettori.
@@ -56,57 +58,55 @@
                         </li>
                     </ul>
                     <article>
-                        <h3 id="cross_select">Selezione Incrociata (AND logico)</h2>
+                        <h3>Selezione Incrociata (AND logico)</h2>
                         <p>Dopo il selettore per elementi o universale, si possono scrivere uno dietro l'altro gli altri selettori per restringere la selezione:
                             <ul>
-                            <li><i class="cssStyle sm">p.classSelect1</i> seleziona solo i paragrafi di classe <i class="cssStyle">classSelect1</i></li>
-                            <li><i class="cssStyle sm">div#idSelector</i> seleziona solo i &lt;div&gt; con id <i class="cssStyle">idSelector</i></li>
-                            <li><i class="cssStyle sm">*.classSelect1.classSelect2#idSelector</i> seleziona solo un elemento appartenente alle classi e con l'id indicati; inoltre, 
-                                <p>in questo caso, il selettore universale è ridondante; bastava <i class="cssStyle sm">.classSelect1.classSelect2#idSelector.</i></p>
+                            <li><code class="sel">p.classSelect1</code> seleziona solo i paragrafi di classe <code class="string">classSelect1</code></li>
+                            <li><code class="sel">div#idSelector</code> seleziona solo i &lt;div&gt; con id <code class="string">idSelector</code></li>
+                            <li><code class="sel">*.classSelect1.classSelect2#idSelector</code> seleziona solo un elemento appartenente alle classi e con l'id indicati; inoltre, 
+                                <p>in questo caso, il selettore universale è ridondante; bastava <code class="sel">.classSelect1.classSelect2#idSelector.</code></p>
                                 <p>Anche se il selettore per id è già molto specifico, le classi accessorie si possono usare per modificare l'aspetto 
                                     dell'elemento in modo selettivo e dinamico aggiungendole e togliendole con uno script.</p></li>
                             </ul>
                         </p>
                     </article>
                     <article>
-                        <h3 id="grouping">Raggruppamento (OR logico)</h3>
+                        <h3>Raggruppamento (OR logico)</h3>
                         <p>I selettori possono essere raggruppati con "," per applicare a più elementi e selezioni diverse la stessa selezione di stili:</p>
                         <ul>
-<li><pre class="cssStyle">p.main_paragraph, #yo_mama, .apply_at_me {
-    font-weight: bold;
-}</pre>
+                        <li><rp id="cssCodeOR"></rp>
                             <p>seleziona contemporaneamente i paragrafi con 
-                            classe <i class="cssStyle sm">main_paragraph</i>, l'elemento con id <i class="cssStyle sm">yo_mama</i> e anche l'elemento con classe <i class="cssStyle sm">apply_at_me</i> e 
+                            classe <code class="string">main_paragraph</code>, l'elemento con id <code class="string">yo_mama</code> e anche l'elemento con classe <code class="string">apply_at_me</code> e 
                             applica a tutti lo stile di testo in grassetto.</p></li></ul>
                     </article>
                 </section>
             </article>
 
             <article>
-                <h2 id="combinators">Combinatori di Selettori</h2>
+                <h2>Combinatori di Selettori</h2>
                 <section>
                     <p>I combinatori sono usati per selezionare elementi in base alla loro relazione con altri</p>
                     <article>
-                        <h3 id="descendant">Combinatore di Discendenza (' ')</h2>
-                        <p><i> </i> (singolo spazio) seleziona tutti i discendenti di un elemento:</p>
-                        <ul><li><i class="cssStyle sm">p div</i> seleziona tutti i &lt;div&gt; all'interno degli elementi &lt;p&gt;</li></ul>
+                        <h3>Combinatore di Discendenza (' ')</h2>
+                        <p><code> </code> <i>(singolo spazio)</i> seleziona tutti i discendenti di un elemento:</p>
+                        <ul><li><code class="sel">p div</code> seleziona tutti i &lt;div&gt; all'interno degli elementi &lt;p&gt;</li></ul>
                     </article>
                     <article>
-                        <h3 id="child">Combinatore Figlio ('&gt;')</h2>
-                        <p><i class="cssStyle">&gt;</i> seleziona solo i discendenti DIRETTI di un elemento:</p>
-                        <ul><li><i class="cssStyle sm">p &gt; div</i> seleziona tutti i &lt;div&gt; che discendono DIRETTAMENTE degli elementi &lt;p&gt;
+                        <h3>Combinatore Figlio ('&gt;')</h2>
+                        <p><code>&gt;</code> seleziona solo i discendenti DIRETTI di un elemento:</p>
+                        <ul><li><rt id="cssCodeChild"></rt> seleziona tutti i &lt;div&gt; che discendono DIRETTAMENTE degli elementi &lt;p&gt;
                         (solo figli, niente nipoti)</li></ul>
                     </article>
                     <article>
-                        <h3 id="next_sibling">Combinatore Fratello Prossimo (Prossimità) ('+')</h2>
-                        <p><i class="cssStyle">+</i> seleziona gli elementi DIRETTAMENTE successivi (non interni) a un altro:</p>
-                        <ul><li><i class="cssStyle sm">p + div</i> seleziona tutti i &lt;div&gt; che si trovano esattamente dopo (non dentro) degli elementi &lt;p&gt;; 
+                        <h3>Combinatore Fratello Prossimo (Prossimità) ('+')</h2>
+                        <p><code>+</code> seleziona gli elementi DIRETTAMENTE successivi (non interni) a un altro:</p>
+                        <ul><li><rt id="cssCodeProx"></rt> seleziona tutti i &lt;div&gt; che si trovano esattamente dopo (non dentro) degli elementi &lt;p&gt;; 
                             tra di loro non dev'esserci nessun altro elemento (cioè hanno lo stesso elemento genitore e sono fratelli più prossimi)</li></ul>
                     </article>
                     <article>
-                        <h3 id="subsequent_siblings">Combinatore Fratelli Minori ('~')</h2>
-                        <p><i class="cssStyle">~</i> seleziona tutti gli elementi successivi (non interni) a un altro</p>
-                        <ul><li><i class="cssStyle sm">p ~ div</i> seleziona tutti i &lt;div&gt; che si trovano dopo (non dentro; non devono essere 
+                        <h3>Combinatore Fratelli Minori ('~')</h2>
+                        <p><code>~</code> seleziona tutti gli elementi successivi (non interni) a un altro</p>
+                        <ul><li><rt id="cssCodeMin"></rt> seleziona tutti i &lt;div&gt; che si trovano dopo (non dentro; non devono essere 
                             necessariamente il primo successivo, anche il secondo, terzo...) degli elementi &lt;p&gt;; 
                             tra di loro può anche esserci un altro elemento, anche diverso 
                             (cioè hanno lo stesso elemento genitore e sono fratelli minori del primo elemento)</li></ul>
@@ -115,59 +115,59 @@
             </article>
 
             <article>
-                <h2 id="pseudo_classes">Selettori di Pseudo-Classi</h2>
+                <h2>Selettori di Pseudo-Classi</h2>
                 <section>
                     <p>Le pseudo-classi sono stati speciali in cui si trova un elemento.</p>
                     <article>
                         <h3>Pseudo-Classi di Interazione</h2>
                         <ul>
-                            <li><i class="cssStyle sm">:hover</i></li>
+                            <li><code class="sel">:hover</code></li>
                         </ul>
                     </article>
                     <article>
                         <h3>Pseudo-Classi di Posizione nel DOM</h2>
                         <ul>
-                            <li><i class="cssStyle sm">:first-child</i></li>
+                            <li><code class="sel">:first-child</code></li>
                         </ul>
                     </article>
                     <article>
                         <h3>Pseudo-Classi di Contenuto</h2>
                         <ul>
-                            <li><i class="cssStyle sm">:has('*')</i></li>
+                            <li><code class="sel">:has('*')</code></li>
                         </ul>
                     </article>
                     <article>
                         <h3>Pseudo-Classi dei Form e Input</h2>
                         <ul>
-                            <li><i class="cssStyle sm">:checked</i></li>
+                            <li><code class="sel">:checked</code></li>
                         </ul>
                     </article>
                 </section>
             </article>
 
             <article>
-                <h2 id="pseudo_elements">Selettori di Pseudo-Elementi</h2>
+                <h2>Selettori di Pseudo-Elementi</h2>
                 <section>
                     <p>Gli pseudo-elementi indicano una specifica parte di un elemento.</p>
                 </section>
             </article>
 
             <article>
-                <h2 id="attributes">Selettori di Attributo</h2>
+                <h2>Selettori di Attributo</h2>
                 <section>
                     <p>Coming soon</p>
                 </section>
             </article>
 
             <article>
-                <h2 id="specificity">Gerarchie dei Selettori</h2>
+                <h2>Gerarchie dei Selettori</h2>
                 <section>
                     <p>Coming soon</p>
                 </section>
             </article>
 
             <article>
-                <h2 id="namespace">Regole di @namespace</h2>
+                <h2>Regole di @namespace</h2>
                 <section>
                     <p>Coming soon</p>
                 </section>
