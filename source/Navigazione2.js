@@ -142,6 +142,12 @@ $(function() {
         $("aside.sidebar_right").toggleClass("tocactive");
     });
 
+    $(document).on("click", " aside.sidebar_right a", function () {
+        $("#navtoggle2").removeClass("off");
+        $("#toctoggle").removeClass("tochange");
+        $("aside.sidebar_right").removeClass("tocactive");
+    });
+
 })
 
 
