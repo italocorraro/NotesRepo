@@ -3,7 +3,7 @@
         $("h2").click(function() {
             $(this).toggleClass("active");
             $(this).toggleClass("spaceme");
-            $(this).next("section").slideToggle("fast");
+            $(this).next("div").slideToggle("fast");
         });
 
 // Crea ID ai titoli h2 e h3 e li schiaffa nell'indice (Table of Contents)

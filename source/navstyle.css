@@ -73,6 +73,7 @@ li.active {
 }
 #navbar.navactive {
     width: 100%;
+    z-index: 900;
 }
 
 .navtoggle {
@@ -165,6 +166,10 @@ li.active {
     z-index: 0 !important;
 }
 
+.scrollLock {
+    overflow-y: hidden !important;
+}
+
 @media only screen and (max-width: 900px){
     aside.sidebar_right {
         display: block;
@@ -200,6 +205,19 @@ li.active {
             
             align-items: center;
         }
+    }
+    #navbar.navactive ~ #touchlock, #toctoggle.tochange ~ #touchlock {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 200;
+            background-color: transparent;
+            -webkit-backdrop-filter: blur(0.1rem);
+            backdrop-filter: blur(0.1rem);
+            pointer-events: auto;
+            transition: none;
     }
 }
     

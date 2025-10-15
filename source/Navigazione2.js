@@ -8,16 +8,16 @@ let navigazione = `
                 <span>HTML</span>
             </li>
             <ul class="panel">
-                <li><a>Sintassi</a></li>
-                <li><a>Struttura Semantica</a></li>
-                <li><a>L'elemento &lt;head&gt;</a></li>
+                <li><a href="../Sintassi html/">Sintassi</a></li>
+                <li><a href="../Struttura Semantica/">Struttura Semantica</a></li>
+                <li><a href="../L'elemento head/">L'elemento &lt;head&gt;</a></li>
                 <li><a>Ancore</a></li>
                 <li><a>Immagini</a></li>
                 <li><a>Entità</a></li>
                 <li><a>Liste</a></li>
                 <li><a>Tabelle</a></li>
                 <li><a href="../Forms/">Forms</a></li>
-                <li><a>Attributi</a></li>
+                <li hidden><a>Attributi</a></li>
                 <li><a>APIs</a></li>
                 <li><a>Accessibilità</a></li>
                 <li><a>Validazione</a></li>
@@ -32,7 +32,7 @@ let navigazione = `
             </li>
             <ul class="panel">
                 <li><a>Sintassi</a></li>
-                <li><a href="../Selectors">Selettori</a></li>
+                <li><a href="../Selectors/">Selettori</a></li>
                 <li><a>Box Model</a></li>
                 <li><a>Unità di misura</a></li>
                 <li><a>Tipografia</a></li>
@@ -118,7 +118,8 @@ let navigazione = `
         <div class="square1"></div>
         <div class="square2"></div>
     </div>
- `;
+
+    <div id="touchlock"></div>`;
 
 $(function() {
     $("body").prepend(navigazione);
@@ -132,18 +133,21 @@ $(function() {
     // Aggiunta evento hamburger dopo caricamento dinamico
     $("#navtoggle2").click(function() {
         $("#toctoggle").toggleClass("off");
+        $("body").toggleClass("scrollLock");
         $(this).toggleClass("change");
         $("#navbar").toggleClass("navactive");
     });
 
     $("#toctoggle").click(function () {
         $("#navtoggle2").toggleClass("off");
+        $("body").toggleClass("scrollLock");
         $(this).toggleClass("tochange");
         $("aside.sidebar_right").toggleClass("tocactive");
     });
 
     $(document).on("click", " aside.sidebar_right a", function () {
         $("#navtoggle2").removeClass("off");
+        $("body").removeClass("scrollLock");
         $("#toctoggle").removeClass("tochange");
         $("aside.sidebar_right").removeClass("tocactive");
     });

@@ -53,6 +53,11 @@ body.content {
         outline-offset: 2px;
     }
 }
+.clearfix::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
 header.main_header {
     display: block;
     height: auto;
@@ -130,6 +135,7 @@ h2::after {
 h2.active::after {
     transform: rotate(-90deg);
 }
+
 main .panel {
     margin: 0;
     padding: 0;
@@ -140,11 +146,19 @@ main .panel {
 .spaceme {
     margin-bottom: 0.8vw;
 }
+figcaption {
+    font-size: 0.9em;
+}
+hr {
+    border: 0.2rem groove goldenrod;
+    height: 0;
+}
 p.notabene {
     background-color: rgba(255, 243, 134, 0.6);
     border-left: 0.4vw solid yellow;
-    padding: 0.3vw 0.2vw 0.3vw 0.5vw;
-    width: 90%;
+    padding: 0.3vw 0.6vw 0.3vw 0.5vw;
+    width: fit-content;
+    max-width: 90%;
     &::before {
         content: "Attenzione! ";
         float: left;
@@ -158,8 +172,9 @@ p.notabene {
 p.nota {
     background-color: rgba(185, 243, 248, 0.4);
     border-left: 0.4vw solid rgb(0, 123, 255);
-    padding: 0.3vw 0.2vw 0.3vw 0.5vw;
-    width: 90%;
+    padding: 0.3vw 0.6vw 0.3vw 0.5vw;
+    width: fit-content;
+    max-width: 90%;
     &::before {
         content: "Nota: ";
         float: left;
@@ -173,8 +188,9 @@ p.nota {
 p.osservazione {
     background-color: rgba(199, 249, 192, 0.4);
     border-left: 0.4vw solid rgb(13, 157, 0);
-    padding: 0.3vw 0.2vw 0.3vw 0.5vw;
-    width: 90%;
+    padding: 0.3vw 0.6vw 0.3vw 0.5vw;
+    width: fit-content;
+    max-width: 90%;
     &::before {
         content: "Osservazione: ";
         float: left;
