@@ -1,1 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <script src="../source/redirect.js" defer></script>
 
+        <title>Appunti html | Sintassi</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../source/notes_general.css" type="text/css" />
+
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../source/navstyle.css" type="text/css" />
+        <script src="../source/Navigazione2.js"></script>
+        <script src="snippets.js"></script>
+        <script src="../source/highlight.js"></script>
+
+        <style>
+            #pop1 {
+                align-self: center; 
+                justify-self: center;
+                background-color: rgb(227, 214, 162);
+                border-radius: 5%;
+                border: 0.5rem solid grey;
+                &::backdrop {
+                    content: '';
+                    background-color: transparent;
+                    backdrop-filter: blur(0.4rem);
+                }
+            }
+            #checkersonlabel {
+                display: inline-flex;
+                border: 0.2em solid black;
+                margin: 0;
+                padding: 0;
+                width: 8rem;
+                height: 4rem;
+                justify-content: left;
+                user-select: none;
+                &::after {
+                    cursor: pointer;
+                    content: "off";
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    padding: 0;
+                    margin: 0;
+                    background-color: brown;
+                    width: 50%;
+                    height: 100%;
+                    transition: 0.4s;
+                }
+            }
+            #checkerson:checked ~ #checkersonlabel {
+                &::after {
+                    content: "on";
+                    background-color: green;
+                    transform: translate(100%, 0);
+                }
+            }
+            #checkerson ~ span {
+                display: none;
+            }
+            #checkerson:checked ~ span {
+                display: inline;
+            }
+        </style>
+    </head>
+    <body class="content">
+        <header class="main_header">
+            <!-- Titolo Principale della pagina -->
+            <h1>Appunti sui forms in html</h1>
+        
+            <!-- Sezione Sidebar Destra -->
+            <aside class="sidebar_right">
+                <!-- Table of Contents 
+                     Gli oggetti all'interno sono organizzati ad albero 
+                     secondo la gerarchia dei titoli h2-6 -->
+                <nav id="indice"></nav>
+            </aside>
+
+            <!-- Sezione destrittiva della pagina -->
+            <section>
+                <!-- presentazione -->
+                <p>Questa pagina copre le basi della sintassi html e gli attributi.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p><code class="htmlCodeAtt tag"><abbr title="Hypertext Markup Language">HTML</abbr></code>
+                         è un linguaggio di <i>markup</i>,
+                        cioè struttura la pagina web dal punto di vista principalmente testuale.</p>
+                        <p><code class="tag">HTML</code> NON è un linguaggio di programmazione, in quanto
+                        non esegue nessuna istruzione né calcolo; viene semplicemente interpretato
+                        dal browser al momento del render della pagina (non viene compilato).</p>
+                </div>
+            </section>
+        </header>
+        <main>
+            <article>
+                <h2>Sintassi base</h2>
+                <div class="clearfix">
+                    <figure style="float: right; width: 60%; margin: 0 0 0 1rem; padding: 0;">
+                        <img src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax/grumpy-cat-small.png" style="width: 100%; margin: 0; padding: 0;">
+                        <figcaption>image by <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax">developer.mozilla.org</a></figcaption>
+                    </figure>
+                    <p><code class="tag">html</code> consiste di una serie di <code>elementi</code> racchiusi da <code>tag</code>:</p>
+                    <ul>
+                        <li><b>Il tag di apertura</b> indica l'inizio dell'elemento ed è dove vengono elencati i suoi attributi.</li>
+                        <li>Nel mezzo sta' il <b>contenuto</b>, che è sempre testo.</li>
+                        <li><b>Il tag di chiusura</b> è lo stesso dell'apertura preceduto da <code>/</code>.</li>
+                    </ul>
+                    <p class="notabene">il browser non restituisce errore in mancanza di un tag di chiusura o nel caso di una chiusura 
+                        incrociata; sono comunque entrambe pratiche da evitare.
+                        <s id="htmlCodeCross"></s>
+                    </p>
+                    <p>I <code>tag</code> html possono essere (naturalmente) innestati.</p>
+                    <h3>Elementi Void</h3>
+                    <p>Alcuni tag non richiedono un tag di chiusura, questi sono chiamati <i>elementi void</i></p>
+                    <p class="nota">sebbene non richiesto, è sempre bene chiudere gli elementi void con un <code>/</code> alla 
+                    fine del tag di apertura (unico) prima di <code>&gt;</code>.
+                    <s id="htmlCodeVoid"></s></p>                    
+                </div>
+            </article>
+            <article>
+                <h2>Attributi</h2>
+                <div>
+                    <p>Gli attributi sono inseriti nella tag di apertura; il valore da dare all'attributo
+                        va' tra virgolette (<code class="string">""</code> oppure <code class="string">''</code>):
+                        <s id="htmlCodeAtt"></s><p class="notabene">
+                            le virgolette dello stesso tipo non possono essere innestate, ma vanno alternate; l'utilizzo dell'uno
+                            o dell'altro tipo è indifferente, ma devono essere coerenti con l'ordine in chiusura e apertura:
+                            <button type="button" class="htmlCodeButton" onclick="this.textContent = 'Hai cliccato!' " >
+                                Clicca per vedere
+                            </button><s id="htmlCodeButton"></s>
+                        </p>
+                    </p>
+                    <h3>Attributi Booleani</h3>
+                    <p>Gli attributi booleani non hanno bisogno di un valore; basta metterli nel tag di apertura,
+                        qualunque valore gli viene dato è irrilevante, persino <i>false</i>:</p>
+                    <input class="htmlCodeDisable" type="text" disabled="false">
+                    <s id="htmlCodeDisable"></s>
+                    <h3>Attributi Globali</h3>
+                    <p>Alcuni attributi possono essere dati a qualunque tag, sono:</p>
+                    <ul>
+                        <li><b><code class="att">id</code></b>: specifica un ID unico per l'elemento.</li>
+                        <li><b><code class="att">class</code></b>: specifica una o più (separate da uno spazio) 
+                            classi identificative per l'elemento.
+                        <p class="nota">classi e id sono usati come selettori sia in CSS che in JavaScript.</p></li>
+                        <li><b><code class="att">style</code></b>: specifica una o più proprietà di stile da assegnare all'elemento:
+                        <s id="htmlCodeStyle"></s></li>
+                        <li><b><code class="att">title</code></b>: specifica informazioni extra sull'elemento:
+                        <abbr class="htmlCodeEx" title="Questo è l'effetto di title">Questo è un esempio</abbr>
+                        <s id="htmlCodeEx"></s><p class="notabene">non ha effetti particolari per tutti gli elementi:
+                            <span class="htmlCodeEx2" title="Questo lo vede solo il browser">Questo lo vedi tu</span>
+                            <s id="htmlCodeEx2"></s></p></li>
+                        <li><b><code class="att">popover</code></b>: un elemento con l'attriuto booleano popover viene piazzato
+                            sopra tutti gli altri elementi senza modificare il layout; di default è nascosto.<p>
+                                per rederlo visibile, un altro elemento deve avere l'attributo <code class="att">popovertarget</code>
+                                con il valore uguale all'<code class="att">id</code> del popover:
+                            </p>
+                            <p popover id="pop1">Ciaoo!</p>
+                            <button type="button" popovertarget="pop1">Clicca qui</button></li>
+                            <p class="notabene"><code class="att">popovertarget</code> può essere assegnato
+                            solo ad un <code class="tag">input</code> di tipo <code class="string">button</code>.</p>
+                        <li><b><code class="att">lang</code></b>: serve a specificare la lingua del suo contenuto.</li>
+                        <li><b><code class="att">hidden</code></b>: attributo booleano che indica un elemento da non visualizzare:
+                        <p class="htmlCodeHiddens" hidden="hidden">Questo lo vede <span>solo</span> il browser</p><s id="htmlCodeHiddens"></s></li>
+                        <li><b><code class="att">inert</code></b>: attributo booleano che disattiva tutte le funzioni
+                        dell'elemento e i suoi discendenti.</li>
+                        <li><b><code class="att">draggable</code></b>: questo attributo serve a specificare se un elemento
+                        può usere trascinato; è necessario dargli come valore <code class="string">true</code> altrimenti
+                        è di default settato su auto: <span draggable="true" style="cursor: grabbing;">Trascinami</span></li>
+                        <li><b><code class="att">contenteditable</code></b>: <span title="puoi modificarmi" contenteditable="true">specifica se è possibile modificare
+                            il contenuto testuale dell'elemento e i suoi discendenti;
+                        </span> bisogna dargli valore <code class="string">true</code> o <code class="string">false</code>.</li>
+                        <li><b><code class="att">accesskey</code></b>: specifica una scorciatoia per attivare un elemento:
+                        <input type="checkbox" class="htmlCodeAccesskey" id="checkerson" accesskey="h" hidden/><label  for="checkerson" id="checkersonlabel"></label>
+                        <span><s id="htmlCodeAccesskey"></s></span> <p class="notabene">spesso non funziona a causa
+                            di conflitti con gli standard del browser.
+                        </p></li>
+                        <li><b><code class="att">dir</code></b>: specifica la direzione del testo tra 
+                            <code class="att">ltr</code>|<code class="att">rtl</code>|<code class="att">auto</code>:
+                        <p class="htmlCodeRtl" dir="rtl" style="width: 50%; border: 0.1em solid black;">Questo va da destra a sinistra</p><s id="htmlCodeRtl"></s></li>
+
+                        
+                    </ul>
+                    <section>
+                <hr>
+                <p>ci sono altri attributi globali; 
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes">
+                        qui</a> una lista più completa.</p>
+            </section>
+                </div>
+            </article>
+            <article>
+                <h2>Commenti</h2>
+                <div>
+                    <p>I commenti in html si racchiudono tra "<code class="comment">&lt;!--</code>"" e "<code class="comment">--&gt;</code>".</p>
+                </div>
+            </article>
+        </main>
+        <script src="../source/functionalities.js"></script>
+    </body>
+   
+</html>
