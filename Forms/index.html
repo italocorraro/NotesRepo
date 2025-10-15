@@ -3,7 +3,7 @@
     <head>
         <script src="../source/redirect.js" defer></script>
 
-        <title>Appunti | Forms</title>
+        <title>Appunti html | Forms</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../source/notes_general.css" type="text/css">
@@ -62,13 +62,13 @@
                 <p>Questa pagina copre alcuni degli argomenti dell'elemento forms e associati input</p>
                 <!-- Overview -->
                 <h2>Overview</h2>
-                <section>
+                <div>
                     <p>I form sono elementi utilizzati per raccogliere dati immessi dall'utente per essere poi processati; 
                         tendenzialmente a svolgere quest'ultima parte è un server.</p>
                     <p class="notabene">Gli input hanno un formato pre-assegnato che varia in base al browser.</p>
                     <p class="nota">Gli elementi legati a un form hanno diverse pseudo-classi legate all'interazione con loro; vedi <a>qui</a>.</p>
                     <p class="nota">Un form ha generalmente necessità di essere validato prima dell'invio dei dati al server; la sezione sulla validazione dati è coperta <a>qui</a>.</p>
-                </section>
+                    </div>
             </section>
         </header>
         
@@ -79,7 +79,7 @@
             <article>
                 <h2>L'elemento &lt;form&gt;</h2>
                 <!-- Sezione collassabile -->
-                <section>
+                <div>
                     <p>Un <code class="tag">form</code> è un container per diversi elementi di input;
                         non è necessariamente visibile (non ha formati di default).</p>
                     <article>
@@ -123,13 +123,13 @@
                             </ul>
                         </p>
                     </article>
-                </section>
+                </div>
             </article>
 
             <!-- Porzione indipendente del corpo 2 -->
             <article>
                 <h2>L'elemento &lt;input&gt;</h2>
-                <section>
+                <div>
                     <p>L'elemento che permette all'utente di immettere dati; l'aspetto e il tipo di dati accettati dipende dal tipo.<br>
                         Non è necessario inserirlo all'interno di un form; può esistere ed essere utilizzato anche da solo.</p>
                         <p class="notabene">Gli input hanno una formattazione diversa per ogni browser e gli stili 
@@ -265,13 +265,13 @@
                         <p>Gli input possono essere ristretti tramite alcuni attributi:</p>
                         <ul></ul>
                     </article>
-                </section>
+                </div>
             </article>
 
             <!-- Porzione indipendente del corpo 3 -->
             <article>
                 <h2>L'elemento &lt;label&gt;</h2>
-                <section>
+                <div>
                     <p>La <code class="tag">label</code> fornisce una dicitura associata ad un <code class="tag">input.</code></p>
                     <p>L'area di selezione della label estende quella dell'input di tipo bottone, radio o checkbox; 
                         utile per quando sono troppo piccoli per essere selezionati o li si vuole nascondere alla vista per avere più libertà nello assegnare stili,
@@ -285,25 +285,32 @@
                     <p class="notabene">Perché funzioni correttamente, il valore dell'attributo <code class="att">for</code> della label 
                         deve essere uguale all'<code class="att">id</code> dell'elemento a cui è riferita: <br>
                         <s id="htmlCodeLabel"></s></p>
-                </section>
+                    </div>
             </article>
 
             <!-- Porzione indipendente del corpo 4 -->
             <article>
                 <h2 id="button">L'elemento &lt;button&gt;</h2>
-                <section>
+                <div>
                     <p>Il button costituisce uno degli elementi più utilizzati, in particolare come trigger per uno script. Un esempio:</p>
                     <button type="button" class="htmlCodeJoke joke">Cliccami per farmi cambiare colore!</button>
                     <div></div>
                     <p class="notabene">indicare il tipo dell'elemento button come button è buona norma per migliorare la compatibilità tra browser: <br>
                     <s id="htmlCodeJoke"></s>
                     </p>
-                </section>
+                </div>
+            </article>
+
+            <article>
+                <h2>L'elemento &lt;progress&gt;</h2>
+                <p>Questo elemento mostra di default una barra di progrogresso in base al valore passato:</p>
+                <progress class="htmlCodeProgress" max="100" value="70">Cetto</progress>
+                <s id="htmlCodeProgress"></s>
             </article>
 
             <article>
                 <h2>L'elemento &lt;select&gt;</h2>
-                <section>
+                <div>
                     <p>L'elemento select è usato come contenitore per una lista dropdown di elementi <code class="tag">option</code>; ciascuno con assegnato il proprio valore:
                     <s id="htmlCodeSelect1"></s>
                     <ul>
@@ -350,11 +357,11 @@
                 </form>
                 </p>
             </article>
-                </section>
+        </div>
             </article>
 
             <article>
-                <h2>L'elemento &lt;textarea&gt;</h2><section>
+                <h2>L'elemento &lt;textarea&gt;</h2><div>
                 <p>L'elemento <code class="tag">textarea</code> definisce una sezione di testo modificabile sia in contenuto che in dimensioni:
                 <s id="htmlCodeTextarea"></s>
                 <div class="clearfix">
@@ -362,10 +369,10 @@
                 </textarea>
                 gli attributi <i class="htmlStyle att">rows</i> e <i class="htmlStyle att">cols</i> servono a modificare le dimensioni iniziali dell'area di testo.
                 </div></p>
-            </section></article>
+            </div></article>
 
             <article>
-                <h2>Gli elementi &lt;fieldset&gt; e &lt;legend&gt;</h2><section>
+                <h2>Gli elementi &lt;fieldset&gt; e &lt;legend&gt;</h2><div>
                 <p><code class="tag">fieldset</code> raggruppa dei dati in un form, mentre legend gli da una caption:</p>
                 <s id="htmlCodeFieldset"></s>
                 <p>
@@ -379,10 +386,10 @@
                         </fieldset>
                     </form>
                 </p>
-            </section></article>
+            </div></article>
 
             <article>
-                <h2>L'elemento &lt;datalist&gt;</h2><section>
+                <h2>L'elemento &lt;datalist&gt;</h2><div>
                 <p>Questo elemento specifica una lista di opzioni predefinite tra cui scegliere:</p>
                 <s id="htmlCodeDatalist"></s>
             <p>Il contenuto di <code class="tag">option</code> viene mostrato sotto il valore come una piccola descrizione:
@@ -397,10 +404,10 @@
                     </datalist>
                 </form>
             </p><p class="notabene">l'attributo <code class="att">list</code> dell'<code class="tag">input</code> deve essere lo stesso dell'<code class="att">id</code> del <code class="tag">datalist</code></p>
-            </section></article>
+        </div></article>
 
             <article>
-                <h2>L'elemento &lt;output&gt;</h2><section>
+                <h2>L'elemento &lt;output&gt;</h2><div>
                 <p>
                     L'elemento <i class="htmlStyle">&lt;output&gt;</i> serve a generare il risultato di un'operazione tramite script con input forniti dall'utente
                 </p>        
@@ -414,7 +421,7 @@
                         <output name="x" for="a b"></output>
                     </form>
                 </p>
-            </section></article>
+            </div></article>
         </main>
 
         <script src="../source/functionalities.js"></script>
