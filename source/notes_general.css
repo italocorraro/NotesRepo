@@ -153,52 +153,46 @@ hr {
     border: 0.2rem groove goldenrod;
     height: 0;
 }
-p.notabene {
-    background-color: rgba(255, 243, 134, 0.6);
-    border-left: 0.4vw solid yellow;
+p.notabene, p.nota, p.osservazione, p.eg {
+    border-left: 0.4vw solid;
     padding: 0.3vw 0.6vw 0.3vw 0.5vw;
     width: fit-content;
     max-width: 90%;
     &::before {
-        content: "Attenzione! ";
         float: left;
         font-weight: bold;
         height: 100%;
         display: block;
         margin-right: clamp(4px, 0.8vw, 8px);
         
+    }
+}
+p.notabene {
+    background-color: rgba(255, 134, 134, 0.2);
+    border-left-color: red;
+    &::before {
+        content: "Attenzione! ";
     }
 }
 p.nota {
     background-color: rgba(185, 243, 248, 0.4);
-    border-left: 0.4vw solid rgb(0, 123, 255);
-    padding: 0.3vw 0.6vw 0.3vw 0.5vw;
-    width: fit-content;
-    max-width: 90%;
+    border-left-color:rgb(0, 123, 255);
     &::before {
         content: "Nota: ";
-        float: left;
-        font-weight: bold;
-        height: 100%;
-        display: block;
-        margin-right: clamp(4px, 0.8vw, 8px);
-        
     }
 }
 p.osservazione {
     background-color: rgba(199, 249, 192, 0.4);
-    border-left: 0.4vw solid rgb(13, 157, 0);
-    padding: 0.3vw 0.6vw 0.3vw 0.5vw;
-    width: fit-content;
-    max-width: 90%;
+    border-left-color: rgb(13, 157, 0);
     &::before {
         content: "Osservazione: ";
-        float: left;
-        font-weight: bold;
-        height: 100%;
-        display: block;
-        margin-right: clamp(4px, 0.8vw, 8px);
-        
+    }
+}
+p.eg {
+    background-color: rgba(255, 243, 134, 0.4);
+    border-left-color: yellow;
+    &::before {
+        content: "Esempio: ";
     }
 }
 ul, ol {
