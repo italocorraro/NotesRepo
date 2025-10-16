@@ -68,7 +68,7 @@
     <body class="content">
         <header class="main_header">
             <!-- Titolo Principale della pagina -->
-            <h1>Appunti sui forms in html</h1>
+            <h1>Appunti sulla Sintassi di html</h1>
         
             <!-- Sezione Sidebar Destra -->
             <aside class="sidebar_right">
@@ -151,16 +151,20 @@
                         <s id="htmlCodeEx"></s><p class="notabene">non ha effetti particolari per tutti gli elementi:
                             <span class="htmlCodeEx2" title="Questo lo vede solo il browser">Questo lo vedi tu</span>
                             <s id="htmlCodeEx2"></s></p></li>
-                        <li><b><code class="att">popover</code></b>: un elemento con l'attriuto booleano popover viene piazzato
-                            sopra tutti gli altri elementi senza modificare il layout; di default è nascosto.<p>
-                                per rederlo visibile, un altro elemento deve avere l'attributo <code class="att">popovertarget</code>
-                                con il valore uguale all'<code class="att">id</code> del popover:
-                            </p>
-                            <p popover id="pop1">Ciaoo!</p>
-                            <button type="button" popovertarget="pop1">Clicca qui</button></li>
+                        <li><b><code class="att">popover</code></b>: un elemento con l'attriuto booleano <code class="att">popover</code> viene piazzato
+                            sopra tutti gli altri elementi senza modificare il layout della pagina; di default è inizialmente nascosto.<p>
+                                Per rederlo visibile, un altro elemento deve avere l'attributo <code class="att">popovertarget</code>
+                                con il valore uguale all'<code class="att">id</code> del popover, prova:
+                            </p><p popover id="pop1">Ciaoo!</p>
+                            <button type="button" popovertarget="pop1" style="float: left; margin-right: 0.6rem;">Clicca qui</button>
+                            <s id="htmlCodePop"></s>
+                            
+                            </li>
                             <p class="notabene"><code class="att">popovertarget</code> può essere assegnato
                             solo ad un <code class="tag">input</code> di tipo <code class="string">button</code>.</p>
-                        <li><b><code class="att">lang</code></b>: serve a specificare la lingua del suo contenuto.</li>
+                        <li><b><code class="att">lang</code></b>: serve a specificare la lingua del suo contenuto.
+                        <p class="nota">Tipicamente è inserito nell'elemento <code class="tag">html</code> per dichiarare 
+                            la lingua del documento.</p></li>
                         <li><b><code class="att">hidden</code></b>: attributo booleano che indica un elemento da non visualizzare:
                         <p class="htmlCodeHiddens" hidden="hidden">Questo lo vede <span>solo</span> il browser</p><s id="htmlCodeHiddens"></s></li>
                         <li><b><code class="att">inert</code></b>: attributo booleano che disattiva tutte le funzioni
@@ -179,7 +183,17 @@
                         <li><b><code class="att">dir</code></b>: specifica la direzione del testo tra 
                             <code class="att">ltr</code>|<code class="att">rtl</code>|<code class="att">auto</code>:
                         <p class="htmlCodeRtl" dir="rtl" style="width: 50%; border: 0.1em solid black;">Questo va da destra a sinistra</p><s id="htmlCodeRtl"></s></li>
-
+                        <li><b><code class="att">data-</code>*</b>: utilizzato per scrive dati personalizzati;
+                            l'asterisco può essere sostituito da qualsiasi nome a patto che
+                        <ul>
+                            <li>non inizi per <code>xml</code></li>
+                            <li>non contenga punteggiatura (si usi - come spaziatore)</li>
+                            <li>non contenga maiuscole</li>
+                        </ul>
+                        <p class="nota">i dati creati in questo modo possono essere usati da CSS ma anche da 
+                            JavaScript tramite l'oggetto <code>dataset</code> e possono
+                            anche essere modificati.
+                        </p></li>
                         
                     </ul>
                     <section>
