@@ -4,20 +4,70 @@
         <script src="../source/redirect.js" defer></script>
 
         <title class="htmlCodeTitle">Appunti html | Elemento &lt;head&gt;</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" class="htmlCodeView" />
         <link rel="stylesheet" href="../source/notes_general.css" type="text/css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" class="htmlCodeEdge" />
 
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <link rel="stylesheet" href="../source/navstyle.css" type="text/css" />
+        <link rel="stylesheet" href="../source/navstyle.css" type="text/css" class="htmlCodeLink"/>
+        <link rel="canonical" href="https://italocorraro.github.io/NotesRepo/L'elemento%20head/" class="htmlCodeCanon"/>
         <script src="../source/Navigazione2.js"></script>
-        <script src="snippets.js"></script>
+        <link rel="manifest" href="/manifest.json" class="htmlCodeManifest" />
+        <link rel="icon" sizes="32x32" href="../source/Crocco.png" type="image/x-icon" class="htmlCodeFav" />
         <script src="../source/highlight.js"></script>
+
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Questo sito è un set privato di appunti." />
+        <meta name="og:title" content="Appunti sull'elemento head" />
+        <meta name="og:local" content="it" />
+        <meta name="og:description" content="Questo sito è una raccolta privata di appunti." />
+        <meta property="og:site_name" content="Appunti&Note" />
+        <meta name="og:image" content="../source/Crocco.png" />
+        <meta name="og:image:type" content="image/png" />
+        <meta name="og:url" content="https://italocorraro.github.io/NotesRepo/L'elemento%20head/index.html" />
+
+        <script>
+            const snippets = {
+                html: {
+                    htmlCodeMetatags: 
+`<meta name="og:title" content="Appunti sull'elemento head" />
+<meta name="og:local" content="it" />
+<meta name="og:description" content="Questo sito è una raccolta privata di appunti." />
+<meta property="og:site_name" content="Appunti&Note" />
+<meta name="og:image" content="../source/Crocco.png" />
+<meta name="og:image:type" content="image/png" />
+<meta name="og:url" content="https://italocorraro.github.io/NotesRepo/L'elemento%20head/index.html" />`,
+                    htmlCodeScript: `<` + `script>`,
+                    htmlCodeScript1: `<` + `/script>`,
+                    htmlCodeScripting: `<` + `script src="../source/highlight.js">` + `<` + `/script>`,
+                    htmlCodeDefer: `<`+`script src="../source/redirect.js" defer>`+`<`+`/script>`
+                },
+                css: {
+                    cssCodeExample: 
+`.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}`
+                },
+                js: {
+                    jsCodeScript: 
+`const dialogue = document.getElementById("dialogId");
+document.getElementById("dialogOpen").addEventListener("click", function() {
+    dialogue.showModal();
+});
+document.getElementById("dialogClose").addEventListener("click", function () {
+    dialogue.close();
+});`
+                }
+            }
+        </script>
     </head>
     <body class="content">
         <header class="main_header">
            
-            <h1>Appunti sui forms in html</h1>
+            <h1>Appunti sull'elemento head in html</h1>
         
             <aside class="sidebar_right">
                
@@ -55,25 +105,125 @@
             <article>
                 <h2>&lt;style&gt;</h2>
                 <div>
-
+                    <p>L'elemento <code class="tag">style</code> si può utilizzare
+                    per creare una stylesheet in CSS localmente.</p>
+                    <p class="eg"><br>
+                        <s id="htmlCodeScript"></s>
+                        <rp id="cssCodeExample"></rp>
+                        <s id="htmlCodeScript1"></s>
+                    </p>
+                    <p class="notabene">questo elemento non può importare fogli di stile
+                        esterni; per farlo si usa <code class="tag">link</code>.
+                    </p>
                 </div>
             </article>
             <article>
                 <h2>&lt;script&gt;</h2>
                 <div>
-                    
+                    <p>Questo elemento è usato per creare script all'interno del documento.</p>
+                    <p class="eg"><br>
+                            <s id="htmlCodeScript"></s>
+                            <kbd id="jsCodeScript"></kbd>
+                        <s id="htmlCodeScript1"></s>
+                    </p>
+                    <section>
+                        <h3>Importare script esterni</h3>
+                        <p>Attraverso l'attributo <code class="att">src</code> è possibile
+                            importare fogli di script esterni:</p>
+                        <s id="htmlCodeScripting"></s>
+                        <p class="notabene">alcuni script necessitano dell'attributo <code class="att">defer</code>
+                            per essere eseguiti correttamente; <s id="htmlCodeDefer"></s>
+                            <code class="att">defer</code> è un attributo booleano
+                            che specifica che lo script va scaricato in parallelo con il parsing del documento, 
+                            MA va eseguito solo al termine del parsing. <br>Questa è una necessità spesso dovuta alla 
+                            mancanza di alcune cose necessarie all'esecuzione dello script prima del parsing.</p>
+                    </section>
                 </div>
             </article>
             <article>
                 <h2>&lt;link&gt;</h2>
                 <div>
-                    
+                    <p>Questo elemento serve a collegare il documento con uno esterno:
+                        <ul>
+                            <li>l'attributo <code class="att">rel</code> indica il tipo di relazione
+                            tra il documento e quello collegato.</li>
+                            <li>l'attributo <code class="att">href</code> specifica la posizione, 
+                            tramite URL, del documento collegato.</li>
+                            <li>l'attributo <code class="att">media</code> specifica su quale dispositivo
+                            il documento collegato verrà utilizzato.</li>
+                            <li>l'attributo <code class="att">sizes</code> indica le dimensioni della
+                            risorsa collegata
+                            <p class="notabene">questo attributo funziona solo se <code class="att">rel</code><code>=</code><code class="string">"icon"</code></p></li>
+                            <li>l'attributo <code class="att">type</code> indica il tipo di media del documento collegato.</li>
+                        </ul>
+                        <p class="eg"><br><s id="htmlCodeCanon"></s>Qui è usato per per indicare al browser
+                            la versione principale dell'URL della pagina nel caso ce ne fossero altri a chiamare lo
+                            stesso documento html.</p>
+                        <p class="eg"><br><s id="htmlCodeManifest"></s>Qui è usato per indicare il <kbd>json</kbd> 
+                            che contiene informazioni per il il browser su come rendere una Progressive Web App.</p>
+                    </p>
+                    <section>
+                        <h3>Icona per la pagina</h3>
+                        <p>Con l'elemento <code class="tag">link</code> è possibile dare un'icona da mostrare nel browser:</p>
+                        <p class="eg"><br><s id="htmlCodeFav"></s></p>
+                    </section>
+                    <section>
+                        <h3>Importare fogli di stile CSS</h3>
+                        <p>L'elemento <code class="tag">link</code> permette di importare un file esterno in formato <code>.css</code>
+                            da applicare alla pagina.</p>
+                            <p class="eg"><br><s id="htmlCodeLink"></s></p>
+                            <p class="notabene">questo elemento non può importare qualsiasi tipo di file, in 
+                                particolare non importa i file JavaScript.
+                            </p>
+                    </section>
                 </div>
             </article>
             <article>
                 <h2>&lt;meta&gt;</h2>
                 <div>
-                    
+                    <p>I metadati sono informazioni atte a descrivere i dati di un documento; il tag <code class="tag">meta</code>
+                    è il metodo ufficiale per aggiungere questo tipo di dati; sono svariati i tipi di informazione
+                    che porta, i più importanti sono:</p>
+                    <ul>
+                        <li><s id="htmlCodeChar"></s><b><code class="att">charset</code></b>
+                            serve a specificare il set di caratteri da utilizzare nel documento;
+                            <p class="nota">UTF-8 è quello più usato in html poiché comprende
+                                caratteri da praticamente tutte le lingue.</p></li>
+                        <li><s id="htmlCodeView"></s>La <b><code class="string">viewport</code></b> è
+                            la parte visibile della pagina; indicare queste impostazioni esattamente come riportato
+                            permette al browser di rendere la pagina nelle giuste dimensioni anche
+                            da schermi più piccoli.
+                            <p class="notabene">mancare di immettere questa informazione
+                                comporta una visualizzazione incorretta su browser mobile.</p></li>
+                        <li><s id="htmlCodeDescription"></s><code class="string"><b>description</code></b> è utilizzata dai motori di ricerca;
+                            è quella breve descrizione sotto il titolo della pagina che viene mostrata dopo una ricerca</li>
+                        <li><s id="htmlCodeAuthor"></s><b><code class="string">author</code></b> è utilizzata per indicare l'autore della pagina.</li>
+                        <li><s id="htmlCodeEdge"></s>Questo serve a indicare compatibilità con Internet Explorer.</li>
+                        <li><s id="htmlCodeKey"></s><b><code class="string">keywords</code></b> serve a indicare delle parole chiave per i motori di ricerca.
+                            <p class="notabene">ormai non è più tenuto in considerazione dai motori di ricerca
+                                moderni per via della facilità con cui poteva essere abusato.
+                            </p></li>
+                    </ul><p class="notabene">è quasi un requisito in una pagina web impostare almeno 
+                        il <code class="att">charset</code> e il <code class="string">viewport</code>.</p>
+                
+                <section>
+                    <h3>Open Graph Data</h3>
+                    <p>Questo è un protocollo di metadati creato da <abbr title="Facebook&co.">Meta</abbr>
+                        per mostrare metadati quando vengono riportato l'URL della pagina su un software che lo supporta:</p>
+                        <ul>
+                            <li><b><code class="string">og:title</code></b> riporta il titolo.</li>
+                            <li><b><code class="string">og:type</code></b> riporta il tipo dell'oggetto.</li>
+                            <li><b><code class="string">og:image</code></b> riporta un'immagine nel grafo.</li>
+                            <li><b><code class="string">og:url</code></b> riporta l'url canonico dell'oggetto.</li>
+                        </ul><p class="eg"><br>
+                            <s id="htmlCodeMetatags"></s>
+                            <s id="htmlCodeLocale"></s>
+                            <s id="htmlCodeDescMeta"></s>
+                            <s id="htmlCodeImageMeta"></s>
+                            <s id="htmlCodeURL"></s>
+                        </p>
+                        <p class="nota"><a href="https://ogp.me/">qui</a> sono riportati altri metadati supportati dal protocollo.</p>
+                </section>
                 </div>
             </article>
         </main>
