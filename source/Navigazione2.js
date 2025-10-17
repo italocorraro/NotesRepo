@@ -33,7 +33,7 @@ let navigazione = `
             <ul class="panel">
                 <li><a>Sintassi</a></li>
                 <li><a href="../Selectors/">Selettori</a></li>
-                <li><a>Box Model</a></li>
+                <li><a href="../Box Model/">Box Model</a></li>
                 <li><a>Unità di misura</a></li>
                 <li><a>Tipografia</a></li>
                 <li><a>Colori</a></li>
