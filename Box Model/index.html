@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <script src="../source/redirect.js" defer></script>
+
+        <title class="htmlCodeTitle">Appunti CSS | Box Model</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" class="htmlCodeView" />
+        <link rel="stylesheet" href="../source/notes_general.css" type="text/css" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" class="htmlCodeEdge" />
+
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../source/navstyle.css" type="text/css" class="htmlCodeLink"/>
+        <script src="../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../source/Crocco.png" type="image/x-icon" class="htmlCodeFav" />
+        <script src="../source/highlight.js"></script>
+
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            ul#box-model {
+                display: grid;
+                grid-template: 1fr 1fr 1fr 1fr / 1fr clamp(70%, 50vw, 80%);
+                gap: 0 2rem;
+                height: fit-content;
+                width: 100%;
+                align-items: center;
+                padding: 2rem 2rem 1.5rem 0; 
+                margin: 0;
+                list-style-type: none;
+            }
+            ul#box-model li {
+                &.container {
+                    grid-area: 1 / 2 / span 4 / span 1;
+                    width: clamp(100px, 100%, 4000px);
+                    height: clamp(80px, 40vw, 3600px);
+                    background-color: transparent;
+                }
+                &.container, & .margin, & .border, & .padding, & .contento {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                }
+
+                & .margin {
+                border: 0.5rem dashed red;
+                background-color: rgb(245, 225, 225);
+                padding: 2.5rem; 
+                position: relative;
+                width: 100%;
+                height: 100%;
+                }
+
+                & .margin::before {
+                    content: "Margin";
+                    position: absolute;
+                    top: 0.3rem;
+                    left: 1rem;
+                    font-size: 1.5rem;
+                    color: rgb(54, 0, 0);
+                }
+
+                & .border {
+                    padding: 2.5rem; 
+                    position: relative;
+                    background-color: #ffe45e;
+                    border: 0.4rem solid yellow;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                & .border::before {
+                    content: "Border";
+                    position: absolute;
+                    top: 0.3rem;
+                    left: 1rem;
+                    font-size: 1.5rem;
+                    color: rgb(55, 28, 0);
+                }
+
+                & .padding {
+                    background-color: rgb(219, 245, 219);
+                    border: 0.4rem dashed green;
+                    padding: 2.5rem;
+                    position: relative;
+                    width: 93%;
+                    height: 93%;
+                }
+
+                & .padding::before {
+                    content: "Padding";
+                    position: absolute;
+                    top: 0.3rem;
+                    left: 1rem;
+                    font-size: 1.5rem;
+                    color: rgb(0, 88, 0);
+                }
+
+                & .contento {
+                    border: 0.4rem dotted blue;
+                    background-color: #ddf;
+                    position: relative;
+                    width: 90%;
+                    height: 90%;
+                }
+
+                & .contento::before {
+                    content: "Content";
+                    position: absolute;
+                    top: 0.3rem;
+                    left: 1rem;
+                    font-size: 1.5rem;
+                    color: rgb(0, 0, 108);
+                }
+            }
+    
+            #box-model li.margin {
+                cursor: pointer;
+                text-align: center;
+                grid-area: 1 / 1 / span 1 / span 1;
+                &:hover{
+                    color: rgb(104, 90, 69);
+                    text-decoration: underline;
+                }
+                &:hover ~ li div.margin {
+                    background-color: antiquewhite;
+                }
+            }
+
+            #box-model li.border {
+                cursor: pointer;
+                text-align: center;
+                grid-area: 2 / 1 / span 1 / span 1;
+                &:hover{
+                    color: rgb(104, 90, 69);
+                    text-decoration: underline;
+                }
+                &:hover ~ li div.border {
+                    background-color: antiquewhite;
+                }
+            }
+
+            #box-model li.padding {
+                cursor: pointer;
+                text-align: center;
+                grid-area: 3 / 1 / span 1 / span 1;
+                &:hover{
+                    color: rgb(104, 90, 69);
+                    text-decoration: underline;
+                }
+                &:hover ~ li div.padding {
+                    background-color: antiquewhite;
+                }
+            }
+
+            #box-model li.contento {
+                cursor: pointer;
+                text-align: center;
+                grid-area: 4 / 1 / span 1 / span 1;
+                &:hover{
+                    color: rgb(104, 90, 69);
+                    text-decoration: underline;
+                }
+                &:hover ~ li .contento {
+                    background-color: antiquewhite;
+                }
+            }
+
+            #eg-alk {
+                grid-area: 2 / 1 / span 1 / span 2;
+            }
+            #eg-alm {
+                grid-area: 3 / 1 / span 1 / span 1;
+            }
+            #eg-aln {
+                grid-area: 3 / 2 / span 1 / span 1;
+            }
+            @media only screen and (max-width: 900px) {
+                #eg-alm {
+                    grid-area: 3 / 1 / span 1 / span 2;
+                }
+                #eg-aln {
+                    grid-area: 4 / 1 / span 1 / span 2;
+                }
+            }
+
+        </style>
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeBox: `box-sizing: border-box;`,
+                    cssCodeEg1: 
+`div {
+    width: 320px;
+    height: 50px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0;
+}`
+                }
+            }
+            
+        </script>
+    </head>
+    <body class="content">
+        <header class="main_header">
+           
+            <h1>Appunti sul Box Model in CSS</h1>
+        
+            <aside class="sidebar_right">
+               
+                <nav id="indice"></nav>
+            </aside>
+
+            <section>
+                <p>Questa pagina copre l'argomento della Box Model.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>La box model è la rappresentazione di ogni elemento
+                        in html e consiste di quattro parti: contenuto, padding,
+                        contorno e margine.                       
+                    </p>
+                </div>
+            </section>
+        </header>
+        <main>
+            <article>
+                <h2>Box Model</h2>
+                <div>
+                    <p>Nel box model, il contenuto dell'elemento è mostrato in un contenitore rettangolare,
+                        attorno a questo rettangolo c'è dello spazio (padding) che lo separa dal contorno, 
+                        infine oltre il contorno c'è dello spazio (margine) a separarlo dal contenitore superiore.
+                    </p>
+                    <ul id="box-model">
+                        <li class="margin">Margine</li>
+                        <li class="border">Contorno</li>
+                        <li class="padding">Padding</li>
+                        <li class="contento">Contenuto</li>
+                        <li class="container"><div class="margin">
+                            <div class="border">
+                            <div class="padding">
+                                <div class="contento"></div>
+                            </div></div></div>
+                        </li>
+                    </ul>
+                    <p class="osservazione">il contenuto e il padding prendono il
+                        colore del background.<br>
+                        Il contorno va colorato a parte.<br>
+                        Il margine è sempre trasparente.</p>
+                    <p class="notabene">l'altezza e la larghezza che vengono impostate come proprietà
+                        di un elemento sono riferite SOLO al contenuto!<br>
+                        Per conoscere l'altezza e larghezza effettive di un elemento bisogna 
+                        aggiungere il padding e il contorno:
+                    </p><div class="clearfix">
+                    <p class="eg" style="display: grid; grid-template: 50% 1fr; justify-content: left; max-width: 100%; gap: 1rem 3rem;">
+                        <span id="eg-alk"><rp id="cssCodeEg1"></rp></span>
+                        <span id="eg-alm">calcoliamo:<br>
+                            <b>larghezza</b> effettiva = <br>
+                            <span style="padding-left: 1rem;">+320px (width)</span><br>
+                            <span style="padding-left: 1rem;">+20px (padding-left + padding-right)</span><br>
+                            <span style="padding-left: 1rem;">+10px (border-left + border-right)</span><br>
+                            <b>= 350px</b> (larghezza effettiva)
+                        </span>
+                        <span id="eg-aln">analogamente per l'altezza:<br>
+                            <b>altezza</b> effettiva = <br>
+                            <span style="padding-left: 1rem;">+50px (height)</span><br>
+                            <span style="padding-left: 1rem;">+20px (padding-top + padding-bottom)</span><br>
+                            <span style="padding-left: 1rem;">+10px (border-top + border-bottom)</span><br>
+                            <b>= 80px</b> (altezza effettiva)
+                        </span>
+                    </p>
+                    <section>
+                        <h3>La proprietà box-sizing</h3>
+                        <p>La proprità <code class="att">box-sizing</code> può avere questi valori:
+                            <ul>
+                                <li><code>content-box</code>: le proprità di altezza e larghezza includono solo 
+                                    il contenuto.
+                                    <p class="nota">questo è il valore di default per ogni elemento.</p>
+                                </li>
+                                <li><code>border-box</code>: le proprietà di altezza e larghezza includono contenuto,
+                                    padding e contorno.</li>
+                            </ul>
+                        </p>
+                        <p class="osservazione">se impostiamo <rt id="cssCodeBox"></rt> avremo la situazione opposta 
+                            a quella di default: le dimensioni del contenuto saranno pari a quelle dell'elemento tolti
+                            padding e contorno.</p>
+                    </section>
+                    </div>
+                </div>
+            </article>
+        </main>
+        <script src="../source/functionalities.js"></script>
+    </body>
+</html>
