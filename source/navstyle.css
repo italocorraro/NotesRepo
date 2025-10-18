@@ -18,13 +18,13 @@ body {
     left: 0;
     width: 100%;
     height: 80px;
-    z-index: 100;
+    z-index: 500;
     background-color: bisque;
 }
 #navbar {
     position: fixed;
-    right: 0;
-    top: 0;
+    left: 0;
+    top: 80px;
     width: 0;
     height: 100%;
     overflow-x: hidden;
@@ -33,10 +33,9 @@ body {
     display: block;
     z-index: 101;
     transition: 0.3s;
-    font-size: 30px;
+    font-size: 3rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     user-select: none;
-    & > *:first-child {margin-top: 60px;}
     & li {
         list-style-type: circle;
         margin-left: 10px;
@@ -88,9 +87,6 @@ li.active {
   display: block;
   cursor: pointer;
   transition: 0.3s;
-  &.off {
-    transform: translateX(80px);
-  }
 }
 
 .bar1, .bar2, .bar3 {
@@ -103,14 +99,14 @@ li.active {
 
 .change .bar1 {
   transform: translate(0, 11px) rotate(-225deg);
-  background-color: bisque;
+  background-color: brown;
 }
 
 .change .bar2 {opacity: 0;}
 
 .change .bar3 {
   transform: translate(0, -11px) rotate(225deg);
-  background-color: bisque;
+  background-color: brown;
 }
 
 #toctoggle {
@@ -123,13 +119,6 @@ li.active {
     height: 40px;
     z-index: 1000;
     transition: 0.3s;
-    &.tochange {
-        transform: scale(2) translate(30px, 10px);
-    }
-    &.off {
-        transform: scale(0);
-        opacity: 0;
-    }
 }
 
 .square1, .square2 {
@@ -176,10 +165,12 @@ li.active {
         position: fixed;
         float: none;
         z-index: 0;
-        top: 0;
+        top: 80px;
         right: 0;
         width: 0;
-        height: 0;
+        height: calc(100% - 80px);
+        border: 0;
+        outline: 0;
         margin: 0;
         text-overflow: clip;
         overflow-x: hidden;
@@ -188,7 +179,7 @@ li.active {
         &.tocactive {
             width: 100%;
             z-index: 999;
-            height:100%;
+            
             overflow-y: auto;
             font-size: 2.6rem;
             & h3 {
@@ -224,6 +215,7 @@ li.active {
 @media only screen and (min-width: 900px) {
     #navbar {
         left: 0;
+        top: 0;
         right: auto;
         width: 30%;
         transition: none;

@@ -130,23 +130,24 @@ $(function() {
       $(this).next(".panel").slideToggle("fast");
     });
 
-    // Aggiunta evento hamburger dopo caricamento dinamico
+
     $("#navtoggle2").click(function() {
-        $("#toctoggle").toggleClass("off");
-        $("body").toggleClass("scrollLock");
+        $("aside.sidebar_right").hasClass("tocactive") ? null : $("body").toggleClass("scrollLock");
+        $("#toctoggle").removeClass("tochange");
+        $("aside.sidebar_right").removeClass("tocactive");
         $(this).toggleClass("change");
         $("#navbar").toggleClass("navactive");
     });
 
     $("#toctoggle").click(function () {
-        $("#navtoggle2").toggleClass("off");
-        $("body").toggleClass("scrollLock");
+        $("#navbar").hasClass("navactive") ? null : $("body").toggleClass("scrollLock");
+        $("#navtoggle2").removeClass("change");
+        $("#navbar").removeClass("navactive");
         $(this).toggleClass("tochange");
         $("aside.sidebar_right").toggleClass("tocactive");
     });
 
     $(document).on("click", " aside.sidebar_right a", function () {
-        $("#navtoggle2").removeClass("off");
         $("body").removeClass("scrollLock");
         $("#toctoggle").removeClass("tochange");
         $("aside.sidebar_right").removeClass("tocactive");
