@@ -723,7 +723,86 @@ span.mixed {border-color: red wheat green yellow;}`,
                     </section>
                 </div>
             </article>
+            <article>
+                <h2>Overflow</h2>
+                <div>
+                    <p>Quando il contenuto in eccesso di un elemento è troppo grande per la sua area, di default
+                        esce fuori; a controllare questa reazione è la proprietà <code class="att">overflow</code>, 
+                        che può avere 4 valori:
+                        <ul>
+                            <li><b><code>visible</code></b>: il default.
+                                <p class="eg" style="width: 100%;"><br>
+                                    Usa lo slider per verificare che il contenuto in eccesso straborda
+                                    <span class="range-1 slided" style="display: block; width: 100%; height: 5em; 
+                                                                    background-color: yellow; overflow: hidden;">
+                                        <span style="width: 250px;height: 50%; 
+                                                background-color: blue; display: block;"></span>
+                                    </span>
+                                    <input type="range" id="range-1" style="width: 100%;" min="0" max="100" value="100"/>
+                                </p>
+                            </li>
+                            <li><b><code>hidden</code></b>: il contenuto in eccesso viene tagliato
+                                <p class="eg" style="width: 100%;"><br>
+                                    Usa lo slider per verificare che il contenuto in eccesso viene tagliato
+                                    <span class="range-0 slided" style="display: block; width: 100%; height: 5em; 
+                                                                    background-color: yellow; overflow: hidden;">
+                                        <span style="width: 250px;height: 50%; 
+                                                background-color: blue; display: block;"></span>
+                                    </span>
+                                    <input type="range" id="range-0" style="width: 100%;" min="0" max="100" value="100"/>
+                                </p>
+                            </li>
+                            <li><b><code>scroll</code></b>: aggiunge delle scroll-bar sempre
+                                <p class="eg" style="width: 100%;"><br>
+                                    Usa lo slider per verificare che il contenuto ha sempre una scroll-bar
+                                    <span class="range-2 slided" style="display: block; width: 100%; height: 5em; 
+                                                                    background-color: yellow; overflow-x: scroll;">
+                                        <span style="width: 250px;height: 50%; 
+                                                background-color: blue; display: block;"></span>
+                                    </span>
+                                    <input type="range" id="range-2" style="width: 100%;" min="0" max="100" value="100"/>
+                                </p>
+                            </li>
+                            <li><b><code>auto</code></b>: aggiunge delle scroll-bar solo quando necessario
+                                <p class="eg" style="width: 100%;"><br>
+                                    Usa lo slider per verificare che il contenuto in eccesso fa apparire una scroll-bar
+                                    <span class="range-3 slided" style="display: block; width: 100%; height: 5em; 
+                                                                    background-color: yellow; overflow: auto;">
+                                        <span style="width: 250px;height: 50%; 
+                                                background-color: blue; display: block;"></span>
+                                    </span>
+                                    <input type="range" id="range-3" style="width: 100%;" min="0" max="100" value="100"/>
+                                </p>
+                            </li>
+                        </ul>
+                    </p>
+                    <p class="nota">
+                        è possibile usare <code class="att">overflow-x</code> e <code class="att">overflow-y</code>
+                        per cambiare il comportamento solo lungo uno dei due assi, ma <code class="att">overflow</code>
+                        NON può avere due valori per modificare entrambi gli assi in modo diverso.
+                    </p>
+                </div>
+            </article>
         </main>
         <script src="../source/functionalities.js"></script>
+        <script>
+            const ranges = document.querySelectorAll("[type='range']");
+            const slided = document.querySelectorAll(".slided");
+
+            const maximum = Math.max(ranges.length, slided.length);
+
+            for (const range of ranges) {
+                for (const slide of slided) {
+                    if(slide.classList.contains(range.id)) {
+                        range.addEventListener("input", function() {
+                            slide.style.width = range.value + '%';
+                        });
+                        break;
+                    }
+                }
+
+            }
+            
+        </script>
     </body>
 </html>
