@@ -11,6 +11,7 @@
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="../source/navstyle.css" type="text/css">
         <script src="../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../source/Crocco.png" type="image/x-icon" class="htmlCodeFav" />
         <script src="snippets.js"></script>
         <script src="../source/highlight.js"></script>
         
@@ -38,6 +39,14 @@
         }
         #search_res > span {
             color: blue;
+        }
+        .evitamiaa label {
+            cursor: pointer;
+            user-select: none;
+            &:hover {
+                text-decoration: underline;
+                color: darkgreen;
+            }
         }
         </style>
     </head>
@@ -272,7 +281,7 @@
             <article>
                 <h2>L'elemento &lt;label&gt;</h2>
                 <div>
-                    <p>La <code class="tag">label</code> fornisce una dicitura associata ad un <code class="tag">input.</code></p>
+                    <p>La <code class="tag">label</code> fornisce una dicitura associata ad un <code class="tag">input</code>.</p>
                     <p>L'area di selezione della label estende quella dell'input di tipo bottone, radio o checkbox; 
                         utile per quando sono troppo piccoli per essere selezionati o li si vuole nascondere alla vista per avere più libertà nello assegnare stili,
                          usando appunto la label in sostituzione del box booleano (come si è detto sopra, ha limitazioni dovute al browser), 
@@ -285,6 +294,17 @@
                     <p class="notabene">Perché funzioni correttamente, il valore dell'attributo <code class="att">for</code> della label 
                         deve essere uguale all'<code class="att">id</code> dell'elemento a cui è riferita: <br>
                         <s id="htmlCodeLabel"></s></p>
+                    <p class="osservazione evitamiaa">non è necessario che la <code class="tag">label</code> sia vicina
+                        all'<code class="tag">input</code> associato:<br>
+                        <input type="checkbox" id="ceck1" /><label for="ceck2"> Label per la seconda checkbox.</label><br>
+                        <input type="checkbox" id="ceck2" /><label for="ceck4"> Label per la quarta checkbox.</label><br>
+                        <input type="checkbox" id="ceck3" /><label for="ceck1"> Label per la prima checkbox.</label><br>
+                        <input type="checkbox" id="ceck4" /><label for="ceck3"> Label per la terza checkbox.</label>
+                    </p>
+                    <p class="osservazione evitamiaa">
+                        non è nemmeno necessario che la label sia solo una; se ne possono avere di più:<br>
+                        <label for="ceck2">Label per la seconda checkbox.</label>
+                    </p>
                     </div>
             </article>
 
