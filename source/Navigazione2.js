@@ -11,13 +11,12 @@ let navigazione = `
                 <li><a href="../Sintassi html/">Sintassi</a></li>
                 <li><a href="../Struttura Semantica/">Struttura Semantica</a></li>
                 <li><a href="../L'elemento head/">L'elemento &lt;head&gt;</a></li>
-                <li><a>Ancore</a></li>
-                <li><a>Immagini</a></li>
-                <li><a>Entità</a></li>
-                <li><a>Liste</a></li>
-                <li><a>Tabelle</a></li>
+                <li><a href="../Ancore/">Ancore</a></li>
+                <li><a href="../Immagini/">Immagini</a></li>
+                <li><a href="../Entità/">Entità</a></li>
+                <li><a href="../Liste/">Liste</a></li>
+                <li><a href="../Tabelle/">Tabelle</a></li>
                 <li><a href="../Forms/">Forms</a></li>
-                <li hidden><a>Attributi</a></li>
                 <li><a>APIs</a></li>
                 <li><a>Accessibilità</a></li>
                 <li><a>Validazione</a></li>
@@ -31,7 +30,7 @@ let navigazione = `
                 <span>CSS</span>
             </li>
             <ul class="panel">
-                <li><a>Sintassi</a></li>
+                <li><a href="../Sintassi CSS/">Sintassi</a></li>
                 <li><a href="../Selectors/">Selettori</a></li>
                 <li><a href="../Box Model/">Box Model</a></li>
                 <li><a>Unità di misura</a></li>
@@ -42,9 +41,9 @@ let navigazione = `
                 <li><a>Modali</a></li>
                 <li><a>Transizioni</a></li>
                 <li><a>Animazioni</a></li>
-                <li><a>Layout con Float</a></li>
-                <li><a>Layout con Flexbox</a></li>
-                <li><a>Layout con Grid</a></li>
+                <li><a href="../Layout con Float/">Layout con Float</a></li>
+                <li><a href="../Layout con Flexbox/">Layout con Flexbox</a></li>
+                <li><a href="../Layout con Grid/">Layout con Grid</a></li>
                 <li><a>Altri Media</a></li>
             </ul>
 
@@ -53,18 +52,18 @@ let navigazione = `
                 <span>JavaScript</span>
             </li>
             <ul class="panel">
-                <li><a>Sintassi</a></li>
+                <li><a href="../Sintassi js/">Sintassi</a></li>
                 <li><a>Variabili</a></li>
                 <li><a>Tipi di dato</a></li>
                 <li><a>Operatori</a></li>
                 <li><a>Condizionali</a></li>
                 <li><a>Loop</a></li>
-                <li><a>Funzioni</a></li>
+                <li><a href="../Funzioni/">Funzioni</a></li>
                 <li><a>Funzioni di Supporto</a></li>
                 <li><a>Array</a></li>
                 <li><a>Oggetti</a></li>
                 <li><a>Mappe</a></li>
-                <li><a>Espressioni Regolari</a></li>
+                <li><a href="../Espressioni Regolari/">Espressioni Regolari</a></li>
                 <li><a>Debug</a></li>
                 <li><a>Eventi</a></li>
                 <li><a>Manipolazione del DOM</a></li>
@@ -93,7 +92,7 @@ let navigazione = `
                 <span>Markdown</span>
             </li>
             <ul class="panel">
-                <li><a>WIP</a></li>
+                <li><a href="../Sintassi md/">Sintassi</a></li>
             </ul>
 <!--        Lista pagine Vite                         -->
             <li class="flip">
