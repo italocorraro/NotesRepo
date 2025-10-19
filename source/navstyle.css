@@ -220,8 +220,10 @@ li.active {
         top: 0;
         right: auto;
         width: 30%;
+        height: 100% !important;
         transition: none;
         font-size: 40px;
+        border: 0 none;
         & li {
             margin-left: 20px;
             margin-top: 20px;
