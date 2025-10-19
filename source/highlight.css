@@ -1,4 +1,7 @@
-pre {all: unset;}
+pre {
+    all: unset;
+    max-width: 100%;
+}
 code {
   all: unset;
   font-family: monospace;
@@ -25,7 +28,7 @@ pre code.hljs {
 }
 
 span.linear pre, span.linear code.hljs {
-    white-space: nowrap;
+    white-space: wrap;
     display: inline;
     background-color: transparent;
     border: transparent;
