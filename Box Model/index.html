@@ -204,7 +204,7 @@
                     }
                 & #borderCollection {
                     font-style: normal;
-                    grid-area: 2 / 1 / span 1 / span 1;
+                    grid-area: 2 / 1 / span 1 / span 2;
                     width: 100%;
                     height: 100%;
                     display: flex;
@@ -257,9 +257,8 @@
                 }
                 & .code {
                     grid-area: 3 / 1 / span 1 / span 2;
-                    display: flex;
-                    align-self: center;
-                    justify-self: center;
+                    max-width: 100%;
+                    margin: auto;
                     overflow-x: auto;
                 }
             }
@@ -291,9 +290,8 @@
                 }
                 & .code {
                     grid-area: 3 / 1 / span 1 / span 2;
-                    display: flex;
-                    align-self: center;
-                    justify-self: center;
+                    max-width: 100%;
+                    margin: auto;
                     overflow-x: auto;
                 }
             }
@@ -329,6 +327,7 @@
                         }
                     }
                 }
+                
             }
             span.gesumaria {
                 display: block; 
@@ -546,7 +545,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                         </p><p class="eg" style="max-width: 100%; width: 100%;"><br>
                             <span class="clearfix" style="display: block; margin: 1rem 0;">
                             <span class="htmlCodeMargin" style="display: block; 
-                                    width: 40%; height: 30vw;
+                                    width: 40%; height: 25rem;
                                     margin-right: 2rem; float: left;
                                     background-color: green;">
                                 <span style="display: block; 
@@ -562,7 +561,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                             al contenitore per allineare il discendente verticalmente:
                             <span style="display: block; margin: 1rem 0;">
                             <span class="htmlCodeMargin" style="display: block; 
-                                    width: 40%; height: 30vw;
+                                    width: 40%; height: 25rem;
                                     align-content: center;
                                     margin: auto;
                                     background-color: green;">
@@ -596,7 +595,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                         <p>La proprietà <code class="att">border-style</code> permette di specificare l'aspetto del contorno di un elemento:</p>
                         <p class="eg" style="width: 100%; max-width: 100%;" id="borderGrid">
                             <i id="borderCollection"><span class="dotted"></span><span class="dashed"></span><span class="solid"></span><span class="double"></span><span class="groove"></span><span class="ridge"></span><span class="inset"></span><span class="outset"></span><span class="none"></span><span class="hidden"></span><span class="mix-0"></span><span class="mix-1"></span>
-                            </i><span class="codes"><rp id="cssCodeBordering"></rp></span>
+                            </i>
                         </p>
                         <p class="osservazione">negli ultimi due stili di bordo abbiamo visto dei mix:
                             <rp id="cssCodeBorderMix0"></rp>
@@ -634,11 +633,10 @@ span.mixed {border-color: red wheat green yellow;}`,
                     <section>
                         <h3>Contorno Arrotondato</h3>
                         <p>Il contorno può essere arrotondato con la proprietà <code class="att">border-radius</code>:</p>
-                        <p class="eg clearfix"><br>
+                        <p class="eg clearfix"><br><rp id="cssCodeRadius"></rp>
                             <span class="gesumaria" style="border-radius: 2em 4em 0 6em;"></span>
                             <span>
-                                l'elemento a destra presenta <rp id="cssCodeRadius"></rp>
-                                cioè il contorno dell'elemento può essere arrotondato
+                                il contorno dell'elemento può essere arrotondato
                                 ai quattro angoli come definito nella proprietà 
                                 <code class="att">border-radius</code> in senso orario 
                                 rispetto agli angoli dell'elemento a partire da quello 
@@ -654,7 +652,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                 <div>
                     <p>La proprietà <code class="att">padding</code> serve a distanziare il contenuto all'interno
                         dei limiti del contorno:</p>
-                    <p class="eg clearfix"><br>
+                    <p class="eg"><br><span class="clearfix">
                         Prendiamo ad esempio un contenitore di cui modificheremo il <code class="att">padding</code>
                         e il suo contenuto che si espanderà di tutto lo spazio disponibile:
                         <span class="gesumaria" style="padding: 2em 0.6em 4% 3em;">
@@ -662,10 +660,10 @@ span.mixed {border-color: red wheat green yellow;}`,
                         </span>
                         <span>
                             Troviamo qualcosa di simile al margine ma dettata dal contenitore invece;
-                            <br>per il caso specifico a sinistra abbiamo:
+                            <br>per il caso specifico a sinistra abbiamo:</span></span>
                             <rp id="cssCodePadding"></rp>
                             anche questa può essere divisa nelle quattro direzioni.
-                        </span>
+                        
                     </p>
                 </div>
             </article>
@@ -681,7 +679,8 @@ span.mixed {border-color: red wheat green yellow;}`,
                     <p class="eg"><br><br><span class="clearfix">
                         <span class="gesubottarga" style="outline: 0.4em solid green;"></span>
                         <span class="gesubottarga" style="outline: 0.9em dashed red;"></span>
-                        <span style="display: block; float: left; margin-left: 3rem;"><rp id="cssCodeOutline"></rp>
+                        <span style="display: block; float: left; padding-left: 2rem; max-width: 100%;">
+                            <rp id="cssCodeOutline"></rp>
                             <rp id="cssCodeOutline1"></rp>
                         </span></span>
                         <span><br>
@@ -692,13 +691,13 @@ span.mixed {border-color: red wheat green yellow;}`,
                             stile (<code class="att">outline-style</code>)<br>
                             <b style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">&gt;</b>
                             colore (<code class="att">outline-color</code>)<br>
-                            A queste però si aggiunge anche un'altra proprietà che però deve essere inserita singolarmente:
+                            A queste però si aggiunge anche un'altra proprietà che però deve essere inserita singolarmente:<br>
                             <b style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">&gt;</b>
                             offset (<code class="att">outline-offset</code>):
                             <rp id="cssCodeOffset"></rp>
                         </span>
                     </p>
-                    <p class="notabene">nessuna delle proprietà dell'outset supporta la suddivisione in direzioni!</p>
+                    <p class="notabene">nessuna delle proprietà dell'outline supporta la suddivisione in direzioni!</p>
                 </div>
             </article>
             <article>
