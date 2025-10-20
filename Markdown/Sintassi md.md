@@ -48,7 +48,7 @@ che vengono riprodotti come
 | :--- |
 | [repository di un tizio](https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet) |
 | [github flavored markdown](https://github.github.com/gfm/) |
-| [root di questa repository](https://italocorraro.github.io/NotesRepo/Sintassi%20html/) |
+| [root di questa repository](https://italocorraro.github.io/NotesRepo/Template/) |
 
 
 
