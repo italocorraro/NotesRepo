@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist Studio VitePress — Fase 1</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f6f8fa;
+      margin: 2rem auto;
+      max-width: 900px;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #0366d6;
+    }
+    section {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    ul { list-style: none; padding-left: 0; }
+    li { margin: 0.6rem 0; }
+    label { cursor: pointer; }
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-right: 0.6rem;
+      vertical-align: middle;
+    }
+    .resources {
+      font-size: 0.9rem;
+      background: #eef6ff;
+      padding: 0.8rem 1rem;
+      border-left: 4px solid #0074d9;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+    .resources a { color: #0366d6; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>📘 Checklist Studio VitePress – Fase 1</h1>
+  <p>
+    Obiettivo: imparare a creare e pubblicare un sito di documentazione statico con
+    <strong>VitePress</strong>, partendo da basi di HTML/CSS/JS.
+  </p>
+
+  <!-- Settimana 0 -->
+  <section>
+    <h2>Settimana 0 — Ripasso base del web</h2>
+    <p><em>Capire come funzionano i file HTML, CSS e JS in un progetto web.</em></p>
+    <ul>
+      <li><label><input type="checkbox">Ripassa la differenza tra HTML, CSS e JavaScript.</label></li>
+      <li><label><input type="checkbox">Crea una pagina <code>index.html</code> con titolo e paragrafo.</label></li>
+      <li><label><input type="checkbox">Aggiungi un po’ di stile con un file <code>style.css</code>.</label></li>
+      <li><label><input type="checkbox">Apri la pagina nel browser e osserva la struttura dei file.</label></li>
+      <li><label><input type="checkbox">Crea una mini cartella progetto con <code>index.html</code>, <code>style.css</code> e <code>script.js</code>.</label></li>
+    </ul>
+    <div class="resources">
+      <strong>Risorse:</strong><br>
+      🌐 <a href="https://developer.mozilla.org/it/docs/Learn/HTML">MDN – HTML base</a><br>
+      🎨 <a href="https://developer.mozilla.org/it/docs/Learn/CSS">MDN – CSS base</a><br>
+      ⚙️ <a href="https://developer.mozilla.org/it/docs/Learn/JavaScript">MDN – JS base</a>
+    </div>
+  </section>
+
+  <!-- Settimana 1 -->
+  <section>
+    <h2>Settimana 1 — Node.js e npm</h2>
+    <p><em>Capire come si avvia un progetto moderno con Node e VitePress.</em></p>
+    <ul>
+      <li><label><input type="checkbox">Installa Node.js LTS dal sito ufficiale.</label></li>
+      <li><label><input type="checkbox">Apri il terminale e crea una nuova cartella per il progetto.</label></li>
+      <li><label><input type="checkbox">Inizializza un progetto con <code>npm init -y</code>.</label></li>
+      <li><label><input type="checkbox">Installa VitePress con <code>npm install vitepress</code>.</label></li>
+      <li><label><input type="checkbox">Avvia il server locale con <code>npx vitepress dev</code> e visita <code>http://localhost:5173</code>.</label></li>
+      <li><label><input type="checkbox">Osserva la differenza tra ambiente di sviluppo e file statici finali.</label></li>
+    </ul>
+    <div class="resources">
+      <strong>Risorse:</strong><br>
+      📦 <a href="https://nodejs.org/it/docs/">Documentazione Node.js</a><br>
+      📘 <a href="https://www.freecodecamp.org/news/npm-cheat-sheet/">Guida npm (freeCodeCamp)</a>
+    </div>
+  </section>
+
+  <!-- Settimana 2 -->
+  <section>
+    <h2>Settimana 2 — Markdown e struttura VitePress</h2>
+    <p><em>Imparare a scrivere contenuti e capire la struttura di un sito VitePress.</em></p>
+    <ul>
+      <li><label><input type="checkbox">Ripassa la sintassi base Markdown (titoli, liste, codice, link, immagini).</label></li>
+      <li><label><input type="checkbox">Crea la struttura <code>docs/</code> con <code>index.md</code> e <code>guide/introduction.md</code>.</label></li>
+      <li><label><input type="checkbox">Scrivi contenuti Markdown per almeno 2 pagine.</label></li>
+      <li><label><input type="checkbox">Avvia il sito con <code>npx vitepress dev docs</code> e naviga tra le pagine.</label></li>
+      <li><label><input type="checkbox">Aggiungi link interni e ancore nei file Markdown.</label></li>
+    </ul>
+    <div class="resources">
+      <strong>Risorse:</strong><br>
+      📝 <a href="https://www.markdownguide.org/basic-syntax/">Markdown Guide</a><br>
+      📘 <a href="https://vitepress.dev/guide/getting-started">VitePress – Getting Started</a>
+    </div>
+  </section>
+
+  <!-- Settimana 3 -->
+  <section>
+    <h2>Settimana 3 — Configurazione, tema e deploy</h2>
+    <p><em>Personalizzare l’aspetto e pubblicare il sito.</em></p>
+    <ul>
+      <li><label><input type="checkbox">Crea il file <code>.vitepress/config.js</code>.</label></li>
+      <li><label><input type="checkbox">Imposta titolo e descrizione del sito.</label></li>
+      <li><label><input type="checkbox">Configura <code>nav</code> e <code>sidebar</code> nel tema.</label></li>
+      <li><label><input type="checkbox">Aggiungi un logo in <code>.vitepress/public/</code>.</label></li>
+      <li><label><input type="checkbox">Personalizza i colori o il font con un po’ di CSS.</label></li>
+      <li><label><input type="checkbox">Genera il sito statico con <code>npx vitepress build docs</code>.</label></li>
+      <li><label><input type="checkbox">Pubblica online (GitHub Pages, Netlify o Vercel).</label></li>
+    </ul>
+    <div class="resources">
+      <strong>Risorse:</strong><br>
+      ⚙️ <a href="https://vitepress.dev/reference/site-config">Configurazione VitePress</a><br>
+      🚀 <a href="https://vitepress.dev/guide/deploy#github-pages">Deploy su GitHub Pages</a><br>
+      🌐 <a href="https://vercel.com/">Vercel</a> | <a href="https://www.netlify.com/">Netlify</a>
+    </div>
+  </section>
+
+  <!-- Conclusione -->
+  <section>
+    <h2>🎯 Al termine di questa fase</h2>
+    <ul>
+      <li><label><input type="checkbox">So creare un progetto VitePress da zero.</label></li>
+      <li><label><input type="checkbox">So scrivere e organizzare contenuti in Markdown.</label></li>
+      <li><label><input type="checkbox">So personalizzare navbar, sidebar e tema.</label></li>
+      <li><label><input type="checkbox">So generare e pubblicare un sito statico online.</label></li>
+    </ul>
+    <p>👉 Dopo questa fase sarai pronto a passare alla <strong>Fase 2</strong>: imparare Vue per aggiungere interattività e componenti dinamici.</p>
+  </section>
+</body>
+</html>
