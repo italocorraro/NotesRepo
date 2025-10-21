@@ -423,7 +423,8 @@ span.mixed {border-color: red wheat green yellow;}`,
                     cssCodeOutline1: `outline: 0.9em dashed red;`,
                     cssCodeOffset: `outline-offset: 0.3em`,
                     cssCodeBlock: `img {display: block;}`,
-                    cssCodeTextAlign: `p {text-align: center;}`
+                    cssCodeTextAlign: `p {text-align: center;}`,
+                    cssCodeVertical: `vertical-align: center;`
                 }
             }
             
@@ -719,7 +720,8 @@ span.mixed {border-color: red wheat green yellow;}`,
                     <section>
                         <h3>Allineamento Verticale</h3>
                         <p>Per un elemento <code>block</code> è possibile allineare il contenuto al centro
-                            con <rt id="cssCodeMarginAlign"></rt>.</p>
+                            con <rt id="cssCodeMarginAlign"></rt> o allineare sè stesso all'interno del proprio 
+                            contenitore con <rt id="cssCodeVertical"></rt></p>
                     </section>
                 </div>
             </article>
@@ -734,8 +736,8 @@ span.mixed {border-color: red wheat green yellow;}`,
                                 <p class="eg" style="width: 100%;"><br>
                                     Usa lo slider per verificare che il contenuto in eccesso straborda
                                     <span class="range-1 slided" style="display: block; width: 100%; height: 5em; 
-                                                                    background-color: yellow; overflow: hidden;">
-                                        <span style="width: 250px;height: 50%; 
+                                                                    background-color: yellow; overflow: visible;">
+                                        <span style="width: 250px;height: 50%; border-right: 0.5rem solid red; border-bottom: 0.4rem dashed red;
                                                 background-color: blue; display: block;"></span>
                                     </span>
                                     <input type="range" id="range-1" style="width: 100%;" min="0" max="100" value="100"/>
@@ -746,7 +748,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                                     Usa lo slider per verificare che il contenuto in eccesso viene tagliato
                                     <span class="range-0 slided" style="display: block; width: 100%; height: 5em; 
                                                                     background-color: yellow; overflow: hidden;">
-                                        <span style="width: 250px;height: 50%; 
+                                        <span style="width: 250px;height: 50%; border-right: 0.5rem solid red; border-bottom: 0.4rem dashed red;
                                                 background-color: blue; display: block;"></span>
                                     </span>
                                     <input type="range" id="range-0" style="width: 100%;" min="0" max="100" value="100"/>
@@ -757,7 +759,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                                     Usa lo slider per verificare che il contenuto ha sempre una scroll-bar
                                     <span class="range-2 slided" style="display: block; width: 100%; height: 5em; 
                                                                     background-color: yellow; overflow-x: scroll;">
-                                        <span style="width: 250px;height: 50%; 
+                                        <span style="width: 250px;height: 50%; border-right: 0.5rem solid red; border-bottom: 0.4rem dashed red;
                                                 background-color: blue; display: block;"></span>
                                     </span>
                                     <input type="range" id="range-2" style="width: 100%;" min="0" max="100" value="100"/>
@@ -768,7 +770,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                                     Usa lo slider per verificare che il contenuto in eccesso fa apparire una scroll-bar
                                     <span class="range-3 slided" style="display: block; width: 100%; height: 5em; 
                                                                     background-color: yellow; overflow: auto;">
-                                        <span style="width: 250px;height: 50%; 
+                                        <span style="width: 250px;height: 50%; border-right: 0.5rem solid red; border-bottom: 0.4rem dashed red;
                                                 background-color: blue; display: block;"></span>
                                     </span>
                                     <input type="range" id="range-3" style="width: 100%;" min="0" max="100" value="100"/>
@@ -781,6 +783,58 @@ span.mixed {border-color: red wheat green yellow;}`,
                         per cambiare il comportamento solo lungo uno dei due assi, ma <code class="att">overflow</code>
                         NON può avere due valori per modificare entrambi gli assi in modo diverso.
                     </p>
+                </div>
+            </article>
+            <article>
+                <h2>Inline-block</h2>
+                <div>
+                    <p>Un elemento con <code class="att">display</code><code>:</code> <code>inline-block</code> apparirà come
+                    elemento <code>inline</code>, ma si potranno impostare le proprietà di larghezza, altezza e margine
+                    come per un elemento <code>block</code>.</p>
+                </div>
+            </article>
+            <article>
+                <h2>Posizionamento</h2>
+                <div>
+                    <p>
+                        La proprietà <code class="att">position</code> controlla il tipo di posizionamento dell'elemento
+                        all'interno del documento:
+                    </p>
+                    <section>
+                        <h3>static</h3>
+                        <p>L'elemento è posizionato seguendo il normale flusso del documento (questo è il valore di default)</p>
+                        <p>Un elemento statico non è affeatto dalle proprietà <code class="att">top</code>, 
+                        <code class="att">bottom</code>, <code class="att">right</code> e <code class="att">left</code></p>
+                    </section>
+                    <section>
+                        <h3>relative</h3>
+                        <p>L'elemento è posizionato seguendo il normale flusso del documento come uno <code>static</code>,
+                        MA può usare le proprietà <code class="att">top</code>, 
+                        <code class="att">bottom</code>, <code class="att">right</code> e <code class="att">left</code>
+                        per modificare la sua posizione.</p>
+                        <p class="notabene">usare quelle quattro proprietà modificherà solo la posizione dell'elemento
+                            <code>relative</code>; gli altri elementi non si adatteranno alla posizione spostata
+                        </p>
+                    </section>
+                    <section>
+                        <h3>absolute</h3>
+                        <p>Un elemento con posizione <code>absolute</code> verrà posizionato sfruttando le 
+                        4 proprietà direzionali all'interno del suo predecessore più prossimo che non abbia 
+                        <code class="att">position</code><code>:</code> <code>static</code>; se non ve n'è nessuno
+                        allora userà di default il body.</p>
+                    </section>
+                    <section>
+                        <h3>fixed</h3>
+                        <p>Un elemento <code>fixed</code> è posizionato usando le proprietà direzionali rispetto
+                        alla viewport; questo significa che rimane nella stessa posizione sullo schermo anche 
+                        allo scorrere della pagina.</p>
+                    </section>
+                    <section>
+                        <h3>sticky</h3>
+                        <p>Un elemento <code>sticky</code> ha posizionamento <code>relative</code> fin quando
+                        non viene raggiunta una certa posizione, dopodichè rimane fisso sullo schermo (<code>fixed</code>)</p>
+                        <p>La posizione che determina il cambio dipende dai 4 attributi direzionali.</p>
+                    </section>
                 </div>
             </article>
         </main>
