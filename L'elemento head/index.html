@@ -19,29 +19,30 @@
 
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
         <meta class="htmlCodeDescription" name="description" content="Questo sito è un set privato di appunti." />
-        <meta name="og:title" content="Appunti sull'elemento head" />
-        <meta name="og:local" content="it" />
-        <meta name="og:description" content="Questo sito è una raccolta privata di appunti." />
+        <meta property="og:title" content="Appunti sull'elemento head" />
+        <meta property="og:local" content="it" />
+        <meta property="og:description" content="Questo sito è una raccolta privata di appunti." />
         <meta property="og:site_name" content="Appunti&Note" />
-        <meta name="og:image" content="../source/Crocco.png" />
-        <meta name="og:image:type" content="image/png" />
-        <meta name="og:url" content="https://italocorraro.github.io/NotesRepo/L'elemento%20head/index.html" />
+        <meta property="og:image" content="../source/Crocco.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/L'elemento%20head/index.html" />
 
         <script>
             const snippets = {
                 html: {
                     htmlCodeMetatags: 
-`<meta name="og:title" content="Appunti sull'elemento head" />
-<meta name="og:local" content="it" />
-<meta name="og:description" content="Questo sito è una raccolta privata di appunti." />
+`<meta property="og:title" content="Appunti sull'elemento head" />
+<meta property="og:local" content="it" />
+<meta property="og:description" content="Questo sito è una raccolta privata di appunti." />
 <meta property="og:site_name" content="Appunti&Note" />
-<meta name="og:image" content="../source/Crocco.png" />
-<meta name="og:image:type" content="image/png" />
-<meta name="og:url" content="https://italocorraro.github.io/NotesRepo/L'elemento%20head/index.html" />`,
+<meta property="og:image" content="../source/Crocco.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:url" content="https://italocorraro.github.io/NotesRepo/L'elemento%20head/index.html" />`,
                     htmlCodeScript: `<` + `script>`,
                     htmlCodeScript1: `<` + `/script>`,
                     htmlCodeScripting: `<` + `script src="../source/highlight.js">` + `<` + `/script>`,
-                    htmlCodeDefer: `<`+`script src="../source/redirect.js" defer>`+`<`+`/script>`
+                    htmlCodeDefer: `<`+`script src="../source/redirect.js" defer>`+`<`+`/script>`,
+                    htmlCodeKey: `<meta name="keywords" content="html, appunti, elemento head"`
                 },
                 css: {
                     cssCodeExample: 
@@ -217,10 +218,6 @@ document.getElementById("dialogClose").addEventListener("click", function () {
                             <li><b><code class="string">og:url</code></b> riporta l'url canonico dell'oggetto.</li>
                         </ul><p class="eg"><br>
                             <s id="htmlCodeMetatags"></s>
-                            <s id="htmlCodeLocale"></s>
-                            <s id="htmlCodeDescMeta"></s>
-                            <s id="htmlCodeImageMeta"></s>
-                            <s id="htmlCodeURL"></s>
                         </p>
                         <p class="nota"><a href="https://ogp.me/">qui</a> sono riportati altri metadati supportati dal protocollo.</p>
                 </section>
