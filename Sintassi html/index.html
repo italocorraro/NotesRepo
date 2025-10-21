@@ -15,6 +15,20 @@
         <script src="../source/highlight.js"></script>
 
         <style>
+            #doctype {
+                width: 100%; 
+                display: flex; 
+                flex-wrap: wrap; 
+                align-items: flex-start; 
+                justify-content: left;
+                & pre {
+                    max-width: 40%;
+                    margin-right: 2rem;
+                }
+                & p {
+                    max-width: calc(60% - 2rem);
+                }
+            }
             #pop1 {
                 align-self: center; 
                 justify-self: center;
@@ -84,7 +98,11 @@
                 <p>Questa pagina copre le basi della sintassi html e gli attributi.</p>
                 <h2>Overview</h2>
                 <div>
-                    <p><code class="htmlCodeAtt tag"><abbr title="Hypertext Markup Language">HTML</abbr></code>
+                    <p><code class="htmlCodeAtt tag">
+                            <abbr title="Hypertext Markup Language">
+                                HTML
+                            </abbr>
+                        </code>
                          è un linguaggio di <i>markup</i>,
                         cioè struttura la pagina web dal punto di vista principalmente testuale.</p>
                         <p><code class="tag">HTML</code> NON è un linguaggio di programmazione, in quanto
@@ -127,7 +145,9 @@
                         <s id="htmlCodeAtt"></s><p class="notabene">
                             le virgolette dello stesso tipo non possono essere innestate, ma vanno alternate; l'utilizzo dell'uno
                             o dell'altro tipo è indifferente, ma devono essere coerenti con l'ordine in chiusura e apertura:
-                            <button type="button" class="htmlCodeButton" onclick="this.textContent = 'Hai cliccato!' " >
+                            <button type="button" 
+                                onclick="this.textContent = 
+                                                            'Hai cliccato!' " >
                                 Clicca per vedere
                             </button><s id="htmlCodeButton"></s>
                         </p>
@@ -166,7 +186,8 @@
                         <p class="nota">Tipicamente è inserito nell'elemento <code class="tag">html</code> per dichiarare 
                             la lingua del documento.</p></li>
                         <li><b><code class="att">hidden</code></b>: attributo booleano che indica un elemento da non visualizzare:
-                        <p class="htmlCodeHiddens" hidden="hidden">Questo lo vede <span>solo</span> il browser</p><s id="htmlCodeHiddens"></s></li>
+                        <p class="htmlCodeHiddens" hidden="hidden">
+                            Questo lo vede <span>solo</span> il browser</p><s id="htmlCodeHiddens"></s></li>
                         <li><b><code class="att">inert</code></b>: attributo booleano che disattiva tutte le funzioni
                         dell'elemento e i suoi discendenti.</li>
                         <li><b><code class="att">draggable</code></b>: questo attributo serve a specificare se un elemento
@@ -182,7 +203,8 @@
                         </p></li>
                         <li><b><code class="att">dir</code></b>: specifica la direzione del testo tra 
                             <code class="att">ltr</code>|<code class="att">rtl</code>|<code class="att">auto</code>:
-                        <p class="htmlCodeRtl" dir="rtl" style="width: 50%; border: 0.1em solid black;">Questo va da destra a sinistra</p><s id="htmlCodeRtl"></s></li>
+                        <p class="htmlCodeRtl" dir="rtl" style="width: 50%; border: 0.1em solid black;">
+                            Questo va da destra a sinistra</p><s id="htmlCodeRtl"></s></li>
                         <li><b><code class="att">data-</code>*</b>: utilizzato per scrive dati personalizzati;
                             l'asterisco può essere sostituito da qualsiasi nome a patto che
                         <ul>
@@ -208,6 +230,22 @@
                 <h2>Commenti</h2>
                 <div>
                     <p>I commenti in html si racchiudono tra "<code class="comment">&lt;!--</code>"" e "<code class="comment">--&gt;</code>".</p>
+                </div>
+            </article>
+            <article>
+                <h2>Struttura</h2>
+                <div>
+                    <p>Un documento html ha sempre questa struttura:</p>
+                    <div id="doctype">
+                    <s id="htmlCodeTemplate"></s>
+                    <p>
+                        La prima riga è la dichiarazione del tipo di documento<br>
+                        il primo tag che deve contenere tutto è <code class="tag">html</code><br><br>
+                        l'elemento <code class="tag">head</code> contiene i metadati del documento;
+                        il suo contenuto non è visualizzato dal browser, ma viene utilizzato
+                        come informazioni sulla pagina<br><br>
+                        l'elemento <code class="tag">body</code> contiene tutta la parte visualizzata di "codice"
+                    </p></div>
                 </div>
             </article>
         </main>
