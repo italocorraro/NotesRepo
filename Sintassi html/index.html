@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
+        <!-- Redirect a non .html -->
         <script src="../source/redirect.js" defer></script>
 
-        <title>Appunti html | Sintassi</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../source/notes_general.css" type="text/css" />
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti | Sintassi html</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" class="htmlCodeView" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" class="htmlCodeEdge" />
 
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../source/notes_general.css" type="text/css" />
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-        <link rel="stylesheet" href="../source/navstyle.css" type="text/css" />
+        <link rel="stylesheet" href="../source/navstyle.css" type="text/css" class="htmlCodeLink"/>
         <script src="../source/Navigazione2.js"></script>
-        <script src="snippets.js"></script>
+        <link rel="icon" sizes="32x32" href="../source/Crocco.png" type="image/x-icon" class="htmlCodeFav" />
         <script src="../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Questo sito è un set privato di appunti." />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Sintassi HTML" />
+        <meta property="og:description" content="Questo sito è dedicato a una raccolta appunti privata." />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sintassi HTML" />
+        <meta name="twitter:description" content="Questo sito è dedicato a una raccolta appunti privata." />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
 
         <style>
             #doctype {
@@ -230,6 +256,79 @@
                 <h2>Commenti</h2>
                 <div>
                     <p>I commenti in html si racchiudono tra "<code class="comment">&lt;!--</code>"" e "<code class="comment">--&gt;</code>".</p>
+                </div>
+            </article>
+            <article>
+                <h2>Entità</h2>
+                <div>
+                    <p>
+                        Simboli e caratteri riservati a html devono essere sostituiti da entità 
+                        per non essere scambiati per tag dal browser.
+                    </p>
+                    <p>un'entità è preceduta da <kbd>&</kbd> e termina per <kbd>;</kbd><br>
+                    le entità possono essere chiamate poi per nome oppure con un codice numerico;
+                    in quest'ultimo caso, il numero deve essere preceduto da <kbd>#</kbd></p>
+                    <p>Le principali entità per utilizzo sono</p>
+
+                    <div class="t-wrap"><table class="notable">
+                        <tr><th>Risultato</th>
+                            <td><code>&amp;</code></td>
+                            <td><code>&lt;</code></td>
+                            <td><code>&gt;</code></td>
+                            <td><code>&quot;</code></td>
+                            <td><code>&apos;</code></td>
+                            <td><code>&cent;</code></td>
+                            <td><code>&pound;</code></td>
+                            <td><code>&yen;</code></td>
+                            <td><code>&euro;</code></td>
+                            <td><code>&copy;</code></td>
+                            <td><code>&reg;</code></td>
+                            <td><code>&trade;</code></td>
+                            <td>&#128193;</td>
+                            <td>&hearts;</td>
+                            <td>&check;</td>
+                            <td>&excl;</td>
+                            <td><code>&times;</code></td>
+                        </tr>
+                        <tr><th>Nome</th>
+                            <td><code class="tag">&amp;amp;</code></td>
+                            <td><code class="tag">&amp;lt;</code></td>
+                            <td><code class="tag">&amp;gt;</code></td>
+                            <td><code class="tag">&amp;quot;</code></td>
+                            <td><code class="tag">&amp;apos;</code></td>
+                            <td><code class="tag">&amp;cent;</code></td>
+                            <td><code class="tag">&amp;pound;</code></td>
+                            <td><code class="tag">&amp;yen;</code></td>
+                            <td><code class="tag">&amp;euro;</code></td>
+                            <td><code class="tag">&amp;copy;</code></td>
+                            <td><code class="tag">&amp;reg;</code></td>
+                            <td><code class="tag">&amp;trade;</code></td>
+                            <td class="hidden"></td>
+                            <td><code class="tag">&amp;hearts;</code></td>
+                            <td><code class="tag">&amp;check;</code></td>
+                            <td><code class="tag">&amp;excl;</code></td>
+                            <td><code class="tag">&amp;times;</code></td>
+                        </tr>
+                        <tr><th>Numero</th>
+                            <td><code class="tag">&amp;#38;</code></td>
+                            <td><code class="tag">&amp;#60;</code></td>
+                            <td><code class="tag">&amp;#62;</code></td>
+                            <td><code class="tag">&amp;#34;</code></td>
+                            <td><code class="tag">&amp;#39;</code></td>
+                            <td><code class="tag">&amp;#162;</code></td>
+                            <td><code class="tag">&amp;#163;</code></td>
+                            <td><code class="tag">&amp;#165;</code></td>
+                            <td><code class="tag">&amp;#8364;</code></td>
+                            <td><code class="tag">&amp;#169;</code></td>
+                            <td><code class="tag">&amp;#174;</code></td>
+                            <td><code class="tag">&amp;#8482;</code></td>
+                            <td><code class="tag">&amp;#128193;</code></td>
+                            <td><code class="tag">&amp;#9829;</code></td>
+                            <td><code class="tag">&amp;#10003;</code></td>
+                            <td><code class="tag">&amp;#10071;</code></td>
+                            <td><code class="tag">&amp;#215;</code></td>
+                        </tr>
+                    </table></div>
                 </div>
             </article>
             <article>
