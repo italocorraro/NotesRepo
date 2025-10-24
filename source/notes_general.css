@@ -205,6 +205,41 @@ ul, ol {
 li ul, li ol {
     padding-left: 1.5rem;
 }
+
+.notable th, .notable td {
+    border: 0.2rem solid orange;
+    background-color: rgb(253, 241, 228);
+    padding: 0.5rem;
+}
+.notable tr:first-child {font-weight: bold;}
+.notable tr:not(:first-child) td:not(:first-child) {
+    font-size: 90%;
+}
+.notable th {
+    position: sticky;
+    left: 0.5rem;
+}
+.notable tr:hover {
+    & th, & td {
+        background-color: rgb(254, 234, 211);
+    }
+}
+.notable .hidden {
+    background-color: transparent;
+    border: 0 solid transparent;
+}
+.t-wrap {
+    overflow-x: auto;
+}
+.notable {
+    border: 0.2rem solid chocolate;
+    background-color: rgb(253, 230, 194);
+    text-align: center;
+    max-width: none;
+    width: fit-content;
+    text-wrap: nowrap;
+}
+
 .sidebar_right li {
     list-style-type: none;
     &::before {

@@ -1,5 +1,4 @@
 let navigazione = `
-
     <div id="navbar">
         <ul>
 
@@ -13,11 +12,9 @@ let navigazione = `
                 <li><a href="../L'elemento head/">L'elemento &lt;head&gt;</a></li>
                 <li><a href="../Ancore/">Ancore</a></li>
                 <li><a href="../Immagini/">Immagini</a></li>
-                <li><a href="../Entità/">Entità</a></li>
                 <li><a href="../Liste/">Liste</a></li>
                 <li><a href="../Tabelle/">Tabelle</a></li>
                 <li><a href="../Forms/">Forms</a></li>
-                <li><a>APIs</a></li>
                 <li><a>Accessibilità</a></li>
                 <li><a>Validazione</a></li>
                 
