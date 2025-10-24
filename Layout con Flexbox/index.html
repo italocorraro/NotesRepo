@@ -23,7 +23,7 @@
         <meta class="htmlCodeDescription" name="description" content="Questo sito è un set privato di appunti." />
 
         <!-- Open Graph tags -->
-        <meta property="og:title" content="Appunti Italo" />
+        <meta property="og:title" content="Layout con Flexbox" />
         <meta property="og:description" content="Questo sito è dedicato a una raccolta appunti privata." />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="it_IT" />
@@ -35,7 +35,7 @@
 
         <!-- Twitter Card tags -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Appunti Italo" />
+        <meta name="twitter:title" content="Layout con Flexbox" />
         <meta name="twitter:description" content="Questo sito è dedicato a una raccolta appunti privata." />
         <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/source/Crunch.png" />    
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
@@ -54,8 +54,9 @@
                 display: flex;
                 width: 100%;
                 min-height: 11rem;
-                max-height: 22rem;
+                max-height: 24rem;
                 background-color: aqua;
+                padding: 0.5rem;
                 & > span {
                     display: block;
                     min-width: 5em;
@@ -88,37 +89,39 @@
                 display: flex;
                 background-color: dodgerblue;
                 width: 100%;
+                height: 200px;
             }
 
             .flex-try span {
             background-color: #f1f1f1;
-            color:#000;
+            color: black;
             width: 100px;
             margin: 10px;
             padding: 10px;
             text-align: center;
             font-size: 30px;
+            align-content: center;
             &::before {
-                    content: attr(data-item);
-                    color: black;
-                    font-size: 2.5rem;
-                    font-weight: bold;  
-                    }
+                content: attr(data-item);
+                color: black;
+                font-size: 2em;
+                font-weight: bold;  
+                }
             }
 
             #flex-grow {
                 max-width: 100%;
-                & .item-1 { flex-grow: 0; }
-                & .item-2 { flex-grow: 1; }
-                & .item-3 { flex-grow: 4; }
-                & .item-4 { flex-grow: 1; }
+                height: auto;
+                & .item-1 { flex: 0 1 100px; }
+                & .item-2 { flex: 1 1 50px; }
+                & .item-3 { flex: 4 1 50px; }
+                & .item-4 { flex: 1 1 50px; }
             }
 
             .flex-box {
                 width: 55vw;
                 max-width: 100%;
-                height: fit-content;
-                max-height: 55vw;
+                height: auto;
                 display: flex;
                 background-color: rgb(246, 124, 37);
                 & span {
@@ -148,6 +151,7 @@
                 background-color: khaki;
                 border-color: chocolate;
                 border-radius: 0.5em;
+                cursor: pointer;
             }
             @media only screen and (min-width:900px) {
                 #flex-shower {
@@ -170,10 +174,10 @@
                     right: 0.5vw;
                     top: 0.5vw;
                     position: absolute;
-                    align-content: center;
                     align-items: center;
                     text-align: center;
                     justify-content: center;
+                    cursor: pointer;
                     width: 8vw;
                     height: 8vw;
                     background-color: rgba(128, 62, 0, 0.2);
@@ -186,20 +190,26 @@
                 }
             }
             .gridder {
+                max-width: 100%;
                 display: grid;
-                grid-template-columns: 1fr;
+                grid-template-columns: 100%;
             }
             @media only screen and (min-width: 900px) {
                 .gridder {
-                    grid-template-columns: auto 1fr;
-                    overflow-x: auto;
+                    grid-template-columns: 70% auto;
+                    overflow-x: hidden;
                 }
             }
-
+            .prima {
+                max-width: 100%;
+            }
+            .secunda {
+                max-width: 100%;
+            }
 
             #autoalign {
-                height: 15vw;
-                grid-area: 2 / 1 / span 1 / span 2;
+                height: 25vw;
+                grid-area: 2 / 1 / span 1 / span 3;
                 & [data-item] {
                     flex-grow: 1;
                 }
@@ -239,7 +249,6 @@
                         <input type="range" min="55" max="100" value="" style="width: 100%;"/>
                     </div>
                     <div class="secunda">
-                        
                         <form id="form-flex">
                             <fieldset>
                                 <legend>Contenitore flex:</legend>
@@ -320,11 +329,11 @@
                                         quando fuoriescono dai limiti del contenitore o della loro riga:
                                     <ul>
                                         <li><b><code>nowrap</code></b>: (default) gli oggetti proseguono fuoriuscendo nella direzione principale.
-                                        <p class="eg flex-fix"><span class="flex-test" data-items-no="3" style="flex-direction: column;"></span></p></li>
+                                        <p class="eg flex-fix"><span class="flex-test" data-items-no="3" style="flex-direction: column; padding: 0.5rem;"></span></p></li>
                                         <li><b><code>wrap</code></b>: gli oggetti vanno a capo se necessario, senza fuoriuscire (creano una nuova riga).
-                                        <p class="eg"><span class="flex-test" data-items-no="8" style="flex-wrap: wrap;"></span></p></li>
+                                        <p class="eg"><span class="flex-test" data-items-no="9" style="flex-wrap: wrap; height: auto; max-height: none; padding: 0.5rem;"></span></p></li>
                                         <li><b><code>wrap-reverse</code></b>: gli oggetti vanno a capo alla riga superiore, non inferiore.
-                                        <p class="eg"><span class="flex-test" data-items-no="8" style=" flex-wrap: wrap-reverse;"></span></p></li>
+                                        <p class="eg"><span class="flex-test" data-items-no="9" style=" flex-wrap: wrap-reverse; height: auto; max-height: none; padding: 0.5rem;"></span></p></li>
                                     </ul>
                                 </li>
                             </ul><p class="notabene"><code class="att">flex-direction</code> modifica la direzione dell'asse principale
@@ -411,6 +420,12 @@
                         è diviso in righe, quindi solo quando <code class="att">flex-wrap</code> è 
                         <code>wrap</code> o <code>wrap-reverse</code></p>
                     </section>
+                    <section>
+                        <h3>Gap</h3>
+                        <p><code class="att">gap</code> è la proprietà che determina l'intervallo tra
+                            due righe e due colonne del flex; si divide in <code class="att">row-gap</code>
+                             e <code class="att">column-gap</code>.</p>
+                    </section>
                 </div>
             </article>
             <article>
@@ -483,10 +498,10 @@
                         <p>La proprietà <code class="att">align-self</code> sovrascrive per l'oggetto
                         l'allineamento lungo l'asse ortogonale alla principale stabilito 
                         per il flex da <code class="att">align-items</code>; può usare gli stessi valori</p>
-                        <p class="eg clearfix" style="display: grid; grid-template: auto / 1fr 1fr 1fr 1fr; gap:2rem"><br>
-                            <span style="grid-area: 1 / 2 / span 1 / span 3;">Verifica il funzionamento della proprietà modificandola qui sotto:</span>
+                        <p class="eg clearfix" style="display: grid; grid-template: auto / 20% 20% 20% 20% auto; gap:2rem"><br>
+                            <span style="grid-area: 1 / 2 / span 1 / span 4;">Verifica il funzionamento della proprietà modificandola qui sotto:</span>
                             <span id="autoalign" class="flex-try" data-items-no="3"></span>
-                            <span style="grid-area: 2 / 3 / span 1 / span 2; display: block;">
+                            <span style="grid-area: 2 / 4 / span 1 / span 2; display: block;">
                                 <label for="align-self"><code class="sel">.item-2</code> <code>{</code> <code class="att">align-self:</code></label>
                                 <code><select id="align-self" name="align-self">
                                     <option value="stretch"><code>stretch</code></option>
