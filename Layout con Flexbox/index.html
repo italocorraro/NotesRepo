@@ -1,1 +1,602 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../source/redirect.js" defer></script>
 
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti | Layout con Flexbox</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" class="htmlCodeView" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" class="htmlCodeEdge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../source/navstyle.css" type="text/css" class="htmlCodeLink"/>
+        <script src="../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../source/Crocco.png" type="image/x-icon" class="htmlCodeFav" />
+        <script src="../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Questo sito è un set privato di appunti." />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Italo" />
+        <meta property="og:description" content="Questo sito è dedicato a una raccolta appunti privata." />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Italo" />
+        <meta name="twitter:description" content="Questo sito è dedicato a una raccolta appunti privata." />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <!-- Stili -->
+         <style>
+            p.eg {
+                width: 100%;
+                &.flex-fix::after {
+                    content: '';
+                    display: block;
+                    height: 5em;
+                }
+            }
+            .flex-test {
+                display: flex;
+                width: 100%;
+                min-height: 11rem;
+                max-height: 22rem;
+                background-color: aqua;
+                & > span {
+                    display: block;
+                    min-width: 5em;
+                    width: 6em;
+                    min-height: 5em;
+                    height: 5em;
+                    background-color: bisque;
+                    padding: 0;
+                    margin: 0;
+                    border: 0.3rem solid black;
+                    text-align: center;
+                    align-content: center;
+                    &::before {
+                        content: attr(data-item);
+                        color: black;
+                        font-size: 1.4em;
+                        font-weight: bold;
+                        
+                    }
+                }
+            }
+            #shuffle_flex {
+                & .item-1 { order: 3; }
+                & .item-2 { order: 1; }
+                & .item-3 { order: 4; }
+                & .item-4 { order: 2; }
+            }
+
+            .flex-try {
+                display: flex;
+                background-color: dodgerblue;
+                width: 100%;
+            }
+
+            .flex-try span {
+            background-color: #f1f1f1;
+            color:#000;
+            width: 100px;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+            font-size: 30px;
+            &::before {
+                    content: attr(data-item);
+                    color: black;
+                    font-size: 2.5rem;
+                    font-weight: bold;  
+                    }
+            }
+
+            #flex-grow {
+                max-width: 100%;
+                & .item-1 { flex-grow: 0; }
+                & .item-2 { flex-grow: 1; }
+                & .item-3 { flex-grow: 4; }
+                & .item-4 { flex-grow: 1; }
+            }
+
+            .flex-box {
+                width: 55vw;
+                max-width: 100%;
+                height: fit-content;
+                max-height: 55vw;
+                display: flex;
+                background-color: rgb(246, 124, 37);
+                & span {
+                    background-color: rgb(255, 211, 129);
+                    height: 14vw;
+                    width: 14vw;
+                    max-height: 40%;
+                    text-align: center;
+                    align-content: center;
+                    margin: 2vw;
+                    &::before {
+                        content: attr(data-item);
+                        font-size: 8vw;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            #flex-shower {
+                position: fixed;
+                z-index: 800;
+                top: 20px;
+                left: 20px;
+                width: fit-content;
+                height: 40px;
+                font-size: 1.4em;
+                background-color: khaki;
+                border-color: chocolate;
+                border-radius: 0.5em;
+            }
+            @media only screen and (min-width:900px) {
+                #flex-shower {
+                    position: static;
+                    display: block;
+                    z-index: unset;
+                    height: fit-content;
+                    margin-top: 2rem;
+                }
+            }
+            #flex-dialog {
+                width: 100%;
+                height: 100%;
+                padding: 4vw;
+                padding-top: 9vw;
+                background-color: antiquewhite;
+                overflow-x: hidden;
+                & button {
+                    display: flex;
+                    right: 0.5vw;
+                    top: 0.5vw;
+                    position: absolute;
+                    align-content: center;
+                    align-items: center;
+                    text-align: center;
+                    justify-content: center;
+                    width: 8vw;
+                    height: 8vw;
+                    background-color: rgba(128, 62, 0, 0.2);
+                    font-size: 6vw;
+                    border: 0.2vw solid black;
+                    &:hover {
+                        background-color: rgba(128, 62, 0, 1);
+                        border: 0.5vw solid black;
+                    }
+                }
+            }
+            .gridder {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+            @media only screen and (min-width: 900px) {
+                .gridder {
+                    grid-template-columns: auto 1fr;
+                    overflow-x: auto;
+                }
+            }
+
+
+            #autoalign {
+                height: 15vw;
+                grid-area: 2 / 1 / span 1 / span 2;
+                & [data-item] {
+                    flex-grow: 1;
+                }
+            }
+         </style>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sul layout flexbox in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento del layout realizzato in CSS tramite flexbox.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>        
+                        Flexbox sta' per flexible box; questo è un modello per organizzare
+                        gli oggetti in un contenitore in modo flessibile e responsivo.<br>
+                        La prerogativa del flexbox sono i layout mono-dimensionali (una colonna/riga);
+                        per usare un contenitore flex bisogna impostarlo con la proprietà
+                        <rt id="cssCodeFlexIntro"></rt>.      
+                        <button id="flex-shower" type="button" onclick="document.getElementById('flex-dialog').showModal()">Apri un Flex</button>
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <!-- Dialog box per i test -->
+            <dialog id="flex-dialog">
+                <button type="button" onclick="document.getElementById('flex-dialog').close()">x</button>
+                <div class="gridder">
+                    <div class="prima">
+                        <span class="flex-box ranged" data-items-no="4"></span>
+                        <input type="range" min="55" max="100" value="" style="width: 100%;"/>
+                    </div>
+                    <div class="secunda">
+                        
+                        <form id="form-flex">
+                            <fieldset>
+                                <legend>Contenitore flex:</legend>
+                                <label for="flex-flow"><code class="att">flex-flow</code></label>:
+                                <select id="flex-flow" name="flex-direction">
+                                    <option value="row"><code>row</code></option>
+                                    <option value="column"><code>column</code></option>
+                                    <option value="row-reverse"><code>row-reverse</code></option>
+                                    <option value="column-reverse"><code>column-reverse</code></option>  
+                                </select> 
+                                <select id="flex-flow" name="flex-wrap">
+                                    <option value="nowrap"><code>nowrap</code></option>
+                                    <option value="wrap"><code>wrap</code></option>
+                                    <option value="wrap-reverse"><code>wrap-reverse</code></option>
+                                </select>;<br>
+                                <label for="justify-content"><code class="att">justify-content</code></label>:
+                                <select id="justify-content" name="justify-content">
+                                    <option value="flex-start"><code>flex-start</code></option>
+                                    <option value="flex-end"><code>flex-end</code></option>
+                                    <option value="center"><code>center</code></option>
+                                    <option value="space-around"><code>space-around</code></option>
+                                    <option value="space-between"><code>space-between</code></option> 
+                                    <option value="space-evenly"><code>space-evenly</code></option>    
+                                </select>;<br>
+                                <label for="align-items"><code class="att">align-items</code></label>:
+                                <select id="align-items" name="align-items">
+                                    <option value="stretch"><code>stretch</code></option>
+                                    <option value="flex-start"><code>flex-start</code></option>
+                                    <option value="flex-end"><code>flex-end</code></option>
+                                    <option value="center"><code>center</code></option>
+                                    <option value="baseline"><code>baseline</code></option>    
+                                </select>;<br>
+                                <label for="align-content"><code class="att">align-content</code></label>:
+                                <select id="align-content" name="align-content">
+                                    <option value="stretch"><code>stretch</code></option>
+                                    <option value="flex-start"><code>flex-start</code></option>
+                                    <option value="flex-end"><code>flex-end</code></option>
+                                    <option value="center"><code>center</code></option>
+                                    <option value="space-around"><code>space-around</code></option>
+                                    <option value="space-between"><code>space-between</code></option> 
+                                    <option value="space-evenly"><code>space-evenly</code></option>    
+                                </select>;<br>
+                                <label for="itemNo"><code>Numero oggetti</code>:</label>
+                                <input id="itemNo" type="number" min="0" max="9" value="4" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>                       
+            </dialog>
+
+
+
+
+            <!-- Contenuti -->
+            <article>
+                <h2>Container Flexbox</h2>
+                <div>
+                    <p>Un container <code>flex</code> ha alcune proprietà specifiche:</p>
+                    <section>
+                        <h3>Proprietà flex-flow</h3>
+                        <code class="att"><b>flex-flow</b></code> abbrevia
+                            <ul>
+                                <li><b><code class="att">flex-direction</code></b>: specifica la direzione
+                                    in cui vengono organizzati gli oggetti nel flex-container, cioè la direzione
+                                    dell'asse principale; può avere 4 valori:
+                                    <ul>
+                                        <li><b><code>row</code></b>: (default) l'asse principale è orizzontale (da sinistra verso destra).
+                                        <p class="eg"><span class="flex-test" data-items-no="3"></span></p></li>
+                                        <li><b><code>column</code></b>: l'asse principale è verticale (dall'alto verso il basso).
+                                        <p class="eg"><span class="flex-test" data-items-no="2" style="flex-direction: column;"></span></p></li>
+                                        <li><b><code>row-reverse</code></b>: inverso della direzione di <code>row</code>
+                                        <p class="eg"><span class="flex-test" data-items-no="4" style="flex-direction: row-reverse;"></span></p></li>
+                                        <li><b><code>column-reverse</code></b>: inverso della direzione di <code>column</code>.
+                                        <p class="eg"><span class="flex-test" data-items-no="2" style="flex-direction: column-reverse;"></span></p></li>
+                                    </ul>
+                                </li>
+                                <li><b><code class="att">flex-wrap</code></b>: specifica il modo in cui devono comportarsi gli oggetti nel flex
+                                        quando fuoriescono dai limiti del contenitore o della loro riga:
+                                    <ul>
+                                        <li><b><code>nowrap</code></b>: (default) gli oggetti proseguono fuoriuscendo nella direzione principale.
+                                        <p class="eg flex-fix"><span class="flex-test" data-items-no="3" style="flex-direction: column;"></span></p></li>
+                                        <li><b><code>wrap</code></b>: gli oggetti vanno a capo se necessario, senza fuoriuscire (creano una nuova riga).
+                                        <p class="eg"><span class="flex-test" data-items-no="8" style="flex-wrap: wrap;"></span></p></li>
+                                        <li><b><code>wrap-reverse</code></b>: gli oggetti vanno a capo alla riga superiore, non inferiore.
+                                        <p class="eg"><span class="flex-test" data-items-no="8" style=" flex-wrap: wrap-reverse;"></span></p></li>
+                                    </ul>
+                                </li>
+                            </ul><p class="notabene"><code class="att">flex-direction</code> modifica la direzione dell'asse principale
+                                        lungo la quale sono disposti gli elementi, l'asse si suddivide poi in "righe" se è
+                                        consentito; fondamentalmente non esistono "colonne", semplicemente sono righe trasposte<br>
+                                        Tutte le righe seguono la direzione dell'asse principale</p>
+                    </section>   
+                    <section>
+                        <h3>Allineamento lungo l'Asse Principale</h3>
+                        <p>La proprietà <code class="att">justify-content</code> è usata per allineare lungo la
+                            direzione principale gli elementi del flexbox (all'interno della riga di appartenenza):</p>
+                        <ul>
+                            <li>
+                                <b><code>center</code></b>: allineamento al centro
+                                <p class="eg"><span class="flex-test" data-items-no="4" style="justify-content: center;"></span></p>
+                            </li>
+                            <li>
+                                <b><code>flex-start</code></b>: (default) allineamento all'inizio del flex
+                                <p class="eg"><span class="flex-test" data-items-no="4" style="justify-content: flex-start"></span></p>
+                            </li>
+                            <li>
+                                <b><code>flex-end</code></b>: allineamento alla fine del flex
+                                <p class="eg"><span class="flex-test" data-items-no="4" style="justify-content: flex-end;"></span></p>
+                            </li>
+                            <li>
+                                <b><code>space-around</code></b>: spazia gli elementi tra loro (vediamo che il margine tra i vari elementi non collassa, 
+                                quindi ai lati c'è metà spazio, tra gli elementi c'è lo spazio intero)
+                                <p class="eg"><span class="flex-test" data-items-no="4" style="justify-content: space-around;"></span></p>
+                            </li>
+                            <li>
+                                <b><code>space-between</code></b>: spazia gli elementi massimizzando la distanza tra ciascuno
+                                <p class="eg"><span class="flex-test" data-items-no="4" style="justify-content: space-between;"></span></p>
+                            </li>
+                            <li>
+                                <b><code>space-evenly</code></b>: spazia in maniera ponderata tutti gli elementi (rispetto a <code>space-around</code>,
+                                 qui lo spazio agli estremi è lo stesso di quello tra i vari elementi)
+                                <p class="eg"><span class="flex-test" data-items-no="4" style="justify-content: space-evenly;"></span></p>
+                            </li>
+                        </ul>
+                    </section> 
+                    <section>
+                        <h3>Allineamento lungo l'Asse Trasverso</h3>
+                        <p>La proprietà <code class="att">align-items</code> è usata per allineare lungo l'asse ortogonale alla principale
+                            gli elementi del flexbox ALL'INTERNO DELLA PROPRIA RIGA:</p>
+                        <ul>
+                            <li><b><code>center</code></b>: allineamento centrale
+                            <p class="eg"><span class="flex-test" style="align-items: center; min-height: 18rem;" data-items-no="3"></span></p></li>
+                            <li><b><code>flex-start</code></b>: allineamento in cima al flex</li>
+                            <li><b><code>flex-end</code></b>: allineamento in fondo al flex</li>
+                            <li><b><code>stretch</code></b>: (default) gli oggetti vengono allargati verticalmente (se possibile)</li>
+                            <li><b><code>baseline</code></b>: gli oggetti vengono allineati alla linea di fondo (quella del testo)
+                            <p class="eg"><span class="flex-test" style="align-items: baseline;">
+                                <span data-item="1" class="item-1" style="min-height: 7em;"></span>
+                                <span data-item="2" class="item-2" style="min-height: 3em;"></span>
+                                <span data-item="3" class="item-3" style="min-height: 9em;"></span></span></p></li>
+                        </ul>
+                        <p>La proprietà <code class="att">align-content</code> è usata invece per allineare lungo l'asse ortogonale alla principale
+                        LE RIGHE del flexbox; ammette gli stessi valori di <code class="att">justify-content</code>:</p>
+                        <ul>
+                            <li><code><b>stretch</b></code>: (default) estende le righe in modo da occupare tutto lo spazio </li>
+                            <li>
+                                <b><code>center</code></b>: allinea le righe al centro
+                            </li>
+                            <li>
+                                <b><code>flex-start</code></b>: allinea all'inizio del flex le righe
+                            </li>
+                            <li>
+                                <b><code>flex-end</code></b>: allinea alla fine del flex le righe
+                            </li>
+                            <li>
+                                <b><code>space-around</code></b>: spazia le righe tra loro (lo spazio lasciato agli estremi del
+                                contenitore è metà di quello lasciato in mezzo alle righe)
+                            </li>
+                            <li>
+                                <b><code>space-between</code></b>: spazia le righe massimizzando la distanza tra ciascuna
+                            </li>
+                            <li>
+                                <b><code>space-evenly</code></b>: spazia in maniera ponderata tutte le righe
+                            </li>
+                        </ul>
+                        <p class="nota"><code class="att">align-content</code> ammette anche il valore <code>stretch</code> 
+                        che è il default, infatti le righe del flex si adattano alla dimensione del contenitore</p>
+                        <p class="notabene"><code class="att">align-content</code> ha senso solo quando il flex
+                        è diviso in righe, quindi solo quando <code class="att">flex-wrap</code> è 
+                        <code>wrap</code> o <code>wrap-reverse</code></p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Oggetti del Flexbox</h2>
+                <div>
+                    <p>Gli oggetti all'interno di un contenitore flexbox diventano automaticamente degli
+                        oggetti flex e possono usare alcune proprietà relativamente al loro contenitore, 
+                        oltre a quelle che hanno normalmente:
+                    </p>
+                    <section>
+                        <h3>Proprietà d'Ordine</h3>
+                        <p>La proprietà <code class="att">order</code> permette di indicare l'ordine in cui 
+                        organizzare l'oggetto all'interno del flex; altrimenti l'ordine è quello 
+                        in cui si presenta nel documento</p>
+                        <p class="eg"><rp id="cssCodeFlexShuffle"></rp>
+                            <span class="flex-test" data-items-no="4" id="shuffle_flex" style="justify-content: space-evenly; align-items: center;"></span>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Proprietà di Ingrandimento</h3>
+                        <p>Gli oggetti di un flex possono adattarsi al contenitore; a determinare
+                            la loro capacità di allungarsi nella direzione principale (quella stabilita da
+                            <code class="att">flex-direction</code>) del contenitore/riga è la proprietà
+                            <code class="att">flex-grow</code>:
+                        </p>
+                        <ul>
+                            <li><b>Valore nullo</b> è il default; tutti gli oggetti non si allungano
+                            oltre il loro limite</li>
+                            <li><b>Valori positivi</b> fanno allungare l'oggetto rispetto al flex con proporzione pari al valore dato</li>
+                            <li><b>Valori negativi</b> non sono ammessi e vengono ignorati</li>
+                        </ul>
+                        <p class="eg"><br>
+                            <span style="float: left; width: 30%; margin-right: 2rem">Modifica la larghezza del flex per osservare il rapporto tra gli elementi</span>
+                            <rp id="cssCodeFlexGrow"></rp>
+                            <span class="flex-try ranged" data-items-no="4" id="flex-grow"></span>
+                            <input type="range" min="55" max="100" value="100" style="width: 100%;"/>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Proprietà di Rimpicciolimento</h3>
+                        <p>La proprietà <code class="att">flex-shrink</code> determina con che rapporto gli oggetti 
+                        si restringono rispetto lungo la direzione principale nel flex/riga; accetta solo valori positivi (0 incluso) come 
+                        <code class="att">flex-grow</code>, ma con la differenza che il <b>valore di default è 1</b>.</p>
+                        <p class="osservazione">di default, gli oggetti di un flex si restringono per adattarsi alle dimensioni della riga,
+                            ma non si allungano per riempirla
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Proprietà di Dimensionamento Base</h3>
+                        <p>La proprietà <code class="att">flex-basis</code> stabilisce la lunghezza iniziale
+                        dell'oggetto flex (lungo la direzione principale); accetta valori in qualsiasi
+                        unità di misura</p>
+                        <p class="nota"><code class="att">flex-basis</code> è strettamente legato alla direzione
+                        dell'asse principale del flex;<br>
+                        <span style="display: inline-block; margin: 1rem 2rem;">se <code class="att">flex-direction</code> è <code>row</code>
+                        o <code>row-reverse</code>, allora le dimensioni date da <code class="att">flex-basis</code>
+                        si riferiscono alla larghezza dell'oggetto</span>
+                        <span style="display: inline-block; margin: 1rem 2rem;">se <code class="att">flex-direction</code> è <code>column</code>
+                        o <code>column-reverse</code>, allora le dimensioni date da <code class="att">flex-basis</code>
+                        si riferiscono all'altezza dell'oggetto</span></p>
+                        <p class="notabene">le proprietà <code class="att">width</code> e <code class="att">height</code>
+                        NON sono riferite a <code class="att">flex-direction</code> e quindi sono slegate
+                        dalla particolare direzione dell'asse principale del flex</p>
+                        <p class="nota">la proprietà <code class="att">flex</code> riassume le proprietà
+                        <code class="att">flex-grow</code>, <code class="att">flex-shrink</code> e 
+                        <code class="att">flex-basis</code> in quest'ordine.</p>
+                    </section>
+                    <section>
+                        <h3>Autoallineamento lungo l'Asse Trasverso</h3>
+                        <p>La proprietà <code class="att">align-self</code> sovrascrive per l'oggetto
+                        l'allineamento lungo l'asse ortogonale alla principale stabilito 
+                        per il flex da <code class="att">align-items</code>; può usare gli stessi valori</p>
+                        <p class="eg clearfix" style="display: grid; grid-template: auto / 1fr 1fr 1fr 1fr; gap:2rem"><br>
+                            <span style="grid-area: 1 / 2 / span 1 / span 3;">Verifica il funzionamento della proprietà modificandola qui sotto:</span>
+                            <span id="autoalign" class="flex-try" data-items-no="3"></span>
+                            <span style="grid-area: 2 / 3 / span 1 / span 2; display: block;">
+                                <label for="align-self"><code class="sel">.item-2</code> <code>{</code> <code class="att">align-self:</code></label>
+                                <code><select id="align-self" name="align-self">
+                                    <option value="stretch"><code>stretch</code></option>
+                                    <option value="flex-start"><code>flex-start</code></option>
+                                    <option value="flex-end"><code>flex-end</code></option>
+                                    <option value="center"><code>center</code></option>
+                                    <option value="baseline"><code>baseline</code></option> 
+                                </select></code><code>; }</code>
+                            </span>
+                        </p>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../source/functionalities.js"></script>
+        <script>
+            // Snippets section
+            const snippets = {
+                css: {
+                    cssCodeFlexIntro: `display: flex;`,
+                    cssCodeFlexShuffle: 
+`#shuffle_flex {
+    & .item-1 { order: 3; }
+    & .item-2 { order: 1; }
+    & .item-3 { order: 4; }
+    & .item-4 { order: 2; }
+}`,
+                    cssCodeFlexGrow:
+`#flex-grow {
+    & .item-1 { flex-grow: 0; }
+    & .item-2 { flex-grow: 1; }
+    & .item-3 { flex-grow: 4; }
+    & .item-4 { flex-grow: 1; }
+}`
+                }
+            }
+
+            // Flex-Items Generator:
+            const flexboxes = document.querySelectorAll("span.flex-test[data-items-no], span.flex-try[data-items-no], span.flex-box[data-items-no]");
+            
+            for(const flexbox of flexboxes) {
+                let items  = ``;
+                for(let i=0; i<flexbox.dataset.itemsNo; i++) {
+                    items += `<span data-item="${i+1}" class="item-${i+1}"></span>`
+                }
+                flexbox.innerHTML = items;
+            }
+            // Flex range modifier applicator:
+            const ranged = document.querySelectorAll(".ranged");
+
+            for(const ranges of ranged) {
+                let ranger = null;
+                let v_ranger = null;
+                let maybeRange = ranges.nextElementSibling;
+                while(maybeRange) {
+                    if(maybeRange.tagName === "INPUT" &&
+                        maybeRange.getAttribute("type") === "range") 
+                    {
+                        maybeRange.classList.contains("vertical") ?
+                            v_ranger = maybeRange :
+                            ranger = maybeRange;
+                        if(v_ranger && ranger) {
+                            break;
+                        }
+                    }
+                    maybeRange = maybeRange.nextElementSibling;
+                }
+                if(ranger) {
+                    ranger.addEventListener("input", function () {
+                        ranges.style.width = ranger.value + '%';
+                    });
+                }
+                if(v_ranger) {
+                    v_ranger.addEventListener("input", function () {
+                        ranges.style.height = v_ranger.value + '%';
+                    });
+                }
+            }
+            
+            // Tester del Flexbox
+            const properties = document.querySelectorAll("#form-flex select");
+            const dialogFlex = document.querySelector("#flex-dialog .flex-box");
+            const itemNo = document.getElementById("itemNo");
+
+            itemNo.addEventListener("input", function () {
+                let items  = ``;
+                let aggiunte = 1;
+                if(itemNo.value > 0 && itemNo.value < 9) {
+                    aggiunte = itemNo.value 
+                }
+                
+                for(let i=0; i<aggiunte; i++) {
+                    items += `<span data-item="${i+1}"></span>`
+                }
+                dialogFlex.innerHTML = items;
+                
+            });
+            
+            for(const property of properties) {
+                property.addEventListener("input", function() {
+                    dialogFlex.style[property.name] = property.value;
+                });
+            }
+
+            const madonna = document.getElementById("align-self");
+            const gesu = document.querySelector("#autoalign .item-2");
+            madonna.addEventListener("input", () => {
+                gesu.style[madonna.name] = madonna.value;
+            });
+        </script>
+    </body>
+</html>
