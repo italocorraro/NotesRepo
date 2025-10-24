@@ -171,7 +171,6 @@ li.active {
         width: 0;
         height: calc(100% - 80px);
         border: 0;
-        border-top: 4px inset bisque;
         outline: 0;
         margin: 0;
         text-overflow: clip;
@@ -181,7 +180,7 @@ li.active {
         &.tocactive {
             width: 100%;
             z-index: 999;
-            
+            border-top: 4px inset bisque;
             overflow-y: auto;
             font-size: 2.6rem;
             & h3 {
