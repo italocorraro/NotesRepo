@@ -14,7 +14,14 @@ const snippets = {
 }`,
     cssCodeProx: `p + div`,
     cssCodeMin: `p ~ div`,
-    cssCodeChild: `p > div`
+    cssCodeChild: `p > div`,
+    cssCodeNot: `div:not(.active)`,
+    cssCodeFocus: `input:focus { background-color: yellow; }`,
+    cssCodeActive: `button:active { background-color: red; }`,
+    cssCodeIS: `.active:is(p, div) `,
+    cssCodeNoIS: `p.active, div.active`,
+    cssCodeHas1: `form:has(input:invalid)`,
+    cssCodeHas2: `label:has(+ input)`
   },
   js: {
     jsCode1: ``

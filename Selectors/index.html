@@ -11,8 +11,17 @@
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="../source/navstyle.css" type="text/css">
         <script src="../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../source/Crocco.png" type="image/x-icon" class="htmlCodeFav" />
         <script src="snippets.js"></script>
         <script src="../source/highlight.js"></script>
+
+        <style>
+            #pseudo li > code:first-child {
+                font-weight: bold;
+            }
+            p > pre + input:focus { background-color: yellow; }
+            p > pre + button:active { background-color: red; }
+        </style>
     </head>
 
     <body class="content">
@@ -116,30 +125,108 @@
 
             <article>
                 <h2>Selettori di Pseudo-Classi</h2>
-                <div>
+                <div id="pseudo">
                     <p>Le pseudo-classi sono stati speciali in cui si trova un elemento.</p>
                     <article>
-                        <h3>Pseudo-Classi di Interazione</h2>
+                        <h3>Pseudo-Classi di Interazione</h3>
                         <ul>
-                            <li><code class="sel">:hover</code></li>
+                            <li><code class="sel">:hover</code> seleziona l'elemento quando
+                            il cursore vi si trova sopra</li>
+                            <li><code class="sel">:active</code> seleziona l'elemento quando viene attivato 
+                            (di solito con un click)
+                            <p class="eg"><br><rp id="cssCodeActive"></rp><button>ATTIVAMI</button></p>
+                            </li>
+                            <li><code class="sel">:focus</code> seleziona l'elemento se è nello stato 
+                            di focus (generalmente quando un input apre la tastiera)
+                            <p class="eg"><br><rp id="cssCodeFocus"></rp><input type="text" /></p>
+                            </li>
+                            <li><code class="sel">:focus-within</code> seleziona l'elemento se questo 
+                            o uno dei suoi discendenti è nello stato di focus</li>
                         </ul>
                     </article>
                     <article>
-                        <h3>Pseudo-Classi di Posizione nel DOM</h2>
+                        <h3>Pseudo-Classi di Posizione nel DOM</h3>
                         <ul>
-                            <li><code class="sel">:first-child</code></li>
+                            <li><code class="sel">:root</code> seleziona l'elemento
+                            alla radice del documento (di solito è <code class="tag">html</code>)</li>
+                            <li><code class="sel">:first-child</code> seleziona l'elemento se 
+                            è il primo discendente (primo figlio in un gruppo di fratelli) del suo parente</li>
+                            <li><code class="sel">:nth-child()</code> seleziona gli elementi in un gruppo di fratelli
+                            che hanno l'indice che è stato passato per argomento con notazione An + B, dove n 
+                            è una successione infinita di interi a partire da 0
+                                <p class="nota"><code class="sel">:nth-child()</code> può prendere
+                                per argomento anche <code class="sel">even</code> o 
+                                <code class="sel">odd</code> per selezionare rispettivamente i figli di indice
+                                pari o dispari</p>
+                                <p class="nota">passare per argomento <code class="sel">5</code> significa selezionare
+                                il quinto figlio<br>
+                                passare per argomento <code class="sel">5n</code> significa selezionare
+                                i figli di indice <kbd>5</kbd> [5 &times; 1], <kbd>10</kbd> [5 &times; 2] ecc...<br>
+                                passare per argomento <code class="sel">n+5</code> significa selezionare
+                                i figli di indice <kbd>5</kbd> [1 &times; 0 + 5], <kbd>6</kbd> [1 &times; 1 + 5] ecc...<br>
+                                passare per argomento <code class="sel">-2n+4</code> significa selezionare
+                                i figli di indice <kbd>4</kbd> [-2 &times; 0 + 4] e <kbd>2</kbd> [-2 &times; 1 + 4]; quelli dopo saranno 
+                                o nulli o negativi (indici invalidi)
+                            </p>
+                                <p class="notabene">i figli di un elemento sono indicizzati a partire da 1;
+                                    significa che in qualunque caso in cui l'indice passato per argomento sia <kbd>0</kbd>
+                                    o un numero negativo, questo verrà ignorato, ma non fermerà la successione n
+                                </p>
+                            </li>
+                            <li><code class="sel">:last-child</code> seleziona l'ultimo di un gruppo di fratelli</li>
+                            <li><code class="sel">:nth-last-child()</code> seleziona gli elementi da una lista di fratelli 
+                            secondo quanto passato per argomento con notazione An + B, ma contando al contrario la lista</li>
+                            <li><code class="sel">:only-child</code> seleziona l'elemento se non ha fratelli</li>
+                            <li><code class="sel">:first-of-type</code> seleziona il primo figlio di una lista di fratelli
+                            ristretta al tipo di selettore</li>
+                            <li><code class="sel"></code>Esistono analogamente <code class="sel">:last-of-type</code>,
+                            <code class="sel">:nth-of-type()</code>, <code class="sel">:nth-last-of-type()</code>
+                            e <code class="sel">:only-of-type</code></li>
+
                         </ul>
                     </article>
                     <article>
-                        <h3>Pseudo-Classi di Contenuto</h2>
+                        <h3>Pseudo-Classi Funzione</h3>
+                        <p>Questa categoria di pseudo-classi può prendere per argomento uno o più selettori</p>
                         <ul>
-                            <li><code class="sel">:has('*')</code></li>
+                            <li><code class="sel">:is()</code> seleziona l'elemento SE è uno di quelli passati per argomento
+                                <p class="eg"><br>
+                                Versione senza: <rp id="cssCodeNoIS"></rp>
+                                Versione con: <rp id="cssCodeIS"></rp></p>
+                                <p class="nota">ad <code class="sel">:is()</code> si possono passare interi selettori
+                                come argomento</p>
+                                <p class="notabene">le pseudo-classi hanno bassa specificità!<br>
+                                Questo significa che <code class="sel">:is()</code> è una scelta conveniente
+                                solo se si suppone che la regola non verrà sovrascritta da un selettore con specificità più alta</p>
+                            </li>
+                            <li><code class="sel">:has()</code> seleziona l'elemento SE contiene o è seguito quello passato per argomento
+                                <p class="eg"><br>
+                                    Per selezionare i <code class="tag">form</code>
+                                    con <code class="tag">input</code> non validi<rp id="cssCodeHas1"></rp>
+                                    Per selezionare le <code class="tag">label</code> che
+                                    precedono un <code class="tag">input</code><rp id="cssCodeHas2"></rp>
+                                </p>
+                            </li>
+                            <li><code class="sel">:not()</code> seleziona l'elemento SE NON
+                            è rappresentato dal suo argomento
+                            <p class="eg"><rp id="cssCodeNot"></rp>
+                            Seleziona i div che NON hanno la classe <code class="string">active</code></p>
+                            </li>
                         </ul>
                     </article>
                     <article>
-                        <h3>Pseudo-Classi dei Form e Input</h2>
+                        <h3>Pseudo-Classi dei Form e Input</h3>
                         <ul>
-                            <li><code class="sel">:checked</code></li>
+                            <li><code class="sel">:checked</code> seleziona qualsiasi <code class="tag">input</code>
+                            o <code class="tag">option</code> che è stato selezionato/marcato</li>
+                            <li><code class="sel">:blank</code> seleziona l'elemento se il suo input è vuoto</li>
+                            <li><code class="sel">:placeholder-shown</code> seleziona l'elemento se sta venendo
+                            mostrato il testo dell'attributo <code class="att">placeholder</code></li>
+                            <li><code class="sel">:valid</code> seleziona l'elemento se ha contenuto valido
+                            per il tipo di input e i suoi restrittori</li>
+                            <li><code class="sel">:invalid</code> inverso di <code class="sel">:valid</code></li>
+                            <li><code class="sel">:optional</code> seleziona l'elemento se non è necessario riempire l'input</li>
+                            <li><code class="sel">:required</code> seleziona l'elemento se è necessario riempire l'input</li>
                         </ul>
                     </article>
                 </div>
