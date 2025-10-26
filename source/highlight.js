@@ -6,7 +6,7 @@ $(function () {
     js: {}
   };
 
-  // 🔧 Normalizza indentazione multilinea
+  // Normalizza indentazione multilinea
   function normalizeIndentation(str) {
     const lines = str.split("\n");
     if (lines.length < 2) return str;
@@ -25,7 +25,7 @@ $(function () {
     return cleaned.join("\n");
   }
 
-  // 🔄 Estrai dinamicamente snippet da classi come htmlCode*, cssCode*, jsCode*
+  // Estrai dinamicamente snippet da classi come htmlCode*, cssCode*, jsCode*
   ["html", "css", "js"].forEach(type => {
     snippets[type] = snippets[type] || {};
 
@@ -58,7 +58,7 @@ $(function () {
     });
   });
 
-  // 🔐 Escape HTML
+  // Escape HTML
   const escapeHtml = str =>
     str.replace(/&/g, "&amp;")
        .replace(/</g, "&lt;")
@@ -66,7 +66,7 @@ $(function () {
        .replace(/"/g, "&quot;")
        .replace(/'/g, "&#039;");
 
-  // 🔁 Mappa tag custom
+  // Mappa tag custom
   const mappings = [
     { tag: "s", lang: "html", wrapInSpan: false, type: "html" },
     { tag: "u", lang: "html", wrapInSpan: true, type: "html" },
@@ -76,7 +76,7 @@ $(function () {
     { tag: "q", lang: "javascript", wrapInSpan: true, type: "js" }
   ];
 
-  // 🔄 Sostituisci tag custom con blocchi evidenziati
+  // Sostituisci tag custom con blocchi evidenziati
   mappings.forEach(({ tag, lang, wrapInSpan, type }) => {
     $(tag).each(function () {
       const id = $(this).attr("id");
@@ -91,7 +91,7 @@ $(function () {
     });
   });
 
-  // ✅ Carica highlight.js
+  // Carica highlight.js
   const script = document.createElement("script");
   script.src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js";
   script.onload = () => hljs.highlightAll();

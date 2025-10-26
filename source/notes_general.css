@@ -159,12 +159,8 @@ p.notabene, p.nota, p.osservazione, p.eg {
     width: fit-content;
     max-width: 100%;
     &::before {
-        float: left;
         font-weight: bold;
-        height: 100%;
-        display: block;
-        margin-right: clamp(4px, 0.8vw, 8px);
-        
+        display: inline;        
     }
 }
 p.notabene {
@@ -193,6 +189,24 @@ p.eg {
     border-left-color: yellow;
     &::before {
         content: "Esempio: ";
+    }
+}
+p.eg:has(+ .eg-extend) {margin-bottom: 0;}
+.eg-extend {
+    background-color: rgba(255, 243, 134, 0.4); 
+    margin-top: 0; 
+    border-left: 0.4vw solid yellow;
+    & :not(li, ul, dl, ol) {
+        padding: 0.3vw 0.6vw 0.3vw 0.5vw;
+    }
+}
+p.nota:has(+ .nota-extend) {margin-bottom: 0;}
+.nota-extend {
+    background-color: rgba(185, 243, 248, 0.4);
+    margin-top: 0; 
+    border-left: 0.4vw solid rgb(0, 123, 255);
+    & :not(li, ul, dl, ol) {
+        padding: 0.3vw 0.6vw 0.3vw 0.5vw;
     }
 }
 ul, ol {
@@ -239,7 +253,23 @@ li ul, li ol {
     width: fit-content;
     text-wrap: nowrap;
 }
-
+.vertable {
+    border: 0.2rem solid chocolate;
+    background-color: rgb(253, 230, 194);
+    width: auto;   
+    max-width: 100%;
+}
+.vertable :is(th,td) {
+    background-color: rgb(253, 241, 228);
+    padding: 0.3rem 0.4rem;
+}
+.vertable th {
+    border: 0.2rem double chocolate;
+}
+.vertable td {
+    border-bottom: 0.2rem solid chocolate;
+    font-size: 90%
+}
 .sidebar_right li {
     list-style-type: none;
     &::before {

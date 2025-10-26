@@ -60,5 +60,20 @@ $(document).ready(function () {
   $indiceContainer.append($ol);
 });
 
+  // Lega un input range a un elemento con classe range-edit
+  const modificati = document.querySelectorAll(".range-edit");
+
+  for(const modificato of modificati) {
+    let maybeRange = modificato.nextElementSibling;
+    while(maybeRange) {
+      if(maybeRange.getAttribute("type")==="range") {
+        maybeRange.addEventListener("input", () => {
+          modificato.style.width = maybeRange.value + '%';
+        });
+        break;
+      }
+      maybeRange = maybeRange.nextElementSibling;
+    }
+  }
 
 

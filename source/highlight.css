@@ -47,7 +47,7 @@ span.linear pre, span.linear code.hljs {
     color:#569cd6;
     text-decoration:underline;
 }
-.hljs-built_in,.hljs-type {
+.hljs-built_in,.hljs-type, code.func {
     color:#4ec9b0;
 }
 .hljs-class,.hljs-number, code.num {
