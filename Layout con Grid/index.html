@@ -134,6 +134,52 @@ grid-template-column: 1fr 1fr 1fr;`,
 }
 [data-item="5"] {
   grid-area: 5 / 2 / span 1 / span 2;
+}`,
+                    cssCodeGTA1: `grid-template-columns: repeat(3, 1fr);`,
+                    cssCodeGTA2: `grid-auto-rows: minmax(100px, auto);`,
+                    cssCodeGTA3: 
+`grid-template-areas:
+    'header header header'
+    'side main main'
+    'footer footer footer';`,
+                    cssCodeGTA4:
+`.semantica [data-item="1"] {
+  grid-area: header;
+}
+.semantica [data-item="2"] {
+  grid-area: side;
+}
+.semantica [data-item="3"] {
+  grid-area: main;
+}
+.semantica [data-item="4"] {
+  grid-area: footer;
+}`,
+                    cssCodeGTA5:
+`grid-template-areas:
+    'header header . '
+    'side main main'
+    ' . footer footer';`,
+                    cssCodeGTA6:
+`@media only screen and (max-width:600px) {
+    .griglia {
+        grid-template-areas:
+            'header header header '
+            'main main main'
+            'side side side'
+            'footer footer footer';
+    }
+}`,
+                    cssCodeGTA7:
+`@media only screen and (max-width:600px) {
+    .griglia {
+        grid-template-columns: repeat(2,1fr);
+        grid-template-areas:
+            'header header'
+            'main main'
+            'side side'
+            'footer footer';
+    }
 }`
                 }
             }
@@ -259,6 +305,108 @@ grid-template-column: 1fr 1fr 1fr;`,
                 grid-area: 5 / 2 / span 1 / span 2;
                 
             }
+
+            .griglia.semantica {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-rows: minmax(100px, auto);
+                grid-template-areas:
+                    'header header header'
+                    'side main main'
+                    'footer footer footer';
+            }
+            .semantica span[data-item="1"] {
+                grid-area: header;
+                &::before {
+                    content: '1: header';
+                }
+            }
+            .semantica span[data-item="2"] {
+                grid-area: side;
+                &::before {
+                    content: '2: side';
+                }
+            }
+            .semantica span[data-item="3"] {
+                grid-area: main;
+                text-align: left;
+                align-content: start;
+                &::before {
+                    content: '3: main';
+                    display: block;
+                    width: fit-content;
+                    margin: auto;
+                }
+            }
+            .semantica span[data-item="4"] {
+                grid-area: footer;
+                &::before {
+                    content: '4: footer'
+                }
+            }
+            .semantica.spazio-vuoto {
+                grid-template-areas:
+                    'header header . '
+                    'side main main'
+                    ' . footer footer';
+            }
+            .semantica.colonna {
+                grid-template-columns: repeat(2,1fr);
+                grid-template-areas:
+                    'header header'
+                    'main main'
+                    'side side'
+                    'footer footer';
+            }
+            #card-1 {
+                cursor: pointer;
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                grid-template-areas: 'image image testo testo';
+                grid-template-rows: auto;
+                grid-auto-flow: unset;
+                border-radius: 0.5em;
+                border: 0.3em solid brown;
+                background-color: papayawhip;
+                transition: 0.2s;
+                gap: 1rem;
+                padding-right: 1rem;
+            }
+            #card-1.flipped {
+                transform: rotate(360deg);
+                grid-template-areas: 'testo image . .';
+                padding-left: 1rem;
+            }
+
+            #card-1 img:first-child {
+                grid-area: image;
+            }
+            #card-1 img:not(:first-child) {
+                grid-area: image;
+                display: none;
+            }
+            #card-1 span {
+                grid-area: testo;
+            }
+            #card-1 span:last-child {
+                grid-area: testo;
+                display: none;
+            }
+
+            #card-1.flipped img:first-child {
+                display: none;
+            }
+            #card-1.flipped img:not(:first-child) {
+                display: block;
+            }
+            #card-1.flipped span {
+                display: none;
+            }
+            #card-1.flipped span:last-child {
+                display: block;
+            }
+
+            
         </style>
     </head>
     <body class="content">
@@ -576,15 +724,81 @@ grid-template-column: 1fr 1fr 1fr;`,
                     </section>
                     <section>
                         <h3>Posizionamento Semantico</h3>
+                        <p>In alternativa al posizionare ciascun oggetto nella griglia
+                            in base alle linee di separazione tra righe e colonne, possiamo dare 
+                            un nome alle celle della griglia e definire delle aree nominali al suo 
+                            interno, in modo da assegnarvi gli oggetti tramite il nome dell'area
+                        </p>
+                        <ul>
+                            <li>Stabiliamo il numero di colonne che vogliamo usare 
+                                <p class="nota">può essere un numero maggiore di quelle che ci servono,
+                                    basta usarle anche solo per divisore
+                                </p>
+                                Creiamo 3 colonne uguali: <rp id="cssCodeGTA1"></rp>
+                            </li>
+                            <li>Stabiliamo il numero di righe
+                                <p class="nota">possiamo sempre usare delle righe generate 
+                                    implicitamente con altezza minima e adattabili
+                                </p>
+                                Righe con <code class="num">100px</code> minimo di altezza:
+                                <rp id="cssCodeGTA2"></rp>
+                            </li>
+                            <li>Diamo un nome alle celle e usiamo gli omonimi per stabilire le aree (ogni riga è definita da una stringa)
+                                <p class="osservazione">dare a due o più celle contigue lo stesso nome 
+                                    equivale ad unirle (come si fa' in Excel)
+                                </p>
+                                Chiamiamo <i>header</i> la prima riga e <i>footer</i> l'ultima, poi
+                                dividiamo la parte di mezzo dando un terzo di larghezza al <i>side</i>
+                                e il resto al <i>main</i>:
+                                <rp id="cssCodeGTA3"></rp>
+                            </li>
+                        </ul>
+                        <p>La griglia che otteniamo è la seguente:</p>
+                        <span class="griglia semantica" data-item-no="4"></span>
+                        <p class="nota">possiamo anche lasciare delle celle vuote;
+                            per farlo, invece di dargli un nome, le assegnamo un punto ("<code class="string">.</code>"). <br>
+                            Ad esempio:
+                            <span class="griglia semantica spazio-vuoto" data-item-no="4"></span>
+                        </p>
+                        <p class="notabene">le aree devono sempre avere forma rettangolare, inoltre non si 
+                            può assegnare lo stesso nome a due celle non contigue; se viene fatto uno di questi 
+                            errori nell'impostare la proprietà, questa verrà ignorata
+                        </p>
+                        <p class="osservazione">con questa griglia è molto più facile riorganizzare 
+                            il layout in risposta alle dimensioni dello schermo tramite media queries;
+                            invece di dover riassegnare ogni cella, cambiamo solo la disposizione delle aree:
+                            <rp id="cssCodeGTA6"></rp>
+                            Alternativamente, possiamo anche modificare le altre proprietà per una scrittura più semplice;<br>
+                            incluso in questo esempio:
+                            <span class="griglia semantica colonna" data-item-no="4"></span>
+                        </p>
+                        <p class="eg">possiamo anche creare dei layout grid per qualcosa di più piccolo:
+                            <span id="card-1">
+                                <img src="../source/Crunch.png" alt="crocco" style="max-width: 100%;"/>
+                                <span>Il pappagallo sulla sinistra è veramente zeppoloso</span>
+                                <img src="../source/Crocco.png" alt="crunch" style="max-width: 100%;"/>
+                                <span>Sembra opportuno incorniciarlo</span>
+                            </span>
+                        </p>
                     </section>
                     <section>
                         <h3>Autoallineamento Oggetti della Griglia</h3>
+                        <p>Gli oggetti della griglia possono allinearsi all'interno della propria cella 
+                            utilizzando le proprietà <code class="att">justify-self</code> e <code class="att">align-self</code>,
+                            che prendono gli stessi valori di <code class="att">justify-items</code> e <code class="att">align-items</code>.
+                        </p>
                     </section>
                 </div>
             </article>
             <article>
                 <h2>Sottogriglie</h2>
-                <div></div>
+                <div>
+                    <p>Innestare griglie è possibile; un elemento figlio di una griglia è
+                        a sua volta una griglia, inoltre può ereditare la struttura delle colonne e delle
+                        righe del genitore impostando <code class="att">grid-template-columns</code> e <code class="att">grid-template-rows</code>
+                        a <code class="string">subgrid</code>
+                    </p>
+                </div>
             </article>
         </main>
         <!-- Import Functionalities -->
@@ -620,10 +834,20 @@ grid-template-column: 1fr 1fr 1fr;`,
                     align_play2.style[align_playable2.name] = align_playable2.value;
                 });
             }
+            // Piccole aggiunte ai contenuti dei main
             document.querySelector('#disorder1 [data-item="1"]').innerHTML = 
                 `<rp id="cssCodeDisorder"></rp>`;
             document.querySelector('#disorder2 [data-item="1"]').innerHTML = 
                 `<rp id="cssCodeDisorder2"></rp>`;
+            document.querySelector(".semantica:not(.spazio-vuoto) [data-item='3']").innerHTML +=
+            `<rp id="cssCodeGTA4"></rp>`;
+            document.querySelector(".semantica.spazio-vuoto [data-item='3']").innerHTML +=
+            `<rp id="cssCodeGTA5"></rp>`;
+            document.querySelector(".semantica.colonna [data-item='3']").innerHTML +=
+            `<rp id="cssCodeGTA7"></rp>`;
+            document.getElementById("card-1").addEventListener("click", function() {
+                this.classList.toggle("flipped");
+            });
         </script>
     </body>
 </html>
