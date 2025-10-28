@@ -39,6 +39,35 @@
         <meta name="twitter:description" content="Appunti e note sulla sintassi del CSS" />
         <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            #cronch {
+                font-family: monospace;
+                white-space: pre;
+                padding: 0.4rem 0.8rem 0.6rem 0.5rem;
+                margin: 0.4rem 0 0.5rem;
+                display: block;
+                overflow-x: auto;
+                overflow-wrap: anywhere;
+                max-width: fit-content;
+                background-color: #f5eed5;
+                border: 0.2rem dotted #b8cfe6;
+            }
+        </style>
+
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeEg1: 
+`p {
+    /* Questo è un commento */
+    color: black;
+    background-color: transparent;
+}`
+                }
+            }
+        </script>
+
     </head>
     <body class="content">
         <!-- Header -->
@@ -52,7 +81,7 @@
                 <h2>Overview</h2>
                 <div>
                     <p>   
-                        Il CSS è un linguaggio utilizzato per controllare l'aspetto del contenuto 
+                        Il CSS (Cascading Style-Sheets) è un linguaggio utilizzato per controllare l'aspetto del contenuto 
                         visualizzato a schermo da un Browser; <br>
                         CSS permette di formattare il testo, creare layout e anche di creare
                         alcune animazioni e transizioni.                   
@@ -70,13 +99,52 @@
                         seguire per visualizzare i contenuti.
                     </p>
                     <section>
-                        <h3></h3>
-                        <p></p>
+                        <h3>Regole di Stile</h3>
+                        <p>Le regole di CSS hanno una struttura semplice:</p>
+                        <div id="cronch"><code class="sel">selector</code> {
+    <code class="att">property-1</code>: <code class="num">property-1-value</code>;
+    <code class="att">property-2</code>: <code class="num">property-2-value</code>;
+}</div>
+                        <p>Il selettore seleziona uno o più elementi html a cui applicare 
+                            gli stili nelle parentesi graffe; ogni stile è identificato da una 
+                            proprietà a cui si associa un valore.
+                        </p>
+                        <p>Le varie proprietà CSS permettono diversi valori.</p>
                     </section>
+                    <section>
+                        <h3>Commenti</h3>
+                        <p>I commenti in CSS devono essere chiusi tra <code class="comment">/*</code> e 
+                        <code class="comment">*/</code></p>
+                        <p class="eg"><br><rp id="cssCodeEg1"></rp></p>
+                    </section>
+                    <section>
+                        <h3>@rules</h3>
+                        <p>Le <i>at-rules</i> sevono per dare istruzioni sul comportamento del CSS.</p>
+                    </section>
+                    <section>
+                        <h3>Shorthand</h3>
+                        <p>Alcune proprietà possono impostare più stili contemporaneamente; sono dette
+                            <i>shorthand</i> e fondamentalmente riassumono delle sotto-proprietà analoghe
+                            in una scrittura più compatta.
+                        </p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Organizzazione</h2>
+                <div>
+                    <p>Dato che la scrittura del CSS è estremamente monotona, è bene
+                        dividere il foglio di stile in sotto-sezioni logiche, usando dei commenti 
+                        per dichiarare la logica (come un titolo), in modo da poter più facilmente
+                        navigare il foglio in caso fosse necessario modificarlo o espanderlo
+                    </p>
                 </div>
             </article>
         </main>
         <!-- Import Functionalities -->
         <script src="../../source/functionalities.js"></script>
+        <script>           
+
+        </script>
     </body>
 </html>

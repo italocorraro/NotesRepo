@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Unità di Misura</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script src="../../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sulle unità di misura in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Unità di Misura" />
+        <meta property="og:description" content="Appunti e note sulle unità di misura in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Unità di Misura" />
+        <meta name="twitter:description" content="Appunti e note sulle unità di misura in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            #em-test {
+                font-size: 20px;
+                width: 200px;
+                border: 5px solid black;
+                float: left;
+            }
+            #em-test div:first-child {
+                font-size: 1.25em;
+                width: 4em;
+                border: 0.2em solid red;
+            }
+            #em-test div:last-child {
+                width: 5em;
+                border: 0.25em solid blue;
+            }
+            #rem-test {
+                width: 5rem;
+                height: 5rem;
+                border: 0.5rem solid black;
+                float: right;
+                margin-right: 3rem;
+            }
+            #rem-test div {
+                width: 3rem;
+                height: 5rem;
+                margin-left: 2rem;
+                border: 0.5rem solid red;
+            }
+            #rem-test.adjust {
+                border: 0;
+                outline: 0.5rem solid black;
+            }
+        </style>
+
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeEm: 
+`#em-test {
+    font-size: 20px;
+    width: 200px;
+    border: 5px solid black;
+}
+#em-test div:first-child {
+    font-size: 1.25em;
+    width: 4em;
+    border: 0.2em solid red;
+}
+#em-test div:last-child {
+    width: 5em;
+    border: 0.25em solid blue;
+}`,
+                    cssCodeRem:
+`#rem-test {
+    width: 5rem;
+    height: 5rem;
+    border: 0.5rem solid black;
+}
+#rem-test div {
+    width: 3rem;
+    height: 5rem;
+    margin-left: 2rem;
+    border: 0.5rem solid red;
+}`,
+                    cssCodeRemA:
+`#rem-test.adjust {
+    border: 0;
+    outline: 0.5rem solid black;
+}`,
+                    cssCodeRemB:
+`html {
+    font-size: clamp(1rem, 2vw, 4rem);
+}`
+                }
+            }
+        </script>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sulle unità di misura in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento delle varie unità di misura utilizzate in CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>    
+                        Le unità di misura utilizzate in CSS spaziano da quelle del sistema metrico decimale a 
+                        unità relative allo schermo che visualizza i contenuti.                   
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Misure Assolute</h2>
+                <div>
+                    <p>Le unità di misura assolute hanno sempre lo stesso valore 
+                        indifferentemente dal browser e dallo schermo.
+                    </p>
+                    <p>Nella maggior parte dei casi, l'unica unità di misura assoluta utilizzata in un foglio 
+                        di stile sono i pixel; le altre sono più utili per stampe e simili.
+                    </p>
+                    <section>
+                        <h3>Pixel</h3>
+                        <p>I pixel (<code class="num">px</code>) sono la tipica unità di misura assoluta utilizzata nei fogli di stile.</p>
+                        <p class="notabene">I pixel come unità di misura NON sono equivalenti ai pixel di un 
+                            dispositivo. In uno schermo ad alta definizione, <code class="num">1px</code> 
+                            equivarrebbe a diversi pixel.
+                        </p>
+                        <p class="nota" style="min-width: 30%;"><br>
+                        <code class="num">38px</code><code>&approx;</code><code class="num">1cm</code></p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Misure Relative</h2>
+                <div>
+                    <p>Le unità di misura relative sono ampiamente utilizzate in CSS per permettere 
+                        agli elementi e al testo di adattarsi allo schermo.
+                    </p>
+                    <section>
+                        <h3>element (em)</h3>
+                        <p>L'unità <code class="num">em</code> è relativa al <code>font</code> <code>size</code>
+                        dell'elemento stesso OPPURE, solo per impostare il <code class="att">font-size</code>,
+                        al <code>font</code> <code>size</code> del genitore.</p>
+                        <div style="width: 100%; max-width: 100%;">
+                        <p class="eg" style="width: 100%;"><br></p>
+                        <div class="eg-extend" style="width: 100%;">
+                            <div id="em-test" class="htmlCode1">
+                                prova
+                                <div>prova</div>
+                                <div>prova</div>
+                            </div>
+                            <s id="htmlCode1"></s>
+                            <rp id="cssCodeEm"></rp>
+                            Analizziamo il codice:
+                            <ul>
+                                <li>
+                                    il genitore ha impostato il proprio <code class="att">font-size</code>
+                                    a <code class="num">20px</code>
+                                </li>
+                                <li>
+                                    il <code class="tag">div</code> <code class="att">primo figlio</code> ha impostato il suo 
+                                    <code class="att">font-size</code> a <code class="num">1.25em</code>, 
+                                </li>
+                                <ul>
+                                    <li>il suo <code class="att">font-size</code> sarà pari a 1,25 volte 
+                                    il <code class="att">font-size</code> del genitore, quindi <code class="num">25px</code></li>
+                                    <li>la sua <code class="att">width</code> è pari a <code class="num">4em</code>, 
+                                    ovvero a 4 volte il suo stesso <code class="att">font-size</code>, cioè 
+                                    <code class="num">25px</code><code> &times; 4 = </code><code class="num">100px</code>,
+                                    infatti la sua larghezza è la metà del contenitore</li>
+                                    <li>il contorno è invece <code class="num">0.2em</code>, ovvero 
+                                    <code class="num">25px</code><code> &times; 0,2 = </code><code class="num">5px</code>, che è
+                                    infatti lo stesso spessore del contenitore</li>
+                                </ul>
+                                <li>
+                                    il <code class="tag">div</code> <code class="att">secondo figlio</code> non ha impostato il suo 
+                                    <code class="att">font-size</code>, quindi lo eredita dal genitore, 
+                                </li>
+                                <ul>
+                                    <li>la sua <code class="att">width</code> è pari a <code class="num">5em</code>, 
+                                    ovvero <code class="num">20px</code><code> &times; 5 = </code><code class="num">100px</code>,
+                                    infatti la sua larghezza è la metà del contenitore e pari a quella del <code class="att">primo figlio</code></li>
+                                    <li>il contorno poi è <code class="num">0.25em</code>, ovvero 
+                                    <code class="num">20px</code><code> &times; 0,25 = </code><code class="num">5px</code>, che è
+                                    infatti lo stesso spessore del contenitore e del <code class="att">primo figlio</code></li>
+                                </ul>
+                            </ul>
+                        </div></div>
+                    </section>
+                    <section>
+                        <h3>root element (rem)</h3>
+                        <p>Mentre l'<code class="num">em</code> riferisce al genitore, il <code class="num">rem</code>
+                        riferisce SEMPRE al <code class="att">font-size</code> dell'elemento alla radice del 
+                        documento, cioè l'elemento <code class="tag">html</code>.</p>
+                        <div >
+                        <p class="eg" style="width: 100%;"></p>
+                            <div class="eg-extend clearfix" style="width: 100%;">
+                            <div id="rem-test">
+                                <div></div>
+                            </div>
+                            <rp id="cssCodeRem"></rp>
+                            <div>
+                                L'esempio appena visto usa il modello <code>border-box</code>, quindi 
+                                il <code class="tag">div</code> interno esce fuori dal suo contenitore poichè i contorni
+                                sono considerati per la larghezza, ma gli elementi interni vengono inseriti solo nel contenuto;
+                                in ogni caso vediamo che l'unità di misura rimane coerentemente uguale
+                            </div>
+                            <div>
+                                Possiamo aggiustare il contorno usando invece l'<code class="tag">outline</code>:
+                            </div>
+                            <div id="rem-test" class="adjust">
+                                <div></div>
+                            </div><rp id="cssCodeRemA"></rp>
+                            <div>Poichè l'outline non occupa larghezza o altezza del contenitore, adesso il contenuto non sfora
+                                e copre perfettamente l'area destinata.
+                            </div>
+                        </div></div>
+                        <p>Se il <code class="att">font-size</code> dell'elemento <code class="tag">html</code>
+                            non viene impostato, allora il browser userà una misura predefinita;</p>
+                            <p>di solito i browser hanno <code class="num">16px</code> come valore preimpostato,
+                            ma l'utente può modificarlo nelle impostazioni.</p>
+                            <p class="nota">se si vuole modificare il valore del <code class="num">rem</code>
+                            senza però togliere all'utente la possibilità di ingrandire o rimpicciolire il testo 
+                            (per misure di accessibilità), si può sempre utilizzare lo stesso <code class="num">rem</code>
+                            per definire il <code class="att">font-size</code> dell'<code class="tag">html</code>.</p>
+                            <p class="eg"><rp id="cssCodeRemB"></rp>
+                                Con questa misura possiamo mantenere la dipendenza dal default del browser,
+                                ma permettere anche al valore di <code class="num">rem</code> di scalare con 
+                                la larghezza della viewport.</p>
+                    </section>
+                    <section>
+                        <h3>viewport width e height (vw, vh)</h3>
+                        <p>Le unità di misura <code class="num">vw</code> e <code class="num">vh</code>
+                        fanno riferimento rispettivamente alla larghezza e all'altezza della viewport, 
+                        cioè lo spazio su schermo utilizzato per la visualizzazione della pagina</p>
+                        <p class="notabene">la viewport conta anche la barra di scorrimento che appare sulla 
+                            destra nella maggior parte dei siti a scorrimento verticale; quindi impostare 
+                            un elemento con larghezza <code class="num">100vw</code> (cioè il 100% della 
+                            larghezza della viewport) non significa riempire perfettamente lo schermo, infatti 
+                            l'elemento così largo non potrà essere contenuto orizzontalmente sullo schermo, poiché
+                            la barra ne occupa una porzione
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Percentuali</h3>
+                        <p>Le percentuali possono essere usate per impostare il valore di una proprietà 
+                            in relazione al valore che ha quella stessa proprietà per il genitore;
+                        </p>
+                        <p class="nota">usare <code class="att">width</code><code>: </code><code class="num">100%</code>
+                        permette di impostare correttamente la larghezza di un elemento per occupare tutta quella 
+                        disponibile del genitore; essendo la barra di scorrimento non occupabile, usare 
+                        questa impostazione ovvia al problema che si presentava usando <code class="num">100vw</code></p>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+    </body>
+</html>

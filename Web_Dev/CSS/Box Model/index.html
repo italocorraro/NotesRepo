@@ -43,7 +43,13 @@
         <style>
             ul#box-model {
                 display: grid;
+                width: 100%;
                 grid-template: 1fr 1fr 1fr 1fr / 1fr clamp(70%, 50vw, 80%);
+                grid-template-areas: 
+                    "margin box"
+                    "border box"
+                    "padding box"
+                    "content box";
                 gap: 0 2rem;
                 height: fit-content;
                 width: 100%;
@@ -52,11 +58,21 @@
                 margin: 0;
                 list-style-type: none;
             }
+            @media only screen and (max-width:900px) {
+                ul#box-model {
+                    padding: 2rem 0 1.5rem; 
+                    gap: 2rem 0;
+                    grid-template: auto auto / repeat(4,1fr);
+                    grid-template-areas: 
+                        "margin border padding content"
+                        "box box box box";
+                }
+            }
             ul#box-model li {
                 &.container {
-                    grid-area: 1 / 2 / span 4 / span 1;
+                    grid-area: box;
                     width: clamp(100px, 100%, 4000px);
-                    height: clamp(80px, 40vw, 3600px);
+                    height: clamp(120px, max(40vh,50vw), 3600px);
                     background-color: transparent;
                 }
                 &.container, & .margin, & .border, & .padding, & .contento {
@@ -69,7 +85,7 @@
                 & .margin {
                 border: 0.5rem dashed red;
                 background-color: rgb(245, 225, 225);
-                padding: 2.5rem; 
+                padding: 1.4em; 
                 position: relative;
                 width: 100%;
                 height: 100%;
@@ -85,7 +101,7 @@
                 }
 
                 & .border {
-                    padding: 2.5rem; 
+                    padding: 1em; 
                     position: relative;
                     background-color: #ffe45e;
                     border: 0.4rem solid yellow;
@@ -105,7 +121,7 @@
                 & .padding {
                     background-color: rgb(219, 245, 219);
                     border: 0.4rem dashed green;
-                    padding: 2.5rem;
+                    padding: 1.2em;
                     position: relative;
                     width: 93%;
                     height: 93%;
@@ -142,7 +158,7 @@
                 cursor: pointer;
                 user-select: none;
                 text-align: center;
-                grid-area: 1 / 1 / span 1 / span 1;
+                grid-area: margin;
                 &:hover{
                     color: rgb(104, 90, 69);
                     text-decoration: underline;
@@ -156,7 +172,7 @@
                 cursor: pointer;
                 user-select: none;
                 text-align: center;
-                grid-area: 2 / 1 / span 1 / span 1;
+                grid-area: border;
                 &:hover{
                     color: rgb(104, 90, 69);
                     text-decoration: underline;
@@ -170,7 +186,7 @@
                 cursor: pointer;
                 user-select: none;
                 text-align: center;
-                grid-area: 3 / 1 / span 1 / span 1;
+                grid-area: padding;
                 &:hover{
                     color: rgb(104, 90, 69);
                     text-decoration: underline;
@@ -184,7 +200,7 @@
                 cursor: pointer;
                 user-select: none;
                 text-align: center;
-                grid-area: 4 / 1 / span 1 / span 1;
+                grid-area: content;
                 &:hover{
                     color: rgb(104, 90, 69);
                     text-decoration: underline;
@@ -194,23 +210,7 @@
                 }
             }
 
-            #eg-alk {
-                grid-area: 2 / 1 / span 1 / span 2;
-            }
-            #eg-alm {
-                grid-area: 3 / 1 / span 1 / span 1;
-            }
-            #eg-aln {
-                grid-area: 3 / 2 / span 1 / span 1;
-            }
-            @media only screen and (max-width: 900px) {
-                #eg-alm {
-                    grid-area: 3 / 1 / span 1 / span 2;
-                }
-                #eg-aln {
-                    grid-area: 4 / 1 / span 1 / span 2;
-                }
-            }
+            
 
             #borderGrid {
                 display: grid;
@@ -318,6 +318,12 @@
                     overflow-x: auto;
                 }
             }
+
+            #boxxer pre code {
+                float: left;
+                margin-right: 2rem;
+            }
+
             #flexami {
                 display: flex;
                 margin: 0.5rem 0;
@@ -447,7 +453,18 @@ span.mixed {border-color: red wheat green yellow;}`,
                     cssCodeOffset: `outline-offset: 0.3em`,
                     cssCodeBlock: `img {display: block;}`,
                     cssCodeTextAlign: `p {text-align: center;}`,
-                    cssCodeVertical: `vertical-align: center;`
+                    cssCodeVertical: `vertical-align: center;`,
+                    cssCodeSetting: 
+`*, *::before, *::after {
+    box-sizing: border-box;
+}`,
+                    cssCodeResetting:
+`html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}`
                 }
             }
             
@@ -476,12 +493,79 @@ span.mixed {border-color: red wheat green yellow;}`,
         </header>
         <main>
             <article>
+                <h2>Un Modello per gli Elementi</h2>
+                <div>
+                    <p>Ogni elemento ha un modo di rapportarsi al flusso del documento e agli altri elementi;
+                        questo comportamento è stabilito dal valore della proprietà <code class="att">display</code>:
+                    </p>
+                    <section>
+                        <h3>outer-display</h3>
+                        <p>La proprietà <code class="att">display</code> può avere diversi valori riguardo 
+                            al modo in cui l'elemento si rapporta agli altri <i>al suo esterno</i>:
+                        </p>
+                        <ul>
+                            <li><b><code class="string">block</code>:</b> <ul>
+                                <li>l'elemento inizia e finisce su un nuovo rigo</li>
+                                <li>l'elemento possiede delle proprietà di <code class="att">width</code>
+                                    e <code class="att">height</code> (larghezza e altezza); <br>
+                                se non impostate, queste proprietà varranno rispettivamente <code class="string">100%</code> e <code class="att">auto</code>,
+                                cioè l'elemento occuperà tutta la larghezza del suo contenitore e adatterà l'altezza al suo contenuto</li>
+                                <li>attorno al contenuto dell'elemento si trovano diversi strati di spazi che tengono
+                                    separati gli altri elementi (<code class="att">padding</code>, <code class="att">border</code> e <code class="att">margin</code>)
+                                </li>
+                            </ul>
+                            </li>
+                            <li><b><code class="string">inline</code>:</b>
+                                <ul>
+                                    <li>l'elemento NON inizia un nuovo rigo</li>
+                                    <li>le proprietà di <code class="att">width</code>
+                                    e <code class="att">height</code> non hanno effetto</li>
+                                    <li>solo le direzioni destra e sinistra hanno effetto per la proprietà 
+                                        <code class="att">margin</code>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>inner-display</h3>
+                        <p>La proprietà <code class="att">display</code> in realtà accetta fino a due valori;
+                        il primo è per l'<i>outer-display</i>, cioè il modello con cui l'elemento si rapporta con quelli al 
+                        suo esterno, il secondo invece è per l'<i>inner-display</i> che definisce il layout interno.</p>
+                        <p><code class="att"><b>display</b></code> accetta questi valori per quanto riguarda l'<i>inner-display</i></p>
+                        <ul>
+                            <li><b><code class="string">flow</code></b>: (default)</li>
+                            <li><b><code class="string">table</code></b>: l'elemento si comporta come una tabella html</li>
+                            <li><b><code class="string">flex</code></b>: vedi <a href="../Layout con Flexbox/">qui</a></li>
+                            <li><b><code class="string">grid</code></b>: vedi <a href="../Layout con Grid/">qui</a></li>
+                        </ul>
+                        <p class="nota">se non diversamente specificato, elementi settati su <code class="string">flex</code>
+                        o <code class="string">grid</code> hanno l'<i>outer-display</i> di default su <code class="string">block</code></p>
+                        <p class="nota-extend">ovviamente, elementi settati su <code class="string">block</code> o 
+                        <code class="string">inline</code> hanno l'<i>inner-display</i> di default su <code class="string">flow</code></p>
+                    </section>
+                    <section>
+                        <h3>inline-block</h3>
+                        <p>Un elemento con <code class="att">display</code><code>:</code> <code>inline-block</code> apparirà come
+                        elemento <code>inline</code>, ma si potranno impostare le proprietà di larghezza, altezza e margine
+                        come per un elemento <code>block</code>.</p>
+                        <p>Questo è una mezzavia per usare le proprietà di un <code>block</code> senza creare un nuovo rigo.</p>
+                    </section>
+                    <section>
+                        <h3>Rimozione Elemento</h3>
+                        <p>Impostare <code class="att">display</code><code>:</code> <code class="string">none</code> 
+                        rimuove completamente l'elemento e i suoi discendenti dal flusso del documento.</p>
+                    </section>
+                </div>
+            </article>
+            <article>
                 <h2>Box Model</h2>
                 <div>
-                    <p>Nel box model, il contenuto dell'elemento è mostrato in un contenitore rettangolare,
+                    <p>Nel box model di un elemento, il contenuto è mostrato in un contenitore rettangolare,
                         attorno a questo rettangolo c'è dello spazio (padding) che lo separa dal contorno, 
-                        infine oltre il contorno c'è dello spazio (margine) a separarlo dal contenitore superiore.
+                        infine oltre il contorno c'è altro spazio (margine) a separarlo dal contenitore superiore.
                     </p>
+                    <p>Le componenti del box model sono:</p>
                     <ul id="box-model">
                         <li class="margin">Margine</li>
                         <li class="border">Contorno</li>
@@ -495,51 +579,87 @@ span.mixed {border-color: red wheat green yellow;}`,
                         </li>
                     </ul>
                     <p class="osservazione">il contenuto e il padding prendono il
-                        colore del background.<br>
+                        colore del background (possiamo considerarli trasparenti rispetto al proprio background).<br>
                         Il contorno va colorato a parte.<br>
                         Il margine è sempre trasparente.</p>
                     <p class="notabene">l'altezza e la larghezza che vengono impostate come proprietà
-                        di un elemento sono riferite SOLO al contenuto!<br>
+                        di un elemento sono riferite SOLO al contenuto! </p>
+                    <p>
                         Per conoscere l'altezza e larghezza effettive di un elemento bisogna 
                         aggiungere il padding e il contorno:
-                    </p><div class="clearfix">
-                    <p class="eg" style="display: grid; grid-template: 50% 1fr; justify-content: left; max-width: 100%; gap: 1rem 3rem;">
-                        <span id="eg-alk"><rp id="cssCodeEg1"></rp></span>
-                        <span id="eg-alm">calcoliamo:<br>
-                            <b>larghezza</b> effettiva = <br>
-                            <span style="padding-left: 1rem;">+320px (width)</span><br>
-                            <span style="padding-left: 1rem;">+20px (padding-left + padding-right)</span><br>
-                            <span style="padding-left: 1rem;">+10px (border-left + border-right)</span><br>
-                            <b>= 350px</b> (larghezza effettiva)
-                        </span>
-                        <span id="eg-aln">analogamente per l'altezza:<br>
-                            <b>altezza</b> effettiva = <br>
-                            <span style="padding-left: 1rem;">+50px (height)</span><br>
-                            <span style="padding-left: 1rem;">+20px (padding-top + padding-bottom)</span><br>
-                            <span style="padding-left: 1rem;">+10px (border-top + border-bottom)</span><br>
-                            <b>= 80px</b> (altezza effettiva)
-                        </span>
                     </p>
-                    <section>
+                    <span style="display: block; width: fit-content; min-width: 50%; max-width: 100%;">
+                    <p class="eg" style="width: 100%;">
+                        <rp id="cssCodeEg1"></rp>
+                        calcoliamo:<br>
+                        <b>larghezza effettiva </b>= 
+                    </p>
+                    <div class="eg-extend" style="width: 100%;">
+                    <ul style="list-style-type: none;">
+                        <li>+320px (width)</li>
+                        <li>+20px (padding-left + padding-right)</li>
+                        <li>+10px (border-left + border-right)</li>
+                    </ul>
+                    <b> = 350px</b> (larghezza effettiva) <br>
+                        analogamente per l'altezza: <br>
+                        <b>altezza effettiva = </b>
+                    <ul style="list-style-type: none;">
+                        <li>+50px (height)</li>
+                        <li>+20px (padding-top + padding-bottom)</li>
+                        <li>+10px (border-top + border-bottom)</li>
+                    </ul>
+                    <b>= 80px</b> (altezza effettiva)
+                    </div>    
+                    </span>
+                    <section id="boxxer" class="clearfix">
                         <h3>La proprietà box-sizing</h3>
-                        <p>La proprità <code class="att">box-sizing</code> può avere questi valori:
+                        <p>La proprità <b><code class="att">box-sizing</code></b> può avere questi valori:
                             <ul>
-                                <li><code class="num">content-box</code>: le proprità di altezza e larghezza includono solo 
+                                <li><b><code class="string">content-box</code>:</b> (default) le proprità di altezza e larghezza includono solo 
                                     il contenuto.
                                     <p class="nota">questo è il valore di default per ogni elemento.</p>
                                 </li>
-                                <li><code class="num">border-box</code>: le proprietà di altezza e larghezza includono contenuto,
+                                <li><b><code class="string">border-box</code>:</b> le proprietà di altezza e larghezza includono contenuto,
                                     padding e contorno.</li>
                             </ul>
                         </p>
                         <p class="osservazione">se impostiamo <rt id="cssCodeBox"></rt> avremo la situazione opposta 
                             a quella di default: le dimensioni del contenuto saranno pari a quelle dell'elemento tolti
                             padding e contorno.</p>
-                        <p class="notabene">anche avendo impostato su <code class="num">border-box</code> non significa
+                        <p class="notabene">anche avere impostato <code class="string">border-box</code> non significa
                             che gli elementi non usciranno mai fuori dal loro contenitore; per evitare che questo accada
-                            conviene usare unità di misura diamiche che permettono agli elementi di scalare con la pagina.</p>
+                            conviene usare unità di misura relative che permettono agli elementi di scalare con la pagina
+                            e fare attenzione alla disposizione e al margine.</p>
+                        <rp id="cssCodeSetting"></rp>
+                        <p>di solito conviene usare il modello <code class="string">border-box</code>
+                        nei layout, questo perché fornisce più controllo sulle effettive dimensioni degli elementi; <br>
+                        per applicare questa impostazione a tutti gli elementi, di solito si usa un selettore universale nella prima 
+                        parte del foglio di stile. </p>
+                        <p style="clear: left;">
+                            La pratica d'uso più comune è quella illustrata, tuttavia può essere sconveniente
+                            nel caso si preveda di usare anche l'altro modello in alcuni casi; in queste circostanze, la migliore impostazione è la seguente</p>
+                        <rp id="cssCodeResetting"></rp>
+                        <p>
+                            questa impostazione ha lo stesso effetto della precedente, cioè quello di impostare
+                            tutti gli elementi su <code class="string">border-box</code>, ma facendo riferimento
+                            all'elemento che li contiene; in questo modo, eventuali elementi <code class="string">content-box</code>
+                            tramanderanno la proprietà ai propri figli senza necessità di impostare la proprietà 
+                            per ogni elemento al loro interno.
+                        </p>
                     </section>
-                    </div>
+                    <section>
+                        <h3>Altre proprietà del box model</h3>
+                        <p>In riferimento al box model, un elemento ha altre proprietà attinenti al layout:</p>
+                        <ul>
+                            <li><b><code class="att">float</code></b>: la possibilità di posizionarsi ai lati del 
+                                proprio contenitore senza distruggere il flusso del documento <br> vedi <a href="../Layout con Float/">qui</a></li>
+                            <li><b><code class="att">line-height</code></b>: imposta l'altezza di una riga orizzontale;
+                            <br>di solito si imposta con valori interi poichè questi vengono moltiplicati automaticamente per le dimensioni del font <br>
+                            vedi <a href="../Tipografia/">qui</a></li>
+                            <li><b><code class="att">position</code></b>: vedi <a href="#posizionamento">giù</a></li>
+                            <li><b><code class="att">z-index</code></b>: vedi <a href="#z-index">giù</a></li>
+                        </ul>
+                    </section>
                 </div>
             </article>
             <article>
@@ -809,14 +929,6 @@ span.mixed {border-color: red wheat green yellow;}`,
                 </div>
             </article>
             <article>
-                <h2>Inline-block</h2>
-                <div>
-                    <p>Un elemento con <code class="att">display</code><code>:</code> <code>inline-block</code> apparirà come
-                    elemento <code>inline</code>, ma si potranno impostare le proprietà di larghezza, altezza e margine
-                    come per un elemento <code>block</code>.</p>
-                </div>
-            </article>
-            <article>
                 <h2>Posizionamento</h2>
                 <div>
                     <p>
@@ -824,7 +936,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                         all'interno del documento:
                     </p>
                     <section>
-                        <h3>static</h3>
+                        <h3>static (default)</h3>
                         <p>L'elemento è posizionato seguendo il normale flusso del documento (questo è il valore di default)</p>
                         <p>Un elemento statico non è affeatto dalle proprietà <code class="att">top</code>, 
                         <code class="att">bottom</code>, <code class="att">right</code> e <code class="att">left</code></p>
@@ -859,6 +971,10 @@ span.mixed {border-color: red wheat green yellow;}`,
                         <p>La posizione che determina il cambio dipende dai 4 attributi direzionali.</p>
                     </section>
                 </div>
+            </article>
+            <article>
+                <h2>z-index</h2>
+                <div></div>
             </article>
         </main>
         <script src="../../source/functionalities.js"></script>

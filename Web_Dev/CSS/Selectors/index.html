@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
         <script src="../../source/Navigazione2.js"></script>
         <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="snippets.js"></script>
         <script src="../../source/highlight.js"></script>
 
         <!-- Generic tags -->
@@ -379,7 +380,7 @@
             <article>
                 <h2>Gerarchie dei Selettori</h2>
                 <div class="clearfix">
-                    <p>Il peso che hanno nella scelta finale dello stile di un elemento dipende dal selettore:</p>
+                    <p>Il peso che hanno nella scelta dello stile di un elemento dipende dal selettore:</p>
                     <div id="griddedless">
                     <table class="vertable">
                         <tr>
@@ -407,6 +408,8 @@
                             <td>0-0-0-0-0</td>
                         </tr>
                     </table>
+                    <p>Quando due selettori hanno la stessa specificità, vince 
+                        quello scritto per ultimo nel foglio di stile.</p>
                     <p class="eg" ><br>
                         <rp id="cssCodeSpec1"></rp> ha specificità <code>0-0-2</code><br>
                         <rp id="cssCodeSpec2"></rp> ha specificità <code>0-1-1</code> e quindi vince sul precedente</p>
@@ -439,6 +442,6 @@
             </article>-->
         </main>
 
-        <script src="../source/functionalities.js"></script>
+        <script src="../../source/functionalities.js"></script>
     </body>
 </html>

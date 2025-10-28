@@ -15,11 +15,9 @@ let navigazione = `
                 <li><a href="#">Liste</a></li>
                 <li><a href="#">Tabelle</a></li>
                 <li><a href="../../html/Forms/">Forms</a></li>
+                <li><a>Altri Media</a></li>
                 <li><a>Accessibilità</a></li>
                 <li><a>Validazione</a></li>
-                
-                
-                
             </ul>
 
 <!--        Lista pagine CSS                          -->
@@ -30,18 +28,17 @@ let navigazione = `
                 <li><a href="../../CSS/Sintassi CSS/">Sintassi</a></li>
                 <li><a href="../../CSS/Selectors/">Selettori</a></li>
                 <li><a href="../../CSS/Box Model/">Box Model</a></li>
-                <li><a>Unità di misura</a></li>
-                <li><a>Tipografia</a></li>
                 <li><a>Colori</a></li>
+                <li><a href="../../CSS/Unità di Misura/">Unità di misura</a></li>
+                <li><a>Tipografia</a></li>
                 <li><a>Funzioni e variabili</a></li>
-                <li><a>media queries</a></li>
                 <li><a>Modali</a></li>
-                <li><a>Transizioni</a></li>
-                <li><a>Animazioni</a></li>
+                <li><a>media queries</a></li>
                 <li><a href="../../CSS/Layout con Float/">Layout con Float</a></li>
                 <li><a href="../../CSS/Layout con Flexbox/">Layout con Flexbox</a></li>
                 <li><a href="../../CSS/Layout con Grid/">Layout con Grid</a></li>
-                <li><a>Altri Media</a></li>
+                <li><a>Transizioni</a></li>
+                <li><a>Animazioni</a></li>
             </ul>
 
 <!--        Lista pagine JS                          -->
