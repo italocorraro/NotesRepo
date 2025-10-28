@@ -37,6 +37,18 @@
                 align-content: center;
             }
         </style>
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeClearfix: 
+`.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}`
+                }
+            }
+        </script>
     </head>
     <body class="content">
         <header class="main_header">
@@ -137,11 +149,11 @@
                         vuoto con la proprietà <code class="att">clear</code> impostata su <code>both</code>
                         e dev'essere un <code>table</code> per creare un nuovo blocco di formattazione.
                     </p>
-                    <p class="eg clearfix"><br>
+                    <p class="eg clearfix" style="float: left; margin-right: 2rem;"><br>
                         <span class="bubble" style="float: left;"></span>
                         Qui il clearfix fa quadrare il float
-
                     </p>
+                    <rp id="cssCodeClearfix"></rp>
                 </div>
             </article>
         </main>

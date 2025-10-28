@@ -11,6 +11,7 @@
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="../source/navstyle.css" type="text/css" />
         <script src="../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../source/Crocco.png" type="image/x-icon" class="htmlCodeFav" />
         <script src="snippets.js"></script>
         <script src="../source/highlight.js"></script>
 
@@ -111,6 +112,18 @@
                         <h3>&lt;h1-h6&gt;</h3>
                         <p>Questi tag sono usati in ordine crescente per racchiudere i titoli della pagina; solitamente
                             <code class="tag">h1</code> è usato solo 1 volta come titolo principale della pagina.
+                        </p>
+                    </section>
+                    <section>
+                        <h3>&lt;p&gt;</h3>
+                        <p>Questo tag è usato per racchiudere un paragrafo.</p>
+                        <p class="notabene" style="width: calc(60% - 1rem);">questo tag, ma anche <code class="tag">h*</code>, ha delle restrizioni rispetto agli altri elementi <code>block</code>:
+                        non può contenere elementi come <code class="tag">div</code>, <code class="tag">ul</code>, <code class="tag">form</code>
+                        o <code class="tag">table</code> e altri, ma può contenere elementi <code>inline</code>; questa è una limitazione imposta dal linguaggio html
+                        per evidenziare la natura di contenitori testuali (non strutturali) di questi elementi</p>
+                        <p class="osservazione" style="clear: both;">anche se non possono contenere alcuni elementi, non c'è
+                            divieto di inserire uno <code class="tag">span</code> e impostarlo come <code>block</code>
+                            per aggirare il problema
                         </p>
                     </section>
                     <section>

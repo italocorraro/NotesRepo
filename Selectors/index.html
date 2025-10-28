@@ -16,11 +16,52 @@
         <script src="../source/highlight.js"></script>
 
         <style>
-            #pseudo li > code:first-child {
+            .pseudo li > :is(code:first-child, span.linear:first-child) {
                 font-weight: bold;
             }
-            p > pre + input:focus { background-color: yellow; }
+            p > pre + input:focus:not([placeholder]) { background-color: yellow; }
             p > pre + button:active { background-color: red; }
+            #stylelist::marker { color: aqua; font-size: 130%; }
+            #highLme::selection { 
+                background-color: wheat; 
+                color: brown;
+            }
+            #moyapopovah::backdrop {
+                background-color: rgba(127, 255, 212, 0.308);
+                backdrop-filter: blur(0.2rem);
+            }
+            #placeH::placeholder {
+                color: aquamarine;
+                font-family: cursive;
+            }
+            .vertable td:nth-child(2) {
+                font-family: monospace;
+            }
+            #griddedless {
+                display: grid;
+                grid-template-columns: 60% auto;
+                gap: 1rem;
+                max-width: 100%;
+                & :last-child {
+                    grid-area: 2 / 1 / span 1 / span 2;
+                }
+            }
+            
+            @media only screen and (max-width:900px) {
+                #griddedless {
+                    grid-template-columns: auto;
+                    & :last-child {
+                        grid-area: 3 / 1 / span 1 / span 1;
+                    }
+                }
+            }
+            div div:is(.class-1,.class-2) {
+                color: blue;
+            }
+            div.class-1, .container div.class-2 {
+                color: aqua;
+            }
+            
         </style>
     </head>
 
@@ -44,7 +85,7 @@
         <main>
             <article>
                 <h2>Selettori Fondamentali</h2>
-                <div>
+                <div class="pseudo">
                     <p>I selettori fondamentali sono 4:</p>
                     <ul>
                         <li>selettore per <code class="sel">elemento</code>, seleziona in base all'elemento:<p>
@@ -93,17 +134,17 @@
 
             <article>
                 <h2>Combinatori di Selettori</h2>
-                <div>
+                <div class="pseudo">
                     <p>I combinatori sono usati per selezionare elementi in base alla loro relazione con altri</p>
                     <article>
                         <h3>Combinatore di Discendenza (' ')</h2>
                         <p><code> </code> <i>(singolo spazio)</i> seleziona tutti i discendenti di un elemento:</p>
-                        <ul><li><code class="sel">p div</code> seleziona tutti i &lt;div&gt; all'interno degli elementi &lt;p&gt;</li></ul>
+                        <ul><li><code class="sel">div p</code> seleziona tutti i &lt;p&gt; all'interno degli elementi &lt;div&gt;</li></ul>
                     </article>
                     <article>
                         <h3>Combinatore Figlio ('&gt;')</h2>
                         <p><code>&gt;</code> seleziona solo i discendenti DIRETTI di un elemento:</p>
-                        <ul><li><rt id="cssCodeChild"></rt> seleziona tutti i &lt;div&gt; che discendono DIRETTAMENTE degli elementi &lt;p&gt;
+                        <ul><li><rt id="cssCodeChild"></rt> seleziona tutti i &lt;p&gt; che discendono DIRETTAMENTE degli elementi &lt;div&gt;
                         (solo figli, niente nipoti)</li></ul>
                     </article>
                     <article>
@@ -125,7 +166,7 @@
 
             <article>
                 <h2>Selettori di Pseudo-Classi</h2>
-                <div id="pseudo">
+                <div class="pseudo">
                     <p>Le pseudo-classi sono stati speciali in cui si trova un elemento.</p>
                     <article>
                         <h3>Pseudo-Classi di Interazione</h3>
@@ -204,8 +245,11 @@
                                     Per selezionare i <code class="tag">form</code>
                                     con <code class="tag">input</code> non validi<rp id="cssCodeHas1"></rp>
                                     Per selezionare le <code class="tag">label</code> che
-                                    precedono un <code class="tag">input</code><rp id="cssCodeHas2"></rp>
+                                    precedono direttamente un <code class="tag">input</code><rp id="cssCodeHas2"></rp>
                                 </p>
+                                <p class="nota">l'ultimo esempio è un metodo per cercare <i>all'indietro</i>
+                                    tra i fratelli</p>
+                                <p class="osservazione"><code class="sel">:has()</code> permette di selezionare genitori e fratelli maggiori di un elemento</p>
                             </li>
                             <li><code class="sel">:not()</code> seleziona l'elemento SE NON
                             è rappresentato dal suo argomento
@@ -234,23 +278,125 @@
 
             <article>
                 <h2>Selettori di Pseudo-Elementi</h2>
-                <div>
-                    <p>Gli pseudo-elementi indicano una specifica parte di un elemento.</p>
+                <div class="pseudo">
+                    <p>Gli pseudo-elementi indicano una specifica parte di un elemento e sono preceduti da <code>::</code>.</p>
+                    <ul>
+                        <li><code class="sel">::first-line</code> seleziona la prima riga di un elemento <code>block</code></li>
+                        <li><code class="sel">::firt-letter</code> seleziona la prima lettera di un elemento <code>block</code></li>
+                        <li><code class="sel">::before</code> inserisce qualcosa all'inizio dell'elemento
+                            <p class="eg"><br><rp id="cssCodePseudo1"></rp>Serve a creare la stringa <i>Esempio:</i> nei riquadri di esempio</p>
+                        </li>
+                        <li><code class="sel">::after</code> inserisce qualcosa alla fine dell'elemento
+                            <p class="eg"><br><rp id="cssCodePseudo2"></rp>Serve ad inserire <code>&lt;</code> al lato destro dei titoli</p>
+                        </li>
+                        <li id="stylelist"><code class="sel">::marker</code> seleziona l'icona di una lista html (<code class="tag">ul</code>, <code class="tag">ol</code>, <code class="tag">dl</code>)
+                            <p class="eg"><br><rp id="cssCodePseudo3"></rp>Modifica il simbolo della lista (in questo caso colore e dimensione)</p>
+                        </li>
+                        <li><code class="sel">::selection</code> seleziona il testo messo in evidenza dall'user
+                            <p class="eg"><br><rp id="cssCodePseudo4"></rp>
+                            <span id="highLme">Mettimi in evidenza</span></p>
+                        </li>
+                        <li><code class="sel">::backdrop</code> seleziona lo spazio dietro un elemento <code class="tag">dialog</code>
+                        o un elemento con attributo <code class="att">popover</code>
+                            <p class="eg"><br>
+                            <button type="button" popovertarget="moyapopovah" 
+                                style="background-color: bisque; border: 0.4rem solid yellowgreen; cursor: pointer;font-size: 140%;">Apri Pop</button>
+                            </p>
+                            <div id="moyapopovah" popover style="border: none; background-color: transparent;"><rp id="cssCodePseudo5"></rp></div>
+                        </li>
+                        <li><code class="sel">::placeholder</code> seleziona il testo riportato dal placeholder di un input testuale
+                            <p class="eg"><br><rp id="cssCodePseudo6"></rp>
+                            <input id="placeH" type="text" placeholder="Inserire testo..."/></p>
+                        </li>
+                    </ul>
                 </div>
             </article>
 
             <article>
                 <h2>Selettori di Attributo</h2>
-                <div>
-                    <p>Coming soon</p>
+                <div class="pseudo">
+                    <p>I selettori di attributo possono selezionare elementi in base all'attributo e al suo valore;
+                        questo selettore è racchiuso tra perentesi quadre:
+                    </p>
+                    <ul>
+                        <li><code class="sel">[<i>attribute</i>]</code> seleziona gli elementi con un certo attributo 
+                        <p class="eg"><rp id="cssCodeAtt1"></rp>Seleziona tutti gli elementi <code class="tag">a</code>
+                        con attrbuto <code class="att">target</code>, indifferentemente dal valore</p></li>
+                        <li><code class="sel">[<i>attribute</i>=<code class="string">"<i>value</i>"</code>]</code> (<b>corrispondenza esatta</b>) seleziona
+                            gli elementi che hanno un attributo specifico con un certo valore 
+                        <p class="eg"><rp id="cssCodeAtt2"></rp>Seleziona tutti gli elementi <code class="tag">div</code>
+                        che hanno attributo <code class="att">data-custom-id</code> con valore <code class="string">0061</code></p>
+                        </li>
+                        <li><code class="sel">[<i>attribute</i>~=<code class="string">"<i>value</i>"</code>]</code> (<b>corrispondenza parola intera in un elenco separato da spazi</b>) seleziona 
+                        gli elementi il cui attributo indicato ha un valore che contiene la stringa esatta passata per valore (separata dalle altre con degli spazi)
+                            <p class="eg"><br><s id="htmlCode1"></s><rp id="cssCodeAtt3"></rp>
+                                Seleziona gli elementi il cui attributo <code class="att">data-garden-items</code> contiene la parola esatta <code class="string">margherite</code>, anche tra più parole separate da spazi</p>
+                            <p class="notabene">la stringa passata per valore deve essere riportata per intero (ad esempio <code class="string">"mar"</code> 
+                                non selezionerebbe l'elemento dell'esempio precedente) e separata da spazi nel valore
+                                dell'attributo per essere selezionata, ma in quale posizione nel valore non conta
+                            </p>
+                            <p class="osservazione">si può usare questo selettore, in combinazione con l'attributo <code class="att">data-*</code>,
+                            per depositare keyword e cercare gli elementi che le hanno</p>
+                        </li>
+                        <li><code class="sel">[<i>attribute</i>|=<code class="string">"<i>value</i>"</code>]</code> (<b>corrispondenza esatta o a inizio stringa seguito da '-'</b>) seleziona
+                        tutti gli elementi il cui attributo indicato ha per valore esattamente la parola indicata, oppure inizia con la parola succeduta da un trattino (-)</li>
+                        <li><code class="sel">[<i>attribute</i>^=<code class="string">"<i>value</i>"</code>]</code> (<b>corrispondenza a inizio stringa</b>) seleziona l'elemento se ha l'attributo
+                        indicato iniziante per la parola passata per valore</li>
+                        <li><code class="sel">[<i>attribute</i>$=<code class="string">"<i>value</i>"</code>]</code> (<b>corrispondenza a fine stringa</b>) seleziona l'elemento se ha l'attributo 
+                        indicato che finisce con la parola passata per valore</li>
+                        <li><code class="sel">[<i>attribute</i>*=<code class="string">"<i>value</i>"</code>]</code> (<b>corrispondenza generica in una stringa generica</b>) seleziona
+                        tutti gli elementi che hanno l'attributo indicato con un valore che contiene la parola indicata, senza nessuna particolare
+                        restrizione sulla posizione all'interno della stringa o necessità di separatori</li>
+                    </ul>
                 </div>
             </article>
 
             <article>
                 <h2>Gerarchie dei Selettori</h2>
-                <div>
-                    <p>Coming soon</p>
-                </div>
+                <div class="clearfix">
+                    <p>Il peso che hanno nella scelta finale dello stile di un elemento dipende dal selettore:</p>
+                    <div id="griddedless">
+                    <table class="vertable">
+                        <tr>
+                            <th>Selettore</th>
+                            <th>Peso</th>
+                        </tr>
+                        <tr>
+                            <td>Stili inline</td>
+                            <td>0-1-0-0-0</td>
+                        </tr>
+                        <tr>
+                            <td>Selettori id</td>
+                            <td>0-0-1-0-0</td>
+                        </tr>
+                        <tr>
+                            <td>Selettori di classi, attributi e pseudo-classi</td>
+                            <td>0-0-0-1-0</td>
+                        </tr>
+                        <tr>
+                            <td>Elementi e pseudo-elementi</td>
+                            <td>0-0-0-0-1</td>
+                        </tr>
+                        <tr>
+                            <td>Selettori universali</td>
+                            <td>0-0-0-0-0</td>
+                        </tr>
+                    </table>
+                    <p class="eg" ><br>
+                        <rp id="cssCodeSpec1"></rp> ha specificità <code>0-0-2</code><br>
+                        <rp id="cssCodeSpec2"></rp> ha specificità <code>0-1-1</code> e quindi vince sul precedente</p>
+                    <p class="nota" ><br>
+                        <rp id="cssCodeSpec3"></rp> ha specificità <code>0-1-1</code> (sono due selettori con la stessa specificità)<br>
+                        <rp id="cssCodeSpec4"></rp> ha specificità <code>0-1-1</code>, cioè la stessa, 
+                        infatti gli pseudo-elementi funzione tipo <code class="sel">:is()</code> non aggiungono specificità, ma 
+                        i loro argomenti sì; questi due esempi con la stessa specificità sono scritture equivalenti, <br>al contrario, in
+                        <rp id="cssCodeSpec5"></rp>il primo selettore ha <code>0-1-1</code>, mentre il secondo <code>0-2-1</code>
+                        <rp id="cssCodeSpec6"></rp>ha per entrambi i selettori <code>0-1-2</code>, quindi 
+                        se la struttura fosse questa 
+                        <s id="htmlCode2"></s>
+                        allora l'<kbd style="color: blue;">1</kbd> risulterebbe blu, mentre il <kbd style="color: red;">2</kbd> rosso
+                    </p>
+                </div></div>
             </article>
 
             <article>
