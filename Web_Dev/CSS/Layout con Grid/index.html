@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Layout con Grid</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script src="../../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sul layout con grid in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Layout con Grid" />
+        <meta property="og:description" content="Appunti e note sul layout con grid in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Layout con Grid" />
+        <meta name="twitter:description" content="Appunti e note sul layout con grid in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeDisp: `display: grid;`,
+                    cssCodeGriglia: 
+`.griglia {
+    display: grid;
+    grid-template: 
+    /* righe / colonne */
+        auto / repeat(4, auto);
+    padding: 1em;
+    background-color: brown;
+    gap: 1em;                
+}`,
+                    cssCodeRow: `grid-template-row: 20px 30% auto;
+grid-template-column: 1fr 1fr 1fr;`,
+                    cssCodeTemplate: `grid-template: 20px 30% auto / 1fr 1fr 1fr`,
+                    cssCodeEg1: 
+`.griglia {
+    display: grid;
+    padding: 1em;
+    background-color: brown;             
+}
+.griglia > span {
+    display: block;
+    background-color: burlywood;
+    border: 0.2em solid rgb(184, 141, 85);
+    border-radius: 0.1em;
+    text-align: center;
+    align-content: center;
+}`,
+                    cssCodeEg2:
+`.griglia {
+    display: grid;
+    grid-template: auto / 20% 2fr 1fr 1fr;
+    padding: 1em;
+    background-color: brown;
+    gap: 1em; 
+}`,
+                    cssCodeEg3:
+`.griglia.auto-rows {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(50px,auto);
+    padding: 1em;
+    background-color: brown;
+    gap: 1em;   
+}`,
+                    cssCodeEg4:
+`.griglia.colodinamic {
+    display: grid;
+    grid-template-columns: 
+        repeat(auto-fit, minmax(80px,1fr));
+    grid-auto-rows: minmax(50px,auto);
+    padding: 0.5em;
+    background-color: brown;
+    gap: 0.5em; 
+}`,
+                    cssCodeDisorder:
+`[data-item="1"] {
+  grid-column: 2 / 4;
+  grid-row: 2 / 5;
+}
+[data-item="2"] {
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+[data-item="3"] {
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+}
+[data-item="4"] {
+  grid-column: 1 / 2;
+  grid-row: 4 / 6;
+}
+[data-item="5"] {
+  grid-column: 2 / 4;
+  grid-row: 5 / 6;
+}`,
+                    cssCodeDisorder2:
+`[data-item="1"] {
+  grid-area: 2 / 2 / span 3 / span 2;
+}
+[data-item="2"] {
+  grid-area: 1 / 1 / span 1 / span 3;
+}
+[data-item="3"] {
+  grid-area: 2 / 1 / span 2 / span 1;
+}
+[data-item="4"] {
+  grid-area: 4 / 1 / span 2 / span 1;
+}
+[data-item="5"] {
+  grid-area: 5 / 2 / span 1 / span 2;
+}`,
+                    cssCodeGTA1: `grid-template-columns: repeat(3, 1fr);`,
+                    cssCodeGTA2: `grid-auto-rows: minmax(100px, auto);`,
+                    cssCodeGTA3: 
+`grid-template-areas:
+    'header header header'
+    'side main main'
+    'footer footer footer';`,
+                    cssCodeGTA4:
+`.semantica [data-item="1"] {
+  grid-area: header;
+}
+.semantica [data-item="2"] {
+  grid-area: side;
+}
+.semantica [data-item="3"] {
+  grid-area: main;
+}
+.semantica [data-item="4"] {
+  grid-area: footer;
+}`,
+                    cssCodeGTA5:
+`grid-template-areas:
+    'header header . '
+    'side main main'
+    ' . footer footer';`,
+                    cssCodeGTA6:
+`@media only screen and (max-width:600px) {
+    .griglia {
+        grid-template-areas:
+            'header header header '
+            'main main main'
+            'side side side'
+            'footer footer footer';
+    }
+}`,
+                    cssCodeGTA7:
+`@media only screen and (max-width:600px) {
+    .griglia {
+        grid-template-columns: repeat(2,1fr);
+        grid-template-areas:
+            'header header'
+            'main main'
+            'side side'
+            'footer footer';
+    }
+}`
+                }
+            }
+        </script>
+        <style>
+            p.eg {width: 100%;}
+            .griglia.monocol {
+                display: grid;
+                padding: 1em;
+                background-color: brown;             
+            }
+            .griglia.quadricol {
+                display: grid;
+                grid-template: auto / repeat(4, auto);
+                padding: 1em;
+                background-color: brown;
+                gap: 1em;                
+            }
+            .griglia.fracture {
+                display: grid;
+                grid-template: auto / 20% 2fr 1fr 1fr;
+                padding: 1em;
+                background-color: brown;
+                gap: 1em; 
+            }
+            .griglia.auto-rows {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: minmax(50px,auto);
+                padding: 1em;
+                background-color: brown;
+                gap: 1em;   
+            }
+            .griglia.colodinamic {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(80px,1fr));
+                grid-auto-rows: minmax(50px,auto);
+                padding: 0.5em;
+                background-color: brown;
+                gap: 0.5em; 
+            }
+            .griglia.allineafun {
+                display: grid;
+                grid-template-columns: repeat(3,auto);
+                grid-template-rows: repeat(2, auto);
+                padding: 0.5em;
+                background-color: brown;
+                gap: 0.5em; 
+                min-height: 20em;
+                height: 20em;
+                max-height: 20em;
+                align-content: unset;
+                justify-content: unset;
+            }
+            .griglia.allineafun2 {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(80px,1fr));
+                grid-auto-rows: minmax(50px,auto);
+                padding: 0.5em;
+                background-color: brown;
+                gap: 0.5em; 
+                min-height: 30em;
+                height: 30em;
+                max-height: 30em;
+            }
+            .griglia > span {
+                display: block;
+                background-color: #deb887;
+                border: 0.2em solid rgb(184, 141, 85);
+                border-radius: 0.1em;
+                text-align: center;
+                align-content: center;
+                &[data-item]::before {
+                    content: attr(data-item);
+                    font-size: clamp(10px,2em,64px);
+                    font-weight: bold;
+                }
+            }
+            .disordinata [data-item="1"] {
+                grid-column: 2 / 4;
+                grid-row: 2 / 5;
+                text-align: left;
+                &::before {
+                    display: none;
+                }
+            }
+            .disordinata [data-item="2"] {
+                grid-column: 1 / 4;
+                grid-row: 1 / 2;
+            }
+            .disordinata [data-item="3"] {
+                grid-column: 1 / 2;
+                grid-row: 2 / 4;
+            }
+            .disordinata [data-item="4"] {
+                grid-column: 1 / 2;
+                grid-row: 4 / 6;
+            }
+            .disordinata [data-item="5"] {
+                grid-column: 2 / 4;
+                grid-row: 5 / 6;
+            }
+            .disordinata2 [data-item="1"] {
+                grid-area: 2 / 2 / span 3 / span 2;
+                text-align: left;
+                &::before {
+                    display: none;
+                }
+            }
+            .disordinata2 [data-item="2"] {
+                grid-area: 1 / 1 / span 1 / span 3;
+               
+            }
+            .disordinata2 [data-item="3"] {
+                grid-area: 2 / 1 / span 2 / span 1;
+                
+            }
+            .disordinata2 [data-item="4"] {
+                grid-area: 4 / 1 / span 2 / span 1;
+                
+            }
+            .disordinata2 [data-item="5"] {
+                grid-area: 5 / 2 / span 1 / span 2;
+                
+            }
+
+            .griglia.semantica {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-rows: minmax(100px, auto);
+                grid-template-areas:
+                    'header header header'
+                    'side main main'
+                    'footer footer footer';
+            }
+            .semantica span[data-item="1"] {
+                grid-area: header;
+                &::before {
+                    content: '1: header';
+                }
+            }
+            .semantica span[data-item="2"] {
+                grid-area: side;
+                &::before {
+                    content: '2: side';
+                }
+            }
+            .semantica span[data-item="3"] {
+                grid-area: main;
+                text-align: left;
+                align-content: start;
+                &::before {
+                    content: '3: main';
+                    display: block;
+                    width: fit-content;
+                    margin: auto;
+                }
+            }
+            .semantica span[data-item="4"] {
+                grid-area: footer;
+                &::before {
+                    content: '4: footer'
+                }
+            }
+            .semantica.spazio-vuoto {
+                grid-template-areas:
+                    'header header . '
+                    'side main main'
+                    ' . footer footer';
+            }
+            .semantica.colonna {
+                grid-template-columns: repeat(2,1fr);
+                grid-template-areas:
+                    'header header'
+                    'main main'
+                    'side side'
+                    'footer footer';
+            }
+            #card-1 {
+                cursor: pointer;
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                grid-template-areas: 'image image testo testo';
+                grid-template-rows: auto;
+                grid-auto-flow: unset;
+                border-radius: 0.5em;
+                border: 0.3em solid brown;
+                background-color: papayawhip;
+                transition: 0.2s;
+                gap: 1rem;
+                padding-right: 1rem;
+            }
+            #card-1.flipped {
+                transform: rotate(360deg);
+                grid-template-areas: 'testo image . .';
+                padding-left: 1rem;
+            }
+
+            #card-1 img:first-child {
+                grid-area: image;
+            }
+            #card-1 img:not(:first-child) {
+                grid-area: image;
+                display: none;
+            }
+            #card-1 span {
+                grid-area: testo;
+            }
+            #card-1 span:last-child {
+                grid-area: testo;
+                display: none;
+            }
+
+            #card-1.flipped img:first-child {
+                display: none;
+            }
+            #card-1.flipped img:not(:first-child) {
+                display: block;
+            }
+            #card-1.flipped span {
+                display: none;
+            }
+            #card-1.flipped span:last-child {
+                display: block;
+            }
+
+            
+        </style>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sul layout grid in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento del layout realizzato in CSS tramite grid.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>
+                        Grid permette di disporre gli elementi su una griglia bidimensionale,
+                        stabilendo sia colonne che righe.<br>
+                        Per utilizzare la griglia bisogna impostare il contenitore con
+                        <rt id="cssCodeDisp"></rt><br>
+                        L'utilizzo dei media queries per modificare 
+                        la disposizione degli oggetti nella griglia
+                        permette di creare design responsivi e adattabili.
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <!-- Argomento Container della Griglia -->
+            <article>
+                <h2>Il Container Griglia</h2>
+                <div>
+                    <p>Di default, il container <code class="string">grid</code> ha 1 colonna di dimensioni 100%
+                    e porta tutti i suoi oggetti allo stesso default (l'altezza è determinata dal contenuto)</p>
+                    <p class="eg"><br>
+                        <rp id="cssCodeEg1"></rp><span class="griglia monocol" data-item-no="7"></span></p>
+                    <section class="clearfix">
+                        <h3>Il gap</h3>
+                        
+                            <img src="../../source/grid-structure.png" alt="gap nelle griglie" style="max-width: 50%; float: right; margin-left: 1rem;"/>
+                            
+                        <p>Lo spazio tra righe e colonne è comunemente detto <i>gap</i> o <i>gutter</i>; 
+                        la proprietà <code class="att">gap</code> (divisa ordinatamente in 
+                        <code class="att">row-gap</code> e <code class="att">column-gap</code>, ma se viene passato un solo valore
+                        lo applica ad entrambi) regola questa caratteristica nella griglia
+                        
+                    </p>
+                    </section>
+                    <section>
+                        <h3>Dimensionamento Esplicito della Griglia</h3>
+                        <p>Il dimensionamento della griglia è fatto tramite la proprietà 
+                            <code class="att">grid-template</code> che si divide in 
+                            <code class="att">grid-template-column</code> e <code class="att">grid-template-row</code>;
+                        </p>
+                        <p>
+                            entrambe queste due sotto-proprietà permettono di stabilire il numero e la dimensione 
+                            delle colonne/righe:
+                        </p>
+                        <p class="eg">
+                            <span class="htmlCodeGriglia griglia quadricol" data-item-no="6"></span>
+                            <span style="display: flex; gap: 1rem; flex-wrap: wrap;"><rp id="cssCodeGriglia"></rp>
+                            <span style="width: auto;">La griglia si estende automaticamente nello spazio disponibile; analogamente
+                            fanno i suoi figli se non hanno dimensioni già specificate</span>
+                            <s id="htmlCodeGriglia"></s></span>
+                        </p>
+                        <p>I valori sono separati da spazi; ogni valore genera una colonna/riga
+                            e può essere di una unità di misura diversa;
+                        </p>
+                        <p>
+                            <rp id="cssCodeTemplate"></rp> è equivalente a 
+                            <rp id="cssCodeRow"></rp>
+                        </p>
+                        <p class="osservazione">gli oggetti (di default) si sono disposti nella griglia occupando 
+                            una singola cella a testa da sinistra verso destra e dall'alto verso il 
+                            basso seguendo l'ordine che hanno nel documento
+                        </p>
+                        <p class="nota">l'unità di misura <code>fr</code> indica
+                        una frazione; lo spazio disponibile viene diviso in frazioni uguali, ma da 
+                        notare che con <i>spazio disponibile</i> non si intende tutto lo spazio,
+                        bensì lo spazio non assegnato rimanente</p>
+                        <p class="eg"><br>
+                            <rp id="cssCodeEg2"></rp>
+                            <span class="griglia fracture" data-item-no="4"></span>
+                            Vediamo che la prima colonna occupa il 20% dello spazio della griglia (non quello
+                            disponibile, ma esattamente il 20%), mentre le colonne con larghezza <code class="num">1</code><code>fr</code>
+                            dovrebbero anche loro idealmente occupare il 20% perché a prima vista sembrerebbe una grigli con divisione
+                            in 5 colonne uguali, MA quello che l'unità <code>fr</code> considera per la sua divisione è
+                            lo spazio disponibile, non quello totale, al quale vanno tolti non solo il 20% adibito alla prima colonna, 
+                            ma anche lo spazio occupato dal <code class="att">gap</code>, per cui <code>fr</code><kbd>&ne;20%</kbd>
+                        </p>
+                        <p class="nota">la funzione <code class="func">repeat</code><code>(</code><code class="num"><i>number</i></code><code>, <i>value</i>)</code> si può usare 
+                        per ripetere un certo numero di volte una dimensione</p>
+                        <p class="nota">la funzione <code class="func">minmax</code><code>(</code><code class="num"><i>min-value</i></code><code>, <code class="num"><i>max-value</i></code>)</code> prende due valori, il primo 
+                        indica il valore minimo e il secondo il massimo; si può usare per definire
+                        gli estremi per le misure</p>
+                    </section>
+                    <section>
+                        <h3>Dimensionamento Implicito della Griglia</h3>
+                        <p>Le dimensioni implicite espandono il layout esplicito quando il contenuto supera
+                            i limiti della griglia;
+                        </p>
+                        <p>di default, righe e colonne create implicitamente hanno dimensioni <code>auto</code></p>
+                        <p>Per dimensionare le righe e colonne generate implicitamente si usano le proprietà 
+                            <code class="att">grid-auto-rows</code> e <code class="att">grid-auto-columns</code>.
+                        </p>
+                        <p class="eg"><br>
+                            <rp id="cssCodeEg3"></rp>
+                            <span class="griglia auto-rows range-edit" data-item-no="4" id="edit-grid-1">
+                                <span>Tanto testo testo testo</span>
+                                <span></span>
+                                <span>Poco</span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                            <input type="range" min="70" max="100" value="100" style="width: 100%;"/><br>
+                            Possiamo osservare come ciascun oggetto della griglia abbia altezza della riga minima a 50px,
+                            ma questa si adatta al contenuto, infatti stringendo la griglia la seconda riga diventa più alta per 
+                            far entrare il testo, mentre la terza riga, che ha solo 1 elemento vuoto, rispetta comunque le proporzioni minime
+                            della riga aggiunta implicitamente<br>
+                            Possiamo anche osservare cosa accadrebbe rimuovendo il minimo e settando direttamente su auto:<br>
+                            <button type="button" onclick="document.getElementById('edit-grid-1').style.gridAutoRows = 'auto';">
+                                Forza ad <code>auto</code> la proprietà <br><code class="att">grid-auto-rows</code>
+                            </button><br>
+                            La cosa più evidente che possiamo osservare è che la terza riga ora non ha più un minimo di altezza
+                            <br><button type="button" onclick="document.getElementById('edit-grid-1').style.gridAutoRows = '70px';">
+                                Forza a <code class="num">70px</code> la proprietà <br><code class="att">grid-auto-rows</code>
+                            </button><br>
+                            In questo caso invece il contenuto della seconda riga sfora
+                            <br><button type="button" onclick="document.getElementById('edit-grid-1').style.gridAutoRows = 'minmax(50px,auto)';">
+                                Forza al valore iniziale la proprietà <br><code class="att">grid-auto-rows</code>
+                            </button><br>
+                            Concludiamo che la funzione <code class="func">minmax</code><code>(</code><code class="num">50px</code><code>, auto)</code>
+                            fornisce un'ottima soluzione per mantenere flessibile l'altezza della riga
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Incolonnamento Automatico</h3>
+                        <p>Possiamo anche generare una griglia che decida da sola il numero di colonne 
+                            necessario al suo contenuto grazie alla keyword <i><code>auto-fit</code></i>;
+                            possiamo inoltre combinare le funzioni <code class="func">minmax</code><code>()</code>
+                            e <code class="func">repeat</code><code>()</code> per ottenere dinamicamente il numero di
+                            colonne che ci serve e della dimensione giusta:
+                        </p>
+                        <ul>
+                            <li><b><code>auto-fit</code></b> viene dato come primo argomento a <code class="func">repeat</code><code>()</code>
+                                e ha senso solo se l'elemento ha una larghezza massima (per noi 100%), quindi genera 
+                                un numero intero di righe/colonne il più grande possibile che non faccia fuoriuscire i 
+                                contenuti delle celle (se fuoriescono a prescindere, allora il numero è 1);
+                            </li>
+                            <li style="list-style-type: none;">una volta generate le righe/colonne secondo la regola, quelle vuote vengono collassate a 
+                                <code class="num">0px</code> a prescindere di quale sarebbe dovuta essere la loro dimensione
+                                e rimuove i <code class="att">gap</code> tra queste celle collassate
+                            </li>
+                        </ul>
+                            <p class="eg"><br>
+                                <rp id="cssCodeEg4"></rp>
+                                <span class="griglia colodinamic range-edit" data-item-no="6">
+                                    <span>Tanto più testo di te, ma proprio tanto tanto e tanto e tanto tanto</span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span style="max-width: 80px; max-height: 50px; background-color: wheat;"></span>
+                                    <span>la cella prima di questa è un riferimento statico di <code>80px&times;50px</code></span>
+                                </span>
+                                <input type="range" min="40" max="100" value="100" style="width: 100%;"/><br>
+                                Modificando la larghezza della griglia possiamo osservare che le colonne si riarrangiano 
+                                automaticamente per non scendere sotto gli <code class="num">80px</code> di larghezza;<br>
+                                <span style="display:inline-block; padding-top: 0.5rem;">questo è particolarmente più conveniente di vederle restringere all'infinito o dover impostare 
+                                delle media queries per le diverse larghezze</span>
+                            </p>
+                    </section>
+                    <section>
+                        <h3>Allineamento Righe e Colonne nella Griglia</h3>
+                        <p>Se le celle della griglia non occupano tutto lo spazio disponibile,
+                            allora è possibile controllare l'allineamento all'interno dello spazio vuoto
+                        </p>
+                        <p class="nota">lo spazio dei <code class="att">gap</code> e del padding del container 
+                        è da considerarsi "occupato" in quanto le celle non lo possono occupare</p>
+                        <p>Le proprietà <code class="att">justify-content</code> e <code class="att">align-content</code>
+                        servono ad allineare rispettivamente le colonne e le righe
+                        (orizzontalmente e verticalmente)</p>
+                        <p class="eg"><br>
+                            La griglia seguente è composta di due righe e tre colonne tutte con dimensioni <code>auto</code>
+                        <span class="griglia allineafun">
+                            <span style="min-width: 6em;width: 6em; height: 4em;"></span>
+                            <span style="min-width: 5em;width: 5em; height: 7em;"></span>
+                            <span style="min-width: 4em;width: 4em; height: 3em;"></span>
+                            <span style="min-width: 4em;width: 4em; height: 3em;"></span>
+                            <span style="min-width: 4em;width: 4em; height: 4em;"></span>
+                            <span style="min-width: 5em;width: 5em; height: 5em;"></span>
+                        </span></p>
+                        <form class="eg-extend" id="allineafun">
+                            <fieldset>
+                                <legend>Proprietà di allineamento:</legend>
+                                <label for="justify-content"><code class="att">justify-content</code><code>:</code></label>
+                                <select name="justifyContent" id="justify-content">
+                                    <option value="unset">unset</option>
+                                    <option value="start">start</option>
+                                    <option value="center">center</option>
+                                    <option value="end">end</option>
+                                    <option value="space-evenly">space-evenly</option>
+                                    <option value="space-evenly">space-around</option>
+                                    <option value="space-evenly">space-between</option>
+                                </select><br>
+                                <label for="align-content"><code class="att">align-content</code><code>:</code></label>
+                                <select name="alignContent" id="align-content">
+                                    <option value="unset">unset</option>
+                                    <option value="start">start</option>
+                                    <option value="center">center</option>
+                                    <option value="end">end</option>
+                                    <option value="space-evenly">space-evenly</option>
+                                    <option value="space-evenly">space-around</option>
+                                    <option value="space-evenly">space-between</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                        <p class="notabene">questo tipo di allineamento è esclusivamente per le colonne e le righe 
+                            <b>definite esplicitamente</b> e non funzionerà su quelle generate implicitamente
+                        </p>
+                        <p class="nota">la proprietà <code class="att">place-content</code> riassume
+                        ordinatamente <code class="att">aling-content</code> e <code class="att">justify-content</code></p>
+                    </section>
+                    <section>
+                        <h3>Allineamento Oggetti nella Griglia</h3>
+                        <p>Gli oggetti possono essere allineati nella loro cella grazie alle proprietà 
+                            <code class="att">justify-items</code> e <code class="att">align-items</code>
+                        </p>
+                        <p class="eg" ><br>
+                            La griglia seguente è generata automaticamente tramite l'incolonnamento automatico;
+                            gli elementi numerati hanno dimensioni stabilite dalla griglia, quelli vuoti hanno dimensioni fisse
+                        <span class="griglia allineafun2 range-edit" data-item-no="3">
+                            <span style="min-width: 4em;width: 4em; height: 4em;"></span>
+                            <span style="min-width: 5em;width: 5em; height: 7em;"></span>
+                            <span style="min-width: 4em;width: 4em; height: 3em;"></span>
+                            <span style="min-width: 4em;width: 4em; height: 3em;"></span>
+                            <span style="min-width: 4em;width: 4em; height: 4em;"></span>
+                            <span style="min-width: 5em;width: 5em; height: 5em;"></span>
+                        </span>
+                        <input type="range" min="60" max="100" value="100" style="width: 100%;" />
+                        </p>
+                        <form class="eg-extend" id="allineafun2">
+                            <fieldset>
+                                <legend>Proprietà di allineamento:</legend>
+                                <label for="justify-items"><code class="att">justify-items</code><code>:</code></label>
+                                <select name="justifyItems" id="justify-items">
+                                    <option value="auto">auto</option>
+                                    <option value="normal">normal</option>
+                                    <option value="stretch">stretch</option>
+                                    <option value="start">start</option>
+                                    <option value="left">left</option>
+                                    <option value="center">center</option>
+                                    <option value="end">end</option>
+                                    <option value="right">right</option>
+                                </select> <br><code class="comment">auto è il default</code><br>
+                                <label for="align-items"><code class="att">align-items</code><code>:</code></label>
+                                <select name="alignItems" id="align-items">
+                                    <option value="auto">auto</option>
+                                    <option value="normal">normal</option>
+                                    <option value="stretch">stretch</option>
+                                    <option value="start">start</option>
+                                    <option value="center">center</option>
+                                    <option value="end">end</option>
+                                </select> <br><code class="comment">auto è il default</code>
+                            </fieldset>
+                        </form>
+                        <p class="eg-extend">Osserviamo che gli elementi senza dimensionamento rigido
+                            si adattano meglio alla griglia implicita e modificano le proprie dimensioni 
+                            in base al contenuto 
+                        </p>
+                    </section>
+                </div>
+            </article>
+            <!-- Argomento Oggetti della Griglia -->
+            <article>
+                <h2>Gli Oggetti della Griglia</h2>
+                <div>
+                    <section>
+                        <h3>Posizionamento Oggetti nella Griglia</h3>
+                        <p>Per posizionare un elemento nella griglia facciamo riferimento alle
+                            linee della griglia tramite 4 proprietà:
+                        </p>
+                        <ul>
+                            <li><code class="att">grid-column-start</code></li>
+                            <li><code class="att">grid-column-end</code></li>
+                            <li><code class="att">grid-row-start</code></li>
+                            <li><code class="att">grid-row-end</code></li>
+                        </ul>
+                        <p>Queste proprietà accettano valori interi, seguendo l'ordine delle linee:</p>
+                        <img src="../../source/grid-lines.png" alt="griglia con linee evidenziate" style="width: 100%;"/>
+                        <p>Inoltre abbiamo le abbreviazioni <code class="att">grid-column</code> e <code class="att">grid-row</code>
+                        che riassumono ordinatamente le versioni <code class="att">*-start</code> e <code class="att">*-end</code> 
+                        separando i valori con uno slash <code>/</code></p>
+                        <p class="eg"><br>
+                            Sfruttando il layout auto-generato con l'incolonnamento automatico, possiamo posizionare
+                            gli oggetti e aspettarci che prenderanno automaticamente lo spazio necessario
+                        <span class="griglia colodinamic disordinata" data-item-no="5" id="disorder1"></span>
+                        In questo esempio, l'oggetto 1 funge da <i>main</i> e vi abbiamo messo la trascrizione
+                        del codice CSS usata per disporre gli oggetti
+                        </p>
+                        <p class="nota">si possono riunire le proprietà 
+                            <code class="att">grid-column</code> e <code class="att">grid-row</code>
+                            in <code class="att"><b>grid-area</b></code> che contiene, in ordine
+                        </p>
+                        <ol class="nota-extend">
+                            <li><code class="att">grid-row-start</code></li>
+                            <li><code class="att">grid-column-start</code></li>
+                            <li><code class="att">grid-row-end</code></li>
+                            <li><code class="att">grid-column-end</code></li>
+                        </ol>
+                        <p class="nota">invece di indicare esplicitamente le linee di chiusura/apertura,
+                            può essere più intuitivo usare <code>span</code> per indicare il numero di celle occupate;
+                            l'esempio precedente diventa:
+                            <span class="griglia colodinamic disordinata2" data-item-no="5" id="disorder2"></span>
+                            dove <br> <code class="att"><b>grid-area</b></code><code>: </code><code class="comment" style="font-style: normal;">riga-inizio / colonna-inizio / righe-occupate / colonne-occupate</code></span>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Posizionamento Semantico</h3>
+                        <p>In alternativa al posizionare ciascun oggetto nella griglia
+                            in base alle linee di separazione tra righe e colonne, possiamo dare 
+                            un nome alle celle della griglia e definire delle aree nominali al suo 
+                            interno, in modo da assegnarvi gli oggetti tramite il nome dell'area
+                        </p>
+                        <ul>
+                            <li>Stabiliamo il numero di colonne che vogliamo usare 
+                                <p class="nota">può essere un numero maggiore di quelle che ci servono,
+                                    basta usarle anche solo per divisore
+                                </p>
+                                Creiamo 3 colonne uguali: <rp id="cssCodeGTA1"></rp>
+                            </li>
+                            <li>Stabiliamo il numero di righe
+                                <p class="nota">possiamo sempre usare delle righe generate 
+                                    implicitamente con altezza minima e adattabili
+                                </p>
+                                Righe con <code class="num">100px</code> minimo di altezza:
+                                <rp id="cssCodeGTA2"></rp>
+                            </li>
+                            <li>Diamo un nome alle celle e usiamo gli omonimi per stabilire le aree (ogni riga è definita da una stringa)
+                                <p class="osservazione">dare a due o più celle contigue lo stesso nome 
+                                    equivale ad unirle (come si fa' in Excel)
+                                </p>
+                                Chiamiamo <i>header</i> la prima riga e <i>footer</i> l'ultima, poi
+                                dividiamo la parte di mezzo dando un terzo di larghezza al <i>side</i>
+                                e il resto al <i>main</i>:
+                                <rp id="cssCodeGTA3"></rp>
+                            </li>
+                        </ul>
+                        <p>La griglia che otteniamo è la seguente:</p>
+                        <span class="griglia semantica" data-item-no="4"></span>
+                        <p class="nota">possiamo anche lasciare delle celle vuote;
+                            per farlo, invece di dargli un nome, le assegnamo un punto ("<code class="string">.</code>"). <br>
+                            Ad esempio:
+                            <span class="griglia semantica spazio-vuoto" data-item-no="4"></span>
+                        </p>
+                        <p class="notabene">le aree devono sempre avere forma rettangolare, inoltre non si 
+                            può assegnare lo stesso nome a due celle non contigue; se viene fatto uno di questi 
+                            errori nell'impostare la proprietà, questa verrà ignorata
+                        </p>
+                        <p class="osservazione">con questa griglia è molto più facile riorganizzare 
+                            il layout in risposta alle dimensioni dello schermo tramite media queries;
+                            invece di dover riassegnare ogni cella, cambiamo solo la disposizione delle aree:
+                            <rp id="cssCodeGTA6"></rp>
+                            Alternativamente, possiamo anche modificare le altre proprietà per una scrittura più semplice;<br>
+                            incluso in questo esempio:
+                            <span class="griglia semantica colonna" data-item-no="4"></span>
+                        </p>
+                        <p class="eg">possiamo anche creare dei layout grid per qualcosa di più piccolo:
+                            <span id="card-1">
+                                <img src="../../source/Crunch.png" alt="crocco" style="max-width: 100%;"/>
+                                <span>Il pappagallo sulla sinistra è veramente zeppoloso</span>
+                                <img src="../../source/Crocco.png" alt="crunch" style="max-width: 100%;"/>
+                                <span>Sembra opportuno incorniciarlo</span>
+                            </span>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Autoallineamento Oggetti della Griglia</h3>
+                        <p>Gli oggetti della griglia possono allinearsi all'interno della propria cella 
+                            utilizzando le proprietà <code class="att">justify-self</code> e <code class="att">align-self</code>,
+                            che prendono gli stessi valori di <code class="att">justify-items</code> e <code class="att">align-items</code>.
+                        </p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Sottogriglie</h2>
+                <div>
+                    <p>Innestare griglie è possibile; un elemento figlio di una griglia è
+                        a sua volta una griglia, inoltre può ereditare la struttura delle colonne e delle
+                        righe del genitore impostando <code class="att">grid-template-columns</code> e <code class="att">grid-template-rows</code>
+                        a <code class="string">subgrid</code>
+                    </p>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+        <script>
+            const griglie = document.querySelectorAll("[data-item-no]");
+
+            for(const griglia of griglie) {
+                const nombre = griglia.dataset.itemNo;
+                let objects = "";
+                for(let i=0; i<nombre; i++) {
+                    const index = i + 1;
+                    objects += `
+<span data-item="${index}"></span>`
+                }
+                griglia.innerHTML = objects + griglia.innerHTML;
+            }
+            // Gestisce l'allineamento nella griglia esempio
+            const align_play = document.querySelector(".griglia.allineafun");
+            const align_playables = document.querySelectorAll("#allineafun select");
+
+            for(const align_playable of align_playables) {
+                align_playable.addEventListener("input", () => {
+                    align_play.style[align_playable.name] = align_playable.value;
+                });
+            }
+
+            const align_play2 = document.querySelector(".griglia.allineafun2");
+            const align_playables2 = document.querySelectorAll("#allineafun2 select");
+
+            for(const align_playable2 of align_playables2) {
+                align_playable2.addEventListener("input", () => {
+                    align_play2.style[align_playable2.name] = align_playable2.value;
+                });
+            }
+            // Piccole aggiunte ai contenuti dei main
+            document.querySelector('#disorder1 [data-item="1"]').innerHTML = 
+                `<rp id="cssCodeDisorder"></rp>`;
+            document.querySelector('#disorder2 [data-item="1"]').innerHTML = 
+                `<rp id="cssCodeDisorder2"></rp>`;
+            document.querySelector(".semantica:not(.spazio-vuoto) [data-item='3']").innerHTML +=
+            `<rp id="cssCodeGTA4"></rp>`;
+            document.querySelector(".semantica.spazio-vuoto [data-item='3']").innerHTML +=
+            `<rp id="cssCodeGTA5"></rp>`;
+            document.querySelector(".semantica.colonna [data-item='3']").innerHTML +=
+            `<rp id="cssCodeGTA7"></rp>`;
+            document.getElementById("card-1").addEventListener("click", function() {
+                this.classList.toggle("flipped");
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti | Sintassi html</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" class="htmlCodeView" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" class="htmlCodeEdge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" class="htmlCodeLink"/>
+        <script src="../../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" class="htmlCodeFav" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sulla sintassi di html" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Sintassi HTML" />
+        <meta property="og:description" content="Appunti e note sulla sintassi di html" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sintassi HTML" />
+        <meta name="twitter:description" content="Appunti e note sulla sintassi di html" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            #doctype {
+                width: 100%; 
+                display: flex; 
+                flex-wrap: wrap; 
+                align-items: flex-start; 
+                justify-content: left;
+                & pre {
+                    max-width: 40%;
+                    margin-right: 2rem;
+                }
+                & p {
+                    max-width: calc(60% - 2rem);
+                }
+            }
+            #pop1 {
+                align-self: center; 
+                justify-self: center;
+                background-color: rgb(227, 214, 162);
+                border-radius: 5%;
+                border: 0.5rem solid grey;
+                &::backdrop {
+                    content: '';
+                    background-color: transparent;
+                    backdrop-filter: blur(0.4rem);
+                }
+            }
+            #checkersonlabel {
+                display: inline-flex;
+                border: 0.2em solid black;
+                margin: 0;
+                padding: 0;
+                width: 8rem;
+                height: 4rem;
+                justify-content: left;
+                user-select: none;
+                &::after {
+                    cursor: pointer;
+                    content: "off";
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    padding: 0;
+                    margin: 0;
+                    background-color: brown;
+                    width: 50%;
+                    height: 100%;
+                    transition: 0.4s;
+                }
+            }
+            #checkerson:checked ~ #checkersonlabel {
+                &::after {
+                    content: "on";
+                    background-color: green;
+                    transform: translate(100%, 0);
+                }
+            }
+            #checkerson ~ span {
+                display: none;
+            }
+            #checkerson:checked ~ span {
+                display: inline;
+            }
+        </style>
+    </head>
+    <body class="content">
+        <header class="main_header">
+            <!-- Titolo Principale della pagina -->
+            <h1>Appunti sulla Sintassi di html</h1>
+        
+            <!-- Sezione Sidebar Destra -->
+            <aside class="sidebar_right">
+                <!-- Table of Contents 
+                     Gli oggetti all'interno sono organizzati ad albero 
+                     secondo la gerarchia dei titoli h2-6 -->
+                <nav id="indice"></nav>
+            </aside>
+
+            <!-- Sezione destrittiva della pagina -->
+            <section>
+                <!-- presentazione -->
+                <p>Questa pagina copre le basi della sintassi html e gli attributi.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p><code class="htmlCodeAtt tag">
+                            <abbr title="Hypertext Markup Language">
+                                HTML
+                            </abbr>
+                        </code>
+                         è un linguaggio di <i>markup</i>,
+                        cioè struttura la pagina web dal punto di vista principalmente testuale.</p>
+                        <p><code class="tag">HTML</code> NON è un linguaggio di programmazione, in quanto
+                        non esegue nessuna istruzione né calcolo; viene semplicemente interpretato
+                        dal browser al momento del render della pagina (non viene compilato).</p>
+                </div>
+            </section>
+        </header>
+        <main>
+            <article>
+                <h2>Sintassi base</h2>
+                <div class="clearfix">
+                    <figure style="float: right; width: 60%; margin: 0 0 0 1rem; padding: 0;">
+                        <img src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax/grumpy-cat-small.png" style="width: 100%; margin: 0; padding: 0;">
+                        <figcaption>image by <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax">developer.mozilla.org</a></figcaption>
+                    </figure>
+                    <p><code class="tag">html</code> consiste di una serie di <code>elementi</code> racchiusi da <code>tag</code>:</p>
+                    <ul>
+                        <li><b>Il tag di apertura</b> indica l'inizio dell'elemento ed è dove vengono elencati i suoi attributi.</li>
+                        <li>Nel mezzo sta' il <b>contenuto</b>, che è sempre testo.</li>
+                        <li><b>Il tag di chiusura</b> è lo stesso dell'apertura preceduto da <code>/</code>.</li>
+                    </ul>
+                    <p class="notabene">il browser non restituisce errore in mancanza di un tag di chiusura o nel caso di una chiusura 
+                        incrociata; sono comunque entrambe pratiche da evitare.
+                        <s id="htmlCodeCross"></s>
+                    </p>
+                    <p>I <code>tag</code> html possono essere (naturalmente) innestati.</p>
+                    <h3>Elementi Void</h3>
+                    <p>Alcuni tag non richiedono un tag di chiusura, questi sono chiamati <i>elementi void</i></p>
+                    <p class="nota">sebbene non richiesto, è sempre bene chiudere gli elementi void con un <code>/</code> alla 
+                    fine del tag di apertura (unico) prima di <code>&gt;</code>.
+                    <s id="htmlCodeVoid"></s></p>                    
+                </div>
+            </article>
+            <article>
+                <h2>Attributi</h2>
+                <div>
+                    <p>Gli attributi sono inseriti nella tag di apertura; il valore da dare all'attributo
+                        va' tra virgolette (<code class="string">""</code> oppure <code class="string">''</code>):
+                        <s id="htmlCodeAtt"></s><p class="notabene">
+                            le virgolette dello stesso tipo non possono essere innestate, ma vanno alternate; l'utilizzo dell'uno
+                            o dell'altro tipo è indifferente, ma devono essere coerenti con l'ordine in chiusura e apertura:
+                            <button type="button" 
+                                onclick="this.textContent = 
+                                                            'Hai cliccato!' " >
+                                Clicca per vedere
+                            </button><s id="htmlCodeButton"></s>
+                        </p>
+                    </p>
+                    <h3>Attributi Booleani</h3>
+                    <p>Gli attributi booleani non hanno bisogno di un valore; basta metterli nel tag di apertura,
+                        qualunque valore gli viene dato è irrilevante, persino <i>false</i>:</p>
+                    <input class="htmlCodeDisable" type="text" disabled="false">
+                    <s id="htmlCodeDisable"></s>
+                    <h3>Attributi Globali</h3>
+                    <p>Alcuni attributi possono essere dati a qualunque tag, sono:</p>
+                    <ul>
+                        <li><b><code class="att">id</code></b>: specifica un ID unico per l'elemento.</li>
+                        <li><b><code class="att">class</code></b>: specifica una o più (separate da uno spazio) 
+                            classi identificative per l'elemento.
+                        <p class="nota">classi e id sono usati come selettori sia in CSS che in JavaScript.</p></li>
+                        <li><b><code class="att">style</code></b>: specifica una o più proprietà di stile da assegnare all'elemento:
+                        <s id="htmlCodeStyle"></s></li>
+                        <li><b><code class="att">title</code></b>: specifica informazioni extra sull'elemento:
+                        <abbr class="htmlCodeEx" title="Questo è l'effetto di title">Questo è un esempio</abbr>
+                        <s id="htmlCodeEx"></s><p class="notabene">non ha effetti particolari per tutti gli elementi:
+                            <span class="htmlCodeEx2" title="Questo lo vede solo il browser">Questo lo vedi tu</span>
+                            <s id="htmlCodeEx2"></s></p></li>
+                        <li><b><code class="att">popover</code></b>: un elemento con l'attriuto booleano <code class="att">popover</code> viene piazzato
+                            sopra tutti gli altri elementi senza modificare il layout della pagina; di default è inizialmente nascosto.<p>
+                                Per rederlo visibile, un altro elemento deve avere l'attributo <code class="att">popovertarget</code>
+                                con il valore uguale all'<code class="att">id</code> del popover, prova:
+                            </p><p popover id="pop1">Ciaoo!</p>
+                            <button type="button" popovertarget="pop1" style="margin-right: 0.6rem;">Clicca qui</button>
+                            <s id="htmlCodePop"></s>
+                            
+                            </li>
+                            <p class="notabene"><code class="att">popovertarget</code> può essere assegnato
+                            solo ad un <code class="tag">input</code> di tipo <code class="string">button</code>.</p>
+                        <li><b><code class="att">lang</code></b>: serve a specificare la lingua del suo contenuto.
+                        <p class="nota">Tipicamente è inserito nell'elemento <code class="tag">html</code> per dichiarare 
+                            la lingua del documento.</p></li>
+                        <li><b><code class="att">hidden</code></b>: attributo booleano che indica un elemento da non visualizzare:
+                        <p class="htmlCodeHiddens" hidden="hidden">
+                            Questo lo vede <span>solo</span> il browser</p><s id="htmlCodeHiddens"></s></li>
+                        <li><b><code class="att">inert</code></b>: attributo booleano che disattiva tutte le funzioni
+                        dell'elemento e i suoi discendenti.</li>
+                        <li><b><code class="att">draggable</code></b>: questo attributo serve a specificare se un elemento
+                        può usere trascinato; è necessario dargli come valore <code class="string">true</code> altrimenti
+                        è di default settato su auto: <span draggable="true" style="cursor: grabbing;">Trascinami</span></li>
+                        <li><b><code class="att">contenteditable</code></b>: <span title="puoi modificarmi" contenteditable="true">specifica se è possibile modificare
+                            il contenuto testuale dell'elemento e i suoi discendenti;
+                        </span> bisogna dargli valore <code class="string">true</code> o <code class="string">false</code>.</li>
+                        <li><b><code class="att">accesskey</code></b>: specifica una scorciatoia per attivare un elemento:
+                        <input type="checkbox" class="htmlCodeAccesskey" id="checkerson" accesskey="h" hidden/><label  for="checkerson" id="checkersonlabel"></label>
+                        <span><s id="htmlCodeAccesskey"></s></span> <p class="notabene">spesso non funziona a causa
+                            di conflitti con gli standard del browser.
+                        </p></li>
+                        <li><b><code class="att">dir</code></b>: specifica la direzione del testo tra 
+                            <code class="att">ltr</code>|<code class="att">rtl</code>|<code class="att">auto</code>:
+                        <p class="htmlCodeRtl" dir="rtl" style="width: 50%; border: 0.1em solid black;">
+                            Questo va da destra a sinistra</p><s id="htmlCodeRtl"></s></li>
+                        <li><b><code class="att">data-</code>*</b>: utilizzato per scrive dati personalizzati;
+                            l'asterisco può essere sostituito da qualsiasi nome a patto che
+                        <ul>
+                            <li>non inizi per <code>xml</code></li>
+                            <li>non contenga punteggiatura (si usi - come spaziatore)</li>
+                            <li>non contenga maiuscole</li>
+                        </ul>
+                        <p class="nota">i dati creati in questo modo possono essere usati da CSS ma anche da 
+                            JavaScript tramite l'oggetto <code>dataset</code> e possono
+                            anche essere modificati.
+                        </p></li>
+                        
+                    </ul>
+                    <section>
+                <hr>
+                <p>ci sono altri attributi globali; 
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes">
+                        qui</a> una lista più completa.</p>
+            </section>
+                </div>
+            </article>
+            <article>
+                <h2>Commenti</h2>
+                <div>
+                    <p>I commenti in html si racchiudono tra "<code class="comment">&lt;!--</code>"" e "<code class="comment">--&gt;</code>".</p>
+                </div>
+            </article>
+            <article>
+                <h2>Entità</h2>
+                <div>
+                    <p>
+                        Simboli e caratteri riservati a html devono essere sostituiti da entità 
+                        per non essere scambiati per tag dal browser.
+                    </p>
+                    <p>un'entità è preceduta da <kbd>&</kbd> e termina per <kbd>;</kbd><br>
+                    le entità possono essere chiamate poi per nome oppure con un codice numerico;
+                    in quest'ultimo caso, il numero deve essere preceduto da <kbd>#</kbd></p>
+                    <p>Le principali entità per utilizzo sono</p>
+
+                    <div class="t-wrap"><table class="notable">
+                        <tr><th>Risultato</th>
+                            <td><code>&amp;</code></td>
+                            <td><code>&lt;</code></td>
+                            <td><code>&gt;</code></td>
+                            <td><code>&quot;</code></td>
+                            <td><code>&apos;</code></td>
+                            <td><code>&cent;</code></td>
+                            <td><code>&pound;</code></td>
+                            <td><code>&yen;</code></td>
+                            <td><code>&euro;</code></td>
+                            <td><code>&copy;</code></td>
+                            <td><code>&reg;</code></td>
+                            <td><code>&trade;</code></td>
+                            <td>&#128193;</td>
+                            <td>&hearts;</td>
+                            <td>&check;</td>
+                            <td>&excl;</td>
+                            <td><code>&times;</code></td>
+                        </tr>
+                        <tr><th>Nome</th>
+                            <td><code class="tag">&amp;amp;</code></td>
+                            <td><code class="tag">&amp;lt;</code></td>
+                            <td><code class="tag">&amp;gt;</code></td>
+                            <td><code class="tag">&amp;quot;</code></td>
+                            <td><code class="tag">&amp;apos;</code></td>
+                            <td><code class="tag">&amp;cent;</code></td>
+                            <td><code class="tag">&amp;pound;</code></td>
+                            <td><code class="tag">&amp;yen;</code></td>
+                            <td><code class="tag">&amp;euro;</code></td>
+                            <td><code class="tag">&amp;copy;</code></td>
+                            <td><code class="tag">&amp;reg;</code></td>
+                            <td><code class="tag">&amp;trade;</code></td>
+                            <td class="hidden"></td>
+                            <td><code class="tag">&amp;hearts;</code></td>
+                            <td><code class="tag">&amp;check;</code></td>
+                            <td><code class="tag">&amp;excl;</code></td>
+                            <td><code class="tag">&amp;times;</code></td>
+                        </tr>
+                        <tr><th>Numero</th>
+                            <td><code class="tag">&amp;#38;</code></td>
+                            <td><code class="tag">&amp;#60;</code></td>
+                            <td><code class="tag">&amp;#62;</code></td>
+                            <td><code class="tag">&amp;#34;</code></td>
+                            <td><code class="tag">&amp;#39;</code></td>
+                            <td><code class="tag">&amp;#162;</code></td>
+                            <td><code class="tag">&amp;#163;</code></td>
+                            <td><code class="tag">&amp;#165;</code></td>
+                            <td><code class="tag">&amp;#8364;</code></td>
+                            <td><code class="tag">&amp;#169;</code></td>
+                            <td><code class="tag">&amp;#174;</code></td>
+                            <td><code class="tag">&amp;#8482;</code></td>
+                            <td><code class="tag">&amp;#128193;</code></td>
+                            <td><code class="tag">&amp;#9829;</code></td>
+                            <td><code class="tag">&amp;#10003;</code></td>
+                            <td><code class="tag">&amp;#10071;</code></td>
+                            <td><code class="tag">&amp;#215;</code></td>
+                        </tr>
+                    </table></div>
+                </div>
+            </article>
+            <article>
+                <h2>Struttura</h2>
+                <div>
+                    <p>Un documento html ha sempre questa struttura:</p>
+                    <div id="doctype">
+                    <s id="htmlCodeTemplate"></s>
+                    <p>
+                        La prima riga è la dichiarazione del tipo di documento<br>
+                        il primo tag che deve contenere tutto è <code class="tag">html</code><br><br>
+                        l'elemento <code class="tag">head</code> contiene i metadati del documento;
+                        il suo contenuto non è visualizzato dal browser, ma viene utilizzato
+                        come informazioni sulla pagina<br><br>
+                        l'elemento <code class="tag">body</code> contiene tutta la parte visualizzata di "codice"
+                    </p></div>
+                </div>
+            </article>
+        </main>
+        <script src="../../source/functionalities.js"></script>
+    </body>
+   
+</html>
