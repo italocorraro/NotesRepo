@@ -62,14 +62,26 @@ const snippets = {
 }`,
     cssCodeSpec1: `p > div`,
     cssCodeSpec2: `div:first-child`,
-    cssCodeSpec3: `div.class-1, div.class-2`,
-    cssCodeSpec4: `div:is(.class-1,.class-2)`,
+    cssCodeSpec3: `div.class-1, div.class-2 {
+    color: blue;
+}`,
+    cssCodeSpec4: `div:is(.class-1,.class-2) {
+    color: red;
+}`,
     cssCodeSpec5: `div.class-1, .container div.class-2 {
     color: red;
 }`,
     cssCodeSpec6: `div div:is(.class-1,.class-2) {
     color: blue;
-}`
+}`,
+    cssCodeSpex: 
+`div.class-1, div.class-2 {
+    color: blue;
+}
+:is(div.class-1, .class-2) {
+    color: red;
+}`,
+    cssCodeSpex1: `div.class-1`
   },
   js: {
     jsCode1: ``

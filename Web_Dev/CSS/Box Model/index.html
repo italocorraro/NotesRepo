@@ -41,6 +41,93 @@
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
 
         <style>
+            /* Griglie Esempio 2 */
+            #moya-grid {
+                display: grid;
+                width: 100%;
+                gap: 1rem;
+                grid-template-columns: repeat(2,1fr);
+                align-items: center;
+                text-align: center;
+                margin: 1.5rem 0;
+                padding: 0 0.5rem;
+            }
+            #moya-grid span:is(:nth-child(3), :nth-child(4)) {
+                font-size: 90%;
+            }
+            #moya-grid div:nth-child(5) {
+                height: 0.3em;
+                /*          100  - paddings - borders*/
+                width: calc(100% - 6em - 1.7em);
+                justify-self: center;
+                border: 0.05em solid blue;
+                background-color: #ddf;
+                border-radius: 20%;
+            }
+            #moya-grid div:nth-child(6) {
+                height: 0.3em;
+                /*          100  - padding - border*/
+                width: calc(100% - 2em - 0.5em);
+                justify-self: center;
+                border-radius: 20%;
+                border: 0.05em solid yellow;
+                background-color: #ffe45e;
+            }
+            #moya-grid:hover :nth-child(6) {
+                border: 0;
+                background-image: linear-gradient(to right, 
+                    yellow, #ffe45e,green, #dbf5db, blue, #ddf,
+                    #ddf, blue, #dbf5db, green, #ffe45e, yellow);
+            }
+            #moya-grid:hover :nth-child(5) {
+                border: 0;
+                background-image: linear-gradient(to right, blue, #ddf, #ddf, blue);
+            }
+            #moya-grid .margin {
+                width: 100%;
+                height: calc(25vh + 25vw);
+                border: 0.25em dashed red;
+                background-color: rgb(245, 225, 225);
+                align-content: center;
+                justify-items: center;
+                position: relative;
+                padding: 1em;
+            }
+            #moya-grid .margin div {
+                align-content: inherit;
+                justify-items: inherit;
+                padding: inherit;
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            #moya-grid :is(.margin, .padding, .border)::before {
+                content: attr(class);
+            }
+            #moya-grid .contento::before {
+                content: 'content';
+            }
+            #moya-grid :is(.margin, .padding, .border, .contento)::before {
+                font-size: 0.8em;
+                display: block;
+                position: absolute;
+                justify-self: center;
+                top: 0;
+            }
+            #moya-grid .border {
+                background-color: #ffe45e;
+                border: 0.2em solid yellow;
+            }
+            #moya-grid .padding {
+                background-color: #dbf5db;
+                border: 0.2em dashed green;
+            }
+            #moya-grid .contento {
+                border: 0.2em dotted blue;
+                background-color: #ddf;
+            }
+
+
             ul#box-model {
                 display: grid;
                 width: 100%;
@@ -508,9 +595,9 @@ span.mixed {border-color: red wheat green yellow;}`,
                                 <li>l'elemento inizia e finisce su un nuovo rigo</li>
                                 <li>l'elemento possiede delle proprietà di <code class="att">width</code>
                                     e <code class="att">height</code> (larghezza e altezza); <br>
-                                se non impostate, queste proprietà varranno rispettivamente <code class="string">100%</code> e <code class="att">auto</code>,
-                                cioè l'elemento occuperà tutta la larghezza del suo contenitore e adatterà l'altezza al suo contenuto</li>
-                                <li>attorno al contenuto dell'elemento si trovano diversi strati di spazi che tengono
+                                se non impostate, queste proprietà varranno <code class="att">auto</code>,
+                                cioè l'elemento adatterà la sua larghezza e altezza al suo contenuto</li>
+                                <li>attorno al contenuto dell'elemento si trovano diversi strati di spazio che tengono
                                     separati gli altri elementi (<code class="att">padding</code>, <code class="att">border</code> e <code class="att">margin</code>)
                                 </li>
                             </ul>
@@ -571,11 +658,12 @@ span.mixed {border-color: red wheat green yellow;}`,
                         <li class="border">Contorno</li>
                         <li class="padding">Padding</li>
                         <li class="contento">Contenuto</li>
-                        <li class="container"><div class="margin">
+                        <li class="container">
+                            <div class="margin">
                             <div class="border">
                             <div class="padding">
-                                <div class="contento"></div>
-                            </div></div></div>
+                            <div class="contento">
+                            </div></div></div></div>
                         </li>
                     </ul>
                     <p class="osservazione">il contenuto e il padding prendono il
@@ -613,7 +701,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                     </span>
                     <section id="boxxer" class="clearfix">
                         <h3>La proprietà box-sizing</h3>
-                        <p>La proprità <b><code class="att">box-sizing</code></b> può avere questi valori:
+                        <p>La proprità <b><code class="att">box-sizing</code></b> può avere questi valori:</p>
                             <ul>
                                 <li><b><code class="string">content-box</code>:</b> (default) le proprità di altezza e larghezza includono solo 
                                     il contenuto.
@@ -622,7 +710,25 @@ span.mixed {border-color: red wheat green yellow;}`,
                                 <li><b><code class="string">border-box</code>:</b> le proprietà di altezza e larghezza includono contenuto,
                                     padding e contorno.</li>
                             </ul>
-                        </p>
+                            <!-- Work here -->
+                        <div id="moya-grid">
+                            <span><b><code class="string">content-box</code></b></span>
+                            <span><b><code class="string">border-box</code></b></span>
+                            <span><code class="att">width</code></span>
+                            <span><code class="att">width</code></span>
+                            <div></div>
+                            <div></div>
+                            <div class="margin">
+                            <div class="border">
+                            <div class="padding">
+                            <div class="contento">
+                            </div></div></div></div>
+                            <div class="margin">
+                            <div class="border">
+                            <div class="padding">
+                            <div class="contento">
+                            </div></div></div></div>
+                        </div>
                         <p class="osservazione">se impostiamo <rt id="cssCodeBox"></rt> avremo la situazione opposta 
                             a quella di default: le dimensioni del contenuto saranno pari a quelle dell'elemento tolti
                             padding e contorno.</p>

@@ -64,22 +64,10 @@
                 font-family: monospace;
             }
             #griddedless {
-                display: grid;
-                grid-template-columns: 60% auto;
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
                 gap: 1rem;
-                max-width: 100%;
-                & :last-child {
-                    grid-area: 2 / 1 / span 1 / span 2;
-                }
-            }
-            
-            @media only screen and (max-width:900px) {
-                #griddedless {
-                    grid-template-columns: auto;
-                    & :last-child {
-                        grid-area: 3 / 1 / span 1 / span 1;
-                    }
-                }
             }
             div div:is(.class-1,.class-2) {
                 color: blue;
@@ -262,10 +250,11 @@
                                 Versione con: <rp id="cssCodeIS"></rp></p>
                                 <p class="nota">ad <code class="sel">:is()</code> si possono passare interi selettori
                                 come argomento</p>
-                                <p class="notabene">le pseudo-classi hanno bassa specificità!<br>
-                                Questo significa che <code class="sel">:is()</code> è una scelta conveniente
-                                solo se si suppone che la regola non verrà sovrascritta da un selettore con specificità più alta</p>
                             </li>
+                            <li><code class="sel">:where()</code> è funzionalmente uguale a <code class="sel">:is()</code>, ma con un'importante
+                            differenza: <br>
+                            <p class="notabene-extend"><code class="sel">:where()</code> ha SEMPRE specificità 0, mentre <code class="sel">:is()</code>
+                            ha la specificità del selettore più specifico che gli è passato per argomento; vedi <a href="#isProblema">sotto</a></p></li>
                             <li><code class="sel">:has()</code> seleziona l'elemento SE contiene o è seguito quello passato per argomento
                                 <p class="eg"><br>
                                     Per selezionare i <code class="tag">form</code>
@@ -408,22 +397,48 @@
                             <td>0-0-0-0-0</td>
                         </tr>
                     </table>
-                    <p>Quando due selettori hanno la stessa specificità, vince 
-                        quello scritto per ultimo nel foglio di stile.</p>
                     <p class="eg" ><br>
                         <rp id="cssCodeSpec1"></rp> ha specificità <code>0-0-2</code><br>
-                        <rp id="cssCodeSpec2"></rp> ha specificità <code>0-1-1</code> e quindi vince sul precedente</p>
-                    <p class="nota" ><br>
-                        <rp id="cssCodeSpec3"></rp> ha specificità <code>0-1-1</code> (sono due selettori con la stessa specificità)<br>
-                        <rp id="cssCodeSpec4"></rp> ha specificità <code>0-1-1</code>, cioè la stessa, 
-                        infatti gli pseudo-elementi funzione tipo <code class="sel">:is()</code> non aggiungono specificità, ma 
-                        i loro argomenti sì; questi due esempi con la stessa specificità sono scritture equivalenti, <br>al contrario, in
-                        <rp id="cssCodeSpec5"></rp>il primo selettore ha <code>0-1-1</code>, mentre il secondo <code>0-2-1</code>
-                        <rp id="cssCodeSpec6"></rp>ha per entrambi i selettori <code>0-1-2</code>, quindi 
-                        se la struttura fosse questa 
-                        <s id="htmlCode2"></s>
-                        allora l'<kbd style="color: blue;">1</kbd> risulterebbe blu, mentre il <kbd style="color: red;">2</kbd> rosso
+                        <rp id="cssCodeSpec2"></rp> ha specificità <code>0-1-1</code> e quindi vince sul precedente
                     </p>
+                    <p>Quando due selettori hanno la stessa specificità, vince 
+                        quello scritto per ultimo nel foglio di stile.</p>
+                    <p class="eg">Tra questi due
+                    <rp id="cssCodeSpec3"></rp>
+                    <rp id="cssCodeSpec4"></rp>
+                    dove entrambi hanno la stessa specificità <code>0-1-1</code>, il testo alla 
+                    fine sarà rosso perché è la regola che è stata scritta per ultima tra le due
+                    </p>
+                    <div style="width: fit-content;">
+                    <p class="notabene" id="isProblema" >
+                        I selettori <code class="sel">:is()</code>, <code class="sel">:where()</code>,
+                        <code class="sel">:has()</code> e <code class="sel">:not()</code> hanno 
+                        un comportamento particolare:
+                    </p>
+                    <div class="notabene-extend" >
+                        <ul>
+                            <li><code class="sel">:is()</code> ha specificità uguale al
+                            selettore più specifico che gli viene passato per argomento (i selettori passati per argomento però non 
+                            aggiungono ulteriore specificità):
+                                <p class="eg">consideriamo questo html:
+                                    <s id="htmlCode2"></s>
+                                    con questi stili:
+                                    <rp id="cssCodeSpex"></rp>
+                                    Ci aspettermmo di avere l'<kbd>1</kbd> <span style="color: red;">rosso</span>,
+                                    mentre il <kbd>2</kbd> <span style="color: blue;">blu</span>; <br>
+                                    MA invece il <kbd>2</kbd> risulterà <span style="color: red;">rosso</span>,
+                                    questo perché il selettore <code class="sel">:is()</code> prende la sua specificità
+                                    da <rt id="cssCodeSpex1"></rt>, cioè il suo argomento con specificità più alta, quindi 
+                                    selezionerà entrambi i due <code class="tag">div</code> con la stessa specificità <kbd>0-1-1</kbd>
+                                    e poiché è l'ultimo tra le due regole prevarrà
+                                </p>
+                            </li>
+                            <li><code class="sel">:has()</code> segue la stessa regola di <code class="sel">:is()</code></li>
+                            <li><code class="sel">:not()</code> segue la stessa regola di <code class="sel">:is()</code></li>
+                            <li><code class="sel">:where()</code> non ha specificità a prescindere dall'argomento</li>
+                        </ul>
+                    </div>
+                    </div>
                 </div></div>
             </article>
 
