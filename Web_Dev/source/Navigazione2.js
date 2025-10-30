@@ -28,7 +28,7 @@ let navigazione = `
                 <li><a href="../../CSS/Sintassi CSS/">Sintassi</a></li>
                 <li><a href="../../CSS/Selectors/">Selettori</a></li>
                 <li><a href="../../CSS/Box Model/">Box Model</a></li>
-                <li><a>Colori</a></li>
+                <li><a href="../../CSS/Colori/">Colori</a></li>
                 <li><a href="../../CSS/Unità di Misura/">Unità di misura</a></li>
                 <li><a>Tipografia</a></li>
                 <li><a>Funzioni e variabili</a></li>

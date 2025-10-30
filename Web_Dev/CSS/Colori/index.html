@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Colori</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script src="../../source/Navigazione2.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sulla notazione dei colori in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Colori" />
+        <meta property="og:description" content="Appunti e note sulla notazione dei colori in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Colori" />
+        <meta name="twitter:description" content="Appunti e note sulla notazione dei colori in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            .color-wrapper input {
+                display: block;
+                min-width: 0;
+                width: 100%;
+            }
+            .color-wrapper {
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-areas: 
+                    "color color color color"
+                    "it-1 it-2 it-3 it-4";
+                gap: 1rem;
+                padding: 1rem 0.6rem;
+                text-align: center;
+            }
+            @media (max-width:900px) {
+                .color-wrapper {
+                    grid-template-columns: repeat(2,1fr);
+                    grid-template-areas: 
+                    "color color"
+                    "it-1 it-2"
+                    "it-3 it-4";
+                }
+            }
+            .color-wrapper > :first-child {
+                grid-area: color;
+                min-width: 50%;
+                width: fit-content;
+                max-width: 100%;
+                padding: 1rem 1.5rem;
+                justify-self: center;
+                background-color: black;
+                color: white;
+                text-shadow: 0.05em 0.05em black;
+                font-weight: bold;
+                font-size: 1.5em;
+                font-family: monospace;
+                align-content: center;
+            }
+            .color-wrapper div {
+                width: 100%;
+                grid-template-columns: 1fr;
+            }
+            label:is([for="saturation"], [for="lightness"])::after {
+                content: '%';
+            }
+        </style>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sui colori in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento dei colori e le relative proprietà in CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>CSS supporta la codifica dei colori in RGB, RGBA, HEX, HSL e HSLA.                  
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Monocromi</h2>
+                <div>
+                    <p>Alcuni colori possono essere specificati con delle <i>keyword</i>, ad esempio
+                        <code>white</code> o <code>black</code> o anche <code class="string">transparent</code>
+                        che porta a <kbd>0</kbd> il canale alpha.
+                    </p>
+                    <section>
+                        <h3>RGB</h3>
+                        <p>La codifica colori in <abbr title="Red Green Blue">RGB</abbr> permette di definire 
+                        un colore fornendo un valore da <kbd>0</kbd> a <kbd>255</kbd> per i parametri 
+                        <code style="color: rgb(255, 0, 0);">red</code>, <code style="color: rgb(0, 255, 0);">green</code> e <code style="color: rgb(0, 0, 255);">blue</code>.</p>
+                        <p>La codifica <abbr title="Red Green Blue Alpha">RGBA</abbr> include anche un canale <i>alpha</i>
+                        che regola la trasparenza (<code>0</code> è trasparente, <code>1</code> è opaco)</p>
+                        <div id="rgba-wrapper" class="color-wrapper">
+                        <div id="rgba-color">rgba(000, 000, 000, 1)</div>
+                        <div>
+                            <label for="red"><code>RED</code></label>
+                            <input id="red" type="range" min="0" max="255" value="0" name="red"/>
+                            <label for="red">0</label>
+                        </div>
+                        <div>
+                            <label for="green"><code>GREEN</code></label>
+                            <input id="green" type="range" min="0" max="255" value="0" name="green"/>
+                            <label for="green">0</label>
+                        </div>
+                        <div>
+                            <label for="blue"><code>BLUE</code></label>
+                            <input id="blue" type="range" min="0" max="255" value="0" name="blue"/>
+                            <label for="blue">0</label>
+                        </div>
+                        <div>
+                            <label for="alpha"><code>ALPHA</code></label>
+                            <input id="alpha" type="range" min="0" max="1" value="1" name="alpha" step="0.1"/>
+                            <label for="alpha">1</label>
+                        </div></div>
+                    </section>
+                    <section>
+                        <h3>HSL</h3>
+                        <p></p>
+                        <div id="hsla-wrapper" class="color-wrapper">
+                        <div id="hsla-color">hsla(000, 000%, 000%, 1)</div>
+                        <div>
+                            <label for="hue"><code>HUE</code></label>
+                            <input id="hue" type="range" min="0" max="360" value="0" name="hue"/>
+                            <label for="hue">0</label>
+                        </div>
+                        <div>
+                            <label for="saturation"><code>SATURATION</code></label>
+                            <input id="saturation" type="range" min="0" max="100" value="0" name="saturation"/>
+                            <label for="saturation">0</label>
+                        </div>
+                        <div>
+                            <label for="lightness"><code>LIGHTNESS</code></label>
+                            <input id="lightness" type="range" min="0" max="100" value="0" name="lightness"/>
+                            <label for="lightness">0</label>
+                        </div>
+                        <div>
+                            <label for="alpha"><code>ALPHA</code></label>
+                            <input id="alpha" type="range" min="0" max="1" value="1" name="alpha" step="0.1"/>
+                            <label for="alpha">1</label>
+                        </div></div>
+                    </section>
+                    <section>
+                        <h3>HSL</h3>
+                        <p></p>
+                        <div id="hex-wrapper" class="color-wrapper">
+                        <div id="hex-color">#000000</div>
+                        <div>
+                            <label for="red"><code>RED</code></label>
+                            <input id="red" type="range" min="0" max="255" value="0" name="red"/>
+                            <label for="red">0</label>
+                        </div>
+                        <div>
+                            <label for="green"><code>GREEN</code></label>
+                            <input id="green" type="range" min="0" max="255" value="0" name="green"/>
+                            <label for="green">0</label>
+                        </div>
+                        <div>
+                            <label for="blue"><code>BLUE</code></label>
+                            <input id="blue" type="range" min="0" max="255" value="0" name="blue"/>
+                            <label for="blue">0</label>
+                        </div></div>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+        <script>
+            function arrayTreZeri(arrayNumeri) {
+                const lent = arrayNumeri.length - 1;
+                for(let i=0; i<lent; i++) {
+                    switch(arrayNumeri[i].length) {
+                        case 1: 
+                            arrayNumeri[i] = `00${arrayNumeri[i]}`;
+                            break;
+                        case 2:
+                            arrayNumeri[i] = `0${arrayNumeri[i]}`;
+                            break;
+                        default: break;
+                    }
+                }
+                return arrayNumeri;
+            }
+            function colorBuilder(color_array, color_code) {
+                const pezzi = color_array.length;
+                let resultColor = ``;
+                switch(color_code) {
+                    case 'hex':
+                        resultColor = `#`;
+                        for (let j = 0; j < pezzi; j++) {
+                            let variable = parseInt(color_array[j]).toString(16);
+                            if (variable.length === 1) variable = '0' + variable;
+                            resultColor += variable;
+                        }
+                        break;
+                    case 'hsla': 
+                        color_array = arrayTreZeri(color_array);
+                        resultColor = `hsla(${color_array[0]}, ${color_array[1]}%, ${color_array[2]}%, ${color_array[3]})`;
+                        break;
+                    case 'rgba':
+                        color_array = arrayTreZeri(color_array);
+                        resultColor = `rgba(`;
+                        for(let j=0; j<pezzi; j++) {
+                            j == (pezzi - 1) ?
+                            resultColor += `${color_array[j]})` :
+                            resultColor += `${color_array[j]}, `;
+                        }
+                        break;
+                    default: break;
+                }
+                return resultColor;
+            }
+            function sliderColorer(id_wrapper, color_code) {
+                const sliders = document.querySelectorAll(`#${id_wrapper} [type='range']`);
+                const values = document.querySelectorAll(`#${id_wrapper} [type='range'] + label`);
+                const display = document.querySelector(`#${id_wrapper} > :first-child`);
+                const pezzi = sliders.length;
+                let colorArray = [];
+                
+                for(let i=0; i<pezzi; i++) {
+                    /* inizializzazione array */
+                    colorArray[i] = sliders[i].value;
+
+                    sliders[i].addEventListener("input", function () {
+                        let currentValue = sliders[i].value;
+                        /* aggiornamento array dei colori */
+                        colorArray[i] = currentValue;
+
+                        let finalColor = colorBuilder(colorArray, color_code);
+                        
+                        values[i].textContent = currentValue;
+                        display.style.backgroundColor = finalColor;
+                        display.textContent = finalColor;
+                    });
+                }
+            }
+            sliderColorer('rgba-wrapper', 'rgba');
+            sliderColorer('hsla-wrapper', 'hsla');
+            sliderColorer('hex-wrapper', 'hex');
+        </script>
+    </body>
+</html>
