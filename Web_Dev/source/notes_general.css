@@ -155,7 +155,8 @@ hr {
 }
 /* inserti */
 p.notabene, p.nota, p.osservazione, p.eg {
-    border-left: 0.4vw solid;
+    border-left: 0.5vw solid;
+    margin: 1rem 0;
     padding: 0.3vw 0.6vw 0.3vw 0.5vw;
     width: fit-content;
     max-width: 100%;
@@ -207,6 +208,11 @@ p.eg:has(+ .eg-extend) {
 p.nota:has(+ .nota-extend) {
     width: 100%;
     margin-bottom: 0;}
+div:has(> .nota-extend, > .eg-extend, > .notabene-extend) {
+    width: fit-content;
+    margin: 1rem 0;
+    max-width: 100%;
+}
 .nota-extend {
     width: 100%;
     background-color: rgba(185, 243, 248, 0.4);

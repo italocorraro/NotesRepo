@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Background</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sui background in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Background" />
+        <meta property="og:description" content="Appunti e note sui background in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Background" />
+        <meta name="twitter:description" content="Appunti e note sui background in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            #gradiente ~ p [contenteditable] {
+                background-image: linear-gradient(to right, red, green, blue);
+                color: aliceblue;
+            }
+            .immaginami {
+                background-image: url('../../source/Crunch.png');
+                color: beige;
+            }
+            #sovrapposition > div {
+                width: 60vw;
+                height: 40vw;
+                background-image: 
+                    url('../../source/Crocco.png'),
+                    url('../../source/Crunch.png');
+            }
+            
+            #attach span {
+                display: block;
+                width: 60vw;
+                height: calc(20vw + 20vh);
+                overflow-x: auto;
+                background-image: 
+                    url('../../source/Crunch.png');
+            }
+            #attach li:first-child span {
+                background-attachment: scroll;
+            }
+            #attach li:nth-child(2) span {
+                background-attachment: fixed;
+            }
+            #attach li:last-child span {
+                background-attachment: local;
+            }
+
+            #repeato span {
+                display: block;
+                width: 60vw;
+                height: max(38vw, 38vh);
+                overflow-x: hidden;
+                background-image: 
+                    url('../../source/Crocco.png');
+            }
+            #repeato li:nth-child(2) span {
+                background-repeat: repeat-x;
+            }
+            #repeato li:nth-child(3) span {
+                background-repeat: repeat-y;
+            }
+            #repeato li:nth-child(4) span {
+                background-repeat: no-repeat;
+            }
+            #repeato li:nth-child(5) span {
+                background-repeat: space;
+            }
+            #repeato li:nth-child(6) span {
+                background-repeat: round;
+            }
+
+            #position ~ .eg > [data-number] {
+                display: block;
+                width: 60vw;
+                height: calc(20vw + 20vh);
+                background-image: 
+                    url('../../source/Crunch_directional.png');
+            }
+            #position ~ .eg > [data-number="1"] {
+                background-position: left bottom;
+            }
+            #position ~ .eg > [data-number="2"] {
+                background-position: right top;
+            }
+            #position ~ .eg > [data-number="3"] {
+                background-position: center center;
+            }
+            #position ~ .eg > [data-number="4"] {
+                background-position: 30% 5%;
+            }
+
+            #orig span {
+                display: block;
+                width: 60vw;
+                height: max(38vw, 38vh);
+                padding: 5vw;
+                border: 5vw dotted yellowgreen;
+                background-image: 
+                    url('../../source/Crunch.png');
+                background-size: cover;
+            }
+            #orig li:nth-child(2) span {
+                background-origin: border-box;
+            }
+            #orig li:nth-child(3) span {
+                background-origin: content-box;
+            }
+
+            #size .eg {
+                width: 100%;
+            }
+            #size span {
+                display: block;
+                width: 100%;
+                height: max(38vw, 38vh);
+                border: 0.1em solid red;
+                background-image: 
+                    url('../../source/Crunch_long.png');
+            }
+            #size li:nth-child(2) span {
+                background-size: contain;
+            }
+            #size li:nth-child(3) span {
+                background-size: cover;
+            }
+            #size + .nota > span:first-child {
+                display: block;
+                width: 100%;
+                height: max(38vw, 38vh);
+                border: 0.1em solid red;
+                background-image: 
+                    url('../../source/Crunch_long.png');
+                    background-size: 100% 100%;
+                margin-bottom: 1rem;
+            }
+
+            #clip span {
+                display: block;
+                width: 60vw;
+                height: max(38vw, 38vh);
+                padding: 5vw;
+                border: 5vw dotted yellowgreen;
+                background-image: 
+                    url('../../source/Crunch.png');
+                background-size: cover;
+            }
+            #clip li:nth-child(2) span {
+                background-clip: padding-box;
+            }
+            #clip li:nth-child(3) span {
+                background-clip: content-box;
+            }
+
+            #target {
+                display: block;
+                width: 100%;
+                height: max(48vw, 48vh);
+                padding: 5vw;
+                border: 5vw dotted yellowgreen;
+                background-image: 
+                    url('../../source/Crunch.png');
+                margin: 1rem 0;
+                background-size: cover;
+            }
+        </style>
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeGrad: 
+`#gradiente {
+    background-image: 
+        linear-gradient(to right, red, green, blue);
+    color: aliceblue;
+}`,
+                    cssCodeImm:
+`.immaginami {
+    background-image: url('../../source/Crunch.png');
+    color: beige;
+}`,
+                    cssCodeSov:
+`#sovrapposition {
+    background-image: 
+        url('../../source/Crocco.png'),
+        url('../../source/Crunch.png');
+}`,
+                    cssCodePos1: `background-position: left bottom;`,
+                    cssCodePos2: `background-position: right top;`,
+                    cssCodePos3: `background-position: center center;`,
+                    cssCodePos4: `background-position: 30% 5%;`
+                }
+            }
+        </script>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sui background in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento dei background in CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>        
+                        Ogni elemento html ha un background, cioè l'area dietro al suo contenuto, padding e contorno;
+                        CSS include diverse proprietà dedicate a questo oggetto.
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Colore</h2>
+                <div>
+                    <p>La proprietà <code class="att">background-color</code> 
+                    permette di assegnare un colore al background di un elemento.</p>
+                    <p class="eg"><s id="htmlCodeBack"></s>
+                        <span style="background-color: burlywood;" class="htmlCodeBack">
+                            anche un elemento inline ha un background
+                        </span>
+                    </p>
+                    <section>
+                        <h3>Gradiente</h3>
+                        <p>Per assegnare un gradiente come background bisogna usare la 
+                            proprietà <code class="att">background-image</code>
+                        </p>
+                        <p class="eg"><rp id="cssCodeGrad"></rp>
+                            <span contenteditable="true">
+                                Puoi scrivere qui anche tu
+                            </span>
+                        </p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Immagine</h2>
+                <div>
+                    <p>Possiamo assegnare una o più immagini come background.</p>
+                    <div>
+                        <p class="eg"><rp id="cssCodeImm"></rp>
+                            <span contenteditable="true" class="immaginami">
+                                ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe dolorum porro possimus! Cum eos dolore laborum inventore aliquid praesentium quaerat dignissimos consectetur ab, similique aspernatur molestias modi fugiat tenetur tempora.
+                            </span>
+                        </p>
+                        <p class="eg-extend immaginami">ipsum Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta delectus dignissimos, voluptate sunt in optio assumenda nostrum, dolores consectetur veniam, ipsa nihil odio facere temporibus earum consequatur! Eius, fugit cupiditate.</p>
+                    </div>
+                    <p class="nota">è buona pratica assegnare sempre un <code class="att">background-color</code>
+                        coerente come fallback se si imposta <code class="att">background-image</code>.</p>
+                    <section>
+                        <h3>Immagini Multiple</h3>
+                        <p>Separando i valori con una virgola, possiamo sovrapporre più 
+                            immagini (o gradienti) nel background
+                        </p>
+                        <div>
+                            <p class="eg"><rp id="cssCodeSov"></rp></p>
+                            <div class="eg-extend" id="sovrapposition">
+                                <div></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Proprietà del Background</h2>
+                <div>
+                    <p>Elenchiamo alcune utili proprietà dei background.</p>
+                    <section>
+                        <h3>Attachment</h3>
+                        <p>La proprietà <code class="att">background-attachment</code>
+                            permette di impostare il comportamento del background 
+                            quando il contenuto della pagina scorre
+                        </p>
+                        <ul id="attach">
+                            <li><code class="string">scroll</code>: (default) il contenuto del background
+                                scorre normalmente assieme alla pagina.
+                                <p class="eg"><span>ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, voluptatum! Nostrum error aut velit non commodi veritatis doloribus, voluptatem iusto exercitationem in, quos laborum dolor aspernatur dignissimos, temporibus labore magnam.<br>
+                                    ipsum Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet nisi nihil, error illo aperiam pariatur quam ipsum sed rem dolor fuga voluptates dolore iste molestias, dolorem quo repellendus natus omnis?<br>
+                                    ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure qui blanditiis necessitatibus esse dignissimos tempora. Similique obcaecati debitis, labore id molestias aut, ab maiores suscipit voluptatem recusandae deleniti tempore aliquid!
+                                </span></p>    
+                            </li>
+                            <li><code class="string">fixed</code>: il contenuto del background è ancorato 
+                                alla viewport, cioè resta immobile rispetto allo scorrere della pagina
+                                <p class="eg"><span>ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, voluptatum! Nostrum error aut velit non commodi veritatis doloribus, voluptatem iusto exercitationem in, quos laborum dolor aspernatur dignissimos, temporibus labore magnam.<br>
+                                    ipsum Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet nisi nihil, error illo aperiam pariatur quam ipsum sed rem dolor fuga voluptates dolore iste molestias, dolorem quo repellendus natus omnis?<br>
+                                    ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure qui blanditiis necessitatibus esse dignissimos tempora. Similique obcaecati debitis, labore id molestias aut, ab maiores suscipit voluptatem recusandae deleniti tempore aliquid!
+                                </span></p> 
+                            </li>
+                            <li><code class="string">local</code>: il contenuto del background è ancorato 
+                                all'elemento, quindi scorre assieme all'elemento e il suo contenuto
+                                
+                                <p class="eg"><span>ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, voluptatum! Nostrum error aut velit non commodi veritatis doloribus, voluptatem iusto exercitationem in, quos laborum dolor aspernatur dignissimos, temporibus labore magnam.<br>
+                                    ipsum Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet nisi nihil, error illo aperiam pariatur quam ipsum sed rem dolor fuga voluptates dolore iste molestias, dolorem quo repellendus natus omnis?<br>
+                                    ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure qui blanditiis necessitatibus esse dignissimos tempora. Similique obcaecati debitis, labore id molestias aut, ab maiores suscipit voluptatem recusandae deleniti tempore aliquid!
+                                </span></p> 
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Repeat</h3>
+                        <p>La proprietà <code class="att">background-repeat</code>
+                            indica se e come ripetere un'immagine:
+                        </p>
+                        <ul id="repeato"> 
+                            <li><code class="string">repeat</code>: (default) l'immagine viene 
+                            ripetuta sia orizzontalmente che verticalmente
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">repeat-x</code>: (default) l'immagine viene 
+                            ripetuta sia orizzontalmente che verticalmente
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">repeat-y</code>: (default) l'immagine viene 
+                            ripetuta sia orizzontalmente che verticalmente
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">no-repeat</code>: (default) l'immagine viene 
+                            ripetuta sia orizzontalmente che verticalmente
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">space</code>: l'immagine viene ripetuta finché 
+                                possibile senza spezzarla; quelle agli estremi del contenitore
+                                restano agli estremi e le altre sono distribuite lasciando 
+                                quanto spazio necessario
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">round</code>: l'immagine viene 
+                                ripetuta finché possibile senza spezzarla; il risultato 
+                                viene ridimensionato per adattarsi alle dimensioni dell'elemento
+                                <p class="eg"><span></span></p> 
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Position</h3>
+                        <p>La proprietà <code class="att">background-position</code>
+                            indica la posizione da cui partire dell'immagine per riempire 
+                            il background;
+                        </p>
+                        <p>questa proprietà prende due valori per inidicare la posizione:</p>
+                        <ol>
+                            <li>posizione sull'asse x (<i>orizzontale</i>)</li>
+                            <li>posizione sull'asse y (<i>verticale</i>)</li>
+                        </ol>
+                        <p>I valori possono essere sia dei numeri (anche percentuali riferite 
+                            alle dimensioni dell'elemento) che delle parole chiavi quali 
+                            <code class="string">left</code>, <code class="string">right</code>,
+                            <code class="string">top</code>, <code class="string">bottom</code>
+                            o <code class="string">center</code>.
+                        </p>
+                        <p class="eg">
+                            <rp id="cssCodePos1"></rp>
+                            <span data-number="1"></span>
+                            <rp id="cssCodePos2"></rp>
+                            <span data-number="2"></span>
+                            <rp id="cssCodePos3"></rp>
+                            <span data-number="3"></span>
+                            <rp id="cssCodePos4"></rp>
+                            <span data-number="4"></span>
+                        </p>
+                        <p class="nota">di default la posizione è <code class="string">left</code> 
+                            <code class="string">top</code></p>
+                    </section>
+                    <section>
+                        <h3>Size</h3>
+                        <p>La proprietà <code class="att">background-size</code>
+                            indica le dimensioni dell'immagine:
+                        </p>
+                        <ul id="size">
+                            <li><code class="string">auto</code>: (default) l'immagine 
+                                mantiene le dimensioni (assolute) originali
+                                <p class="eg"><span class="range-edit"></span>
+                                <input type="range" min="0" max="100" value="100" style="width: 100%;"/></p> 
+                            </li>
+                            <li><code class="string">contain</code>: l'immagine 
+                                è dimensionata in modo da essere interamente visibile
+                                nelle proporzioni originali
+                                <p class="eg"><span class="range-edit"></span>
+                                <input type="range" min="0" max="100" value="100" style="width: 100%;"/></p> 
+                            </li>
+                            <li><code class="string">cover</code>: l'immagine è
+                                ridimensionata in modo da coprire interamente il contenitore
+                                <p class="eg"><span class="range-edit"></span>
+                                <input type="range" min="0" max="100" value="100" style="width: 100%;"/></p> 
+                            </li>
+                        </ul>
+                        <p class="nota">alternativamente è possibile passare due valori, uno per la larghezza
+                            e uno per l'altezza:
+                            <span></span>
+                            larghezza:
+                            <input type="range" min="0" max="100" value="100" style="width: 100%;"/>
+                            altezza:
+                            <input type="range" min="0" max="100" value="100" style="width: 100%;"/>
+                            <code class="att">background-size</code><code>: <code class="string"><span>100% 100%</span></code>;</code>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Origin</h3>
+                        <p>La proprietà <code class="att">background-origin</code>
+                            indica da che parte dell'elemento riprodurre il background:
+                        </p>
+                        <ul id="orig">
+                            <li><code class="string">padding-box</code>: (default) l'immagine parte 
+                                dall'angolo in alto a sinistra del padding
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">border-box</code>: l'immagine parte 
+                                dall'angolo in alto a sinistra del contorno
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">content-box</code>: l'immagine parte 
+                                dall'angolo in alto a sinistra del contenuto
+                                <p class="eg"><span></span></p> 
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Clip</h3>
+                        <p>La proprietà <code class="att">background-clip</code>
+                            indica fino a dove l'immagine dovrebbe estendersi nel background.
+                        </p>
+                        <ul id="clip">
+                            <li><code class="string">border-box</code>: (default) l'immagine 
+                                si estende oltre il contorno
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">padding-box</code>: l'immagine si estende
+                                fino alla fine del padding, al limite del contorno
+                                <p class="eg"><span></span></p> 
+                            </li>
+                            <li><code class="string">content-box</code>: l'immagine si estende
+                                fino alla fine del contenuto, al limite del padding
+                                <p class="eg"><span></span></p> 
+                            </li>
+                        </ul>
+                        <div class="eg-extend">Combiniamo le proprietà 
+                            <code class="att">background-origin</code> e 
+                            <code class="att">background-clip</code>:
+                            <span id="target"></span>
+                            <form>
+                                <label for="b-origin"><code class="att">background-origin</code><code>: </code></label>
+                                <select name="background-origin" id="b-origin">
+                                    <option value="padding-box">padding-box</option>
+                                    <option value="border-box">border-box</option>
+                                    <option value="content-box">content-box</option>
+                                </select><code>;</code><br>
+                                <label for="b-clip"><code class="att">background-clip</code><code>: </code></label>
+                                <select name="background-clip" id="b-clip">
+                                    <option value="border-box">border-box</option>
+                                    <option value="padding-box">padding-box</option>
+                                    <option value="content-box">content-box</option>
+                                </select><code>;</code>
+                            </form>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Shorthand</h3>
+                        <p>La proprietà <code class="att">background</code>
+                            riunisce ordinatamente le proprietà:
+                        </p>
+                        <ol>
+                            <li><code class="att">background-color</code></li>
+                            <li><code class="att">background-image</code></li>
+                            <li><code class="att">background-position</code></li>
+                            <li><code class="att">background-size</code></li>
+                            <li><code class="att">background-repeat</code></li>
+                            <li><code class="att">background-origin</code></li>
+                            <li><code class="att">background-clip</code></li>
+                            <li><code class="att">background-attachment</code></li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Blend</h3>
+                        <p>La proprietà <code class="att">background-blend-mode</code>
+                            indica come l'immagine deve mischiarsi al background:
+                        </p>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+        <script>
+            // regolare proprietà background-size
+            const width = document.querySelector("#size + .nota input:first-of-type");
+            const heigth = document.querySelector("#size + .nota input:last-of-type");
+            const destIm = document.querySelector("#size + .nota > span:first-child");
+            const destText = document.querySelector("#size + .nota > code:last-child span");
+            let backSize = ['100%','100%'];
+            width.addEventListener("input", function() {
+                backSize[0] = width.value + '%';
+                const size = backSize[0] + ' ' + backSize[1];
+                destIm.style.backgroundSize = size;
+                destText.textContent = size;
+            });
+            heigth.addEventListener("input", function() {
+                backSize[1] = heigth.value + '%';
+                const size = backSize[0] + ' ' + backSize[1];
+                destIm.style.backgroundSize = size;
+                destText.textContent = size;
+            });
+
+            // regolare origin e clip
+            const target = document.getElementById("target");
+            const origin = document.getElementById("b-origin");
+            const clip = document.getElementById("b-clip");
+
+            origin.addEventListener("input", function() {
+                target.style.backgroundOrigin = origin.value;
+            });
+            clip.addEventListener("input", function() {
+                target.style.backgroundClip = clip.value;
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti html | Liste</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sulle liste in html" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Liste" />
+        <meta property="og:description" content="Appunti e note sulle liste in html" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Liste" />
+        <meta name="twitter:description" content="Appunti e note sulle liste in html" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento delle liste in html.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p> 
+                        In html si possono definire tre diversi tipi di liste.                      
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Liste Generiche</h2>
+                <div>
+                    <p>Possiamo definire una semplice lista per la quale l'ordine degli 
+                        elementi non è importante con il tag <code class="tag">ul</code>
+                        (<i>unordered list</i>).
+                    </p>
+                    <p>Ogni oggetto della lista deve essere racchiuso nel tag 
+                        <code class="tag">li</code> (<i>list item</i>)</p>
+                    <div>
+                        <p class="eg"><s id="htmlCodeListUl"></s>Il risultato è</p>
+                        <div class="eg-extend">
+                        <ul class="htmlCodeListUl">
+                            <li>elemento-1</li>
+                            <li>elemento-3</li>
+                            <li>elemento-2</li>
+                        </ul></div>
+                    </div>
+                    <section>
+                        <h3>Liste Innestate</h3>
+                        <p>Possiamo anche creare una lista all'interno di un'altra inserendola 
+                            all'interno di uno dei suoi elementi.
+                        </p>
+                        <div>
+                            <p class="eg"><s id="htmlCodeListNest"></s></p>
+                            <div class="eg-extend">
+                                <ul class="htmlCodeListNest">
+                                    <li>elemento-1</li>
+                                    <li>elemento-2
+                                        <ul>
+                                            <li>elemento-2.1</li>
+                                            <li>elemento-2.2</li>
+                                        </ul>
+                                    </li>
+                                    <li>elemento-3</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Liste Ordinate</h2>
+                <div>
+                    <p>Possiamo definire una lista di elementi ordinati con il tag
+                        <code class="tag">ol</code> (<i>ordered list</i>).
+                    </p>
+                    <div>
+                        <p class="eg"><s id="htmlCodeOrder"></s></p>
+                        <div class="eg-extend">
+                            <ol class="htmlCodeOrder">
+                                <li>oggetto-1</li>
+                                <li>oggetto-2
+                                    <ol>
+                                        <li>oggetto-2-1</li>
+                                        <li>oggetto-2-2</li>
+                                    </ol>
+                                </li>
+                                <li>oggetto-3
+                                    <ul>
+                                        <li>oggetto-2.1</li>
+                                        <li>oggetto-2.2</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <p class="nota">
+                        Non è necessario che le liste siano dello stesso tipo per 
+                        poterle innestare.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h2>Liste Informative</h2>
+                <div>
+                    <p>Le liste informative usano sono racchiuse dal tag 
+                        <code class="tag">dl</code> (<i>description list</i>);</p>
+                    <p>ogni elemento della lista dal tag 
+                        <code class="tag">dt</code> (<i>description term</i>)
+                    </p>
+                    <p>e le relative informazioni nel tag
+                        <code class="tag">dd</code> (<i>description definition</i>)
+                    </p>
+                    <div>
+                        <p class="eg"><s id="htmlCodeDetail"></s></p>
+                        <div class="eg-extend">
+                            <dl class="htmlCodeDetail">
+                                <dt>term-1</dt>
+                                <dd>shmuck-1</dd>
+                                <dt>term-2</dt>
+                                <dd>shmuck-2</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <p class="nota"> lo spazio lasciato sopra e sotto la lista è un margine</p>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+    </body>
+</html>
