@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
-        <script src="../../source/Navigazione2.js"></script>
+        <script type="module" src="../../source/Navigazione.js"></script>
         <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
         <script src="../../source/highlight.js"></script>
 
@@ -146,8 +146,43 @@
                         </div></div>
                     </section>
                     <section>
+                        <h3>HEX</h3>
+                        <p>La codifica esadecimale segue quella RGB, dove i valori dei canali 
+                            <code style="color: rgb(255, 0, 0);">rosso</code>, <code style="color: rgb(0, 255, 0);">verde</code> e <code style="color: rgb(0, 0, 255);">blu</code>
+                            sono espressi in interi esadecimali da <kbd>0</kbd> a <kbd>ff</kbd>:
+                        </p>
+                        <div id="hex-wrapper" class="color-wrapper">
+                        <div id="hex-color">#000000</div>
+                        <div>
+                            <label for="red"><code>RED</code></label>
+                            <input id="red" type="range" min="0" max="255" value="0" name="red"/>
+                            <label for="red">0</label>
+                        </div>
+                        <div>
+                            <label for="green"><code>GREEN</code></label>
+                            <input id="green" type="range" min="0" max="255" value="0" name="green"/>
+                            <label for="green">0</label>
+                        </div>
+                        <div>
+                            <label for="blue"><code>BLUE</code></label>
+                            <input id="blue" type="range" min="0" max="255" value="0" name="blue"/>
+                            <label for="blue">0</label>
+                        </div></div>
+                    </section>
+                    <section>
                         <h3>HSL</h3>
-                        <p></p>
+                        <p>La codifica <abbr title="Hue Saturation Lightness">HSL</abbr> divide il colore in tre canali:</p>
+                        <ul>
+                            <li><i><b>hue</b></i>: indica un valore in una ruota dei colori da <kbd>0</kbd> a <kbd>360</kbd> in gradi, dove 
+                            <kbd>0</kbd> è <code style="color: rgb(255, 0, 0);">rosso</code>, 
+                            <kbd>120</kbd> è <code style="color: rgb(0, 255, 0);">verde</code> e 
+                            <kbd>240</kbd> è <code style="color: rgb(0, 0, 255);">blu</code></li>
+                            <li><i><b>saturation</b></i>: una scala di intensità del colore da <kbd>0%</kbd> a <kbd>100%</kbd>, dove 
+                            <kbd>0%</kbd> indica un colore completamente desaturato, cioè in scala di grigio</li>
+                            <li><i><b>lightness</b></i>: una scala di luminosità del colore da <kbd>0%</kbd> a <kbd>100%</kbd>, 
+                            dove <kbd>0%</kbd> indica il nero e <kbd>100%</kbd> il bianco</li>
+                        </ul>
+                        <p>Ai tre canali si può aggiungere il canale <i>alpha</i> di trasparenza:</p>
                         <div id="hsla-wrapper" class="color-wrapper">
                         <div id="hsla-color">hsla(000, 000%, 000%, 1)</div>
                         <div>
@@ -171,27 +206,14 @@
                             <label for="alpha">1</label>
                         </div></div>
                     </section>
-                    <section>
-                        <h3>HSL</h3>
-                        <p></p>
-                        <div id="hex-wrapper" class="color-wrapper">
-                        <div id="hex-color">#000000</div>
-                        <div>
-                            <label for="red"><code>RED</code></label>
-                            <input id="red" type="range" min="0" max="255" value="0" name="red"/>
-                            <label for="red">0</label>
-                        </div>
-                        <div>
-                            <label for="green"><code>GREEN</code></label>
-                            <input id="green" type="range" min="0" max="255" value="0" name="green"/>
-                            <label for="green">0</label>
-                        </div>
-                        <div>
-                            <label for="blue"><code>BLUE</code></label>
-                            <input id="blue" type="range" min="0" max="255" value="0" name="blue"/>
-                            <label for="blue">0</label>
-                        </div></div>
-                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Contrasto</h2>
+                <div>
+                    <p>Posizionare testo su uno sfondo colorato richiede una certa deifferenza
+                        tra i rispettivi colori per garantire visibilità e leggibilità
+                    </p>
                 </div>
             </article>
         </main>

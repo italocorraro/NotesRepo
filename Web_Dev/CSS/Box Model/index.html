@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
-        <script src="../../source/Navigazione2.js"></script>
+        <script type="module" src="../../source/Navigazione.js"></script>
         <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
         <script src="../../source/highlight.js"></script>
 
@@ -45,12 +45,18 @@
             #moya-grid {
                 display: grid;
                 width: 100%;
+                max-width: 100%;
                 gap: 1rem;
                 grid-template-columns: repeat(2,1fr);
                 align-items: center;
+                justify-items: center;
                 text-align: center;
                 margin: 1.5rem 0;
                 padding: 0 0.5rem;
+                overflow-x: hidden;
+            }
+            #moya-grid span {
+                width: fit-content;
             }
             #moya-grid span:is(:nth-child(3), :nth-child(4)) {
                 font-size: 90%;
@@ -85,7 +91,9 @@
             }
             #moya-grid .margin {
                 width: 100%;
-                height: calc(25vh + 25vw);
+                max-width: calc(50vw - 3rem);
+                min-height: fit-content;
+                height: calc(min(50vw, 50vh) - max(10vw, 10vh));
                 border: 0.25em dashed red;
                 background-color: rgb(245, 225, 225);
                 align-content: center;
@@ -98,7 +106,9 @@
                 justify-items: inherit;
                 padding: inherit;
                 width: 100%;
+                min-width: none;
                 height: 100%;
+                min-height: fit-content;
                 position: relative;
             }
             #moya-grid :is(.margin, .padding, .border)::before {
@@ -159,7 +169,8 @@
                 &.container {
                     grid-area: box;
                     width: clamp(100px, 100%, 4000px);
-                    height: clamp(120px, max(40vh,50vw), 3600px);
+                    height: clamp(120px, min(40vh,50vw), 3600px);
+                    max-height: 100%;
                     background-color: transparent;
                 }
                 &.container, & .margin, & .border, & .padding, & .contento {
@@ -167,6 +178,7 @@
                     justify-content: center;
                     align-items: center;
                     position: relative;
+                    min-height: auto;
                 }
 
                 & .margin {
@@ -406,7 +418,7 @@
                 }
             }
 
-            #boxxer pre code {
+            #boxxer > pre code {
                 float: left;
                 margin-right: 2rem;
             }
@@ -729,7 +741,7 @@ span.mixed {border-color: red wheat green yellow;}`,
                             <div class="contento">
                             </div></div></div></div>
                         </div>
-                        <p class="osservazione">se impostiamo <rt id="cssCodeBox"></rt> avremo la situazione opposta 
+                        <p class="osservazione clearfix">se impostiamo <rt id="cssCodeBox"></rt> avremo la situazione opposta 
                             a quella di default: le dimensioni del contenuto saranno pari a quelle dell'elemento tolti
                             padding e contorno.</p>
                         <p class="notabene">anche avere impostato <code class="string">border-box</code> non significa
