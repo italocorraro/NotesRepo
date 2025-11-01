@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Form</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sulla gestione dei form in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Form" />
+        <meta property="og:description" content="Appunti e note sulla gestione dei form in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Form" />
+        <meta name="twitter:description" content="Appunti e note sulla gestione dei form in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            #spostata fieldset {
+                position: relative;
+            }
+            #spostata legend {
+                background-color: antiquewhite;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+        </style>
+        <script>
+            const snippets = {
+                html: {
+                    htmlCodeSub: `<input type="submit">`
+                },
+                css: {
+                    cssCodeText1: 
+`button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+}`,
+                    cssCodeMove:
+`fieldset {
+    position: relative;
+}
+legend {
+    background-color: antiquewhite;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}`
+                }
+            }
+        </script>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sulla gestione dei form in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento della gestione dei form in CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>   
+                        I <code class="tag">form</code> contengono generalmente
+                        elementi con caratteristiche decise dal browser per motivi storici (i
+                        form esistono da prima di CSS) <br>
+                        Alcuni elementi sono particolarmente ostici da stilizzare, in particolare
+                        le <code class="string">checkbox</code>, i 
+                        <code class="string">radio</code> e i <code class="string">search</code>, <br>
+                        altri invece non permettono di dare stile alla loro componente dropdown, come 
+                        <code class="tag">select</code>, <code class="tag">option</code> e <code class="tag">datalist</code>.    
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Campi Testuali</h2>
+                <div>
+                    <section>
+                        <h3>Font</h3>
+                        <p>Il testo negli elmenti <code class="tag">form</code> 
+                            non eredita sempre (dipende dal browser) le proprietà 
+                            <code class="att">font-family</code> e 
+                            <code class="att">font-size</code></p>
+                        <p>Per mantenere consistenza nell'aspetto dei form è 
+                            buona pratica impostare manualmente queste due proprietà:
+                            <rp id="cssCodeText1"></rp>
+                        </p>
+                        <p class="notabene">gli elementi <rt id="htmlCodeSub"></rt>
+                        non ereditano la proprietà <code class="att">font-family</code>
+                        anche impostandola come appena visto; per ovviare al problema
+                        è comunque possibile usare un elemento <code class="tag">button</code>
+                        e JavaScript per gestire l'invio del form</p>
+                    </section>
+                    <section>
+                        <h3>Dimensioni</h3>
+                        <p>I vari elementi che generano campi testuali nei form
+                            possiedono tutte le proprietà CSS del box model 
+                            (<code class="att">width</code>, <code class="att">height</code>,
+                            <code class="att">padding</code>, <code class="att">margin</code>,
+                            <code class="att">border</code> e <code class="att">box-sizing</code>),
+                            ma sono naturalmente tutte impostate con un default che dipende dal browser
+                        </p>
+                        <p class="notabene">la larghezza e altezza degli <code class="tag">input</code>
+                        <code class="string">checkbox</code> e <code class="string">radio</code>
+                        non è impostata da <code class="att">width</code> e <code class="att">height</code>, che
+                        invece impostano le dimensioni del contenitore delle caselle, le quali invece 
+                        sono trattate come elementi di testo</p>
+                    </section>
+                    <section>
+                        <h3>Posizione</h3>
+                        <p>I campi testuali possono essere riposizionati come gli altri elementi <code>inline-block</code>,
+                        con l'eccezione di <code class="tag">legend</code>:</p>
+                        <p>di default <code class="tag">legend</code> è posizionato 
+                        nella parte superiore sinistra del <code class="tag">fieldset</code>
+                        che lo contiene</p>
+                        <p>per posizionarlo diversamente è necessario impostarlo con 
+                            <code class="att">position</code> <code class="string">absolute</code>
+                        e <code class="tag">fieldset</code> con <code class="string">relative</code></p>
+                        <div>
+                            <p class="eg"></p>
+                            <div class="eg-extend">
+                                Questo è il default
+                                <form>
+                                    <fieldset>
+                                        <legend>legenda</legend>
+                                        <ul>
+                                            <li><input type="checkbox"> obj-1</li>
+                                            <li><input type="checkbox"> obj-2</li>
+                                            <li><input type="checkbox"> obj-3</li>
+                                        </ul>
+                                    </fieldset>
+                                </form>
+                            </div><div class="eg-extend">
+                                Questo invece è la versione spostata
+                                <form id="spostata">
+                                    <fieldset>
+                                        <legend>legenda-spostata</legend>
+                                        <ul>
+                                            <li><input type="checkbox"> obj-1</li>
+                                            <li><input type="checkbox"> obj-2</li>
+                                            <li><input type="checkbox"> obj-3</li>
+                                        </ul>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="eg-extend">
+                                con il codice:
+                                <rp id="cssCodeMove"></rp>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2></h2>
+                <div>
+                    <p>Checkbox e radio non</p>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+    </body>
+</html>

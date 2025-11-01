@@ -30,7 +30,7 @@ const navbar = [
       { name: 'Liste', URL: base + 'html/Liste/' },
       { name: 'Media', URL: '#' },
       { name: 'Tabelle', URL: '#' },
-      { name: 'Forms', URL: base + 'html/Forms/' },
+      { name: 'Form', URL: base + 'html/Forms/' },
       { name: 'Accessibilità', URL: '#' },
       { name: 'Validazione', URL: '#' }
     ]
@@ -42,11 +42,12 @@ const navbar = [
       { name: 'Selettori', URL: base + 'CSS/Selectors/' },
       { name: 'Box Model', URL: base + 'CSS/Box Model/' },
       { name: 'Colori', URL: base + 'CSS/Colori/' },
+      { name: 'Immagini', URL: base + 'CSS/Immagini/' },
       { name: 'Background', URL: base + 'CSS/Background/' },
       { name: 'Unità di misura', URL: base + 'CSS/Unità di Misura/' },
       { name: 'Tipografia', URL: '#' },
       { name: 'Funzioni e variabili', URL: '#' },
-      { name: 'Immagini', URL: '#' },
+      { name: 'Form', URL: base + 'CSS/Form/' },
       { name: 'Modali', URL: '#' },
       { name: 'media queries', URL: '#' },
       { name: 'Layout con Float', URL: base + 'CSS/Layout con Float/' },

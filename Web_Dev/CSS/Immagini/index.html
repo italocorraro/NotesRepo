@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Immagini</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sualla gestione delle immagini in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Immagini" />
+        <meta property="og:description" content="Appunti e note sualla gestione delle immagini in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Immagini" />
+        <meta name="twitter:description" content="Appunti e note sualla gestione delle immagini in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            img { max-width: 100%; }
+            #size li img {
+                height: 35vw;
+                width: 100%;
+                border: 2px dotted #ff00ff;
+            }
+            #size li > .eg {
+                width: 100%;
+                
+            }
+            #size li:nth-child(1) img {
+                object-fit: none;
+            }
+            #size li:nth-child(2) img {
+                object-fit: contain;
+            }
+            #size li:nth-child(3) img {
+                object-fit: cover;
+            }
+            #size li:nth-child(4) img {
+                object-fit: fill;
+            }
+        </style>
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeImg: `img { max-width: 100%; }`
+                }
+            }
+        </script>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sulla gestione delle immagini in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento della gestione delle immagini in CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>   
+                        Le immagini (ma anche altri media e i form) si comportano 
+                        diversamente dagli altri oggetti per quanto riguarda gli stili.                    
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Elementi Sostituiti</h2>
+                <div>
+                    <p>Alcuni elementi in html hanno il proprio contenuto definito dal browser
+                        o da fonti esterne, questi elementi sono detti <i>elementi sostituiti</i>
+                        (<i>replaced elements</i>) e includono elementi media come <code class="tag">img</code>
+                        o <code class="tag">video</code>.
+                    </p>
+                    <p>Il contenuto di questo tipo di elementi non è definito secondo CSS.</p>
+                    <p>Molti elementi di questa categoria hanno delle proprie dimensioni intrinseche;
+                        cioè la loro larghezza e altezza sono già definite.
+                    </p>
+                    <p class="eg">le immagini e i video hanno delle loro dimensioni di partenza con 
+                        cui verranno rappresentate nel documento; una regola spesso usata per per evitare 
+                        overflow è <code class="att">max-width</code><rp id="cssCodeImg"></rp>
+                        l'uso di questa proprietà permette di preimpostare le immagini per non 
+                        uscire mai dai limiti del proprio contenitore; funziona anche con i video
+                    </p>
+                    <p>Vari elementi sostituiti mantengono naturalmente un rapporto proporzionale 
+                        tra le loro dimensioni di larghezza e altezza, cioè hanno un <i>aspect ratio</i>
+                    </p>
+                    <p class="eg">tipicamente i video moderni hanno un aspect ratio di 16:9</p>
+                    <section>
+                    <p class="notabene">nei layout <code class="att">grid</code> e <code class="att">flexbox</code>
+                    gli elementi sostituiti di default non si ridimensioneranno per rispettare il contenitore
+                    come gli altri</p>
+                        <h3>object-fit</h3>
+                        <p>La proprietà <code class="att">object-fit</code> permette di ridimensionare il contenuto 
+                        di un elemento sostituito per adattarsi al suo contenitore; può avere questi valori:</p>
+                        <ul id="size">
+                            <li><code class="string">none</code>: (default) l'elemento 
+                                mantiene le dimensioni (assolute) originali
+                                <p class="eg"><br><img src="../../source/Crunch-small.png" class="range-edit"></img>
+                                <input type="range" min="20" max="100" value="100" style="width: 100%;"/>
+                                </p> 
+                            </li>
+                            <li><code class="string">contain</code>: l'elemento 
+                                è dimensionato in modo da essere interamente visibile
+                                nelle proporzioni originali
+                                <p class="eg"><br><img src="../../source/Crunch-small.png" class="range-edit"></img>
+                                <input type="range" min="20" max="100" value="100" style="width: 100%;"/>
+                                </p> 
+                            </li>
+                            <li><code class="string">cover</code>: l'elemento è
+                                ridimensionato (mantenendo l'aspect ratio) in modo 
+                                da coprire interamente il contenitore (le parti in eccesso 
+                                vengono tagliate)
+                                <p class="eg"><br><img src="../../source/Crunch-small.png" class="range-edit"></img>
+                                <input type="range" min="20" max="100" value="100" style="width: 100%;"/>
+                                </p> 
+                            </li>
+                            <li><code class="string">fill</code>: l'elemento è
+                                ridimensionato (ignorando l'aspect ratio) in modo da 
+                                coprire interamente il contenitore
+                                <p class="eg"><br><img src="../../source/Crunch-small.png" class="range-edit"></img>
+                                <input type="range" min="20" max="100" value="100" style="width: 100%;"/>
+                                </p> 
+                            </li>
+                        </ul>
+                        <p class="notabene">negli esempi si è impostata una dimensione per l'elemento 
+                            <code class="tag">img</code> e l'immagine contenuta si è adattata poi
+                            secondo la proprietà <code class="att">object-fit</code>
+                        </p>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+    </body>
+</html>

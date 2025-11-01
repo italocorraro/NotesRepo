@@ -192,6 +192,37 @@
                 margin: 1rem 0;
                 background-size: cover;
             }
+
+            #blend ~ .eg > span {
+                display: block;
+                width: 60vw;
+                max-width: 100%;
+                height: max(48vw, 48vh);
+                background-image: 
+                    url('../../source/Crocco.png'),
+                    url('../../source/Crunch.png');
+                background-blend-mode: normal, normal;
+                background-repeat: no-repeat;
+                background-size: auto, cover;
+                background-position: center center, left top;
+                margin: 1rem 0;
+            }
+
+            #troglet {
+                display: block;
+                width: 60vw;
+                max-width: 100%;
+                height: max(48vw, 48vh);
+                background-image: 
+                    url('../../source/Crocco.png'),
+                    url('../../source/Crunch.png');
+                background-blend-mode: multiply, normal;
+                background-repeat: no-repeat;
+                background-size: auto, cover;
+                background-position: center center, left top;
+                margin: 1rem 0;
+            }
+
         </style>
         <script>
             const snippets = {
@@ -216,7 +247,15 @@
                     cssCodePos1: `background-position: left bottom;`,
                     cssCodePos2: `background-position: right top;`,
                     cssCodePos3: `background-position: center center;`,
-                    cssCodePos4: `background-position: 30% 5%;`
+                    cssCodePos4: `background-position: 30% 5%;`,
+                    cssCodeMultiply:
+`background-image: 
+    url('../../source/Crocco.png'),
+    url('../../source/Crunch.png');
+background-blend-mode: normal, normal;
+background-repeat: no-repeat;
+background-size: auto, cover;
+background-position: center center, left top;`
                 }
             }
         </script>
@@ -337,16 +376,16 @@
                             ripetuta sia orizzontalmente che verticalmente
                                 <p class="eg"><span></span></p> 
                             </li>
-                            <li><code class="string">repeat-x</code>: (default) l'immagine viene 
-                            ripetuta sia orizzontalmente che verticalmente
+                            <li><code class="string">repeat-x</code>: l'immagine viene 
+                            ripetuta solo orizzontalmente
                                 <p class="eg"><span></span></p> 
                             </li>
-                            <li><code class="string">repeat-y</code>: (default) l'immagine viene 
-                            ripetuta sia orizzontalmente che verticalmente
+                            <li><code class="string">repeat-y</code>: l'immagine viene 
+                            ripetuta solo verticalmente
                                 <p class="eg"><span></span></p> 
                             </li>
-                            <li><code class="string">no-repeat</code>: (default) l'immagine viene 
-                            ripetuta sia orizzontalmente che verticalmente
+                            <li><code class="string">no-repeat</code>: l'immagine non viene 
+                            ripetuta in alcuna direzione
                                 <p class="eg"><span></span></p> 
                             </li>
                             <li><code class="string">space</code>: l'immagine viene ripetuta finché 
@@ -505,6 +544,32 @@
                         <p>La proprietà <code class="att">background-blend-mode</code>
                             indica come l'immagine deve mischiarsi al background:
                         </p>
+                        <p class="eg">prova
+                            <span></span>
+                            <label for="b-b-mode"><code class="att">background-blend-mode</code></label><code>: </code>
+                            <select name="background-blend-mode" id="b-b-mode">
+                                <option value="normal">normal</option>
+                                <option value="multiply">multiply</option>
+                                <option value="screen">screen</option>
+                                <option value="overlay">overlay</option>
+                                <option value="darken">darken</option>
+                                <option value="lighten">lighten</option>
+                                <option value="color-dodge">color-dodge</option>
+                                <option value="saturation">saturation</option>
+                                <option value="color">color</option>
+                                <option value="luminosity">luminosity</option>                                
+                            </select>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Proprietà Multiple</h3>
+                        <p>Nel caso di più immagini sovrapposte nel background,
+                            si possono dare valori diversi per ciascuna proprietà 
+                            alle immagini separando i valori con una virgola
+                        </p>
+                        <p class="eg"><br>
+                            <span id="troglet"></span>
+                            <rp id="cssCodeMultiply"></rp></p>
                     </section>
                 </div>
             </article>
@@ -541,6 +606,14 @@
             });
             clip.addEventListener("input", function() {
                 target.style.backgroundClip = clip.value;
+            });
+
+            // regolare background-blend-mode 
+            const blend = document.getElementById("b-b-mode");
+            const blended = document.querySelector("span:has(~ #b-b-mode)");
+
+            blend.addEventListener("input", function() {
+                blended.style.backgroundBlendMode = `${blend.value}, normal`;
             });
         </script>
     </body>
