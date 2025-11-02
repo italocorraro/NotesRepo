@@ -114,10 +114,10 @@
                         tra le loro dimensioni di larghezza e altezza, cioè hanno un <i>aspect ratio</i>
                     </p>
                     <p class="eg">tipicamente i video moderni hanno un aspect ratio di 16:9</p>
-                    <section>
                     <p class="notabene">nei layout <code class="att">grid</code> e <code class="att">flexbox</code>
                     gli elementi sostituiti di default non si ridimensioneranno per rispettare il contenitore
                     come gli altri</p>
+                    <section>
                         <h3>object-fit</h3>
                         <p>La proprietà <code class="att">object-fit</code> permette di ridimensionare il contenuto 
                         di un elemento sostituito per adattarsi al suo contenitore; può avere questi valori:</p>
@@ -155,6 +155,20 @@
                             <code class="tag">img</code> e l'immagine contenuta si è adattata poi
                             secondo la proprietà <code class="att">object-fit</code>
                         </p>
+                    </section>
+                    <section>
+                        <h3>aspect-ratio</h3>
+                        <p>L'aspect-ratio è il rapporto proporzionale tra le dimensioni di larghezza e 
+                            altezza dell'elemento; questo rapporto è gestito dalla proprietà omonima:
+                        </p>
+                        <p><code class="att">aspect-ratio</code><code>: </code><code><code class="num">width</code> / <code class="num">height</code></code></p>
+                        <p>oppure eseguendo la divisione:</p>
+                        <p><code class="att">aspect-ratio</code><code>: </code><code class="num">(width/height)</code></p>
+                        <p>Questa proprietà è molto utile da impostare soprattutto per immagini 
+                            di grosse dimensioni di cui è noto il rapporto, in modo da lasciare che il loro 
+                            contenitore riservi loro lo spazio necessario intanto che vengono caricate;
+                        </p>
+                        <p>vedi la sezione html <a href="../../html/Media/#dimensioni">qui</a>.</p>
                     </section>
                 </div>
             </article>

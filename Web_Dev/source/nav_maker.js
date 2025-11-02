@@ -17,6 +17,36 @@ function costruisciNav(barra) {
     return navigazione;
 }
 
+function cercaDoppiHC(barra) {
+  let html = [];
+  let css = [];
+  let doppi = [];
+  for(const item of barra) {
+    switch(item.name) {
+      case 'HTML':
+        html = item.content;
+        break;
+      case 'CSS':
+        css = item.content;
+        break;
+      default: break;
+    }
+  }
+  let i = 0;
+  for(const ht of html) {
+    const nomeH = ht.name;
+    for(const cs of css) {
+      const nomeC = cs.name;
+      if(nomeC == nomeH) {
+        doppi[i] = { nome: nomeC, Hurl: ht.URL, Curl: cs.URL };
+        i++;
+        continue;
+      }
+    }
+  }
+  return doppi;
+}
+
 const base = '../../';
 
 const navbar = [
@@ -28,7 +58,8 @@ const navbar = [
       { name: "L'elemento &lt;head&gt;", URL: base + "html/L'elemento head/" },
       { name: 'Ancore', URL: base + 'html/Ancore/' },
       { name: 'Liste', URL: base + 'html/Liste/' },
-      { name: 'Media', URL: '#' },
+      { name: 'Immagini', URL: base + 'html/Immagini/' },
+      { name: 'Altri Media', URL: base + 'html/Altri Media/' },
       { name: 'Tabelle', URL: '#' },
       { name: 'Form', URL: base + 'html/Forms/' },
       { name: 'Accessibilità', URL: '#' },
@@ -47,6 +78,7 @@ const navbar = [
       { name: 'Unità di misura', URL: base + 'CSS/Unità di Misura/' },
       { name: 'Tipografia', URL: '#' },
       { name: 'Funzioni e variabili', URL: '#' },
+      { name: 'Tabelle', URL: '#' },
       { name: 'Form', URL: base + 'CSS/Form/' },
       { name: 'Modali', URL: '#' },
       { name: 'media queries', URL: '#' },
@@ -95,5 +127,7 @@ const navbar = [
 
 
 const navbar_build = costruisciNav(navbar);
+const doubles = cercaDoppiHC(navbar);
 
 export { navbar_build };
+export { doubles };

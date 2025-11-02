@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti html | Immagini</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sugli elementi immagine di html" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Immagini" />
+        <meta property="og:description" content="Appunti e note sugli elementi immagine di html" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Immagini" />
+        <meta name="twitter:description" content="Appunti e note sugli elementi immagine di html" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            figure {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                float: none;
+            }
+            img {
+                max-width: 100%;
+            }
+            #chopSize {
+                display: flex;
+                gap: 0 0.5rem;
+                flex-wrap: wrap;
+                max-width: 100%;
+                justify-content: space-around;
+            }
+            #chopSize span {
+                max-width: calc(50% - 1rem);
+                text-align: center;
+                align-self: center;
+                font-size: 110%;
+                font-weight: bold;
+            }
+            #aspectami {
+                width: 70%;
+                max-width: 100%;
+                display: block;
+                aspect-ratio: 19 / 6;
+                border: 1px solid red;
+            }
+        </style>
+
+        <script>
+            const snippets = {
+                html: {
+                    htmlCodeImg1: `<img src="../../source/Crocco.png" />`,
+                    htmlCodeImg2: `<img src="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crocco.png" />`,
+                    htmlCodeImg3: 
+`<img 
+  src="../../source/Crocco.png" 
+  alt="logo con pappagallo" />`,
+                    htmlCodeFigure:
+`<figure class="htmlCodeFigure"> 
+    <img 
+      src="../../source/Crocco.png" 
+      alt="immagine di un pappagallo" />
+    <figcaption>
+        Un pappagallino verde
+    </figcaption>
+</figure>`,
+                    htmlCodePreload: `<link rel="preload" href="image.jpg" as="image" fetchpriority="high">`,
+                    htmlCodeSrcset:
+`<img
+  src="small-image.png"
+  alt=""
+  srcset="
+    small-image.png 300w,
+    medium-image.png 600w,
+    large-image.png 1200w" />`,
+                    htmlCodeSizes:
+`<img
+  src="pic-800.jpg"
+  alt="descrizione"
+  srcset="
+    pic-400.jpg 400w,
+    pic-800.jpg 800w,
+    pic-1600.jpg 1600w"
+  sizes="
+  (max-width: 600px) 400px, 
+  (max-width: 1200px) 800px, 
+  1600px" />`, 
+                    htmlCodeRetina:
+`<img
+  src="small-image.png"
+  alt="blurb"
+  width="300"
+  height="200"
+  srcset="
+    small-image.png 1x,
+    medium-image.png 2x,
+    large-image.png 3x" />`
+                },
+                css: {
+                    cssCodeImg1: 
+`img {
+    max-width: 100%;
+    height: auto;
+}`,
+                    cssCodeRatio:
+`img {
+  display: block;
+  max-width: 100%;
+  aspect-ratio: 19 / 6;
+}`
+                }
+            }
+        </script>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sulle immagini in html</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento degli elementi immagine in html.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>    
+                        Le pagine html contengono spesso diversi elementi multimediali; <br>
+                        questi spaziano in diverse categorie, ma in particolare, quello 
+                        che interassa al browser per leggere un elemento multimediale 
+                        è il suo formato; <br>
+                        qui ci dedichiamo alle immagini in html.
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Immagini</h2>
+                <div>
+                    <p>Le immagini in html sono inserite con l'elemento void <code class="tag">img</code>;
+                    essendo void non possono contenere altri elementi ne avere contenuto testuale.</p>
+                    <section>
+                        <h3>Attributo src</h3>
+                        <p>L'attributo fondamentale di un <code class="tag">img</code> è 
+                            <code class="att">src</code>, il cui valore è l'URL a cui trovare 
+                            l'immagine (<code class="att">src</code> accetta sia URL relativi che assoluti)</p>
+                            <p class="eg">
+                                <s id="htmlCodeImg1"></s>
+                                <s id="htmlCodeImg2"></s>
+                            </p>
+                    </section>
+                    <section>
+                        <h3>Attributo alt</h3>
+                        <p>Un altro attributo importante per un <code class="tag">img</code> è
+                            <code class="att">alt</code> che invece è una breve descrizione testuale 
+                            dell'immagine;</p>
+                        <p>questa descrizione viene mostrata solo quando l'immagine non
+                            può essere caricata nel documento, ma la sua utilità non è 
+                            solo come fallback in quanto viene utilizzata anche dai lettori schermo 
+                            (per le disabilità visive) e dai motori di ricerca.</p>
+                        <p class="eg">
+                            <s id="htmlCodeImg3"></s>
+                            <img src="crocco.png" alt="logo con pappagallo" />
+                        </p>
+                        <p class="nota">anche se l'attributo <code class="att">alt</code>
+                        non è strettamente richiesto per <code class="tag">img</code>, è 
+                        buona prassi inserirlo sempre anche se vuoto; un <code class="att">alt</code>
+                        vuoto dice allo screen reader che l'immagine è puramente decorativa</p>
+                        <p class="nota">se possibile, è preferibile inserire immagini 
+                            il cui unico scopo è decorativo tramite CSS e non html
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Attributo title</h3>
+                        <p>L'elemento <code class="tag">img</code> può usare l'attributo 
+                        <code class="att">title</code> per mostrare del testo quando si 
+                        scorre sopra l'immagine.</p>
+                        <p class="eg"><br>
+                            <img src="../../source/Crunch-title.png" alt="Crunch" title="Immagine di Rock il pappagallo">
+                        </p>
+                    </section>
+                </div>
+            </article>
+                <article>
+                    <h2>Dimensionamento</h2>
+                    <div>
+                        <p><code class="tag">img</code> ammette anche <code class="att">width</code>
+                        e <code class="att">height</code> come attributi a cui passare le dimensioni da 
+                        dare all'immagine</p>
+                        <p class="nota">questi attributi non sono controllati con CSS, ma vengono sovrascritti dalle 
+                            sue proprietà equivalenti
+                        </p>
+                    <section>
+                        <h3>Valori Relativi</h3>
+                        <p>Il problema legato alle dimensioni dell'immagine è che se non vengono 
+                            specificate con valori indipendenti dall'immagine stessa, allora semplicemente
+                            collessaranno a 0 nel mentre questa viene caricata
+                        </p>
+                        <div>
+                            <p class="eg"></p>
+                            <div class="eg-extend">
+                                <p>un'immagine è più pesante da caricare di un file di testo,
+                                    quindi, soprattutto se la connessione è lenta o il dispositivo è datato,
+                                    tenderà ad essere caricata con un certo ritardo rispetto al documento; </p>
+                                <p>nel mentre che viene caricata, le sue dimensioni non saranno note al browser 
+                                    che la renderà semplicemente come un blocco vuoto seguendo le indicazioni
+                                    sulle dimensioni date dagli attributi dell'elemento <code class="tag">img</code>
+                                    o dalle sue proprietà in CSS. </p>
+                                <p>Se le sue dimensioni sono impostate su <code>auto</code>, allora 
+                                    mentre l'immagine viene caricata il blocco che la contiene collasserà per 
+                                    poi ingrandirsi improvvisamente a caricamento effettuato:</p>
+                                <span id="chopSize">
+                                    <span>Durante il caricamento</span>
+                                    <span>Dopo il caricamento</span>
+                                </span>
+                                <figure>
+                                    <img 
+                                      src="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_images/no-size.png" 
+                                      alt="confronto prima-dopo caricamento immagine" />
+                                    <figcaption>image by <a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_images#alternative_text">mozilla.org</a></figcaption>
+                                </figure>
+                                <p>Questo repentino spostamento del testo dovuto alle immagini è una conseguenza
+                                    dell'ignorare le dimensioni intrinseche dell'immagine al momento del caricamento</p>
+                            </div>
+                        </div>
+                        <p>Per risolvere il problema appena esposto si può, nel più semplice dei modi, 
+                            ricorrere al dimensionamento con unità di misura indipendenti dall'immagine
+                        </p>
+                        <p class="nota">impostare le dimensioni come 
+                            <rp id="cssCodeImg1"></rp>
+                            NON risolve il problema, perché <code>auto</code>
+                            è riferita comunque al contenuto dell'elemento, quindi all'immagine
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Aspect-ratio</h3>
+                        <p>La soluzione migliore consiste nel conoscere a priori le proporzioni 
+                            dell'immagine e forzare il browser a mantenerle anche in sua assenza
+                            tramite la proprietà CSS <code class="att">aspect-ratio</code>
+                        </p>
+                        <p class="eg" style="width: 100%;">
+                            <rp id="cssCodeRatio"></rp>
+                            L'immagine così impostata manterrà le proporzioni (anche durante il caricamento 
+                            o in sua assenza) senza mai sforare; <br>
+                            usa lo slider per verificare:
+                            <img id="aspectami" class="range-edit" src="" alt="aspect ratio 19:6" >
+                            <input type="range" min="40" max="100" value="70" style="width: 100%;" />
+                        </p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>L'elemento figure</h2>
+                <div>
+                    <p>In html è presente un naturale contenitore semantico per le immagini: 
+                        <code class="tag">figure</code> </p>
+                        <p> e un elemento semantico per creare un 
+                        caption per l'immagine: <code class="tag">figcaption</code>
+                    </p>
+                    <div>
+                        <p class="eg"><s id="htmlCodeFigure"></s></p>
+                        <div class="eg-extend">
+                            <figure> 
+                                <img 
+                                  src="../../source/Crocco.png" 
+                                  alt="immagine di un pappagallo" />
+                                <figcaption>Un pappagallino verde</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <p class="nota">le <code class="tag">figure</code> 
+                    non sono ammesse all'interno dei <code class="tag">p</code></p>
+                </div>
+            </article>
+            <article>
+                <h2>Il Caricamento</h2>
+                <div>
+                    <section>
+                        <h3>Quando Caricare</h3>
+                        <p>In una pagina con diverse immagini può essere conveniente non caricarle tutte 
+                            insieme; si può usare l'attributo <code class="att">loading</code> per specificare
+                            con che priorità
+                        </p>
+                        <ul>
+                            <li><code class="string">eager</code>: (default) l'immagine è caricata subito</li>
+                            <li><code class="string">lazy</code>: il caricamento dell'immagine viene rimandato
+                            a quando il suo contenitore si trova in prossimità della viewport, cioè l'immagine 
+                            non viene caricata finché l'utente non vi scorre vicino</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Priorità del Caricamento</h3>
+                        <p>Per le immagini importanti è possibile dare priorità alla chiamata del file 
+                            tramite l'attributo <code class="att">fetchpriority</code> impostandolo sul valore 
+                            <code class="string">high</code>.
+                        </p>
+                        <p class="notabene">impostare un'immagine come una risorsa da scaricare con priorità
+                            deve essere fatto in maniera molto limitata perché riduce la priorità delle altre risorse
+                            meno pesanti come script o i file di font.
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Pre-Caricamento</h3>
+                        <p>Possiamo caricare un file immagine preventivamente già nell'<code class="tag">head</code>, possiamo anche assegnare
+                        a queste risorse alta priorità: <s id="htmlCodePreload"></s></p>
+                    </section>
+                    <section>
+                        <h3>Caricamento Asincrono</h3>
+                        <p>L'attributo <code class="att">decoding</code> permette di specificare al browser
+                        se decodificare l'immagine prima di renderizzare il resto del contenuto (con il valore 
+                        <code class="string">sync</code>), oppure se mettere la decodifica in secondo piano e 
+                        prioritizzare il resto del contenuto (con il valore <code class="string">async</code>).</p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Ottimizzazione Risorse</h2>
+                <div>
+                    <p>Le immagini sono risorse pesanti, soprattutto rispetto al testo; in particolare 
+                        per uso su schermi ridotti, scaricare un'immagine ad alta definizione è 
+                        un uso eccessivo di banda per una risorsa che verrà inevitabilmente
+                        compressa nuovamente; semplicemente è uno spreco di dati e rallenta 
+                        il caricamento del documento.
+                    </p>
+                    <p>La soluzione è ovviamente quella di scaricare selettivamente le risorse,
+                        selezionando quella più adatta allo schermo,
+                        ma per questo occorre disporre della stessa immagine a risoluzioni diverse.
+                    </p>
+                    <section>
+                        <h3>source set</h3>
+                        <p>Possiamo usare l'attributo <code class="att">srcset</code>
+                            per fornire un elenco di URL separati da virgola;<br>
+                            ciascun link sarà seguito da un <i>descrittore</i> che 
+                            indica una caratteristica intrinseca sulle dimensioni dell'immagine</p>
+                            <ul>
+                                <li><i>descrittore di larghezza (<code class="string">w</code>)</i>: indica 
+                                    il valore atteso di larghezza in pixel della risorsa
+                                    <p class="eg">
+                                        <s id="htmlCodeSrcset"></s>
+                                        dove i valori a destra delle immagini indicano la larghezza intrinseca in pixel
+                                        dell'immagine
+                                    </p>
+                                </li>
+                                <li><i>descrittore di densità (<code class="num">N</code><code class="string">x</code>)</i>: indica
+                                    la densità in pixel dell'immagine in relazione a quella dell'attributo <code class="att">src</code> 
+                                    <p class="eg">
+                                        <s id="htmlCodeRetina"></s>
+                                        dove i valori a destra delle immagini indicano le dimensioni comparative
+                                        delle immagini rispetto al riferimento in <code class="att">src</code>,
+                                        le cui dimensioni sono specificate al browser con gli attributi 
+                                        <code class="att">width</code> e <code class="att">height</code>
+                                    </p>
+                                </li>
+                            </ul>
+                        <p class="nota">l'attributo <code class="att">srcset</code> non sostituisce 
+                            <code class="att">src</code>, ma ne rimpiazza il valore con uno di quelli 
+                            in <code class="att">srcset</code> in base alla necessità</p>
+                        <p class="notabene">è sempre necessario impostare il <code class="att">src</code>; 
+                            è anche un fallback per browser che non supportano <code class="att">srcset</code></p>
+                        <p class="nota">le dimensioni specificate dagli attributi possono essere sostituite da quelle 
+                            delle proprietà CSS
+                        </p>
+                    </section>
+                    <section>
+                        <h3>sizes</h3>
+                        <p>La decisione su quale risorsa scaricare è legata (SOLO SE si sta' usando il descrittore 
+                            di larghezza) ai valori passati all'attributo <code class="att">sizes</code>
+                            che indicano al browser quali dimensioni di visualizzazione aspettarsi per l'immagine 
+                            in base a una dimensione della viewport:
+                        </p>
+                        <p class="eg">
+                            <s id="htmlCodeSizes"></s>
+                        Qui si sta' dicendo al browser che se la viewport ha una larghezza <code>&le;600px</code>, allora 
+                        deve aspettarsi un'immagine che occuperà <code>400px</code>; in tal caso sceglierà l'immagine più adatta, 
+                        cioè quella che abbiamo segnato con <code>400w</code> in questo caso specifico. <br>
+                        Analogamente sceglierà una adatta a coprire <code>800px</code> se la viewport ha larghezza <code>&le;1200px</code>;
+                        al di sopra di questi valori sceglierà una adatta a coprire <code>1600px</code>
+                        </p>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+    </body>
+</html>

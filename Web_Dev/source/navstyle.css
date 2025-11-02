@@ -156,6 +156,49 @@ li.active {
     z-index: 0 !important;
 }
 
+#HCswitch {
+    display: block;
+    position: fixed;
+    z-index: 999;
+    width: 2.5em;
+    height: 2.5em;
+    top: 20px;
+    right: 171px;
+    cursor: pointer;
+    text-align: center;
+    align-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0.125em solid chocolate;
+    border-radius: 0.125em 0.4em;
+    color: rgb(205, 135, 5);
+    text-decoration: none;
+    transition: 0.05s;
+}
+#HCswitch:hover {
+    outline: 0.15em solid chocolate;
+    outline-offset: 0.1em;
+    border-color: orange;
+    color: chocolate;
+}
+#HCswitch:active {
+    background-color: rgb(252, 204, 113);
+}
+@media only screen and (min-width: 900px) {
+    #HCswitch {
+        font-size: 2rem;
+        bottom: 1rem;
+        right: 1rem;
+        top: unset;
+        background-color: antiquewhite;
+    }
+    #HCswitch:hover {
+        width: 4em;
+        height: 3em;
+        font-size: 150%;
+    }
+}
+
 .scrollLock {
     overflow-y: hidden !important;
 }

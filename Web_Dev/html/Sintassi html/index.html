@@ -5,7 +5,7 @@
         <script src="../../source/redirect.js" defer></script>
 
         <!-- Base Config -->
-        <title class="htmlCodeTitle">Appunti | Sintassi html</title>
+        <title class="htmlCodeTitle">Appunti html | Sintassi html</title>
         <meta class="htmlCodeChar" charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" class="htmlCodeView" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" class="htmlCodeEdge" />
@@ -160,7 +160,10 @@
                     <p>Alcuni tag non richiedono un tag di chiusura, questi sono chiamati <i>elementi void</i></p>
                     <p class="nota">sebbene non richiesto, è sempre bene chiudere gli elementi void con un <code>/</code> alla 
                     fine del tag di apertura (unico) prima di <code>&gt;</code>.
-                    <s id="htmlCodeVoid"></s></p>                    
+                    <s id="htmlCodeVoid"></s></p>    
+                    <p>Questo tipo di elmenti non può avere discendendenti e naturalmente il loro 
+                        contenuto è determinato dal valore di certi loro attributi.
+                    </p>                
                 </div>
             </article>
             <article>
@@ -274,7 +277,9 @@
                         <tr><th>Risultato</th>
                             <td><code>&amp;</code></td>
                             <td><code>&lt;</code></td>
+                            <td><code>&le;</code></td>
                             <td><code>&gt;</code></td>
+                            <td><code>&ge;</code></td>
                             <td><code>&quot;</code></td>
                             <td><code>&apos;</code></td>
                             <td><code>&cent;</code></td>
@@ -293,7 +298,9 @@
                         <tr><th>Nome</th>
                             <td><code class="tag">&amp;amp;</code></td>
                             <td><code class="tag">&amp;lt;</code></td>
+                            <td><code class="tag">&amp;le;</code></td>
                             <td><code class="tag">&amp;gt;</code></td>
+                            <td><code class="tag">&amp;ge;</code></td>
                             <td><code class="tag">&amp;quot;</code></td>
                             <td><code class="tag">&amp;apos;</code></td>
                             <td><code class="tag">&amp;cent;</code></td>
@@ -312,7 +319,9 @@
                         <tr><th>Numero</th>
                             <td><code class="tag">&amp;#38;</code></td>
                             <td><code class="tag">&amp;#60;</code></td>
+                            <td class="hidden"></td>
                             <td><code class="tag">&amp;#62;</code></td>
+                            <td class="hidden"></td>
                             <td><code class="tag">&amp;#34;</code></td>
                             <td><code class="tag">&amp;#39;</code></td>
                             <td><code class="tag">&amp;#162;</code></td>

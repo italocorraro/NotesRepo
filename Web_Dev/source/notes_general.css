@@ -173,7 +173,7 @@ p.notabene {
     }
 }
 p.nota {
-    background-color: rgba(185, 243, 248, 0.4);
+    background-color: rgb(229, 252, 255);
     border-left-color:rgb(0, 123, 255);
     &::before {
         content: "Nota: ";
@@ -215,7 +215,7 @@ div:has(> .nota-extend, > .eg-extend, > .notabene-extend) {
 }
 .nota-extend {
     width: 100%;
-    background-color: rgba(185, 243, 248, 0.4);
+    background-color: rgb(229, 252, 255);
     margin-top: 0; 
     border-left: 0.4vw solid rgb(0, 123, 255);
     &:not(:is(li, ul, dl, ol)) {

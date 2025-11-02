@@ -1,5 +1,25 @@
 
 import { navbar_build } from './nav_maker.js';
+import { doubles } from './nav_maker.js';
+
+const titolo = document.title;
+let swapper = ``;
+
+if(titolo.match('html')) {
+    for(const doub of doubles) {
+        if(titolo.match(doub.nome)) {
+            swapper = `<a id="HCswitch" href="${doub.Curl}">to<br>CSS</a>`;
+            break;
+        }
+    }
+} else if(titolo.match('CSS')) {
+    for(const doub of doubles) {
+        if(titolo.match(doub.nome)) {
+            swapper = `<a id="HCswitch" href="${doub.Hurl}">to<br>html</a>`;
+            break;
+        }
+    }
+}
 
 let navigazione = `
     <div id="navbar">
@@ -18,6 +38,8 @@ ${navbar_build}
         <div class="square1"></div>
         <div class="square2"></div>
     </div>
+
+    ${swapper}
 
     <div id="touchlock"></div>`;
 
