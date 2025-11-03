@@ -223,6 +223,47 @@
                 margin: 1rem 0;
             }
 
+            .icon-c {
+                display: block;
+                width: 77px;
+                height: 77px;
+                background-image: url('../../source/Crocco\ 3x77.png');
+            }
+            .icon-c-orig {
+                display: block;
+                width: 231px;
+                height: 77px;
+                background-image: url('../../source/Crocco\ 3x77.png');
+            }
+            .icon-c-1 { background-position: 0 0; }
+            .icon-c-2 { background-position: -77px 0; }
+            .icon-c-3 { background-position: -154px 0; }
+
+            [data-sprite-1] {
+                width: 50%;
+                aspect-ratio: 1 / 1;
+                background-image: url('../../source/Crocco\ 3x77.png');
+                background-size: cover;
+            }
+            [data-sprite-1="2"] {
+                background-position: -100% -100% ;
+            }
+            [data-sprite-1="3"] {
+                background-position: -200% 0 ;
+            }
+
+            .icon {
+                --cols: 3;
+                --rows: 1;
+                --col: 0;
+                --row: 0;
+                aspect-ratio: 1;
+                width: 50%;
+                background: url('../../source/Crocco\ 3x77.png') repeat;
+                background-size: calc(100% * var(--cols)) calc(100% * var(--rows));
+                background-position: calc(-100% * var(--col)) calc(-100% * var(--row));
+            }
+
         </style>
         <script>
             const snippets = {
@@ -255,7 +296,35 @@
 background-blend-mode: normal, normal;
 background-repeat: no-repeat;
 background-size: auto, cover;
-background-position: center center, left top;`
+background-position: center center, left top;`,
+                    cssCodeSprite:
+`.icon-c {
+    width: 77px;
+    height: 77px;
+    background-image: url('../../source/Crocco\ 3x77.png');
+}`,
+                    cssCodeSprite1: `.icon-c-1 { background-position: 0 0; }`,
+                    cssCodeSprite2: `.icon-c-2 { background-position: -77px 0; }`,
+                    cssCodeSprite3: `.icon-c-3 { background-position: -154px 0; }`,
+                    cssCodeSpriteRes:
+`[data-sprite-1] {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    background-image: url('../../source/Crocco\ 3x77.png');
+    background-size: cover;
+}`,
+                    cssCodeRespo:
+`.icon {
+    --cols: 3;
+    --rows: 1;
+    --col: 0;
+    --row: 0;
+    aspect-ratio: 1;
+    width: 50%;
+    background: url('../../source/Crocco\ 3x77.png') repeat;
+    background-size: calc(100% * var(--cols)) calc(100% * var(--rows));
+    background-position: calc(-100% * var(--col)) calc(-100% * var(--row));
+}`
                 }
             }
         </script>
@@ -582,8 +651,77 @@ background-position: center center, left top;`
             <article>
                 <h2>Sprites</h2>
                 <div>
-                    <p>Il concetto di <i>sprite</i> non è strettamente legato al CSS, ma è utilizzato in questo ambito;</p>
-                    <p>Uno <i>sprite</i> è un "ritaglio" di un'immagine più grande che ne contiene diversi</p>
+                    <p>Il concetto di <i>sprite</i> non è strettamente legato al CSS, ma è utilizzato anche in questo ambito;</p>
+                    <p>Uno <i>sprite</i> combina all'interno di una singola immagine più grande un gruppo di immagini più piccole,
+                        di modo che, invece di effettuare una richiesta e un caricamento per ogni singola immagine, 
+                        si effettui una singola richiesta e caricamento;
+                    </p>
+                    <p>dell'immagine grande vengono poi rappresentate solo le porzioni che identificano le immagini più piccole</p>
+                    <div>
+                        <p class="eg">
+                            <br>Consideriamo l'immagine sprite:
+                            <span class="icon-c-orig"></span>
+                        </p>
+                        <div class="eg-extend">
+                            <p>Sappiamo (perché l'abbiamo creata noi) che l'immagine sprite
+                                è composta di tre icone quadrate da <code class="num">77px</code>;
+                            </p>
+                            <p>Consideriamo quindi dei contenitori da <code>77&times;77</code> per le icone dello sprite </p>
+                            <rp id="cssCodeSprite"></rp>
+                            <p>
+                                e usiamo la proprietà <code class="att">background-position</code> per spostare lo sprite nel background
+                                del contenitore, in modo da inquadrare l'icona corretta:</p>
+                            <ol>
+                                <li><s id="htmlCodeSprite1"></s><rp id="cssCodeSprite1"></rp><div class="htmlCodeSprite1 icon-c icon-c-1"></div></li>
+                                <li><s id="htmlCodeSprite2"></s><rp id="cssCodeSprite2"></rp><div class="htmlCodeSprite2 icon-c icon-c-2"></div></li>
+                                <li><s id="htmlCodeSprite3"></s><rp id="cssCodeSprite3"></rp><div class="htmlCodeSprite3 icon-c icon-c-3"></div></li>
+                            </ol>
+                            <p class="osservazione">l'immagine sprite è rappresentata in ciascun contenitore;
+                                viene rappresentata l'icona scelta solo inquadrandola con precisione scorrendo il background
+                            </p>
+                            <p class="nota">per ridimensionare le icone dev'essere ridimensionata l'immagine sprite originale e
+                                vanno corrette le proprietà <code class="att">background-position</code> di ciascuna per 
+                                adattarsi alla nuova dimensione
+                            </p>                            
+                        </div>
+                    </div>
+                    <section>
+                        <h3>Responsività</h3>
+                        <p>Per poter creare immagini responsive a partire da sprite abbiamo necessità di 
+                            fare alcuni accorgimenti:
+                        </p>
+                        <ul>
+                            <li>le dimensioni dello sprite di background e del contenitore devono coordinarsi 
+                                e mantenere l'aspect-ratio originale dello sprite attraverso misure relative
+                            </li>
+                            <li>l'inquadramento delle porzioni di sprite in icone deve essere fatto con 
+                                misure relative
+                            </li>
+                        </ul>
+                        <p>Quindi il modello dell'esempio precedente diventa:
+                            <rp id="cssCodeSpriteRes"></rp>
+                        </p>
+                        <p class="nota">l'effettiva larghezza del contenitore è irrilevante, infatti, usando </p>
+                    </section>
+                    <div>
+                        <p class="eg"><br>Ridimensioniamo le immagini in modo dinamico:</p>
+                        <div class="eg-extend">
+                            <ol>
+                                <li>
+                                    <div data-sprite-1="" class="range-edit"></div>
+                                    <input type="range" min="30" max="50" value="50"  width="50%"/></li>
+                                <li>
+                                    <div data-sprite-1="2" class="range-edit"></div>
+                                    <input type="range" min="30" max="50" value="50"  width="50%"/></li>
+                                <li>
+                                    <div data-sprite-1="3" class="range-edit"></div>
+                                    <input type="range" min="30" max="50" value="50"  width="50%"/></li>
+                            </ol>
+                                <rp id="cssCodeRespo"></rp>
+                                <div class="icon range-edit" style="--col:1;--row:0"></div>
+                                <input type="range" min="30" max="50" value="50"  width="50%"/>
+                        </div>
+                    </div>
                 </div>
             </article>
         </main>
