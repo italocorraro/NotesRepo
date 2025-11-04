@@ -240,7 +240,7 @@
             .icon-c-3 { background-position: -154px 0; }
 
             [data-sprite-1] {
-                width: 50%;
+                width: 90%;
                 aspect-ratio: 1 / 1;
                 background-image: url('../../source/Crocco\ 3x77.png');
                 background-size: cover;
@@ -251,22 +251,117 @@
             [data-sprite-1="3"] {
                 background-position: -200% 0 ;
             }
-
-            .icon {
+            
+            div:has(> #buttons) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-areas: 
+                  'values ctrl'
+                  'box ctrl'
+                  'range ctrl';
+                align-items: center;
+                justify-items: center;
+                width: 100%;
+                gap: 0 2rem;
+            }
+            div:has(~ #buttons):first-child {
+                grid-area: values;
+                align-self: normal;
+            }
+            .grid-color {
+                grid-area: box;
                 --cols: 3;
-                --rows: 1;
+                --rows: 3;
                 --col: 0;
                 --row: 0;
-                aspect-ratio: 1;
-                width: 50%;
-                background: url('../../source/Crocco\ 3x77.png') repeat;
+                aspect-ratio: 375/300;
+                width: 100%;
+                background: url('../../source/Grid-color.png') repeat;
                 background-size: calc(100% * var(--cols)) calc(100% * var(--rows));
                 background-position: calc(-100% * var(--col)) calc(-100% * var(--row));
             }
+            form#buttons {
+                grid-area: ctrl;
+                display: grid;
+                width: clamp(100px, 100% , 400px);
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-areas: 
+                  '. up . '
+                  'left . right'
+                  '. down .';
+            }
+            #buttons [value] {
+                background-color: transparent;
+                transition: 0,3s background-color;
+                padding: 0;
+                border: 0;
+                cursor: pointer;
+                --cols: 4;
+                --rows: 1;
+                --col: 0;
+                --row: 0;
+                aspect-ratio: 200/200;
+                background: url('../../source/Arrows.png') repeat;
+                background-size: calc(100% * var(--cols)) calc(100% * var(--rows));
+                background-position: calc(-100% * var(--col)) calc(-100% * var(--row));
+            }
+            #buttons [value]:hover {
+                background-color: chocolate;
+                border-radius: 50%;
+            }
+            #buttons [value]:active {
+                background-color: brown;
+            }
+            #buttons [value="up"] {
+                --col: 2;
+                grid-area: up;
+            }
+            #buttons [value="down"] {
+                --col: 3;
+                grid-area: down;
+            }
+            #buttons [value="left"] {
+                --col: 1;
+                grid-area: left;
+            }
+            #buttons [value="right"] {
+                --col: 0;
+                grid-area: right;
+            }
+            input:has(+ #buttons) {
+                width: 100%;
+                grid-area: range;
+                align-self: flex-end;
+            }
 
+
+            #griddami {
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                width: 100%;
+                list-style-type: none;
+                gap: 1rem;
+            }
+            #griddami li {
+                width: 100%;
+                align-content: end;
+                justify-items: center;
+            }
+            #griddami li input {
+                width: 100%;
+            }
+            .arrow-disable {
+                background-image: url("../../source/Arrows-destur.png") !important;
+            }
+            .arrow-disable:hover {
+                background-color: transparent !important;
+            }
         </style>
         <script>
             const snippets = {
+                html: {
+                    htmlCodeRespo: `<div class="grid-color" style="--col:1;--row:0;">`
+                },
                 css: {
                     cssCodeGrad: 
 `#gradiente {
@@ -301,30 +396,126 @@ background-position: center center, left top;`,
 `.icon-c {
     width: 77px;
     height: 77px;
-    background-image: url('../../source/Crocco\ 3x77.png');
+    background-image: 
+      url('../../source/Crocco\ 3x77.png');
 }`,
                     cssCodeSprite1: `.icon-c-1 { background-position: 0 0; }`,
                     cssCodeSprite2: `.icon-c-2 { background-position: -77px 0; }`,
                     cssCodeSprite3: `.icon-c-3 { background-position: -154px 0; }`,
                     cssCodeSpriteRes:
 `[data-sprite-1] {
-    width: 50%;
-    aspect-ratio: 1 / 1;
-    background-image: url('../../source/Crocco\ 3x77.png');
+    width: 100%;
+    aspect-ratio: 1;
+    background-image: 
+      url('../../source/Crocco\ 3x77.png');
     background-size: cover;
+}`, 
+                    cssCodeSprite11:
+`[data-sprite="1"] {
+    background-position: 0 0 ;
 }`,
-                    cssCodeRespo:
-`.icon {
+                    cssCodeSprite22:
+`[data-sprite="2"] {
+    background-position: -100% 0 ;
+}`,
+                    cssCodeSprite33:
+`[data-sprite="3"] {
+    background-position: -200% 0 ;
+}`,
+                    cssCodeRespons:
+`.grid-color {
+    grid-area: box;
     --cols: 3;
-    --rows: 1;
+    --rows: 3;
     --col: 0;
     --row: 0;
-    aspect-ratio: 1;
-    width: 50%;
-    background: url('../../source/Crocco\ 3x77.png') repeat;
-    background-size: calc(100% * var(--cols)) calc(100% * var(--rows));
-    background-position: calc(-100% * var(--col)) calc(-100% * var(--row));
-}`
+
+    aspect-ratio: 375/300;
+    width: 100%;
+    background: url('../../source/Grid-color.png') repeat;
+    background-size: 
+      calc(100% * var(--cols)) 
+      calc(100% * var(--rows));
+    background-position: 
+      calc(-100% * var(--col)) 
+      calc(-100% * var(--row));
+}`,
+                    cssCodeRespo:
+`/* Schema per sprite in formato griglia con celle flessibili: */
+.icon {
+    /* Numero totale di colonne e righe nello sprite: */
+    --cols: 3;  /* n° di colonne */
+    --rows: 1;  /* n° di righe */
+
+    /* Coordinate della cella da mostrare: */
+    --col: 0;   
+    --row: 0;   
+
+    /* Spaziature tra celle in %: */
+    /*  gap-col(%) = 100 × gap-col(px) / larghezza-colonna(px) */
+    --gap-c: 5%; /* spazio tra le colonne */
+    /*  gap-row(%) = 100 × gap-row(px) / altezza-riga(px) */
+    --gap-r: 5%; /* spazio tra le righe */
+
+    /* Proporzioni costanti indipendenti dal contenitore: */
+    aspect-ratio: 3 / 4;  /* rapporto larghezza/altezza della singola icona */
+
+    /* Larghezza del contenitore: */
+    width: 100%; /* va bene qualsiasi valore (è questo il punto) */
+
+    /* Sprite di sfondo */
+    background: url('sprite.png');
+    background-repeat: repeat; /* ! necessario a scorrere lo sprite ! */
+
+    /* Lo sprite viene dimensionato a partire dalle dimensioni del contenitore
+       che vengono moltiplicate per il n° di colonne e di righe,
+       in questo modo la singola cella ha le stesse dimensioni del contenitore  */
+    background-size: 
+      /* larghezza sprite = larghezza contenitore × n° colonne */
+      calc((100% + var(--gap-c)) * var(--cols)) 
+      /* altezza sprite = altezza contenitore × n° righe */
+      calc((100% + var(--gap-r)) * var(--rows)); 
+
+    /* Lo sprite viene spostato per mostrare solo la cella desiderata: */
+    background-position: 
+      /* spostamento orizzontale verso la colonna indicata */
+      calc((100% + var(--gap-c)) * var(--col))
+      /* spostamento verticale verso la riga indicata */
+      calc((100% + var(--gap-r)) * var(--row));
+
+    /* Di questo schema vanno adattati allo sprite reale:
+       - le variabili (le definizioni iniziali), 
+       - l'aspect ratio (dipende dalla singola cella),
+       - l'URL dello sprite */
+    /* Per scorrere le icone: modificare le variabili coordinate
+       o inserendole nello stile in-line
+       o creando classi apposite per ciascuna icona */
+}`,
+                    cssCodeRiResp:
+`.icon {
+    
+    --cols: 3;  
+    --rows: 1;  
+
+    --col: 0;   
+    --row: 0;   
+
+    aspect-ratio: 3 / 4; 
+
+    width: 100%; 
+
+    background: url('sprite.png');
+    background-repeat: repeat; 
+
+    background-size: 
+      calc(100% * var(--cols))  
+      calc(100% * var(--rows)); 
+
+    background-position: 
+      calc(100% * var(--col))   
+      calc(100% * var(--row));  
+}
+`
                 }
             }
         </script>
@@ -652,7 +843,7 @@ background-position: center center, left top;`,
                 <h2>Sprites</h2>
                 <div>
                     <p>Il concetto di <i>sprite</i> non è strettamente legato al CSS, ma è utilizzato anche in questo ambito;</p>
-                    <p>Uno <i>sprite</i> combina all'interno di una singola immagine più grande un gruppo di immagini più piccole,
+                    <p>Uno <i>sprite</i> combina all'interno di una singola immagine più grande un gruppo di immagini più piccole
                         di modo che, invece di effettuare una richiesta e un caricamento per ogni singola immagine, 
                         si effettui una singola richiesta e caricamento;
                     </p>
@@ -682,46 +873,133 @@ background-position: center center, left top;`,
                             <p class="nota">per ridimensionare le icone dev'essere ridimensionata l'immagine sprite originale e
                                 vanno corrette le proprietà <code class="att">background-position</code> di ciascuna per 
                                 adattarsi alla nuova dimensione
-                            </p>                            
+                            </p>           
+                            <p class="notabene">è il background ad essere spostato dietro il contenitore, per 
+                                questo i valori in <code class="att">background-size</code> sono dati in negativo: <br>
+                                per scorrere sull'icona a destra nello sprite, dobbiamo spostare il background a sinistra
+                            </p>                 
                         </div>
                     </div>
+                    <p class="nota">possiamo anche usare l'attributo <code class="att">data-</code>
+                        per indicare uno sprite e il suo valore per indicare quale immagine dello sprite fornire</p>
                     <section>
                         <h3>Responsività</h3>
+                        <p>Gli sprite sono tipicamente usati per contenere tante piccole immagini necessarie
+                            alla pagina in modo da ottimizzare la performance, tuttavia possono essere macchinosi
+                            da usare, soprattutto se non è possibile ridimensionarli.
+                        </p>
                         <p>Per poter creare immagini responsive a partire da sprite abbiamo necessità di 
                             fare alcuni accorgimenti:
                         </p>
                         <ul>
-                            <li>le dimensioni dello sprite di background e del contenitore devono coordinarsi 
-                                e mantenere l'aspect-ratio originale dello sprite attraverso misure relative
-                            </li>
-                            <li>l'inquadramento delle porzioni di sprite in icone deve essere fatto con 
-                                misure relative
-                            </li>
+                            <li>le dimensioni dello sprite devono scalare assieme al contenitore</li>
+                            <li>le proporzioni dello sprite e delle singole immagini devono preservarsi</li>
+                            <li>lo scorrimento del background deve scalare assieme allo sprite</li>
                         </ul>
-                        <p>Quindi il modello dell'esempio precedente diventa:
-                            <rp id="cssCodeSpriteRes"></rp>
-                        </p>
-                        <p class="nota">l'effettiva larghezza del contenitore è irrilevante, infatti, usando </p>
                     </section>
                     <div>
-                        <p class="eg"><br>Ridimensioniamo le immagini in modo dinamico:</p>
+                        <p class="eg"><br> 
+                            Ridimensioniamo le immagini in modo dinamico:
+                            <rp id="cssCodeSpriteRes"></rp>
+                            <rp id="cssCodeSprite11"></rp>
+                            <rp id="cssCodeSprite22"></rp>
+                            <rp id="cssCodeSprite33"></rp>
+                        </p>
                         <div class="eg-extend">
-                            <ol>
+                            <div style="width: 100%; max-width: 500px;">
+                            <ol id="griddami" class="range-edit">
                                 <li>
                                     <div data-sprite-1="" class="range-edit"></div>
-                                    <input type="range" min="30" max="50" value="50"  width="50%"/></li>
+                                    <input type="range" min="40" max="90" value="90"/>
+                                </li>    
                                 <li>
                                     <div data-sprite-1="2" class="range-edit"></div>
-                                    <input type="range" min="30" max="50" value="50"  width="50%"/></li>
+                                    <input type="range" min="40" max="90" value="90"  />
+                                </li>
                                 <li>
                                     <div data-sprite-1="3" class="range-edit"></div>
-                                    <input type="range" min="30" max="50" value="50"  width="50%"/></li>
+                                    <input type="range" min="40" max="90" value="90" />
+                                </li> 
                             </ol>
-                                <rp id="cssCodeRespo"></rp>
-                                <div class="icon range-edit" style="--col:1;--row:0"></div>
-                                <input type="range" min="30" max="50" value="50"  width="50%"/>
+                            <input type="range" min="50" max="100" value="100" style="width: 100%;" /></div>
+                            Osserviamo che
+                            <ul>
+                                <li>lo sprite è ridimensionato in modo che ogni immagine dello sprite 
+                                    coincida con le dimensioni del contenitore
+                                </li>
+                                <li>le dimensioni effettive del contenitore sono irrilevanti
+                                    poiché <code class="att">aspect-ratio</code> mantiene le proporzioni
+                                </li>
+                                <li>lo sprite è traslato della lunghezza delle celle per scalare assieme allo sprite</li>
+                            </ul>
                         </div>
                     </div>
+                    <p>Possiamo creare uno schema responsivo più generale:
+                        <rp id="cssCodeRespons"></rp>
+                    </p>
+                    <p>con questo schema possiamo modificare le variabili 
+                        <code class="att">--row</code> e <code class="att">--col</code>
+                        per scegliere la cella dello sprite:</p>
+                    <p class="eg">
+                        <s id="htmlCodeRespo"></s>
+                    </p>
+                    <div style="min-width: 60%;">
+                        <p class="eg"><br>
+                            Consideriamo questa immagine: </p>
+                        <div class="eg-extend">    
+                            <p>
+                            <img src="../../source/Grid-color.png" 
+                              alt="immagine di numeri" 
+                              style="max-width: 100%;min-width: 50%;"/>
+                            </p>
+                            Applichiamo lo schema precedente, 
+                            proviamo a percorrerla:
+                            <div class="clearfix">
+                                <div><code class="att">--col</code><code>: </code><code id="colonnus">0</code><code>;</code>
+                                    <code class="att">--row</code><code>: </code><code id="rigus">0</code><code>;</code>
+                                </div>
+                                <div class="grid-color range-edit" style="--col:0;--row:0;"></div>
+                                <input type="range" min="30" max="100" value="100" />
+                                <form id="buttons">
+                                    <button type="button" class="arrow-disable" value="up"></button>
+                                    <button type="button" class="" value="down"></button>
+                                    <button type="button" class="" value="right"></button>
+                                    <button type="button" class="arrow-disable" value="left"></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <section>
+                        <h3>Bleeding</h3>
+                        <p>In alcuni casi, soprattutto per immagini piccole o ridimensionate, 
+                            è possibile che avvenga il <i>bleeding</i>:
+                        </p>
+                        <p>Il bleeding si verifica quando il bordo di un'immagine "sanguina"
+                            dentro quello accanto, cioè quando il browser mostra una sottile 
+                            linea di pixel sbagliati (provenienti dal frame vicino nello sprite).
+                        </p>
+                        <p>Per risolvere questo inconveniete è buona pratica lasciare un piccolo margine 
+                            trasparente tra le immagini dello sprite
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Schema di Sprite a Griglia</h3>
+                        <p>Ammesso di poter dividere lo sprite in una griglia di righe 
+                            e colonne uniformi, possiamo applicare questo schema:
+                        </p>
+                        <rp id="cssCodeRespo"></rp>
+                        <p class="nota">lo schema precedente tiene conto anche di un gap 
+                            per prevenire il <i>bleeding</i>; <br>
+                            se questo non è necessario se ne può usare uno più semplice:
+                            <rp id="cssCodeRiResp"></rp>
+                        </p>
+                    </section>
+                    
+                    
+                                
+                                
+                        
+                    
                 </div>
             </article>
         </main>
@@ -766,6 +1044,54 @@ background-position: center center, left top;`,
             blend.addEventListener("input", function() {
                 blended.style.backgroundBlendMode = `${blend.value}, normal`;
             });
+            // Muoversi sulla griglia
+            const gridColor = document.querySelector(".grid-color");
+            const controls = document.querySelectorAll("#buttons button");
+            const colonnus = document.getElementById("colonnus");
+            const rigus = document.getElementById("rigus");
+            let col = 0;
+            let row = 0;
+
+            function moveGrid(colum,rowum) {
+                // Scorri griglia
+                gridColor.style.setProperty('--col', colum);
+                colonnus.innerText = colum;
+                gridColor.style.setProperty('--row',rowum);
+                rigus.innerText = rowum;
+                // Spegni/accendi bottoni freccia
+                row == 0 ? controls[0].classList.add("arrow-disable") : controls[0].classList.remove("arrow-disable");
+                row == 2 ? controls[1].classList.add("arrow-disable") : controls[1].classList.remove("arrow-disable");
+                col == 2 ? controls[2].classList.add("arrow-disable") : controls[2].classList.remove("arrow-disable");
+                col == 0 ? controls[3].classList.add("arrow-disable") : controls[3].classList.remove("arrow-disable");
+
+                return null;
+            }
+
+            for(const control of controls) {
+                control.addEventListener("click", function() {
+                    const movement = control.value;
+                    switch(movement) {
+                        case 'up': {
+                            row == 0 ? null : row--;
+                            break;
+                        }
+                        case 'down': {
+                            row == 2 ? null : row++;
+                            break;
+                        }
+                        case 'right': {
+                            col == 2 ? null : col++;
+                            break;
+                        }
+                        case 'left': {
+                            col == 0 ? null : col--;
+                            break;
+                        }
+                        default: break;
+                    }
+                    moveGrid(col,row);
+                });
+            }
         </script>
     </body>
 </html>
