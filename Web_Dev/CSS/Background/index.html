@@ -424,7 +424,6 @@ background-position: center center, left top;`,
 }`,
                     cssCodeRespons:
 `.grid-color {
-    grid-area: box;
     --cols: 3;
     --rows: 3;
     --col: 0;
@@ -514,8 +513,46 @@ background-position: center center, left top;`,
     background-position: 
       calc(100% * var(--col))   
       calc(100% * var(--row));  
-}
-`
+}`,
+                    cssCodeOpt1:
+`background-image: image-set(
+  url("icon.png")    1x,
+  url("icon@2x.png") 2x,
+  url("icon@3x.png") 3x
+);`,
+                    cssCodeOpt2:
+`background-image: image-set(
+  url("icon.avif") type("image/avif"),
+  url("icon.webp") type("image/webp"),
+  url("icon.png")  type("image/png")
+);`,
+                    cssCodeOpt3:
+`background-image: image-set(
+  url("icon.avif")    type("image/avif") 1x,
+  url("icon@2x.avif") type("image/avif") 2x,
+  url("icon.webp")    type("image/webp") 1x,
+  url("icon@2x.webp") type("image/webp") 2x,  
+  url("icon.png")     type("image/png")  1x,
+  url("icon@2x.png")  type("image/png")  2x
+);`,
+                    cssCodeOpt4:
+`.icon {
+    width: 100px;
+    height: 100px;
+    /* fallback in caso image-set 
+       NON sia supportato */
+    background-image: url("icon.png");
+    /* lista immagini a due risoluzioni
+       e in diversi formati */
+    background-image: image-set(
+      url("icon.avif")    type("image/avif") 1x,
+      url("icon@2x.avif") type("image/avif") 2x,
+      url("icon.webp")    type("image/webp") 1x,  
+      url("icon@2x.webp") type("image/webp") 2x,
+      url("icon.png")     type("image/png")  1x,
+      url("icon@2x.png")  type("image/png")  2x
+    );
+}`
                 }
             }
         </script>
@@ -836,7 +873,60 @@ background-position: center center, left top;`,
             <article>
                 <h2>Ottimizzazione</h2>
                 <div>
-
+                    <p>Utilizzando la funzione <code class="func">image-set</code>
+                    in <code class="att">background-image</code> possiamo fornire al browser
+                    una lista di immagini tra cui scegliere, tutte separate da virgola, similmente a 
+                    <code class="att">srcset</code> in <code class="tag">img</code>.</p>
+                    <section>
+                        <h3>Descrittore di Densità</h3>
+                        <p>A destra dell'URL fornito a <code class="func">image-set</code> 
+                        possiamo inserire un <i>descrittore di densità</i>, la cui notazione 
+                        è <code class="num">N</code><code class="string">x</code>, dove 
+                        <code class="num">N</code> indica la densità in pixel attesa dello schermo.</p>
+                        <p class="eg" style="width: 50%;">
+                            <rp id="cssCodeOpt1"></rp>
+                            Qui abbiamo fornito tre versioni a nitidezza crescente dell'immagine per 
+                            adattarsi correttamente a schermi a più alta densità di pixel
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Descrittore di Tipo</h3>
+                        <p>Oltre alla densità attesa, possiamo anche indicare al browser qual'è il formato 
+                            dell'immagine, di modo che scelga il più adatto tra quelli che supporta (l'ordine è 
+                            importante e il browser sceglierà il primo della lista).
+                        </p>
+                        <div>
+                            <p class="eg">
+                                <rp id="cssCodeOpt2"></rp>
+                                Dove sono forniti tre formati:
+                            </p>
+                            <div class="eg-extend">
+                                <ul>
+                                    <li><kbd><b>AVIF</b></kbd>: un formato abbastanza recente e con un'ottima efficienza nella 
+                                        compressione dell'immagine senza perdita di dettagli</li>
+                                    <li><kbd><b>WebP</b></kbd>: un formato creato specificamente per il web 
+                                        per ottimizzare i caricamenti, ma a discapito della qualità</li>
+                                    <li><kbd><b>PNG</b></kbd> (<i>Portable Network Graphics</i>): un formato 
+                                        ampiamente supportato che funge da fallback</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="nota">entrambi i descrittori possono essere usati insieme:
+                            <rp id="cssCodeOpt3"></rp>
+                        </p>
+                        <p class="notabene">nel caso <code class="func">image-set</code> non 
+                            sia supportata è bene inserire prima un fallback senza: 
+                            <rp id="cssCodeOpt4"></rp>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Pre-caricamento</h3>
+                        <p>CSS non supporta nativamente il <i>pre-caricamento</i>, tuttavia si può 
+                            usare la stessa soluzione che si ha per le immagini html: <a href="../../html/Immagini/#pre-caricamento">questa</a>.
+                        </p>
+                        <p>Questa soluzione però è poco flessibile e non si adatta bene alle immagini background.</p>
+                        <p class="nota">non è possibile fare <i>lazy loading</i> con le immagini di background</p>
+                    </section>
                 </div>
             </article>
             <article>

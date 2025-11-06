@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti html | Tabelle</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sulle tabelle in html" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Tabelle" />
+        <meta property="og:description" content="Appunti e note sulle tabelle in html" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Tabelle" />
+        <meta name="twitter:description" content="Appunti e note sulle tabelle in html" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            #elementi-di-struttura + div li > code:first-child {
+                font-weight: bold;
+            }
+            .card-switch {
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                gap: 1rem;
+                grid-template-areas: 
+                  'tab t';
+                align-items: center;
+            }
+            .card-switch :first-child {
+                grid-area: tab;
+            }
+            .card-switch :last-child {
+                grid-area: t;
+            }
+            @media (max-width:600px) {
+                .card-switch {
+                    grid-template-areas: 
+                      'tab tab'
+                      't t';;
+                }
+            }
+            table {
+                height: fit-content;
+                max-width: 100%;
+                overflow-x: auto;
+                border: 0.1em solid chocolate;
+            }
+            table :is(th,td) {
+                padding: 0.4em;
+                border: 0.07em solid orange;
+            }
+        </style>
+
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sulle tabelle in html</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento delle tabelle in html.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>     
+                        Le tabelle in html sono definite tramite l'elemento <code class="tag">table</code>;                  
+                    </p>
+                    <p>servono a strutturare contenuto in una griglia composta da righe e colonne.</p>
+                    <p>Le tabelle venivano usate per generare layout, ma oggi ci sono metodi migliori.</p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Elementi Base</h2>
+                <div>
+                    <p>Le tabelle in html sono naturalmente composte di righe, a loro volta divise 
+                        in celle che rispettano le dimensioni della colonna a cui appartengono
+                    </p>
+                    <section>
+                        <h3>Riga di Tabella</h3>
+                        <p>Una riga è definita tramite l'elemento <code class="tag">tr</code> (<i>table row</i>);</p>
+                        <p>una cella tramite l'elemento <code class="tag">td</code> (<i>table data</i>)</p>
+                        <div class="">
+                        <p class="eg"></p>
+                        <div class="eg-extend card-switch">
+                            <s id="htmlCodeTab1"></s>
+                            <table>
+                                <tr>
+                                    <td>dato1.1</td>
+                                    <td>dato1.2</td>
+                                    <td>dato1.3</td>
+                                </tr>
+                                <tr>
+                                    <td>dato2.1</td>
+                                    <td>dato2.2</td>
+                                    <td>dato2.3</td>
+                                </tr>
+                            </table>
+                        </div>
+                        </div>
+                        <p>Si possono definire anche delle celle header con 
+                            <code class="tag">th</code> (<i>table header</i>)
+                        </p>
+                        <div>
+                        <p class="eg"></p>
+                        <div class="eg-extend card-switch">
+                            <s id="htmlCodeTab2"></s>
+                            <table>
+                                <tr>
+                                    <th>H1</th>
+                                    <th>H2</th>
+                                    <th>H3</th>
+                                </tr>
+                                <tr>
+                                    <td>dato1.1</td>
+                                    <td>dato1.2</td>
+                                    <td>dato1.3</td>
+                                </tr>
+                                <tr>
+                                    <td>dato2.1</td>
+                                    <td>dato2.2</td>
+                                    <td>dato2.3</td>
+                                </tr>
+                            </table>
+                        </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Celle Unite</h3>
+                        <p>Per permettere a una cella di spaziare più di una singola riga e colonna 
+                            si usano gli attributi <code class="att">colspan</code> 
+                            e <code class="att">rowspan</code>
+                        </p>
+                        <div>
+                            <p class="eg"></p>
+                            <div class="eg-extend card-switch">
+                                <s id="htmlCodeTab3"></s>
+                                <table>
+                                    <tr><th colspan="2">Head1</th></tr>
+                                    <tr>
+                                        <td rowspan="2">Data<br>Long</td>
+                                        <td>Data</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Long</td>
+                                    </tr> <!-- serve per essere occupata -->
+                                    <tr><th colspan="2">Head2</th></tr>
+                                    <tr>
+                                        <td>Data<br>Long</td>
+                                        <td rowspan="2">Data Long</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td> <!-- cella vuota ma non occupata -->
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Caption</h3>
+                        <p>Si può inserire un caption per la tabella usando l'elemento
+                            <code class="tag">caption</code>
+                        </p>
+                        <div>
+                            <p class="eg"></p>
+                            <div class="eg-extend card-switch">
+                                <s id="htmlCodeTab4"></s>
+                                <table>
+                                    <caption>
+                                        Questo è un caption
+                                    </caption>
+                                    <tr><td></td><td></td></tr>
+                                    <tr><td></td><td></td></tr>
+                                    <tr><td></td><td></td></tr>
+                                    <tr><td></td><td></td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Elementi di Struttura</h2>
+                <div>
+                    <p>Una tabella grande risulta difficile da leggere;
+                        occorre fornire alcuni elementi strutturali:
+                    </p>
+                    <ul>
+                        <li><code class="tag">thead</code>: include la parte di header della tabella</li>
+                        <li><code class="tag">tbody</code>: include il corpo della tabella</li>
+                        <li><code class="tag">tfoot</code>: include il termine della tabella</li>
+                    </ul>
+                    <p class="nota"><code class="tag">tbody</code> è sempre implicitamente 
+                        inclusa in una tabella, anche quando non specificata</p>
+                    <div>
+                        <p class="eg"></p>
+                        <div class="eg-extend card-switch">
+                            <s id="htmlCodeTab5"></s>
+                            <table class="htmlCodeTab5">
+                                <thead>
+                                    <tr>
+                                        <th>Acquisto</th>
+                                        <th>Luogo</th>
+                                        <th>Prezzo (€)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Pane</td>
+                                        <td>Supermercato</td>
+                                        <td>1,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Latte</td>
+                                        <td>Supermercato</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Scarpe</td>
+                                        <td>Calzolaio</td>
+                                        <td>35</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2">
+                                          Totale:</td>
+                                        <td>38,50</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <section>
+                        <h3>Attributo scope</h3>
+                        <p>Per indicare l'appartenenza di un gruppo di celle ad un certo header
+                            possiamo usare l'attributo <code class="att">scope</code>, che accetta 
+                            uno di quattro valori:
+                        </p>
+                        <ul>
+                            <li><code class="string">col</code> per l'header di 
+                                una colonna</li>
+                            <li><code class="string">row</code> per l'header di una riga</li>
+                            <li><code class="string">colgroup</code> per un header 
+                                che spazia su più colonne</li>
+                            <li><code class="string">rowgroup</code> per un header che spazia su 
+                                più righe</li>
+                        </ul>
+                        <div>
+                        <p class="eg"></p>
+                        <div class="eg-extend card-switch">
+                            <s id="htmlCodeTab6"></s>
+                            <table class="htmlCodeTab6">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            Acquisto</th>
+                                        <th scope="col">
+                                            Luogo</th>
+                                        <th scope="col">
+                                            Prezzo (€)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Pane</td>
+                                        <td>Supermercato</td>
+                                        <td>1,50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Latte</td>
+                                        <td>Supermercato</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Scarpe</td>
+                                        <td>Calzolaio</td>
+                                        <td>35</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2">
+                                          Totale:</td>
+                                        <td>38,50</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                        <p class="nota">non a alcun effetto visivo; viene usato dagli screen reader</p>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+        <script>
+            const snippets = {
+                html: {
+                    htmlCodeTab1:
+`<table class="htmlCodeTab1">
+    <tr>
+        <td>dato1.1</td>
+        <td>dato1.2</td>
+        <td>dato1.3</td>
+    </tr>
+    <tr>
+        <td>dato2.1</td>
+        <td>dato2.2</td>
+        <td>dato2.3</td>
+    </tr>
+</table>`,
+                    htmlCodeTab2: 
+`<table class="htmlCodeTab2">
+    <tr>
+        <th>H1</th>
+        <th>H2</th>
+        <th>H3</th>
+    </tr>
+    <tr>
+        <td>dato1.1</td>
+        <td>dato1.2</td>
+        <td>dato1.3</td>
+    </tr>
+    <tr>
+        <td>dato2.1</td>
+        <td>dato2.2</td>
+        <td>dato2.3</td>
+    </tr>
+</table>`,
+                    htmlCodeTab3:
+`<table class="htmlCodeTab3">
+    <tr><th colspan="2">Head1</th></tr>
+    <tr>
+        <td rowspan="2">Data<br>Long</td>
+        <td>Data</td>
+    </tr>
+    <tr>
+        <td>Long</td>
+    </tr> <!-- serve per essere occupata -->
+    <tr><th colspan="2">Head2</th></tr>
+    <tr>
+        <td>Data<br>Long</td>
+        <td rowspan="2">Data Long</td>
+    </tr>
+    <tr>
+        <td></td> <!-- cella vuota ma non occupata -->
+    </tr>
+</table>`,
+                    htmlCodeTab4: 
+`<table>
+    <caption>
+        Questo è un caption
+    </caption>
+    <tr><td></td><td></td></tr> 
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>    
+</table>`
+                }
+            }
+        </script>
+    </body>
+</html>

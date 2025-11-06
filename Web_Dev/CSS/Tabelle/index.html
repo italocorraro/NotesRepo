@@ -39,6 +39,43 @@
         <meta name="twitter:description" content="Appunti e note sulla gestione delle tabelle con CSS" />
         <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            .card-switch {
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                gap: 1rem;
+                grid-template-areas: 
+                  'tab t';
+                align-items: center;
+            }
+            .card-switch :first-child {
+                grid-area: tab;
+            }
+            .card-switch :last-child {
+                grid-area: t;
+            }
+
+            #gritable {
+                display: grid;
+                grid-template-columns: repeat(2,calc(50% - 1rem));
+                gap: 1rem;
+                justify-items: center;
+                align-items: center;
+            }
+            .tab1 table { border: 0.1em solid red; }
+            .tab2 table { border: 0.1em solid red; }
+            .tab2 :is(th,td) { border: 0.08em solid brown;}
+        </style>
+
+        <script>
+            const snippets = {css: {
+cssCodeT1: `.tab1 { border: 0.1em solid red; }`,
+cssCodeT2: `.tab2 { border: 0.1em solid red; }
+.tab2 :is(th,td) { border: 0.08em solid brown; }`
+            }}
+        </script>
+
     </head>
     <body class="content">
         <!-- Header -->
@@ -51,7 +88,9 @@
                 <p>Questa pagina copre l'argomento della gestione delle tabelle con CSS.</p>
                 <h2>Overview</h2>
                 <div>
-                    <p>                       
+                    <p>           
+                        Di base le tabelle sono svariati blocchi raggruppati;
+                        possiamo applicarvi diversi tipi di stile anche in base al raggruppamento.
                     </p>
                 </div>
             </section>
@@ -59,17 +98,70 @@
         <!-- Corpo -->
         <main>
             <article>
-                <h2></h2>
+                <h2>Contorni</h2>
                 <div>
-                    <p></p>
+                    <p>Prendiamo in considerazione la seguente tabella:</p>
+                    <div class="card-switch">
+                    <s id="htmlCodeTab"></s>
+                    <table class="htmlCodeTab">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Cognome</th>
+                                <th scope="col">Risparmi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Peter</td>
+                                <td>Griffin</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Lois</td>
+                                <td>Griffin</td>
+                                <td>$300</td>
+                            </tr>
+                            <tr>
+                                <td>Joe</td>
+                                <td>Swnason</td>
+                                <td>$200</td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                    <p>Senza alcuno stile se non il default di html.</p>
+                    <p>Una tabella può avere lei stessa un contorno e possono averlo anche i suoi elementi:</p>
+                    <div id="gritable">
+                        <rp id="cssCodeT1"></rp>
+                        <rp id="cssCodeT2"></rp>
+                        <div class="tableMe tab1"></div>
+                        <div class="tableMe tab2"></div>
+                    </div>
                     <section>
-                        <h3></h3>
+                        <h3>Spaziatura tra Contorni</h3>
                         <p></p>
+                        
                     </section>
+                    <section>
+                        <h3>Contorno Unico</h3>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Stili Tipici</h2>
+                <div>
+                    
                 </div>
             </article>
         </main>
         <!-- Import Functionalities -->
         <script src="../../source/functionalities.js"></script>
+        <script>
+            const table = document.querySelector('.htmlCodeTab').outerHTML;
+            const convert = document.querySelectorAll('.tableMe');
+            convert.forEach((convi) =>  {
+                convi.innerHTML = table;
+            });
+        </script>
     </body>
 </html>

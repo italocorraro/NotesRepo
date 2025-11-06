@@ -40,11 +40,54 @@
         <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
 
+
+        <style>
+            img, video {
+                max-width: 100%;
+                max-height: 50vh;
+            }
+            :is(#attributi-principali,#altri-attributi) ~ ul > li code:first-of-type {
+                font-weight: bold;
+            }
+            #accendimi {
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                gap: 1rem;
+                grid-template-areas: 
+                  'lol . '
+                  'cap1 cap2'
+                  'video text';
+            }
+            @media only screen and (max-width:1200px) {
+                #accendimi {
+                    grid-template-areas: 
+                      'lol .'
+                      'cap1 .'
+                      'video video'
+                      'cap2 .'
+                      'text text';
+                }
+            }
+            #accendimi video {
+                grid-area: video;
+                max-height: none;
+            }
+            #accendimi span {
+                text-decoration: underline;
+                font-size: 120%;
+                &:first-of-type {
+                    grid-area: cap1;
+                }
+                &:last-of-type {
+                    grid-area: cap2;
+                }
+            }
+        </style>
     </head>
     <body class="content">
         <!-- Header -->
         <header class="main_header">
-            <h1>Appunti su video e audio in html</h1>
+            <h1>Appunti su elementi media in html</h1>
             <aside class="sidebar_right">
                 <nav id="indice"></nav>
             </aside>
@@ -66,11 +109,142 @@
             <article>
                 <h2>Video</h2>
                 <div>
-                    <p></p>
+                    <p>L'elemento <code class="tag">video</code> permette di inserire video a partire dal
+                        loro URL.
+                    </p>
+                    <p class="nota">tutto il contenuto del tag non verrà visualizzato a meno che il browser 
+                        non fallisca nel ottenere il video o semplicemente se non supporta il tag <code class="tag">video</code>
+                    </p>
+                    <p class="notabene">il tag <code class="tag">video</code> NON è un <i>void</i></p>
+                    <p class="eg"><br>
+                        <video class="htmlCodeVid1" src="../../source/poppo-vid.mp4" controls>
+                            video di pappagallo che canta
+                        </video>
+                        <s id="htmlCodeVid1"></s>
+                    </p>
+                    <section>
+                        <h3>Attributi Principali</h3>
+                        <ul>
+                            <li><code class="att">src</code>: contiene l'URL del video</li>
+                            <li><code class="att">controls</code>: inserisce i controlli per il video 
+                                seguendo il dafult del browser; per inserire una UI di controlli personalizzati
+                                bisogna costruirla con l'appropriata API di JavaScript</li>
+                        </ul>
+                    </section>   
+                    <section>
+                        <h3>Elemento source</h3>
+                        <p>Non tutti i browser supportano tutti gli stessi formati video;
+                            l'elemento <code class="tag">source</code> permette di specificare 
+                            più fonti con formati diversi, in modo da permettere al browser 
+                            di scegliere quello che è in grado di riprodurre:
+                        </p>
+                        <div>
+                            <p class="eg"><br>
+                                <video class="htmlCodeVid2" controls>
+                                    <source src="../../source/poppo-vid.mp4" type="video/mp4">
+                                    <source src="../../source/poppo-vid.webm" type="video/webm">
+                                </video>
+                                <s id="htmlCodeVid2"></s>
+                            </p>
+                            <div class="eg-extend">
+                                <p class="notabene">
+                                    l'attributo <code class="att">type</code> non è strettamente necessario, tuttavia, senza 
+                                    di esso il browser andrà a tentativi, scaricando uno dopo l'altro i video finché non 
+                                    ne troverà uno che è in grado di riprodurre; <br>
+                                    usare <code class="att">type</code> permette al browser di ignorare le fonti con un 
+                                    formato che non conosce
+                                </p>
+                            </div>
+                        </div>
+                    </section> 
+                    <section>
+                        <h3>Codec</h3>
+                        <p>Il formato è solo il contenitore esterno che racchiude insieme 
+                            gli elementi multimediali quali audio e video;
+                        </p>
+                        <p>il <i>codec</i> è il metodo di compressione dei singoli dati del contenitore, 
+                            cioè i dati vengono prima compressi da un algoritmo (codifica) per poter essere trasportati 
+                            e vengono poi decompressi (decodifica)
+                            con lo stesso algoritmo per essere mostrati</p>
+                        <p class="eg">un MP4 usa un codec MP3 o AAC per l'audio e un 
+                            H.264 per il video
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Altri Attributi</h3>
+                        <ul>
+                            <li><code class="att">autoplay</code>: (boolean) lascia che il video parta al caricamento</li>
+                            <li><code class="att">loop</code>: (boolean) il video riparte ogni volta che termina</li>
+                            <li><code class="att">muted</code>: (boolean) il video parte con l'audio disabilitato</li>
+                            <li><code class="att">poster</code>: accetta come valore l'URL di un'immagine 
+                            che verrà mostrata come splash screen prima della partenza del video (o se non parte)</li>
+                        </ul>
+                        <p class="eg"><br>
+                            <video class="htmlCodeVid3" src="../../source/poppo-vid.mp4"
+                              controls autoplay loop muted 
+                              poster="../../source/Crunch.png">
+                                Il tuo browser non supporta 
+                                la riproduzione di questo video
+                            </video>
+                            <s id="htmlCodeVid3"></s>
+                        </p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Audio</h2>
+                <div>
+                    <p>L'elemento <code class="tag">audio</code> è molto simile a <code class="tag">video</code>;</p>
+                    <p>le differenze principali sono:</p>
+                    <ul>
+                        <li><code class="tag">audio</code> non ha dimensioni; l'unico 
+                        spazio che occupa è quello necessario ai controlli </li>
+                        <li><code class="tag">audio</code> non supporta l'attributo
+                        <code class="att">poster</code></li>
+                    </ul>
+                </div>
+            </article>
+            <article>
+                <h2>Trascrizioni</h2>
+                <div>
+                    <p>Inserendo un file <kbd>WebVTT</kbd>(<i>Web Video Text Tracks</i>) è possibile mostrare 
+                        testo in momenti specifici della riproduzione: 
+                        <s id="htmlCodeTost"></s></p>
+                    <p class="eg clearfix" id="accendimi"><br>
+                        <span>Video:</span>
+                        <span>Sottotitoli:</span>
+                        <video src="../../source/GoW.mp4" controls>
+                            <track src="../../source/subKratos.vtt" kind="subtitles" srclang="it" label="Italiano" default></track>
+                        </video>
+                    </p>
                 </div>
             </article>
         </main>
         <!-- Import Functionalities -->
         <script src="../../source/functionalities.js"></script>
+        <script>
+            fetch('../../source/subKratos.vtt').then(
+                response => {
+                    if (!response.ok) {
+                        throw new Error(`Errore nel caricamento: ${response.status}`);
+                    }
+                    return response.text();
+                }
+            ).then(
+                contenuto => {console.log(contenuto);
+                    const gino = document.createElement('p');
+                    gino.style = 
+                        `font-family: monospace; 
+                        white-space: pre; 
+                        grid-area: text;`
+                    gino.textContent = contenuto;
+                    document.querySelector('#accendimi').appendChild(gino);
+                }
+            );
+            const snippets = { html: {htmlCodeTost: `<track src="sottotitoli.vtt" 
+    kind="subtitles" srclang="it" 
+    label="Italiano" default>
+</track>`} }
+        </script>
     </body>
 </html>

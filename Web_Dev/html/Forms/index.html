@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
         <script type="module" src="../../source/Navigazione.js"></script>
         <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="snippets.js"></script>
         <script src="../../source/highlight.js"></script>
 
         <!-- Generic tags -->
@@ -41,10 +42,8 @@
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
         
         <style>
-        .clearfix::after {
-            content: '';
-            display: table;
-            clear: both;
+        input {
+            max-width: 100%;
         }
         :checked + label.colourme {
             background-color: brown;
@@ -89,7 +88,7 @@
                 <nav id="indice"></nav>
             </aside>
 
-            <!-- Sezione destrittiva della pagina -->
+            <!-- Sezione descrittiva della pagina -->
             <section>
                 <!-- presentazione -->
                 <p>Questa pagina copre alcuni degli argomenti dell'elemento forms e associati input</p>
@@ -99,7 +98,7 @@
                     <p>I form sono elementi utilizzati per raccogliere dati immessi dall'utente per essere poi processati; 
                         tendenzialmente a svolgere quest'ultima parte è un server.</p>
                     <p class="notabene">Gli input hanno un formato pre-assegnato che varia in base al browser.</p>
-                    <p class="nota">Gli elementi legati a un form hanno diverse pseudo-classi legate all'interazione con loro; vedi <a>qui</a>.</p>
+                    <p class="nota">Gli elementi legati a un form hanno diverse pseudo-classi legate all'interazione con loro; vedi <a href="../../CSS/Selectors/#pseudo-classi-dei-form-e-input">qui</a>.</p>
                     <p class="nota">Un form ha generalmente necessità di essere validato prima dell'invio dei dati al server; la sezione sulla validazione dati è coperta <a>qui</a>.</p>
                     </div>
             </section>
@@ -159,6 +158,38 @@
                 </div>
             </article>
 
+            <!-- Porzione indipendente del corpo 3 -->
+            <article>
+                <h2>L'elemento &lt;label&gt;</h2>
+                <div>
+                    <p>La <code class="tag">label</code> fornisce una dicitura associata ad un input del <code class="tag">form</code>.</p>
+                    <p>L'attributo <code class="att">for</code> della label deve puntare all'<code class="att">id</code> dell'input.</p>
+                    <p class="osservazione">L'area di selezione della label estende quella dell'input di tipo bottone, radio o checkbox; 
+                        utile per quando sono troppo piccoli per essere selezionati o li si vuole nascondere alla vista per avere più libertà nello assegnare stili,
+                         usando appunto la label in sostituzione del box booleano (come si è detto sopra, ha limitazioni dovute al browser), 
+                         ma restituendo sempre un valore del tipo dell'input.</p>
+                    <p class="osservazione-extend">Ad esempio: <label for="checci" style="cursor: pointer; background-color: blanchedalmond; user-select: none;">
+                        Clicca qui per la checkbox</label><i style="width: 0.1rem; height: 2rem; float: right; margin-right: 8rem; border-left: 0.4rem solid red;"></i>
+                        <input type="checkbox" id="checci" style="transform: scale(0.4); float: right;">
+                        <i style="width: 0.1rem; height: 2rem;float: right; border-right: 0.4rem solid red; "></i>
+                    </p>
+                    <p class="notabene">Perché funzioni correttamente, il valore dell'attributo <code class="att">for</code> della label 
+                        deve essere uguale all'<code class="att">id</code> dell'elemento a cui è riferita: <br>
+                        <s id="htmlCodeLabel"></s></p>
+                    <p class="osservazione evitamiaa">non è necessario che la <code class="tag">label</code> sia vicina
+                        all'<code class="tag">input</code> associato:<br>
+                        <input type="checkbox" id="ceck1" /><label for="ceck2"> Label per la seconda checkbox.</label><br>
+                        <input type="checkbox" id="ceck2" /><label for="ceck4"> Label per la quarta checkbox.</label><br>
+                        <input type="checkbox" id="ceck3" /><label for="ceck1"> Label per la prima checkbox.</label><br>
+                        <input type="checkbox" id="ceck4" /><label for="ceck3"> Label per la terza checkbox.</label>
+                    </p>
+                    <p class="osservazione-extend evitamiaa">
+                        Non è necessario nemmeno che la label sia solo una; se ne possono avere di più:<br>
+                        <label for="ceck2">Label per la seconda checkbox.</label>
+                    </p>
+                    </div>
+            </article>
+
             <!-- Porzione indipendente del corpo 2 -->
             <article>
                 <h2>L'elemento &lt;input&gt;</h2>
@@ -168,24 +199,93 @@
                         <p class="notabene">Gli input hanno una formattazione diversa per ogni browser e gli stili 
                             applicabili sono limitati, il che rende difficile da formattare correttamente rispetto 
                             alla pagina senza sapere a priori il browser che la leggerà!</p>
+                        <section>
+                            <h3>Attributi Comuni</h3>
+                            <p>Gli elementi <code class="tag">input</code> hanno tipicamente 
+                                questi attributi:</p>
+                            <ul>
+                                <li><code class="att">type</code>. specifica il tipo di input da creare
+                                    <p class="nota">il tipo <code class="string">"text"</code> è il tipo di default per ogni elemento <u id="htmlCodeInput"></u></p>
+                                </li>
+                                <li><code class="att">name</code>: specifica il nome dell'input; 
+                                    quando il form viene inviato, i dati vengono registrati in coppie
+                                    nome=valore
+                                </li>
+                                <li><code class="att">value</code> il valore da inviare con il form</li>
+                                <li><code class="att">id</code>: oltre al suo normale utilizzo, per un input 
+                                    serve anche ad associarlo con una o più label</li>
+                                <li><code class="att">required</code>: (boolean) specifica che l'input 
+                                    deve essere riempito per poter inviare il form</li>
+                                <li><code class="att">disabled</code>: (boolean) disabilita l'input</li>
+                                <li><code class="att">readonly</code>: (boolean) impedisce di modificare 
+                                    il valore dell'input, ma non di interagirci</li>
+                                <li><code class="att">min</code> e <code class="att">max</code>: 
+                                    (solo per numeri) permettono di indicare i limiti dell'input
+                                </li>
+                            </ul>
+                        </section>
                     <article>
                         <h3>Il tipo testo</h3>
                         <p>
-                            L'input di tipo testuale è un input testuale a linea singola; questo è il suo aspetto preso da solo:
+                            L'input di tipo testuale è un input testuale a riga singola; questo è il suo aspetto preso da solo:
                             <s id="htmlCodeText"></s>
-                            <input type="text" style="width: 70%;" class="htmlCodeText"><br>
-                            Ha una larghezza limitata di default (qui è stato ingrandito).
-                            <p class="notabene">il tipo <code class="string">"text"</code> è il tipo di default per ogni elemento <u id="htmlCodeInput"></u></p>
+                            <input type="text" class="htmlCodeText"></p><p>
+                            Ha una larghezza limitata di default.
                         </p><p>Il tipo testo e gli altri input testuali accettano l'attributo <code class="att">placeholder</code>
                             che mostra un testo "finto" all'utente che sparisce quando l'input viene riempito:</p>
                             <s id="htmlCodePlaceholder"></s>
                             <input type="text" placeholder="Scrivi qui" class="htmlCodePlaceholder">
-                    </article>
-                    <article>
-                        <h3>Il tipo password</h3>
-                        <p>Vengono oscurati i caratteri inseriti:</p>
-                        <s id="htmlCodePassword"></s>
-                        <input type="password" style="width: 70%;" placeholder="Inserire password" class="htmlCodePassword">
+                        <p>Sono <b>input testuali specializzati</b> i seguenti:</p>
+                        <ul class="code-bold">
+                            <li><code class="string">password</code> oscura i caratteri inseriti:
+                                <s id="htmlCodePassword"></s>
+                                <input type="password" placeholder="Inserire password" class="htmlCodePassword">
+                            </li>
+                            <li><code class="string">time</code> accetta un valore temporale in ore e minuti:
+                                <s id="htmlCodeTime"></s>
+                                <input type="time" class="htmlCodeTime">
+                            </li>
+                            <li><code class="string">date</code> accetta una certa data:
+                                <s id="htmlCodeDate"></s>
+                                <input type="date" id="birthday" name="birthday" class="htmlCodeDate">
+                            </li>
+                            <li><code class="string">datetime-local</code> uguale a sopra, ma senza time-zone:
+                                <s id="htmlCodeLocalDate"></s>
+                                <input type="datetime-local" id="data-locale" name="data-locale" class="htmlCodeLocalDate">
+                            </li>
+                            <li><code class="string">month</code> serve a inserire un mese:
+                                <s id="htmlCodeMonth"></s>
+                                <input type="month" class="htmlCodeMonth">
+                            </li>
+                            <li><code class="string">week</code> accetta una certa settimana numerata in base all'anno:
+                                <s id="htmlCodeWeek"></s>
+                                <input type="week" class="htmlCodeWeek">
+                            </li>
+                            <li><code class="string">number</code> accetta solo numeri:
+                                <s id="htmlCodeNum"></s>
+                                <input type="number" class="htmlCodeNum"/>
+                            </li>
+                            <li><code class="string">tel</code> accetta numeri di telefono:
+                                <s id="htmlCodeTel"></s>
+                                <input type="tel" class="htmlCodeTel">
+                                <p class="nota">su alcuni browser viene mostrato un tastierino per digitare i numeri</p>
+                            </li>
+                            <li><code class="string">url</code> accetta solo indirizzi URL:
+                                <s id="htmlCodeURL"></s>
+                                <input type="url" class="htmlCodeURL">
+                                <p class="nota">sembra uguale a un tipo testo, ma ha dei parametri di validazione speciali</p>
+                            </li>
+                            <li><code class="string">email</code> accetta solo indirizzi email:
+                                <s id="htmlCodeEmail"></s>
+                                <input type="email" id="email" name="email" placeholder="eg: nome.cognome@gmail.com" class="htmlCodeEmail">
+                            </li>
+                        </ul>
+                        <p>Tra quelli che accettano testo più o meno libero possono avere i seguenti attributi:</p>
+                        <ul>
+                            <li><code class="att">placeholder</code>: testo placeholder</li>
+                            <li><code class="att">maxlength</code>: limite al numero di caratteri digitabili</li>
+                            <li><code class="att">minlength</code>: limite inferiore al numero di caratteri digitabili</li>
+                        </ul>
                     </article>
                     <article>
                         <h3>Il tipo submit</h3>
@@ -214,7 +314,6 @@
                             <input type="text" value="default">
                             <input type="reset" value="Reset">
                         </form>
-                        
                     </article>
                     <article>
                         <h3>Il tipo radio</h3>
@@ -257,6 +356,7 @@
                         </p><p class="nota">
                             degli pseudo-attributi legati agli stati degli input si parla meglio <a href="../../CSS/Selectors/">qui</a>.
                         </p>
+                        <p class="nota">l'attributo booleano <code class="att">checked</code> permette di marcare una casella di default</p>
                     </article>
                     <article>
                         <h3>Il tipo search</h2>
@@ -268,6 +368,12 @@
                         </form>
                         <div id="search_res"></div>
                     </article>
+                    <section>
+                        <h3>Il tipo range</h3>
+                        <p>Questo input genera una barra slider per inserire un valore numerico:</p>
+                        <s id="htmlCodeRange"></s>
+                        <input type="range" min="0" max="300" step="4" value="0" class="htmlCodeRange"/>
+                    </section>
                     <article>
                         <h3>Altri input speciali</h3>
                         <p>Una lista dei vari altri tipi di input; ciascuno ha un aspetto 
@@ -279,69 +385,33 @@
                             <s id="htmlCodeColor"></s>
                             <input type="color" id="color" name="color" class="htmlCodeColor">
                             </li>
-                            <li><b>Tipo data:</b> accetta una certa data:
-                            <s id="htmlCodeDate"></s>
-                            <input type="date" id="birthday" name="birthday" class="htmlCodeDate">
-                            </li>
-                            <li><b>Tipo data-locale:</b> uguale a sopra, ma senza time-zone:
-                            <s id="htmlCodeLocalDate"></s>
-                            <input type="datetime-local" id="data-locale" name="data-locale" class="htmlCodeLocalDate">
-                            </li>
-                            <li><b>Tipo email:</b> accetta solo indirizzi email:
-                            <s id="htmlCodeEmail"></s>
-                            <input type="email" id="email" name="email" placeholder="eg: nome.cognome@gmail.com" class="htmlCodeEmail">
-                            </li>
+                            <li><b>Tipo file:</b> un input che permette di caricare un file nel campo input</li>
                         </ul>
                     </article>
-                    <article>
-                        <h3>Restrizioni agli input</h3>
-                        <p>Gli input possono essere ristretti tramite alcuni attributi:</p>
-                        <ul></ul>
-                    </article>
                 </div>
-            </article>
-
-            <!-- Porzione indipendente del corpo 3 -->
-            <article>
-                <h2>L'elemento &lt;label&gt;</h2>
-                <div>
-                    <p>La <code class="tag">label</code> fornisce una dicitura associata ad un <code class="tag">input</code>.</p>
-                    <p>L'area di selezione della label estende quella dell'input di tipo bottone, radio o checkbox; 
-                        utile per quando sono troppo piccoli per essere selezionati o li si vuole nascondere alla vista per avere più libertà nello assegnare stili,
-                         usando appunto la label in sostituzione del box booleano (come si è detto sopra, ha limitazioni dovute al browser), 
-                         ma restituendo sempre un valore del tipo dell'input.</p>
-                    <p>Ad esempio: <label for="checci" style="cursor: pointer; background-color: blanchedalmond; user-select: none;">
-                        Clicca qui per la checkbox</label><i style="width: 0.1rem; height: 2rem; float: right; margin-right: 8rem; border-left: 0.4rem solid red;"></i>
-                        <input type="checkbox" id="checci" style="transform: scale(0.4); float: right;">
-                        <i style="width: 0.1rem; height: 2rem;float: right; border-right: 0.4rem solid red; "></i>
-                    </p>
-                    <p class="notabene">Perché funzioni correttamente, il valore dell'attributo <code class="att">for</code> della label 
-                        deve essere uguale all'<code class="att">id</code> dell'elemento a cui è riferita: <br>
-                        <s id="htmlCodeLabel"></s></p>
-                    <p class="osservazione evitamiaa">non è necessario che la <code class="tag">label</code> sia vicina
-                        all'<code class="tag">input</code> associato:<br>
-                        <input type="checkbox" id="ceck1" /><label for="ceck2"> Label per la seconda checkbox.</label><br>
-                        <input type="checkbox" id="ceck2" /><label for="ceck4"> Label per la quarta checkbox.</label><br>
-                        <input type="checkbox" id="ceck3" /><label for="ceck1"> Label per la prima checkbox.</label><br>
-                        <input type="checkbox" id="ceck4" /><label for="ceck3"> Label per la terza checkbox.</label>
-                    </p>
-                    <p class="osservazione evitamiaa">
-                        non è nemmeno necessario che la label sia solo una; se ne possono avere di più:<br>
-                        <label for="ceck2">Label per la seconda checkbox.</label>
-                    </p>
-                    </div>
             </article>
 
             <!-- Porzione indipendente del corpo 4 -->
             <article>
                 <h2 id="button">L'elemento &lt;button&gt;</h2>
                 <div>
+                    <p>Il button è la variante non-void dell'<code class="tag">input</code>.</p>
                     <p>Il button costituisce uno degli elementi più utilizzati, in particolare come trigger per uno script. Un esempio:</p>
                     <button type="button" class="htmlCodeJoke joke">Cliccami per farmi cambiare colore!</button>
                     <div></div>
                     <p class="notabene">indicare il tipo dell'elemento button come button è buona norma per migliorare la compatibilità tra browser: <br>
                     <s id="htmlCodeJoke"></s>
                     </p>
+                    <p class="notabene">il <code class="tag">button</code> è una variante di <code class="tag">input</code>;
+                        di default è un <code class="string">submit</code> per il <code class="tag">form</code></p>
+                    <p>I tipi di bottone sono:</p>
+                    <ul>
+                        <li><code class="string">button</code>: pulsante semplice</li>
+                        <li><code class="string">submit</code>: (default) invia il form</li>
+                        <li><code class="string">reset</code>: resetta i campi del form</li>
+                    </ul>
+                    <p class="nota">l'elemento <code class="tag">button</code> è da preferire 
+                        all'<code class="tag">input</code> quando possibile, in quanto è molto più flessibile</p>
                 </div>
             </article>
 
@@ -538,6 +608,16 @@
                 }
             });
 
+
+            const ronge = document.querySelector('.htmlCodeRange');
+            ronge.style.setProperty('width','90%');
+            const showRonge = document.createElement('span');
+            showRonge.textContent = '0';
+            showRonge.style = 'display: inline-block; margin: 1rem; width:4ch; text-align: right;'
+            ronge.previousSibling.after(showRonge);
+            ronge.addEventListener("input", () => {
+                showRonge.textContent = ronge.value;
+            })
             
         </script>
         

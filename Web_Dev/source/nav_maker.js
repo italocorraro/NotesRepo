@@ -60,10 +60,8 @@ const navbar = [
       { name: 'Liste', URL: base + 'html/Liste/' },
       { name: 'Immagini', URL: base + 'html/Immagini/' },
       { name: 'Altri Media', URL: base + 'html/Altri Media/' },
-      { name: 'Tabelle', URL: '#' },
-      { name: 'Form', URL: base + 'html/Forms/' },
-      { name: 'Accessibilità', URL: '#' },
-      { name: 'Validazione', URL: '#' }
+      { name: 'Tabelle', URL: base + 'html/Tabelle' },
+      { name: 'Form', URL: base + 'html/Forms/' }
     ]
   },
   {
@@ -73,12 +71,12 @@ const navbar = [
       { name: 'Selettori', URL: base + 'CSS/Selectors/' },
       { name: 'Box Model', URL: base + 'CSS/Box Model/' },
       { name: 'Colori', URL: base + 'CSS/Colori/' },
+      { name: 'Funzioni e variabili', URL: '#' },
       { name: 'Immagini', URL: base + 'CSS/Immagini/' },
       { name: 'Background', URL: base + 'CSS/Background/' },
       { name: 'Unità di misura', URL: base + 'CSS/Unità di Misura/' },
       { name: 'Tipografia', URL: '#' },
-      { name: 'Funzioni e variabili', URL: '#' },
-      { name: 'Tabelle', URL: '#' },
+      { name: 'Tabelle', URL: base + 'CSS/Tabelle/' },
       { name: 'Form', URL: base + 'CSS/Form/' },
       { name: 'Modali', URL: '#' },
       { name: 'media queries', URL: '#' },
@@ -115,12 +113,42 @@ const navbar = [
     ]
   },
   {
+    name: 'Accessibilità',
+    content: [
+      // Vuoto
+    ]
+  },
+  {
+    name: 'TypeScript',
+    content: [
+      // Vuoto
+    ]
+  },
+  {
+    name: 'Git',
+    content: [
+      // Vuoto
+    ]
+  },
+  {
     name: 'Markdown',
     content: [
       {
         name: 'Sintassi',
         URL: 'https://github.com/italocorraro/NotesRepo/blob/main/Markdown/Sintassi%20md.md'
       }
+    ]
+  },
+  {
+    name: 'Svelte',
+    content: [
+      // Vuoto
+    ]
+  },
+  {
+    name: 'Astro',
+    content: [
+      // Vuoto
     ]
   }
 ];
