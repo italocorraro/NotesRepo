@@ -204,14 +204,14 @@
                             <p>Gli elementi <code class="tag">input</code> hanno tipicamente 
                                 questi attributi:</p>
                             <ul>
-                                <li><code class="att">type</code>. specifica il tipo di input da creare
+                                <li><code class="att">type</code>: specifica il tipo di input da creare
                                     <p class="nota">il tipo <code class="string">"text"</code> è il tipo di default per ogni elemento <u id="htmlCodeInput"></u></p>
                                 </li>
                                 <li><code class="att">name</code>: specifica il nome dell'input; 
                                     quando il form viene inviato, i dati vengono registrati in coppie
                                     nome=valore
                                 </li>
-                                <li><code class="att">value</code> il valore da inviare con il form</li>
+                                <li><code class="att">value</code>: il valore da inviare con il form</li>
                                 <li><code class="att">id</code>: oltre al suo normale utilizzo, per un input 
                                     serve anche ad associarlo con una o più label</li>
                                 <li><code class="att">required</code>: (boolean) specifica che l'input 
@@ -610,7 +610,7 @@
 
 
             const ronge = document.querySelector('.htmlCodeRange');
-            ronge.style.setProperty('width','90%');
+            ronge.style.setProperty('width','calc(90% - 4ch)');
             const showRonge = document.createElement('span');
             showRonge.textContent = '0';
             showRonge.style = 'display: inline-block; margin: 1rem; width:4ch; text-align: right;'

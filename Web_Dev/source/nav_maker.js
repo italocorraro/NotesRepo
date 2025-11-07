@@ -70,11 +70,11 @@ const navbar = [
       { name: 'Sintassi CSS', URL: base + 'CSS/Sintassi CSS/' },
       { name: 'Selettori', URL: base + 'CSS/Selectors/' },
       { name: 'Box Model', URL: base + 'CSS/Box Model/' },
-      { name: 'Colori', URL: base + 'CSS/Colori/' },
-      { name: 'Funzioni e variabili', URL: '#' },
-      { name: 'Immagini', URL: base + 'CSS/Immagini/' },
-      { name: 'Background', URL: base + 'CSS/Background/' },
       { name: 'Unità di misura', URL: base + 'CSS/Unità di Misura/' },
+      { name: 'Colori', URL: base + 'CSS/Colori/' },
+      { name: 'Immagini', URL: base + 'CSS/Immagini/' },
+      { name: 'Funzioni e Variabili', URL: base + 'CSS/Funzioni e Variabili/' },
+      { name: 'Background', URL: base + 'CSS/Background/' },
       { name: 'Tipografia', URL: '#' },
       { name: 'Tabelle', URL: base + 'CSS/Tabelle/' },
       { name: 'Form', URL: base + 'CSS/Form/' },
@@ -83,6 +83,7 @@ const navbar = [
       { name: 'Layout con Float', URL: base + 'CSS/Layout con Float/' },
       { name: 'Layout con Flexbox', URL: base + 'CSS/Layout con Flexbox/' },
       { name: 'Layout con Grid', URL: base + 'CSS/Layout con Grid/' },
+      { name: 'Altri Stili', URL: '#' },
       { name: 'Transizioni', URL: '#' },
       { name: 'Animazioni', URL: '#' }
     ]

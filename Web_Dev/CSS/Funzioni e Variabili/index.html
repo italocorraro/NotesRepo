@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Funzioni e Variabili</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note su funzioni e variabili in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Funzioni e Variabili" />
+        <meta property="og:description" content="Appunti e note su funzioni e variabili in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Funzioni e Variabili" />
+        <meta name="twitter:description" content="Appunti e note su funzioni e variabili in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            #testFilter + form {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: center;
+                gap: 1rem;
+            }
+            #testFilter + form input {
+                width: 100%;
+                max-width: 100%;
+            }
+            div:has(> #testFilter) {
+                display: grid;
+                grid-template-columns: 30% 1fr;
+                text-align: right;
+                gap: 2rem;
+            }
+            @media (max-width:600px) {
+                div:has(> #testFilter) {
+                    grid-template-columns: 1fr;
+                    padding: 0 2rem;
+                }
+                #testFilter + form button{
+                    grid-column: span 2; 
+                    width: 60%;
+                    justify-self: center;
+                }
+            }
+            #testFilter {
+                width: 100%;
+                aspect-ratio: 1;
+                background-image: url('../../source/Crunch.png');
+                background-size: 200% 100%;
+                background-position: 40% 0;
+                border-radius: 5%;
+            }
+            #testFilter + form button {
+                background-color: bisque;
+                border: 0.2em solid brown;
+                border-radius: 5%;
+            }
+            #testFilter + form button:hover {
+                outline: 0.1em solid chocolate;
+                outline-offset: 0.1em;
+            }
+            #testFilter + form button:active {
+                background-color: chocolate;
+                color: brown;
+            }
+        </style>
+
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeCalc: `width: calc(40% - 2rem + 4vh)`,
+                    cssCodeMax: `height: max(200px, 50vh, 10rem);`,
+                    cssCodeClamp: `width: clamp(100px, 50%, 800px);`,
+                    cssCodeClamp1: 
+`min-width: 100px;
+width: 50%;
+max-width: 800px;`,
+cssCodeVar: 
+`:root {
+    /* Le variabili dichiarate qui sono globali */
+    --primary-bg-color: #8FBC8F;
+    --primary-color: #FFFAF0;
+}
+
+body {
+    /* Le variabili dichiarate qui possono essere 
+       chiamate solo dal body o un suo discendente */
+    --secondary-bg-color: #6DF1E4;
+}
+
+.container {
+    /* Le variabili dichiarate qui possono essere 
+       chiamate solo da un elemento con classe 
+       container o un suo discendente */
+    --tertiary-color: #0EE7E7;
+    /* Possiamo anche ridefinire localmente una 
+       variabile, ma la versione globale rimarrà
+       intoccata */
+    --primary-color: #4EA1C0;
+    /* localmente potremo usare la versione 
+       modificata */
+}`,
+                    cssCodeVar1: 
+`body {
+    /* Usiamo la variabile definita in precedenza */
+    background-color: var(--secondary-bg-color);
+    /* Possiamo sempre usare anche le variabili globali */
+    color: var(--primary-color)
+}
+
+.container {
+    color: var(--tertiary-color);
+}
+.container span:hover {
+    /* Qui stiamo usando la versione locale
+       modificata della variabile globale,
+       questo perché gli span selezionati
+       sono discendenti di .container
+       dove l'avevamo modificata localmente */
+    color: var(--primary-color);
+}`
+                }
+            }
+        </script>
+
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti su Funzioni e Variabili in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento delle funzioni e delle variabili in CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>          
+                        Le funzioni in CSS sono meccanismi che permettono l'assegnazione dinamica di alcune proprietà;
+                    </p>
+                    <p>La struttura base di una funzione è <code><code class="func">functionName</code>(<code class="comment">parameter</code>, <code class="comment">parameter</code>)</code></p>
+                    <p>In CSS si possono creare anche delle variabili da chiamare una o anche più volte nel documento. </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Funzioni Note</h2>
+                <div>
+                    <p>Abbiamo già visto alcune funzioni fin ora.</p>
+                    <p class="eg"><code class="func">rgb</code>, <code class="func">rgba</code>, <code class="func">hsl</code>, 
+                    <code class="func">linear-gradient</code> sono tutte funzioni</p>
+                </div>
+            </article>
+            <article>
+                <h2>Funzioni Matematiche</h2>
+                <div>
+                    <p></p>
+                    <section>
+                        <h3>calc()</h3>
+                        <p>La funzione <code><code class="func">calc</code>(<code class="comment">espressione</code>)</code> permette di effettuare operazioni 
+                            aritmetiche tramite <kbd>+</kbd>, <kbd>-</kbd>, <kbd>*</kbd> e <kbd>/</kbd> tra due 
+                            valori numerici
+                        </p>
+                        <div>
+                            <p class="nota">i valori non devono necessariamente usare la stessa unità di misura,</p>
+                            <div class="nota-extend">
+                                <p class="eg">
+                                    <rp id="cssCodeCalc"></rp>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>min() e max()</h3>
+                        <p>Le funzioni <code><code class="func">min</code>(<code class="comment">parametri</code>)</code>
+                            e <code><code class="func">max</code>(<code class="comment">parametri</code>)</code>
+                            restituiscono rispettivamente il valore minimo e massimo tra quelli passati come argomento</p>
+                        <div><p class="nota">si possono passare anche più di due valori a queste funzioni</p>
+                        <div class="nota-extend"><p class="eg"><rp id="cssCodeMax"></rp></p></div></div>
+                    </section>
+                    <section>
+                        <h3>clamp()</h3>
+                        <p>La funzione <code><code class="func">clamp</code>(<code class="comment">valore-minimo</code>, 
+                            <code class="comment">valore-ideale</code>, <code class="comment">valore-massimo</code>)</code>
+                            accetta tre argomenti e restituisce il valore ideale limitato dai due estremi
+                        </p>
+                        <div>
+                            <p class="osservazione">può essere più conveniente da usare per limitare le dimensioni
+                                di un elemento invece di <code class="att">max-width</code> e <code class="att">min-width</code> e simili
+                            </p>
+                            <div class="osservazione-extend">
+                                <p class="eg"><rp id="cssCodeClamp"></rp>è equivalente a <rp id="cssCodeClamp1"></rp></p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Funzioni di Trasformazione</h2>
+                <div>
+                    <p>Queste funzioni vanno usate con la proprietà <code class="att">trasform</code></p>
+                    <section>
+                        <h3>translate()</h3>
+                        <p>La funzione <code><code class="func">translate</code>(<code class="comment">asse-x</code>, <code class="comment">asse-y</code>)</code>
+                            permette di traslare l'elemento lungo gli assi orizzontale e verticale dei valori indicati.</p>
+                        <p class="eg">
+                            <span id="traslami" style="display: block; width: 10vw; aspect-ratio: 1; background-color: brown; transition: 2s;"></span>
+                            <button type="button" onclick="document.getElementById('traslami').style.transform = 'translate(200%,0)';">Fai traslare</button>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>rotate()</h3>
+                        <p>La funzione <code><code class="func">rotate</code>(<code class="comment">angolo</code>)</code>
+                            permette di ruotare l'elemento.</p>
+                        <p class="eg">
+                            <span id="ruotami" style="display: block; width: 10vw; aspect-ratio: 1; background-color: brown; transition: 2s;"></span>
+                            <button type="button" onclick="document.getElementById('ruotami').style.transform = 'rotate(315deg)';">Fai ruotare</button>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>scale()</h3>
+                        <p>La funzione <code><code class="func">scale</code>(<code class="comment">fattore-x</code>, <code class="comment">fattore-y</code>)</code> ridimensiona l'elemento 
+                            moltiplicandone le dimensioni per un fattore (accetta solo numeri puri o percentuali)</p>
+                        <p class="eg">
+                            <span id="scalami" style="display: block; width: 10vw; aspect-ratio: 1; background-color: brown; transition: 2s;"></span>
+                            <button type="button" onclick="document.getElementById('scalami').style.transform = 'scale(2, 1.3)';">Fai scalare</button>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>skew()</h3>
+                        <p>La funzione <code><code class="func">skew</code>(<code class="comment">angolo</code>)</code>
+                            deforma l'elemento inclinandolo di un certo angolo
+                        </p>
+                        <p class="eg">
+                            <span id="inclinami" style="display: block; width: 10vw; aspect-ratio: 1; background-color: brown; transition: 2s;"></span>
+                            <button type="button" onclick="document.getElementById('inclinami').style.transform = 'skew(90deg, 0)';">Inclina</button>
+                            <button type="button" onclick="document.getElementById('inclinami').style.transform = 'skew(200deg, 360deg)';">Inclina strano</button>
+                        </p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Funzioni di Filtro</h2>
+                <div>
+                    <p>Queste funzioni vanno usate con la proprietà <code class="att">filter</code>
+                        per rendere diversi effetti visivi.</p>
+                    <div>
+                        <div id="testFilter"></div>
+                        <form>
+                            <label for="blur"><code class="func">blur</code><code>(<code class="comment">valore</code>)</code></label>
+                            <input type="range" min="0" max="40" value="0" id="blur" name="blur" data-unit="px"/>
+                        
+                            <label for="brightness"><code class="func">brightness</code><code>(<code class="comment">valore</code>)</code></label>
+                            <input type="range" min="1" max="3" value="1" step="0.1" id="brightness" name="brightness" data-unit=""/>
+                        
+                            <label for="contrast"><code class="func">contrast</code><code>(<code class="comment">valore%</code>)</code></label>
+                            <input type="range" min="0" max="400" value="100" id="contrast" name="contrast" data-unit="%"/>
+
+                            <label for="grayscale"><code class="func">grayscale</code><code>(<code class="comment">valore%</code>)</code></label>
+                            <input type="range" min="0" max="100" value="0" id="grayscale" name="grayscale" data-unit="%"/>
+                        
+                            <label for="hue-rotate" style="width: 13em;"><code class="func">hue-rotate</code><code>(<code class="comment">valore-deg</code>)</code></label>
+                            <input type="range" min="0" max="360" value="0" id="hue-rotate" name="hue-rotate" data-unit="deg"/>
+
+                            <label for="invert"><code class="func">invert</code><code>(<code class="comment">valore%</code>)</code></label>
+                            <input type="range" min="0" max="100" value="0" id="invert" name="invert" data-unit="%"/>
+
+                            <label for="opacity"><code class="func">opacity</code><code>(<code class="comment">valore%</code>)</code></label>
+                            <input type="range" min="0" max="100" value="100" id="contrast" name="opacity" data-unit="%"/>
+
+                            <label for="saturate"><code class="func">saturate</code><code>(<code class="comment">valore%</code>)</code></label>
+                            <input type="range" min="0" max="100" value="100" id="saturate" name="saturate" data-unit="%"/>
+
+                            <label for="sepia"><code class="func">sepia</code><code>(<code class="comment">valore%</code>)</code></label>
+                            <input type="range" min="0" max="100" value="0" id="sepia" name="sepia" data-unit="%"/>
+
+                            <button type="reset">Reset</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h2>Funzione Attributo</h2>
+                <div>
+                    <p>La funzione <code><code class="func">attr</code>(<code class="comment">attributo</code>)</code>
+                        restituisce l'attributo richiesto, ma funziona solo per la proprietà <code class="att">content</code></p>
+                </div>    
+            </article>
+            <article>
+                <h2>Variabili</h2>
+                <div>
+                    <p>Possiamo usare delle variabili in CSS, queste sono molto utili per quei valori che si ripetono uguali, ad esempio i colori degli elementi</p>
+                    <section>
+                        <h3>Dichiarazione delle Variabili</h3>
+                        <p>Le variabili devono essere dichiarate in un selettore come delle proprietà;</p>
+                        <p>le variabili hanno accesso al DOM (<i>Document Object Model</i>), cioè possiamo 
+                            distinguerne due tipi:</p>
+                        <ul>
+                            <li><b>Globali</b>: dichiarate alla radice del documento (selettore <code class="sel">:root</code>)</li>
+                            <li><b>Locali</b>: dichiarate all'interno di un altro elemento (tramite appositi selettori)</li>
+                        </ul>
+                        <p>Le variabili <i>globali</i> possono essere chiamate in tutto il documento;</p>
+                        <p>le variabili <i>locali</i> possono essere chiamate solo negli elementi in cui sono definite.</p>
+                        <p class="eg"><rp id="cssCodeVar"></rp></p>
+                    </section>
+                    <section>
+                        <h3>Chiamata delle Variabili</h3>
+                        <p>Possiamo usare le variabili dichiarate in CSS chiamandole con la funzione 
+                            <code><code class="func">var</code>(<code class="comment">variabile</code>)</code>;
+                            <p class="eg">
+                                <rp id="cssCodeVar1"></rp>
+                            </p>
+                        </p>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+        <script>
+            const tested = document.getElementById('testFilter');
+            const filters = document.querySelectorAll('#testFilter + form [type="range"]');
+            const labels = document.querySelectorAll('#testFilter + form label :has(> code.comment)');
+
+            const folter = {
+                summa: function() {
+                    let cambio = ``;
+                    for(const key in this) {
+                        const temp = this[key];
+                        if(temp && 
+                          typeof temp === 'object' && 
+                          typeof temp.func === 'function') 
+                        {
+                            cambio += temp.func() + ' ';
+                        }
+                        
+                    }
+                    return cambio;
+                }
+            }
+            
+            const reset = {};
+
+            for(let i=0; i<filters.length; i++) {
+                const meas = filters[i].getAttribute('data-unit');
+                const tipo = filters[i].name;
+                const activeFilter = {};
+                
+                folter[tipo] =  {
+                    val: filters[i].value,
+                    meas: function() {return this.val + meas;},
+                    func: function() {return tipo + '(' + this.val + meas + ')';}
+                }
+
+                reset[tipo] = folter[tipo].val;
+                
+                filters[i].addEventListener("input", function () {
+                    folter[tipo].val = filters[i].value;
+                    tested.style.filter = folter.summa();
+                    labels[i].innerHTML = `(<code class="num">${folter[tipo].meas()}</code>)`;
+                });
+            }
+
+            const resetti = document.querySelector('#testFilter + form [type="reset"]');
+            resetti.addEventListener('click', () => {
+                for(const key in reset) {
+                    folter[key].val = reset[key];
+                }
+                tested.style.filter = folter.summa();
+                for(let i=0; i<filters.length; i++) {
+                    const tipo = filters[i].name;
+                    labels[i].innerHTML = `(<code class="num">${folter[tipo].meas()}</code>)`;
+                }
+            });
+
+
+        </script>
+    </body>
+</html>

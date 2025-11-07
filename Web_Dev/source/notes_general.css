@@ -263,7 +263,7 @@ li ul, li ol {
 /* tabelle */
 .notable th, .notable td {
     border: 0.2rem solid orange;
-    background-color: rgb(253, 241, 228);
+    background-color: #fdf1e4;
     padding: 0.5rem;
 }
 .notable tr:first-child {font-weight: bold;}

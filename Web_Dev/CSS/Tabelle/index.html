@@ -55,24 +55,85 @@
             .card-switch :last-child {
                 grid-area: t;
             }
-
-            #gritable {
+            @media (max-width:600px) {
+                .card-switch {
+                    grid-template-areas: 
+                      'tab tab'
+                      't t';;
+                }
+            }
+            .grid-snip {
                 display: grid;
                 grid-template-columns: repeat(2,calc(50% - 1rem));
                 gap: 1rem;
+                grid-template-areas:
+                  'snip1 snip2'
+                  'tab1 tab2';
                 justify-items: center;
                 align-items: center;
             }
-            .tab1 table { border: 0.1em solid red; }
-            .tab2 table { border: 0.1em solid red; }
-            .tab2 :is(th,td) { border: 0.08em solid brown;}
+            @media (max-width:600px) {
+                .grid-snip {
+                    grid-template-areas:
+                      'snip1 snip1'
+                      'tab1 tab1'
+                      'snip2 snip2'
+                      'tab2 tab2';
+                }
+            }
+            .grid-snip pre:first-of-type {
+                grid-area: snip1;
+            }
+            .grid-snip pre:nth-of-type(2) {
+                grid-area: snip2;
+            }
+            .tab1 { grid-area: tab1;}
+            .tab2 { grid-area: tab2;}
+            #gritable .tab1 table { border: 0.1em solid red; }
+            #gritable .tab2 table { border: 0.1em solid red; }
+            #gritable .tab2 :is(th,td) { border: 0.08em solid brown;}
+
+            #grispace .tab1 table {
+                border: 0.1em solid red;
+                border-spacing: 0em;
+            }
+            #grispace .tab1 :is(th,td) {
+                border: 0.08em solid brown;
+            }
+            #grispace .tab2 table {
+                border: 0.1em solid red;
+                border-spacing: 0em ;
+            }
+            #grispace .tab2 :is(th,td) {
+                border: 0.08em solid brown;
+            }
+
+            #contorno-unico ~ div .tableMe table {
+                border: 0.1em solid red;
+            }
+            #contorno-unico ~ div .tableMe :is(th,td) {
+                border: 0.08em solid brown;
+            }
+
+            #Zebra table tr:nth-of-type(even) td {
+                background-color: aliceblue;
+            }
+            #Zebra table tr:nth-of-type(odd) td {
+                background-color: wheat;
+            }
         </style>
 
         <script>
             const snippets = {css: {
 cssCodeT1: `.tab1 { border: 0.1em solid red; }`,
 cssCodeT2: `.tab2 { border: 0.1em solid red; }
-.tab2 :is(th,td) { border: 0.08em solid brown; }`
+.tab2 :is(th,td) { border: 0.08em solid brown; }`,
+cssCodeZebra: `table tr:nth-of-type(even) td {
+    background-color: aliceblue;
+}
+table tr:nth-of-type(odd) td {
+    background-color: wheat;
+}`
             }}
         </script>
 
@@ -124,14 +185,14 @@ cssCodeT2: `.tab2 { border: 0.1em solid red; }
                             </tr>
                             <tr>
                                 <td>Joe</td>
-                                <td>Swnason</td>
+                                <td>Swanson</td>
                                 <td>$200</td>
                             </tr>
                         </tbody>
                     </table></div>
                     <p>Senza alcuno stile se non il default di html.</p>
                     <p>Una tabella può avere lei stessa un contorno e possono averlo anche i suoi elementi:</p>
-                    <div id="gritable">
+                    <div id="gritable" class="grid-snip">
                         <rp id="cssCodeT1"></rp>
                         <rp id="cssCodeT2"></rp>
                         <div class="tableMe tab1"></div>
@@ -139,18 +200,67 @@ cssCodeT2: `.tab2 { border: 0.1em solid red; }
                     </div>
                     <section>
                         <h3>Spaziatura tra Contorni</h3>
-                        <p></p>
+                        <p>Possiamo impostare la distanza tra i contorni delle celle adiacenti
+                            con la proprietà <code class="att">border-spacing</code>;
+                        </p>
+                        <p>questa proprietà accetta fino a due valori di lunghezze, uno per la distanza 
+                            orizzontale, l'altro per quella verticale; se viene immesso un solo valore allora 
+                            viene usato per entrambe le direzioni.
+                        </p>
+                        <div id="grispace" class="grid-snip">
+                            <span style="font-size: 120%; text-decoration: underline;">Orizzontalmente:</span>
+                            <span style="font-size: 120%; text-decoration: underline;">Verticalmente:</span>
+                            <div class="tableMe tab1"></div>
+                            <div class="tableMe tab2"></div>
+                        </div>
                         
                     </section>
                     <section>
                         <h3>Contorno Unico</h3>
+                        <p>Di default la tabella può avere due bordi, uno esterno e uno per le celle, ma 
+                            possiamo unire i bordi con la proprietà <code class="att">border-collapse</code>:
+                        </p>
+                        <div class="card-switch">
+                            <div class="tableMe" style="justify-items: center;"></div>
+                            <div>
+                                <label for="br-col"><code class="att">border-collapse</code><code>: </code></label>
+                                <select name="border-collapse" id="br-col">
+                                    <option value="separate">separate</option>
+                                    <option value="collapse">collapse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="nota">la proprietà <code class="att">border-spacing</code> non 
+                            ha effetto se <code class="att">border-collapse</code> è impostata su 
+                            <code class="string">collapse</code></p>
                     </section>
                 </div>
             </article>
             <article>
                 <h2>Stili Tipici</h2>
                 <div>
-                    
+                    <p>Vediamo alcuni esempi tipici di stile:</p>
+                    <section>
+                        <h3>Overflow</h3>
+                        <p>Tipicamente una tabella è impostata con <code class="att">overflow-x</code>
+                        su <code class="string">auto</code> per impedirle ai dati di fuoriuscire</p>
+                        <div>
+                            <p class="eg">Un esempio con la tabella vista per le entità:</p>
+                            <div class="eg-extend">
+                                <div id="sostituito"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Strisce Zebrate</h3>
+                        <p>Spesso una tabella migliora la sua leggibilità colorando alternamente le sue righe:</p>
+                        
+                        <div class="card-switch">
+                            <rp id="cssCodeZebra"></rp>
+                            <div class="tableMe" id="Zebra"></div>
+                        </div>
+                        
+                    </section>
                 </div>
             </article>
         </main>
@@ -162,6 +272,48 @@ cssCodeT2: `.tab2 { border: 0.1em solid red; }
             convert.forEach((convi) =>  {
                 convi.innerHTML = table;
             });
+
+            const rangeBor = document.querySelectorAll('#grispace .tableMe');
+            let i = 0;
+            rangeBor.forEach((ranged) => {
+                const ranger = document.createElement('input');
+                ranger.type = 'range';
+                ranger.min = '0';
+                ranger.max = '2';
+                ranger.step = '0.1';
+                ranger.style.width = '100%';
+                ranged.appendChild(ranger);
+                i == 0 
+                ? ranger.addEventListener("input", () => {
+                    ranged.firstElementChild.style.borderSpacing = ranger.value + 'em' + ' 0';
+                  })
+                : ranger.addEventListener("input", () => {
+                    ranged.firstElementChild.style.borderSpacing = '0 ' + ranger.value + 'em';
+                  });
+                i++;
+            });
+
+            const collapse = document.getElementById('br-col');
+            collapse.addEventListener("input", () => {
+                convert[4].firstElementChild.style.borderCollapse = collapse.value;
+            });
+
+            fetch('../../html/Sintassi%20html/index.html').then(
+                response => {
+                    if (!response.ok) {
+                        throw new Error(`Errore nel caricamento: ${response.status}`);
+                    }
+                    return response.text();
+                }
+            ).then(
+                contenuto => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(contenuto, 'text/html');
+                    const entita = doc.querySelector('.t-wrap');
+                   
+                    document.getElementById('sostituito').appendChild(entita);
+                }
+            );
         </script>
     </body>
 </html>

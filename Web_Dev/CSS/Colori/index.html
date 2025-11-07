@@ -40,7 +40,42 @@
         <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
 
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeLin: 
+`background-image: 
+  linear-gradient(to right, 
+    green, green, rgba(0,255,128,0.3),
+    red, green);`
+                }
+            }
+        </script>
         <style>
+            #gradial {
+                display: grid;
+                grid-template-columns: 15% 1fr 7.5% 7.5% 1fr;
+                grid-template-areas: 
+                  's ss d d dd'
+                  'p pp pp cc cc';
+                text-align: end;
+                gap: 1rem;
+                align-items: center;
+                margin-top: 2rem;
+            }
+            #gradial [for="size"] {
+                grid-area: d;
+            }
+            #gradial [for="position"] {
+                grid-area: p;
+            }
+            #gradial input:first-of-type {
+                grid-area: pp;
+            }
+            #gradial input {
+                grid-area: cc;
+            }
+
             .color-wrapper input {
                 display: block;
                 min-width: 0;
@@ -209,18 +244,75 @@
                 </div>
             </article>
             <article>
-                <h2>Contrasto</h2>
-                <div>
-                    <p>Posizionare testo su uno sfondo colorato richiede una certa deifferenza
-                        tra i rispettivi colori per garantire visibilità e leggibilità
-                        WIP WIP
-                    </p>
-                </div>
-            </article>
-            <article>
                 <h2>Gradienti</h2>
                 <div>
-                    WIP
+                    <p>I gradienti possono essere impostati in CSS tramite la proprietà 
+                        <code class="att">background-image</code></p>
+                    <section>
+                        <h3>Gradiente Lineare</h3>
+                        <p>Per impostare un gradiente lineare la sintassi è <br>
+                            <code><code class="att">background-image</code>: <code class="func">linear-gradient</code>(<code class="comment">direction</code>, <code class="comment">color-stop1</code>, <code class="comment">color-stop2</code>, <code class="comment">...</code>);</code>
+                        </p>
+                        <ul>
+                            <li>Per la direzione possiamo usare le keyword 
+                                <code>to left</code>, <code>to right</code>, <code>to bottom</code>, <code>to top</code>, oppure
+                                un angolo per la direzione (<i>to top</i> equivale a <code class="num">0deg</code> e si procede 
+                                in senso orario, quindi <code class="num">90deg</code> corrisponde a <i>to right</i> ecc...)
+                            </li>
+                            <li>dopo la direzione possiamo inserire un numero qualsiasi di colori nella codifica che si preferisce</li>
+                        </ul>
+                        <p class="eg">
+                            <rp id="cssCodeLin"></rp>
+                            <span style="display: block; width: 40vw; aspect-ratio: 2/1; 
+                            background-image: 
+                              linear-gradient(to right, 
+                                green, green,
+                                rgba(0,255,128,0.3),
+                                red, green);"></span>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Gradiente Radiale</h3>
+                        <p>Per impostare un gradiente radiale, cioè un gradiente che parte da un punto centrale; la sintassi è <br>
+                            <code><code class="att">background-image</code>: <code class="func">radial-gradient</code>(<code class="comment">shape size at position</code>, <code class="comment">start-color</code>, <code class="comment">...</code>, <code class="comment">end-color</code>);</code>
+                        </p>
+                        <ul>
+                            <li>la forma (<i>shape</i>) è il primo parametro da definire,
+                                di default è un'ellisse (<i>ellipse</i>), ma possiamo anche 
+                                usare un cerchio (<i>circle</i>)</li>
+                            <li>la dimensione (<i>size</i>) indica quella della fine della forma del gradiente,
+                                di default è l'angolo più distante (<i>farthest-corner</i>), ma può prendere
+                                anche i valori <i>closest-side</i>, <i>farthest-side</i> o <i>closest-corner</i></li>
+                            <li>la posizione (<i>position</i>) è il centro e prende come valori delle 
+                                coordinate assiali (x e y)</li>
+                        </ul>
+                        <div style="width: 100%;">
+                            <p class="eg"></p>
+                            <div class="eg-extend">
+                            <span style="width: 100%; aspect-ratio: 4/1; display: block; background-image: radial-gradient(yellow, green, blue, orange, red);"></span>
+                            <form id="gradial">
+                                <label for="shape">shape:</label>
+                                <select name="shape" id="shape">
+                                    <option value="ellipse">ellipse</option>
+                                    <option value="circle">circle</option>
+                                </select>
+                                <label for="size">size:</label>
+                                <select name="size" id="size">
+                                    <option value="farthest-corner">farthest-corner</option>
+                                    <option value="farthest-side">farthest-side</option>
+                                    <option value="closest-corner">closest-corner</option>
+                                    <option value="closest-side">closest-side</option>
+                                </select><br>
+                                <label for="position">position:</label>
+                                <input type="range" min="0" max="100%" value="50" name="posX">
+                                <input type="range" min="0" max="100%" value="50" name="posY">
+                            </form>
+                        </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Gradiente Conico</h3>
+                    </section>
                 </div>
             </article>
         </main>
@@ -298,6 +390,31 @@
             sliderColorer('rgba-wrapper', 'rgba');
             sliderColorer('hsla-wrapper', 'hsla');
             sliderColorer('hex-wrapper', 'hex');
+
+            const radiated = document.querySelector('span:has(+ #gradial)');
+            const controllus = document.querySelectorAll('#gradial :is(select,input)');
+
+            const gradi = {
+                shape: 'ellipse',
+                size: '',
+                posX: '',
+                posY: '',
+                output() {
+                    return `radial-gradient(${this.shape} ${this.size} at ${this.posX}% ${this.posY}%, yellow, green, blue, orange, red)`;
+                }
+            };
+
+            gradi.output = function() {
+                return `radial-gradient(${this.shape} ${this.size} at ${this.posX}% ${this.posY}%,yellow, green, blue, orange, red)`;
+            }
+
+            for(let control of controllus) {
+                gradi[control.name] = control.value;
+                control.addEventListener('input', function() {
+                    gradi[this.name] = this.value;
+                    radiated.style.backgroundImage = gradi.output();
+                });
+            }
         </script>
     </body>
 </html>
