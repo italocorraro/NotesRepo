@@ -53,6 +53,9 @@
                 background-color: #f5eed5;
                 border: 0.2rem dotted #b8cfe6;
             }
+            code.comment {
+                font-style: normal;
+            }
         </style>
 
         <script>
@@ -137,6 +140,25 @@
                         dividere il foglio di stile in sotto-sezioni logiche, usando dei commenti 
                         per dichiarare la logica (come un titolo), in modo da poter più facilmente
                         navigare il foglio in caso fosse necessario modificarlo o espanderlo
+                    </p>
+                    <div>
+                        <p class="eg"></p>
+                        <div class="eg-extend">
+                            <p><code class="comment">/* Foglio di stile per le pagine &lt;pagine&gt; */</code></p>
+                            <code class="comment">/* || Reset Globali */</code>
+                            <p><i>Qui inserire i reset per i default indesiderati...</i></p>
+                            <code class="comment">/* || Impostazioni Globali */</code>
+                            <p ><i>Qui inserire gli stili base per <code class="sel">:root</code>, <code class="sel">html</code>...</i></p>
+                            <code class="comment">/* || Stili Header */</code><br>
+                            <code class="comment">/* || Stili Barra Laterale */</code><br>
+                            <code class="comment">/* || Inserti */</code><br>
+                            <code class="comment">/* || Utility */</code><br>
+                            <code class="comment">/* || Contenuto Principale */</code>
+                        </div>
+                    </div>
+                    <p class="nota">esistono diversi schemi e logiche di categorizzazione 
+                        già pronti; nessuno è necessariamente meglio dell'altro, ma eccone uno:
+                        <a href="https://smacss.com/book/categorizing/">SMACS</a>.
                     </p>
                 </div>
             </article>

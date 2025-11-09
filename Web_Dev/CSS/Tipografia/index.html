@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Tipografia</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sulla gestione di testo e affini in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Tipografia" />
+        <meta property="og:description" content="Appunti e note sulla gestione di testo e affini in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Tipografia" />
+        <meta name="twitter:description" content="Appunti e note sulla gestione di testo e affini in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <style>
+            img { max-width: 100%; }
+        </style>
+
+        <script>
+            const snippets = {
+                css: {
+                    cssCodeVerdana: `font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;`,
+                    cssCodeGeorgia: `font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;`,
+                    cssCodeCourier: `font-family: 'Courier New', Courier, monospace;`
+                }
+            }
+        </script>
+
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sulla tipografia nel CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento della tipografia in CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>                  
+                        Il testo è il contenuto principale e meno pesante delle pagine web;
+                    </p>
+                    <p>il comportamento del testo dipende da svariate proprietà CSS, ma possiamo dividerle
+                        principalmente in due gruppi:
+                    </p>
+                    <ul>
+                        <li>Stili per il <i>font</i>, cioè l'aspetto dei caratteri</li>
+                        <li>Stili per il <i>layout testuale</i>, cioè la disposizione dei caratteri testuali</li>
+                    </ul>
+                    <p class="nota">il testo all'interno di un elemento è considerato un'unica entità</p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Proprietà del Font</h2>
+                <div>
+                    <p></p>
+                    <section>
+                        <h3>Colore</h3>
+                        <p>La proprietà <code class="att">color</code> serve ad impostare il colore del font;</p>
+                        <p>di default è nero e accetta qualsiasi <a href="../../CSS/Colori/">codifica di colore</a> disponibile in CSS</p>
+                    </section>
+                    <section>
+                        <h3>Famiglia di Caratteri</h3>
+                        <p>La proprietà <code class="att">font-family</code> serve ad impostare quello 
+                            che comunemente chiamiamo font o famiglia di caratteri, cioè l'insieme 
+                            dei simboli che utilizziamo come caratteri per comporre parole e frasi
+                        </p>
+                        <p>La proprietà <code class="att">font-family</code> accetta più valori 
+                            separati con una virgola; il browser utilizzerà la prima famiglia di 
+                            caratteri che conosce della lista, quindi l'ordine è importante ed è
+                            importante anche lasciare alla fine alcune famiglie comuni ai browser 
+                            per garantire un fallback
+                        </p>
+                        <p class="eg">
+                            <rp id="cssCodeVerdana"></rp>
+                            <rp id="cssCodeGeorgia"></rp>
+                            <rp id="cssCodeCourier"></rp>
+                        </p>
+                        <p class="nota">i nomi delle famiglie di caratteri composti da più parole 
+                            vanno chiusi tra virgolette
+                        </p>
+                        <section>
+                            <h4>Web-Safe Font Families</h4>
+                            <p>Alcune famiglie di font sono note per essere generalmente disponibili 
+                                su tutti i browser più diffusi;
+                            </p>
+                            <p>in CSS sono definite 5 famiglie generiche, il cui aspetto può variare 
+                                in base al sistema operativo e quindi sono l'<i>ultima spiaggia</i>
+                                per permettere al browser di rendere il testo in una forma quantomeno
+                                simile a quella intesa:</p>
+                            <table class="vertable" style="word-wrap: normal;">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Descrizione</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="font-family: sans-serif;">
+                                        <td>sans-serif</td>
+                                        <td>detti caratteri a bastone, cioè caratteri privi di ornamenti 
+                                            a testa e piede (le grazie)
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: serif;">
+                                        <td>serif</td>
+                                        <td>detti caratteri graziati, proprio perché caratterizzati dalla 
+                                            presenza di ornamenti, le grazie
+                                        </td>
+                                    </tr>
+                                    <tr style="font-family: monospace;">
+                                        <td>monospace</td>
+                                        <td>i caratteri monospaziati occupano tutti la stessa quantità di spazio orizzontale</td>
+                                    </tr>
+                                    <tr style="font-family: cursive;">
+                                        <td>cursive</td>
+                                        <td>i caratteri cercano di imitare lo stile di scrittura corsivo</td>
+                                    </tr>
+                                    <tr style="font-family: fantasy;">
+                                        <td>fantasy</td>
+                                        <td>i caratteri hanno una importante componente decorativa</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="osservazione">i caratteri rappresentati nella tabella sembrano avere dimensioni diverse, 
+                                tuttavia l'impostazione per la grandezza dei caratteri è la stessa per tutti
+                            </p>
+                            <p class="nota">una generica lista di web-safe fonts è stata creata per iniziativa 
+                                di Microsoft; sono <span style="font-family: Arial, sans-serif;">Arial</span>, 
+                                <span style="font-family: 'Trebuchet MS', sans-serif;">Trebuchet MS</span> 
+                                e <span style="font-family: Verdana, sans-serif;">Verdana</span> per i <b>sans-serif</b>, 
+                                <span style="font-family: Georgia, serif;">Georgia</span> e 
+                                <span style="font-family: 'Times New Roman', serif;">Times New Roman</span> per i <b>serif</b> e 
+                                <span style="font-family: 'Courier New', monospace;">Courier New</span> per i <b>monospace</b>
+                            </p>
+                        </section>
+                    </section>
+                    <section>
+                        <h3>Dimensioni dei Caratteri</h3>
+                        <p>Le dimensioni con cui sono resi i caratteri dipendono dalla proprietà <code class="att">font-size</code>:</p>
+                        <p>il testo inline (su una singola riga) è racchiuso comunque in un contenitore; l'altezza di questo 
+                            contenitore è il <code class="att">font-size</code>;
+                        </p>
+                        <p>in pratica, <code class="att">font-size</code> non definisce l'altezza dei caratteri, bensì 
+                            l'altezza della scatola tipografica  in cui i caratteri vengono 
+                            disegnati; ciascun carattere è racchiuso in quella che chiamiamo <b>em box</b>,<br>
+                            vedi meglio <a href="#em-box">sotto</a>
+                        </p>
+                        <div>
+                            <p class="nota">questo è il motivo per cui tutte quelle famiglie di caratteri nella tabella di prima
+                                sembravano avere dimensioni diverse; <br>
+                                possiamo evidenziare lo spazio definito effettivamente dal <code class="att">font-size</code>
+                                dandogli un background colorato: </p>
+                            <div class="nota-extend">
+                                <p class="eg"><br>
+                                <span style="background-color: black; color: white; overflow-x: auto;">
+                                    <span style="font-family: 'Courier New', Courier, monospace;">questo è Courier</span>
+                                    <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">questo è Gill Sans</span>
+                                    <span style="font-family: cursive;">questo è cursive</span>
+                                </span><br>
+                                <code class="att" style="vertical-align: top;">font-size: </code><input type="range" min="50" max="200" value="100" name="font-size" style="width: calc(100% - 20ch);"/></p>
+                                <p>come possiamo vedere, la scatola tipografica (cioè le em box di tutti i caratteri consecutivi)
+                                    mantiene la stessa altezza anche al cambio di <code class="att">font-family</code>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Stili Vari</h3>
+                        <p>Abbiamo a disposizione alcune proprietà per modificare lo stile del testo, per 
+                            fornire enfasi e altre accentuazioni:
+                        </p>
+                        <ul>
+                            <li><code class="att">font-style</code>: fondamentalmente serve a creare testo <span style="font-style: italic;">corsivo</span>,
+                                accetta questi valori:
+                                <ul>
+                                    <li><code class="string">normal</code></li>
+                                    <li><code class="string">italic</code> (cioè corsivo)</li>
+                                    <li><code class="string">oblique</code>, cioè una versione inclinata del carattere normale 
+                                    per simulare un corsivo
+                                        <p class="nota">
+                                            le famiglie di caratteri hanno di solito un aspetto specifico per il proprio corsivo;
+                                            se non è supportato o è assente, il browser lo simula inclinando le lettere
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><code class="att">font-weight</code>: specifica quanto è marcato il testo (grassetto);
+                                <p>di solito le famiglie di font hanno delle proprie impostazioni per il normale 
+                                    (<code class="string">normal</code>) e il grassetto (<code class="string">bold</code>),
+                                    ma si può specificare anche un valore personalizzato tra <code class="num">100</code> e <code class="num">900</code>
+                                </p>
+                            </li>
+                            <li><code class="att">text-trasform</code>: permette di modificare il font di testo con questi valori:
+                                <ul>
+                                    <li><code class="string">none</code>: nessuna trasformazione</li>
+                                    <li><code class="string">uppercase</code>: tutti i caratteri vengono resi in maiuscolo</li>
+                                    <li><code class="string">lowercase</code>: tutti i caratteri vengono resi in minuscolo</li>
+                                    <li><code class="string">capitalize</code>: la prima lettera di ogni parola è resa in maiuscolo</li>
+                                    <li><code class="string">full-width</code>: le em box dei caratteri vengono allungate o strette orizzontalmente
+                                        per avere tutte la stessa larghezza (simula il monospaziato)</li>
+                                </ul>
+                            
+                            </li>
+                            <li><code class="att">text-decoration-line</code>: serve a impostare le linee decorative dei font;
+                                accetta anche più valori tra i seguenti:
+                                <ul>
+                                    <li><code class="string">none</code>: nessuna linea</li>
+                                    <li><code class="string">underline</code>: testo sottolineato</li>
+                                    <li><code class="string">overline</code>: linea sopra il testo</li>
+                                    <li><code class="string">line-through</code>: linea che taglia il testo</li>
+                                </ul>
+                                <p class="nota">questa proprietà si estende anche con altre proprietà 
+                                    per indicare stile e colore (<code class="att">text-decoration-style</code> e 
+                                    <code class="att">text-decoration-color</code>) della (o delle) linee decorative; <br>
+                                    la proprietà <code class="att">text-decoration</code> le riassume in una (fa da shorthand)
+                                </p>
+                            </li>
+                            <li><code class="att">text-shadow</code>: permette di applicare stili di ombreggiatura 
+                                al testo; accetta fino a quattro valori, di cui:
+                                <ol>
+                                    <li>il <code class="num">primo</code> indica l'offset orizzontale dell'ombreggiatura</li>
+                                    <li>il <code class="num">secondo</code> indica l'offset verticale dell'ombreggiatura</li>
+                                    <li>il <code class="num">terzo</code> indica la sfocatura e dispersione dell'ombreggiatura (questo valore è facoltativo; default = 0)</li>
+                                    <li>il <code class="string">quarto</code> indica il colore dell'ombreggiatura (questo valore è facoltativo; se mancante 
+                                    verrà utilizzato il colore del testo a cui è applicata la proprietà)</li>
+                                </ol>
+                                <p class="nota">la proprietà <code class="att">text-shadow</code> permette di creare anche più 
+                                    effetti di ombreggiatura per lo stesso testo; per farlo, si separano le impostazioni con una virgola</p>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Proprietà di Layout</h2>
+                <div>
+                    <section>
+                        <h3>Allineamento</h3>
+                        <p>La proprietà <code class="att">text-align</code> permette di allineare il testo orizzontalmente;</p>
+                        <p>accetta questi valori:</p>
+                        <ul>
+                            <li><code class="string">left</code>: testo allineato a sinistra</li>
+                            <li><code class="string">right</code>: testo allineato a destra 
+                            <p class="notabene">questa proprietà non modifica l'orientamento dei caratteri (cioè non li specchia),
+                                ma solo la loro disposizione lungo la riga di testo
+                            </p></li>
+                            <li><code class="string">center</code>: testo allineato al centro</li>
+                            <li><code class="string">justify</code>: caratteri distanziati tutti ugualmente</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>em box</h3>
+                        <p>I file che contengono le specifiche per una famiglia di caratteri registrano ciascun simbolo all'interno 
+                            di una scatola non visualizzata, cioè la em box
+                        </p>
+                        <div>
+                        <p class="eg">queste sono le em box di due diversi font a confronto: <br>
+                            </p><div class="eg-extend">
+                                <figure>
+                            <img src="https://blog.typekit.com/wp-content/uploads/2010/07/2.gif" alt="confronto tra em box">
+                                    <figcaption>image by <a href="https://blog.typekit.com/">blog.typekit.com</a></figcaption>
+                        </figure></div>
+                        </div>
+                        <p>L'altezza delle em box è indicata dalla proprietà <code class="att">font-size</code></p>
+                        <section>
+                            <h4>Altezza della riga</h4>
+                            <p>L'altezza di un rigo è determinata dalla somma del <code class="att">font-size</code>
+                                con un valore extra distribuito sopra e sotto le em box in cui alcuni caratteri possono estendersi
+                                e serve principalmente a distanziare le linee base del testo
+                            </p>
+                            <div>
+                                <p class="eg">il <code class="att">font-size</code> e <code class="att">line-height</code> a confronto </p>
+                                <div class="eg-extend">
+                                <figure>
+                                    <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*a-0Ltb8wQkJIEUm5f_nzaQ.png" alt="differenza tra font-size e line-height">
+                                    <figcaption>image by <a href="https://medium.com/">medium.com</a></figcaption>
+                                </figure>
+                                </div>
+                            </div>
+                            <p class="nota">se non viene specificata un'inità di misura, viene presa a 
+                                riferimento la misura del <code class="att">font-size</code>
+                            </p>
+                        </section>
+                        <section>
+                            <h4>Spaziatura tra Parole e Lettere</h4>
+                            <p>Le proprietà <code class="att">letter-spacing</code>
+                                e <code class="att">word-spacing</code> permettono di distanziare lettere e parole;</p>
+                            <p>queste proprietà accettano qualsiasi unità di misura</p>
+                        </section>
+                    </section>
+                    <section>
+                        <h3>Altre Proprietà</h3>
+                        <ul>
+                            <li><code class="att">text-indent</code>: specifica quanto spazio lasciare 
+                                all'inizio del primo rigo del contenuto testuale</li>
+                            <li><code class="att">text-overflow</code>: specifica come gestire il testo che fuoriesce:
+                                <ul>
+                                    <li><code class="string">clip</code>: (default) il testo viene tagliato, così
+                                        <span class="range-edit" style="display: block; text-overflow: clip; width: 50%; overflow: hidden; white-space: nowrap;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellat voluptas accusantium. Voluptates nemo, dolores quam dolorem quas quisquam quis ut excepturi unde, asperiores maxime, dicta placeat doloremque perspiciatis eaque.</span>
+                                        <input type="range" min="0" max="100" value="50" style="width: 100%;">
+                                    </li>
+                                    <li><code class="string">ellipsis</code>: il testo viene punteggiato, così
+                                        <span class="range-edit" style="display: block; text-overflow: ellipsis; width: 50%; overflow: hidden; white-space: nowrap;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellat voluptas accusantium. Voluptates nemo, dolores quam dolorem quas quisquam quis ut excepturi unde, asperiores maxime, dicta placeat doloremque perspiciatis eaque.</span>
+                                        <input type="range" min="0" max="100" value="50" style="width: 100%;">
+                                    </li>
+                                    <!--<li><code class="string">'<code class="comment">testo personalizzato</code>'</code>: il testo viene tagliato, così
+                                        <span class="range-edit" style="display: block; text-overflow: '[_]'; width: 50%; overflow: hidden; white-space: nowrap;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellat voluptas accusantium. Voluptates nemo, dolores quam dolorem quas quisquam quis ut excepturi unde, asperiores maxime, dicta placeat doloremque perspiciatis eaque.</span>
+                                        <input type="range" min="0" max="100" value="50" style="width: 100%;">
+                                    </li>-->
+                                </ul>
+                                <p class="nota">questa proprietà ha effetto solo sul testo che fuoriesce da un <code>block</code> 
+                                sulla lunghezza del rigo (quindi non quello che fuoriesce dal fondo)</p>
+                            </li>
+                            <li><code class="att">white-space</code>: specifica la gestione degli spazi bianchi
+                                <ul>
+                                    <li><code class="string">normal</code>: (default) gli spazi bianchi collassano, cioè lasciare più di uno spazio bianco nel 
+                                        testo viene comunque reso con un singolo spazio</li>
+                                    <li><code class="string">pre</code>: gli spazi bianchi vengono resi esattamente come digitati</li>
+                                    <li><code class="string">nowrap</code>: gli spazi bianchi collassano come in <code class="string">normal</code>, ma il testo non va MAI a capo</li>
+                                </ul>
+                                <p class="nota">questa proprietà accetta diversi valori, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/white-space">qui</a> 
+                                una lista più completa</p>
+                            </li>
+                            <li><code class="att">word-break</code>: specifica se spezzare le parole in qualsiasi punto per andare a capo (<code class="string">break-all</code>)
+                            oppure preservarle e mandare a capo la parola che avrebbe creato fuoriuscita (<code class="string">keep-all</code>),
+                            oppure ancora, farlo selettivamente (<code class="string">normal</code>) </li>
+                            <li><code class="att">overflow-wrap</code>: specifica se il browser ha il permesso di spezzare 
+                            una parola altrimenti non separata da spazi per prevenirne la fuoriuscita
+                                <ul>
+                                    <li><code class="string">normal</code>: le frasi si possono spazzare SOLO agli spazi bianchi</li>
+                                    <li><code class="string">anywhere</code>: se non è disponibile uno spazio o altro tipo di punteggiatura tipo trattini, la frase può andare a capo spezzando la parola (solo se è troppo lunga)</li>
+                                    <li><code class="string">break-word</code>: analogo di <code class="string">anywhere</code>, ma sovrascrive anche <code class="att">word-break</code></li>
+                                </ul>
+                                <p class="nota">questa proprietà era chiamata <code class="att">word-wrap</code> su 
+                                    alcuni browser; questa dicitura è ancora accettata per ragioni di compatibilità</p>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+        <script>
+            const fonter = document.querySelector('[name="font-size"]');
+            const fonted = document.querySelector('span:has(~ [name="font-size"])');
+            
+            fonter.addEventListener('input', function() {
+                fonted.style[this.name] = this.value + '%';
+            });
+        </script>
+    </body>
+</html>

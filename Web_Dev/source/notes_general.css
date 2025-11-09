@@ -4,19 +4,57 @@
     box-sizing: border-box !important;
 }
 html {
-    font-size: clamp(8px, 1vw, 50px);
+    font-size: clamp(8px, 1vw, 1.2rem);
     box-sizing: border-box;
+    scroll-behavior: auto;
+    --margin-vert: max(3px,0.6vw);
+    --marg-p: max(2.4px,0.4vw);
+    letter-spacing: 0.18px;
 }
-
-h1, h2, h2, h3 {
-    margin: 0.3vw 0 0 0;
+/* || Titoli */
+h1, h2, h2, h3, h4, h5, h6 {
+    margin: var(--margin-vert) 0 calc(var(--margin-vert)/1.5);
     padding: 0;
 }
 h1 {
-    margin-bottom: 0.3vw;
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: calc(var(--margin-vert)*1.4);
 }
+main > :first-child h2 {
+    margin-top: 0;
+}
+h2 {
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+h1, h2 {
+    padding-bottom: clamp(2px,0.4vw,4px);
+    border-bottom: 1.5px groove #c3c3c3;
+}
+h2::after {
+    cursor: pointer;
+    content: "<";
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    float: right;
+    margin-right: clamp(2px, 0.8vw, 8px);
+    transition: 0.3s;
+}
+h2.active::after {
+    transform: rotate(-90deg);
+}
+h3 {
+    font-size: 2rem;
+}
+h4 { font-size: 1.7rem;}
+section:has(>h4) {
+    padding-left: calc(var(--margin-vert)*2);
+    border-left: 2px ridge goldenrod;
+    border-radius: 2.3px;
+}
+/* || Croccontenuto */
 p {
-    margin: 0.4vw 0 0.8vw;
+    margin: var(--marg-p) 0 var(--marg-p);
 }
 .content a {
     text-decoration: none;
@@ -47,7 +85,7 @@ body.content {
     background-color: antiquewhite;
     & > header, main {
         background-color: rgba(250, 250, 234, 0.795);
-        padding: 1%;
+        padding: 1% max(1%,6px);
         border: 2px groove goldenrod;
         outline: 0.3vw groove goldenrod;
         outline-offset: 2px;
@@ -104,38 +142,31 @@ main {
     padding-top: 20px;
     clear: right;
 }
+:is(main,header) :is(article,section) a[href]::after {
+    height: 0.8em;
+    border-radius: 50%;
+    background-image: url('Crocco.png');
+    content: '';
+    background-size: 100%;
+    aspect-ratio: 1;
+    margin-left: 0.2em;
+    display: inline-block;
+}
+:is(main,header) :is(article,section) a[href^="http"]::after {
+    background-color: #d4ac09;
+    background-blend-mode: luminosity;
+    display: inline-flex;
+    content: '↗';
+    color: black;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
 li > a {
     text-decoration: none;
     color: black;
 }
-h1 {
-    font-size: 3rem;
-}
-h2 {
-    font-size: 2.5rem;
-    cursor: pointer;
-}
-h3 {
-    font-size: 2rem;
-}
-h1, h2 {
-    padding-bottom: 4px;
-    border-bottom: 1.5px groove #c3c3c3;
-    margin-top: 0.6vw;
-    margin-bottom: 1rem;
-}
-h2::after {
-    cursor: pointer;
-    content: "<";
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    float: right;
-    margin-right: clamp(2px, 0.8vw, 8px);
-    transition: 0.3s;
-}
-h2.active::after {
-    transform: rotate(-90deg);
-}
-
 main .panel {
     margin: 0;
     padding: 0;
@@ -297,19 +328,35 @@ li ul, li ol {
 .vertable {
     border: 0.2rem solid chocolate;
     background-color: rgb(253, 230, 194);
+    overflow-x: auto;
     width: auto;   
     max-width: 100%;
+    border-spacing: 0 0.3rem;
+    padding: 0 0.4rem;
 }
 .vertable :is(th,td) {
     background-color: rgb(253, 241, 228);
-    padding: 0.3rem 0.4rem;
+    padding: 0.5rem 1.5rem;
 }
 .vertable th {
-    border: 0.2rem double chocolate;
+    border-bottom: 0.2rem outset chocolate;
+    border-right: 0.2rem dashed chocolate;
+}
+.vertable th:last-of-type {
+    border-right: 0.2rem outset chocolate;
 }
 .vertable td {
     border-bottom: 0.2rem solid chocolate;
-    font-size: 90%
+    font-size: 90%;
+    border-right: 0.2rem dashed rgba(210, 105, 30, 0.804);
+}
+.vertable td:first-child {
+    white-space: nowrap;
+    font-size: 100%;   
+    text-decoration: underline;
+}
+.vertable td:last-child {
+    border-right: 0.2rem double chocolate;
 }
 /* sidebar */
 .sidebar_right li {
@@ -356,8 +403,9 @@ select {
         font-size: 2.8rem;
     }
     h3 {
-        font-size: 2.3rem;
+        font-size: 2.4rem;
     }
+    h4 { font-size: 2.2rem;}
     body.content {
         margin-top: 80px;
         width: 100%;

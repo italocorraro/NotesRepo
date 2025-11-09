@@ -47,7 +47,21 @@
 `background-image: 
   linear-gradient(to right, 
     green, green, rgba(0,255,128,0.3),
-    red, green);`
+    red, green);`,
+                    cssCodeCone: `background-image: conic-gradient(red, yellow, blue);`,
+                    cssCodeCone1: `border-radius: 50%;
+background-image: conic-gradient(from 90deg, red, yellow, blue);`,
+                    cssCodePie: `background-image: 
+  conic-gradient(from 90deg, 
+    red 0deg 180deg, 
+    yellow 180deg, 
+    blue 270deg);`,
+                    cssCodePie1:
+`background-image: 
+  conic-gradient(from 90deg, 
+    red 0deg 180deg, 
+    yellow 180deg 270deg, 
+    blue 270deg);`
                 }
             }
         </script>
@@ -122,6 +136,78 @@
             }
             label:is([for="saturation"], [for="lightness"])::after {
                 content: '%';
+            }
+
+            #threeCone {
+                width: 40vw;
+                aspect-ratio: 1;
+                display: block;
+                background-image: conic-gradient(red, yellow, blue);
+            }
+            #coneMove {
+                width: 40vw;
+                aspect-ratio: 1;
+                display: block;
+                border-radius: 50%;
+                background-image: conic-gradient(from 90deg, red, yellow, blue);
+            }
+            span:has(#pieMake) {
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media (max-width:800px) {
+                span:has(#pieMake) {
+                    grid-template-columns: auto;
+                    grid-template-areas: 't1' 'pie1' 't2' 'pie2';
+                }
+            }
+            #pieMake {
+                width: 40vw;
+                aspect-ratio: 1;
+                display: block;
+                float: left;
+                border-radius: 50%;
+                background-image: conic-gradient(from 90deg, red 0deg 180deg, yellow 180deg, blue 270deg);
+                grid-area: pie1;
+            }
+            #pieDone {
+                width: 40vw;
+                aspect-ratio: 1;
+                display: block;
+                float: left;
+                border-radius: 50%;
+                background-image: conic-gradient(from 90deg, red 0deg 180deg, yellow 180deg 270deg, blue 270deg 360deg);
+                grid-area: pie2;
+            }
+
+            
+            .eg-extend:has(> #coneTest) {
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                gap: 2rem;
+                grid-template-areas: 
+                  'pie t1';
+            }
+            @media (max-width:600px) {
+                .eg-extend:has(> #coneTest) {
+                    grid-template-areas: 'pie' 't1';
+                    grid-template-columns: auto;
+                }
+                
+            }
+            #coneTest + form {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                height: fit-content;
+                align-items: end;
+            }
+            #coneTest {
+                width: 40vw;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background-image: conic-gradient(yellow 0deg 120deg, blue 120deg 240deg, red 240deg 360deg);
+                grid-area: pie;
             }
         </style>
     </head>
@@ -273,7 +359,7 @@
                     </section>
                     <section>
                         <h3>Gradiente Radiale</h3>
-                        <p>Per impostare un gradiente radiale, cioè un gradiente che parte da un punto centrale; la sintassi è <br>
+                        <p>Per impostare un gradiente radiale, cioè un gradiente che si diffonde da un punto centrale; la sintassi è <br>
                             <code><code class="att">background-image</code>: <code class="func">radial-gradient</code>(<code class="comment">shape size at position</code>, <code class="comment">start-color</code>, <code class="comment">...</code>, <code class="comment">end-color</code>);</code>
                         </p>
                         <ul>
@@ -303,7 +389,7 @@
                                     <option value="closest-corner">closest-corner</option>
                                     <option value="closest-side">closest-side</option>
                                 </select><br>
-                                <label for="position">position:</label>
+                                <label for="position" style="text-wrap-mode: nowrap; text-overflow: clip; overflow: hidden;">position:</label>
                                 <input type="range" min="0" max="100%" value="50" name="posX">
                                 <input type="range" min="0" max="100%" value="50" name="posY">
                             </form>
@@ -312,6 +398,52 @@
                     </section>
                     <section>
                         <h3>Gradiente Conico</h3>
+                        <p>Un gradiente conico ha il gradiente cromatico avvolto attorno a un centro, per creare
+                            un gradiente conico la sintassi è <br>
+                            <code><code class="att">background-image</code>: <code class="func">conic-gradient</code>(<code class="comment">[from angle] [at position]</code>, <code class="comment">color</code> <code class="num">[degree]</code>, <code class="comment">color</code> <code class="num">[degree]</code>, <code class="comment">...</code>);</code>
+                        </p>
+                        <ul>
+                            <li><i>angle</i> è l'angolo di partenza per lo sviluppo del gradiente 
+                                (di default è <code class="num">0deg</code>, cioè parte dalle ore 00:00 e ruota in senso orario)</li>
+                            <li><i>position</i>: è il centro; prende due valori come coordinate assiali per la sua posizione</li>
+                            <li>ogni colore può essere accompagnato da uno o due valori in angoli:
+                                <ul>
+                                    <li>se uno, allora </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="eg">
+                            <rp id="cssCodeCone"></rp>
+                            <span id="threeCone"></span>
+                        </p>
+                        <p class="osservazione">possiamo usare la proprietà <code class="att">border-radius</code>
+                            per creare un cerchio</p>
+                        <p class="eg">
+                            <rp id="cssCodeCone1"></rp>
+                            <span id="coneMove"></span>
+                        </p>
+                        <p class="eg clearfix" style="width: 100%;"><br>
+                            Possiamo usare l'angolo a destra del colore per definire un grafico a torta
+                            <span>
+                                <rp id="cssCodePie"></rp>
+                                <rp id="cssCodePie1"></rp>
+                                <span id="pieMake"></span>
+                                <span id="pieDone"></span>
+                            </span>
+                        </p>
+                        <div>
+                            <p class="eg"></p>
+                            <div class="eg-extend">
+                                <div id="coneTest"></div>
+                                <form>
+                                    <label for="start">start:</label>
+                                    <input type="range" min="0" max="360" value="0" name="start">
+                                    <label for="position" style="text-wrap-mode: nowrap; text-overflow: clip; overflow: hidden;">position:</label>
+                                    <input type="range" min="0" max="100%" value="50" name="posX">
+                                    <input type="range" min="0" max="100%" value="50" name="posY">
+                                </form>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </article>
@@ -395,7 +527,7 @@
             const controllus = document.querySelectorAll('#gradial :is(select,input)');
 
             const gradi = {
-                shape: 'ellipse',
+                shape: '',
                 size: '',
                 posX: '',
                 posY: '',
@@ -404,10 +536,6 @@
                 }
             };
 
-            gradi.output = function() {
-                return `radial-gradient(${this.shape} ${this.size} at ${this.posX}% ${this.posY}%,yellow, green, blue, orange, red)`;
-            }
-
             for(let control of controllus) {
                 gradi[control.name] = control.value;
                 control.addEventListener('input', function() {
@@ -415,6 +543,29 @@
                     radiated.style.backgroundImage = gradi.output();
                 });
             }
+
+            const conated = document.getElementById('coneTest');
+            const coniolli = document.querySelectorAll('#coneTest + form input');
+
+            const coni = {
+                start: '',
+                posX: '',
+                posY: '',
+                output() {
+                    return `conic-gradient(from ${this.start}deg at ${this.posX}% ${this.posY}%, yellow 0deg 120deg, blue 120deg 240deg, red 240deg 360deg)`;
+                }
+            };
+        
+            for(let control of coniolli) {
+                coni[control.name] = control.value;
+                control.addEventListener('input', function() {
+                    coni[this.name] = this.value;
+                    conated.style.setProperty('background-image',coni.output());
+                });
+            }
+
+
+            
         </script>
     </body>
 </html>

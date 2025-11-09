@@ -89,10 +89,34 @@
                 background-color: chocolate;
                 color: brown;
             }
+
+            div.parent {
+                --var: blue;
+            }
+            .parent {
+                width: 40vw;
+                aspect-ratio: 1;
+                --var: red;
+                background-color: var(--var);
+            }
+            .child {
+                width: 50%;
+                height: 50%;
+                --var: yellowgreen;
+                background-color: var(--var);
+            }
         </style>
 
         <script>
             const snippets = {
+                html: {
+                    htmlCodeVariable: `<div class="parent">
+    testo
+    <div class="child">
+        testo
+    </div>
+</div>`
+                },
                 css: {
                     cssCodeCalc: `width: calc(40% - 2rem + 4vh)`,
                     cssCodeMax: `height: max(200px, 50vh, 10rem);`,
@@ -127,7 +151,13 @@ body {
        modificata */
 }`,
                     cssCodeVar1: 
-`body {
+`:root {
+    --primary-bg-color: #8FBC8F;
+    --primary-color: #FFFAF0;
+}
+
+body {
+    --secondary-bg-color: #6DF1E4;
     /* Usiamo la variabile definita in precedenza */
     background-color: var(--secondary-bg-color);
     /* Possiamo sempre usare anche le variabili globali */
@@ -135,6 +165,8 @@ body {
 }
 
 .container {
+    --tertiary-color: #0EE7E7;
+    --primary-color: #4EA1C0;
     color: var(--tertiary-color);
 }
 .container span:hover {
@@ -144,6 +176,35 @@ body {
        sono discendenti di .container
        dove l'avevamo modificata localmente */
     color: var(--primary-color);
+}`,
+                    cssCodeVar2:
+`div.parent {
+    --var: blue;
+}
+.parent {
+    --var: red;
+    background-color: var(--var);
+}
+.child {
+    --var: yellowgreen;
+    background-color: var(--var);
+}`,
+cssCodeVar3:
+`.parent { 
+    --var: red; 
+    color:var(--var); 
+} 
+.child { 
+    --var: blue; 
+}`,
+cssCodeVar4:
+`.parent { 
+    --var: red; 
+    color:var(--var); 
+} 
+.child { 
+    --var: blue; 
+    color:var(--var); 
 }`
                 }
             }
@@ -317,27 +378,126 @@ body {
             <article>
                 <h2>Variabili</h2>
                 <div>
-                    <p>Possiamo usare delle variabili in CSS, queste sono molto utili per quei valori che si ripetono uguali, ad esempio i colori degli elementi</p>
+                    <p>Possiamo usare delle variabili in CSS, queste sono molto utili per quei valori che si ripetono uguali, ad esempio i colori degli elementi.</p>
+                    <p>Le variabili CSS sono anche dette <i>proprietà personalizzate</i>.</p>
                     <section>
                         <h3>Dichiarazione delle Variabili</h3>
-                        <p>Le variabili devono essere dichiarate in un selettore come delle proprietà;</p>
-                        <p>le variabili hanno accesso al DOM (<i>Document Object Model</i>), cioè possiamo 
+                        <p>Per utilizzare una variabile, questa va prima dichiarata, la sintassi per la dichiarazione
+                            prevede che</p>
+                        <ul>
+                            <li>la variabile inizi sempre con <code class="att">--</code> (due tratti),</li>
+                            <li>la variabile venga dichiarata in un selettore come se fosse una proprietà,</li>
+                        </ul>    
+                        <p>Le variabili hanno accesso al DOM (<i>Document Object Model</i>), cioè possiamo 
                             distinguerne due tipi:</p>
                         <ul>
-                            <li><b>Globali</b>: dichiarate alla radice del documento (selettore <code class="sel">:root</code>)</li>
-                            <li><b>Locali</b>: dichiarate all'interno di un altro elemento (tramite appositi selettori)</li>
-                        </ul>
-                        <p>Le variabili <i>globali</i> possono essere chiamate in tutto il documento;</p>
-                        <p>le variabili <i>locali</i> possono essere chiamate solo negli elementi in cui sono definite.</p>
+                            <li><b>Globali</b>: dichiarate alla radice del documento (selettore <code class="sel">:root</code>)
+                                <p>le variabili <i>globali</i> possono essere chiamate in tutto il documento</p>
+                            </li>
+                            <li><b>Locali</b>: dichiarate all'interno di un altro elemento (tramite appositi selettori)
+                                <p>le variabili <i>locali</i> possono essere chiamate solo negli elementi in cui sono definite
+                                    e i loro discendenti</p>
+                            </li>
+                        </ul>                       
                         <p class="eg"><rp id="cssCodeVar"></rp></p>
+                        <p class="notabene">le variabili CSS non sono vere variabili; è più corretto e meno 
+                            equivoco chiamarle <b>proprietà personalizzate</b>, questo perché si comportano come 
+                            tali, infatti la distinzione tra <i>globali</i> e <i>locali</i> è pura formalità;
+                            di base le proprietà personalizzate (o variabili) vengono ereditate dai discendenti 
+                            dell'elemento in cui sono state definite, similmente al 
+                            <code class="att">font-size</code> e altre proprietà ereditabili
+                        </p>
+                        <div>
+                            <p class="nota">data la regola per l'ereditarietà delle variabili, un 
+                                elemento figlio può sovrascrivere una variabile ereditata dal genitore e 
+                                passarla in eredità ai suoi discendenti
+                            </p>
+                            <div class="nota-extend">
+                                <div>
+                                    <p class="eg">
+                                        <s id="htmlCodeVar2"></s>
+                                        <rp id="cssCodeVar2"></rp>
+                                    </p>
+                                    <div class="eg-extend">
+                                        <div class="htmlCodeVar2 parent">
+                                            <div class="child"></div>
+                                        </div>
+                                        <p>La variabile definita dentro <code class="sel">.parent</code>
+                                            viene sovrascritta da quella in <code class="sel">div.parent</code>, perché
+                                            ha specificità più alta;
+                                        </p>
+                                        <p>la variabile definita in <code class="sel">.child</code>, invece, non viene 
+                                            sovrascritta da quella in <code class="sel">div.parent</code>, perché 
+                                            quest'ultimo non seleziona l'elemento figlio, ma passa in eredità i valori 
+                                            delle sue proprietà, questi vengono poi sovrascritti da quelli impostati 
+                                            nell'elemento stesso 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </section>
                     <section>
                         <h3>Chiamata delle Variabili</h3>
                         <p>Possiamo usare le variabili dichiarate in CSS chiamandole con la funzione 
                             <code><code class="func">var</code>(<code class="comment">variabile</code>)</code>;
-                            <p class="eg">
-                                <rp id="cssCodeVar1"></rp>
                             </p>
+                        <p class="eg">
+                            <rp id="cssCodeVar1"></rp>
+                        </p>
+                        <p class="notabene">la funzione <code><code class="func">var</code>(<code class="comment">variabile</code>)</code> 
+                            può avere come argomento SOLO una proprietà personalizzata(/variabile) e ovviamente
+                            si può usare solo per i valori delle altre proprietà, ma non per indicare il 
+                            nome della proprietà stessa
+                        </p>
+                        <div>
+                            <p class="notabene">mentre le variabili sono proprietà ereditabili, le funzioni 
+                                si comportano diversamente:
+                            </p>
+                            <div class="notabene-extend">
+                                <p class="eg"><br>
+                                    Ammettiamo di avere due <code class="tag">div</code> innestati, quello esterno
+                                    ha classe <code class="string">parent</code> e quello interno <code class="string">child</code>,
+                                    <s id="htmlCodeVariable"></s>
+                                    se lo stile è impostato così <rp id="cssCodeVar3"></rp>
+                                    il testo sarà per entrambi rosso!
+                                </p>
+                                <div class="eg-extend">
+                                    Questo perché 
+                                    <ul>
+                                        <li>quando il browser calcola <code><code class="att">color</code>: <code class="func">var</code>(--var)</code>
+                                            per <code class="sel">.parent</code>, risolve <code class="att">--var</code> 
+                                            come <code class="string">red</code>;</li>
+                                        <li>questo valore risolto (<code class="string">red</code>) viene ereditato 
+                                            come <code class="att">color</code> da <code class="sel">.child</code>;</li>
+                                        <li>anche se <code class="sel">.child</code> ridefinisce <code><code class="att">--var</code>: blue</code>,
+                                            non ha effetto su <code class="att">color</code>, perché <code class="att">color</code>
+                                            è già stato ereditato come <code class="string">red</code>.</li>
+                                    </ul>
+                                </div>
+                                    in poche parole, il browser non ricalcola 
+                                    <code><code class="func">var</code>()</code> per tutti i discendenti, 
+                                    ma lo calcola solo una volta, al livello più alto in cui la trova e con il valore
+                                    della variabile con specificità più alta su quel livello
+                                <p class="osservazione">
+                                    per cambiare la variabile e aggiornare l'output di <code><code class="func">var</code>()</code>,
+                                    dobbiamo impostare nuovamente la proprietà che lo usa:
+                                    <rp id="cssCodeVar4"></rp>
+                                    in questo modo, il testo contenuto in <code class="sel">.child</code>
+                                    sarà blu
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Fallback</h3>
+                        <p>In realtà, la funzione <code><code class="func">var</code>()</code> accetta 
+                            fino a due valori; il primo per la variabile e il secondo un valore da usare 
+                            come fallback in caso la variabile non venga trovata o non sia definita
+                        </p>
+                        <p class="nota">il fallback funziona solo per browser che supportano 
+                            le variabili e la funzione <code><code class="func">var</code>()</code>;
+                            se il browser non la supporta, ignorerà l'intera proprietà
                         </p>
                     </section>
                 </div>

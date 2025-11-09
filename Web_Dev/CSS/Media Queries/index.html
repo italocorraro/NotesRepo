@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Media Queries</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note sulle media queries e la responsività in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Media Queries" />
+        <meta property="og:description" content="Appunti e note sulle media queries e la responsività in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Media Queries" />
+        <meta name="twitter:description" content="Appunti e note sulle media queries e la responsività in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+    </head>
+
+
+    <script>
+        const snippets = {
+            css: {
+                cssCodeMedia: `@media media-type and (media-rule: value) {
+  /* CSS rules go here */
+}`,
+
+                cssCodeMaxHeight: `@media (max-height: 1500px)`,
+                cssCodeMinHeight: `@media (min-height: 360px)`,
+                cssCodeHeight: `@media (height: 1200px)`,
+                cssCodeMaxWidth: `@media (max-width: 1200px)`,
+                cssCodeMinWidth: `@media (min-width: 500px)`,
+                cssCodeWidth: `@media (width: 500px)`,
+                cssCodeAspectRatio: `@media (aspect-ratio: 16/9)`,
+                cssCodePort: `@media (orientation: portrait)`,
+                cssCodeLand: `@media (orientation: landscape)`
+                
+            }
+        }
+    </script>
+    <style>
+        table code span {
+            white-space: normal;
+            overflow-wrap: break-word;
+            
+        }
+    </style>
+
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti sulle media queries in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento della responsività delle pagine web con Media Queries in CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>   
+                        Le Media Query permettono di applicare regole di CSS selettivamente in base 
+                        a delle regole sulle caratteristiche della viewport.                    
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Media Query</h2>
+                <div>
+                    <p>La sintassi di base per le media queries è <rp id="cssCodeMedia"></rp></p>
+                    <ul>
+                        <li>il tipo di media si riferisce o a uno schermo (con un browser) (<code>screen</code>)
+                        oppure a un dispositivo tipo stampante (per stampare il documento) (<code>print</code>)
+                        </li>
+                        <li>un'espressione (relativa alla viewport) che deve essere rispettata 
+                            perché il contenuto della query venga applicato
+                        </li>
+                        <li>un set di regole CSS da utilizzare se l'espressione è corretta</li>
+                    </ul>
+                    <p class="nota">si possono impostare più regole per la stessa query separandole con un connettore logico 
+                        <code>and</code>, una virgola o <code>not</code>
+                    </p>
+                    <section>
+                        <h3>Media Rules</h3>
+                        <p>Le regole più utili da impostare per le Media Queries:</p>
+                        <section>
+                            <h4>Altezza e Larghezza</h4>
+                            <p>Applicare selettivamente delle regole CSS in base alle dimensioni 
+                                della viewport
+                            </p>
+                            <table class="vertable">
+                                <thead>
+                                    <tr>
+                                        <th>Regola</th>
+                                        <th>Descrizione</th>
+                                        <th>Esempio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>max-height</td>
+                                        <td>il CSS è applicato solo se la viewport ha altezza minore o uguale al valore specificato</td>
+                                        <td><rp id="cssCodeMaxHeight"></rp></td>
+                                    </tr>
+                                    <tr>
+                                        <td>min-height</td>
+                                        <td>il CSS è applicato solo se la viewport ha altezza maggiore o uguale al valore specificato</td>
+                                        <td><rp id="cssCodeMinHeight"></rp></td>
+                                    </tr>
+                                    <tr>
+                                        <td>height</td>
+                                        <td>il CSS è applicato solo se la viewport ha altezza uguale al valore specificato</td>
+                                        <td><rp id="cssCodeHeight"></rp></td>
+                                    </tr>
+                                    <tr>
+                                        <td>max-width</td>
+                                        <td>il CSS è applicato solo se la viewport ha larghezza minore o uguale al valore specificato</td>
+                                        <td><rp id="cssCodeMaxWidth"></rp></td>
+                                    </tr>
+                                    <tr>
+                                        <td>min-width</td>
+                                        <td>il CSS è applicato solo se la viewport ha larghezza maggiore o uguale al valore specificato</td>
+                                        <td><rp id="cssCodeMinWidth"></rp></td>
+                                    </tr>
+                                    <tr>
+                                        <td>width</td>
+                                        <td>il CSS è applicato solo se la viewport ha larghezza uguale al valore specificato</td>
+                                        <td><rp id="cssCodeWidth"></rp></td>
+                                    </tr>
+                                    <tr>
+                                        <td>aspect-ratio</td>
+                                        <td>il CSS è applicato solo se la viewport rapporto larghezza / altezza uguale al valore specificato</td>
+                                        <td><rp id="cssCodeAspectRatio"></rp></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="notabene">le misure della viewport includono anche le scrollbar</p>
+                        </section>
+                        <section>
+                            <h4>Orientamento Schermo</h4>
+                            <p>La regola può anche basarsi sull'orientamento schermo rilevato, 
+                                cioè alle dimensioni relative di altezza e larghezza della viewport</p>
+                            <table class="vertable">
+                                <thead>
+                                    <tr>
+                                        <th>Regola</th>
+                                        <th>Descrizione</th>
+                                        <th>Esempio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>portrait</td>
+                                        <td>il CSS è applicato solo se la viewport ha altezza maggiore della larghezza (il dispositivo è lungo)</td>
+                                        <td><rp id="cssCodePort"></rp></td>
+                                    </tr>
+                                    <tr>
+                                        <td>landscape</td>
+                                        <td>il CSS è applicato solo se la viewport ha larghezza maggiore dell'altezza (il dispositivo è largo)</td>
+                                        <td><rp id="cssCodeLand"></rp></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section>
+                            <h4>Impostazioni Utente</h4>
+                        </section>
+                        <section>
+                            <h4>Supporto Feature</h4>
+                        </section>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+    </body>
+</html>
