@@ -41,6 +41,7 @@
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
 
         <style>
+            img { max-width: 100%; }
             #gradiente ~ p [contenteditable] {
                 background-image: linear-gradient(to right, red, green, blue);
                 color: aliceblue;
@@ -883,7 +884,7 @@ background-position: center center, left top;`,
                         possiamo inserire un <i>descrittore di densità</i>, la cui notazione 
                         è <code class="num">N</code><code class="string">x</code>, dove 
                         <code class="num">N</code> indica la densità in pixel attesa dello schermo.</p>
-                        <p class="eg" style="width: 50%;">
+                        <p class="eg" style="width: 50%;"><br>
                             <rp id="cssCodeOpt1"></rp>
                             Qui abbiamo fornito tre versioni a nitidezza crescente dell'immagine per 
                             adattarsi correttamente a schermi a più alta densità di pixel
@@ -1078,18 +1079,15 @@ background-position: center center, left top;`,
                             e colonne uniformi, possiamo applicare questo schema:
                         </p>
                         <rp id="cssCodeRespo"></rp>
+                        <p class="nota">rimane relativo anche il gap immesso per evitare il bleeding 
+                            <img src="../../source/Grid-color-ex.png" alt="schema griglia-srite con gap">
+                        </p>
                         <p class="nota">lo schema precedente tiene conto anche di un gap 
                             per prevenire il <i>bleeding</i>; <br>
                             se questo non è necessario se ne può usare uno più semplice:
                             <rp id="cssCodeRiResp"></rp>
                         </p>
                     </section>
-                    
-                    
-                                
-                                
-                        
-                    
                 </div>
             </article>
         </main>

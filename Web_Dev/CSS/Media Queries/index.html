@@ -7,7 +7,7 @@
         <!-- Base Config -->
         <title class="htmlCodeTitle">Appunti CSS | Media Queries</title>
         <meta class="htmlCodeChar" charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" class="htmlCodeView"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- Resources Loading -->
@@ -57,7 +57,19 @@
                 cssCodeWidth: `@media (width: 500px)`,
                 cssCodeAspectRatio: `@media (aspect-ratio: 16/9)`,
                 cssCodePort: `@media (orientation: portrait)`,
-                cssCodeLand: `@media (orientation: landscape)`
+                cssCodeLand: `@media (orientation: landscape)`,
+                cssCodeLight: `@media (prefers-color-scheme: light)`,
+                cssCodeDark: `@media (prefers-color-scheme: dark)`,
+                cssCodeMotion: `@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}`,
+                cssCodeFine: `@media (pointer: fine)`,
+                cssCodeCoarse: `@media (pointer: coarse)`,
+                cssCodePoint: `@media (pointer: none)`,
+                cssCodeHover: `@media (hover: none)`
                 
             }
         }
@@ -65,8 +77,12 @@
     <style>
         table code span {
             white-space: normal;
-            overflow-wrap: break-word;
-            
+            overflow-wrap: anywhere;
+        }
+        .vertable td:has(>code) {
+            display: flex;
+            flex-flow: column;
+            column-gap: 1rem;
         }
     </style>
 
@@ -119,44 +135,45 @@
                                     <tr>
                                         <th>Regola</th>
                                         <th>Descrizione</th>
-                                        <th>Esempio</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>max-height</td>
-                                        <td>il CSS è applicato solo se la viewport ha altezza minore o uguale al valore specificato</td>
-                                        <td><rp id="cssCodeMaxHeight"></rp></td>
+                                        <td><rp id="cssCodeMaxHeight"></rp>
+                                            il CSS è applicato solo se la viewport ha altezza minore o uguale al valore specificato
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>min-height</td>
-                                        <td>il CSS è applicato solo se la viewport ha altezza maggiore o uguale al valore specificato</td>
-                                        <td><rp id="cssCodeMinHeight"></rp></td>
+                                        <td><rp id="cssCodeMinHeight"></rp>
+                                            il CSS è applicato solo se la viewport ha altezza maggiore o uguale al valore specificato</td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>height</td>
-                                        <td>il CSS è applicato solo se la viewport ha altezza uguale al valore specificato</td>
-                                        <td><rp id="cssCodeHeight"></rp></td>
+                                        <td><rp id="cssCodeHeight"></rp>il CSS è applicato solo se la viewport ha altezza uguale al valore specificato</td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>max-width</td>
-                                        <td>il CSS è applicato solo se la viewport ha larghezza minore o uguale al valore specificato</td>
-                                        <td><rp id="cssCodeMaxWidth"></rp></td>
+                                        <td><rp id="cssCodeMaxWidth"></rp>il CSS è applicato solo se la viewport ha larghezza minore o uguale al valore specificato</td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>min-width</td>
-                                        <td>il CSS è applicato solo se la viewport ha larghezza maggiore o uguale al valore specificato</td>
-                                        <td><rp id="cssCodeMinWidth"></rp></td>
+                                        <td><rp id="cssCodeMinWidth"></rp>il CSS è applicato solo se la viewport ha larghezza maggiore o uguale al valore specificato</td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>width</td>
-                                        <td>il CSS è applicato solo se la viewport ha larghezza uguale al valore specificato</td>
-                                        <td><rp id="cssCodeWidth"></rp></td>
+                                        <td><rp id="cssCodeWidth"></rp>il CSS è applicato solo se la viewport ha larghezza uguale al valore specificato</td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>aspect-ratio</td>
-                                        <td>il CSS è applicato solo se la viewport rapporto larghezza / altezza uguale al valore specificato</td>
-                                        <td><rp id="cssCodeAspectRatio"></rp></td>
+                                        <td><rp id="cssCodeAspectRatio"></rp>il CSS è applicato solo se la viewport rapporto larghezza / altezza uguale al valore specificato</td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
@@ -171,29 +188,222 @@
                                     <tr>
                                         <th>Regola</th>
                                         <th>Descrizione</th>
-                                        <th>Esempio</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>portrait</td>
-                                        <td>il CSS è applicato solo se la viewport ha altezza maggiore della larghezza (il dispositivo è lungo)</td>
-                                        <td><rp id="cssCodePort"></rp></td>
+                                        <td><rp id="cssCodePort"></rp>
+                                            il CSS è applicato solo se la viewport ha altezza maggiore della larghezza (il dispositivo è lungo)
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>landscape</td>
-                                        <td>il CSS è applicato solo se la viewport ha larghezza maggiore dell'altezza (il dispositivo è largo)</td>
-                                        <td><rp id="cssCodeLand"></rp></td>
+                                        <td><rp id="cssCodeLand"></rp>
+                                            il CSS è applicato solo se la viewport ha larghezza maggiore dell'altezza (il dispositivo è largo)</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </section>
                         <section>
                             <h4>Impostazioni Utente</h4>
+                            <p>Alcune regole possono essere applicate selettivamente in base alle impostazioni del browser</p>
+                            <table class="vertable">
+                                <thead>
+                                    <tr>
+                                        <th>Regola</th>
+                                        <th>Descrizione</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>prefers-color-scheme</td>
+                                        <td><rp id="cssCodeLight"></rp>
+                                            il CSS è applicato solo se è impostata la modalità chiara
+                                            <rp id="cssCodeDark"></rp> 
+                                            il CSS è applicato solo se è impostata la modalità scura
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>prefers-reduced-motion</td>
+                                        <td><rp id="cssCodeMotion"></rp>
+                                            il CSS è applicato se l'utente preferisce movimento ridotto <br>
+                                            (nell'esempio vengono disabilitate le animazioni e transizioni di CSS)
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </section>
                         <section>
                             <h4>Supporto Feature</h4>
+                            <p>Alcune regole possono essere applicate in base ad alcune caratteristiche del dispositivo</p>
+                            <table class="vertable">
+                                <thead>
+                                    <tr>
+                                        <th style="overflow-wrap: normal;">Regola</th>
+                                        <th>Descrizione</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>hover</td>
+                                        <td><rp id="cssCodeHover"></rp>
+                                            il CSS è applicato solo se il dispositivo supporta l'hover
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>pointer</td>
+                                        <td><rp id="cssCodeFine"></rp>
+                                            il CSS è applicato se il dispositivo supporta un cursore ad alta precisione
+                                            <rp id="cssCodeCoarse"></rp>
+                                            il CSS è applicato se il dispositivo supporta un cursore a bassa precisione (ad esempio 
+                                            un dito su un touchscreen)
+                                            <rp id="cssCodePoint"></rp>
+                                            il CSS è applicato se il dispositivo non possiede una funzionalità di puntamento
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </section>
+                    </section>
+                    <section>
+                        <h3>Viewport Meta-tag</h3>
+                        <p>Una parte ESTREMAMENTE importante per un design responsivo è quella di impostare le 
+                            dimensioni iniziali della viewport correttamente;
+                        </p>
+                        <p>questa operazione viene fatta nell'<code class="tag">head</code> con il <code class="tag">meta</code>:</p>
+                        <s id="htmlCodeView"></s>
+                        <p class="notabene">Questa impostazione è fondamentale e presente in ogni html</p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Breakpoints</h2>
+                <div>
+                    <p>Non ci sono specifiche linee guida da usare per i breakpoint quando si 
+                        costruiscono design responsivi con media queries, tuttavia, è genericamente
+                        consigliato costruire il layout della pagina con un approccio <i>mobile-first</i>,
+                        cioè un layout destinato a dispositivi mobili, dallo schermo piccolo e poi procedere
+                        sfruttando le queries per aggiungere oggetti a schermo che su un dispositivo mobile
+                        avrebbero occupato troppo spazio
+                    </p>
+                    <p>Alcune sequenze di breakpoint utili:</p>
+                    <section>
+                        <h4>Breakpoints Comuni</h4>
+                        <table class="vertable" >
+                            <thead>
+                                <tr>
+                                    <th>Breakpoint</th>
+                                    <th>Descrizione</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&lt; <code class="num">480px</code></code></td>
+                                    <td>Dispositivi Mobili</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code><code class="num">480px</code> - <code class="num">768px</code></code></td>
+                                    <td>iPad e Tablet</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code><code class="num">768px</code> - <code class="num">1024px</code></code></td>
+                                    <td>Schermi Medi e Laptop</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code><code class="num">1024px</code> - <code class="num">1200px</code></code></td>
+                                    <td>Schermi Grandi e Desktop</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&gt; <code class="num">1200px</code></code></td>
+                                    <td>Schermi XL e TV</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h4>Breakpoints di Bootstrap</h4>
+                        <table class="vertable" >
+                            <thead>
+                                <tr>
+                                    <th>Breakpoint</th>
+                                    <th>Descrizione</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&lt; <code class="num">576px</code></code></td>
+                                    <td>XS</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">576px</code></code></td>
+                                    <td>Small</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">768px</code></code></td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">992px</code></code></td>
+                                    <td>Large</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">1200px</code></code></td>
+                                    <td>XL</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">1400px</code></code></td>
+                                    <td>XXL</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h4>Breakpoints di Tailwind</h4>
+                        <table class="vertable" >
+                            <thead>
+                                <tr>
+                                    <th>Breakpoint</th>
+                                    <th>Descrizione</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&lt; <code class="num">640px</code></code></td>
+                                    <td>XS</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">640px</code></code></td>
+                                    <td>Small</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">768px</code></code></td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">1024px</code></code></td>
+                                    <td>Large</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">1280px</code></code></td>
+                                    <td>XL</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-decoration: none;"><code>&ge; <code class="num">1536px</code></code></td>
+                                    <td>XXL</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h3>Mobile-First</h3>
+                        <p>Un approccio di questo tipo di solito prevede un layout iniziale composto da una singola 
+                            colonna (solitamente un <code>flex</code>) dove si distribuiscono l'header con una barra di navigazione
+                            ridotta (di solito composta di soli pulsanti per aprire i menu del sito), un corpo principale e infine un footer;
+                        </p>
+                        <p>da questo layout iniziale si procede poi ad estrarre i menu più importanti per affiancarli alla pagina 
+                            sugli schermi abbastanza grandi
+                        </p>
                     </section>
                 </div>
             </article>

@@ -328,7 +328,7 @@ li ul, li ol {
 .vertable {
     border: 0.2rem solid chocolate;
     background-color: rgb(253, 230, 194);
-    overflow-x: auto;
+    overflow-x: hidden;
     width: auto;   
     max-width: 100%;
     border-spacing: 0 0.3rem;
