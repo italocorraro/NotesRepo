@@ -1,0 +1,176 @@
+img {
+    max-width: 100%;
+}
+#collapseMe {
+    transition: transform 0.5s;
+    transition-timing-function: linear;
+    background-color: teal;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    height: 50vh;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    transform-origin: top;
+    overflow: hidden;
+}
+.collapse {
+    transform: scaleY(0);
+    display: none;
+}
+#redRot {
+    width: max(20vh,20vw);
+    aspect-ratio: 1;
+    background-color: firebrick;
+    border-radius: 2em;
+    transition-property: transform;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 1s;
+}
+
+div:has(> .navigazione-esempio) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-start;
+}
+.navigazione-esempio {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 100%;
+    gap: 1rem;
+}
+.navigazione-esempio span {
+    cursor: pointer;
+    background-color: darkslategrey;
+    color: whitesmoke;
+    border-radius: 2%;
+    padding: 0.5em 1em;
+    text-align: center;
+    border: 0.2em solid darkslategrey;
+    transition: 
+      background-color 0.3s ease-in,
+      color 0.5s ease-in,
+      border 1s linear 1s;
+}
+.navigazione-esempio span:hover {
+    background-color: whitesmoke;
+    color: darkslategrey;
+    border-color: darkred;
+    text-decoration: underline;
+}
+
+span:has(> #togDisplay) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: start;
+    gap: 2rem;
+}
+#togDisplay {
+    width: clamp(100px,max(30vh,30vw),100%);
+    aspect-ratio: 1;
+    background-color: chartreuse;
+    display: none;
+    transition: 
+      opacity 1s,
+      display 1s; 
+    transition-behavior: allow-discrete;
+}
+#togDisplay.showing {
+    display: block;
+    opacity: 1;
+}
+@starting-style {
+    .showing {
+        opacity: 0;
+    }
+}
+.flox {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(35%,1fr));
+    gap: 1rem;
+}
+
+#togDd {
+    width: clamp(20px,max(30vh,30vw),50%);
+    aspect-ratio: 1;
+    background-color: chartreuse;
+    display: none;
+    opacity: 0;
+    transition: 
+      opacity 0.5s;
+    grid-area: b;
+    justify-self: center;
+}
+#togDd.shown {
+    display: block;
+}
+#togDd.fade-in-out {
+    opacity: 1;
+}
+.nota-extend:has(> #togDd) {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40%,1fr));
+    grid-template-areas:
+      'rp1 t'
+      'rp1 b'
+      'rp2 rp2';
+    gap: 1rem;
+}
+.nota-extend:has(> #togDd) button {
+    grid-area: t;
+    justify-self: center;
+    align-self: flex-start;
+}
+.nota-extend:has(> #togDd) pre:first-child {
+    grid-area: rp1;
+}
+.nota-extend:has(> #togDd) pre:last-child {
+    grid-area: rp2;
+}
+
+
+#bounce {
+    width: 100%;
+    aspect-ratio: 4 / 1;
+    max-height: max(20vw,20vh);
+    border-radius: 10%;
+    background-color: wheat;
+}
+#bounce > div {
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    background-color: darkslategray;
+    transition: transform 2s cubic-bezier(0.4, -0.3, 0.7, 2);
+}
+
+#centerR, #uncenterR {
+    width: min(30vw, 30vh);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: brown;
+    font-size: 200%;
+    text-align: center;
+    align-content: center;
+    transition: transform 2s linear;
+}
+
+#centerR {
+    transform-origin: center;
+}
+#uncenterR {
+    transform-origin: left top;
+}
+
+span:has(> #centerR), span:has(> #uncenterR) {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}

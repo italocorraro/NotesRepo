@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Animazioni & Transizioni</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note su animazioni e transizioni di CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Animazioni & Transizioni" />
+        <meta property="og:description" content="Appunti e note su animazioni e transizioni di CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Animazioni & Transizioni" />
+        <meta name="twitter:description" content="Appunti e note su animazioni e transizioni di CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="snippets.js"></script>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti animazioni e transizioni in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento delle transizioni e delle animazioni native di CSS.</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>               
+                        CSS offre la possibilità di animare le transizioni tra due diverse configurazioni di stili;
+                    </p>
+                    <p>ci sono due modi per generare queste animazioni:</p>
+                    <ul>
+                        <li>le <b>transizioni</b>, che si concentrano su un cambiamento di stato; sono attivate da un evento (un hover, un click, uno script, ecc...)
+                        </li>
+                        <li>le <b>animazioni</b>, che richiedono la configurazione con una <i>at-rule</i>; vengono avviate 
+                            con un parametro temporale (nessun evento necessario) e conferiscono controllo più fine 
+                            sugli stati intermedi e la ripetizione</li>
+                    </ul>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Transizioni</h2>
+                <div>
+                    <p>Le transizioni in CSS permettono animare,
+                        con stati intermedi, la modalità con cui alcune proprietà di un elemento cambiano 
+                        a causa di un evento.
+                    </p>
+                    <p class="nota">Gli stati intermedi sono calcolati automaticamente dal browser</p>
+                    <section>
+                        <h3>La Proprietà di Transizione</h3>
+                        <p>Le transizioni sono controllate dalla proprietà <code class="att"><b>transition</b></code> che è una 
+                            shorthand per 4 proprietà: </p>
+                        <ol>
+                            <li><code class="att">transition-property</code> che indica il nome della proprietà
+                                a cui applicare la transizione; 
+                                <ul>
+                                    <li>come keyword si può usare il valore <code class="string">all</code> 
+                                        per indicare tutte le proprietà transizionabili, ma è il valore di default per questa proprietà, 
+                                        quindi si può omettere in quel caso, </li>
+                                    <li>oppure il valore <code class="string">none</code> che 
+                                        per indicare nessuna proprietà (si può usare per spegnere le transizioni)</li>  
+                                </ul>
+                            </li>
+                            <li><code class="att">transition-duration</code> che indica la durata (in secondi o millisecondi) 
+                                della transizione</li>
+                            <li><code class="att">transition-timing-function</code> che fornisce specifiche 
+                                sul calcolo degli stati intermedi</li>
+                            <li><code class="att">transition-delay</code> che indica quanto tempo aspettare dopo l'evento che ha 
+                                generato la modifica della proprietà da transizionare prima di avviare l'animazione di transizione</li>
+                        </ol>
+                        <div>
+                            <p class="eg"></p>
+                            <div class="eg-extend" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                                <div id="redRot"></div>
+                                <span style="display: flex; flex-direction: column; overflow-x: auto;">
+                                    <rp id="cssCodeRotata"></rp>
+                                    Oppure, con lo shorthand:
+                                    <rp id="cssCodeShort"></rp>
+                                    Infine lo script per modificare la proprietà:
+                                    <kbd id="jsCodeRota"></kbd>
+                                </span>
+                            </div>
+                        </div>
+                        <p>Possiamo dare diverse specifiche di transizione per ciascuna proprietà da transizionare, semplicemente 
+                            le separiamo con una virgola
+                        </p>
+                        <div style="width: 100%;">
+                            <p class="eg"></p>
+                            <div class="eg-extend">
+                                <rp id="cssCodeTras"></rp>
+                                <div class="navigazione-esempio" style="white-space: nowrap;">
+                                    <span>Home</span>
+                                    <span>About</span>
+                                    <span>Contattaci</span>
+                                    <span>Link</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="notabene">a lanciare la transizione non è il cambio di stato 
+                            o l'evento click, ma la sovrascrittura del valore di una proprietà con 
+                            un altro
+                        </p>
+                        <p class="nota">per spegnere tutte le transizioni se l'utente lo desidera si può usare
+                            <rp id="cssCodeOffT"></rp>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Transizionare la Proprietà display</h3>
+                        <p>La proprietà <code class="att">display</code>
+                            non ha una transizione graduale qunado parte o finisce con il 
+                            valore <code class="string">none</code>;</p>
+                        <p>semplicemente, in questi casi, cambierà istantaneamente.</p>
+                        <p>Per risolvere questa problematica dobbiamo usare la proprietà 
+                            <code class="att">transition-behaviour</code> e impostarla su 
+                            <code class="string">allow-discrete</code>;
+                        </p>
+                        <p>questo permette di animare correttamente le transizioni di visibilità 
+                            come quella della proprietà <code class="att">display</code> o
+                            della proprietà <code class="att">content-visibility</code>.
+                        </p>
+                        <p>Transizionare la proprietà <code class="att">display</code>
+                        richiede però ancora un altro passaggio:</p>
+                        <ul>
+                            <li>poiché <code><code class="att">display</code>: none;</code> rimuove un elemento dal DOM,
+                                le transizioni non si attivano partendo da questo valore</li>
+                            <li>è necessario usare <rt id="cssCodeStart"></rt> per fornire uno stato iniziale da cui partire</li>
+                        </ul>
+                        <div style="width: 100%;">
+                            <p class="eg"></p>
+                            <div class="eg-extend flox">
+                                <rp id="cssCodeDisc"></rp>
+                                <span>
+                                    <button type="button" onclick="document.getElementById('togDisplay').classList.toggle('showing');">SHOW/HIDE</button>
+                                    <div id="togDisplay"></div>
+                                </span>
+                            </div>
+                            <div class="eg-extend">
+                                <p class="notabene">
+                                    la proprietà <code class="att">transition-behavior</code> è recente (baseline da agosto 2024),
+                                    quindi potrebbe non funzionare su tutti i browser
+                                </p>
+                                <div>
+                                    <p class="nota">alternativamente, bisogna evitare di nascondere 
+                                        l'elemento dal DOM, oppure ri-immetterlo nel DOM prima della vera transizione, come qui:
+                                    </p>
+                                    <div class="nota-extend">
+                                        <rp id="cssCodeFade"></rp>
+                                        <button type="button">SHOW/HIDE</button>
+                                        <div id="togDd"></div>
+                                        <kbd id="jsCodeFade"></kbd>
+                                    </div>
+                                    <div class="nota-extend">
+                                        in questo esempio utilizziamo un timer per distanziare 
+                                        il momento in cui l'elemento viene immesso/rimosso dal DOM da quello in cui avviene 
+                                        la transizione di fade-in/fade-out;
+                                        <p>da notare che la distanza temporale tra il momento in cui l'elemento viene 
+                                            immesso nel DOM e quello in cui viene fatto apparire è di <code class="num">1ms</code>, perché
+                                            ci serve solo la separazione dei due stati
+                                        </p>
+                                        <p>la distanza temporale, invece, tra il momento in cui viene fatto scomparire e quello in cui 
+                                            viene rimosso dal DOM è di <code class="num">0.5s</code>, cioè la durata della transizione;
+                                            per permetterne l'esecuzione
+                                        </p>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Timing-Function</h3>
+                        <p>La funzione che determina l'andamento dell'animazione può essere resa in due modi:</p>
+                        <ol>
+                            <li>con una keyword:
+                                <ul>
+                                    <li><code class="string">ease-in</code></li>
+                                    <li><code class="string">ease-out</code></li>
+                                    <li><code class="string">ease-in-out</code></li>
+                                    <li><code class="string">ease</code></li>
+                                    <li><code class="string">linear</code></li>
+                                </ul>
+                            </li>
+                            <li>con la funzione CSS <code><code class="func">cubic-bezier</code>()</code> che 
+                                genera una curva di Bézier:
+                                <section>
+                                    <h4>Curva di Bézier</h4>
+                                    <p>La funzione <code><code class="func">cubic-bezier</code>()</code> che 
+                                    genera la curva accetta quattro parametri separati da virgola:</p>
+                                    <ol>
+                                        <li><code class="num">x1</code>, cioè l'ascissa del primo punto di controllo</li>
+                                        <li><code class="num">y1</code>, cioè l'ordinata del primo punto di controllo</li>
+                                        <li><code class="num">x2</code>, cioè l'ascissa del secondo punto di controllo</li>
+                                        <li><code class="num">y2</code>, cioè l'ordinata del secondo punto di controllo</li>
+                                    </ol>
+                                    <p class="notabene">le ascisse dei punti di controllo DEVONO essere comprese 
+                                        tra <code>0</code> e <code>1</code> o la funzione sarà resa invalida e ignorata
+                                    </p>
+                                    <p>La curva di Bézier ha quattro punti; il primo e l'ultimo sono di default 
+                                        a <code>[0,0]</code> e <code>[1,1]</code>, mentre quelli intermedi sono i due punti 
+                                        di controllo stabiliti dai parametri della funzione.
+                                    </p>
+                                    <p>Le ascisse della curva indicano l'andamento dell'input (nel nostro caso, il tempo della transizione da 0% a 100%),
+                                        mentre le ordinate indicano l'output (cioè il valore della variazione del parametro transizionato da 0% a 100%)
+                                    </p>
+                                    <div>
+                                        <p class="eg"></p>
+                                        <div class="eg-extend">
+                                            <figure>
+                                                <img src="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/easing-function/cubic-bezier/cubic-bezier.svg" alt="curva di bezier esempio">
+                                                <figcaption>image by <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/easing-function/cubic-bezier">mozilla.org</a></figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="nota">mentre è necessario che le ascisse dei punti della curva siano limitate (altrimenti 
+                                            non sarebbe più una funzione matematica), le ordinate non hanno questo limite;
+                                        </p>
+                                        <div class="nota-extend">
+                                            utilizzare delle ordinate maggiori di <code>1</code> per i punti di controllo genera un effetto di rimbalzo nell'animazione 
+                                            <figure>
+                                                <img src="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/easing-function/cubic-bezier/cubic-bezier_out_of_range.svg" alt="curve di bezier con ordinate &gt;1">
+                                                <figcaption>image by <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/easing-function/cubic-bezier">mozilla.org</a></figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="nota-extend">
+                                            <p class="eg"><button type="button" onclick=" this.style.display = 'none'; jump();">START</button></p>
+                                            <div class="eg-extend">
+                                                <rp id="cssCodeBouns"></rp>
+                                                <div id="bounce">
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Trasformazioni</h3>
+                        <p>Le trasformazioni non sono le uniche proprietà transizionabili, tuttavia 
+                            sono quelle più comuni;
+                        </p>
+                        <p>abbiamo già visto le funzioni che la proprietà 
+                            <code class="att">transform</code>
+                            può accettare <a href="../Funzioni e Variabili/#funzioni-di-trasformazione">qui</a>.</p>
+                        <p class="nota">la proprietà <code class="att">transform</code> può accettare più di una funzione 
+                            come valore, ma devono essere diversi tipi</p>
+                        <section>
+                            <h4>transform-origin</h4>
+                            <p>L'altra proprietà fondamentale per le trasformazioni è <code class="att">transform-origin</code>, che 
+                                specifica il punto da cui devono originare le trasformazioni.</p>
+                            <p>Questa proprietà accetta fino a tre valori: le coordinate degli assi x, y e z (per trasformazioni 3D)</p>
+                            <div>
+                                <p class="nota">accetta anche alcune keyword per valori:</p>
+                                <div class="nota-extend">
+                                    <ul >
+                                        <li><code class="string">left</code>, <code class="string">center</code> e <code class="string">right</code>
+                                            per il primo valore (l'asse orizzontale x)</li>
+                                        <li><code class="string">top</code>, <code class="string">center</code> e <code class="string">bottom</code>
+                                            per il secondo (l'asse verticale y)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="eg"><button type="button" onclick="rotium(); this.style.display = 'none';">START</button></p>
+                                <div class="eg-extend">
+                                    <span>
+                                    <div id="centerR">|</div>
+                                    <rp id="cssCodeOri"></rp></span>
+                                    <span>
+                                    <div id="uncenterR">|</div>
+                                    <rp id="cssCodeOrig"></rp></span>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Animazioni</h2>
+                <div>
+                    <p>Le animazioni permettono di generare sequenze articolate di 
+                        stati intermedi (keyframes) caratterizzati da proprietà di 
+                        stile diverse per generare una sequenza.
+                    </p>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+        <script class="jsCodeRota">
+            const rotate = document.getElementById('redRot');
+            let rotation = 0;
+            rotate.addEventListener('click', function() {
+                rotation += 360;
+                this.style.transform = `rotate(${rotation}deg)`;
+            });
+        </script>
+        <script class="jsCodeFade">
+            const tog = document.querySelector('button:has(+ #togDd)');
+            const togD = document.getElementById('togDd');
+            tog.addEventListener('click', () => {
+                if(togD.classList.contains('shown')) {
+                    togD.classList.remove('fade-in-out');
+                    setTimeout(() => {
+                    togD.classList.remove('shown');
+                    }, 500);
+                } else {
+                    togD.classList.add('shown');
+                    setTimeout(() => {
+                        togD.classList.add('fade-in-out');
+                        }, 1);
+                }
+            });
+        </script>
+        <script>
+            const bonce = document.querySelector('#bounce > div');
+            let bund = null;
+            const dur = getComputedStyle(bonce).transitionDuration;
+            const duration = () => {
+                if(dur.endsWith('ms')) {
+                    return parseInt(dur.replace(/ms/g, ""));
+                } else if(dur.endsWith('s')) {
+                    return parseInt(dur.replace(/s/g, ""))*1000;
+                }
+            }
+            const last = duration();
+            let alt = true;
+            function jump() {
+                setInterval(() => {
+                    if(alt) {
+                        bund = document.getElementById('bounce').clientWidth;
+                        bonce.style.transform = `translate(calc(${bund}px - 100%))`;
+                        alt = false;
+                    } else {
+                        bonce.style.transform = `translate(0)`;
+                        alt = true;
+                    }
+                }, last);
+            }
+
+            const rotazium = document.querySelectorAll('#centerR,#uncenterR');
+            let roto = 0;
+            function rotium() {
+                roto == 0 ?
+                setInterval(() => {
+                    rotazium.forEach((el) => {
+                        roto += 360
+                        el.style.transform = `rotate(${roto}deg)`;
+                    });
+                }, 2000) : null;
+            }
+        </script>
+    </body>
+</html>

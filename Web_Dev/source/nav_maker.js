@@ -82,9 +82,8 @@ const navbar = [
       { name: 'Layout con Float', URL: base + 'CSS/Layout con Float/' },
       { name: 'Layout con Flexbox', URL: base + 'CSS/Layout con Flexbox/' },
       { name: 'Layout con Grid', URL: base + 'CSS/Layout con Grid/' },
-      { name: 'Altri Stili', URL: '#' },
-      { name: 'Transizioni', URL: '#' },
-      { name: 'Animazioni', URL: '#' }
+      { name: 'Filtri e Ombreggiature', URL: base + 'CSS/Filtri e Ombreggiature/' },
+      { name: 'Animazioni & Transizioni', URL: base + 'CSS/Transizioni-Animazioni/' }
     ]
   },
   {

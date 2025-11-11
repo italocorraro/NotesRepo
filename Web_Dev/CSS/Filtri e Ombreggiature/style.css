@@ -1,0 +1,78 @@
+:root {
+    --WW-w: 15vw;
+}
+
+#shadow1 {
+    display: block;
+    width: 100%;
+    height: var(--WW-w);
+    background-color: blueviolet;
+    box-shadow: 1em 1em red;
+}
+#shadow2 {
+    display: block;
+    width: 100%;
+    height: var(--WW-w);
+    background-color: blueviolet;
+    box-shadow: 1em 1em red inset;
+}
+#showaw > span {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-items: center;
+    min-width: 15em;
+}
+#showaw {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+#shadow3 {
+    width: 100%;
+    height: var(--WW-w);
+    background-color: blueviolet;
+    box-shadow: 1em 1em 1em red;
+}
+#shadow4 {
+    width: 100%;
+    height: var(--WW-w);
+    background-color: blueviolet;
+    box-shadow: 1em 1em 1em 1em red;
+}
+
+#shadow5 {
+    width: 100%;
+    height: var(--WW-w);
+    background-color: blueviolet;
+    box-shadow: 1em 1em 1em red inset;
+}
+#shadow6 {
+    width: 100%;
+    height: var(--WW-w);
+    background-color: blueviolet;
+    box-shadow: 1em 1em 1em 1em red inset;
+}
+
+#shadow7 {
+    width: 100%;
+    height: var(--WW-w);
+    background-color: blueviolet;
+    box-shadow: 
+      0.6em 0.6em 0.5em rgb(255, 87, 87),
+      0.9em 0.9em 0.5em rgb(255, 51, 51),
+      1.2em 1.2em 0.5em rgb(57, 0, 0);
+}
+#shadow8 {
+    width: 100%;
+    height: var(--WW-w);
+    background-color: blueviolet;
+    box-shadow: 
+      0.2em 0.2em black,
+      0.4em 0.4em yellow,
+      0.6em 0.6em blue,
+      0.8em 0.8em red,
+      1em 1em green,
+      1.2em 1.2em purple;
+}

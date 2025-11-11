@@ -205,6 +205,16 @@ cssCodeVar4:
 .child { 
     --var: blue; 
     color:var(--var); 
+}`,
+cssCodeVarBig:
+`/* || VARIABILI GLOBALI */
+:root {
+    --LIGHT-BKGR: whitesmoke;
+    --LIGHT-FONT: 1.5rem;
+}
+/* || UTILITY */
+.dark-variant {
+    --dark-bkgr: black;
 }`
                 }
             }
@@ -245,7 +255,7 @@ cssCodeVar4:
                 <div>
                     <p></p>
                     <section>
-                        <h3>calc()</h3>
+                        <h4>calc()</h4>
                         <p>La funzione <code><code class="func">calc</code>(<code class="comment">espressione</code>)</code> permette di effettuare operazioni 
                             aritmetiche tramite <kbd>+</kbd>, <kbd>-</kbd>, <kbd>*</kbd> e <kbd>/</kbd> tra due 
                             valori numerici
@@ -260,7 +270,7 @@ cssCodeVar4:
                         </div>
                     </section>
                     <section>
-                        <h3>min() e max()</h3>
+                        <h4>min() e max()</h4>
                         <p>Le funzioni <code><code class="func">min</code>(<code class="comment">parametri</code>)</code>
                             e <code><code class="func">max</code>(<code class="comment">parametri</code>)</code>
                             restituiscono rispettivamente il valore minimo e massimo tra quelli passati come argomento</p>
@@ -268,7 +278,7 @@ cssCodeVar4:
                         <div class="nota-extend"><p class="eg"><rp id="cssCodeMax"></rp></p></div></div>
                     </section>
                     <section>
-                        <h3>clamp()</h3>
+                        <h4>clamp()</h4>
                         <p>La funzione <code><code class="func">clamp</code>(<code class="comment">valore-minimo</code>, 
                             <code class="comment">valore-ideale</code>, <code class="comment">valore-massimo</code>)</code>
                             accetta tre argomenti e restituisce il valore ideale limitato dai due estremi
@@ -289,7 +299,7 @@ cssCodeVar4:
                 <div>
                     <p>Queste funzioni vanno usate con la proprietà <code class="att">trasform</code></p>
                     <section>
-                        <h3>translate()</h3>
+                        <h4>translate()</h4>
                         <p>La funzione <code><code class="func">translate</code>(<code class="comment">asse-x</code>, <code class="comment">asse-y</code>)</code>
                             permette di traslare l'elemento lungo gli assi orizzontale e verticale dei valori indicati.</p>
                         <p class="eg">
@@ -298,7 +308,7 @@ cssCodeVar4:
                         </p>
                     </section>
                     <section>
-                        <h3>rotate()</h3>
+                        <h4>rotate()</h4>
                         <p>La funzione <code><code class="func">rotate</code>(<code class="comment">angolo</code>)</code>
                             permette di ruotare l'elemento.</p>
                         <p class="eg">
@@ -307,7 +317,7 @@ cssCodeVar4:
                         </p>
                     </section>
                     <section>
-                        <h3>scale()</h3>
+                        <h4>scale()</h4>
                         <p>La funzione <code><code class="func">scale</code>(<code class="comment">fattore-x</code>, <code class="comment">fattore-y</code>)</code> ridimensiona l'elemento 
                             moltiplicandone le dimensioni per un fattore (accetta solo numeri puri o percentuali)</p>
                         <p class="eg">
@@ -316,7 +326,7 @@ cssCodeVar4:
                         </p>
                     </section>
                     <section>
-                        <h3>skew()</h3>
+                        <h4>skew()</h4>
                         <p>La funzione <code><code class="func">skew</code>(<code class="comment">angolo</code>)</code>
                             deforma l'elemento inclinandolo di un certo angolo
                         </p>
@@ -487,10 +497,15 @@ cssCodeVar4:
                                     sarà blu
                                 </p>
                             </div>
+                            <p class="osservazione">
+                                può essere una buona idea usare diverse convenzioni di naming per le variabili globali e quelle locali, 
+                                in modo da poterle più facilmente distinguere; <br>
+                                ad esempio: <rp id="cssCodeVarBig"></rp>
+                            </p>
                         </div>
-                    </section>
+                    
                     <section>
-                        <h3>Fallback</h3>
+                        <h4>Fallback</h4>
                         <p>In realtà, la funzione <code><code class="func">var</code>()</code> accetta 
                             fino a due valori; il primo per la variabile e il secondo un valore da usare 
                             come fallback in caso la variabile non venga trovata o non sia definita
@@ -500,6 +515,7 @@ cssCodeVar4:
                             se il browser non la supporta, ignorerà l'intera proprietà
                         </p>
                     </section>
+                </section>
                 </div>
             </article>
         </main>
