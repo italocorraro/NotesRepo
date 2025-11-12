@@ -47,7 +47,7 @@ function cercaDoppiHC(barra) {
   return doppi;
 }
 
-const base = '/Web_Dev/';
+const base = '/NotesRepo/Web_Dev/';
 const astro = base + 'Astro/dist/';
 
 const navbar = [
