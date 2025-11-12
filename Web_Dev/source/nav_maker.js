@@ -47,7 +47,8 @@ function cercaDoppiHC(barra) {
   return doppi;
 }
 
-const base = '../../';
+const base = '/Web_Dev/';
+const astro = base + 'Astro/dist/';
 
 const navbar = [
   {
@@ -147,7 +148,8 @@ const navbar = [
   {
     name: 'Astro',
     content: [
-      // Vuoto
+      { name: 'Landing Page', URL: astro },
+      { name: 'about', URL: astro + 'about/'}
     ]
   }
 ];
