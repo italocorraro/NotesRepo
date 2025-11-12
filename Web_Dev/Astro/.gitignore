@@ -1,5 +1,18 @@
 # build output
-dist/
+# dist/
+public/
+src/
+README.md
+
+# Virtual Studio
+.vscode/
+
+# config files
+astro.config.mjs
+package-lock.json
+package.json
+tsconfig.json
+
 # generated types
 .astro/
 
