@@ -1,7 +1,6 @@
 
-// import { navbar_build } from './nav_maker.js';
-import { navbar_build } from '../../Astro/dist/nav_maker.js';
-import { doubles } from '../../Astro/dist/nav_maker.js';
+import { navbar_build } from 'nav_maker.js';
+import { doubles } from 'nav_maker.js';
 
 const titolo = document.title;
 let swapper = ``;
