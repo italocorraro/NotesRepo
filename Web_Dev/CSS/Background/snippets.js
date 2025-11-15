@@ -192,6 +192,31 @@ background-position: center center, left top;`,
       url("icon.png")     type("image/png")  1x,
       url("icon@2x.png")  type("image/png")  2x
     );
+}`,
+cssCodeOptWeb: `.icon {
+    width: 100px;
+    height: 100px;
+    /* fallback in caso image-set 
+       NON sia supportato */
+    background-image: url("icon.png");
+    /* lista immagini con 
+       WebKit abilitato */
+    background-image: -webkit-image-set(
+      url("icon.avif")    type("image/avif") 1x,
+      url("icon@2x.avif") type("image/avif") 2x,
+      url("icon.webp")    type("image/webp") 1x,  
+      url("icon@2x.webp") type("image/webp") 2x,
+      url("icon.png")     type("image/png")  1x,
+      url("icon@2x.png")  type("image/png")  2x
+    );
+    background-image: image-set(
+      url("icon.avif")    type("image/avif") 1x,
+      url("icon@2x.avif") type("image/avif") 2x,
+      url("icon.webp")    type("image/webp") 1x,  
+      url("icon@2x.webp") type("image/webp") 2x,
+      url("icon.png")     type("image/png")  1x,
+      url("icon@2x.png")  type("image/png")  2x
+    );
 }`
                 }
             }

@@ -139,9 +139,19 @@
                     <section>
                         <h3>Transizionare la Proprietà display</h3>
                         <p>La proprietà <code class="att">display</code>
-                            non ha una transizione graduale qunado parte o finisce con il 
+                            non ha una transizione graduale quando parte o finisce con il 
                             valore <code class="string">none</code>;</p>
                         <p>semplicemente, in questi casi, cambierà istantaneamente.</p>
+                        <section>
+                            <h4>Transizione nel DOM</h4>
+                            <p>Quando un elemento entra nel DOM (cioè nel flusso del documento), tutte 
+                                le sue proprietà di stile vengono computate per mostrarlo, ma non vengono transizionate;
+                            </p>
+                            <p>quando proviamo a svolgere una transizione a partire da uno stato 
+                                <code><code class="att">display</code>: none;</code>
+                                , l'elemento non si trova nel DOM, quindi la transizione non viene mostrata
+                            </p>
+                        </section>
                         <p>Per risolvere questa problematica dobbiamo usare la proprietà 
                             <code class="att">transition-behaviour</code> e impostarla su 
                             <code class="string">allow-discrete</code>;
@@ -172,8 +182,8 @@
                                     quindi potrebbe non funzionare su tutti i browser
                                 </p>
                                 <div>
-                                    <p class="nota">alternativamente, bisogna evitare di nascondere 
-                                        l'elemento dal DOM, oppure ri-immetterlo nel DOM prima della vera transizione, come qui:
+                                    <p class="nota">alternativamente, possiamo separare il momento in cui l'elemento entra nel DOM da quello in cui avviene 
+                                        il cambio di stile con relativa transizione, come qui:
                                     </p>
                                     <div class="nota-extend">
                                         <rp id="cssCodeFade"></rp>
@@ -313,8 +323,80 @@
                 <div>
                     <p>Le animazioni permettono di generare sequenze articolate di 
                         stati intermedi (keyframes) caratterizzati da proprietà di 
-                        stile diverse per generare una sequenza.
+                        stile diverse per generare una sequenza animata.
                     </p>
+                    <section>
+                        <h3>Proprietà di Animazione</h3>
+                        <p>La proprietà <code class="att">animation</code> si 
+                        suddivide in alcune sotto-proprietà:</p>
+                        <ol>
+                            <li><code class="att">animation-name</code>: (default <code class="string">none</code>) indica il nome 
+                            della sequenza di <i>keyframes</i> da usare per l'animazione</li>
+                            <li><code class="att">animation-duration</code>: (default <code class="num">0</code>) indica la durata dell'animazione</li>
+                            <li><code class="att">animation-timing-function</code>: (default <code class="string">ease</code>) indica la curva di percorrimento dell'animazione; accetta gli stessi valori 
+                            di <a href="#timing-function"><code class="att">transition-timing-function</code></a></li>
+                            <li><code class="att">animation-delay</code>: (default <code class="num">0</code>) indica il ritardo con cui verrà mostrata l'animazione</li>
+                            <li><code class="att">animation-iteration-count</code>: (default <code class="num">1</code>) indica il numero di volte in cui verrà mostrata l'animazione; 
+                            accetta numeri come valori ma anche la keyword <code class="string">infinite</code> (infinite ripetizioni)</li>
+                            <li><code class="att">animation-direction</code>: (default <code class="string">normal</code>) indica in che verso verranno percorsi i <i>keyframes</i> dell'animazione; 
+                            accetta questi valori:
+                            <ul>
+                                <li><code class="string">normal</code>: percorsa normalmente</li>
+                                <li><code class="string">reverse</code>: percorsa al contrario</li>
+                                <li><code class="string">alternate</code>: percorsa prima in avanti e poi indietro</li>
+                                <li><code class="string">alternate-reverse</code>: percorsa prima indietro e poi in avanti</li>
+                            </ul></li>
+                            <li><code class="att">animation-fill-mode</code>: (default <code class="string">none</code>) indica se l'elemento manterrà o meno gli stili 
+                                imposti dall'animazione; accetta questi valori:
+                            <ul>
+                                <li><code class="string">none</code>: l'animazione non applicherà stili all'elemento prima o dopo la sua esecuzione</li>
+                                <li><code class="string">forwards</code>: l'elemento manterrà la configurazione di stili impostata dall'ultimo keyframe percorso</li>
+                                <li><code class="string">backwards</code>: l'elemento comincerà con lo stile impostato dal primo keyframe da percorrere</li>
+                                <li><code class="string">both</code>: sia <code class="string">forwards</code> che <code class="string">backwards</code></li>
+                            </ul></li>
+                            <li><code class="att">animation-play-state</code>: (default <code class="string">running</code>) indica lo stato di esecuzione dell'animazione; accetta questi valori: 
+                            <ul>
+                                <li><code class="string">running</code>: l'animazione viene svolta</li>
+                                <li><code class="string">paused</code>: l'animazione è ferma</li>
+                            </ul></li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Keyframes</h3>
+                        <p>I <i>keyframes</i> di un'animazione sono indicati tramite una <i>at-rule</i>;</p>
+                        <p>la sintassi per una animazione con soli due stati è la seguente:</p>
+                        <rp id="cssCodeAnim"></rp>
+                        <p>Possiamo però usare delle percentuali invece delle due keyword per specificare l'indice di completamento 
+                            dell'animazione a cui applicare una configurazione di stili:
+                        </p>
+                        <rp id="cssCodeAnima"></rp>
+                        <p class="notabene">possiamo usare qualsiasi percentuale come valore intermedio, ma devono 
+                            restare confinate tutte tra lo <code class="num">0%</code> e il <code class="num">100%</code>
+                        </p>
+                    </section>
+                    <section>
+                        <h4>Esempi</h4>
+                        <div style="width: 100%;">
+                            <p class="eg"></p>
+                            <div class="eg-extend">
+                                <div class="butted">
+                                    <div id="anim1" class="pause-me"></div>
+                                    <button type="button">PLAY</button>
+                                    <rp id="cssCodeAnim1"></rp>
+                                </div>
+                                <div class="butted">
+                                    <div id="anim2" class="pause-me"></div>
+                                    <button type="button">PLAY</button>
+                                    <rp id="cssCodeAnim2"></rp>
+                                </div>
+                                <div class="butted">
+                                    <div id="anim3" class="pause-me"></div>
+                                    <button type="button">PLAY</button>
+                                    <rp id="cssCodeAnim3"></rp>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </article>
         </main>
@@ -382,6 +464,16 @@
                     });
                 }, 2000) : null;
             }
+        </script>
+        <script>
+            const butons = document.querySelectorAll('.butted button');
+            butons.forEach((b) => {
+                b.addEventListener('click', (e) => {
+                    e.currentTarget.previousElementSibling.classList.toggle('pause-me');
+                    e.currentTarget.style.display = 'none';
+                });
+                
+            });
         </script>
     </body>
 </html>

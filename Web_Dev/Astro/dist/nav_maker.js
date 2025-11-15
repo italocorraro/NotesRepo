@@ -77,6 +77,7 @@ const navbar = [
       { name: 'Funzioni e Variabili', URL: base + 'CSS/Funzioni e Variabili/' },
       { name: 'Background', URL: base + 'CSS/Background/' },
       { name: 'Tipografia', URL: base + 'CSS/Tipografia/' },
+      { name: 'Liste', URL: base + 'CSS/Filtri e Ombreggiature/#liste'},
       { name: 'Tabelle', URL: base + 'CSS/Tabelle/' },
       { name: 'Form', URL: base + 'CSS/Form/' },
       { name: 'Media Queries', URL: base + 'CSS/Media Queries/' },
@@ -135,7 +136,7 @@ const navbar = [
     content: [
       {
         name: 'Sintassi',
-        URL: 'https://github.com/italocorraro/NotesRepo/blob/main/Markdown/Sintassi%20md.md'
+        URL: astro + 'posts/markdown/'
       }
     ]
   },
@@ -148,7 +149,7 @@ const navbar = [
   {
     name: 'Astro',
     content: [
-      { name: 'Landing Page', URL: astro },
+      { name: 'Home Page', URL: astro },
       { name: 'about', URL: astro + 'about/'}
     ]
   }

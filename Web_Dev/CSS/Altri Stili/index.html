@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Redirect a non .html -->
+        <script src="../../source/redirect.js" defer></script>
+
+        <!-- Base Config -->
+        <title class="htmlCodeTitle">Appunti CSS | Altri Stili</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Resources Loading -->
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        <link rel="icon" sizes="32x32" href="../../source/Crocco.png" type="image/x-icon" />
+        <script src="../../source/highlight.js"></script>
+
+        <!-- Generic tags -->
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note su filtri, ombreggiature, forme, liste e ancore in CSS" />
+
+        <!-- Open Graph tags -->
+        <meta property="og:title" content="Appunti Altri Stili" />
+        <meta property="og:description" content="Appunti e note su filtri, ombreggiature, forme, liste e ancore in CSS" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="it_IT" />
+        <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
+        <meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="799" />
+        <meta property="og:image:height" content="400" />
+
+        <!-- Twitter Card tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Appunti Altri Stili" />
+        <meta name="twitter:description" content="Appunti e note su filtri, ombreggiature, forme, liste e ancore in CSS" />
+        <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
+        <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
+    
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="snippets.js"></script>
+    </head>
+    <body class="content">
+        <!-- Header -->
+        <header class="main_header">
+            <h1>Appunti su filtri e ombreggiature in CSS</h1>
+            <aside class="sidebar_right">
+                <nav id="indice"></nav>
+            </aside>
+            <section>
+                <p>Questa pagina copre l'argomento .</p>
+                <h2>Overview</h2>
+                <div>
+                    <p>                       
+                    </p>
+                </div>
+            </section>
+        </header>
+        <!-- Corpo -->
+        <main>
+            <article>
+                <h2>Ombre</h2>
+                <div>
+                    <p>La proprietà <code class="att">box-shadow</code> applica
+                        effetti di ombreggiatura attorno alla cornice di un elemento.</p>
+                    <p>L'unica keyword che questa proprietà accetta è <code class="string">none</code>,
+                    che serve a disabilitarla.</p>
+                    <p>La proprietà <code class="att">box-shadow</code> accetta fino a 6 valori:</p>
+                    <ul>
+                        <li>i primi quattro numeri vengono interpretati come segue
+                            <ul>
+                                <li>i primi due valori numerici indicano l'offset lungo 
+                                    gli assi dell'ombra rispetto all'elemento (da tenere a mente 
+                                    che le direzioni positive sono verso destra per l'asse orizzontale 
+                                    e verso il basso per l'asse verticale);
+                                    <p>se uno o entrambi i valori mancano, vengono impostati di default a <code>0</code></p>
+                                </li>
+                                <li>il terzo valore (opzionale; default a <code>0</code>) numerico viene interpretato come 
+                                    raggio di sfocatura dell'ombra (dev'essere positivo)
+                                </li>
+                                <li>il quarto valore (opzionale) numerico viene interpretato come 
+                                    il raggio di espansione dell'ombra (default a <code>0</code>)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>opzionalmente si può specificare un colore (anche con funzioni rgb o hsl) per l'ombra;
+                            se non specificato viene usato il valore della proprietà <code class="att">color</code>
+                            dell'elemento
+                        </li>
+                        <li>opzionalmente si può aggiungere il valore <code class="string">inset</code>;
+                            <p>di default l'ombra è proiettata verso l'esterno dell'elemento, ma 
+                                con questo valore verrà proiettata verso l'interno
+                            </p> 
+                        </li>
+                    </ul>
+                    <div>
+                        <p class="eg">
+                        </p>
+                        <div class="eg-extend" id="showaw">
+                            <span><span id="shadow1"></span><rp id="cssCodeSh1"></rp></span>
+                            
+                            <span><span id="shadow2"></span>
+                            
+                            <rp id="cssCodeSh2"></rp></span>
+
+                            <span><div id="shadow3"></div><rp id="cssCodeSh3"></rp></span>
+                            <span><div id="shadow4"></div><rp id="cssCodeSh4"></rp></span>
+                            
+                            
+                            <span><div id="shadow5"></div><rp id="cssCodeSh5"></rp></span>
+                            <span><div id="shadow6"></div><rp id="cssCodeSh6"></rp></span>
+                            
+                            
+                            
+                            
+                            <span><div id="shadow7"></div><rp id="cssCodeSh7"></rp></span>
+                            <span><div id="shadow8"></div><rp id="cssCodeSh8"></rp></span>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h2>Filtri</h2>
+                <div>
+                    <p>La proprietà <code class="att">filter</code> permette di usare diverse funzioni di filtro in CSS.</p>
+                    <p>Le varie funzioni erano state già viste nella <a href="../../CSS/Funzioni e Variabili/#funzioni-di-filtro">sezione sulle funzioni</a>.</p>
+                    <p>A quelle già viste ne aggiungiamo un'altra:</p>
+                    <section>
+                        <h4>drop-shadow</h4>
+                        <p>La funzione <code class="func">drop-shadow</code><code>()</code> funziona esattamente come 
+                        la proprietà <code class="att">shadow-box</code> appena vista, ma con un'importante differenza:</p>
+                        <ul>
+                            <li style="list-style-type: none;">l'ombra è applicata al contenuto dell'elemento,
+                                non alla sola cornice
+                            </li>
+                        </ul>
+                        <p class="eg">
+                            <rp id="cssCodeFilter"></rp>
+                            <span id="filter">filtro di ombreggiatura</span>
+                        </p>
+                    </section>
+                </div>
+            </article>
+            <article>
+                <h2>Forme</h2>
+                <div>
+                    <p>La proprietà <code class="att">shape-outside</code> permette di modificare 
+                    la forma dell'elemento quando ha un valore per la proprietà <code class="att">float</code></p>
+                    <p class="eg clearfix">
+                        <rp id="cssCodeShape"></rp>
+                        <span id="shape"></span>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque debitis, nihil hic sunt optio tempora totam modi mollitia quia placeat illum! Rerum porro quidem officiis dolorem consequatur commodi corporis aliquid?
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit at autem repellendus quos consequatur unde expedita, pariatur sit. Voluptatibus necessitatibus iure voluptatem hic eligendi repellendus inventore quidem sequi ea dolore.
+                    </p>
+                    <p class="nota">leggi di più su <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Shapes">mozilla.org</a></p>
+                </div>
+            </article>
+            <article>
+                <h2>Ancore</h2>
+                <div>
+                    <p>L'elemento <code class="tag">a</code> non ha stili peculiari, tuttavia, gli viene spesso
+                        assegnato uno stile per ogni suo stato o quasi:
+                    </p>
+                    <ol>
+                        <li><code class="sel">:link</code> è un link che punta a qualcosa</li>
+                        <li><code class="sel">:visited</code> è un link che è già stato aperto in passato</li>
+                        <li><code class="sel">:hover</code> è quando il mouse passa sopra al link</li>
+                        <li><code class="sel">:focus</code> è quando il cursore trascina il link</li>
+                        <li><code class="sel">:active</code> è quando il link viene effettivamente attivato</li>
+                    </ol>
+                    <div>
+                        <p class="notabene">l'ordine di queste pseudo classi è importante poiché altrimenti non si applicherebbero alcuni stili</p>
+                        <div class="notabene-extend">
+                            <p class="eg"><br>
+                            <a href="#linkW" id="linkW">Link a caso</a>
+                            <rp id="cssCodeWrong"></rp>
+                            questo link non sarà mai rosso poiché quando un link è nello stato di active, è automaticamente anche
+                            nello stato di hover; poiché il selettore con hover viene dopo, le proprietà al suo interno prevarranno 
+                            in specificità</p>
+                            
+                        </div>
+                    </div>
+                    <p>Di default, i link hanno aspetto tipo questo: <a href="#je-suis" id="je-suis">je suis un lien</a></p>
+                    <rp id="cssCodeLink"></rp>
+                    <p>Spesso si usa, per i link che portano a una pagina esterna al sito, 
+                        di aggiungere una icona a destra del link per indicarlo: <a id="ex-link" href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Text_styling/Styling_links">je suis un lien vers une page externe</a>
+                    </p><rp id="cssCodeIcon"></rp>
+                </div>
+            </article>
+            <article>
+                <h2>Liste</h2>
+                <div>
+
+                </div>
+            </article>
+            <article>
+                <h2>Scrolling</h2>
+                <div>
+                    <p>Ci sono alcune proprietà legate allo scorrimento dello schermo:</p>
+                    <section>
+                        <h3>Scroll Snap</h3>
+                        <p>Lo <b>scroll snap</b> (o <i>scroll snapping</i>) è una funzionalità CSS che permette 
+                            allo scorrimento di agganciarsi automaticamente a determinati punti, 
+                            invece di fermarsi a caso come uno scroll normale.</p>
+                        <p>Questo comportamento avviene ad esempio quando la pagina si move tramite 
+                            i <i>bookmarks</i>
+                        </p>
+                        <p>Un punto di <i>snap</i> è come una calamita per l'evento di scorrimento e ci sono 
+                            diverse proprietà CSS che ci permettono di controllarlo</p>
+                        <section>
+                            <h4>Tipo</h4>
+                            <p>La proprietà <code class="att">scroll-snap-type</code> definisce, per
+                            un contenitore con scorrimento abilitato (cioè con <code class="att">overflow</code> non nascosto),
+                            un comportamento per quanto riguarda gli <i>snap points</i>; prende due valori:</p>
+                            <ul>
+                                <li><code class="string">none</code>: (default) quando la porzione visibile 
+                                del contenitore scorribile viene mossa (cioè si attiva un evanto di scorrimento),
+                                deve ignorare i punti di snap
+                                <p class="nota">questo valore va inserito da solo</p>
+                                </li>
+                                <li class="one-mark"><code class="string">x</code>: il contenitore scorribile 
+                                si aggancia ad un punto di snap solo sull'asse orizzontale</li>
+                                <li class="one-mark"><code class="string">y</code>: il contenitore scorribile 
+                                si aggancia ad un punto di snap solo sull'asse verticale</li>
+                                <li class="one-mark"><code class="string">both</code>: il contenitore scorribile 
+                                si aggancia ad un punto di snap su entrambi gli assi</li>
+                                <li class="two-mark"><code class="string">mandatory</code>: il contenitore scorribile 
+                                deve agganciarsi ad una posizione di snap se non lo ha già fatto</li>
+                                <li class="two-mark"><code class="string">proximity</code>: il contenitore scorribile 
+                                può agganciarsi ad una posizione di snap se vicino</li>
+                            </ul>
+                            <div style="width: 100%;">
+                                <p class="eg"></p>
+                                <div class="eg-extend">
+                                    <ul>
+                                        <li>Nessuno snap:
+                                            <div class="scrollable"></div></li>
+                                        <li>con snap rigido:
+                                            <rp id="cssCodeSnap1"></rp>
+                                            <div id="scrollY1" class="scrollable"></div></li>
+                                        <li>con snap di vicinanza:
+                                            <rp id="cssCodeSnap1"></rp>
+                                            <div id="scrollY2" class="scrollable"></div></li>
+                                    </ul>
+                                    
+                                    
+                                   
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+            </article>
+        </main>
+        <!-- Import Functionalities -->
+        <script src="../../source/functionalities.js"></script>
+        <script>
+            const scrolls = document.querySelectorAll('.scrollable');
+            scrolls.forEach((sc) => {
+                let divs = '';
+                for(let i=0; i<4; i++) divs += `<div>${i+1}</div>`;
+                sc.innerHTML = divs;
+            })
+        </script>
+    </body>
+</html>

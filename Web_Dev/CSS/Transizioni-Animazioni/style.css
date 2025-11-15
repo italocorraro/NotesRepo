@@ -173,4 +173,92 @@ span:has(> #centerR), span:has(> #uncenterR) {
     align-items: center;
     gap: 2rem;
     flex-wrap: wrap;
+    
+}
+
+div:has(> .butted) {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(230px,1fr));
+}
+.butted {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+    align-items: center;
+}
+.butted > div:first-child {
+    width: 20vw;
+    aspect-ratio: 1;
+    background-color: brown;
+    border-radius: 2em;
+}
+.pause-me {
+    animation-play-state: paused;
+}
+
+#anim1 {
+    animation-name: animate;
+    animation-duration: 2s;
+    animation-iteration-count: 3;
+}
+@keyframes animate {
+    from { background-color: aqua; }
+    to {
+        background-color: black;
+        border-radius: 0;
+    }
+}
+
+#anim2 {
+    animation-name: animate2;
+    animation-duration: 5s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes animate2 {
+    0% { opacity: 0; }
+    30% {
+        opacity: 0.6;
+        border: 0.5em solid white;
+    }
+    50% {
+        opacity: 0.8;
+        border: 0.3em solid white;
+        border-bottom: 1em solid white;
+        border-top: 1em solid white;
+    }
+    75% {
+        opacity: 0.9;
+        border: 0 solid white;
+        border-bottom: 2em solid white;
+        border-top: 2em solid white;
+    }
+    100% {
+        border-bottom: 3em solid whitesmoke;
+        border-top: 3em solid whitesmoke;
+        opacity: 1;
+    }
+}
+
+#anim3 {
+    animation-name: animate3;
+    animation-duration: 5s;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+}
+@keyframes animate3 {
+    0% { 
+        scale: 0%; 
+    }
+    25% {
+        rotate: 740deg;
+    }
+    100% {
+        translate: 200% 0;
+    }
 }

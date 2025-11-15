@@ -75,9 +75,9 @@
         }
     </script>
     <style>
-        table code span {
-            white-space: normal;
-            overflow-wrap: anywhere;
+        div:has(table) {
+            overflow-x: auto;
+            max-width: 100%;
         }
         .vertable td:has(>code) {
             display: flex;
@@ -130,6 +130,7 @@
                             <p>Applicare selettivamente delle regole CSS in base alle dimensioni 
                                 della viewport
                             </p>
+                            <div>
                             <table class="vertable">
                                 <thead>
                                     <tr>
@@ -177,12 +178,14 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                             <p class="notabene">le misure della viewport includono anche le scrollbar</p>
                         </section>
                         <section>
                             <h4>Orientamento Schermo</h4>
                             <p>La regola può anche basarsi sull'orientamento schermo rilevato, 
                                 cioè alle dimensioni relative di altezza e larghezza della viewport</p>
+                                <div>
                             <table class="vertable">
                                 <thead>
                                     <tr>
@@ -208,6 +211,7 @@
                         <section>
                             <h4>Impostazioni Utente</h4>
                             <p>Alcune regole possono essere applicate selettivamente in base alle impostazioni del browser</p>
+                            <div>
                             <table class="vertable">
                                 <thead>
                                     <tr>
@@ -233,10 +237,12 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                         </section>
                         <section>
                             <h4>Supporto Feature</h4>
                             <p>Alcune regole possono essere applicate in base ad alcune caratteristiche del dispositivo</p>
+                            <div>
                             <table class="vertable">
                                 <thead>
                                     <tr>
@@ -263,7 +269,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table></div>
                         </section>
                     </section>
                     <section>
@@ -290,6 +296,7 @@
                     <p>Alcune sequenze di breakpoint utili:</p>
                     <section>
                         <h4>Breakpoints Comuni</h4>
+                        <div>
                         <table class="vertable" >
                             <thead>
                                 <tr>
@@ -320,9 +327,11 @@
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </section>
                     <section>
                         <h4>Breakpoints di Bootstrap</h4>
+                        <div>
                         <table class="vertable" >
                             <thead>
                                 <tr>
@@ -357,9 +366,11 @@
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </section>
                     <section>
                         <h4>Breakpoints di Tailwind</h4>
+                        <div>
                         <table class="vertable" >
                             <thead>
                                 <tr>
@@ -394,6 +405,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </section>
                     <section>
                         <h3>Mobile-First</h3>
