@@ -204,3 +204,45 @@
 .smar {
     scroll-padding-left: 30px;
 }
+
+iframe {
+    width: fit-content;
+    height: 265px;
+}
+sup > a::after {
+    content: none !important;
+}
+sup {
+    color: chocolate;
+    font-weight: bold;
+}
+
+#eg-dialog {
+    background-color: rgba(255, 235, 205, 0.128);
+    color: rgba(0, 0, 0, 0.4);
+    border: 0.5em solid black;
+    width: 100%;
+}
+#eg-dialog > p {
+    height: 200vh;
+    align-content: space-evenly;
+    text-align: justify;
+}
+#eg-dialog button {
+    position: sticky;
+    top: 20px;
+    left: 20px;
+}
+
+.scroll-thin {
+    scrollbar-width: thin;
+}
+.scroll-none {
+    scrollbar-width: none;
+}
+.coloured {
+    scrollbar-color: blue red;
+}
+.transp {
+    scrollbar-color: khaki transparent;
+}

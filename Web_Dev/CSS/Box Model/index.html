@@ -41,6 +41,13 @@
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
 
         <style>
+            #shock-me {
+                display: block;
+                width: 20vw;
+                aspect-ratio: 1;
+                background-color: aqua;
+                border-radius: 0vw 10vw 20vw 30vw / 0% 10% 20% 30% ;
+            }
             /* Griglie Esempio 2 */
             #moya-grid {
                 display: grid;
@@ -178,7 +185,6 @@
                     justify-content: center;
                     align-items: center;
                     position: relative;
-                    min-height: auto;
                 }
 
                 & .margin {
@@ -563,7 +569,14 @@ span.mixed {border-color: red wheat green yellow;}`,
 }
 *, *::before, *::after {
     box-sizing: inherit;
-}`
+}`,
+cssCodeBordero: 
+`border-radius: 0em 1em 2em 3em / 0% 1% 2% 3% ;
+/* Equivale a */
+border-top-left-radius:     0em 0%;
+border-top-right-radius:    1em 1%;
+border-bottom-right-radius: 2em 2%;
+border-bottom-left-radius:  3em 3%;`
                 }
             }
             
@@ -906,6 +919,18 @@ span.mixed {border-color: red wheat green yellow;}`,
                                 principio che avevamo per le direzioni prima.
                             </span>
                         </p>
+                        <p><code class="att">border-radius</code> è shorthand per </p>
+                        <ol>
+                            <li><code class="att">border-top-left-radius</code></li>
+                            <li><code class="att">border-top-right-radius</code></li>
+                            <li><code class="att">border-bottom-right-radius</code></li>
+                            <li><code class="att">border-bottom-left-radius</code></li>
+                        </ol>
+                        <p>Ciascuna di queste proprietà accetta DUE valori:</p>
+                        <rp id="cssCodeBordero"></rp>
+                        <p class="eg">
+                            <span id="shock-me"></span>
+                        </p>
                     </section>
                 </div>
             </article>
@@ -1056,12 +1081,12 @@ span.mixed {border-color: red wheat green yellow;}`,
                     <section>
                         <h3>static (default)</h3>
                         <p>L'elemento è posizionato seguendo il normale flusso del documento (questo è il valore di default)</p>
-                        <p>Un elemento statico non è affeatto dalle proprietà <code class="att">top</code>, 
+                        <p>Un elemento statico non è affetto dalle proprietà <code class="att">top</code>, 
                         <code class="att">bottom</code>, <code class="att">right</code> e <code class="att">left</code></p>
                     </section>
                     <section>
                         <h3>relative</h3>
-                        <p>L'elemento è posizionato seguendo il normale flusso del documento come uno <code>static</code>,
+                        <p>L'elemento è posizionato seguendo il normale flusso del documento come uno <code class="string">static</code>,
                         MA può usare le proprietà <code class="att">top</code>, 
                         <code class="att">bottom</code>, <code class="att">right</code> e <code class="att">left</code>
                         per modificare la sua posizione.</p>
@@ -1071,20 +1096,20 @@ span.mixed {border-color: red wheat green yellow;}`,
                     </section>
                     <section>
                         <h3>absolute</h3>
-                        <p>Un elemento con posizione <code>absolute</code> verrà posizionato sfruttando le 
+                        <p>Un elemento con posizione <code class="string">absolute</code> verrà posizionato sfruttando le 
                         4 proprietà direzionali all'interno del suo predecessore più prossimo che non abbia 
                         <code class="att">position</code><code>:</code> <code>static</code>; se non ve n'è nessuno
                         allora userà di default il body.</p>
                     </section>
                     <section>
                         <h3>fixed</h3>
-                        <p>Un elemento <code>fixed</code> è posizionato usando le proprietà direzionali rispetto
+                        <p>Un elemento <code class="string">fixed</code> è posizionato usando le proprietà direzionali rispetto
                         alla viewport; questo significa che rimane nella stessa posizione sullo schermo anche 
                         allo scorrere della pagina.</p>
                     </section>
                     <section>
                         <h3>sticky</h3>
-                        <p>Un elemento <code>sticky</code> ha posizionamento <code>relative</code> fin quando
+                        <p>Un elemento <code class="string">sticky</code> ha posizionamento <code>relative</code> fin quando
                         non viene raggiunta una certa posizione, dopodichè rimane fisso sullo schermo (<code>fixed</code>)</p>
                         <p>La posizione che determina il cambio dipende dai 4 attributi direzionali.</p>
                     </section>

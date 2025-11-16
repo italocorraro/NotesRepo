@@ -72,6 +72,9 @@ span.linear pre, span.linear code.hljs {
 .hljs-meta,.hljs-meta .hljs-keyword,.hljs-tag {
     color:rgb(81, 81, 81);
 }
+.hljs-meta {
+    color:rgb(32, 89, 142);
+}
 .hljs-template-variable,.hljs-variable {
     color:rgb(177, 59, 59);
 }

@@ -81,7 +81,10 @@ const snippets = {
 :is(div.class-1, .class-2) {
     color: red;
 }`,
-    cssCodeSpex1: `div.class-1`
+    cssCodeSpex1: `div.class-1`,
+    cssCodeImpo: `* {
+    box-sizing: border-box !important;
+}`
   },
   js: {
     jsCode1: ``

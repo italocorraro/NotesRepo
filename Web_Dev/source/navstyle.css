@@ -30,6 +30,7 @@ body {
     height: calc(100% - 80px);
     overflow-x: hidden;
     overflow-y: auto;
+    scrollbar-color: bisque transparent;
     background-color: #333;
     display: block;
     z-index: 101;

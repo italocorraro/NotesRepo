@@ -8,8 +8,17 @@
       "default",
       {
         "ignore": [
-          "text-wrap"
+          "text-wrap",
+          "scrollbar-color",
+          "backdrop-filter",
+          "user-select"
         ]
+      }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
       }
     ]
   },

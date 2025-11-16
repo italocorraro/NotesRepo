@@ -20,11 +20,11 @@
 
         <!-- Generic tags -->
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
-        <meta class="htmlCodeDescription" name="description" content="Appunti e note su filtri, ombreggiature, forme, liste e ancore in CSS" />
+        <meta class="htmlCodeDescription" name="description" content="Appunti e note su filtri, ombreggiature, forme, liste, ancore e altro in CSS" />
 
         <!-- Open Graph tags -->
         <meta property="og:title" content="Appunti Altri Stili" />
-        <meta property="og:description" content="Appunti e note su filtri, ombreggiature, forme, liste e ancore in CSS" />
+        <meta property="og:description" content="Appunti e note su filtri, ombreggiature, forme, liste, ancore e altro in CSS" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="it_IT" />
         <meta property="og:url" content="https://italocorraro.github.io/NotesRepo/Home/index.html" />
@@ -36,7 +36,7 @@
         <!-- Twitter Card tags -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Appunti Altri Stili" />
-        <meta name="twitter:description" content="Appunti e note su filtri, ombreggiature, forme, liste e ancore in CSS" />
+        <meta name="twitter:description" content="Appunti e note su filtri, ombreggiature, forme, liste, ancore e altro in CSS" />
         <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
     
@@ -46,17 +46,13 @@
     <body class="content">
         <!-- Header -->
         <header class="main_header">
-            <h1>Appunti su filtri e ombreggiature in CSS</h1>
+            <h1>Appunti su diversi altri stili e proprietà di CSS</h1>
             <aside class="sidebar_right">
                 <nav id="indice"></nav>
             </aside>
             <section>
-                <p>Questa pagina copre l'argomento .</p>
-                <h2>Overview</h2>
-                <div>
-                    <p>                       
-                    </p>
-                </div>
+                <p>Questa pagina copre l'argomento di filtri, ombreggiature, forme, liste, 
+                    ancore e altro in CSS.</p>
             </section>
         </header>
         <!-- Corpo -->
@@ -196,7 +192,35 @@
             <article>
                 <h2>Liste</h2>
                 <div>
-
+                    <p>Le liste hanno alcune proprietà peculiari in CSS:</p>
+                    <ul>
+                        <li><code class="att"><b>list-style-type</b></code>: permette di definire il tipo di
+                        simbolo per l'elenco
+                        <div><p class="eg"></p>
+                        <div class="eg-extend">
+                            <ul>
+                                <li style="list-style-type: upper-latin;list-style-position: inside;">Simbolo latino</li>
+                                <li style="list-style-type: georgian;list-style-position: inside;">Simbolo georgiano</li>
+                                <li style="list-style-type: decimal-leading-zero;list-style-position: inside;">Simbolo numerico</li>
+                            </ul>
+                        </div></div></li>
+                        <li><code class="att"><b>list-style-position</b></code>: stabilisce se il simbolo della lista è 
+                        interno o esterno ad essa; accetta uno di questi due valori:
+                            <ul>
+                                <li><code class="string">inside</code>: il punto della lista è incluso nel contenuto dell'elemento <code class="tag">li</code></li>
+                                <li><code class="string">outside</code>: (default) il punto sta fuori dal contenuto</li>
+                            </ul>
+                        </li>
+                        <li><code class="att"><b>list-style-image</b></code>: permette di fornire un'immagine 
+                            come punto dell'elenco:
+                            <rp id="cssCodeImoje"></rp>
+                        </li>
+                    </ul>
+                    <section>
+                        <h4>Elemento ::marker</h4>
+                        <p>Lo pseudo-elemento <code class="sel">::marker</code> rappresenta 
+                        il punto della lista e può essere selezionato per applicarvi proprietà di stile</p>
+                    </section>
                 </div>
             </article>
             <article>
@@ -335,7 +359,111 @@
                     <section>
                         <h3>Comportamento di Scorrimento</h3>
                         <p>Le proprietà <code class="att">scroll-behavior</code> e 
-                        <code class="att">overscroll-behavior</code></p>
+                        <code class="att">overscroll-behavior</code> controllano il comportamento che 
+                        assume lo scorrimento:</p>
+                        <section>
+                            <h4>Scroll</h4>
+                            <p>La proprietà <code class="att">scroll-behavior</code> accetta solo 
+                             un valore tra</p>
+                             <ul>
+                                <li><code class="string">auto</code>: (default) lo scorrimento è istantaneo</li>
+                                <li><code class="string">smooth</code>: lo scorrimento è graduale (regolato dal browser)</li>
+                             </ul>
+                            <rp id="cssCodeSmooth"></rp>
+                            <iframe src="scroll-behavior.html" frameborder="0"></iframe>
+                            <p class="nota">per applicarlo ad un'intera pagina, lo si può impostare
+                                come proprietà dell'elemento <code class="tag">html</code>
+                            </p>
+                            <p class="nota">può essere una buona idea impostarlo insieme con media queries 
+                                per accessibilità:
+                                <rp id="cssCodeQueru"></rp>
+                            </p>
+                        </section>
+                        <section>
+                            <h4>Overscroll</h4>
+                            <p>La proprietà <code class="att">overscroll-behavior</code> indica 
+                            il comportamento da tenere quando viene raggiunto il limite 
+                            dell'area scorribile; può accettare uno (o due) di tre valori:</p>
+                            <ul>
+                                <li><code class="string">auto</code>: (default)<sup><a href="#ad-1">(1)</a></sup></li>
+                                <li><code class="string">contain</code>: lo scorrimento avviene come di default<sup><a href="#ad-1">(1)</a></sup>,
+                                ma lo <i>scroll chaining</i><sup><a href="#ad-3">(3)</a></sup> e la navigazione con 
+                                scorrimento<sup><a href="#ad-2">(2)</a></sup> sono disabilitate
+                                </li>
+                                <li><code class="string">none</code>: annulla tutti i comportamenti per lo scroll overflow</li>
+                            </ul>
+                            <p><sup id="ad-1">[1]</sup> Di default, i browser hanno un certo comportamento quando una pagina viene 
+                            scorsa fino al limite; di solito scorrere fino alla cima o il fondo della pagina 
+                            provoca un effetto "elastico".</p>
+                            <p><sup id="ad-2">[2]</sup> A volte (soprattutto sui dispositivi mobili)
+                            scorrere fino alla cima di una pagina la ricarica,
+                             mentre scorrere a destra o a sinistra 
+                            serve ad andare avanti e indietro tra le pagine visitate;</p>
+                            <p><sup id="ad-3">[3]</sup>
+                                Alcune finestre di dialogo permettono di scorrere la pagina sottostante 
+                                quando si raggiunge il limite della loro area di scorrimento; questo è detto
+                                <i>scroll chaining</i>
+                            </p>
+                            <p class="nota"><code class="att">overscroll-behavior</code> è uno 
+                            shorthand per <code class="att">overscroll-behavior-x</code> e 
+                            <code class="att">overscroll-behavior-y</code></p>
+                            <p class="eg"><br><br>
+                            <button type="button" onclick="document.getElementById('eg-dialog').showModal();">SHOW DIALOG</button>
+                            <br>
+                            <label for="o-b"><code class="att">overscroll-behavior</code>:</label>
+                            <select name="overscroll-behavior" id="o-b">
+                                <option value="auto">auto</option>
+                                <option value="contain">contain</option>
+                                <option value="none">none</option>
+                            </select></p>
+                            <dialog id="eg-dialog">
+                                <button type="button" onclick="document.getElementById('eg-dialog').close();">CLOSE</button>
+                                <p></p>
+                            </dialog>
+                        </section>
+                    </section>
+                    <section>
+                        <h3>Barra di Scorrimento</h3>
+                        <p>Alcune proprietà sono disponibili per alterare l'aspetto della 
+                            barra di scorrimento
+                        </p>
+                        <section>
+                            <h4>Spessore</h4>
+                            <p>La proprietà <code class="att">scrollbar-width</code> permette di 
+                            modificare lo spessore della barra di scorrimento; accetta uno di 
+                            questi valori:</p>
+                            <ul>
+                                <li><code class="string">auto</code> (default)
+                                    <p class="eg" style="width: 100%;"><span class="scrollable"></span></p>
+                                </li>
+                                <li><code class="string">thin</code>
+                                    <p class="eg" style="width: 100%;"><span class="scrollable scroll-thin"></span></p>
+                                </li>
+                                <li><code class="string">none</code>
+                                    <p class="eg" style="width: 100%;"><span class="scrollable scroll-none"></span></p>
+                                </li>
+                            </ul>
+                            <p class="notabene">
+                                questa è una funzionalità relativamente nuova; potrebbe non funzionare su tutti i browser
+                            </p>
+                        </section>
+                        <section>
+                            <h4>Colore</h4>
+                            <p>La proprietà <code class="att">scrollbar-color</code> permette di 
+                            modificare il colore della barra di scorrimento;</p>
+                            <p>accetta fino a due valori: il primo per il cursore della barra, il secondo 
+                                il binario
+                            </p>
+                            <p class="eg" style="width: 100%;">
+                                <rp id="cssCodeCol"></rp>
+                                <span class="scrollable coloured"></span>
+                                <rp id="cssCodeCol2"></rp>
+                                <span class="scrollable transp"></span>
+                            </p>
+                            <p class="notabene">
+                                questa è una funzionalità estremamente nuova; potrebbe non funzionare su tutti i browser
+                            </p>
+                        </section>
                     </section>
                 </div>
             </article>
@@ -348,6 +476,11 @@
                 let divs = '';
                 for(let i=0; i<4; i++) divs += `<div>${i+1}</div>`;
                 sc.innerHTML = divs;
+            });
+            const did = document.getElementById('eg-dialog');
+            const sle = document.getElementById('o-b');
+            sle.addEventListener('input', (e) => {
+                did.style.overscrollBehavior = e.currentTarget.value;
             })
         </script>
     </body>

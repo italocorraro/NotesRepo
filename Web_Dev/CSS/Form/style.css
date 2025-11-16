@@ -1,0 +1,75 @@
+
+#spostata fieldset {
+                position: relative;
+            }
+            #spostata legend {
+                background-color: antiquewhite;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+.unappear form input {
+    appearance: none;
+}
+.gridmas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 500px) {
+    .gridmas {
+        grid-template-columns: auto;
+    }
+}
+
+.check {
+    appearance: none;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    vertical-align: -2px;
+    border: 0.05em solid gray;
+    background-color: white;
+}
+.check::before {
+  content: "✔";
+  position: absolute;
+  font-size: 1.2em;
+  right: -1px;
+  top: -0.3em;
+  visibility: hidden;
+}
+.check:checked::before {
+    visibility: visible;
+}
+.check:disabled {
+  border-color: black;
+  background: #dddddd;
+  color: gray;
+}
+
+.labelizzed {
+    display: none;
+}
+.labelizzed + label {
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border: 0.05em solid gray;
+    background-color: white;
+}
+.labelizzed + label::before {
+  content: "✔";
+  position: absolute;
+  font-size: 1.2em;
+  top: -0.3em;
+  visibility: hidden;
+}
+.labelizzed:checked + label::before {
+    visibility: visible;
+}
+.labelizzed:disabled + label {
+  border-color: black;
+  background: #dddddd;
+  color: gray;
+}

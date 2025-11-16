@@ -76,6 +76,25 @@ cssCodeOG: `.headbar {
 }
 *[id] {
     scroll-margin-top: 85px;
-}`
+}`,
+cssCodeSmooth: `.scroll-container { 
+  scroll-behavior: smooth;
+}`,
+cssCodeQueru: `@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}`,
+cssCodeCol: `.colored {
+    scrollbar-color: blue red;
+}`,
+cssCodeCol2: `.transparent {
+    scrollbar-color: black transparent;
+}`,
+cssCodeImoje: `list-style-image: url("bullet.svg");`
     }
 }

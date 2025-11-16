@@ -40,44 +40,8 @@
         <meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png" />    
         <meta class="htmlCodeAuthor" name="author" content="Italo Corraro" />
 
-        <style>
-            #spostata fieldset {
-                position: relative;
-            }
-            #spostata legend {
-                background-color: antiquewhite;
-                position: absolute;
-                bottom: 0;
-                right: 0;
-            }
-        </style>
-        <script>
-            const snippets = {
-                html: {
-                    htmlCodeSub: `<input type="submit">`
-                },
-                css: {
-                    cssCodeText1: 
-`button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  font-size: 100%;
-}`,
-                    cssCodeMove:
-`fieldset {
-    position: relative;
-}
-legend {
-    background-color: antiquewhite;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}`
-                }
-            }
-        </script>
+        <link rel="stylesheet" href="style.css">
+        <script src="snippets.js"></script>
     </head>
     <body class="content">
         <!-- Header -->
@@ -138,6 +102,10 @@ legend {
                         non è impostata da <code class="att">width</code> e <code class="att">height</code>, che
                         invece impostano le dimensioni del contenitore delle caselle, le quali invece 
                         sono trattate come elementi di testo</p>
+                        <p class="nota">come prima, possiamo impostare manualmente le proprietà per normalizzarle
+                            al resto del documento:
+                            <rp id="cssCodeFotm"></rp>
+                        </p>
                     </section>
                     <section>
                         <h3>Posizione</h3>
@@ -150,7 +118,7 @@ legend {
                             <code class="att">position</code> <code class="string">absolute</code>
                         e <code class="tag">fieldset</code> con <code class="string">relative</code></p>
                         <div>
-                            <p class="eg"></p>
+                            <p class="eg default"></p>
                             <div class="eg-extend">
                                 Questo è il default
                                 <form>
@@ -185,13 +153,115 @@ legend {
                 </div>
             </article>
             <article>
-                <h2></h2>
+                <h2>Proprietà appearance</h2>
                 <div>
-                    <p>Checkbox e radio non</p>
+                    <p>La proprietà <code class="att">appearance</code> è stata introdotta per controllare
+                    il formato degli elementi di interfaccia controllati dal sistema</p>
+                    <p>accetta questi valori:</p>
+                    <ul>
+                        <li><code class="string">auto</code>: (default) vengono applicati gli stili nativi del sistema</li>
+                        <li><code class="string">none</code>: vengono rimossi gli stili di sistema, rendendo l'elemento
+                        gestibile tramite CSS
+                        <p class="nota">questo valore non ha alcun effetto su elementi che non hanno stili nativi di sistema</p></li>
+                        <li><code class="string">base-select</code>: permette di gestire con CSS l'elemento <code class="tag">select</code></li>
+                    </ul>
+                    <div>
+                        <p class="eg"></p>
+                        <div class="eg-extend default gridmas">
+                            <span><rp id="cssCodeApp1"></rp>
+                            <div class="test-form"></div></span>
+                            <span><rp id="cssCodeApp"></rp>
+                            <div class="test-form unappear"></div></span>
+                        </div>
+                        
+                    </div>
+                    <p class="nota">le varianti <code>-webkit</code> e <code>-moz</code>
+                    possono essere utili ad applicare correttamente la proprietà su browser 
+                che la supportano in modo sperimentale</p>
+                </div>
+            </article>
+            <article>
+                <h2>Checkbox e Radio</h2>
+                <div>
+                    <p>Le caselle di input checkbox e radio sono difficili da controllare nativamente; 
+                        </p><p>la soluzione migliore è rimuovere il loro default e sfruttare le pseudo-classi 
+                        <code class="sel">:checked</code> e <code class="sel">:disabled</code> e 
+                        gli pseudo-elementi <code class="sel">::before</code> e <code class="sel">::after</code>
+                        per procedere a controllarle con CSS
+                    </p>
+                    <p>possiamo procedere con due approcci per rimuovere il default:</p>
+                    <ul>
+                        <li>con <code class="att">appearance</code></li>
+                        <li>rimuovendo l'elemento dal DOM (<code><code class="att">display</code>: none;</code>) 
+                            e controllando le <code class="tag">label</code> associate per emulare il comportamento</li>
+                    </ul>
+                    <div>
+                        <p class="eg"></p>
+                        <div class="eg-extend">
+                            Con appearance:
+                            <rp id="cssCodeCkApp"></rp>
+                            <input type="checkbox" class="check default" id="test1">
+                            <label for="test1">Checkbox Riformattata con appearance</label><br>
+                            Con label:
+                            <rp id="cssCodeCkLabel"></rp>
+                            <input type="checkbox" class="default labelizzed" id="test2">
+                            <label for="test2"></label>
+                            <label for="test2">Checkbox sostituita con label</label>
+                        </div>
+                    </div>
+                    <p class="osservazione">il vantaggio di usare <code class="tag">label</code> starebbe 
+                    nella compatibilità più ampia; tuttavia <code class="att">appearance</code> risulta 
+                    meno macchinoso e più intuitivo e gestibile, senza dover ricorrere a selettori per trovare 
+                    la porzione da mostrare di checkbox</p>
+                </div>
+            </article>
+            <article>
+                <h2>Elementi non-stilizzabili</h2>
+                <div>
+                    <p>A dispetto delle funzionalità introdotte, alcuni elementi rimangono ostici da controllare 
+                        con CSS; soprattutto per quanto riguarda il mantenere un aspetto indipendente dal default di sistema
+                    </p>
+                    <section>
+                        <h4>progress e meter</h4>
+                        <p>Gli elementi di feedback <code class="tag">progress</code> e <code class="tag">meter</code> sono 
+                        difficili da gestire; la migliore alternativa è costruirne una soluzione personalizzata o 
+                        legandovi una <code class="tag">label</code> e rimuovendoli dal DOM, oppure semplicemente non usarli
+                        e crearne una versione con un <code class="tag">div</code></p>
+                    </section>
                 </div>
             </article>
         </main>
         <!-- Import Functionalities -->
         <script src="../../source/functionalities.js"></script>
+        <script>
+            document.querySelectorAll('.test-form').forEach((formus) => {
+                formus.innerHTML = `<fieldset>
+                <form>
+  <p>
+    <label for="search">search: </label>
+    <input id="search" name="search" type="search" class="default" />
+  </p>
+  <p>
+    <label for="text">text: </label>
+    <input id="text" name="text" type="text" class="default" />
+  </p>
+  <p>
+    <label for="date">date: </label>
+    <input id="date" name="date" type="datetime-local" class="default" />
+  </p>
+  <p>
+    <label for="radio">radio: </label>
+    <input id="radio" name="radio" type="radio" class="default" />
+  </p>
+  <p>
+    <label for="checkbox">checkbox: </label>
+    <input id="checkbox" name="checkbox" type="checkbox" class="default" />
+  </p>
+  <p><input type="submit" value="submit" class="default" /></p>
+  <p><input type="button" value="button" class="default" /></p>
+</form></fieldset>`;
+            });
+
+        </script>
     </body>
 </html>
