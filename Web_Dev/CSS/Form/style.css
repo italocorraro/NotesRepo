@@ -73,3 +73,51 @@
   background: #dddddd;
   color: gray;
 }
+
+#sw {
+    display: none;
+}
+#sw + label {
+    display: inline-block;
+    position: relative;
+    width: 1.8em;
+    height: 1em;
+    border: 0.1em solid black;
+    border-radius: 0.5em;
+    background-color: white;
+    transition: background-color 0.5s;
+    top: 0.15em
+}
+#sw + label::before {
+    content: '';
+    background-color: black;
+    position: absolute;
+    border-radius: 50%;
+    height: calc(100% - 0.2em);
+    margin: 0.1em;
+    aspect-ratio: 1;
+    transition: left 0.5s;
+    left: 0%;
+}
+#sw:checked + label {
+    background-color: chartreuse;
+}
+#sw:checked + label::before {
+    left: 50%;
+}
+
+#test-sel {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+}
+span:has(> #test-sel) {
+    font-family: inherit;
+    background-color: white;
+    border: 0.1em solid orange;
+    padding: 0.1em;
+}

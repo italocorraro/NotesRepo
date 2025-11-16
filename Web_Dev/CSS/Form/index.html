@@ -181,9 +181,56 @@
                 </div>
             </article>
             <article>
+                <h2>Search</h2>
+                <div>
+                    <p>Gli input di tipo <code class="string">search</code> non sono necessariamente 
+                    difficili da controllare, tuttavia il comportamento del pulsante &times; che 
+                    appare sulla destra per cancellare l'input è scostante; conviene normalizzarlo:</p>
+                    <rp id="cssCodeSearch"></rp>
+                    <p>in questo modo si nasconde il pulsante quando l'input non è in focus/attivo</p>
+                </div>
+            </article>
+            <article>
+                <h2>Range</h2>
+                <div>
+                    <p>L'input di tipo <code class="string">range</code> è abbastanza difficile 
+                    da controllare con CSS; la migliore soluzione risulta rimuovere tutti gli stili 
+                    dall'input e rifarlo da capo</p>
+                    <p><a href="https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/">Qui</a> un guida</p>
+                </div>
+            </article>
+            <article>
+                <h2>Select</h2>
+                <div>
+                    <p>L'input <code class="tag">select</code> risulta difficile 
+                    da controllare, in particolare a causa del menù di opzioni che 
+                    non può essere stilizzato;</p>
+                    <p>quello che di questo elemento può essere controllato è la scatola principale,
+                        cioè quella in cui alloggia l'opzione selezionata
+                    </p>
+                    <p class="eg"><br>Aspetto normale: <br>
+                        <select name="sul" class="default">
+                            <option value="">opzione 1</option>
+                            <option value="">opzione 2</option>
+                        </select><br>
+                        Aspetto riformattato:<br>
+                        <span>
+                        <select name="sol" id="test-sel" class="default">
+                            <option value="">opzione 1</option>
+                            <option value="">opzione 2</option>
+                        </select><label for="test-sel">+</label></span>
+                        <rp id="cssCodeSel"></rp>
+                    </p>
+                    <p class="notabene">il contenuto di <code class="tag">select</code> è interamente 
+                        controllato dal browser; questo significa che non si possono usare gli pseudo-elementi 
+                        <code class="sel">::before</code> e <code class="sel">::after</code> su di esso; <br>
+                        questa è anche la ragione per cui si usa un wrapper per stilizzare il select</p>
+                </div>
+            </article>
+            <article>
                 <h2>Checkbox e Radio</h2>
                 <div>
-                    <p>Le caselle di input checkbox e radio sono difficili da controllare nativamente; 
+                    <p>Le caselle di input <code class="string">checkbox</code> e <code class="string">radio</code> sono difficili da controllare nativamente; 
                         </p><p>la soluzione migliore è rimuovere il loro default e sfruttare le pseudo-classi 
                         <code class="sel">:checked</code> e <code class="sel">:disabled</code> e 
                         gli pseudo-elementi <code class="sel">::before</code> e <code class="sel">::after</code>
@@ -198,15 +245,21 @@
                     <div>
                         <p class="eg"></p>
                         <div class="eg-extend">
-                            Con appearance:
-                            <rp id="cssCodeCkApp"></rp>
-                            <input type="checkbox" class="check default" id="test1">
-                            <label for="test1">Checkbox Riformattata con appearance</label><br>
-                            Con label:
-                            <rp id="cssCodeCkLabel"></rp>
-                            <input type="checkbox" class="default labelizzed" id="test2">
-                            <label for="test2"></label>
-                            <label for="test2">Checkbox sostituita con label</label>
+                            <ul>
+                                <li>Con appearance:
+                                    <rp id="cssCodeCkApp"></rp>
+                                    <input type="checkbox" class="check default" id="test1">
+                                    <label for="test1">Checkbox Riformattata con appearance</label></li>
+                                <li>Con label:
+                                    <rp id="cssCodeCkLabel"></rp>
+                                    <input type="checkbox" class="default labelizzed" id="test2">
+                                    <label for="test2"></label>
+                                    <label for="test2">Checkbox sostituita con label</label></li>
+                                <li><rp id="cssCodeCkSwitch"></rp>
+                                    <input type="checkbox" id="sw" class="default">
+                                    <label for="sw"></label>
+                                    <label for="sw">Checkbox sostituita in stile toggle</label></li>
+                            </ul>
                         </div>
                     </div>
                     <p class="osservazione">il vantaggio di usare <code class="tag">label</code> starebbe 
