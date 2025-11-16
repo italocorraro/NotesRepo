@@ -48,6 +48,34 @@ cssCodeSnap2: `.scrollable {
 }
 .scrollable div {
     scroll-snap-align: start;
+}`,
+cssCodeScC: `.scrollable.center div {
+    scroll-snap-align: center;
+}`,
+cssCodeScE:
+`.scrollable.end div {
+    scroll-snap-align: end;
+}`,
+cssCodeScS: `.scrollable.start div {
+    scroll-snap-align: start;
+}`,
+cssCodeStop2: `.scrollable.stop div {
+    scroll-snap-stop: always;
+}`,
+cssCodeStop1: `.scrollable.no-stop div {
+    scroll-snap-stop: normal;
+}`,
+cssCodePad: `.scrollable.padding {
+    scroll-padding-left: 30px;
+}`,
+cssCodeMar: `.scrollable.margin div {
+    scroll-margin-left: 20px;
+}`,
+cssCodeOG: `.headbar {
+    height: 85px;
+}
+*[id] {
+    scroll-margin-top: 85px;
 }`
     }
 }

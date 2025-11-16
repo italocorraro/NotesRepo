@@ -206,7 +206,7 @@
                     <section>
                         <h3>Scroll Snap</h3>
                         <p>Lo <b>scroll snap</b> (o <i>scroll snapping</i>) è una funzionalità CSS che permette 
-                            allo scorrimento di agganciarsi automaticamente a determinati punti, 
+                            allo scorrimento di agganciarsi automaticamente a determinati punti (<i>snap point</i>), 
                             invece di fermarsi a caso come uno scroll normale.</p>
                         <p>Questo comportamento avviene ad esempio quando la pagina si move tramite 
                             i <i>bookmarks</i>
@@ -214,10 +214,40 @@
                         <p>Un punto di <i>snap</i> è come una calamita per l'evento di scorrimento e ci sono 
                             diverse proprietà CSS che ci permettono di controllarlo</p>
                         <section>
-                            <h4>Tipo</h4>
+                            <h4>Punto di Snap</h4>
+                            <p>La proprietà <code class="att">scroll-snap-align</code> serve 
+                            a specificare dove deve agganciare l'elemento al termine dello scorrimento (proprietà
+                            relativa all'elemento interno del contenitore scorribile),
+                            cioè indica lo <i>snap point</i>;</p>
+                            <p>questa proprietà accetta questi valori:</p>
+                            <ul>
+                                <li><code class="string">none</code></li>
+                                <li><code class="string">start</code></li>
+                                <li><code class="string">end</code></li>
+                                <li><code class="string">center</code></li>
+                            </ul>
+                            <p class="eg" style="width: 100%;">
+                                <rp id="cssCodeScS"></rp>
+                                <span class="scrollable scroll-me"></span>
+                                <rp id="cssCodeScC"></rp>
+                                <span class="scrollable center scroll-me"></span>
+                                <rp id="cssCodeScE"></rp>
+                                <span class="scrollable end scroll-me"></span>
+                            </p>
+                            <p class="osservazione">
+                                possiamo dare valori diversi per ciascun elemento del contenitore scorribile
+                            </p>
+                            <p class="nota">
+                                la proprietà <code class="att">scroll-snap-align</code> accetta fino a due 
+                                valori: il primo per la direzione dell'asse trasverso e il secondo per l'asse principale
+                            </p>
+                        </section>
+                        <section>
+                            <h4>Tipo di Snap</h4>
                             <p>La proprietà <code class="att">scroll-snap-type</code> definisce, per
                             un contenitore con scorrimento abilitato (cioè con <code class="att">overflow</code> non nascosto),
-                            un comportamento per quanto riguarda gli <i>snap points</i>; prende due valori:</p>
+                            un comportamento per quanto riguarda gli <i>snap points</i>,
+                            cioè definisce uno <i>snap container</i>; prende due valori:</p>
                             <ul>
                                 <li><code class="string">none</code>: (default) quando la porzione visibile 
                                 del contenitore scorribile viene mossa (cioè si attiva un evanto di scorrimento),
@@ -248,12 +278,64 @@
                                             <rp id="cssCodeSnap1"></rp>
                                             <div id="scrollY2" class="scrollable"></div></li>
                                     </ul>
-                                    
-                                    
-                                   
                                 </div>
                             </div>
+                            <p class="notabene">
+                                perché il comportamento di snap avvenga è necessario che il contenitore scorribile 
+                                abbia la proprietà <code class="att">scroll-snap-type</code> con due valori validi e che 
+                                i suoi elementi interni abbiano la proprietà <code class="att">scroll-snap-align</code>
+                                con valore valido per la direzione specificata da <code class="att">scroll-snap-type</code>
+                            </p>
                         </section>
+                        <section>
+                            <h4>Snap Stop</h4>
+                            <p>La proprietà <code class="att">scroll-snap-stop</code> specifica se il punto di snap
+                                dell'elemento 
+                             può essere saltato dal contenitore scorribile; accetta uno di due valori:</p>
+                            <ul>
+                                <li><code class="string">normal</code>: (default) il contenitore non è costretto 
+                                ad agganciarsi ad ogni snap point</li>
+                                <li><code class="string">always</code>: il contenitore deve agganciarsi sempre 
+                                allo snap point successivo e non saltarne mai uno</li>
+                            </ul>
+                            <p class="eg" style="width: 100%;"><br>
+                                Scorrendo molto velocemente possiamo notare la differenza nel comportamento
+                                <rp id="cssCodeStop1"></rp>
+                                <span class="scrollable scroll-me"></span>
+                                <rp id="cssCodeStop2"></rp>
+                                <span class="scrollable scroll-me stop"></span>
+                            </p>
+                        </section>
+                    </section>
+                    <section>
+                        <h3>Margine e Padding</h3>
+                        <p>Gli elementi di un contenitore scorribile possono usare le proprietà 
+                            <code class="att">scroll-margin</code> e <code class="att">scroll-padding</code>,
+                            la cui sintassi è analoga a quella di <code class="att">margin</code> e <code class="att">padding</code>;
+                        </p>
+                        <p>queste proprietà stabiliscono un valore di spaziatura da rispettare con uno scorrimento con 
+                            snap o dovuto a link interni alla pagina (<i>bookmark</i>)
+                        </p>
+                        <p class="nota"><br><code class="att">scroll-margin</code> va applicato agli elementi 
+                            del contenitore scorribile;<br>
+                        <code class="att">scroll-padding</code> va applicato al contenitore scorribile</p>
+                        <p class="eg" style="width: 100%;">
+                            <rp id="cssCodeMar"></rp>
+                            <span class="scrollable scroll-me spad"></span>
+                            <rp id="cssCodePad"></rp>
+                            <span class="scrollable scroll-me smar"></span>
+                        </p>
+                        <p class="osservazione">
+                            queste proprietà sono molto utili per evitare sovrapposizione con elementi fissi a schermo, 
+                            come le barre di navigazione; ad esempio in questa pagina abbiamo:
+                            <rp id="cssCodeOG"></rp>
+                            in modo da non sovrapporre i bookmark con la barra di navigazione
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Comportamento di Scorrimento</h3>
+                        <p>Le proprietà <code class="att">scroll-behavior</code> e 
+                        <code class="att">overscroll-behavior</code></p>
                     </section>
                 </div>
             </article>

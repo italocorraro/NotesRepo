@@ -181,3 +181,26 @@
 #scrollY2 {
     scroll-snap-type: x proximity;
 }
+
+.scrollable.scroll-me div {
+    width: 70%;
+}
+.scrollable.center div {
+    scroll-snap-align: center;
+}
+.scrollable.end div {
+    scroll-snap-align: start end;
+}
+.scroll-me {
+    scroll-snap-type: x mandatory;
+}
+.stop div {
+    scroll-snap-stop: always;
+}
+
+.spad div {
+    scroll-margin-left: 20px;
+}
+.smar {
+    scroll-padding-left: 30px;
+}
