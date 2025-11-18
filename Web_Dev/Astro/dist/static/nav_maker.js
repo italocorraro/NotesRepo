@@ -144,13 +144,13 @@ const navbar = [
   {
     name: 'Svelte',
     content: [
-      // Vuoto
+      { name: 'Sintassi', URL:  '#' }
     ]
   },
   {
     name: 'Astro',
     content: [
-      { name: 'Home', URL: astro },
+      { name: 'Basi', URL: astro + 'Astro/basics/' },
       { name: 'about', URL: astro + 'about/'}
     ]
   }
