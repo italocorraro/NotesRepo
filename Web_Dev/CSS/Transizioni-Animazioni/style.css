@@ -1,6 +1,9 @@
 img {
     max-width: 100%;
 }
+body {
+    overflow-x: hidden !important;
+}
 #collapseMe {
     transition: transform 0.5s;
     transition-timing-function: linear;
