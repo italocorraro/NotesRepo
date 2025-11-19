@@ -92,7 +92,7 @@ const navbar = [
   {
     name: 'JavaScript',
     content: [
-      { name: 'Sintassi', URL: '#' /*astro + 'javascript/Sintassi'*/},
+      { name: 'Sintassi', URL: astro + 'javascript/Sintassi Base/'},
       { name: 'Variabili', URL: '#' },
       { name: 'Tipi di dato', URL: '#' },
       { name: 'Operatori', URL: '#' },
