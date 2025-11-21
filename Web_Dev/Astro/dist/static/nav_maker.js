@@ -93,9 +93,8 @@ const navbar = [
     name: 'JavaScript',
     content: [
       { name: 'Sintassi', URL: astro + 'javascript/Sintassi Base/'},
-      { name: 'Variabili', URL: '#' },
-      { name: 'Tipi di dato', URL: '#' },
-      { name: 'Operatori', URL: '#' },
+      { name: 'Tipi Primitivi', URL: astro + 'javascript/Tipi Primitivi/' },
+      { name: 'Operatori', URL: astro + 'javascript/Operatori/' },
       { name: 'Condizionali', URL: '#' },
       { name: 'Loop', URL: '#' },
       { name: 'Funzioni', URL: '#' },
@@ -135,10 +134,7 @@ const navbar = [
   {
     name: 'Markdown',
     content: [
-      {
-        name: 'Sintassi',
-        URL: astro + 'posts/markdown/'
-      }
+      { name: 'Sintassi', URL: astro + 'Markdown/Sintassi Markdown/' }
     ]
   },
   {

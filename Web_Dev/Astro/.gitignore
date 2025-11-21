@@ -1,8 +1,14 @@
 # build output
 # dist/
 public/
-src/
 README.md
+
+src/components/
+src/images/
+src/layouts/
+src/plugins/
+src/scripts/
+src/styles/
 
 # Virtual Studio
 .vscode/

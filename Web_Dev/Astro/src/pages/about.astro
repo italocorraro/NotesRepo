@@ -1,0 +1,50 @@
+---
+import '../styles/global-test.css';
+import BaseLayoutTest from '../layouts/BaseLayout-Test.astro';
+
+const base = '/NotesRepo/Web_Dev/Astro/dist';
+const pageTitle = 'About | Astro';
+const pageAuthor = 'Italo Corraro'
+const description = 'About sito Astro';
+const pageImage = {
+	url: 'https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png',
+	type: 'image/png',
+	width: '799',
+	height: '400'
+}
+
+const identity = {
+  firstName: "Jessica",
+  country: "Anastasia",
+  occupation: "Dairy Producer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+const skillColor = 'crimson';
+---
+<style define:vars={{skillColor}}>
+.skill {
+    color: var(--skillColor);
+    font-weight: bold;
+}
+</style>
+
+<BaseLayoutTest pageTitle={pageTitle} pageAuthor={pageAuthor} pageImage={pageImage} description={description} >
+  <h2>Seconda pagina di Astro</h2>
+
+  <p>Yo yo; il prossimo è una patatona:</p>
+
+  <p>I'm going CRAZY</p>
+  <ul>
+    <li>My name is {identity.firstName}.</li>
+    <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+    {identity.hobbies.length >= 2 &&
+      <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+    }
+  </ul>
+  <p>My skills are:</p>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+</BaseLayoutTest>

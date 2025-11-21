@@ -1,0 +1,21 @@
+---
+import BaseLayoutTest from "../layouts/BaseLayout-Test.astro";
+
+const base = '/NotesRepo/Web_Dev/Astro/dist';
+const pageTitle = 'Home Page | Astro';
+const pageAuthor = 'Italo Corraro'
+const description = 'Homepage sito Astro';
+const pageImage = {
+	url: 'https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png',
+	type: 'image/png',
+	width: '799',
+	height: '400'
+}
+---
+
+<BaseLayoutTest pageTitle={pageTitle} pageAuthor={pageAuthor} pageImage={pageImage} description={description}>
+<h2>Prima pagina di Astro</h2>
+
+<p>Yo yo; il prossimo è una patatona:</p>
+<p>Je je</p>
+</BaseLayoutTest>
