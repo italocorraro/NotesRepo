@@ -99,7 +99,7 @@ const navbar = [
       { name: 'Loop', URL: '#' },
       { name: 'Funzioni', URL: '#' },
       { name: 'Funzioni di Supporto', URL: '#' },
-      { name: 'Array', URL: '#' },
+      { name: 'Array', URL: astro + 'javascript/Array/' },
       { name: 'Oggetti', URL: '#' },
       { name: 'Mappe', URL: '#' },
       { name: 'Espressioni Regolari', URL: '#' },

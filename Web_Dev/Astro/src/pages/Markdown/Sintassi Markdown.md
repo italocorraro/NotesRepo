@@ -14,16 +14,48 @@ Il markdown ha una sintassi compatta e leggibile.
 
 ### Titoli
 
+:::sint
+```markdown
+```
+```html
+```
 ```markdown
 # Titolo
 ```
-
-equivale in html a 
-
 ```html
 <h1>Titolo</h1>
 ```
-
+```markdown
+## Titolo
+```
+```html
+<h2>Titolo</h2>
+```
+```markdown
+### Titolo
+```
+```html
+<h3>Titolo</h3>
+```
+```markdown
+#### Titolo
+```
+```html
+<h4>Titolo</h4>
+```
+```markdown
+##### Titolo
+```
+```html
+<h5>Titolo</h5>
+```
+```markdown
+###### Titolo
+```
+```html
+<h6>Titolo</h6>
+```
+:::
 In markdown i titoli sono preceduti da tanti cancelletti quanto il loro grado:
 
 ```markdown

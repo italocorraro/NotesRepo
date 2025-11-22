@@ -134,6 +134,21 @@ let number = '24';
 typeof number === 'number';  // false 
 ```
 
+### Coercizione di Tipo
+
+Quando javaScript deve gestire operazioni con dati del tipo non previsto (ad esempio una somma tra numero e stringa o una operazione logica tra due dati non booleani) ricorre alla coercizione di tipo o meglio alla _conversione implicita di tipo_;
+
+JavaScript converte il tipo di uno o più operandi per svolgere l'operazione, ma questo non altera i tipi originali dei dati coinvolti
+
+:::eg
+```javascript
+3 + '4' === '34'; // true
+/* il numero 3 viene coonvertito 
+ * in stringa per svolgere
+ * l'operazione */
+```
+:::
+
 ### Due Tipi
 
 La distinzione più alta tra i tipi di dato li divide principalemente in 2:
