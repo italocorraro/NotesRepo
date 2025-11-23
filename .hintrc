@@ -21,6 +21,15 @@
         "label": "off",
         "select-name": "off"
       }
+    ],
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "input[type=month]",
+          "input[type=week]"
+        ]
+      }
     ]
   },
   "browserslist": [

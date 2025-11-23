@@ -134,7 +134,8 @@ const navbar = [
   {
     name: 'Markdown',
     content: [
-      { name: 'Sintassi', URL: astro + 'Markdown/Sintassi Markdown/' }
+      { name: 'Sintassi', URL: astro + 'Markdown/Sintassi Markdown/' },
+      { name: 'GitHub Flavored', URL: astro + 'Markdown/GFM/' }
     ]
   },
   {

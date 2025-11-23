@@ -142,15 +142,69 @@ console.log((16).toString(16));
 
 Gli operatori logici sono:
 
-| Operatore | Operazione Logica |
-|---|---|
-| `&&` | AND |
-| `\|\|` | OR |
-| `!` | NOT |
+| Operatore | Operazione Logica | Nome Operazione |
+|---|---|---|
+| `&&` | AND | Congiunzione Logica |
+| `\|\|` | OR | Disgiunzione Logica |
+| `!` | NOT | Complementazione Logica |
+| `??`[^1] | NULLISH | Coalescenza Nulla |
 
-* A questi tre principali aggiungiamo l'operatore `??` detto di coalescenza nulla (*nullish coalescing operator*); questo operatore restituisce
-    * l'operando alla sua destra se è un `nullish` (`null` o `undefined`),
-    * altrimenti, l'operando alla sua sinistra
+[^1]: l'operatore `??` è una sorta di caso speciale di `||`; il suo utilizzo è principalmente quello di filtrare via i valori `nullish` per sostituirli con dei valori di fallback:   
+l'espressione `let x = ascissa ?? 0;` significa   
+*se il valore di `ascissa` è `null` oppure `undefined`, allora assegna ad `x` il valore `0`, altrimenti, assegna ad `x` il valore di `ascissa`*
+
+:::nb
+Gli operatori logici, se usati con operandi *non-booleani* ricorreranno alla *coercizione di tipo*, ma è bene ricordare che, in tal caso, **non restituiranno un valore booleano**:
+
+* l'**AND** restituirà il valore del primo operando `falsy` che incontra da sinistra;   
+se sono tutti `truthy`, allora restituirà il valore dell'ultimo operando
+    * più semplicemente, *in un'operazione di soli due operandi*: restituirà il valore dell'operando a sinistra se è `falsy`, di quello a destra altrimenti
+* l'**OR** restituirà il valore del primo operando `truthy` che incontra da sinistra;   
+se sono tutti `falsy`, allora restituirà il valore dell'ultimo operando
+    * *per un'operazione a due*: restituirà il valore dell'operando a sinistra se è `truthy`, di quello a destra altrimenti
+* il **NOT** restituirà il valore booleano `false` se l'operando è `truthy`; `true` altrimenti
+* L'operatore **`??`**, detto di coalescenza nulla (*nullish coalescing operator*), restituirà il valore del primo operando NON `nullish` che incontra a partire da sinistra;   
+se sono tutti `nullish`, allora restituirà il valore dell'ultimo operando
+    * *in un'operazione a due*: restituirà il valore dell'operando a sinistra se NON è `nullish` (`null` o `undefined`), di quello a destra altrimenti
+
+---
+:::eg
+```javascript
+// Esempi con AND:
+console.log("" && "foo"); 
+// ↪ "" (perché è falsy)
+console.log(2 && 0); 
+// ↪ 0 (perché è falsy)
+console.log("foo" && 4); 
+// ↪ 4 (perché ultimo a destra)
+
+// Esempi con OR:
+console.log("" || "foo"); 
+// ↪ "foo" (perché è truthy)
+console.log(2 || 0); 
+// ↪ 2 (perché è truthy)
+console.log("" || 0); 
+// ↪ 0 (perché ultimo a destra)
+
+// Esempi con NOT:
+console.log(!"foo"); 
+// ↪ false (perché 'foo' è truthy)
+console.log(!""); 
+// ↪ true (perché '' è falsy)
+
+// Esempi con ??:
+let ascissa;
+let x = ascissa ?? '10';
+console.log(x);
+// ↪ '10' (perché ascissa è undefined)
+let ordinata = 7;
+let y = ordinata ?? 10;
+// ↪ 7 (perché ordinata è 7 (truthy))
+ascissa = 0;
+x = ascissa ?? '10';
+// ↪ 0 (perché 0 è falsy, ma non nullish)
+```
+:::
 
 ### Cortocircuitazione
 
@@ -249,9 +303,14 @@ Più recenti sono, invece, gli operatori logici di assegnazione
 Tutti questi sono operatori *cortocircuitati*
 
 Nel dettaglio su ciascuno:
-* `&&=` assegna il valore dell'operando a destra a quello a sinistra solo se l'operando a sinistra è `truthy`
-* `||=` assegna il valore dell'operando a destra a quello a sinistra solo se l'operando a sinistra è `falsy`
-* `??=` assegna il valore dell'operando a destra a quello a sinistra solo se l'operando a sinistra è `nullish`
+* `&&=` assegna il valore dell'operando a destra a quello a sinistra SOLO SE l'operando a sinistra è `truthy`
+* `||=` assegna il valore dell'operando a destra a quello a sinistra SOLO SE l'operando a sinistra è `falsy`
+* `??=` assegna il valore dell'operando a destra a quello a sinistra SOLO SE l'operando a sinistra è `nullish`
+
+Con riferimento alla tabella:
+* `x &&= y`: se `x` è `truthy`, assegnagli `y`
+* `x ||= y`: se `x` è `falsy`, assegnagli `y`
+* `x ??= y`: se `x` è `nullish`, assegnagli `y`
 
 ## Operatori di Comparazione
 

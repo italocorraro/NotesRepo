@@ -77,7 +77,8 @@ L'oggetto `Number` può essere usato per convertire in 'number' i valori passati
 `Infinity` e `-Infinity` sono numeri e raccolgono qualsiasi valore fuori dai limiti
 
 :::warn
-`typeof Infinity` restituisce `number`! :br
+`typeof Infinity` restituisce `number`!
+
 Inoltre, dividere per 0 un numero restituisce `Infinity` (con segno)
 :::
 
