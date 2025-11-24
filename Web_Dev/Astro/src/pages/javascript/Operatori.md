@@ -158,14 +158,14 @@ Gli operatori logici, se usati con operandi *non-booleani* ricorreranno alla *co
 
 * l'**AND** restituirà il valore del primo operando `falsy` che incontra da sinistra;   
 se sono tutti `truthy`, allora restituirà il valore dell'ultimo operando
-    * più semplicemente, *in un'operazione di soli due operandi*: restituirà il valore dell'operando a sinistra se è `falsy`, di quello a destra altrimenti
+    * più semplicemente, =u=*in un'operazione di soli due operandi*==: restituirà il valore dell'operando a sinistra se è `falsy`, di quello a destra altrimenti
 * l'**OR** restituirà il valore del primo operando `truthy` che incontra da sinistra;   
 se sono tutti `falsy`, allora restituirà il valore dell'ultimo operando
-    * *per un'operazione a due*: restituirà il valore dell'operando a sinistra se è `truthy`, di quello a destra altrimenti
+    * =u=*per un'operazione a due*==: restituirà il valore dell'operando a sinistra se è `truthy`, di quello a destra altrimenti
 * il **NOT** restituirà il valore booleano `false` se l'operando è `truthy`; `true` altrimenti
 * L'operatore **`??`**, detto di coalescenza nulla (*nullish coalescing operator*), restituirà il valore del primo operando NON `nullish` che incontra a partire da sinistra;   
 se sono tutti `nullish`, allora restituirà il valore dell'ultimo operando
-    * *in un'operazione a due*: restituirà il valore dell'operando a sinistra se NON è `nullish` (`null` o `undefined`), di quello a destra altrimenti
+    * =u=*in un'operazione a due*==: restituirà il valore dell'operando a sinistra se NON è `nullish` (`null` o `undefined`), di quello a destra altrimenti
 
 ---
 :::eg

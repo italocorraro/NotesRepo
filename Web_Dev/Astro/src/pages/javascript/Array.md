@@ -67,7 +67,58 @@ il metodo corretto per verificare se una variabile è un array è passandola per
 
 ## Metodi per Array
 
-Darsi fuoco YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 
+### Lunghezza
+
+La proprietà `lenght` restituisce la lunghezza dell'array:
+
+```javascript
+const listaSpesa = [
+    "pane", "latte", 
+    "formaggio", "insalata", 
+    "uova" ];
+console.log(listaSpesa.length); 
+// ↪ 5
+
+/* Poiché gli array sono indicizzati da 0,
+ * la proprietà length ci permette di 
+ * aggiungere elementi alla fine: */
+listaSpesa[listaSpesa.length] = "burro";
+console.log(listaSpesa.length);
+// ↪ 6
+console.log(listaSpesa.join(' '));
+// ↪ 'pane latte formaggio insalata uova burro'
+```
+
+### Trovare l'Indice di un Elemento
+
+Il metodo `indexOf()` restituisce l'indice dell'elemento passato per argomento; se l'elemento non è parte dell'array, restituirà `-1`:
+
+```javascript
+const listaSpesa = [
+    "pane", "latte", 
+    "formaggio", "insalata"
+];
+console.log(listaSpesa.indexOf('latte'));
+// ↪ 1
+console.log(listaSpesa.indexOf('burro'));
+// ↪ -1
+```
+
+### Aggiungere Elementi
+
+L'alternativa built-in a `array[array.length] = "new element";` è usare il metodo `push()` passando per argomento l'elemento da inserire =u=in coda all'array==:
+
+```javascript
+const listaSpesa = [
+    "pane", "latte", 
+    "formaggio", "insalata"
+];
+listaSpesa.push('burro');
+console.log(listaSpesa.indexOf('burro'));
+// ↪ 4
+console.log(listaSpesa.join(' '));
+// ↪ 'pane latte formaggio insalata burro'
+```
 
 <script>
     

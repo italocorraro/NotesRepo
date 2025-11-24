@@ -10,9 +10,30 @@ author: 'Italo Corraro'
 
 ### Testo Barrato
 
-~testo~
+Per creare testo barrato bisogna includerlo in uno o due tilde `~`:
 
-~~testo~~
+:::sint
+```markdown
+```
+```html
+```
+```markdown
+~testo barrato~
+```
+```html
+<del>testo barrato</del>
+```
+```markdown
+~~testo barrato~~
+```
+```html
+<del>testo barrato</del>
+```
+:::
+
+:::nb
+l'elemento `<del>` rappresenta del contenuto eliminato ed è spesso ignorato dagli screen reader
+:::
 
 ## Tabelle
 
@@ -97,5 +118,35 @@ Qualunque testo o numero può essere inserito per identificare la nota; l'unica 
 
 ## Checklist
 
+
+:::sint
+```markdown
+```
+```html
+```
+```markdown
 - [ ] da fare
 - [x] fatto
+```
+```html
+<ul class="contains-task-list">
+  <li class="task-list-item">
+    <input type="checkbox" disabled>
+    " da fare"
+  </li>
+  <li class="task-list-item">
+    <input type="checkbox" disabled checked>
+    " fatto"
+  </li>
+</ul>
+```
+:::
+
+:::out
+- [ ] da fare
+- [x] fatto
+:::
+
+:::nb
+Le checklist così create non hanno `label` associate ad ogni input!
+:::
