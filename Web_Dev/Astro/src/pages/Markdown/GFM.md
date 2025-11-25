@@ -1,10 +1,10 @@
 ---
 layout: ../../layouts/serious/LayoutAstro.astro
 title: 'GitHub Flavored Markdown'
+metaTitle: 'GitHub Flavored Markdown'
 description: 'Appunti sulla sintassi Markdown in GitHub.'
 author: 'Italo Corraro'
 ---
-## Indice
 
 ## Stili Aggiunti
 

@@ -1,10 +1,10 @@
 ---
 layout: ../../layouts/serious/LayoutAstro.astro
-title: 'Appunti Tipi Primitivi di JavaScript'
+title: 'Tipi Primitivi in JavaScript'
+metaTitle: 'Appunti sui Tipi Primitivi di JavaScript'
 description: 'Appunti e note sui tipi primitivi in JavaScript.'
 author: 'Italo Corraro'
 ---
-## Indice
 
 ## Tipi Primitivi
 
@@ -18,14 +18,16 @@ In JavaScript si riconoscono 7 tipi di dato 'primitivi':
 * stringhe
 * simboli
 
+I tipi primitivi rappresentano dei valori base del linguaggio e di loro natura non posseggono proprietà dinamiche, ma JavaSCript gira attorno a questo ostacolo:
+
 ## Wrapper Classes
 
 Con l'eccezione di `undefined` e `null`, tutti gli altri tipi primitivi hanno una classe _wrapper_ associata:
 
-* La classe wrapper viene usata da JavaScript per racchiudere il dato primitivo quando viene invocata una proprietà o un metodo su di esso
+* Le classi wrapper vengono usate da JavaScript per racchiudere il dato primitivo quando viene invocata una proprietà o un metodo su di esso; in questo modo, emula il comportamento di un oggetto
 
 :::oss
-fondamentalmente, questi 5 tipi primitivi sono anche **oggetti** quando serve
+fondamentalmente, questi 5 tipi primitivi possono anche essere trattati **oggetti** quando serve
 :::
 
 Le classi wrapper sono 
@@ -48,7 +50,17 @@ Per convertire un tipo di dato a un altro si possono usare le classi wrapper:
 Number('25'); // ritorna 25 (numero, non stringa)
 ```
 
-<u>L'alternativa ai tipi primitivi sono gli oggetti</u>
+=u=L'alternativa ai tipi primitivi sono gli oggetti==
+
+:::warn
+I tipi primitivi sono sempre e solo valori in JavaScript, al contrario, gli oggetti sono sempre e solo riferimenti!
+
+:::eg
+Consideriamo una funzione; le funzioni prendono sempre una copia dei dati passati per argomento:
+
+* passare per argomento un oggetto a una funzione gliene fornisce una copia del riferimento, poiché però questo punta sempre allo stesso oggetto in memoria, il suo contenuto può essere modificato direttamente dalla funzione, 
+* invece, passare per argomento un dato di tipo primitivo a una funzione gliene fornisce solo una copia del valore; l'originale non viene toccato
+:::
 
 ## Numeri
 

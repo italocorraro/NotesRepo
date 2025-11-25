@@ -11,7 +11,9 @@
           "text-wrap",
           "scrollbar-color",
           "backdrop-filter",
-          "user-select"
+          "user-select",
+          "scrollbar-width",
+          "scrollbar-width: thin"
         ]
       }
     ],

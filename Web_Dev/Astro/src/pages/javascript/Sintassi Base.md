@@ -1,12 +1,10 @@
 ---
 layout: ../../layouts/serious/LayoutAstro.astro
-title: 'Appunti Sintassi Base di JavaScript'
+title: 'Sintassi Base di JavaScript'
+metaTitle: 'Appunti sulla Sintassi Base di JavaScript'
 description: 'Appunti e note sulle prime cose da sapere su JavaScript.'
 author: 'Italo Corraro'
 ---
-## Indice
-
-## Overview
 
 Javascript è un linguaggio di **scripting** sviluppato per dare interattività lato cliente alle pagine HTML, ma può essere utilizzato anche lato server.
 

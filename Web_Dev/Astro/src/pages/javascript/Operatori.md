@@ -1,12 +1,10 @@
 ---
 layout: ../../layouts/serious/LayoutAstro.astro
-title: 'Appunti Operatori di JavaScript'
+title: 'Operatori in JavaScript'
+metaTitle: 'Appunti sugli Operatori di JavaScript'
 description: 'Appunti e note sugli operatori in JavaScript.'
 author: 'Italo Corraro'
 ---
-## Indice
-
-## Overview
 
 JavaScript dispone di diversi operatori per operazioni aritmetiche, di assegnazione, logiche, comparative e altro;
 

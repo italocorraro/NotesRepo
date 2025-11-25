@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/serious/LayoutAstro.astro
 title: 'Basi Astro'
+metaTitle: 'basi Astro'
 description: 'Appunti e note sulle prime cose da sapere su Astro.'
 author: 'Italo Corraro'
 ---

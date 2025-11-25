@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/serious/LayoutAstro.astro
 title: 'Remark Plugins'
+metaTitle: 'Remark Plugins'
 description: 'Note sui plugin remark.'
 author: 'Italo Corraro'
 ---
