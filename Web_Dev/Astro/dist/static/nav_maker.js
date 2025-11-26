@@ -114,9 +114,11 @@ const navbar = [
     ]
   },
   {
-    name: 'Accessibilità',
+    name: 'Struttura Pagine',
     content: [
-      // Vuoto
+      { name: 'Struttura html', URL: '#' },
+      { name: 'Struttura CSS', URL: '#' },
+      { name: 'Testata del Sito', URL: '#' }
     ]
   },
   {
@@ -148,7 +150,6 @@ const navbar = [
     name: 'Astro',
     content: [
       { name: 'Basi', URL: astro + 'Astro/basics/' },
-      { name: 'about', URL: astro + 'about/'}
     ]
   }
 ];

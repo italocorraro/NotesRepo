@@ -65,7 +65,7 @@ Un array resta un oggetto, cioè `typeof` restituirà `object` se usato con un a
 il metodo corretto per verificare se una variabile è un array è passandola per argomento a `Array.isArray()`, oppure con l'espressione `array instanceof Array`, che verifica se `array` è un'istanza dell'oggetto globale `Array`, cioè l'oggetto a cui tutti gli array fanno capo
 :::
 
-## Metodi per Array
+## Mutare l'Array
 
 ### Lunghezza dell'Array
 
@@ -260,6 +260,8 @@ il metodo prende come argomenti:
     * il riferimento all'array su cui è stata chiamato il metodo
 * un valore che verrà assegnato a `this` all'interno della funzione; questo è interamente opzionale e in caso non fosse fornito dipenderà dal tipo di funzione chiamata quale valore gli verrà assegnato di default
 
+---
+
 :::eg
 ```javascript
 array.forEach(callback)
@@ -300,8 +302,6 @@ listaSpesa.forEach(toConsole);
 // ↪ 'formaggio'
 // ↪ 'insalata'
 ```
-:::oss
-
 :::
 
 #### map
@@ -357,26 +357,36 @@ console.log(inventario[1].bene + ': ' + inventario[1].quantità);
 Per creare una copia indipendente è necessario usare un metodo diverso
 :::
 
+## Array e Stringhe
+
+### Da Stringa ad Array
+
+Tramite il metodo `split()` possiamo separare una stringa spezzandola secondo uno schema passato per argomento:
+
+```javascript
+string.split(separator);
+// spezza la stringa dove trova il parametro separatore
+string.split(separator, limit);
+/* stesso di prima, ma ferma il processo una volta che 
+ * sono state staccate {limit} numero di stringhe */
+```
+
+La funzione restituisce in output l'array composto dai frammenti di stringa
+
+:::eg
+```javascript
+const stringa = 'Quel vituperabile xenofobo zelante assaggia il whisky ed esclama: alleluja!';
+const array = stringa.split(' '); // spezza la stringa ad ogni spazio
+console.log(array);
+/* ↪ Array(10) ['Quel', 'vituperabile', 'xenofobo', 'zelante', 'assaggia', 'il', 'whisky', 'ed', 'esclama:', 'alleluja!'] */
+```
+
+### Da Array a Stringa
+
+
+
 <script>
-const inventario = [
-    { bene: 'pane', quantità: 2 },
-    { bene: 'latte', quantità: 1 },
-    { bene: 'formaggio', quantità: 3 },
-    { bene: 'insalata', quantità: 0 },
-    { bene: 'uova', quantità: 6 },
-    { bene: 'burro', quantità: 0 },
-]
-const listaSpesa = inventario.filter(function(item) {
-    return item.quantità < 2; 
-    // cerchiamo i bene che stanno per finirsi
-});
-listaSpesa.forEach((item) => console.log(item.bene));
-// ↪ 'latte'
-// ↪ 'insalata'
-// ↪ 'burro'
-listaSpesa[0].quantità = 7;
-console.log(listaSpesa[0].bene + ': ' + listaSpesa[0].quantità);
-// ↪ 'latte: 7'
-console.log(inventario[1].bene + ': ' + inventario[1].quantità);
-// ↪ 'latte: 7'
+const stringa = 'Quel vituperabile xenofobo zelante assaggia il whisky ed esclama: alleluja!';
+const array = stringa.split(' '); // spezza la stringa ad ogni spazio
+console.log(array);
 </script>
