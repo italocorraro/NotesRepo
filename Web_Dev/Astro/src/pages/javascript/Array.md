@@ -329,7 +329,7 @@ const inventario = [
     { bene: 'insalata', quantità: 0 },
     { bene: 'uova', quantità: 6 },
     { bene: 'burro', quantità: 0 },
-]
+];
 const listaSpesa = inventario.filter(function(item) {
     return item.quantità < 2; 
     // cerchiamo i bene che stanno per finirsi
@@ -357,6 +357,37 @@ console.log(inventario[1].bene + ': ' + inventario[1].quantità);
 Per creare una copia indipendente è necessario usare un metodo diverso
 :::
 
+### Cicli for
+
+#### for...of()
+
+```javascript
+const array = [/* ... */];
+
+for(const item of array) {
+    // statement(s)
+}
+```
+
+Questa istruzione permette di eseguire un ciclo in cui la variabile `item` (il nome può essere scelto) viene, ad ogni iterazione, definita copiando un elemento dell'array (copia superficiale); \
+usare il ciclo `for` in questo modo permette più controllo sulle iterazioni dei vari metodi iterativi come `forEach()` o `map()`, in particolare è possibile interrompere il ciclo con l'istruzione `break` o saltare all'iterazione successiva usando `continue`
+
+:::nota
+Non è possibile modificare i dati primitivi con questa operazione
+:::
+
+### for semplice
+
+```javascript
+const array = [/* ... */];
+
+for(let i = 0; i < array.lenght; i++) {
+    // statement(s)
+}
+```
+
+Questa istruzione permette controllo totale sull'iterazione e fornisce accesso diretto agli elementi dell'array; quindi è possibile modificare anche i dati primitivi 
+
 ## Array e Stringhe
 
 ### Da Stringa ad Array
@@ -380,13 +411,43 @@ const array = stringa.split(' '); // spezza la stringa ad ogni spazio
 console.log(array);
 /* ↪ Array(10) ['Quel', 'vituperabile', 'xenofobo', 'zelante', 'assaggia', 'il', 'whisky', 'ed', 'esclama:', 'alleluja!'] */
 ```
+:::
 
 ### Da Array a Stringa
 
+Il metodo `join()` permette di concatenare gli elementi dell'array in una stringa, usando l'argomento passato alla funzione come separatore; \
+la stringa risultante è fornita in output:
 
+```javascript
+array.join(separator);
+// Concatena gli elementi separandoli con il separatore
+```
+
+:::eg
+```javascript
+const listaSpesa = [
+    "pane", "latte", 
+    "formaggio", "insalata"
+];
+const spesa = listaSpesa.join(', ');
+const start = 'Nella tua lista della spesa ci sono: ';
+console.log(start + spesa);
+/* Nella tua lista della spesa ci sono: 
+ * pane, latte, 
+ * formaggio, insalata */
+```
+:::
+
+:::nota
+Il metodo `toString()` svolge lo stesso ruolo di `join(',')`, cioè concatena gli elementi dell'array in una stringa, ma non accetta parametri e usa sempre `,` come separatore
+:::
 
 <script>
-const stringa = 'Quel vituperabile xenofobo zelante assaggia il whisky ed esclama: alleluja!';
-const array = stringa.split(' '); // spezza la stringa ad ogni spazio
-console.log(array);
+const listaSpesa = [
+    "pane", "latte", 
+    "formaggio", "insalata"
+];
+const spesa = listaSpesa.join(', ');
+const start = 'Nella tua lista della spesa ci sono: ';
+console.log(start + spesa);
 </script>

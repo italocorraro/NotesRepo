@@ -83,7 +83,28 @@ paragrafo 2
 
 ### A Capo
 
-Per andare a capo (senza iniziare un nuovo paragrafo) si lasciano 2 o più spazi bianchi e poi si va a capo per generare l'elemento `<br>`
+Per andare a capo (senza iniziare un nuovo paragrafo) si lasciano 2 o più spazi bianchi e poi si va a capo per generare l'elemento `<br>`, oppure si usa il carattere `\` e poi si va a capo:
+
+:::sint
+```markdown
+```
+```html
+```
+```markdown
+   
+
+```
+```html
+<br>
+```
+```markdown
+\
+
+```
+```html
+<br>
+```
+:::
 
 ### Barra Separatrice
 

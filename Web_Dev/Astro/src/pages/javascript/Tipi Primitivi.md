@@ -62,6 +62,17 @@ Consideriamo una funzione; le funzioni prendono sempre una copia dei dati passat
 * invece, passare per argomento un dato di tipo primitivo a una funzione gliene fornisce solo una copia del valore; l'originale non viene toccato
 :::
 
+## Copiatura
+
+JavaScript non rende esplicita la referenziazione dei dati, quindi, le varie istruzioni che copiano i dati possono fare due tipi di copiature:
+
+* **superficiale** (*shallow copy*): viene copiato il primo livello del dato; =u=i dati non di tipo primitivo (oggetti) vengono copiati come riferimenti==, questo implica che
+    * le modifiche agli oggetti contenuti nel dato si riflettono anche sull'originale (e viceversa)
+    * l'originale e la copia dipendono l'uno dall'altro
+* **profonda** (*deep copy*): viene copiato l'intero contenuto del dato, quindi 
+    * le modifiche agli oggetti contenuti nel dato sono loro esclusive e non si ripercuotono sull'originale (e viceversa)
+    * l'originale e la copia sono entità completamente distinte
+
 ## Numeri
 
 In JavaScript i numeri sono trattati tutti come floating point a 64 bit, l'equivalente dei `double`; non ci sono degli interi, ma non vengono mostrati decimali non necessari

@@ -346,3 +346,5 @@ Ci sono inoltre altri due operatori di comparazione che invece non operano alcun
 | `===` | "è uguale in valore e tipo a" |
 | `!==` | "è diverso in valore o tipo a" |
 
+---
+
