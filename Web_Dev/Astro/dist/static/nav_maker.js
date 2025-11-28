@@ -95,11 +95,12 @@ const navbar = [
       { name: 'Sintassi', URL: astro + 'javascript/Sintassi Base/'},
       { name: 'Tipi Primitivi', URL: astro + 'javascript/Tipi Primitivi/' },
       { name: 'Operatori', URL: astro + 'javascript/Operatori/' },
+      { name: 'Array', URL: astro + 'javascript/Array/' },
       { name: 'Condizionali', URL: astro + 'javascript/Condizionali/' },
       { name: 'Iterazione', URL: astro + 'javascript/Iterazione/' },
       { name: 'Funzioni', URL: astro + 'javascript/Funzioni/' },
       { name: 'Funzioni di Supporto', URL: '#' },
-      { name: 'Array', URL: astro + 'javascript/Array/' },
+      { name: 'Strict Mode', URL: astro + 'javascript/Strict Mode/' },
       { name: 'Oggetti', URL: '#' },
       { name: 'Mappe', URL: '#' },
       { name: 'Espressioni Regolari', URL: '#' },
@@ -107,7 +108,7 @@ const navbar = [
       { name: 'Eventi', URL: '#' },
       { name: 'Manipolazione del DOM', URL: '#' },
       { name: 'Moduli', URL: '#' },
-      { name: 'storage API', URL: '#' },
+      { name: 'Storage API', URL: '#' },
       { name: 'URL API', URL: '#' },
       { name: 'Asincronia', URL: '#' },
       { name: 'Promesse', URL: '#' }
@@ -137,7 +138,8 @@ const navbar = [
     name: 'Markdown',
     content: [
       { name: 'Sintassi', URL: astro + 'Markdown/Sintassi Markdown/' },
-      { name: 'GitHub Flavored', URL: astro + 'Markdown/GFM/' }
+      { name: 'GitHub Flavored', URL: astro + 'Markdown/GFM/' },
+      { name: 'Remark Plugins', URL: '#' }
     ]
   },
   {
@@ -149,7 +151,7 @@ const navbar = [
   {
     name: 'Astro',
     content: [
-      { name: 'Basi', URL: astro + 'Astro/basics/' },
+      { name: 'Basi', URL: '#' },
     ]
   }
 ];

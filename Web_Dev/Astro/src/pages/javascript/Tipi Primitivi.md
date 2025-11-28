@@ -20,7 +20,7 @@ In JavaScript si riconoscono 7 tipi di dato 'primitivi':
 
 I tipi primitivi rappresentano dei valori base del linguaggio e di loro natura non posseggono proprietà dinamiche, ma JavaSCript gira attorno a questo ostacolo:
 
-## Wrapper Classes
+### Wrapper Classes
 
 Con l'eccezione di `undefined` e `null`, tutti gli altri tipi primitivi hanno una classe _wrapper_ associata:
 
@@ -49,6 +49,8 @@ Per convertire un tipo di dato a un altro si possono usare le classi wrapper:
 ```javascript
 Number('25'); // ritorna 25 (numero, non stringa)
 ```
+
+Quando un metodo o proprietà vengono invocate su un dato di tipo primitivo, un oggetto wrapper viene creato per contenere il dato, viene svolta l'operazione che richiederebbe l'oggetto ed infine l'oggetto viene distrutto lasciando il dato originale intoccato
 
 =u=L'alternativa ai tipi primitivi sono gli oggetti==
 
