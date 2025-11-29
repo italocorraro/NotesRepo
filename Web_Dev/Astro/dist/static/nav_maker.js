@@ -101,7 +101,7 @@ const navbar = [
       { name: 'Funzioni', URL: astro + 'javascript/Funzioni/' },
       { name: 'Funzioni di Supporto', URL: '#' },
       { name: 'Strict Mode', URL: astro + 'javascript/Strict Mode/' },
-      { name: 'Oggetti', URL: '#' },
+      { name: 'Oggetti', URL: astro + 'javascript/Oggetti/' },
       { name: 'Mappe', URL: '#' },
       { name: 'Espressioni Regolari', URL: '#' },
       { name: 'Debug', URL: '#' },
