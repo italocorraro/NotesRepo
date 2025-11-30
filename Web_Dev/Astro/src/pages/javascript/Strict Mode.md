@@ -35,7 +35,8 @@ In *sloppy mode* è possibile dichiarare variabili globali senza keyword `var`, 
 ```javascript
 let errore;
 
-eerore = 16; // dichiarata come variabile globale
+eerore = 16; 
+// dichiarata come variabile globale
 
 console.log(errore);
 // ↪ undefined

@@ -64,7 +64,8 @@ Consideriamo una funzione; le funzioni prendono sempre una copia dei dati passat
 * invece, passare per argomento un dato di tipo primitivo a una funzione gliene fornisce solo una copia del valore; l'originale non viene toccato
 :::
 
-## Copiatura
+## Valore e Riferimento
+
 
 JavaScript non rende esplicita la referenziazione dei dati, quindi, le varie istruzioni che copiano i dati possono fare due tipi di copiature:
 

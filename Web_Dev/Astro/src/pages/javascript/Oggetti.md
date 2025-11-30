@@ -180,6 +180,8 @@ for (let prop in object) {
 }
 ```
 
+### con il metodo entries()
+
 Alternativamente possiamo usare il metodo `entries()`: \
 il metodo **`entries()`** restituisce un iteratore che contiene le coppie chiave/valore dell'oggetto:
 
@@ -201,6 +203,23 @@ for (let [chiave, valore] of Object.entries(oggetto)) {
 
 Il metodo `values()` restituisce un array che contiene tutti i valori delle proprietà dell'oggetto
 
+
+## Oggetti Globali
+
+Alcuni oggetti sono definiti nello scope globale, cioè accessibili da qualsiasi parte del codice
+
+:::nb
+da non confondere gli oggetti globali con l'**oggetto globale**, cioè l'oggetto che rappresenta lo _scope globale_;
+
+=u=in un browser web l'oggetto globale è `window`==; questo oggetto è sottointeso quando se ne invocano proprietà e metodi, ad esempio il metodo `alert()` sottointende `window.alert()`
+
+:::oss
+le variabili dichiarate con `var` 'esistono' direttamente nell'oggetto globale `window`
+:::
+
+Gli _oggetti globali_ sono pre-costruiti; un esempio è `NaN`, che però non ha né proprietà né metodi
+
+Ce ne sono molti altri: `Number`, `Array`, `String`, `Math`, `Error`, ecc...
 
 <script>
 </script>

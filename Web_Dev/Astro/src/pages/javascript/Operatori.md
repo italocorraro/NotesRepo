@@ -60,7 +60,7 @@ I seguenti valori sono tutti e soli quelli che vengono convertiti in `false` per
 | Valore | Tipo | 
 |---|---|
 | `null` | Null |
-| `undefined` | Unvefined |
+| `undefined` | Undefined |
 | `false` | Boolean |
 | `NaN` | Number |
 | `0` | Number |

@@ -32,11 +32,6 @@ Questo è il tipico uso di un ciclo `for`
 Anche la prima iterazione del loop deve rispettare la condizione
 :::
 
-### Costrutto for...of
-WIP
-### Costrutto for...in
-WIP
-
 ## Manipolazione del Loop
 
 ### break
