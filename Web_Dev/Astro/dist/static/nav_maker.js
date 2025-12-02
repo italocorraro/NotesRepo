@@ -125,7 +125,7 @@ const navbar = [
   {
     name: 'TypeScript',
     content: [
-      // Vuoto
+      { name: 'Overview', URL:  astro + 'typescript/Overview/' }
     ]
   },
   {
@@ -145,13 +145,13 @@ const navbar = [
   {
     name: 'Svelte',
     content: [
-      { name: 'Sintassi', URL:  '#' }
+      { name: 'Overview', URL:  astro + 'Svelte/Overview/' }
     ]
   },
   {
     name: 'Astro',
     content: [
-      { name: 'Basi', URL: '#' },
+      { name: 'Overview', URL: '#' },
     ]
   }
 ];

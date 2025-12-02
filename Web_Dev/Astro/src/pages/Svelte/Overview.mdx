@@ -1,0 +1,61 @@
+---
+layout: ../../layouts/serious/LayoutAstro.astro
+title: 'Overview di Svelte'
+metaTitle: 'Appunti su Svelte'
+description: 'Appunti e note sulle informazioni generali di Svelte.'
+author: 'Italo Corraro'
+---
+
+import First from '../../svelte-learning/first.svelte';
+
+## Iniziamo
+
+```svelte
+<script>
+    let counter = $state(0);
+    let randomText = $state('');
+
+    function increase() {
+        counter++;
+    }
+</script>
+
+<section>
+    <h3>Primo Componente Esempio:</h3>
+    <p>Questo è un contatore: {counter}</p>
+    <button onclick={increase}>Aumenta</button>
+    <p><label for="randomText">Scrivi qualcosa qui sotto:</label></p>
+    <input type="text" bind:value={randomText} id="randomText" />
+    <p>E lo vedrai qui: <span>{randomText}</span></p>
+</section>
+
+<style>
+    span {
+        text-decoration: underline;        
+    }
+</style>
+```
+
+<First client:load />
+
+:::nota
+In **Astro** il componente viene importato e renderizzato staticamente; \
+per un render dinamico si utilizza la direttiva `client:`:
+* `client:load` per *idratare* il componente al caricamento della pagina
+* `client:visible` per *idratare* il componente quando entra nella viewport
+* `client:idle` per *idratare* il componente quando il browser è inattivo
+* `client:only='svelte'` per *idratare* il componente solo lato client
+
+:::eg
+```astro
+---
+import First from '../../svelte-learning/first.svelte';
+---
+
+<First client:load />
+```
+:::
+
+:::oss
+I titoli generati dal componente dinamico non sono presenti a indice poiché questo è generato staticamente a build time
+:::
