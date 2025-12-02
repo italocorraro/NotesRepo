@@ -9,46 +9,53 @@ author: 'Italo Corraro'
 ## Ciclo for
 
 ```javascript
-for (initializer; condition; final-expression) {
-  // code to run
+for (espressione_iniziale; condizione; espressione_finale) {
+  /* codice da eseguire
+   * ad ogni iterazione */
 }
 ```
-Il ciclo `for` prende tre parametri:
+
+Il ciclo **`for`** prende tre parametri:
 * una **espressione iniziale**: solitamente una variabile inizializzata con `let` a un numero che viene usata come contatore per il ciclo
-* una **condizione**: la condizione (dev'essere truthy) che deve essere rispettata per permettere l'inizio di un ciclo del loop
+* una **condizione**: la condizione (*dev'essere truthy*) che deve essere rispettata per permettere l'inizio di un ciclo del loop; *se la condizione non viene rispettata, il ciclo si interrompe*
 * una **espressione finale**: viene eseguita alla fine di ogni ciclo del loop; solitamente viene usata per aumentare (o diminuire) il contatore del loop
 
 :::eg
 ```javascript
 const numeroIterazioni = 20;
 for(let i = 0; i < numeroIterazioni; i++) {
-    // codice
+    // codice per iterazione
 }
 ```
-Questo è il tipico uso di un ciclo `for`
+Questo è il tipico uso di un ciclo `for`;
+
+Uno più concreto:
+
+```javascript
+const arrayDiZeri = [];
+const lunghezza = 7;
+// Riempiamo l'array con 7 zeri:
+for(let i = 0; i < lunghezza; i++) {
+  arrayDiZeri[i] = 0;
+}
+console.log(arrayDiZeri);
+// ↪ '[0, 0, 0, 0, 0, 0, 0]'
+```
 :::
 
 :::nb
-Anche la prima iterazione del loop deve rispettare la condizione
+Anche la prima iterazione del loop deve rispettare la condizione per essere eseguita; \
+se non viene rispettata per la prima condizione, allora il ciclo termina senza eseguire nient'altro che l'espressione iniziale (il cui scope è limitato all'esecuzione del ciclo) e la prima verifica della condizione, quindi il codice del blocco non viene eseguito nemmeno una volta
 :::
-
-## Manipolazione del Loop
-
-### break
-
-L'istruzione `break` termina immediatamente il loop; viene poi eseguito il codice che viene dopo il loop
-
-### continue
-
-L'istruzione `continue` termina l'iterazione corrente e forza il passaggio a quella successiva (viene comunque eseguita l'espressione finale)
 
 ## Ciclo while
 
-Il ciclo con `while` prende come argomento solo una condizione; finché questa è verificata, viene eseguita una iterazione del relativo blocco di codice
+Il ciclo con **`while`** prende come argomento solo una condizione; finché questa è verificata, viene eseguita una iterazione del relativo blocco di codice
 
 ```javascript
-while (condition) {
-  // code to run
+while (condizione) {
+  /* codice da eseguire
+   * ad ogni iterazione */
 }
 ```
 
@@ -84,7 +91,9 @@ console.log(lettere.join(' '));
 
 ```javascript
 do {
-  // code to run
+  /* codice da eseguire
+   * ad ogni iterazione
+   * (la prima è forzata) */ 
 
   final-expression
 } while (condition);
@@ -92,3 +101,14 @@ do {
 
 Il ciclo `do...while` funziona esattamente come un `while`, solo che il blocco di codice da iterare è eseguito almeno una volta a prescindere dalla condizione da rispettare
 
+## Manipolazione del Loop
+
+### break
+
+L'istruzione `break` termina immediatamente il loop corrente; viene poi eseguito il codice che viene dopo il loop
+
+### continue
+
+L'istruzione `continue` termina l'iterazione corrente e forza il passaggio a quella successiva del loop corrente (viene comunque eseguita l'espressione finale)
+
+### label

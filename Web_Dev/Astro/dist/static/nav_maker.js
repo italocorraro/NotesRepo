@@ -93,6 +93,7 @@ const navbar = [
     name: 'JavaScript',
     content: [
       { name: 'Overview', URL: astro + 'javascript/Overview/'},
+      { name: 'Tipi di Dato', URL: astro + 'javascript/Tipi di Dato/' },
       { name: 'Operatori', URL: astro + 'javascript/Operatori/' },
       { name: 'Numeri', URL: '#' /* astro + 'javascript/Numeri/' */ },
       { name: 'Stringhe', URL: '#'/*  astro + 'javascript/Stringhe/' */ },

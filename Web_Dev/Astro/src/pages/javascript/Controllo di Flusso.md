@@ -183,7 +183,7 @@ try {
 } catch(e) {
     console.error(e);
 }
-// ↪ 'sono un errore'
+// ✖ 'sono un errore'
 ```
 In questo (sciocco) esempio vediamo semplicemente la struttura che deve avere la sequenza `try`-`catch` e la sua esecuzione:
 * l'istruzione `throw` interrompe l'esecuzione del blocco `try`, infatti, a console non viene loggato "troppo tardi"
@@ -197,15 +197,62 @@ In questo (sciocco) esempio vediamo semplicemente la struttura che deve avere la
 L'istruzione `finally` va piazzata dopo `try` e `catch`; \
 il codice contenuto nel suo blocco viene eseguito dopo `try` e `catch`, tuttavia viene eseguito a prescindere da se è stato lanciato un errore e se questo è stato gestito.
 
-generalmente, questo blocco è utilizzato per rilasciare una risorsa impegnata nel `try` a prescindere dal risultato dell'operazione.
+:::nota
+Generalmente, questo blocco è utilizzato per rilasciare una risorsa impegnata nel `try` a prescindere dal risultato dell'operazione.
+:::
 
-<script>
-try {
-    let sbaglia = 'sono un errore';
-    throw sbaglia;
-    console.log('troppo tardi');
-} catch(e) {
-    console.error(e);
+Qualunque valore portato in output dal blocco `finally` diventa il valore di output dell'intero blocco `try...catch...finally`:
+
+```javascript
+function tentativo() {
+    try {
+        console.log('blocco try');
+        throw 'errore';
+    } catch(e) {
+        console.log('blocco catch');
+        console.error(e);
+        return false;
+    } finally {
+        console.log('blocco finally');
+        return true; // sovrascrive il return precedente
+        /* tutto quello che viene dopo è inutile
+         * perché una volta raggiunto return
+         * la funzione viene chiusa */
+    }
 }
-// ↪ 'sono un errore'
-</script>
+let result = tentativo();
+// ↪ 'blocco try'
+// ↪ 'blocco catch'
+// ✖ 'errore'
+// ↪ 'blocco finally'
+console.log(result);
+// ↪ true
+```
+
+Vediamo che tutti i tre blocchi vengono eseguiti (lo conferma la console), ma il valore di ritorno della funzione è `true` dal `finally`, non `false` dal blocco `catch`.
+
+Gli errori lanciati dal blocco `catch` vengono anche quelli sovrascritti dal `return` del blocco `finally`
+
+:::nota
+Più blocchi `try...catch` possono essere innestati (nel `try`),
+
+se un blocco `try` innestato non ha un `catch`, allora DEVE avere un `finally`; in tal caso, gli errori lanciati nel blocco innestato verranno passati al `catch` del genitore
+:::
+
+### L'Oggetto Error
+
+Utilizzando l'oggetto `Error()` invece di una semplice espressione per errore, avremo accesso alle proprietà `name`, per avere a disposizione il *tipo* dell'errore, e `message` per il messaggio:
+
+```javascript
+try {
+    /* robe */
+    if(qualcheErroreVieneCommesso) {
+        throw new Error("Messaggio d'errore");
+    }
+} catch(e) {
+    console.error(e.name);
+    // ✖ 'Error'
+    console.error(e.message);
+    // ✖ 'Messaggio d'errore'
+}
+```
