@@ -6,11 +6,15 @@ description: 'Appunti e note sugli operatori in JavaScript.'
 author: 'Italo Corraro'
 ---
 
+## Operatori
+
 JavaScript dispone di diversi operatori per operazioni aritmetiche, di assegnazione, logiche, comparative e altro;
 
 la sintassi di questi operatori è la stessa degli altri linguaggi simil-`C`
 
-## Operatori Aritmetici
+Gli operatori si distinguono in *unari* cioè che prendono un solo operando, e *binari*
+
+## Operatori Aritmetici Binari
 
 Consideriamo tre variabili:
 
@@ -151,6 +155,8 @@ Gli operatori logici sono:
 l'espressione `let x = ascissa ?? 0;` significa   
 *se il valore di `ascissa` è `null` oppure `undefined`, allora assegna ad `x` il valore `0`, altrimenti, assegna ad `x` il valore di `ascissa`*
 
+Gli operatori `&&`, `||` e `??` sono binari, mentre `!` è unario.
+
 :::nb
 Gli operatori logici, se usati con operandi *non-booleani* ricorreranno alla *coercizione di tipo*, ma è bene ricordare che, in tal caso, **non restituiranno un valore booleano**:
 
@@ -246,6 +252,11 @@ a?.b.c;
  * se `a` è `null` o `undefined` */
 ```
 
+Possiamo sfruttare la cortocircuitazione per ottenere alcuni risultati:
+
+* `let variabile = input ?? default`, usando `??` possiamo evitare di assegnare a una variabile valori nullish
+* `let truthy = amI || orMe || mePerhaps`, usando `||` possiamo assegnare alla variabile il primo valore truthy della lista
+* `{condition && onlyEvaluateIfCondition}`, usando `&&` possiamo evitare di valutare un'espressione se una condizione che la precede è falsy
 
 ### Operatore Ternario
 
@@ -275,8 +286,11 @@ supponiamo `x = 5` e `y = 2` come prima:
 | `/=` | `x /= y` | `x = x / y` | `x = 2.5` |
 | `%=` | `x %= y` | `x = x % y` | `x = 1` |
 
+Tutti questi operatori sono binari tranne `++` e `--` che sono invece unari.
+
 ```javascript
 x += 5; // Equivalente a x = x + 5
+x++;    // Equivalente a x = x + 1
 x -= 3; // Equivalente a x = x - 3
 x *= 2; // Equivalente a x = x * 2
 x /= 4; // Equivalente a x = x / 4
@@ -346,5 +360,14 @@ Ci sono inoltre altri due operatori di comparazione che invece non operano alcun
 | `===` | "è uguale in valore e tipo a" |
 | `!==` | "è diverso in valore o tipo a" |
 
----
+## Operatori Relazionali
 
+Gli **operatori relazionali** confrontano due operandi e restituiscono un valore booleano sulla base del confronto:
+
+| Operatore | Espressione | Descrizione |
+| --- | --- | --- |
+| `in` | `prop in object` | Restituisce true se l'operando a sinistra rappresenta una proprietà dell'oggetto sulla destra |
+| `instanceof` | `object instanceof objectType` | Restituisce `true` se l'oggetto sulla sinistra è del tipo specificato dall'oggetto sulla destra [^2] |
+
+
+[^2]: `objectType` rappresenta un costruttore per l'oggetto sulla sinistra, ad esempio `array instanceof Array` per chiedere se l'oggetto `array` ha come costruttore `Array`, cioè se è possibile `const array = new Array(elementi di array)`

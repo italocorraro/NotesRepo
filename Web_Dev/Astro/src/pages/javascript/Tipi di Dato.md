@@ -18,6 +18,8 @@ I **tipi primitivi** rappresentano dei valori base del linguaggio e di loro natu
 
 L'operatore `typeof` permette di leggere il tipo della variabile inserita alla sua destra; tutti i tipi primitivi eccetto `null` restituiscono una stringa contenente il nome del proprio tipo.
 
+JavaScript definisce 7 tipi primitivi: `Null`, `Undefined`, `String`, `Number`, `BigInt`, `Boolean` e `Symbol`.
+
 :::eg
 ```javascript
 typeof 'qualcosa'; // 'string'
@@ -26,28 +28,34 @@ typeof string === 'string';  // true
 ```
 :::
 
-Con l'eccezione di `undefined` e `null`, tutti gli altri tipi primitivi hanno una classe _wrapper_ associata:
-
 ### Classi Wrapper
 
-Le **classi wrapper** vengono usate da JavaScript per racchiudere un dato primitivo quando viene invocata una proprietà o un metodo su di esso; in questo modo, emula il comportamento di un oggetto.
+Con l'eccezione di `undefined` e `null`, tutti gli altri tipi primitivi hanno una classe _wrapper_ associata:
+
+Le **classi wrapper** vengono usate da JavaScript per racchiudere un dato primitivo quando viene invocata una proprietà o un metodo su di esso; in questo modo, emula il comportamento di un oggetto e permette di chiamare la proprietà/metodo sul dato.
+
+Una tabella con i tipi primitivi, relativi wrapper e descrizione dei dati che contengono:
 
 | Tipo | `typeof` | Wrapper | Descrizione
 | --- | --- | --- | --- |
-| `Null` | `"object"` | \/ | assenza di *oggetto*[^3] |
-| `Undefined` | `"undefined"` | \/ | assenza di *valore*[^3] |
+| `Null` | `"object"` | \/ | assenza di *oggetto* |
+| `Undefined` | `"undefined"` | \/ | assenza di *valore* |
 | `Boolean` | `"boolean"` | `Boolean()` | `true` \| `false` |
 | `Number` | `"number"` | `Number()` | intero o virgola mobile a 64bit |
 | `BigInt` | `"bigint"` | `BigInt()` | intero con precisione arbitraria |
 | `String` | `"string"` | `String()` | sequenza di caratteri |
 | `Symbol` | `"symbol"` | `Symbol()` | dato le cui istanze sono uniche e immutabili |
 
-[^3]: Il tipo Null include solo un valore: `null`; =l===
-analogamente, il tipo Undefined include solo `undefined`. =l===
-Concettualmente, `null` rappresenta l'assenza deliberata di un *oggetto*, mentre `undefined` rappresenta l'assenza di un `valore`; =l=== =l===
-    una variabile non inizializzata ha valore `undefined`, similmente una funzione che non restituisce alcun valore, restituisce implicitamente `undefined`; chiamare una proprietà inesistente di un oggetto restituisce `undefined` 
-=l=== =l===
-    `null` si trova alla fine di una *catena di prototìpi* come valore ultimo
+### null e undefined
+
+Il tipo `Null` include solo un valore: `null`; \
+analogamente, il tipo `Undefined` include solo `undefined`. 
+
+Concettualmente, `null` rappresenta l'assenza deliberata di un *oggetto*, mentre `undefined` rappresenta l'assenza di un `valore`;
+
+* una variabile non inizializzata ha valore `undefined`, similmente, una funzione che non restituisce alcun valore, restituisce implicitamente `undefined`; chiamare una proprietà inesistente di un oggetto restituisce `undefined` 
+
+* `null` si trova alla fine di una *catena di prototìpi* come valore ultimo;
 
 ### Coercizione di Tipo
 
@@ -70,7 +78,7 @@ L'unico altro tipo di dato che può essere assegnato ad un identificatore è **o
 
 Gli oggetti sono tipi composti che contengono un certo numero di **proprietà**:
 
-* ogni proprietà è un'associazione di una *chiave* a un dato; per invocare la proprietà si una l'operatore `.`:
+* ogni proprietà è un'associazione di una *chiave* a un *dato*; per invocare la proprietà si usa l'operatore `.`:
 
 ```javascript
 const bilancio = {
@@ -82,6 +90,54 @@ bilancio.febbraio; // restituisce 360
 ```
 
 Il dato associato può anche essere un altro oggetto, un array, ecc...
+
+:::oss
+Non è un requisito necessario che `.` segua direttamente l'oggetto, quindi possiamo concatenare più invocazioni di proprietà e metodi senza necessità di creare una coda infinita:
+
+```javascript
+const persona = {
+    nome: {
+        primo: 'Gianni',
+        secondo: 'Luigi',
+        cognome: 'Verdi'
+    },
+    eta: 23,
+}
+
+persona.nome.cognome; // 'Verdi'
+persona
+  .nome
+  .secondo; // 'Luigi'
+```
+
+:::nb
+Ogni volta che viene chiamata una proprietà, il valore che questa contiene viene restituito ed è su quel valore che viene eseguita l'operazione successiva:
+```js
+persona
+    .nome
+/*  └─> Object nome */.cognome
+/*                    └─> 'Verdi' */.length;
+/*                                  └─> 5 */
+```
+
+:::
+
+<script>
+const persona = {
+    nome: {
+        primo: 'Gianni',
+        secondo: 'Luigi',
+        cognome: 'Verdi'
+    },
+    eta: 23,
+}
+
+persona.nome.cognome; // 'Verdi'
+console.log(persona
+  .nome
+  .secondo.
+  length); // 'Luigi'
+</script>
 
 ### Tipi di Oggetto
 

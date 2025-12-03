@@ -14,9 +14,20 @@ Gli oggetti sono collezioni di dati organizzati in coppie *key: value*, cioè sv
 * di base, le proprietà non hanno un ordine specifico
 * gli oggetti sono dichiarati come riferimenti, non come valore
 
+---
+
+:::nb
+Possiamo dire che le variabili dichiarate per contenere oggetti in realtà contengono solo il riferimento all'oggetto costruito;
+
+tramite questo riferimento possiamo svolgere poi operazioni sui dati nella collezione.
+
+Copiare la variabile che punta all'oggetto crea una copia del riferimento, ma non crea una copia dell'oggetto in sè;
+
+modificare le proprietà dell'oggetto tramite il riferimento contenuto nella variabile originale
+
 ## Creazione
 
-Possiamo definire e inizializzare un oggetto senza alcun costruttore; quando l'oggetto viene creato in questo modo si dice *object literal*
+Possiamo definire e inizializzare un oggetto senza alcun costruttore; gli oggetti hanno un loro letterale (*object literal*) con cui possono essere facilmente costruiti:
 
 ```javascript
 const object = {

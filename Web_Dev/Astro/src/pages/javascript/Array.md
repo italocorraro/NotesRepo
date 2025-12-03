@@ -8,18 +8,25 @@ author: 'Italo Corraro'
 
 ## Definizione di Array
 
-Un array è un tipo di oggetto il cui scopo principale è di raccogliere ordinatamente una serie di dati (l'indicizzazione degli elementi parte da `0`); gli array vengono dichiarati racchiudendo i loro elementi dentro parentesi quadre
+*Un array è un tipo di oggetto* il cui scopo principale è di raccogliere ordinatamente una serie di dati: 
 
 * gli array di JavaScript sono tipicamente memorizzati (come riferimento) in una costante (con `const`); inoltre 
-* sono indicizzati, cioè ciascun elemento è riconosciuto nell'ordine dell'array con un indice che parte da 0,
+* sono **indicizzati**, cioè ciascun elemento è riconosciuto nell'ordine dell'array con un indice che parte da `0`,
 * sono **dinamici**, cioè non hanno una dimesione fissa e si possono aggiungere o rimuovere elementi in qualsiasi momento, 
 * sono **eterogenei**, cioè è consentito riempirli con elementi di qualsiasi tipo (inclusi altri array, oggetti, ecc...)
 
----
+Possiamo creare un nuovo array usando l'oggetto globale `Array`:
 
-:::eg
 ```javascript
-// Creazione array:
+const nuovo = new Array('brutto', 'bello', 'cattiv0');
+console.log(nuovo);
+// ↪ Array(3) : ['brutto', 'bello', 'cattivo']
+```
+
+È però più conveniente e leggibile usare direttamente un *array literal* per creare l'array:
+
+```javascript
+// Creazione array con letterale:
 const macchine = [
     'Volvo', 
     'Ferrari',
@@ -27,33 +34,45 @@ const macchine = [
     `questo array non
     deve avere senso`,
 ]
+```
 
-// Possiamo accedere agli elementi con il loro indice:
+Inoltre, possiamo accedere agli elementi con il loro indice:
+```js
 console.log(macchine[1]);
-// Restituisce 'Ferrari'
+// ↪ 'Ferrari'
+```
 
-// Possiamo aggiungere elementi:
+Possiamo aggiungere elementi:
+```js
 macchine[4] = 'BMW';
 console.log(macchine[4]);
-// Restituisce 'BMW'
+// ↪ 'BMW'
+```
 
-// Possiamo sostituire elementi:
+Possiamo sostituire elementi:
+```js
 macchine[1] = 23;
 console.log(macchine[1]);
-// Restituisce '23'
+// ↪ '23'
+```
 
-// Possiamo trovare la lunghezza dell'array:
+Possiamo trovare la lunghezza dell'array:
+```js
 console.log(macchine.length);
-// Restituisce '5'
+// ↪ '5'
+```
 
-// Possiamo creare un array multidimensionale:
+Possiamo creare un array multidimensionale:
+```js
 macchine[2] = [0, 1, 2];
 console.log(macchine[2][2]);
-// Restituisce '2'
+// ↪ '2'
+```
 
-// Possiamo convertirlo in una stringa:
+Possiamo convertirlo in una stringa:
+```js
 console.log(macchine.toString());
-// Restituisce:
+// ↪:
 /* Volvo,23,0,1,2,questo array non
     deve avere senso,BMW */
 ```
@@ -62,10 +81,10 @@ console.log(macchine.toString());
 :::warn
 Un array resta un oggetto, cioè `typeof` restituirà `object` se usato con un array;
 
-il metodo corretto per verificare se una variabile è un array è passandola per argomento a `Array.isArray()`, oppure con l'espressione `array instanceof Array`, che verifica se `array` è un'istanza dell'oggetto globale `Array`, cioè l'oggetto a cui tutti gli array fanno capo
+il metodo corretto per verificare se una variabile è un array è passandola per argomento a `Array.isArray()`, oppure con l'espressione `array instanceof Array`, che verifica se `array` è un'istanza dell'oggetto globale `Array`, cioè l'oggetto a cui tutti gli array fanno capo per le proprietà e i metodi
 :::
 
-## Mutare l'Array
+## Prime Proprietà
 
 ### Lunghezza dell'Array
 
@@ -104,9 +123,9 @@ console.log(listaSpesa.indexOf('burro'));
 // ↪ -1
 ```
 
-### Aggiungere Elementi
+## Mutare l'Array
 
-#### Alla Coda
+### Aggiungere Elementi alla Coda
 
 L'alternativa built-in a `array[array.length] = "new element";` è usare il metodo `push()` passando per argomento l'elemento da inserire =u=in coda all'array==:
 
@@ -124,7 +143,7 @@ console.log(listaSpesa.join(' '));
 
 La nuova lunghezza dell'array viene restituita come output della funzione
 
-#### Alla Cima
+### Aggiungere Elementi alla Cima
 
 Per aggiungere un elemento =u=all'inizio dell'array== si usa il metodo `unshift()`; questo metodo non sostituirà il primo elemento ma farà scorrere tutti gli elementi di una posizione per aggiungere in cima quella passato per argomento: 
 
@@ -142,9 +161,7 @@ console.log(listaSpesa.join(' '));
 
 La nuova lunghezza dell'array viene restituita come output della funzione
 
-### Rimuovere Elementi
-
-#### Dalla Coda
+### Rimuovere Elementi dalla Coda
 
 Per rimuovere l'ultimo elemento dell'array (NON sostituirlo con un `null`), si usa il metodo `pop()`:
 
@@ -162,7 +179,7 @@ console.log(listaSpesa.join(' '));
 
 L'elemento rimosso viene restituito come output della funzione
 
-#### Dalla Cima
+### Rimuovere Elementi dalla Cima
 
 Per rimuovere il primo elemento dell'array, facendo correttamente scorrere gli altri elementi a riempire il vuoto, si usa il metodo `shift()`:
 
@@ -182,7 +199,7 @@ console.log(listaSpesa.join(' '));
 
 L'elemento rimosso viene restituito come output della funzione
 
-#### Da un Indice Arbitrario
+### Rimuovere da un Indice Arbitrario
 
 Per rimuovere uno o più elementi dall'array possiamo usare il metodo `splice()`; questo metodo prende come argomenti l'indice dell'elemento da cui partire con la rimozione e il numero di elementi da rimuovere:
 
@@ -441,13 +458,3 @@ console.log(start + spesa);
 :::nota
 Il metodo `toString()` svolge lo stesso ruolo di `join(',')`, cioè concatena gli elementi dell'array in una stringa, ma non accetta parametri e usa sempre `,` come separatore
 :::
-
-<script>
-const listaSpesa = [
-    "pane", "latte", 
-    "formaggio", "insalata"
-];
-const spesa = listaSpesa.join(', ');
-const start = 'Nella tua lista della spesa ci sono: ';
-console.log(start + spesa);
-</script>

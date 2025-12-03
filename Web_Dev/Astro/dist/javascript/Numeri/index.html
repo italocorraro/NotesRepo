@@ -1,6 +1,285 @@
-<!DOCTYPE html><meta charset="utf-8"><section><h2 id="numeri">Numeri</h2><p>In JavaScript i numeri sono trattati tutti come floating point a 64 bit, l’equivalente dei <code>double</code>; non ci sono degli interi, ma non vengono mostrati decimali non necessari</p><ul>
+<!DOCTYPE html><html lang="it" data-astro-cid-hpxbdaly> <head><!-- Base Config --><title class="htmlCodeTitle">Numeri in JavaScript</title><meta class="htmlCodeChar" charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v5.15.9"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="icon" sizes="32x32" href="/NotesRepo/Web_Dev/Astro/dist/Crocco.png" type="image/x-icon"><!-- Generic tags --><meta class="htmlCodeAuthor" name="author" content="Italo Corraro"><meta class="htmlCodeDescription" name="description" content="Appunti e note sui dati numerici in JavaScript."><!-- Open Graph tags --><meta property="og:title" content="Appunti sui Numeri in JavaScript"><meta property="og:description" content="Appunti e note sui dati numerici in JavaScript."><meta property="og:type" content="website"><meta property="og:locale" content="it_IT"><meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="799"><meta property="og:image:height" content="400"><!-- Twitter Card tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Appunti sui Numeri in JavaScript"><meta name="twitter:description" content="Appunti e note sui dati numerici in JavaScript."><meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png"><meta class="htmlCodeAuthor" name="author" content="Italo Corraro"><link rel="stylesheet" href="/NotesRepo/Web_Dev/Astro/dist/_astro/basics.eTRO-8fI.css">
+<style>nav[data-astro-cid-sf7rw5md]{display:flex;padding:0 1.5em;width:100%;max-width:100%;justify-content:center}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]{width:33%;text-transform:uppercase}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]:first-child{text-align:left}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:first-child:before{content:"<"}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]:last-child{text-align:right}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:last-child:after{content:">"}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:first-child:before,nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:last-child:after{display:inline-block;transform:translateY(-.05em)}p[data-astro-cid-gcm7ptol]{margin:0}footer[data-astro-cid-jyhwcbfj]{display:flex;gap:.8rem;margin-top:2rem;padding:1rem 0;flex-direction:column}p[data-astro-cid-jyhwcbfj]{margin:0}
+</style></head> <body data-astro-cid-hpxbdaly> <header id="site-header" data-astro-cid-3ef6ksr2> <button type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu"> 
+Menu
+</button> <nav id="mainNav" aria-label="Navigazione Sito"> <ul> <li class="nav-item"><span>HTML</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Sintassi html/">Sintassi html</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Struttura Semantica/">Struttura Semantica</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/L'elemento head/">L&#39;elemento &lt;head&gt;</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Ancore/">Ancore</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Liste/">Liste</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Immagini/">Immagini</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Altri Media/">Altri Media</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Tabelle">Tabelle</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Forms/">Form</a></li> </ul> </li><li class="nav-item"><span>CSS</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Sintassi CSS/">Sintassi CSS</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Selectors/">Selettori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Box Model/">Box Model</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Unità di Misura/">Unità di misura</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Colori/">Colori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Immagini/">Immagini</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Funzioni e Variabili/">Funzioni e Variabili</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Background/">Background</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Tipografia/">Tipografia</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/#liste">Liste</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/#ancore">Ancore</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Tabelle/">Tabelle</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Form/">Form</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Media Queries/">Media Queries</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Float/">Layout con Float</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Flexbox/">Layout con Flexbox</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Grid/">Layout con Grid</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/">Altri Stili</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Transizioni-Animazioni/">Animazioni &amp; Transizioni</a></li> </ul> </li><li class="nav-item"><span>JavaScript</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Overview/">Overview</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Tipi di Dato/">Tipi di Dato</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Operatori/">Operatori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Numeri/">Numeri</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Stringhe/">Stringhe</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Array/">Array</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Controllo di Flusso/">Controllo di Flusso</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Iterazione/">Iterazione</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Funzioni/">Funzioni</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Strict Mode/">Strict Mode</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Oggetti/">Oggetti</a></li><li class="nav-link"> Mappe</li><li class="nav-link"> Espressioni Regolari</li><li class="nav-link"> Debug</li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/DOM/">DOM API</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Eventi/">Eventi</a></li><li class="nav-link"> Moduli</li><li class="nav-link"> Storage API</li><li class="nav-link"> URL API</li><li class="nav-link"> Asincronia</li><li class="nav-link"> Promesse</li> </ul> </li><li class="nav-item"><span>Struttura Pagine</span> <ul> <li class="nav-link"> Struttura html</li><li class="nav-link"> Struttura CSS</li><li class="nav-link"> Testata del Sito</li> </ul> </li><li class="nav-item"><span>TypeScript</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/typescript/Overview/">Overview</a></li> </ul> </li><li class="nav-item"><span>Markdown</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Markdown/Sintassi Markdown/">Sintassi</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Markdown/GFM/">GitHub Flavored</a></li><li class="nav-link"> Remark Plugins</li> </ul> </li><li class="nav-item"><span>Svelte</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Svelte/Overview/">Overview</a></li> </ul> </li><li class="nav-item"><span>Astro</span> <ul> <li class="nav-link"> Overview</li> </ul> </li> </ul> </nav> <div id="mainNavBackdrop"></div> <script type="module">const i=document.querySelector("button:has(+ #mainNav)");i?.addEventListener("click",()=>{const t=i.getAttribute("aria-expanded")==="true";i.setAttribute("aria-expanded",`${!t}`)});const o=document.querySelector("#mainNav + div");o?.addEventListener("click",()=>{i?.setAttribute("aria-expanded","false")});function a(t,e=400){t.style.transition=`height ${e}ms ease`,t.style.height=t.scrollHeight+"px",requestAnimationFrame(()=>{t.style.height="0"}),setTimeout(()=>{t.style.display="none"},e)}function n(t,e=400){t.style.display="block";let s=t.scrollHeight;t.style.height="0",t.style.transition=`height ${e}ms ease`,requestAnimationFrame(()=>{t.style.height=s+"px"}),setTimeout(()=>{t.style.height="auto"},e)}function l(t,e=400){window.getComputedStyle(t).display==="none"?n(t,e):a(t,e)}document.querySelectorAll(".nav-item").forEach(t=>{let e=t.querySelector("ul"),s=t.querySelector("span");a(e),s?.addEventListener("click",()=>{l(e,400)})});</script> <aside aria-labelledby="site-settings"> <h2 id="site-settings">Impostazioni Tema</h2> <!-- Impostazioni TEMA SHIKI --> <form id="shiki-theme-settings" class="astro-code"> <input type="radio" name="shiki-theme" id="shiki-light" value="light"> <label for="shiki-light" title="Tema Chiaro"> <span class="text-only">Tema Chiaro</span> <svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"> <!-- Disco centrale --> <circle cx="50" cy="50" r="22" fill="var(--shiki-light)"></circle> <!-- Raggi --> <g stroke="var(--shiki-light)" stroke-width="8" stroke-linecap="round"> <line x1="50" y1="6" x2="50" y2="22"></line> <line x1="50" y1="78" x2="50" y2="94"></line> <line x1="6" y1="50" x2="22" y2="50"></line> <line x1="78" y1="50" x2="94" y2="50"></line> <line x1="21" y1="21" x2="32" y2="32"></line> <line x1="78" y1="78" x2="67" y2="67"></line> <line x1="21" y1="79" x2="32" y2="68"></line> <line x1="79" y1="21" x2="68" y2="32"></line> </g> </svg> </label> <input type="radio" name="shiki-theme" id="shiki-dark" value="dark"> <label for="shiki-dark" title="Tema Scuro"> <span class="text-only">Tema Scuro</span> <svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"> <!-- Disco completo --> <circle cx="50" cy="50" r="40" fill="var(--shiki-dark-code)" opacity="0.25"></circle> <!-- Falce luminosa (più larga rispetto alla versione precedente) --> <path d="M45 10
+           A40 40 0 1 0 45 90
+           A28 40 0 1 1 45 10Z" fill="var(--shiki-dark)"></path> </svg> </label> <input type="radio" name="shiki-theme" id="shiki-dracula" value="dracula"> <label for="shiki-dracula" title="Tema Dracula"> <span class="text-only">Tema Dracula</span> <img src="https://user-images.githubusercontent.com/33915497/214760369-5c078b43-fdab-4cdd-adfe-ad905a64b5a5.png" alt="logo tema Dracula da GitHub" loading="lazy" decoding="async" fetchpriority="auto" width="60" height="60"> </label> <input type="radio" name="shiki-theme" id="shiki-system" value="" checked> <label for="shiki-system" title="Tema Predefinito"><span class="text-only">Tema Predefinito</span> <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"> <!-- Mezzo sole a sinistra --> <g fill="var(--font-color)"> <!-- Semicerchio del sole --> <path d="M12 4a8 8 0 0 0 0 16V4z"></path> </g> <!-- Mezzo cerchio scuro a destra --> <path fill="var(--font-color)" d="M12 4a8 8 0 1 1 0 16V4z" opacity="0.4"></path> </svg> </label> </form> </aside> <script type="module">const o="my-notes-repo-theme",s=sessionStorage.getItem(o),n=document.documentElement,r=document.querySelectorAll('#shiki-theme-settings > [type="radio"]');s&&typeof s=="string"&&n.setAttribute("data-theme",s);r.forEach(e=>{if(e.id==="shiki-system")e.addEventListener("input",()=>{n.removeAttribute("data-theme"),sessionStorage.removeItem(o)});else{const t=e.getAttribute("value");t==s&&e.setAttribute("checked","true"),e.addEventListener("input",()=>{t&&typeof t=="string"&&(n.setAttribute("data-theme",t),sessionStorage.setItem(o,t))})}});</script> <!-- <header role="banner">
+  
+  <div class="logo">
+    <h1>Documentazione Astro</h1>
+  </div>
+
+  
+  <button aria-expanded="false" aria-controls="mainNav" id="toggleNav">
+    ☰ Menu
+  </button>
+
+  
+  <nav id="mainNav" role="navigation" hidden>
+    <ul>
+      <li><a href="#intro">Introduzione</a></li>
+      <li><a href="#setup">Setup</a></li>
+      <li><a href="#plugins">Plugin</a></li>
+      <li><a href="#accessibility">Accessibilità</a></li>
+    </ul>
+  </nav>
+
+  
+  <aside role="complementary" aria-labelledby="settingsTitle">
+    <h2 id="settingsTitle">Impostazioni</h2>
+    <form aria-describedby="settingsDesc">
+      <p id="settingsDesc">Seleziona le preferenze di visualizzazione:</p>
+
+      
+      <fieldset>
+        <legend>Tema</legend>
+        <label>
+          <input type="radio" name="theme" value="light" aria-label="Tema chiaro">
+          Chiaro
+        </label>
+        <label>
+          <input type="radio" name="theme" value="dark" aria-label="Tema scuro">
+          Scuro
+        </label>
+      </fieldset>
+
+      
+      <fieldset>
+        <legend>Dimensione testo</legend>
+        <label>
+          <input type="radio" name="fontsize" value="small" aria-label="Testo piccolo">
+          Piccolo
+        </label>
+        <label>
+          <input type="radio" name="fontsize" value="medium" aria-label="Testo medio">
+          Medio
+        </label>
+        <label>
+          <input type="radio" name="fontsize" value="large" aria-label="Testo grande">
+          Grande
+        </label>
+      </fieldset>
+    </form>
+  </aside>
+
+ 
+ -->  <a href="#" id="to-top" data-astro-cid-3ef6ksr2> <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" data-astro-cid-3ef6ksr2> <polygon points="12 4 20 20 4 20" fill="var(--font-color)" data-astro-cid-3ef6ksr2></polygon> </svg> </a> </header>  <!-- <div id="background" aria-hidden="true"></div> --> <img src="/NotesRepo/Web_Dev/Astro/dist/_astro/teal.Cp8wgQFt_Z1ab9GP.webp" alt="background image" aria-hidden="true" id="background-big" data-astro-cid-hpxbdaly="true" loading="lazy" decoding="async" fetchpriority="auto" width="5120" height="2880"> <img src="/NotesRepo/Web_Dev/Astro/dist/_astro/hello.CW1iZbTK_Z1m486K.webp" alt="background image" aria-hidden="true" id="background-small" data-astro-cid-hpxbdaly="true" loading="lazy" decoding="async" fetchpriority="auto" width="1170" height="2532"> <main data-astro-cid-hpxbdaly> <header data-astro-cid-hpxbdaly> <h1 data-astro-cid-hpxbdaly>Numeri in JavaScript</h1> <div id="breadcrumbs" data-astro-cid-hpxbdaly><nav id="local-nav" aria-label="Navigazione Argomento" data-astro-cid-sf7rw5md> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Operatori/" title="pagina precedente" data-astro-cid-sf7rw5md> Operatori </a> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Numeri/" title="pagina corrente" data-astro-cid-sf7rw5md> Numeri </a> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Stringhe/" title="pagina successiva" data-astro-cid-sf7rw5md> Stringhe </a> </nav> </div> </header> <div id="content" data-astro-cid-hpxbdaly> <nav aria-labelledby="page-index"> <h2 id="page-index">Indice</h2> <div id="index-list"><ul><li><a href="#numeri">Numeri</a></li><li><a href="#oggetto-number">Oggetto Number</a><ul><li><a href="#proprietà-di-number">Proprietà di Number</a></li><li><a href="#metodi-di-number">Metodi di Number</a></li><li><a href="#metodi-disponibili-ai-tipi-number">Metodi Disponibili ai Tipi Number</a></li><li><a href="#metodi-delloggetto-math">Metodi dell’Oggetto Math</a></li></ul></li><li><a href="#bigint">BigInt</a></li></ul></div> </nav> <section><h2 id="numeri">Numeri</h2><p>In JavaScript i numeri sono trattati tutti come floating point a 64 bit; non ci sono degli interi, ma non vengono mostrati decimali non necessari se non specificato.</p><ul>
 <li>gli interi sono limitati a 15 caratteri, oltre questo numero avviene overflow</li>
 <li>l’aritmetica con i numeri a virgola mobile non è precisa al 100%</li>
+</ul><p>Inoltre</p><ul>
+<li>I numeri preceduti da <code>0b</code> sono interpretati come binari</li>
+<li>I numeri preceduti da <code>0o</code> sono interpretati come ottali</li>
 <li>I numeri preceduti da <code>0x</code> sono interpretati come esadecimali</li>
 <li>I numeri preceduti da <code>0</code> (non con virgola) sono (a volte) interpretati come ottali</li>
-</ul><hr><aside class="inserto nota" aria-label="Nota generica" data-heading="Nota: "><p>JavaScript accetta la notazione scientifica per i Number:</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">let</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> 834e5</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4"> // = 83400000</span></span></code></pre></aside><p>L’oggetto <code>Number</code> può essere usato per convertire in ‘number’ i valori passati per argomento; se il valore non è convertibile in numero, allora l’operazione restituisce <code>NaN</code> (<em>not a number</em>), che è una proprietà dell’oggetto globale</p><aside class="inserto attenzione" aria-label="Avvertimento" data-heading="Attenzione! "><p><code>typeof NaN</code> restituisce <code>number</code>!</p></aside><p><code>Infinity</code> e <code>-Infinity</code> sono numeri e raccolgono qualsiasi valore fuori dai limiti</p><aside class="inserto attenzione" aria-label="Avvertimento" data-heading="Attenzione! "><p><code>typeof Infinity</code> restituisce <code>number</code>!</p><p>Inoltre, dividere per 0 un numero restituisce <code>Infinity</code> (con segno)</p></aside></section>
+</ul><hr><aside class="inserto nota" aria-label="Nota generica" data-heading="Nota: "><p>JavaScript accetta la notazione scientifica per i Number:</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">let</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> 834e5</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4"> // = 83400000</span></span></code></pre><p>il numero dopo <code>e</code> indica l’indice della potenza di 10 per cui è moltiplicato il numero alla sinistra</p></aside><p>L’oggetto <code>Number</code> può essere usato per convertire in ‘number’ i valori passati per argomento; se il valore non è convertibile in numero, allora l’operazione restituisce <code>NaN</code> (<em>not a number</em>), che è una proprietà dell’oggetto globale</p><aside class="inserto attenzione" aria-label="Avvertimento" data-heading="Attenzione! "><p><code>typeof NaN</code> restituisce <code>number</code>!</p></aside><p><code>Infinity</code> e <code>-Infinity</code> sono numeri e raccolgono qualsiasi valore fuori dai limiti</p><aside class="inserto attenzione" aria-label="Avvertimento" data-heading="Attenzione! "><p><code>typeof Infinity</code> restituisce <code>number</code>!</p><p>Inoltre, dividere per 0 un numero restituisce <code>Infinity</code> (con segno)</p></aside><aside class="inserto nota" aria-label="Nota generica" data-heading="Nota: "><p><code>NaN</code>, <code>Infinity</code> e <code>-Infinity</code> sono tre valori simbolici speciali del tipo Number</p></aside><aside class="inserto nota" aria-label="Nota generica" data-heading="Nota: "><p>È possibile usare il separatore <code>_</code> tra le cifre di un Number e BigInt; questo verrà ignorato per la lettura del numero da parte dell’interprete, ma lo renderà più leggibile per i lettori del codice</p></aside></section>
+<section><h2 id="oggetto-number">Oggetto Number</h2><p>L’oggetto <code>Number</code> possiede alcune utili proprietà di sola lettura:</p><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#F8F8F2"> biggestNum</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> Number.MAX_VALUE;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// 1.7976931348623157e+308</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#F8F8F2"> smallestNum</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> Number.MIN_VALUE;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// </span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#F8F8F2"> negInfiniteNum</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> Number.NEGATIVE_INFINITY;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// -Infinity</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#F8F8F2"> notANum</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> Number.NaN;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// NaN</span></span></code></pre></aside><section><h3 id="proprietà-di-number">Proprietà di Number</h3><div class="table-wrapper" tabindex="0">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Proprietà</th><th>Valore</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>MAX_VALUE</code></td><td><code>1.7976931348623157e+308</code></td><td>Valore massimo rappresentabile</td></tr><tr><td><code>MIN_VALUE</code></td><td><code>5e-324</code></td><td>Valore minimo rappresentabile</td></tr><tr><td><code>POSITIVE_INFINITY</code></td><td><code>+Infinity</code></td><td>Valore speciale per infinito</td></tr><tr><td><code>NEGATIVE_INFINITY</code></td><td><code>-Infinity</code></td><td>Valore speciale per -infinito</td></tr><tr><td><code>NaN</code></td><td><code>NaN</code></td><td>Valore speciale per un non-numero</td></tr><tr><td><code>EPSILON</code></td><td><code>2.220446049250313e-16</code></td><td>Differenza tra <code>1</code> e il valore minimo rappresentabile maggiore di <code>1</code></td></tr><tr><td><code>MIN_SAFE_INTEGER</code></td><td><code>-9007199254740991</code></td><td>Valore intero minimo SICURO rappresentabile in JS (<code>−2^53 + 1</code>)</td></tr><tr><td><code>MAX_SAFE_INTEGER</code></td><td><code>+9007199254740991</code></td><td>Valore intero massimo SICURO rappresentabile in JS (<code>+2^53 - 1</code>)</td></tr></tbody></table></div></section><section><h3 id="metodi-di-number">Metodi di Number</h3><div class="table-wrapper" tabindex="0">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Argomento/i</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>parseFloat(str)</code></td><td><code>string</code></td><td>Converte la stringa in un numero a virgola mobile</td></tr><tr><td><code>parseInt(st, base)</code></td><td><code>string</code>, <code>number</code></td><td>Converte la stringa in un intero secondo la base di conversione</td></tr><tr><td><code>isFinite(num)</code></td><td><code>any</code></td><td>Restituisce <code>true</code> se l’argomento è un numero finito (non simbolo speciale)</td></tr><tr><td><code>isInteger(num)</code></td><td><code>any</code></td><td>Restituisce <code>true</code> se l’argomento è un numero intero (non simbolo)</td></tr><tr><td><code>isNaN</code></td><td><code>any</code></td><td>Restituisce <code>true</code> se l’argomento passato è <code>NaN</code></td></tr><tr><td><code>isSafeInteger()</code></td><td><code>any</code></td><td>Restituisce <code>true</code> se l’argomento è un numero intero compreso tra <code>−2^53 + 1</code> e <code>+2^53 - 1</code></td></tr></tbody></table></div></section><section><h3 id="metodi-disponibili-ai-tipi-number">Metodi Disponibili ai Tipi Number</h3><p>Questi sono metodi ereditati da tutti i tipi Number</p><div class="table-wrapper" tabindex="0">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Argomento/i</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>toExponential()</code></td><td></td><td></td></tr><tr><td><code>toFixed()</code></td><td></td><td></td></tr><tr><td><code>toPrecision()</code></td><td></td><td></td></tr></tbody></table></div></section><section><h3 id="metodi-delloggetto-math">Metodi dell’Oggetto Math</h3><div class="table-wrapper" tabindex="0">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Argomento/i</th><th>Valore Restituito</th></tr></thead><tbody><tr><td><code>abs(x)</code></td><td>numero</td><td>Valore assoluto</td></tr><tr><td><code>sin(θ)</code>, <code>cos(θ)</code>, <code>tan(θ)</code>, <code>sinh(θ)</code>, <code>cosh(θ)</code>, <code>tanh(θ)</code></td><td>angolo</td><td>Uscita di funzione trigonometrica/iperbolica</td></tr><tr><td><code>asin(x)</code>, <code>acos(x)</code>, <code>atan(x)</code>, <code>atan2(x)</code>, <code>asinh(x)</code>, <code>acosh(x)</code>, <code>atanh(x)</code></td><td>non-angolo</td><td>Uscita di funzione trigonometrica/iperbolica inversa</td></tr><tr><td><code>pow(x, a)</code></td><td>due numeri</td><td>Potenza del primo elevato per il secondo</td></tr><tr><td><code>exp(x)</code></td><td>numero</td><td>Potenza di <code>e</code> elevato per il numero</td></tr><tr><td><code>expm1(x)</code></td><td>numero</td><td>Potenza di <code>e</code> elevato per il numero ridotta di 1</td></tr><tr><td><code>log(x)</code>, <code>log10(x)</code></td><td>tua-madre</td><td>Logaritmo in base e o 10 del numero</td></tr><tr><td><code>random()</code></td><td>nessuno</td><td>Numero random tra 0 e 1</td></tr><tr><td><code>min(a, b, ..., z)</code>, <code>max(a, b, ..., z)</code></td><td>numeri separati da virgola</td><td>Valore minimo/massimo della lista</td></tr><tr><td><code>floor(x)</code>, <code>ceil(x)</code></td><td>numero</td><td>Valore arrotondato per difetto/eccesso</td></tr><tr><td><code>round(x)</code></td><td>numero</td><td>Valore arrotondato all’intero più vicino</td></tr><tr><td><code>sign(x)</code></td><td>numero/stringa</td><td>+1 o -1 in base al segno</td></tr><tr><td><code>sqrt(x)</code></td><td>numero</td><td>Radice quadrata del numero</td></tr><tr><td><code>cbrt(x)</code></td><td>numero</td><td>Radice cubica del numero</td></tr><tr><td><code>hypot(b, c)</code></td><td>due numeri</td><td>Radice quadrata della somma dei quadrati dei numeri</td></tr></tbody></table></div></section></section>
+<section><h2 id="bigint">BigInt</h2></section> </div> </main> <footer class="test-footer" data-astro-cid-jyhwcbfj> <nav id="local-nav" aria-label="Navigazione Argomento" data-astro-cid-sf7rw5md> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Operatori/" title="pagina precedente" data-astro-cid-sf7rw5md> Operatori </a> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Numeri/" title="pagina corrente" data-astro-cid-sf7rw5md> Numeri </a> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Stringhe/" title="pagina successiva" data-astro-cid-sf7rw5md> Stringhe </a> </nav>  <p data-astro-cid-jyhwcbfj>Pagina iniziale del sito a <a href="/NotesRepo/Web_Dev/Astro/dist/../../html/Sintassi html/" data-astro-cid-jyhwcbfj>questo indirizzo</a></p> <p data-astro-cid-gcm7ptol>Puoi trovarmi anche su
+<a href="https://www.github.com/italocorraro" data-astro-cid-gcm7ptol>github</a></p> </footer> </body></html>
