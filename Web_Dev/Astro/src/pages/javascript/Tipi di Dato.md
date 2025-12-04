@@ -25,6 +25,8 @@ JavaScript definisce 7 tipi primitivi: `Null`, `Undefined`, `String`, `Number`, 
 typeof 'qualcosa'; // 'string'
 typeof 24; // 'number'
 typeof string === 'string';  // true
+typeof null === 'null'; // false
+typeof null === 'object'; // true
 ```
 :::
 
@@ -51,7 +53,7 @@ Una tabella con i tipi primitivi, relativi wrapper e descrizione dei dati che co
 Il tipo `Null` include solo un valore: `null`; \
 analogamente, il tipo `Undefined` include solo `undefined`. 
 
-Concettualmente, `null` rappresenta l'assenza deliberata di un *oggetto*, mentre `undefined` rappresenta l'assenza di un `valore`;
+Concettualmente, `null` rappresenta l'assenza deliberata di un *oggetto*, mentre `undefined` rappresenta l'assenza di un *valore*;
 
 * una variabile non inizializzata ha valore `undefined`, similmente, una funzione che non restituisce alcun valore, restituisce implicitamente `undefined`; chiamare una proprietà inesistente di un oggetto restituisce `undefined` 
 
@@ -119,25 +121,11 @@ persona
 /*                    └─> 'Verdi' */.length;
 /*                                  └─> 5 */
 ```
-
+```js
+console.log(('Hello' + ' World').length + 4);
+// ↪ 15
+```
 :::
-
-<script>
-const persona = {
-    nome: {
-        primo: 'Gianni',
-        secondo: 'Luigi',
-        cognome: 'Verdi'
-    },
-    eta: 23,
-}
-
-persona.nome.cognome; // 'Verdi'
-console.log(persona
-  .nome
-  .secondo.
-  length); // 'Luigi'
-</script>
 
 ### Tipi di Oggetto
 

@@ -78,7 +78,7 @@ Una funzione ha a disposizione la keyword **`return`** per portare in uscita un 
 
 se `return` non è specificato nella funzione, allora la funzione restituirà implicitamente `undefined`;
 
-quando viene eseguita `return` l'esecuzione della funzione termina automaticamente e tutto il codice che si trova dopo verrà ignorato.
+quando viene eseguita `return`, l'esecuzione della funzione termina automaticamente e tutto il codice che si trova dopo verrà ignorato.
 
 ## Parametri
 
@@ -88,7 +88,7 @@ Una funzione può essere definita con un numero illimitato di parametri di tipo 
 * I dati primitivi sono passati come valore (copia)
 * Gli oggetti sono passati come riferimento (copia del riferimento)
 
-Quindi, passare un array per parametro fornisce alla funzione una copia del *riferimento* all'array originale, quindi può modificare i suoi elementi tramite il parametro, ma NON può modificare direttamente l'array originale
+Quindi, passare un array per parametro fornisce alla funzione una *copia del riferimento* all'array originale, quindi può modificare i suoi elementi tramite il parametro, ma NON può modificare direttamente l'array originale
 
 :::eg
 ```javascript
@@ -193,6 +193,10 @@ function fN(p1, p2) {
 
 :::warn
 I parametri di default sono vietati in *strict mode*; è invece valido usare l'operatore `??` per assegnare valori di fallback alle variabili `nullish`
+:::
+
+:::nota
+Se i parametri della funzione non sono inseriti correttamente, possiamo anche farle lanciare un errore per avvisare dell'uso incorretto
 :::
 
 ### Parametri rest
@@ -450,9 +454,9 @@ Usare una IIFE permette di creare uno scope di funzione in cui racchiudere il co
 
 In JavaScript, a differenza di altri linguaggi, quando una funzione termina la sua esecuzione, il suo ambiente di esecuzione non viene propriamente distrutto:
 
-Quando una funzione viene definita, crea una **closure** dove vengono incapsulate, oltre alla funzione stessa, il contesto lessicale in cui questa era stata dichiarata, permettendole di mantenere l'accesso a tutte le variabili che poteva raggiungere al momento della creazione della *closure*.
+Quando una funzione viene definita, questa crea una **closure** dove vengono incapsulate, oltre alla funzione stessa, il contesto lessicale in cui questa era stata dichiarata, permettendole di mantenere l'accesso a tutte le variabili che poteva raggiungere al momento della creazione della *closure*.
 
-Esploriamo un esempio: 
+### Esempio
 
 ```javascript
 function makeCounter() {
@@ -471,11 +475,11 @@ console.log(contatore);
  *  }   */
 ```
 
-Abbiamo quindi creato la funzione `contatore()` che incrementa `counter` e lo manda in console, ma `counter` non è definito dentro `contatore`, bensì dentro `makeCounter()`, che però è stata già eseguita e quindi (*teoricamente*) dovrebbe aver distrutto tutto quello che includeva il suo scope
+Abbiamo creato la funzione `contatore()` che incrementa `counter` e lo manda in console, ma `counter` non è definito dentro `contatore`, bensì dentro `makeCounter()`, che però è stata già eseguita e quindi (*teoricamente*) dovrebbe aver distrutto tutto quello che includeva il suo scope
 
 =u=*MA NON SUCCEDE IN JAVASCRIPT*==
 
-In JavaScript, quando `contatore()` viene creata, si porta dietro il suo contesto lessicale, quindi anche `counter`, per questo quando chiamiamo `contatore()` otteniamo:
+In JavaScript, quando `contatore()` viene creata, crea una *closure* con cui si porta dietro il suo contesto lessicale anche dopo la fine della funzione esterna, quindi mantiene `counter`, per questo quando chiamiamo `contatore()` otteniamo:
 
 ```js
 contatore();
@@ -483,11 +487,14 @@ contatore();
 ```
 
 poichè `contatore` mantiene il riferimento al contesto lessicale in cui era stato definito dove esisteva `counter`, la variabile `counter` rimane accessibile a `contatore` e non viene distrutta. \
- Non abbiamo errore di riferimento!
+Non abbiamo errore di riferimento!
 
 :::nb
 La variabile `counter` che usa `contatore` NON è una copia, ma un riferimento all'originale dal contesto in cui era stata inizialmente dichiarata la funzione `contatore()`
 :::
+
+---
+
 Se creiamo un nuovo contatore, il riferimento sarà a una *diversa* variabile `counter`:
 
 ```js
@@ -500,7 +507,7 @@ newCount();
 contatore();
 // ↪ 3
 ```
-Il nuovo contatore usa un `count` diverso, questo perché il contesto lessicale da cui viene NON è lo stesso di quello da cui viene `contatore`; 
+Il nuovo contatore `newCount` usa un `counter` diverso, questo perché il contesto lessicale da cui viene NON è lo stesso di quello da cui viene il `counter` di `contatore`; 
 
 Possiamo creare due contatori che invece vengono dallo STESSO contesto lessicale così:
 ```javascript
@@ -533,17 +540,17 @@ diminuisci();
 diminuisci();
 // ↪ -1
 ```
-La variabile `count` è condivisa tra `aumenta` e `diminuisci` perché il loro contesto lessicale al momento della dichiarazione era lo stesso, quindi anche il riferimento alla variabile è lo stesso.
+La variabile `count` è condivisa tra `aumenta` e `diminuisci` perché il loro contesto lessicale al momento della dichiarazione era lo stesso, quindi anche il riferimento alla variabile è lo stesso per entrambi.
 
-JavaScript non rimuove la variabile `count` perché esiste almeno una funzione interna che la usa ancora.
+JavaScript non rimuove la variabile `count` finché esiste almeno una funzione interna che la usa ancora.
+
+=u=Con una **closure**, una funzione interna mantiene l’accesso alle variabili del suo contesto lessicale anche dopo che la funzione esterna è terminata.==
 
 ### Metodi Pubblici e Privati
 
 Possiamo anche utilizzare questa meccanica per creare una variabile privata (difatti, *la variabile `count` dell'esempio precedente non è accessibile se non con le funzioni `aumenta()` e `diminuisci()`*);
 
-le variabili create nella funzione esterna saranno *private*, i metodi passati con `return` saranno invece *pubblici*
-
-Una **closure** è una funzione che mantiene l’accesso alle variabili del suo contesto lessicale anche dopo che la funzione esterna è terminata.
+le variabili create nella funzione esterna saranno *private*, i metodi passati con `return` saranno invece *pubblici*.
 
 Facciamo un esempio di contatore con metodi pubblici ma che mantiene il contatore privato:
 
@@ -579,3 +586,9 @@ counter.up();
 counter.log();
 // ↪ 2
 ```
+
+La variabile `privateCounter` non è accessibile direttamente; le operazioni che possono essere fatte su di essa sono limitate a quelle rilasciate dalla funzione `makePrivateCounter()`.
+
+:::nota
+Le *closure* sono una meccanica di JavaScript non limitata alle funzioni; si possono usare anche, per esempio, con i moduli
+:::

@@ -111,7 +111,7 @@ TUTTE le dichiarazioni di variabili globali vengono fatte prima dell'esecuzione 
 
 ### let e const
 
-* **`let`** serve a dichiarare variabili con scope di blocco; esistono solo all'interno del blocco in cui vengono dichiarate e il valore al loro interno possono essere riassegnate
+* **`let`** serve a dichiarare variabili con scope di blocco; esistono solo all'interno del blocco in cui vengono dichiarate e possono essere riassegnate dopo la dichiarazione
 
 * **`const`** serve a dichiarare costanti con scope di blocco; queste variabili sono di sola lettura (per questo "costanti"; *non possono essere riassegnate dopo la dichiarazione*) ed esistono solo all'interno del blocco in cui vengono dichiarate
 
@@ -170,5 +170,4 @@ Per prevenire che gli script scritti a console si influenziono l'un l'altro conv
 Le `()` a fine funzione sono necessarie per eseguire automaticamente la funzione appena dichiarata
 :::
 
----
 

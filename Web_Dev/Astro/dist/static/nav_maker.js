@@ -105,7 +105,7 @@ const navbar = [
       { name: 'Oggetti', URL: astro + 'javascript/Oggetti/' },
       { name: 'Mappe', URL: '#' },
       { name: 'Espressioni Regolari', URL: '#' },
-      { name: 'Debug', URL: '#' },
+      { name: 'Date', URL: astro + 'javascript/Date/' },
       { name: 'DOM API', URL: astro + 'javascript/DOM/' },
       { name: 'Eventi', URL: astro + 'javascript/Eventi/' },
       { name: 'Moduli', URL: '#' },
@@ -120,7 +120,6 @@ const navbar = [
     content: [
       { name: 'Struttura html', URL: '#' },
       { name: 'Struttura CSS', URL: '#' },
-      { name: 'Testata del Sito', URL: '#' }
     ]
   },
   {

@@ -76,7 +76,6 @@ console.log(macchine.toString());
 /* Volvo,23,0,1,2,questo array non
     deve avere senso,BMW */
 ```
-:::
 
 :::warn
 Un array resta un oggetto, cioè `typeof` restituirà `object` se usato con un array;
@@ -97,10 +96,9 @@ const listaSpesa = [
     "uova" ];
 console.log(listaSpesa.length); 
 // ↪ 5
-
-/* Poiché gli array sono indicizzati da 0,
- * la proprietà length ci permette di 
- * aggiungere elementi alla fine: */
+```
+Poiché gli array sono indicizzati da 0, la proprietà length ci permette di aggiungere elementi alla fine:
+```js
 listaSpesa[listaSpesa.length] = "burro";
 console.log(listaSpesa.length);
 // ↪ 6

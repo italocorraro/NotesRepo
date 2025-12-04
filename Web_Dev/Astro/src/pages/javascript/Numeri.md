@@ -23,7 +23,7 @@ Inoltre
 ---
 
 :::nota
-JavaScript accetta la notazione scientifica per i Number:
+JavaScript accetta la notazione esponenziale per i Number:
 ```javascript
 let x = 834e5 // = 83400000
 ```
@@ -79,8 +79,8 @@ const notANum = Number.NaN;
 | `NEGATIVE_INFINITY` | `-Infinity` | Valore speciale per -infinito |
 | `NaN` | `NaN` | Valore speciale per un non-numero |
 | `EPSILON` | `2.220446049250313e-16` | Differenza tra `1` e il valore minimo rappresentabile maggiore di `1` |
-| `MIN_SAFE_INTEGER` | `-9007199254740991` | Valore intero minimo SICURO rappresentabile in JS (`−2^53 + 1`) |
-| `MAX_SAFE_INTEGER` | `+9007199254740991` | Valore intero massimo SICURO rappresentabile in JS (`+2^53 - 1`) |
+| `MIN_SAFE_INTEGER` | `-9007199254740991` | Valore intero minimo SICURO rappresentabile in JS ($−2^{53} + 1$) |
+| `MAX_SAFE_INTEGER` | `+9007199254740991` | Valore intero massimo SICURO rappresentabile in JS ($+2^{53} - 1$) |
 
 ### Metodi di Number
 
@@ -91,7 +91,7 @@ const notANum = Number.NaN;
 | `isFinite(num)` | `any` | Restituisce `true` se l'argomento è un numero finito (non simbolo speciale) |
 | `isInteger(num)` | `any` | Restituisce `true` se l'argomento è un numero intero (non simbolo) |
 | `isNaN` | `any` | Restituisce `true` se l'argomento passato è `NaN` |
-| `isSafeInteger()` | `any` | Restituisce `true` se l'argomento è un numero intero compreso tra `−2^53 + 1` e `+2^53 - 1` |
+| `isSafeInteger()` | `any` | Restituisce `true` se l'argomento è un numero intero compreso tra $−2^{53} + 1$ e $+2^{53} - 1$ |
 
 ### Metodi Disponibili ai Tipi Number
 
@@ -99,9 +99,21 @@ Questi sono metodi ereditati da tutti i tipi Number
 
 | Metodo | Argomento/i | Descrizione |
 | --- | --- | --- |
-| `toExponential()` | | |
-| `toFixed()` | | | 
-| `toPrecision()` | | |
+| `toExponential()` | cifre decimali | Restituisce il valore come una stringa in notazione esponenziale con il numero di cifre decimali indicato |
+| `toFixed()` | cifre decimali | Restituisce il valore come una stringa con il numero di cifre decimali indicato (con arrotondamento) | 
+| `toPrecision()` | cifre significative | Restituisce il valore come una stringa composta dal numero indicato di cifre significative |
+
+:::eg
+```javascript
+let no = 714.729748;
+console.log(no.toExponential(2));
+// ↪ '7.15e+2'
+console.log(no.toFixed(2));
+// ↪ '714.73'
+console.log(no.toPrecision(4));
+// ↪ 714.7
+```
+:::
 
 ### Metodi dell'Oggetto Math
 
@@ -110,10 +122,10 @@ Questi sono metodi ereditati da tutti i tipi Number
 | `abs(x)` | numero | Valore assoluto |
 | `sin(θ)`, `cos(θ)`, `tan(θ)`, `sinh(θ)`, `cosh(θ)`, `tanh(θ)` | angolo | Uscita di funzione trigonometrica/iperbolica |
 | `asin(x)`, `acos(x)`, `atan(x)`, `atan2(x)`, `asinh(x)`, `acosh(x)`, `atanh(x)` | non-angolo| Uscita di funzione trigonometrica/iperbolica inversa |
-| `pow(x, a)` | due numeri | Potenza del primo elevato per il secondo |
-| `exp(x)` | numero | Potenza di `e` elevato per il numero |
-| `expm1(x)` | numero | Potenza di `e` elevato per il numero ridotta di 1 |
-| `log(x)`, `log10(x)` | tua-madre | Logaritmo in base e o 10 del numero |
+| `pow(x, a)` | due numeri | Potenza del primo elevato per il secondo ($x^a$) |
+| `exp(x)` | numero | Potenza di `e` elevato per il numero ($e^x$)|
+| `expm1(x)` | numero | Potenza di `e` elevato per il numero ridotta di 1 ($e^x-1$) |
+| `log(x)`, `log10(x)` | tua-madre | Logaritmo in base e o 10 del numero ($\ln\left(x\right)$ o $\log\left(x\right)$) |
 | `random()` | nessuno | Numero random tra 0 e 1 |
 | `min(a, b, ..., z)`, `max(a, b, ..., z)` | numeri separati da virgola | Valore minimo/massimo della lista |
 | `floor(x)`, `ceil(x)` | numero | Valore arrotondato per difetto/eccesso |
@@ -121,6 +133,12 @@ Questi sono metodi ereditati da tutti i tipi Number
 | `sign(x)` | numero/stringa | +1 o -1 in base al segno |
 | `sqrt(x)` | numero | Radice quadrata del numero |
 | `cbrt(x)` | numero | Radice cubica del numero |
-| `hypot(b, c)` | due numeri | Radice quadrata della somma dei quadrati dei numeri |
+| `hypot(b, c)` | due numeri | Radice quadrata della somma dei quadrati dei numeri ($b^2 + c^2$) |
 
 ## BigInt
+
+I tipi Number non possono andare oltre il valore intero $2^{53} - 1$, i BigInt sono la soluzione di JavaScript a questo problema:
+
+* un tipo BigInt reppresenta un valore numerico intero di lunghezza arbitraria
+* i BigInt si riconoscono perché terminanti con il carattere `n`
+* le operazioni aritmetiche tra BigInt hanno maggiore precisione di quelle tra Number
