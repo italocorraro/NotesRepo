@@ -106,13 +106,18 @@ const navbar = [
       { name: 'Mappe', URL: '#' },
       { name: 'Espressioni Regolari', URL: '#' },
       { name: 'Date', URL: astro + 'javascript/Date/' },
-      { name: 'DOM API', URL: astro + 'javascript/DOM/' },
-      { name: 'Eventi', URL: astro + 'javascript/Eventi/' },
       { name: 'Moduli', URL: '#' },
       { name: 'Storage API', URL: '#' },
       { name: 'URL API', URL: '#' },
       { name: 'Asincronia', URL: '#' },
       { name: 'Promesse', URL: '#' }
+    ]
+  },
+  {
+    name: 'JS APIs',
+    content: [
+      { name: 'DOM API', URL: astro + 'APIs/DOM/' },
+      { name: 'Eventi', URL: astro + 'APIs/Eventi/' },
     ]
   },
   {

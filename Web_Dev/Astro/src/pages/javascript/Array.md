@@ -83,6 +83,22 @@ Un array resta un oggetto, cioè `typeof` restituirà `object` se usato con un a
 il metodo corretto per verificare se una variabile è un array è passandola per argomento a `Array.isArray()`, oppure con l'espressione `array instanceof Array`, che verifica se `array` è un'istanza dell'oggetto globale `Array`, cioè l'oggetto a cui tutti gli array fanno capo per le proprietà e i metodi
 :::
 
+:::nota
+Un array non deve essere necessariamente "pieno";
+```js
+const array = [
+    'primo',
+];
+array[4] = 'quarto';
+
+console.log(array);
+// ↪ ['primo', empty × 3, 'quarto']
+console.log(array[2]);
+// ↪ undefined
+```
+gli elementi a cui non viene assegnato un valore saranno `undefined`
+:::
+
 ## Prime Proprietà
 
 ### Lunghezza dell'Array
@@ -120,6 +136,8 @@ console.log(listaSpesa.indexOf('latte'));
 console.log(listaSpesa.indexOf('burro'));
 // ↪ -1
 ```
+
+Il metodo `lastIndexOf()` svolge lo stesso compito, ma invece di partire dalla cima dell'array, partirà dalla coda
 
 ## Mutare l'Array
 
@@ -254,6 +272,81 @@ console.log(listaSpesa.join(' '));
 
 Il metodo `toSpliced()` svolge un'operazione analoga a `splice()`, ma invece di modificare l'array originale ne crea uno nuovo a cui applica le modifiche; il nuovo array modificato è restituito come output della funzione
 
+### Trasporre l'Array
+
+Il metodo `reverse()` inverte l'ordine degli elementi dell'array e restituisce un riferimento all'array originale:
+
+```javascript
+const arr = [1, 2, 3];
+
+console.log(arr.reverse());
+// ↪ [3, 2, 1]
+console.log(arr);
+// ↪ [3, 2, 1]
+```
+
+Il metodo `toReversed()` svolge un'operazione analoga a `reverse()`, ma invece di modificare l'array originale ne crea uno nuovo a cui applica le modifiche; il nuovo array modificato è restituito come output della funzione
+
+### Ordinare l'Array
+
+Il metodo `sort()` ordina gli elementi dell'array e restituisce un riferimento all'array originale:
+
+```javascript
+const mess = [3, 1, 5, 2, 6];
+console.log(mess.sort());
+// ↪ [1, 2, 3, 5, 6]
+console.log(mess);
+// ↪ [1, 2, 3, 5, 6]
+```
+
+Di default, gli elementi sono ordinati coercendoli a stringhe e comparando i valori dei codici dei caratteri UTF-16 di ciascuna.
+
+:::eg
+```javascript
+const mess = ['a', 'B', 'A', 2, '@'];
+console.log(mess.sort());
+// ↪ [2, '@', 'A', 'B', 'a']
+```
+:::
+
+Alternativamente, è possibile passare una funzione di callback come argomento; la funzione viene chiamata con due argomenti `a` e `b`, due elementi non-`undefined` presi dall'array e dovrà restituire 
+* *un valore positivo* se `a` è da posizionarsi *prima* di `b` nell'ordinamento
+* *un valore negativo* se `a` è da posizionarsi *dopo* di `b` nell'ordinamento
+* *zero* se `a` e `b` sono da considerare uguali per l'ordinamento
+
+Di base è una funzione tipo:
+```js
+array.sort((a, b) => {
+    /* funzione di ordinamento con a e b*/
+});
+```
+
+:::eg
+Per ordinare in senso ascendente:
+```javascript
+function toAscending(a, b) {
+    return a - b;
+}
+const mess = ['a', 'B', 'A', 2, '@'];
+console.log(mess.sort(toAscending));
+```
+o più semplicemnte, se non ci serve riutilizzare la funzione di ordinamento:
+```js
+mess.sort((a, b) => a - b);
+```
+Produrrà lo stesso risultato
+:::
+
+:::eg
+Randomizziamo l'array:
+```js
+array.sort(() => Math.random() - 0.5);
+```
+restituirà l'array con gli elementi in ordine casuale
+:::
+
+Il metodo `toSorted()` svolge un'operazione analoga a `sort()`, ma invece di modificare l'array originale ne crea uno nuovo a cui applica le modifiche; il nuovo array modificato è restituito come output della funzione
+
 ## Scorrere l'Array
 
 Ci sono diversi metodi e soluzioni per scorrere un array:
@@ -372,6 +465,58 @@ console.log(inventario[1].bene + ': ' + inventario[1].quantità);
 Per creare una copia indipendente è necessario usare un metodo diverso
 :::
 
+#### find e findIndex
+
+Il metodo `find()` scorre l'array passando ciascun elemento alla funzione di callback come argomento; il metodo restituisce il primo elemento dell'array per cui la funzione di callback restituisce `true`
+
+Il metodo `findLast()` svolge la stessa operazione, ma partendo dalla fine dell'array
+
+Il metodo `findIndex()` svolge la stessa operazione di `find()`, ma invece di restituire l'elemento, restituisce l'indice del primo elemento dell'array per cui la funzione di callback restituisce `true`
+
+Il metodo `findLastIndex()` fa' lo stesso, ma dalla fine dell'array
+
+#### every e some
+
+Il metodo `every()` restituisce `true` se *tutti* gli elementi dell'array fanno restituire `true` alla funzione di callback
+
+Il metodo `some()` restituisce `true` se *almeno uno* degli elementi dell'array fa' restituire `true` alla funzione di callback
+
+#### reduce
+
+Il metodo `reduce()` combina ricorsivamente due valori, un accumulatore e un elemento dell'array, e restituisce il risultato di questa operazione come un singolo valore; \
+la funzione di callback che viene chiamata per ogni elemento è una *funzione di riduzione* e prende quattro argomenti: 
+1. *un accumulatore*, cioè il valore restituito dalla precedente chiamata della funzione di riduzione (il valore a cui viene inizializzato l'accumulatore è quello del primo elemento dell'array, oppure il secondo argomento (opzionale) del metodo `reduce()`)
+1. l'elemento corrente dell'array
+1. l'indice dell'elemento corrente
+1. un riferimento all'array stesso
+
+:::eg
+```javascript
+const reduco = [0, 1, 2, 3, 4];
+
+console.log(reduco.reduce((a, c) => a + c));
+/* Quello che viene svolto a ogni chiamata è:
+ * acc = reduco[0], elem = reduco[1], newAcc = acc + elem;
+ * acc = newAcc, elem = reduco[2], newAcc = acc + elem;
+ * e così via; l'ultimo newAcc viene restituito alla fine */
+/* L'equivalente di questa operazione su reduco è
+ * (((0 + 1) + 2) + 3) + 4 */
+```
+Qualcosa di più utile può essere fatta con questo metodo:
+Vogliamo eseguire l'elevamento a potenza degli elementi
+```javascript
+const powo = [2, 4, 5, 6];
+
+console.log(powo.reduce((a, c) => {
+    return a ** c;
+}));
+// equivale a ((2^4)^5)^6
+// ↪ 1.329227995784916e+36
+```
+:::
+
+Il metodo `reduceRight()` svolge la stessa operazione, ma scorrendo gli elementi dell'array a partire dalla fine
+
 ### Cicli for
 
 #### for...of()
@@ -456,3 +601,180 @@ console.log(start + spesa);
 :::nota
 Il metodo `toString()` svolge lo stesso ruolo di `join(',')`, cioè concatena gli elementi dell'array in una stringa, ma non accetta parametri e usa sempre `,` come separatore
 :::
+
+## Altri Metodi
+
+### Collegare due Array
+
+Il metodo `concat()` prende come argomento un array o una serie di valori separati da virgola e restituisce un nuovo array composto dai due array di array di partenza:
+
+```javascript
+const arr1 = ['a', 'b', 'c'];
+const arr2 = [ 1, 2, 3 ];
+
+console.log(arr1.concat(arr2));
+// ↪ ['a', 'b', 'c', 1, 2, 3]
+console.log(arr1);
+// ↪ ['a', 'b', 'c']
+console.log(arr2.concat(4, 5));
+// ↪ [1, 2, 3, 4, 5]
+```
+
+Il metodo `at()` prende come argomento un numero intero (anche negativo) e restituisce l'elemento dell'array all'indice specificato (partendo dalla fine dell'array se il numero è negativo)
+
+### Svolgere Array Innestati
+
+Il metodo `flat()` prende come argomento un numero intero (opzionale; se non fornito sarà impostato di default a 1) e restituisce un nuovo array con tutti gli array innestati, fino a una profondità pari al numero specificato, concatenati all'array originale:
+
+```javascript
+const arr = [
+    'A', 
+    'B', 
+    [
+        'C1', 
+        'C2', 
+        [
+            'C3a', 
+            'C3b'
+        ], 
+        'C4'
+    ], 
+    'D'
+];
+console.log(arr);
+// ↪ ['A', 'B', ['C1', 'C2', ['C3a', 'C3b'], 'C4'], 'D']
+console.log(arr.flat());
+// ↪ ['A', 'B',  'C1', 'C2', ['C3a', 'C3b'], 'C4',  'D']
+console.log(arr.flat(2));
+// ↪ ['A', 'B',  'C1', 'C2',  'C3a', 'C3b',  'C4',  'D']
+console.log(arr.flat(3));
+// ↪ ['A', 'B',  'C1', 'C2',  'C3a', 'C3b',  'C4',  'D']
+```
+
+### Raggruppare Elementi dell'Array
+
+Possiamo passare un array al metodo `Object.groupBy()` per passare i suoi elementi in una funzione di callback che serve ad organizzare l'array in un oggetto composto di frammenti dell'array come valori legati ad una chiave stabilita dalla funzione di callback;
+
+questo metodo restituisce l'oggetto riorganizzato, ma i valori che contiene sono dei riferimenti a quelli dell'array originale
+
+:::eg
+Vogliamo costruire un array che tenga conto dei beni in magazzino:
+```javascript
+const magazzino = [
+    { bene: 'filetti',  tipo: 'carne',  quantita: 3 },
+    { bene: 'pesche',   tipo: 'frutta', quantita: 1 },
+    { bene: 'seppie',   tipo: 'pesce',  quantita: 5 },
+    { bene: 'sogliole', tipo: 'pesce',  quantita: 3 },
+    { bene: 'costate',  tipo: 'carne',  quantita: 0 },
+    { bene: 'fragole',  tipo: 'frutta', quantita: 2 },
+    { bene: 'banane',   tipo: 'frutta', quantita: 7 }
+];
+```
+Raggruppiamo ora per tipo questi beni:
+```js
+const byType = Object.groupBy(magazzino, ({tipo}) => {
+    return tipo;
+});
+
+console.log(byType);
+/* ↪ {
+ *      carne: [
+ *           {bene: 'filetti', tipo: 'carne', quantita: 3}, 
+ *           {bene: 'costate', tipo: 'carne', quantita: 0}
+ *      ],
+ *      frutta: [
+ *           {bene: 'pesche',  tipo: 'frutta', quantita: 1},
+ *           {bene: 'fragole', tipo: 'carne',  quantita: 2},
+ *           {bene: 'banane',  tipo: 'carne',  quantita: 7}
+ *      ],
+ *      pesce: [
+ *           {bene: 'seppie',   tipo: 'pesce', quantita: 5},
+ *           {bene: 'sogliole', tipo: 'pesce', quantita: 3}
+ * 
+ *      ]
+ *    }  */
+```
+Il riferimento ai valori originali è mantenuto nell'oggetto ordinato, infatti, se azzeriamo le seppie:
+```js
+magazzino[2].quantità = 0;
+conole.log(magazzino[2]);
+// ↪ {bene: 'seppie',   tipo: 'pesce', quantita: 0}
+console.log(byType);
+/* ↪ {
+ *      carne: [
+ *           {bene: 'filetti', tipo: 'carne', quantita: 3}, 
+ *           {bene: 'costate', tipo: 'carne', quantita: 0}
+ *      ],
+ *      frutta: [
+ *           {bene: 'pesche', tipo: 'frutta', quantita: 1},
+ *           {bene: 'fragole', tipo: 'carne', quantita: 2},
+ *           {bene: 'banane',  tipo: 'carne', quantita: 7}
+ *      ],
+ *      pesce: [
+ *  ->       {bene: 'seppie',   tipo: 'pesce', quantita: 0},
+ *           {bene: 'sogliole', tipo: 'pesce', quantita: 3}
+ * 
+ *      ]
+ *    }  */
+```
+Un ordinamento diverso, ma molto utile, può essere anche fatto senza usare le proprietà degli oggetti dell'array come chiavi dell'oggetto ordinato:
+```js
+const stock = Object.groupBy(magazzino, ({quantita}) => {
+    if(quantita === 0) {
+        return 'outOfStock';
+    } else if(quantita < 3) {
+        return 'fewLeft';
+    } else {
+        return 'enoughLeft';
+    }
+});
+```
+il risultato sarà un oggetto diviso in tre categorie basate sulla quantità:
+```js
+console.log(stock);
+/* ↪ {
+ *      enoughLeft: [
+ *           {bene: 'filetti',  tipo: 'carne', quantita: 3}, 
+ *           {bene: 'sogliole', tipo: 'pesce', quantita: 3},
+ *           {bene: 'banane',   tipo: 'carne', quantita: 7}
+ *           
+ *      ],
+ *      fewLeft: [
+ *           {bene: 'pesche',  tipo: 'frutta', quantita: 1},
+ *           {bene: 'fragole', tipo: 'carne',  quantita: 2}  
+ *      ],
+ *      outOfStock: [
+ *           {bene: 'seppie',  tipo: 'pesce', quantita: 0},
+ *           {bene: 'costate', tipo: 'carne', quantita: 0}
+ *      ]
+ *    }  */
+```
+Il problema di questo ordinamento è che, sebbene i valori siano passati per riferimento, l'oggetto non si riorganizza quando cambiano, quindi se togliamo oggetti dal magazzino per cui la loro posizione nell'oggetto organizzato è diversa, questo non verrà aggiornato:
+```js
+magazzino[0].quantita = 0;
+console.log(magazzino[0]);
+// ↪ {bene: 'filetti', tipo: 'carne', quantita: 0}
+```
+i filetti tolti ora dovrebbero andare nell'array `outOfStock`, ma poiché non si aggiorna da solo, questi non ci sono:
+```js
+console.log(stock.outOfStock);
+/* [
+ *     {bene: 'seppie',  tipo: 'pesce', quantita: 0},
+ *     {bene: 'costate', tipo: 'carne', quantita: 0}
+ * ] */
+```
+sono invece nell'array `enoughLeft` dove erano stati piazzati all'inizio:
+```js
+console.log(stock.enoughLeft);
+/* [
+ *     {bene: 'filetti',  tipo: 'carne', quantita: 0}, 
+ *     {bene: 'sogliole', tipo: 'pesce', quantita: 3},
+ *     {bene: 'banane',   tipo: 'carne', quantita: 7}
+ * ] */
+```
+Perché questo tipo di classificazione abbia senso, bisognerebbe ripetere il metodo `Object.groupBy()` ogni qual volta cambi una proprietà da cui dipende l'organizzazione dei gruppi
+:::
+
+## Altre Collezioni Indicizzate
+
+Gli array fanno parte di un più largo gruppo di oggetti la cui caratteristica principale è l'indicizzazione delle chiavi; fondamentalmente un array è un oggetto le cui chiavi sono tutti numeri interi consecutivi
