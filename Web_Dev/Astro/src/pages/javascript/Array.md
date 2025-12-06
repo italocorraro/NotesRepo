@@ -139,6 +139,63 @@ console.log(listaSpesa.indexOf('burro'));
 
 Il metodo `lastIndexOf()` svolge lo stesso compito, ma invece di partire dalla cima dell'array, partirà dalla coda
 
+### Operatore spread
+
+L'operatore *spread* (`...`) scompone oggetti iterabili in un elenco di elementi individuali:
+
+```javascript
+const array = [0, 4, 'rr', {'obj', 22}];
+
+console.log(...array);
+// ↪ 0 4 'rr' 'altro'
+```
+È possibile riprendere gli elementi scomposti e costruire un nuovo array; è anche possibile usare questo operatore con una stringa:
+
+```js
+const scomposto = [...'stringa'];
+
+console.log(scomposto);
+// ↪ ['s', 't', 'r', 'i', 'n', 'g', 'a']
+```
+:::nota
+L'uso dell'operatore *spread* è possibile negli *array literals* per creare nuovi array che usano gli elementi di quello scomposto:
+```js
+const arr1 = [2, 3, 4];
+
+const arr2 = [1, ...arr1, 5];
+
+console.log(arr2);
+// ↪ [1, 2, 3, 4, 5]
+```
+Gli elementi non vengono copiati per riferimento, sono copie superficiali infatti:
+```js
+arr1[0] = 0;
+console.log(arr2);
+```
+___
+L'altro uso dell'operatore spread è per passare l'intera lista di elementi dell'array come argomenti a una funzione
+```js
+console.log(arr1);
+// ↪ [0, 3, 4]
+function add(...args) {
+    let tot = 0;
+    let tring = '';
+    for(const arg of args) {
+        typeof arg === 'number' ?
+        tot += arg :
+        tring += arg;
+    }
+    console.log(tring);
+    console.log(tot);
+    return tot;
+}
+
+add(...arr1);
+// ↪
+// ↪ 7
+```
+:::
+
 ## Mutare l'Array
 
 ### Aggiungere Elementi alla Coda

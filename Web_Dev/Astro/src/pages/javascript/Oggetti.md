@@ -24,6 +24,7 @@ tramite questo riferimento possiamo svolgere poi operazioni sui dati nella colle
 Copiare la variabile che punta all'oggetto crea una copia del riferimento, ma non crea una copia dell'oggetto in sè;
 
 modificare le proprietà dell'oggetto tramite il riferimento contenuto nella variabile originale
+:::
 
 ## Creazione
 
@@ -157,7 +158,7 @@ La keyword `delete` rimuove completamente la proprietà (non solo il valore)
 
 ## Metodi
 
-Un metodo è una funzione definita come valore di una proprietà; può essere chiamato direttamente dall'oggetto e può accedere alle proprietà dell'oggetto stesso tramite `this`
+Un metodo è una funzione definita come valore di una proprietà; può essere chiamato direttamente dall'oggetto e può accedere alle proprietà dell'oggetto stesso tramite `this` (vedi la <a href="../Funzioni/#this">sezione sulle funzioni</a>)
 
 ```javascript
 const persona = {
@@ -175,6 +176,18 @@ console.log(persona.nomeCompleto);
  *   } */
 console.log(persona.nomeCompleto());
 // ↪ 'undefined Capaldi'
+```
+
+Possiamo usare una scrittura più breve per creare i metodi:
+```js
+const oggetto = {
+    metodoA = function(param) {
+        // corpo
+    },
+    metodoB(param) {
+        // corpo
+    }
+}
 ```
 
 ## Scorrere un Oggetto
@@ -232,6 +245,71 @@ Gli _oggetti globali_ sono pre-costruiti; un esempio è `NaN`, che però non ha 
 
 Ce ne sono molti altri: `Number`, `Array`, `String`, `Math`, `Error`, ecc...
 
-<script>
-</script>
+## Getter e Setter
 
+La keyword **`get`** lega una proprietà di un oggetto ad una funzione che viene chiamata assieme alla proprietà:
+
+```javascript
+const obj = {
+    val = 5,
+    get double() {
+        return this.val * 2;
+    }
+}
+
+console.log(obj.val);
+// ↪ 5
+console.log(obj.double);
+// ↪ 10
+```
+
+In pratica, con `get` si possono creare proprietà che in realtà sono funzioni (non si passano parametri).
+
+La keyword **`set`** lega una proprietà di un oggetto a una funzione che viene chiamata ogni volta che si cerca di assegnare qualcosa a quella proprietà:
+
+```javascript
+const obj = {
+    privVal: 0,
+    get val() {
+        return this.privVal;
+    },
+    set val(x) {
+        this.privVal = x;
+    },
+    set halfVal(x) {
+        this.privVal = x * 2;
+    }
+}
+
+obj.val = 0;
+console.log(obj.val);
+// ↪ 0
+obj.halfVal = 2;
+console.log(obj.val);
+```
+
+:::nb
+Non bisogna MAI creare un setter che riassegna a se stesso, poiché la funzione setter chiamerebbe sè stessa all'infinito
+:::
+
+### defineProperties
+
+Dopo l'inizializzazione dell'oggetto, *getter* e *setter* vanno definiti usando il metodo `Object.defineProperties()`; il primo argomento del metodo è l'oggetto di cui si vogliono definire nuovi *getter* e/o *setter*, il secondo argomento è un oggetto le cui proprietà contengono le funzioni `get()` o `set()`:
+
+```javascript
+const obj = { _val: 0 };
+Object.defineProperties(obj, {
+    val: {
+        get() {
+            return this._val;
+        },
+        set(x) {
+            this._val = x;
+        }
+    }
+});
+
+obj.val = 5;
+console.log(obj.val);
+// ↪ 5
+```
