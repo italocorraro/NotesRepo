@@ -15,7 +15,7 @@ author: 'Italo Corraro'
 * sono **dinamici**, cioè non hanno una dimesione fissa e si possono aggiungere o rimuovere elementi in qualsiasi momento, 
 * sono **eterogenei**, cioè è consentito riempirli con elementi di qualsiasi tipo (inclusi altri array, oggetti, ecc...)
 
-Possiamo creare un nuovo array usando l'oggetto globale `Array`:
+Possiamo creare un nuovo array usando il costruttore `Array`:
 
 ```javascript
 const nuovo = new Array('brutto', 'bello', 'cattiv0');
@@ -80,7 +80,7 @@ console.log(macchine.toString());
 :::warn
 Un array resta un oggetto, cioè `typeof` restituirà `object` se usato con un array;
 
-il metodo corretto per verificare se una variabile è un array è passandola per argomento a `Array.isArray()`, oppure con l'espressione `array instanceof Array`, che verifica se `array` è un'istanza dell'oggetto globale `Array`, cioè l'oggetto a cui tutti gli array fanno capo per le proprietà e i metodi
+il metodo corretto per verificare se una variabile è un array è passandola per argomento a `Array.isArray()`, oppure con l'espressione `array instanceof Array`, che verifica se `array` è un'istanza di `Array`, cioè se array è stato costruito (implicitamente o esplicitamente) con il costruttore `Array()`
 :::
 
 :::nota
@@ -576,7 +576,7 @@ Il metodo `reduceRight()` svolge la stessa operazione, ma scorrendo gli elementi
 
 ### Cicli for
 
-#### for...of()
+#### for...of{}
 
 ```javascript
 const array = [/* ... */];

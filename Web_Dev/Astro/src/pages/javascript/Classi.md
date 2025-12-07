@@ -12,7 +12,7 @@ Le **classi** nei linguaggi di programmazione sono modelli astratti che raggrupp
 
 In JavaScript l'ereditarietà è implementata tramite le **catene di prototìpi** e le classi sono implementate come un'astrazione di questo meccanismo per allineare JavaScript con gli altri linguaggi.
 
-Di base JavaScript affida l'ereditarietà interamente agli *oggetti*: gli oggetti hanno una proprietà `prototype` che è un oggetto a sua volta e dalla quale l'oggetto iniziale eredita proprietà (e metodi); l'oggetto `prototype` ha un altro `prototype` come proprietà, questo genera una catena che JavaScript risale per cercare le proprietà, eventualmente si risolve quando il `prototype` è l'*oggetto* `null`.
+Di base JavaScript affida l'ereditarietà interamente agli *oggetti*: gli oggetti hanno una prototìpo che è un oggetto a sua volta e dalla quale l'oggetto iniziale eredita proprietà (e metodi); il prototìpo ha un altro prototìpo come proprietà, questo genera una catena che JavaScript risale per cercare le proprietà, eventualmente si risolve quando il prototìpo è  `null` che non ha altri prototìpi.
 
 :::eg
 Costruiamo un oggetto semplice: 
@@ -48,15 +48,17 @@ __proto__: (...)
 get __proto__: ƒ __proto__()
 set __proto__: ƒ __proto__()
 ```
-Ogni volta che accediamo a una proprietà di un oggetto, JavaScript la cerca tra quelle definite per l'oggetto specifico, se non la trova, la cerca tra quelle del suo prototìpo risalendo la catena finchè non la trova o trova `null`, alla base di tutte le catene di ereditarietà dei prototìpi.
+Ogni volta che accediamo a una proprietà di un oggetto, JavaScript la cerca tra quelle definite per l'oggetto specifico, se non la trova, la cerca tra quelle del suo prototìpo risalendo la catena finchè non la trova o trova `null`.
 
-Il prossimo prototìpo da guardare dentro `Object` è quello della proprietà `__proto__` (viene indicata così dalla console del browser ed è equivalente a `[[Prototype]]`); possiamo accedere al prototipo chiamandolo `Object.__proto__`
+Il prossimo prototìpo da guardare dentro `Object` è quello della proprietà `__proto__`; possiamo accedere al prototipo chiamandolo `Object.__proto__`, tuttavia è sconsigliato.
 
 :::oss
-Il costruttore di `Object.prototype` è la funzione `Object()` che avevamo già usato con la keyword `new` per costruire oggetti senza letterali; gli oggetti costruiti ereditano automaticamente tutte le proprietà assegnate a `Object.prototype`
+Il costruttore relativo a `Object.prototype` è la funzione `Object()` che avevamo già usato con la keyword `new` per costruire oggetti senza letterali; gli oggetti costruiti con `Object` ereditano automaticamente tutte le proprietà assegnate a `Object.prototype`
 :::
 
-Le classi sono una sintassi costruita sui prototìpi che implementano in una scrittura compatta l'assegnazione di proprietà al prototipo e una funzione *costruttore* che viene chiamata con `new`
+Le classi sono una sintassi costruita sui prototìpi che implementano in una scrittura compatta l'assegnazione di proprietà al prototipo e una funzione *costruttore* che viene chiamata con `new`.
+
+Per vedere meglio prototìpi ed ereditarietà: <a href="../Ereditarietà/" title="erditarietà in javascript">sezione sull'ereditarietà in javascript</a>
 
 
 ## Classi

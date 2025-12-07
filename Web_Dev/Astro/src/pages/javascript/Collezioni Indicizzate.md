@@ -8,7 +8,7 @@ author: 'Italo Corraro'
 
 ## Le Istanze di Map
 
-Un'istanza dell'oggetto `Map` è una coppia *chiave-valore* indicizzata per ordine di inserimento.
+Un'istanza di `Map` è una coppia *chiave-valore* indicizzata per ordine di inserimento.
 
 Le chiavi devono essere valori unici all'interno della collezione.
 
@@ -90,7 +90,7 @@ Un'istanza di `WeakMap` è una collezione di coppie *chiave-valore* dove le chia
 
 ## Le Istanze di Set
 
-Le istanze dell'oggetto `Set` sono collezioni di elementi unici indicizzati per ordine di inserimento; la particolarità di un set è che *i suoi elementi non possono ripetersi al suo interno*.
+Le istanze di `Set` sono collezioni di elementi unici indicizzati per ordine di inserimento; la particolarità di un set è che *i suoi elementi non possono ripetersi al suo interno*.
 
 ```javascript
 const set = new Set();

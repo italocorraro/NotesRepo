@@ -90,7 +90,7 @@ const notANum = Number.NaN;
 | `parseInt(st, base)` | `string`, `number` | Converte la stringa in un intero secondo la base di conversione |
 | `isFinite(num)` | `any` | Restituisce `true` se l'argomento è un numero finito (non simbolo speciale) |
 | `isInteger(num)` | `any` | Restituisce `true` se l'argomento è un numero intero (non simbolo) |
-| `isNaN` | `any` | Restituisce `true` se l'argomento passato è `NaN` |
+| `isNaN()` | `any` | Restituisce `true` se l'argomento passato è `NaN` |
 | `isSafeInteger()` | `any` | Restituisce `true` se l'argomento è un numero intero compreso tra $−2^{53} + 1$ e $+2^{53} - 1$ |
 
 ### Metodi Disponibili ai Tipi Number
