@@ -1,0 +1,5 @@
+/* || Base Layout */
+:root {
+    --site-header-font-size: 1rem;
+    --site-header-height: calc(4.6 * var(--site-header-font-size));
+}

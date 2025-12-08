@@ -1,0 +1,32 @@
+---
+import HeaderTest from '../components/Header-test.astro';
+import FooterTest from '../components/Footer-test.astro';
+import MetaSocials from '../components/Meta-socials.astro';
+
+const base = '/NotesRepo/Web_Dev/Astro/dist';
+const { pageTitle, pageAuthor, pageImage, description} = Astro.props;
+
+---
+
+<html lang="it">
+	<head>
+		<!-- Base Config -->
+        <title class="htmlCodeTitle">{pageTitle}</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="icon" sizes="32x32" href={base + "/Crocco.png"} type="image/x-icon" />
+
+        <MetaSocials pageTitle={pageTitle} pageAuthor={pageAuthor} pageImage={pageImage} description={description} />
+
+	</head>
+	<body>
+		<h1>{pageTitle}</h1>
+        <HeaderTest />
+		<main>
+			<slot />
+		</main>
+		<FooterTest />
+	</body>
+</html>

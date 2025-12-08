@@ -1,0 +1,83 @@
+/* || Variables */
+/* || Colour themes */
+/* default: light-theme */
+:root {
+    --bg-color: #f5f5f5;
+    --font-color: #111;
+    --border-color: #5b5b5b;
+    --link-link: #D73A49;
+    --link-active: #a52a2a;
+    --link-visited: #0d2642;
+    --bold-color: #1c692e;
+    --code-bg: #d9dad669;
+    --table-bg: #fff;
+    --table-even: #fdd9d9aa;
+    --table-odd: #d9e9fdaa;
+    --bg-image-filter: brightness(1.1) contrast(120%) invert(100%);
+}
+/* dark theme */
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+    --bg-color: #1b1b1f;
+    --font-color: #f6f6f7;
+    --border-color: #d2d2d2;
+    --link-link: #F97583;
+    --link-active: #fff;
+    --link-visited: #9ECBFF;
+    --bold-color: #85E89D;
+    --code-bg: #45596f36;
+    --table-bg: #24292e;
+    --table-even: #85E89D1a;
+    --table-odd: #9ECBFF1a;
+    --bg-image-filter: none;
+    }
+}
+/* || force themes from settings */
+html[data-theme="light"] {
+    /* || body parts */
+    --bg-color: #f5f5f5;
+    --font-color: #111;
+    --border-color: #5b5b5b;
+    /* || in-line parts */
+    /* link */
+    --link-link: #D73A49;
+    --link-active: #a52a2a;
+    --link-visited: #0d2642;
+    /* strong */
+    --bold-color: #1c692e;
+    /* code */
+    --code-bg: #d9dad669;
+    /* tables */
+    --table-bg: #fff;
+    --table-even: #fdd9d9aa;
+    --table-odd: #d9e9fdaa;
+    --bg-image-filter: brightness(1.1) contrast(120%) invert(100%);
+}
+html[data-theme="dark"] {
+    --bg-color: #1b1b1f;
+    --font-color: #f6f6f7;
+    --border-color: #d2d2d2;
+    --link-link: #F97583;
+    --link-active: #fff;
+    --link-visited: #9ECBFF;
+    --bold-color: #85E89D;
+    --code-bg: #45596f36;
+    --table-bg: #24292e;
+    --table-even: #85E89D1a;
+    --table-odd: #9ECBFF1a;
+    --bg-image-filter: none;
+}
+html[data-theme="dracula"] {
+    --bg-color: #24292e;
+    --font-color: #fff;
+    --border-color: #e1e4e8;
+    --link-link: #FF79C6;
+    --link-active: #fff;
+    --link-visited: #F1FA8C;
+    --bold-color: #8BE9FD;
+    --code-bg: #456f6636;
+    --table-bg: #282A36;
+    --table-even: #ff79c51a;
+    --table-odd: #8be8fd1a;
+    --bg-image-filter: hue-rotate(20deg) contrast(97%);
+}

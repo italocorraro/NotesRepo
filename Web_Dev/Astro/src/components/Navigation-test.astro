@@ -1,0 +1,23 @@
+---
+const base = '/NotesRepo/Web_Dev/Astro/dist';
+
+const testPosts = Object.values(import.meta.glob('../pages/posts/*.md', { eager: true }));
+
+---
+
+<ul class="test-nav">
+	<li><a href={base + '/'}>Home</a></li>
+	<li><a href={base + "/about/"}>About</a></li>
+	{
+		testPosts.map((post: any) => <li><a href={post.url} title={post.frontmatter.title}>{post.frontmatter.title}</a></li>)
+	}
+</ul>
+
+<style>
+	ul {
+		display: flex;
+		list-style-type: none;
+		flex-direction: column;
+		justify-self: center;
+	}
+</style>

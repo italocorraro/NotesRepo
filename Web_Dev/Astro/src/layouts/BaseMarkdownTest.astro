@@ -1,0 +1,75 @@
+---
+import HeaderTest from '../components/Header-test.astro';
+import FooterTest from '../components/Footer-test.astro';
+import MetaSocials from '../components/Meta-socials.astro';
+
+const base = '/NotesRepo/Web_Dev/Astro/dist';
+const pageImage = {
+	url: 'https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png',
+	type: 'image/png',
+	width: '799',
+	height: '400'
+}
+const { frontmatter } = Astro.props;
+
+---
+
+<html lang="it">
+	<head>
+		<!-- Base Config -->
+        <title class="htmlCodeTitle">{frontmatter.title}</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="icon" sizes="32x32" href={base + "/Crocco.png"} type="image/x-icon" />
+
+        <!-- Resources Loading 
+        <link rel="stylesheet" href="../../source/notes_general.css" type="text/css" />
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="../../source/navstyle.css" type="text/css" />
+        <script type="module" src="../../source/Navigazione.js"></script>
+        
+        <script src="../../source/highlight.js"></script>-->
+
+        <MetaSocials pageTitle={frontmatter.title} pageAuthor={frontmatter.author} pageImage={pageImage} description={frontmatter.description} />
+	</head>
+	<body>
+		<h1>{frontmatter.title}</h1>
+        <HeaderTest />
+        <div id="background"></div>
+		<main>
+			<slot />
+		</main>
+		<FooterTest />
+        <style>
+            main {
+                margin-top: 1rem;
+                background-color: whitesmoke;
+                border-radius: 0.5em;
+            }
+            h1 {
+                background-color: whitesmoke;
+            }
+            #background {
+                background-image: url('../images/teal.png');
+                background-size: 100% 100%;
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                z-index: -1;
+            }
+            @media screen and (orientation: portrait) {
+                #background {
+                    background-image: url('../images/hello.png');
+                }
+            }
+            main {
+                width: 90%;
+                text-align: left;
+                display: block;
+            }
+        </style>
+	</body>
+</html>

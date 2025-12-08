@@ -1,0 +1,106 @@
+---
+import { navbar } from "../scripts/nav_maker";
+
+// url relativo corrente
+const { current } = Astro.props;
+
+const whereAmI = {
+    previous: {
+        name: '',
+        url: ''
+    },
+    here: {
+        name: '',
+        url: ''
+    },
+    next: {
+        name: '',
+        url: ''
+    },
+}
+
+for(const navItem of navbar) {
+    const content = navItem.content.filter(function(cont) {
+        if(cont.URL != '#') {
+            return cont;
+        }
+    });
+    for(let i = 0;  i < content.length; i++) {
+        const url = content[i].URL;        
+        if(current == url || `${current}/` == url) {
+            whereAmI.previous.name = content[i-1]?.name;
+            whereAmI.previous.url = content[i-1]?.URL ?? '';   
+            whereAmI.next.name = content[i+1]?.name;         
+            whereAmI.next.url = content[i+1]?.URL ?? '';
+            whereAmI.here.name = content[i]?.name;
+            whereAmI.here.url = content[i]?.URL;
+            break;
+        }
+    }
+    if(whereAmI.previous.url.length != 0 || whereAmI.next.url.length != 0) {
+        break;
+    }
+}
+
+---
+
+<nav id="local-nav" aria-label="Navigazione Argomento">
+    {
+        whereAmI.previous.url ? (
+            <a href={whereAmI.previous.url} title="pagina precedente">
+                {whereAmI.previous.name}
+            </a>
+        ) : (
+            <span aria-hidden="true"></span>
+        )
+    } 
+    {
+        whereAmI.here ? (
+            <a href={whereAmI.here.url} title="pagina corrente">
+                {whereAmI.here.name}
+            </a>
+        ) : (
+            <span>Pagina assente nell'indice</span>
+        )
+    }
+    {
+        whereAmI.next.url ? (
+            <a href={whereAmI.next.url} title="pagina successiva">
+                {whereAmI.next.name}
+            </a>
+        ) : (
+            <span aria-hidden="true"></span>
+        )
+    }
+</nav>
+
+<style>
+nav {
+    display: flex;
+    padding: 0 1.5em;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+}
+nav > * {
+    width: 33%;
+    text-transform: uppercase;
+}
+nav > :first-child {
+    text-align: left;
+}
+nav > a:first-child::before {
+    content: '<';
+}
+nav > :last-child {
+    text-align: right;
+}
+nav > a:last-child::after {
+    content: '>';
+}
+nav > a:first-child::before,
+nav > a:last-child::after {
+    display: inline-block;
+    transform: translate(0, -0.05em);
+}
+</style>

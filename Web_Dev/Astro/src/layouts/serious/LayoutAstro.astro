@@ -1,0 +1,92 @@
+---
+import '../../styles/global-setup.css';
+import '../../styles/global-variables-themes.css';
+import '../../styles/global-variables-layout.css';
+import '../../styles/global-layout.css';
+
+import '../../styles/tables.css';
+import '../../styles/shiki-config.css';
+import '../../styles/directives-styles.css';
+import '../../styles/markers-config.css';
+
+import { Image } from 'astro:assets';
+import hello from '../../images/hello.png';
+import teal from '../../images/teal.png';
+
+import SiteNavigation from '../../components/SiteNavigation.astro';
+import FooterTest from '../../components/Footer-test.astro';
+import MetaSocials from '../../components/Meta-socials.astro';
+import Themes from '../../components/serious/Themes.astro';
+import Index from '../../components/Index.astro';
+import Header from '../../components/Header.astro';
+import LocalNavigation from '../../components/LocalNavigation.astro';
+
+const base = '/NotesRepo/Web_Dev/Astro/dist';
+const pageImage = {
+	url: 'https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png',
+	type: 'image/png',
+	width: '799',
+	height: '400'
+}
+const { frontmatter, headings } = Astro.props;
+
+---
+
+<html lang="it">
+	<head>
+		{/* Base Config */}
+        <title class="htmlCodeTitle">{frontmatter.title}</title>
+        <meta class="htmlCodeChar" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="icon" sizes="32x32" href={base + "/Crocco.png"} type="image/x-icon" />
+
+        <MetaSocials pageTitle={frontmatter.metaTitle} pageAuthor={frontmatter.author} pageImage={pageImage} description={frontmatter.description} />
+
+        {/* latex stylesheet for math rendering */}
+        <link href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" rel="stylesheet">
+	</head>
+	<body>
+        <Header />
+        <!-- <div id="background" aria-hidden="true"></div> -->
+        <Image src={teal} alt="background image" aria-hidden='true' id='background-big' loading="eager" decoding="sync" />
+        <Image src={hello} alt="background image" aria-hidden='true' id='background-small' loading="eager" decoding="sync" />
+		<main>
+            <header>
+                <h1>{frontmatter.title}</h1>
+                <div id="breadcrumbs"><LocalNavigation current={frontmatter.url}></div>
+            </header>
+            <div id="content">
+                <Index headings={headings} />
+			    <slot />
+            </div>
+		</main>
+		<FooterTest current={frontmatter.url} />        
+	</body>
+</html>
+
+<style>
+#background-small, #background-big {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: var(--bg-image-filter);
+}
+#background-big {
+    display: none;
+}
+@media screen and (orientation: landscape) {
+    #background-small {
+        display: none;
+    }
+    #background-big {
+        display: unset;
+    }
+}
+</style>

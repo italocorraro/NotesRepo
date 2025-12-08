@@ -1,0 +1,68 @@
+pre {
+    padding: 0.4em 0.6em;
+    border-radius: 0.5em;
+    margin: 0.5em 0;
+    border: 0.1em dashed cadetblue;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+}
+pre::before {
+    content: attr(data-language);
+    display: block;
+    text-transform: uppercase;
+    font-size: 120%;
+    text-align: left;
+    border-bottom: 0.1em solid;
+    margin-bottom: 0.4em;
+}
+pre[data-language="js"]::before {
+    content: none;
+}
+:not(.astro-code) > code {
+    background-color: var(--code-bg);
+    font-size: 120%;
+    padding: 0.1em 0.2em;
+    border-radius: 0.4em;
+}
+
+/* || Colori Shiki Tema SCURO */
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) ;
+    background-color: var(--shiki-dark-bg) ;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) ;
+    font-weight: var(--shiki-dark-font-weight) ;
+    text-decoration: var(--shiki-dark-text-decoration) ;
+  }
+}
+html[data-theme="dark"] :is(.astro-code, .astro-code span) {
+    color: var(--shiki-dark) ;
+    background-color: var(--shiki-dark-bg) ;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) ;
+    font-weight: var(--shiki-dark-font-weight) ;
+    text-decoration: var(--shiki-dark-text-decoration) ;
+}
+
+/* || Colori Shiki Tema LUMINOSO */
+html[data-theme="light"] :is(.astro-code, .astro-code span) {
+    color: var(--shiki-light) ;
+    background-color: var(--shiki-light-bg) ;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-light-font-style) ;
+    font-weight: var(--shiki-light-font-weight) ;
+    text-decoration: var(--shiki-light-text-decoration) ;
+}
+
+/* || Colori Shiki Tema DRACULA */
+html[data-theme="dracula"] :is(.astro-code, .astro-code span) {
+    color: var(--shiki-dracula) ;
+    background-color: var(--shiki-dracula-bg) ;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dracula-font-style) ;
+    font-weight: var(--shiki-dracula-font-weight) ;
+    text-decoration: var(--shiki-dracula-text-decoration) ;
+}

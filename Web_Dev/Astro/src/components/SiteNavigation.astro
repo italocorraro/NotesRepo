@@ -1,0 +1,82 @@
+---
+import { navbar } from "../scripts/nav_maker";
+---
+<button type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">
+    {/* Sostituire con icona */}
+    Menu
+</button>
+<nav id="mainNav" aria-label="Navigazione Sito">
+    <ul>
+        {
+            navbar.map((navitem: any) => navitem.content.length > 0 
+            ? <li class="nav-item"><span>{navitem.name}</span> 
+                <ul>
+                    {   
+                        navitem.content.map((sitepage: any) => 
+                            <li class="nav-link">
+                                {sitepage.URL != '#' ? <a href={sitepage.URL}>{sitepage.name}</a> : sitepage.name}</li>)
+                    }
+                </ul>
+            </li> : null
+            )
+        }
+    </ul>
+</nav>
+<div id="mainNavBackdrop"></div>
+
+<script>
+    const navTog = document.querySelector('button:has(+ #mainNav)');
+    navTog?.addEventListener('click', () => {
+        const isExpanded = navTog.getAttribute('aria-expanded') === 'true';
+        navTog.setAttribute('aria-expanded', `${!isExpanded}`);
+    });
+    const back = document.querySelector('#mainNav + div');
+    back?.addEventListener('click', () => {
+        navTog?.setAttribute('aria-expanded', "false");
+    });
+
+    
+
+
+function slideUp(element: any, duration = 400) {
+  element.style.transition = `height ${duration}ms ease`;
+  element.style.height = element.scrollHeight + 'px';
+  requestAnimationFrame(() => {
+    element.style.height = '0';
+  });
+  setTimeout(() => {
+    element.style.display = 'none';
+  }, duration);
+}
+
+function slideDown(element: any, duration = 400) {
+  element.style.display = 'block';
+  let height = element.scrollHeight;
+  element.style.height = '0';
+  element.style.transition = `height ${duration}ms ease`;
+  requestAnimationFrame(() => {
+    element.style.height = height + 'px';
+  });
+  setTimeout(() => {
+    element.style.height = 'auto'; // reset per adattarsi al contenuto
+  }, duration);
+}
+
+function slideToggle(element: any, duration = 400) {
+  if (window.getComputedStyle(element).display === 'none') {
+    slideDown(element, duration);
+  } else {
+    slideUp(element, duration);
+  }
+}
+
+document.querySelectorAll('.nav-item').forEach((nav) => {
+    let next = nav.querySelector('ul');
+    let tit = nav.querySelector('span');
+    slideUp(next);
+    tit?.addEventListener('click', () => {
+        slideToggle(next, 400);
+    })
+})
+
+</script>

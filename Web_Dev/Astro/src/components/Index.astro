@@ -1,0 +1,45 @@
+---
+const { headings } = Astro.props;
+
+// Costruzione albero
+const tree = headings.map((h: any) => ({ ...h, children: [] }));
+const index: any[] = [];
+
+function pushChildren(list: any[], node: any) {
+  if (list.length === 0) return void list.push(node);
+
+  const last = list[list.length - 1];
+
+  if (node.depth === last.depth) list.push(node);
+  else if (node.depth > last.depth) pushChildren(last.children, node);
+  else return;
+}
+
+tree.forEach((item: any) => pushChildren(index, item));
+
+// Builder HTML ricorsivo
+function indexBuild(list: any[]) {
+  let html = "<ul>";
+
+  list.forEach(item => {
+    html += `<li><a href="#${item.slug}">${item.text}</a>`;
+
+    if (item.children.length > 0) {
+      html += indexBuild(item.children); 
+    }
+
+    html += `</li>`;
+  });
+
+  html += "</ul>";
+  return html;
+}
+
+const indexList = indexBuild(index);
+---
+
+
+<nav aria-labelledby="page-index">
+    <h2 id="page-index">Indice</h2>
+    <div id="index-list" set:html={indexList}></div>
+</nav>

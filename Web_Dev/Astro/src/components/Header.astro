@@ -1,0 +1,48 @@
+---
+import '../styles/global-header.css';
+import LocalNavigation from './LocalNavigation.astro';
+
+import Themes from "./serious/Themes.astro";
+import SiteNavigation from "./SiteNavigation.astro";
+---
+
+<header id="site-header">
+    <SiteNavigation />
+    <Themes />
+    {/* Temporary  */}
+    <button type="button" id="to-top" aria-label="Porta in cima alla pagina">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+  <polygon points="12 4 20 20 4 20" fill="var(--font-color)" />
+</svg>
+</button>
+</header>
+
+<style>
+
+    #site-header {
+        font-size: var(--site-header-font-size);
+        position: sticky;
+        z-index: 1001;
+        top: 0;
+        display: flex;
+        width: 100%;
+        height: var(--site-header-height);
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-content: center;
+        margin: 0;
+        background-color: var(--bg-color);
+        padding: 0.4em 0;
+        border-bottom: 0.2em solid var(--border-color);
+    }
+    #site-header > * {
+        flex-grow: 1;
+    }
+</style>
+
+<script>
+const topBt = document.getElementById('to-top');
+topBt?.addEventListener('click', () => {
+    scroll(0, 0);
+})
+</script>

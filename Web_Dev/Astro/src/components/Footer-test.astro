@@ -1,0 +1,26 @@
+---
+const base = '/NotesRepo/Web_Dev/Astro/dist';
+const platform = 'github';
+const username = 'italocorraro';
+import LocalNavigation from './LocalNavigation.astro';
+import SocialTest from './Social-test.astro';
+
+const { current } = Astro.props;
+---
+<style>
+    footer {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 2rem;
+        padding: 1rem 0;
+        flex-direction: column;
+    }
+    p {
+        margin: 0;
+    }
+</style>
+<footer class="test-footer">
+    <LocalNavigation current={current} />
+    <p>Pagina iniziale del sito a <a href={base + "/../../html/Sintassi html/"}>questo indirizzo</a></p>
+    <SocialTest platform={platform} username={username} />
+</footer>

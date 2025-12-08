@@ -1,0 +1,161 @@
+/* || Stili per gli inserti con classi tramite plugin remark */
+
+.inserto p:has(+ p) {
+    margin-bottom: 0.2em;
+}
+.inserto p {
+    margin: 0;
+    padding: 0;
+}
+aside.inserto::before {
+    font-weight: bold;
+    content: attr(data-heading);
+}
+.inserto {
+    margin: 1rem 0;
+    padding: 0.2em 0.8em 0.2em 0.4em;
+    width: fit-content;
+    max-width: 100%;
+}
+.inserto a {
+    word-break: break-all;
+}
+
+/* Nota */
+.nota {
+    background-color: #c7fffb26;
+    border-left: 0.2rem solid #00aaff;
+}
+
+/* Nota Bene */
+.notabene {
+    background-color: #ffe4c726;
+    border-left: 0.2rem solid #e65800;
+}
+
+/* Attenzione! */
+.attenzione {
+    background-color: #ffc7c726;
+    border-left: 0.2rem solid #e60000;
+}
+
+/* Osservazione */
+.osservazione {
+    background-color: #c8ffc726;
+    border-left: 0.2rem solid #007d2c;
+}
+
+/* Esempio */
+.esempio {
+    background-color: #ffffc726;
+    border-left: 0.2rem solid #ffff00;
+}
+
+/* Output */
+.output {
+    background-color: rgba(222, 184, 135, 0.363);
+    border-left: 0.4rem outset burlywood;
+    border-right: 0.4rem outset burlywood;
+}
+.output::before {
+    display: block;
+    border-bottom: 0.15em solid burlywood;
+    margin-bottom: 0.4rem;
+}
+.output::after {
+    content: '';
+    display: block;
+    border-top: 0.15em solid burlywood;
+    margin-top: 0.4rem;
+    width: 100%;
+}
+.output > :not(hr) {
+    background-color: var(--bg-color);
+    border-right: 0.2em groove var(--bg-color);
+    border-bottom: 0.2em groove var(--bg-color);
+}
+/* .output > :not(hr)::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    border: 0.05rem groove burlywood;
+    bottom: -1em;
+    left: 0;
+} */
+.output hr {
+    border-color: burlywood;
+    border-style: groove;
+}
+
+/* Tabella di confronto sintassi */
+.mark-tab {
+    display: grid;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+    grid-template-columns: repeat(2, auto);
+    gap: 0;
+    padding: 0.15em;
+    border: 0.15em solid var(--border-color);
+    background-color:cadetblue;
+    border-radius: 0.4em;
+}
+.mark-tab pre {
+    overflow-x: hidden !important;
+    min-width: max-content;
+    align-content: center;
+}
+
+.mark-tab :not(:is(:first-child, :nth-child(2)))::before {
+    content: none;
+}
+.mark-tab :is(:first-child, :nth-child(2))::before {
+    border: 0;
+    margin: 0;
+}
+.mark-tab * {
+    width: auto;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+}
+.mark-tab :first-child {
+    border-top-left-radius: 0.4em;
+    border-top: 0;
+}
+.mark-tab :nth-child(2) {
+    border-top-right-radius: 0.4em;
+    border-top: 0;
+}
+.mark-tab :nth-last-child(2) {
+    border-bottom-left-radius: 0.4em;
+    border-bottom: 0;
+}
+.mark-tab :last-child {
+    border-bottom-right-radius: 0.4em;
+    border-bottom: 0;
+}
+.mark-tab :nth-child(odd) {
+    border-left: 0;
+}
+.mark-tab :nth-child(even) {
+    border-right: 0;
+}
+
+/* FIX vari */
+ul:has(+ .inserto) {
+    margin-bottom: 0;
+}
+ul + .inserto {
+    margin-top: 0.3rem;
+    margin-left: 40px;
+    max-width: calc(100% - 40px);
+}
+ul:has(+ .inserto) :last-child p {
+    margin-bottom: 0;
+}
+/* inserire una barra --- per resettare gli inserti dopo una lista */
+hr:has(+ .inserto) {
+    display: none;
+}

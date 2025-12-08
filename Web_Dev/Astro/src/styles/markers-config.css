@@ -1,0 +1,55 @@
+
+/*a: "amber",
+  b: "blue",
+  c: "cyan",
+  d: "brown",
+  e: "espresso",
+  f: "fuchsia",
+  g: "green",
+  h: "hotpink",
+  i: "indigo",
+  j: "jade",
+  k: "kiwi",
+  l: "lime",
+  m: "magenta",
+  n: "navyblue",
+  o: "orange",
+  p: "purple",
+  q: "pink",
+  r: "red",
+  s: "silver",
+  t: "teal",
+  u: "umber",
+  v: "violet",
+  w: "white",
+  x: "gray",
+  y: "yellow",
+  z: "black", */
+
+.flexible-marker {
+    color: var(--bg-color);
+    background-color: transparent;
+}
+
+.flexible-marker-default {
+    background-color: var(--font-color);
+}
+.flexible-marker-red {
+    background-color: red;
+}
+
+.flexible-marker-umber {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.flexible-marker-lime {
+    clip-path: circle(0);
+    display: block;
+    height: 0.3em;
+}
+
+.flexible-marker-blue {
+    color: var(--font-color);
+    text-shadow: 0.04em 0.04em var(--border-color);
+}

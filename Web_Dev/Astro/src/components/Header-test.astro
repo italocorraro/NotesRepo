@@ -1,0 +1,21 @@
+---
+import NavigationTest from "./Navigation-test.astro";
+import MenuTest from "./Menu-test.astro";
+import SiteNavigation from "./SiteNavigation.astro";
+const base = '/NotesRepo/Web_Dev/Astro/dist';
+---
+<header>
+    <nav>
+        <MenuTest /><img src={base + '/favicon.svg'} alt="icona SVG di Astro" />
+        <NavigationTest />
+        <SiteNavigation />
+    </nav>
+</header>
+<script>
+    import '../scripts/menu-test.js';
+</script>
+<style>
+    img {
+        max-width: 2rem;
+    }
+</style>
