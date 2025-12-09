@@ -109,7 +109,7 @@ const navbar = [
       { name: 'Ereditarietà', URL: astro + 'javascript/Ereditarietà/' },
       { name: 'Classi', URL: astro + 'javascript/Classi/' },
       { name: 'Garbage Collection', URL: '#' },
-      { name: 'Asincronia', URL: '#' },
+      { name: 'Asincronia', URL: astro + 'javascript/Asincronia/' },
       { name: 'Moduli', URL: '#' },
     ]
   },

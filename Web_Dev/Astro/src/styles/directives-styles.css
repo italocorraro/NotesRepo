@@ -143,6 +143,11 @@ aside.inserto::before {
     border-right: 0;
 }
 
+/* CODE HIDER */
+.hide-code {
+    border: 2px solid red;
+}
+
 /* FIX vari */
 ul:has(+ .inserto) {
     margin-bottom: 0;

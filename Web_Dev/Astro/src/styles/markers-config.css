@@ -53,3 +53,36 @@
     color: var(--font-color);
     text-shadow: 0.04em 0.04em var(--border-color);
 }
+
+.flexible-marker-cyan {
+    display: block;
+    color: var(--font-color);
+    margin-bottom: 0;
+    }
+.flexible-marker-cyan::before {
+    content: 'Mostra Codice ';
+    cursor: pointer;
+}
+.code-show-next > .flexible-marker-cyan::before {
+    content: 'Nascondi Codice ';
+}
+.flexible-marker-cyan::after {
+    content: '>';
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    transform: rotate(180deg);
+    transition: transform 0.5s;
+}
+.code-show-next > .flexible-marker-cyan::after {
+    transform: rotate(90deg);
+}
+
+p:has(> .flexible-marker-cyan) + pre.astro-code {
+    transition: max-height 0.7s, padding 0.3s 0.4s;
+    max-height: 2000px;
+}
+p:has(> .flexible-marker-cyan):not(.code-show-next) + pre.astro-code {
+    max-height: 0px;
+    padding-block: 0;
+}
