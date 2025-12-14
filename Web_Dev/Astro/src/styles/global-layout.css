@@ -191,3 +191,20 @@ footer {
 
 
 /* Footnotes */
+
+
+
+
+
+:is(h1, h2, h3, h4, h5, h6) {
+    display: flex;
+}
+
+:is(h1, h2, h3, h4, h5, h6) > a[href] {
+    order: 2;
+    padding-left: 1rem;
+    color: inherit;
+}
+:is(h1, h2, h3, h4, h5, h6):hover > a[href]::before {
+    content: ' #';
+}

@@ -72,6 +72,52 @@ Le funzioni DICHIARATE ESPLICITAMENTE possono essere chiamate prima della loro d
 quelle dichiarate in una variabile (o più in generale, non esplicitamente), invece, DEVONO essere definite PRIMA della chiamata
 :::
 
+### Callback
+
+Una funzione può essere passata come argomento ad un'altra funzione, in tal caso si dice che è una funzione di **callback**;
+
+```javascript
+function other() {
+    // corpo
+}
+function caller(callback) {
+    // corpo
+    callback();
+}
+
+caller(other);
+```
+
+:::nb
+Le funzioni di callback vanno passate come argomento SENZA l'operatore `()`, altrimenti ad essere passato non è il codice della funzione ma il suo valore di ritorno
+:::eg
+Consideriamo queste due funzioni:
+```javascript
+function calc(x, y) {
+    return x + y;
+}
+function main(callback) {
+    let num = 6;
+    let plus = 4;
+    console.log(callback);
+    console.log(callback(num, plus));
+}
+```
+se passassimo la callback con l'operatore `()` riceveremmo un errore:
+```js
+main(calc()); 
+// ↪ TypeError: callback is not a function
+```
+il modo corretto di passare una funzione come argomento è con il nome soltanto:
+```js
+main(calc);
+/* ↪ ƒ calc(x, y) {
+ *       return x + y;
+ *    } */
+// ↪ 10
+```
+:::
+
 ### Valore di Ritorno
 
 Una funzione ha a disposizione la keyword **`return`** per portare in uscita un dato (solo un dato può essere restituito da una funzione);

@@ -128,8 +128,8 @@ const navbar = [
   {
     name: 'Struttura Pagine',
     content: [
-      { name: 'Struttura html', URL: '#' },
-      { name: 'Struttura CSS', URL: '#' },
+      { name: 'Struttura html', URL: astro + 'Struttura/Struttura html/' },
+      { name: 'Struttura CSS', URL: astro + 'Struttura/Struttura CSS/' },
     ]
   },
   {

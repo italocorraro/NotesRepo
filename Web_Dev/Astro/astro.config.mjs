@@ -14,10 +14,12 @@ import remarkSectionize from 'remark-sectionize';
 import remarkClassify from './src/plugins/remark-classify';
 import remarkWrapTables from './src/plugins/remark-wrap-tables';
 import remarkLazyImages from './src/plugins/remark-lazy-images';
+import remarkTitleAccordion from './src/plugins/remark-title-accordion';
 
 // extensions
 import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 
 // https://astro.build/config
@@ -62,11 +64,13 @@ export default defineConfig({
             remarkWrapTables,
             remarkLazyImages,
             remarkFlexibleMarkers,
-            remarkSectionize
+            remarkSectionize,
+            remarkTitleAccordion
         ],
         rehypePlugins: [
             rehypeSlug,
-            rehypeKatex
+            rehypeKatex,
+            rehypeAutolinkHeadings
         ],
         
         shikiConfig: {

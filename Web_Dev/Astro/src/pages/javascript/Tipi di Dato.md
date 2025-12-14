@@ -30,15 +30,15 @@ typeof null === 'object'; // true
 ```
 :::
 
-### Classi Wrapper
+### Oggetti Wrapper
 
-Con l'eccezione di `undefined` e `null`, tutti gli altri tipi primitivi hanno una classe _wrapper_ associata:
+Con l'eccezione di `undefined` e `null`, tutti gli altri tipi primitivi hanno un oggetto _wrapper_ associato:
 
-Le **classi wrapper** vengono usate da JavaScript per racchiudere un dato primitivo quando viene invocata una proprietà o un metodo su di esso; in questo modo, emula il comportamento di un oggetto e permette di chiamare la proprietà/metodo sul dato.
+Gli **oggetti wrapper** vengono usati da JavaScript per racchiudere un dato primitivo quando viene invocata una proprietà o un metodo su di esso; in questo modo, emula il comportamento di un oggetto e permette di chiamare la proprietà/metodo sul dato.
 
 Una tabella con i tipi primitivi, relativi wrapper e descrizione dei dati che contengono:
 
-| Tipo | `typeof` | Wrapper | Descrizione
+| Tipo | `typeof` | Wrapper | Descrizione |
 | --- | --- | --- | --- |
 | `Null` | `"object"` | \/ | assenza di *oggetto* |
 | `Undefined` | `"undefined"` | \/ | assenza di *valore* |

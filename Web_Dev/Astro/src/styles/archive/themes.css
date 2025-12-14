@@ -1,0 +1,43 @@
+
+
+/* Dark Theme */
+@media screen and (prefers-color-scheme: dark) {
+    :root, :host {
+        /* generico */
+        --font-color: #f6f6f7;
+        --background-color: #1b1b1f;
+        /* titoli */
+        --h1-color: ;
+        --h2-color: ;
+        --h2-underline-color: ;
+        --h3-color: ;
+        --h4-color: ;
+        --h5-color: ;
+        --h6-color: ;
+        /* blockquote */
+        --blockquote-border-color: #24242b;
+        --blockquote-background-color: #0e0e1011;
+        --blockquote-footer-color: #f6f6f782;
+        /* strong */
+        --strong-color: #85E89D;
+        /* italic */
+        --em-color: #d7efde;
+        /* evidenziazione */
+        --mark-color: #fff;
+        --mark-background-color: #9c4409;
+        --text-selection-background-color: #294730;
+        /* code e kbd */
+        --code-background-color: #0e0e103e;
+        /* ins e del */
+        --ins-color: #b7e7c3;
+        --del-color: #f04b5c35;
+        /* link (in-sito) */
+        --link-color: #F97583;
+        --link-hover-color: #f46c7a;
+        --link-underline-color: var(--link-color);
+        --link-active-color: #fb828e;
+        --link-visited-color: #9ECBFF;
+        
+    }
+}
+

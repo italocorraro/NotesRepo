@@ -1,0 +1,313 @@
+/* Arg: 1 *
+ * ### Variabili Globali Layout
+ * START */
+:root, :host {
+
+    /* ## Tipografia Generale START*/
+
+    /* # font-family */
+    --font-family-serif: Georgia, 'Times New Roman', Times, serif;
+    --font-family-sans: system-ui, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    --font-family-monospace: ui-monospace, Menlo, Consolas, 'Courier New', Courier, monospace;
+    --font-family: var(--font-family-sans);
+    --font-family-header: var(--font-family-serif);
+
+    /* # font-layout */
+    --line-height: 1.5;
+    --font-weight: 400;
+    --code-font-weight: 500;
+    --text-underline-offset: 0.1rem;
+    --title-font-weight: 700;
+    --title-font-size-increase: 0.25rem;
+
+    /* # spaziature */
+    --spacing: 0.4rem;
+    --block-spacing-vertical: ;
+    --block-spacing-horizontal: ;
+    --typography-spacing-vertical: 0.8rem;
+    --typography-spacing-horizontal: 0.6rem;
+    --inline-highlight-spacing: 0.125rem 0.25rem;
+    --form-el-spacing-vertical: ;
+    --form-el-spacing-horizontal: ;
+    --h1-spacing-top: 2.25rem;
+    --h2-spacing-top: 2rem;
+    --h3-spacing-top: 1.875rem;
+    --h4-spacing-top: 1.675rem;
+    --h5-spacing-top: 1.5rem;
+    --h6-spacing-top: 1.375rem;
+    --h1-spacing-bottom: 1.5rem;
+    --h2-spacing-bottom: 1.2rem;
+    --h3-spacing-bottom: 1rem;
+    --title-spacing-bottom: 0.8rem;
+    --title-line-height: 1.2;
+
+    --list-indent: 2rem;
+
+    /* ## Layout Blocchi START*/
+
+    /* # contorni */
+    --border-width: /* spessore bordo */;
+    --border-radius: /* arrotondamento bordo */;
+    --inline-highlight-border-radius: 0.2rem;
+    --outline-width: 0.17rem;
+    --form-el-outline-width: /* */;
+    --outline-offset: /* separazione tra bordo e outline */;  
+
+    /* # ombreggiature */
+    --box-shadow-focus: ;
+    --control-shadow-active: ;
+
+    /* ## Layout Blocchi END*/
+
+
+    /* ## Tipografia Generale END*/
+}
+
+/* Arg: 1 *
+ * ### Tipografia
+ * START */
+
+/* 
+ ## Tipografia Blocchi */
+
+/* # normalizzazioni blocchi testuali */
+address, blockquote, dl, ol, ul, p, pre, table {
+    margin-top: 0;
+    margin-bottom: var(--typography-spacing-vertical);
+    color: var(--font-color);
+    font-style: normal;
+    font-weight: var(--font-weight);
+}
+:where(section, article):has(>:is(h1, h2, h3, h4, h5, h6))
+ :is(address, blockquote, dl, ol, ul, p, pre, table) {
+    margin-bottom: calc(var(--typography-spacing-vertical) * 0.5);
+} 
+
+/* # Titoli */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: var(--title-spacing-bottom);
+    font-weight: var(--title-font-weight);
+    line-height: var(--title-line-height);
+    font-family: var(--title-font-family);
+}
+h1 {
+    color: var(--h1-color);
+    font-size: calc(1rem + 7*var(--title-font-size-increase));
+    --title-spacing-top: var(--h1-spacing-top);
+    margin-bottom: var(--h1-spacing-bottom);
+}
+h2 {
+    color: var(--h2-color);
+    font-size: calc(1rem + 5*var(--title-font-size-increase));
+    --title-spacing-top: var(--h2-spacing-top);
+    margin-bottom: var(--h2-spacing-bottom);
+}
+h3 {
+    color: var(--h3-color);
+    font-size: calc(1rem + 4*var(--title-font-size-increase));
+    --title-spacing-top: var(--h3-spacing-top);
+    margin-bottom: var(--h3-spacing-bottom);
+}
+h4 {
+    color: var(--h4-color);
+    font-size: calc(1rem + 3*var(--title-font-size-increase));
+    --title-spacing-top: var(--h4-spacing-top);
+}
+h5 {
+    color: var(--h5-color);
+    font-size: calc(1rem + 2*var(--title-font-size-increase));
+    --title-spacing-top: var(--h5-spacing-top);}
+h6 {
+    color: var(--h6-color);
+    font-size: calc(1rem + var(--title-font-size-increase));
+    --title-spacing-top: var(--h6-spacing-top);
+}
+
+:where(article, address, blockquote, dl, figure, form, ol, p, pre, table, ul) 
+ ~ :is(h1, h2, h3, h4, h5, h6) {
+    margin-top: var(--title-spacing-top);
+}
+
+/* hgroup {
+    margin-bottom: var(--typography-spacing-vertical);
+}
+hgroup > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+hgroup > *:not(:first-child):last-child {
+  --font-color: var(--muted-color);
+  --font-weight: unset;
+  font-size: 1rem;
+} */
+
+/* # articoli e sezioni */
+section, article {
+    margin-bottom: var(--block-spacing-vertical);
+}
+:where(section, article) > :last-child {
+    margin-bottom: 0;
+}
+
+/* # contenitori di testo */
+.text-container {
+    padding: 0 var(--typography-spacing-horizontal);
+    margin: 0;
+}
+
+/* # liste */
+ol, ul, dl {
+    padding-left: var(--list-indent);
+}
+:where(ol, ul) li {
+    margin-bottom: calc(var(--typography-spacing-vertical) * 0.25);
+}
+:where(dl, ol, ul) :where(dl, ol, ul) {
+    margin: 0;
+    margin-top: calc(var(--typography-spacing-vertical) * 0.25);
+}
+ul li {
+    list-style: square;
+    list-style-image: var(--list-marker-image);
+}
+
+/* # blocco citazioni */
+blockquote {
+  display: block;
+  margin: var(--typography-spacing-vertical) 0;
+  padding: var(--spacing);
+  background-color: var(--blockquote-background-color);
+  border-right: none;
+  border-left: 0.25rem solid var(--blockquote-border-color);
+  border-inline-start: 0.25rem solid var(--blockquote-border-color);
+  border-inline-end: none;
+}
+blockquote footer {
+    margin-top: calc(var(--typography-spacing-vertical) * 0.5);
+    color: var(--blockquote-footer-color);
+}
+
+/* 
+ * ## Tipografia Inline */
+
+/* # grassetti */
+b, strong {
+  font-weight: bolder;
+}
+strong {
+    color: var(--strong-color);
+}
+
+/* # enfasi */
+em {
+    color: var(--em-color);
+    /* font-style: italic; */
+}
+
+/* # sottolineature */
+/* u {
+    text-decoration: underline;
+} */
+
+/* # code e kbd */
+code {
+    font-weight: var(--code-font-weight);
+    background-color: var(--code-background-color);
+    padding: var(--inline-highlight-spacing);
+    border-radius: var(--inline-highlight-border-radius);
+}
+kbd {
+    font-weight: bold;
+    color: var(--background-color);
+    background-color: var(--font-color);
+    padding: var(--inline-highlight-spacing);
+    border-radius: var(--inline-highlight-border-radius);
+}
+
+/* # apici e pedici */
+sub, sup {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+
+/* # testo evidenziato */
+mark {
+  padding: var(--inline-highlight-spacing);
+  background-color: var(--mark-background-color);
+  color: var(--mark-color);
+  vertical-align: baseline;
+}
+
+/* # abbreviazioni/sigle */
+abbr[title] {
+    border-bottom: 1px dotted;
+    text-decoration: none;
+    cursor: help;
+}
+
+/* # testo piccolo */
+small {
+    font-size: 0.8em;
+}
+
+/* # testo aggiunto */
+ins {
+    color: var(--ins-color);
+    text-decoration: none;
+}
+
+/* # testo rimosso */
+del {
+    color: var(--del-color);
+}
+
+/* # testo selezionato (user) */
+::-moz-selection {
+    background-color: var(--text-selection-background-color);
+}
+::selection {
+    background-color: var(--text-selection-background-color);
+}
+
+/* # link (in-site) */
+:where(a:not([role=button])), [role=link] {
+    --link-underline: none;
+    outline: none;
+    color: var(--link-color);
+    -webkit-text-decoration: var(--link-underline);
+    text-decoration: var(--link-underline);
+    text-decoration-color: var(--link-underline-color);
+    text-underline-offset: 0.125em;
+    transition: background-color var(--transition), color var(--transition), box-shadow var(--transition), -webkit-text-decoration var(--transition);
+    transition: background-color var(--transition), color var(--transition), text-decoration var(--transition), box-shadow var(--transition);
+    transition: background-color var(--transition), color var(--transition), text-decoration var(--transition), box-shadow var(--transition), -webkit-text-decoration var(--transition);
+}
+:where(a:not([role=button])):is([aria-current]:not([aria-current=false]), :hover, :active, :focus),
+[role=link]:is([aria-current]:not([aria-current=false]), :hover, :active, :focus) {
+    --link-underline: underline;
+    color: var(--link-hover-color);
+}
+/* :where(a:not([role=button])):focus-visible,
+[role=link]:focus-visible {
+    box-shadow: 0 0 0 var(--outline-width) var(--primary-focus);
+} */
+:where(a:not([role=button])):is([aria-current]:not([aria-current=false]),:visited),
+[role=link]:is([aria-current]:not([aria-current=false]), :visited) {
+    color: var(--link-visited-color);
+}
+:where(a:not([role=button])):is([aria-current]:not([aria-current=false]),:active),
+[role=link]:is([aria-current]:not([aria-current=false]), :active) {
+    color: var(--link-active-color);
+}
+
+/* # link (external) */
+/* WIP */

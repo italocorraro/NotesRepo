@@ -2,8 +2,8 @@
 const { pageTitle, pageAuthor, pageImage, description} = Astro.props;
 ---
 <!-- Generic tags -->
-<meta class="htmlCodeAuthor" name="author" content={pageAuthor} />
-<meta class="htmlCodeDescription" name="description" content={description} />
+<meta name="author" content={pageAuthor} />
+<meta name="description" content={description} />
 
 <!-- Open Graph tags -->
 <meta property="og:title" content={pageTitle} />
@@ -20,4 +20,3 @@ const { pageTitle, pageAuthor, pageImage, description} = Astro.props;
 <meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={pageImage.url} />    
-<meta class="htmlCodeAuthor" name="author" content={pageAuthor} />

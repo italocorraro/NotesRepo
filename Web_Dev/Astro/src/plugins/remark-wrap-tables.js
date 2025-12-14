@@ -11,7 +11,7 @@ export default function remarkWrapTables() {
             hName: 'div',
             hProperties: { 
                 className: 'table-wrapper',
-                tabindex: '0',
+                tabindex: '-1',
             },
           },
         children: [node]

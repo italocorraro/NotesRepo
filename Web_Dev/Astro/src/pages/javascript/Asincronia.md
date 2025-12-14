@@ -68,7 +68,7 @@ triggerPrime.addEventListener('click', () => {
 })
 ```
 
-Possiamo osservare come la generazione di numeri primi impieghi tempo (se non succede, chiedi di generare più numeri), inoltre, la pagina diventa irresponsiva nel mentre la funzione `generatePrimes` è in esecuzione.
+Possiamo osservare come la generazione di numeri primi impieghi tempo (se non succede, chiedi di generare più numeri), inoltre, la pagina diventa irresponsiva mentre la funzione `generatePrimes` è in esecuzione.
 
 Un modo semplice per verificarlo è avviare la generazione e cercare di interagire con i controlli.
 
@@ -128,7 +128,7 @@ triggerPrime.addEventListener('click', () => {
 
 ### Esecuzione Asincrona
 
-La programmazione **asincrona** permette a JavaScript di seguire l'esecuzione di operazioni secondarie mentre procede con l'esecuzione del thread principale.
+La programmazione **asincrona** permette a JavaScript di seguire l'esecuzione di operazioni secondarie in background mentre procede con l'esecuzione del thread principale.
 
 ## Callback
 
@@ -326,7 +326,7 @@ Risultato: <span id="output2"></span>
 Osserviamo che la pagina non rimane congelata, ma va' invece a scatti.
 
 :::nb
-È strettamente necessario usare `setTimeout` in questa situazione (ricorsione) per permettere al browser di tornare al thread principale alla fine della generazione dei numeri primi ad ogni step
+È strettamente necessario usare `setTimeout` in questa situazione per permettere al browser di tornare al thread principale alla fine della generazione dei numeri primi ad ogni step
 
 <script>
 
@@ -403,8 +403,8 @@ triggerPrime2.addEventListener('click', () => {
 ### Microtask e Macrotask
 
 JavaScript resta single-threaded, cioè può eseguire solo una operazione alla volta, tuttavia, le operazioni sincrone non sono l'unico tipo di operazioni che JavaScript può gestire; due tipi di operazioni asincrone possono essere gestite da JavaScript:
-* *Microtask*: operazioni asincrone ad alta priorità, come le callback delle `Promise`
-* *Macrotask*: operazioni asincrone a bassa priorità, come quelle in callback a `setTimeout`, `setInterval` o gli eventi del DOM (`addEventListener`)
+* **Microtask**: operazioni asincrone ad alta priorità, come le callback delle `Promise`
+* **Macrotask**: operazioni asincrone a bassa priorità, come quelle in callback a `setTimeout`, `setInterval` o gli eventi del DOM (`addEventListener`)
 
 *Le operazioni sincrone vengono eseguite immediatamente da JavaScript, mentre i microtask e i macrotask vengono eseguiti solo quando JavaScript è "libero"*.
 
@@ -464,7 +464,9 @@ document.getElementById('eg1').addEventListener('click', () => {
 })
 </script>
 
-Osserviamo che *le operazioni asincrone vengono eseguite per ultime*, anche se il timer impostato per il delay della loro esecuzione è $0ms$, questo perché le callback di `setTimeout` e `Promise` sono eseguite in modo asincrono, non sincrono; hanno priorità inferiore alle altre operazioni sincrone, quindi, in una ipotetica coda di esecuzione delle operazioni, quelle asincrone vengono messe alla fine, dopo quelle sincrone.
+Osserviamo che *le operazioni asincrone vengono eseguite per ultime*, anche se il timer impostato per il delay della loro esecuzione è $0ms$, questo perché le callback di `setTimeout` e `Promise` sono eseguite in modo asincrono, non sincrono; 
+
+hanno priorità inferiore alle altre operazioni sincrone, quindi, in una ipotetica coda di esecuzione delle operazioni, quelle asincrone vengono messe alla fine, dopo quelle sincrone.
 
 Questo meccanismo permette al compilatore di concentrarsi sulle operazioni sincrone (del thread principale) senza quindi bloccare l'esecuzione dello script per operazioni più pesanti, che andrebbero eseguite in modo asincrono
 :::
@@ -487,4 +489,8 @@ L'approccio moderno all'**asincronia** prevede l'utilizzo di un proxy per gestir
 
 Il proxy che viene generato dalla funzione asincrona è un oggetto **`Promise`** che contiene due proprietà speciali: uno stato e un risultato.
 
-La proprietà stato (`state`) può essere uno di tre valori
+La proprietà stato (`state`) può essere uno di tre valori:
+
+* `pending`: la risposta non è ancora pronta
+* `fulfilled`: la risposta è pronta
+* `rejected`: si è verificato un errore durante l'operazione
