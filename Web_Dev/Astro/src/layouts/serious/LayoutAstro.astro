@@ -35,8 +35,8 @@ const { frontmatter, headings } = Astro.props;
 <html lang="it">
 	<head>
 		{/* Base Config */}
-        <title class="htmlCodeTitle">{frontmatter.title}</title>
-        <meta class="htmlCodeChar" charset="UTF-8" />
+        <title>{frontmatter.title}</title>
+        <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />

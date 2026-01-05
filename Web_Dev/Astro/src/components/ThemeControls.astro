@@ -1,0 +1,103 @@
+---
+import LightThemeIcon from "../SVGs/LightThemeIcon.astro";
+import DarkThemeIcon from '../SVGs/DarkThemeIcon.astro';
+
+---
+
+<div aria-label="Impostazioni Tema" id="theme-controls-container"> 
+    <button type="button" id="themes-control" class="main-header-controls" aria-controls="main-nav" aria-expanded="true" aria-label="Menu">
+        <span class="icon-placeholder" style="width: 1.5rem;"></span>
+        <span class="hide-from-view">Pulsante Temi</span>
+    </button>
+    <form aria-describedby="theme-settings-desc">
+        <p id="theme-settings-desc" class="hide-from-view">Seleziona le preferenze di visualizzazione:</p>
+        <fieldset>
+            <legend id="theme-group-label">Tema:</legend>
+
+            {/* Tema Chiaro */}
+            <label for="light-radio">
+                <LightThemeIcon color="var(--shiki-light)" />
+                <input type="radio" name="theme" value="light" id="light-radio">
+                Chiaro
+            </label>
+
+            {/* Tema Scuro */}
+            <label for="dark-radio">
+                <DarkThemeIcon colorCircle="var(--shiki-dark-code)" colorMoon="var(--shiki-dark)"/>
+                <input type="radio" name="theme" value="dark" id="dark-radio">
+                Scuro
+            </label>
+
+        </fieldset>
+    </form>
+</div>
+
+<script>
+    // radio setting script
+    const THEME = 'my-notes-repo-theme';
+    const currentTheme = sessionStorage.getItem(THEME);
+    const root = document.documentElement;
+    const shikiRadios = document.querySelectorAll('#shiki-theme-settings > [type="radio"]');
+
+    // Setting current theme from session storage
+    if(currentTheme && typeof currentTheme === 'string') {
+        root.setAttribute('data-theme', currentTheme);
+    }
+
+    // Setting theme on radio input
+    shikiRadios.forEach((shiki) => {
+        if(shiki.id === 'shiki-system') {
+            shiki.addEventListener('input', () => {
+                root.removeAttribute('data-theme'); 
+                sessionStorage.removeItem(THEME)
+            });
+        } else {
+            const theme = shiki.getAttribute('value');
+            theme == currentTheme ? shiki.setAttribute('checked','true') : null;
+            shiki.addEventListener('input', () => {
+                if(theme && typeof theme === 'string') {
+                    root.setAttribute('data-theme', theme);
+                    sessionStorage.setItem(THEME, theme);
+                }
+            });
+        }
+    });
+</script>
+
+<style>
+#theme-controls-container {
+    position: relative;
+}
+form {
+    width: max-content;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color:  var(--h-color-background);
+}
+form > fieldset {
+    display: flex;
+    flex-flow: column nowrap;
+    height: max-content;
+}
+#theme-controls-container:focus-within > form {
+    display: block;
+}
+label {
+    position: relative;
+    display: block;
+}
+input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+label:has(>input:focus-visible) {
+    outline: 2px solid var(--h-color-line-accent);
+}
+
+</style>

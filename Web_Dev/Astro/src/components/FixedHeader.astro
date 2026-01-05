@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import ThemeControls from './ThemeControls.astro';
+const { logo } = Astro.props;
+---
+
+{/* Site Banner */}
+<header id="main-header">
+    <a id="logo" aria-label="Homepage">
+        <Image src={logo} alt="" aria-hidden="true" />
+        <span class="hide-from-view">Vai alla Homepage</span>
+    </a>
+    <div id="main-header-controls">
+        <ThemeControls />
+
+    <button type="button" id="main-nav-toggle" class="main-header-controls" aria-controls="main-nav" aria-expanded="true" aria-label="Menu">
+        <span class="icon-placeholder" style="width: 1.5rem;" aria-hidden="true">
+            <div id="main-nav-toggle-bar-1" class="main-nav-toggle-bar"></div>
+            <div id="main-nav-toggle-bar-2" class="main-nav-toggle-bar"></div>
+            <div id="main-nav-toggle-bar-3" class="main-nav-toggle-bar"></div>
+        </span>
+        <span class="hide-on-small-screens">Pulsante Menu</span>
+    </button>
+
+    <button type="button" id="index-toggle" class="main-header-controls" aria-controls="main-nav" aria-expanded="true" aria-label="Menu">
+        <span class="icon-placeholder" style="width: 1.5rem;"></span>
+        Pulsante Indice
+    </button>
+
+    <button type="button" id="search-toggle" class="main-header-controls" aria-controls="main-nav" aria-expanded="true" aria-label="Menu">
+        <span class="icon-placeholder" style="width: 1.5rem;"></span>
+        Pulsante Cerca
+    </button>
+    </div>
+    
+
+</header>

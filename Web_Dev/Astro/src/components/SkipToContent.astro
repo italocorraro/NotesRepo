@@ -1,0 +1,15 @@
+---
+const { contentsId } = Astro.props;
+
+let href = '';
+if(contentsId.startsWith('#')) {
+    href = `${contentsId}`;
+} else {
+    href = `${contentsId}`;
+}
+---
+
+{/* Skip to Content */}
+<a {href} id="skip-to-contents" class="hide-from-view" tabindex="0">
+    Vai ai contenuti
+</a>

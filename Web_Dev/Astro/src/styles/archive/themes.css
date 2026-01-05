@@ -1,43 +1,87 @@
+/* Arg: 2 *
+ * ### Variabili Globali Temi
+ * START */
+
+/*
+ * Light Theme (default) *
+ * ========================================================================== *
+ */
+
+:is(:root, :host, html):not([data-theme=dark]),
+:is(:root, :host, html)[data-theme=light] {
+    color-scheme: light;
+    --font-color: ;
+}
 
 
-/* Dark Theme */
 @media screen and (prefers-color-scheme: dark) {
-    :root, :host {
-        /* generico */
-        --font-color: #f6f6f7;
-        --background-color: #1b1b1f;
-        /* titoli */
-        --h1-color: ;
-        --h2-color: ;
-        --h2-underline-color: ;
-        --h3-color: ;
-        --h4-color: ;
-        --h5-color: ;
-        --h6-color: ;
-        /* blockquote */
-        --blockquote-border-color: #24242b;
-        --blockquote-background-color: #0e0e1011;
-        --blockquote-footer-color: #f6f6f782;
-        /* strong */
-        --strong-color: #85E89D;
-        /* italic */
-        --em-color: #d7efde;
-        /* evidenziazione */
-        --mark-color: #fff;
-        --mark-background-color: #9c4409;
-        --text-selection-background-color: #294730;
-        /* code e kbd */
-        --code-background-color: #0e0e103e;
-        /* ins e del */
-        --ins-color: #b7e7c3;
-        --del-color: #f04b5c35;
-        /* link (in-sito) */
-        --link-color: #F97583;
-        --link-hover-color: #f46c7a;
-        --link-underline-color: var(--link-color);
-        --link-active-color: #fb828e;
-        --link-visited-color: #9ECBFF;
+    :is(:root, :host, html):not([data-theme]) {
+        color-scheme: dark;
+
+        --h-color-text: #f6f6f7;
+        --h-color-text-inverse: #1b1b1f;
+        --h-color-text-accent: #fff;
+        --h-color-text-muted: #a8a8a9;
+
+        --h-color-background: #1b1b1f; 
+        --h-color-background-alt: #242830;
+        --h-color-background-accent: #17171a;
+        --h-color-background-inverse: #f6f6f7;
+        --h-color-line: #7e8081;
+        --h-color-line-accent: hsl(200, 1%, 80%);
+        --h-color-background-ins: #556a5a2e;
+        --h-color-background-del: #f04b5c43;
+
+        --h-color-nav-background: #242830;
+        --h-color-nav-background-alt: #565771;
+        --h-color-nav-text: /* */;
+        --h-color-nav-line: hsl(238, 45%, 80%);
+
+        --h-color-scrollbar: var(--h-color-nav-line);
+        --h-color-scrollbar-track: var(--h-color-nav-background);
+
+        /* far from the backgroun theme */
+        --h-color-one: hsl(354, 91%, 75%);
+        --h-color-one-accent: hsl(354, 82%, 79%);
+        /* --h-color-one-noisy: #fb828e; */
+        --h-color-one-muted: hsl(354, 17%, 70%);
+        --h-color-one-alt: hsl(355, 53%, 48%);
+        --h-color-one-alt-accent: hsl(353, 59%, 61%);
+        /* --h-color-one-alt-noisy: #ff717f; */
+        --h-color-one-alt-muted: hsl(355, 21%, 73%);
+        --h-color-one-alpha: hsla(354, 92%, 72%, 0.1);
+        --h-color-one-line: #ff85ae;
+        --h-color-one-line-alt: #ad455f;
+
+        /* middle to the backgroun theme */
+        --h-color-two: hsl(135, 68%, 72%);
+        --h-color-two-accent: hsl(135, 60%, 82%);
+        /* --h-color-two-noisy: ; */
+        --h-color-two-muted: hsl(135, 10%, 64%);
+        --h-color-two-alt: hsl(138, 100%, 22%);
+        --h-color-two-alt-accent: hsl(138, 100%, 35%);
+        /* --h-color-two-alt-noisy: #2c8848; */
+        --h-color-two-alt-muted: hsl(138, 13%, 42%);
+        --h-color-two-alpha: hsla(135, 68%, 72%, 0.1);
+        --h-color-two-line: #add07f;
+        --h-color-two-line-alt: #48bb7f;
         
+        /* close to the backgroun theme */
+        --h-color-tre: hsl(212, 100%, 78%);
+        --h-color-tre-accent: hsl(212, 100%, 89%);
+        /* --h-color-tre-noisy: #a0acbd; */
+        --h-color-tre-muted: hsl(212, 10%, 64%);
+        --h-color-tre-alt: hsl(225, 25%, 38%);
+        --h-color-tre-alt-accent: hsl(225, 21%, 57%);
+        /* --h-color-tre-alt-noisy: #8d7a99; */
+        --h-color-tre-alt-muted: hsl(225, 9%, 50%);
+        --h-color-tre-alpha: hsla(212, 100%, 81%, 0.1);
+        --h-color-tre-line: #afb6cd;
+        --h-color-tre-line-alt: #9582a1;        
+
+        /* --h-color- */
     }
 }
+
+
 

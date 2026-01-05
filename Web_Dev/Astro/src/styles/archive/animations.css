@@ -1,0 +1,13 @@
+:root, :host {
+    --transition: 0.2s;
+    --outline-animation: solid-to-dahed-outline 0.3s ease-out 0 infinite alternate;
+}
+
+@keyframes solid-to-dahed-outline {
+    from {
+        outline-style: dashed;
+    }
+    to {
+        outline-style: dotted;
+    }
+}

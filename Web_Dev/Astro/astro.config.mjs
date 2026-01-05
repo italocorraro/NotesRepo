@@ -70,7 +70,8 @@ export default defineConfig({
         rehypePlugins: [
             rehypeSlug,
             rehypeKatex,
-            rehypeAutolinkHeadings
+            /* rehypeAutolinkHeadings, */
+            [rehypeAutolinkHeadings, { behavior: 'append' }]
         ],
         
         shikiConfig: {

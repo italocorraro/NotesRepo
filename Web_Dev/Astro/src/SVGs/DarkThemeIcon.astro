@@ -1,0 +1,16 @@
+---
+const { colorCircle, colorMoon } = Astro.props;
+---
+
+
+<span id="dark-theme-icon" class="icon svg theme-icon">
+    <svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true">
+
+    <circle cx="50" cy="50" r="40" fill={colorCircle} opacity="0.25" />
+  
+    <path d="M45 10
+           A40 40 0 1 0 45 90
+           A28 40 0 1 1 45 10Z"
+        fill={colorMoon} />
+</svg>
+</span>

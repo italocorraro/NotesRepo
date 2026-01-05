@@ -19,12 +19,6 @@ pre::before {
 pre[data-language="js"]::before {
     content: none;
 }
-:not(.astro-code) > code {
-    background-color: var(--code-bg);
-    font-size: 120%;
-    padding: 0.1em 0.2em;
-    border-radius: 0.4em;
-}
 
 /* || Colori Shiki Tema SCURO */
 @media (prefers-color-scheme: dark) {

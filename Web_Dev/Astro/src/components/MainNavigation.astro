@@ -1,0 +1,56 @@
+---
+
+---
+    
+{/* Site Navigation */}
+<aside id="main-nav" class="sidebar">
+    <div id="main-nav-content" >
+        <nav aria-label="Menu di Navigazione Principale">
+            <ul >
+                <li class="main-menu-tab">
+                    <button type="button" id="nav-tog-1" class="main-menu-toggle" aria-controls="wiki-pages" aria-expanded="true">
+                        <span class="icon" aria-hidden="true"></span>
+                        Wiki
+                    </button>
+                    <div class="main-menu-sub-tab show-even-if-hidden">
+                        <ul id="wiki-pages">
+                            <li><a href="/Prima_Pagina/" title="Prima pagina">Prima pagina</a></li>
+                        </ul>
+                    </div> 
+                </li>
+                <li class="main-menu-tab">
+                    <button type="button" id="nav-tog-1" class="main-menu-toggle" aria-controls="wiki-pages" aria-expanded="true">
+                        <span class="icon" aria-hidden="true"></span>
+                        About
+                    </button>
+                    <div class="main-menu-sub-tab show-even-if-hidden">
+                        <ul id="wiki-pages">
+                            <li><a href="/Prima_Pagina/" title="Prima pagina">Prima pagina</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+
+<script is:inline>
+document.querySelectorAll('.main-menu-tab').forEach((tab) => {
+    // find menu tabs and respective toggles
+    const menu = tab.querySelector('.main-menu-sub-tab');
+    const toggle = tab.querySelector('.main-menu-toggle');
+    // close at startup
+    menu.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+    // setup variables for transition animations
+    menu.style.setProperty('--js-calc-max-height', `${menu.scrollHeight}px`);
+    // set toggle behavior on (toggles aria-expanded on button and hidden state on sub-tab)
+    toggle.addEventListener('click', () => {       
+        menu.style.setProperty('--js-calc-max-height', `${menu.scrollHeight}px`);
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        menu.hidden = isOpen;
+    });
+});
+
+</script>
