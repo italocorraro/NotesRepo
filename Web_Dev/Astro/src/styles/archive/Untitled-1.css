@@ -541,6 +541,7 @@ input:not([type=checkbox], [type=radio], [type=range], [type=file])[type=time] {
 }
 [type=range]::-moz-range-thumb {
   -webkit-appearance: none;
+  appearance: none;
   width: 1.25rem;
   height: 1.25rem;
   margin-top: -0.4375rem;
