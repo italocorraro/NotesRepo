@@ -57,7 +57,7 @@ export default defineConfig({
 
     // Impostazioni Markdown parser
     markdown: {
-        remarkPlugins: [       
+        remarkPlugins: [     
             remarkDirective,
             remarkClassify,
             remarkMath,

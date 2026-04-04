@@ -18,13 +18,13 @@ I **tipi primitivi** rappresentano dei valori base del linguaggio e di loro natu
 
 L'operatore `typeof` permette di leggere il tipo della variabile inserita alla sua destra; tutti i tipi primitivi eccetto `null` restituiscono una stringa contenente il nome del proprio tipo.
 
-JavaScript definisce 7 tipi primitivi: `Null`, `Undefined`, `String`, `Number`, `BigInt`, `Boolean` e `Symbol`.
+JavaScript definisce 7 tipi primitivi: `null`, `undefined`, `string`, `number`, `bigint`, `boolean` e `symbol`.
 
 :::eg
 ```javascript
 typeof 'qualcosa'; // 'string'
 typeof 24; // 'number'
-typeof string === 'string';  // true
+typeof 'string' === 'string';  // true
 typeof null === 'null'; // false
 typeof null === 'object'; // true
 ```
@@ -50,14 +50,18 @@ Una tabella con i tipi primitivi, relativi wrapper e descrizione dei dati che co
 
 ### null e undefined
 
-Il tipo `Null` include solo un valore: `null`; \
-analogamente, il tipo `Undefined` include solo `undefined`. 
+Il tipo `null` include solo un valore: `null`; \
+analogamente, il tipo `undefined` include solo `undefined`. 
 
 Concettualmente, `null` rappresenta l'assenza deliberata di un *oggetto*, mentre `undefined` rappresenta l'assenza di un *valore*;
 
 * una variabile non inizializzata ha valore `undefined`, similmente, una funzione che non restituisce alcun valore, restituisce implicitamente `undefined`; chiamare una proprietà inesistente di un oggetto restituisce `undefined` 
 
 * `null` si trova alla fine di una *catena di prototìpi* come valore ultimo;
+
+:::nota
+Il `null` può essere usato per indicare un'assenza, mentre `undefined` non andrebbe mai usato deliberatamente
+:::
 
 ### Coercizione di Tipo
 
