@@ -1,0 +1,300 @@
+<!DOCTYPE html><html lang="it" data-astro-cid-hpxbdaly> <head><title>Stringhe in Java</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v5.15.9"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="icon" sizes="32x32" href="/NotesRepo/Web_Dev/Astro/dist/Crocco.png" type="image/x-icon"><!-- Generic tags --><meta name="author" content="Italo Corraro"><meta name="description" content><!-- Open Graph tags --><meta property="og:title" content><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:locale" content="it_IT"><meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="799"><meta property="og:image:height" content="400"><!-- Twitter Card tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content><meta name="twitter:description" content><meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png"><link href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="/NotesRepo/Web_Dev/Astro/dist/_astro/DOM.DKphDcbY.css">
+<style>pre{padding:.4em .6em;border-radius:.5em;margin:.5em 0;border:.1em dashed cadetblue;width:fit-content;max-width:100%;overflow-x:auto}pre:before{content:attr(data-language);display:block;text-transform:uppercase;font-size:120%;text-align:left;border-bottom:.1em solid;margin-bottom:.4em}pre[data-language=js]:before{content:none}@media(prefers-color-scheme:dark){.astro-code,.astro-code span{color:var(--shiki-dark);background-color:var(--shiki-dark-bg);font-style:var(--shiki-dark-font-style);font-weight:var(--shiki-dark-font-weight);text-decoration:var(--shiki-dark-text-decoration)}}html[data-theme=dark] :is(.astro-code,.astro-code span){color:var(--shiki-dark);background-color:var(--shiki-dark-bg);font-style:var(--shiki-dark-font-style);font-weight:var(--shiki-dark-font-weight);text-decoration:var(--shiki-dark-text-decoration)}html[data-theme=light] :is(.astro-code,.astro-code span){color:var(--shiki-light);background-color:var(--shiki-light-bg);font-style:var(--shiki-light-font-style);font-weight:var(--shiki-light-font-weight);text-decoration:var(--shiki-light-text-decoration)}html[data-theme=dracula] :is(.astro-code,.astro-code span){color:var(--shiki-dracula);background-color:var(--shiki-dracula-bg);font-style:var(--shiki-dracula-font-style);font-weight:var(--shiki-dracula-font-weight);text-decoration:var(--shiki-dracula-text-decoration)}
+nav[data-astro-cid-sf7rw5md]{display:flex;padding:0 1.5em;width:100%;max-width:100%;justify-content:center}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]{width:33%;text-transform:uppercase}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]:first-child{text-align:left}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:first-child:before{content:"<"}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]:last-child{text-align:right}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:last-child:after{content:">"}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:first-child:before,nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:last-child:after{display:inline-block;transform:translateY(-.05em)}p[data-astro-cid-gcm7ptol]{margin:0}footer[data-astro-cid-jyhwcbfj]{display:flex;gap:.8rem;margin-top:2rem;padding:1rem 0;flex-direction:column}p[data-astro-cid-jyhwcbfj]{margin:0}
+</style></head> <body data-astro-cid-hpxbdaly> <header id="site-header" data-astro-cid-3ef6ksr2> <button type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu"> 
+Menu
+</button> <nav id="mainNav" aria-label="Navigazione Sito"> <ul> <li class="nav-item"><span>HTML</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Sintassi html/">Sintassi html</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Struttura Semantica/">Struttura Semantica</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/L'elemento head/">L&#39;elemento &lt;head&gt;</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Ancore/">Ancore</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Liste/">Liste</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Immagini/">Immagini</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Altri Media/">Altri Media</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Tabelle">Tabelle</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Forms/">Form</a></li> </ul> </li><li class="nav-item"><span>CSS</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Sintassi CSS/">Sintassi CSS</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Selectors/">Selettori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Box Model/">Box Model</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Unità di Misura/">Unità di misura</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Colori/">Colori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Immagini/">Immagini</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Funzioni e Variabili/">Funzioni e Variabili</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Background/">Background</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Tipografia/">Tipografia</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/#liste">Liste</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/#ancore">Ancore</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Tabelle/">Tabelle</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Form/">Form</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Media Queries/">Media Queries</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Float/">Layout con Float</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Flexbox/">Layout con Flexbox</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Grid/">Layout con Grid</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/">Altri Stili</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Transizioni-Animazioni/">Animazioni &amp; Transizioni</a></li> </ul> </li><li class="nav-item"><span>JavaScript</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Overview/">Overview</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Tipi di Dato/">Tipi di Dato</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Operatori/">Operatori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Numeri/">Numeri</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Stringhe/">Stringhe</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Array/">Array</a></li><li class="nav-link"> Espressioni Regolari</li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Date/">Date</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Controllo di Flusso/">Controllo di Flusso</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Iterazione/">Iterazione</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Funzioni/">Funzioni</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Strict Mode/">Strict Mode</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Oggetti/">Oggetti</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Collezioni Indicizzate/">Collezioni Indicizzate</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Ereditarietà/">Ereditarietà</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Classi/">Classi</a></li><li class="nav-link"> Garbage Collection</li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Asincronia/">Asincronia</a></li><li class="nav-link"> Moduli</li> </ul> </li><li class="nav-item"><span>JS APIs</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/APIs/DOM/">DOM API</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/APIs/Eventi/">UI Events API</a></li><li class="nav-link"> Storage API</li><li class="nav-link"> URL API</li><li class="nav-link"> View Transition API</li><li class="nav-link"> Intersection Observer API</li><li class="nav-link"> Pointer Events</li> </ul> </li><li class="nav-item"><span>Struttura Pagine</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Struttura/Struttura html/">Struttura html</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Struttura/Struttura CSS/">Struttura CSS</a></li> </ul> </li><li class="nav-item"><span>TypeScript</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/typescript/Overview/">Overview</a></li> </ul> </li><li class="nav-item"><span>Markdown</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Markdown/Sintassi Markdown/">Sintassi</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Markdown/GFM/">GitHub Flavored</a></li><li class="nav-link"> Remark Plugins</li> </ul> </li><li class="nav-item"><span>Svelte</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Svelte/Overview/">Overview</a></li> </ul> </li><li class="nav-item"><span>Astro</span> <ul> <li class="nav-link"> Overview</li> </ul> </li><li class="nav-item"><span>Java</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Introduzione">Introduzione</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Basi di Java">Basi di Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Stringhe">Stringhe in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Array">Array in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Packages e Moduli">Packages e Moduli in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Enumerativi">Enumerativi in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Date">Date e Gestione del Tempo in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Internazionalizzazione">Internazionalizzazione in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/JUnit">Testing in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/UML">UML in Java</a></li> </ul> </li> </ul> </nav> <div id="mainNavBackdrop"></div> <script type="module">const i=document.querySelector("button:has(+ #mainNav)");i?.addEventListener("click",()=>{const t=i.getAttribute("aria-expanded")==="true";i.setAttribute("aria-expanded",`${!t}`)});const o=document.querySelector("#mainNav + div");o?.addEventListener("click",()=>{i?.setAttribute("aria-expanded","false")});function a(t,e=400){t.style.transition=`height ${e}ms ease`,t.style.height=t.scrollHeight+"px",requestAnimationFrame(()=>{t.style.height="0"}),setTimeout(()=>{t.style.display="none"},e)}function n(t,e=400){t.style.display="block";let s=t.scrollHeight;t.style.height="0",t.style.transition=`height ${e}ms ease`,requestAnimationFrame(()=>{t.style.height=s+"px"}),setTimeout(()=>{t.style.height="auto"},e)}function l(t,e=400){window.getComputedStyle(t).display==="none"?n(t,e):a(t,e)}document.querySelectorAll(".nav-item").forEach(t=>{let e=t.querySelector("ul"),s=t.querySelector("span");a(e),s?.addEventListener("click",()=>{l(e,400)})});</script> <aside aria-labelledby="site-settings"> <h2 id="site-settings">Impostazioni Tema</h2> <!-- Impostazioni TEMA SHIKI --> <form id="shiki-theme-settings" class="astro-code"> <input type="radio" name="shiki-theme" id="shiki-light" value="light"> <label for="shiki-light" title="Tema Chiaro"> <span class="text-only">Tema Chiaro</span> <svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"> <!-- Disco centrale --> <circle cx="50" cy="50" r="22" fill="var(--shiki-light)"></circle> <!-- Raggi --> <g stroke="var(--shiki-light)" stroke-width="8" stroke-linecap="round"> <line x1="50" y1="6" x2="50" y2="22"></line> <line x1="50" y1="78" x2="50" y2="94"></line> <line x1="6" y1="50" x2="22" y2="50"></line> <line x1="78" y1="50" x2="94" y2="50"></line> <line x1="21" y1="21" x2="32" y2="32"></line> <line x1="78" y1="78" x2="67" y2="67"></line> <line x1="21" y1="79" x2="32" y2="68"></line> <line x1="79" y1="21" x2="68" y2="32"></line> </g> </svg> </label> <input type="radio" name="shiki-theme" id="shiki-dark" value="dark"> <label for="shiki-dark" title="Tema Scuro"> <span class="text-only">Tema Scuro</span> <svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"> <!-- Disco completo --> <circle cx="50" cy="50" r="40" fill="var(--shiki-dark-code)" opacity="0.25"></circle> <!-- Falce luminosa (più larga rispetto alla versione precedente) --> <path d="M45 10
+           A40 40 0 1 0 45 90
+           A28 40 0 1 1 45 10Z" fill="var(--shiki-dark)"></path> </svg> </label> <input type="radio" name="shiki-theme" id="shiki-dracula" value="dracula"> <label for="shiki-dracula" title="Tema Dracula"> <span class="text-only">Tema Dracula</span> <img src="https://user-images.githubusercontent.com/33915497/214760369-5c078b43-fdab-4cdd-adfe-ad905a64b5a5.png" decoding="sync" loading="eager" alt="logo tema Dracula da GitHub" fetchpriority="auto" width="60" height="60"> </label> <input type="radio" name="shiki-theme" id="shiki-system" value="" checked> <label for="shiki-system" title="Tema Predefinito"><span class="text-only">Tema Predefinito</span> <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"> <!-- Mezzo sole a sinistra --> <g fill="var(--font-color)"> <!-- Semicerchio del sole --> <path d="M12 4a8 8 0 0 0 0 16V4z"></path> </g> <!-- Mezzo cerchio scuro a destra --> <path fill="var(--font-color)" d="M12 4a8 8 0 1 1 0 16V4z" opacity="0.4"></path> </svg> </label> </form> </aside> <script type="module">const o="my-notes-repo-theme",s=sessionStorage.getItem(o),n=document.documentElement,r=document.querySelectorAll('#shiki-theme-settings > [type="radio"]');s&&typeof s=="string"&&n.setAttribute("data-theme",s);r.forEach(e=>{if(e.id==="shiki-system")e.addEventListener("input",()=>{n.removeAttribute("data-theme"),sessionStorage.removeItem(o)});else{const t=e.getAttribute("value");t==s&&e.setAttribute("checked","true"),e.addEventListener("input",()=>{t&&typeof t=="string"&&(n.setAttribute("data-theme",t),sessionStorage.setItem(o,t))})}});</script>   <button type="button" id="to-top" aria-label="Porta in cima alla pagina" data-astro-cid-3ef6ksr2> <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" data-astro-cid-3ef6ksr2> <polygon points="12 4 20 20 4 20" fill="var(--font-color)" data-astro-cid-3ef6ksr2></polygon> </svg> </button> </header>  <script type="module">const t=document.getElementById("to-top");t?.addEventListener("click",()=>{scroll(0,0)});</script> <!-- <div id="background" aria-hidden="true"></div> --> <img src="/NotesRepo/Web_Dev/Astro/dist/_astro/teal.Cp8wgQFt_Z1ab9GP.webp" alt="background image" aria-hidden="true" id="background-big" loading="eager" decoding="sync" data-astro-cid-hpxbdaly="true" fetchpriority="auto" width="5120" height="2880"> <img src="/NotesRepo/Web_Dev/Astro/dist/_astro/hello.CW1iZbTK_Z1m486K.webp" alt="background image" aria-hidden="true" id="background-small" loading="eager" decoding="sync" data-astro-cid-hpxbdaly="true" fetchpriority="auto" width="1170" height="2532"> <main data-astro-cid-hpxbdaly> <header data-astro-cid-hpxbdaly> <h1 data-astro-cid-hpxbdaly>Stringhe in Java</h1> <div id="breadcrumbs" data-astro-cid-hpxbdaly><nav id="local-nav" aria-label="Navigazione Argomento" data-astro-cid-sf7rw5md> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Basi di Java" title="pagina precedente" data-astro-cid-sf7rw5md> Basi di Java </a> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Stringhe" title="pagina corrente" data-astro-cid-sf7rw5md> Stringhe in Java </a> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Array" title="pagina successiva" data-astro-cid-sf7rw5md> Array in Java </a> </nav> </div> </header> <div id="content" data-astro-cid-hpxbdaly> <nav aria-labelledby="page-index"> <h2 id="page-index">Indice</h2> <div id="index-list"><ul><li><a href="#oggetti-stringa">Oggetti Stringa</a><ul><li><a href="#caratteri">Caratteri</a></li></ul></li><li><a href="#metodi-principali">Metodi Principali</a><ul><li><a href="#metodi-statici">Metodi Statici</a></li><li><a href="#tostring">toString</a></li></ul></li><li><a href="#blocchi-testuali">Blocchi Testuali</a></li><li><a href="#classi-helper">Classi Helper</a><ul><li><a href="#stringbuilder">StringBuilder</a></li><li><a href="#stringjoiner">StringJoiner</a></li><li><a href="#stringjoin">String.join</a></li></ul></li><li><a href="#codice-fiscale">Codice Fiscale</a><ul><li><a href="#omocodia">Omocodia</a></li></ul></li></ul></div> </nav> <section><h2 id="oggetti-stringa">Oggetti Stringa<a aria-hidden="true" tabindex="-1" href="#oggetti-stringa"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p>In Java, come negli altri linguaggi a oggetti, le stringhe sono istanze della classe <code>String</code>, sono, cioè, oggetti.</p><p>A differenza delle classi standard, <code>String</code> è speciale poichè non usa un costruttore ma viene costruita tramite uno <em>string literal</em>, cioè, invece di scrivere <code>new String('l','o','r','e','m')</code> si scrive <code>"lorem"</code>.</p><section><h3 id="caratteri">Caratteri<a aria-hidden="true" tabindex="-1" href="#caratteri"><span class="icon icon-link"></span></a></h3><p>Una stringa è una sequenza di caratteri, <em>ma non è un array</em>, inoltre, non ha bisogno di alcun terminatore.</p><p>Ogni stringa è unica e immutabile: qualunque stringa costruita a partire da un’altra è sempre una nuova istanza; le stringhe originali restano inalterate.</p><p>Gli oggetti stringa mantengono comunque una proprietà d’ordine per i caratteri di cui sono costruite; per estrarre un singolo carattere ad un certo indice (similmente agli array) si usa il metodo <code>charAt()</code> e gli si passa l’indice.</p><aside class="inserto notabene" aria-label="Nota importante" data-heading="Nota Bene: "><p>La stringa è immutabile, infatti il metodo <code>charAt()</code> è read only (è un metodo tipo <em>get</em>); non c’è un corrispondente metodo <em>set</em>.</p></aside></section></div></section>
+<section><h2 id="metodi-principali">Metodi Principali<a aria-hidden="true" tabindex="-1" href="#metodi-principali"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p>Riportiamo una lista di metodi principali forniti dalla classe <code>String</code>:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>char charAt(int index)</code></td><td>restituisce il carattere all’indice dato</td></tr><tr><td><code>int length()</code></td><td>restituisce la lunghezza della stringa (numero di caratteri)</td></tr><tr><td><code>int compareTo(Object o)</code> &#x26; <code>int compareTo(String s)</code></td><td>comparazione lessicografica (confronto carattere per carattere dei valori unicode); restituisce 0 se sono uguali, >0 se la stringa ha valori unicode più alti, &#x3C;0 altrimenti</td></tr><tr><td><code>int compareToIgnoreCase(String s)</code></td><td>esegue <code>compareTo()</code> ignorando differenze di miuscole/minuscole</td></tr><tr><td><code>boolean equals(Object anObject)</code></td><td>restituisce <code>true</code> se le stringhe sono uguali</td></tr><tr><td><code>boolean equalsIgnoreCase(String s)</code></td><td>case-insensitive <code>equals()</code></td></tr><tr><td><code>int indexOf(int char)</code> &#x26; <code>int indexOf(int char, int fromIndex)</code> &#x26; <code>int indexOf(String s)</code> &#x26; <code>int indexOf(String s, int fromIndex)</code></td><td>restituisce l’indice della prima occorrenza del/i carattere/stringa specificato/i; è possibile scegliere l’indice da cui far partire la ricerca</td></tr><tr><td><code>int lastIndexOf(int char)</code> &#x26; <code>int lastIndexOf(int char, int fromIndex)</code> &#x26; <code>int lastIndexOf(String s)</code> &#x26; <code>int lastIndexOf(String s, int fromIndex)</code></td><td>restituisce l’indice dell’ultima occorrenza del/i carattere/stringa specificato/i; è possibile scegliere l’indice da cui far partire la ricerca</td></tr><tr><td><code>boolean startsWith(String start)</code> &#x26; <code>boolean endsWith(String end)</code></td><td>restituisce <code>true</code> se inizia/finisce con i caratteri specificari</td></tr><tr><td><code>String replaceFirst(char search, char replace)</code></td><td>restituisce una nuova stringa con la prima occorrenza del primo carattere sostituita con il secondo</td></tr><tr><td><code>String replace(char search, char replace)</code></td><td>restituisce una nuova stringa con ogni istanza del primo carattere sostituita con il secondo</td></tr><tr><td><code>String trim()</code></td><td>restituisce una nuova stringa senza spazi vuoti alle estremità</td></tr><tr><td><code>String toLowerCase()</code> &#x26; <code>String toUpperCase()</code></td><td>restituisce una nuova stringa con tutti i caratteri convertiti in minuscolo/maiuscolo</td></tr><tr><td><code>String substring(int start, int end)</code> &#x26; <code>String substring(int start)</code></td><td>restituisce una sottostringa estratta a partire dal primo indice (incluso) fino al secondo (escluso) (fino alla fine se un secondo indice non viene passato)</td></tr></tbody></table></div><p>Per concatenare due stringhe si può usare l’operatore <code>+</code></p><aside class="inserto osservazione" aria-label="Osservazione" data-heading="Osservazione: "><p>Occorre ricordare come funzionano i riferimenti, infatti, anche per le stringhe, quando abbamo un oggetto istanza di <code>String</code>, quello che è contenuto nella variabile è il riferimento, non l’oggetto stesso:</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> "</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">ciao</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s2 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> "</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C"> mondo</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s3 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s1;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// s3 copia il riferimento a "ciao" di s1</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">s1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s2</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// il riferimento in s1 è sostituito con un nuovo riferimento</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// il riferimento in s3 rimane inalterato</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(s1);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// ↪ ciao mondo</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(s3);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// ↪ ciao</span></span></code></pre></aside><aside class="inserto notabene" aria-label="Nota importante" data-heading="Nota Bene: "><p>L’operatore <code>==</code> esprime uguaglianza <em>di riferimenti</em> in Java, cioè:</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> "</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">ciao</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s2 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> "</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">ciao</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(s1 </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">==</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s2);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// ↪ false</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(s1.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">equals</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(s2));</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// ↪ true</span></span></code></pre></aside><section><h3 id="metodi-statici">Metodi Statici<a aria-hidden="true" tabindex="-1" href="#metodi-statici"><span class="icon icon-link"></span></a></h3><p>La classe <code>String</code> utilizza una serie di metodi statici <code>valueOf()</code> per convertire i dati primitivi in stringhe:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Argomento</th><th>Chiamata</th></tr></thead><tbody><tr><td><code>boolean b</code></td><td><code>String.valueOf(true)</code></td></tr><tr><td><code>char c</code></td><td><code>String.valueOf('a')</code></td></tr><tr><td><code>char[] data</code></td><td><code>String.valueOf({'c','i'})</code></td></tr><tr><td><code>char[] data, int start, int length</code></td><td><code>String.valueOf({'c','i','a','o'},1,3)</code></td></tr><tr><td><code>double d</code></td><td><code>String.valueOf(1.23)</code></td></tr><tr><td><code>float f</code></td><td><code>String.valueOf(3.4245f)</code></td></tr><tr><td><code>int i</code></td><td><code>String.valueOf(243)</code></td></tr><tr><td><code>long l</code></td><td><code>String.valueOf(245432345L)</code></td></tr><tr><td><code>Object o</code></td><td><code>String.valueOf(obj)</code></td></tr></tbody></table></div></section><section><h3 id="tostring">toString<a aria-hidden="true" tabindex="-1" href="#tostring"><span class="icon icon-link"></span></a></h3><p>Ogni oggetto ha un metodo <code>toString()</code> di default; questo metodo viene chiamato in automatico quando tali oggetti vengono concatenati a stringhe (anche tramite l’operatore <code>+</code>).</p><p>Anche i tipi primitivi vengono convertiti implicitamente a stringhe se concatenati ad altre stringhe.</p></section></div></section>
+<section><h2 id="blocchi-testuali">Blocchi Testuali<a aria-hidden="true" tabindex="-1" href="#blocchi-testuali"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p>Un blocco testuale si può creare racchiudendo il testo tra tre <code>"</code> (<code>"""</code>); questo è un blocco di testo che mantiene la formattazione (a capo in particolare), evitando l’uso di caratteri come <code>\n</code> o <code>\t</code>.</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> s </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> """</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">            Enorme blocco</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">            di testo</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">            """</span></span></code></pre><aside class="inserto nota" aria-label="Nota generica" data-heading="Nota: "><p>Il <code>"""</code> di chiusura va’ messo necessariamente su una riga separata e stabilisce anche la <em>indent policy</em>, cioè, l’indentazione del terminatore del blocco viene tolta dall’indentazione di tutte le righe del blocco</p></aside></div></section>
+<section><h2 id="classi-helper">Classi Helper<a aria-hidden="true" tabindex="-1" href="#classi-helper"><span class="icon icon-link"></span></a></h2><div class="after-h2"><section><h3 id="stringbuilder">StringBuilder<a aria-hidden="true" tabindex="-1" href="#stringbuilder"><span class="icon icon-link"></span></a></h3><p>Ogni volta che “modifichiamo” una stringa (ad es. s1 += s2) quello che viene effettivamente fatto è generare una nuova stringa, lasciando che il garbage collector disponga della vecchia; questo è estremamente inefficiente per modifiche frequenti.</p><p>Per ottimizzare ripetute modifiche a una stringa esiste la classe <code>StringBuilder</code>: tramite il metodo <code>append()</code>, una nuova stringa (passata per argomento) viene aggiunta al buffer interno dell’oggetto <code>StringBuffer</code>; solo quando viene chiamato il metodo <code>toString()</code> le stringhe nel buffer vengono concatenate.</p></section><section><h3 id="stringjoiner">StringJoiner<a aria-hidden="true" tabindex="-1" href="#stringjoiner"><span class="icon icon-link"></span></a></h3><p>La classe <code>StringJoiner</code> svolge un ruolo simile a <code>StringBuilder</code>, ma con due principali differenze:</p><ul>
+<li>usa il metodo <code>add()</code> invece di <code>append()</code></li>
+<li>permette (alla costruzione dell’oggetto) di passare fino a 3 argomenti (tutti stringhe):
+<ol>
+<li>un separatore, che verrà inserito tra ogni stringa aggiunta con <code>add</code></li>
+<li>un prefisso, che verrà inserito all’inizio della stringa concatenata</li>
+<li>un suffisso, che verrà inserito alla fine</li>
+</ol>
+</li>
+</ul><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">StringJoiner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sj </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> StringJoiner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">]</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span></code></pre></aside></section><section><h3 id="stringjoin">String.join<a aria-hidden="true" tabindex="-1" href="#stringjoin"><span class="icon icon-link"></span></a></h3><p>La classe <code>String</code> dispone del metodo <code>join(String separator, String[] data)</code> che concatena un array di stringhe separandole con un separatore passato per argomento.</p></section></div></section>
+<section><h2 id="codice-fiscale">Codice Fiscale<a aria-hidden="true" tabindex="-1" href="#codice-fiscale"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p>In Italia, il codice identificativo per ciascun individuo è costituito da 16 lettere o cifre così suddiviso:</p><ul>
+<li><strong>lettere 0 - 2</strong> (3) derivano dal cognome</li>
+<li><strong>lettere 3 - 5</strong> (3) derivano dal nome</li>
+<li><strong>lettere 6 - 10</strong> (5) derivano dalla data di nascita</li>
+<li><strong>lettere 11 - 14</strong> (4) derivano dal luogo di nascita</li>
+<li><strong>lettera 15</strong> (1) è un controllo</li>
+</ul><p>Vengono inoltre fatte distinzioni per il genere.</p><p>Il codice fiscale è costruito per essere unico (non solo tra i vivi) e in modo da evidenziare facilmente gli errori.</p><p>La legge stabilisce la scelta delle lettere:</p><ul>
+<li><strong>00 - 02</strong> (3) si estraggono le prime tre consonanti dal cognome:
+<ul>
+<li>se sono meno di 3, allora si estraggono anche le vocali e si mettono in coda per arrivare a 3</li>
+<li>se sono <em>ancora</em> meno di 3, allora si mettono “X” in coda fino a raggiungere il numero</li>
+</ul>
+</li>
+<li><strong>03 - 05</strong> (3) derivano dal nome:
+<ul>
+<li>se ha 4 o più consonanti, si prendono la prima, la terza e la quarta</li>
+<li>se ha 3 o meno consonanti, si fa’ come con il cognome (inclusi fallback)</li>
+</ul>
+</li>
+<li><strong>06 - 10</strong> (5) derivano dalla data di nascita:
+<ul>
+<li><em>06 - 07</em> prese dalle ultime due cifre dell’anno di nascita</li>
+<li><em>08</em> presa da un gruppo di 12 lettere che identificano univocamente i mesi (rappresenta il mese di nascita)</li>
+<li><em>09 - 10</em> prese dalle cifre del giorno di nascita (aumentato di 40 per le donne)</li>
+</ul>
+</li>
+<li><strong>lettere 11 - 14</strong> (4) derivano dal luogo di nascita:
+<ul>
+<li>per i comuni italiani si usano sigle da A001 a V999[1]</li>
+<li>per gli stati esteri si parte dalla lettera Z e si fa’ riferimeento al continente con la prima cifra e le altre 2 indicano lo stato specifico (z100 - Z999)</li>
+</ul>
+</li>
+<li><strong>lettera 15</strong> (1) data da un calcolo su tutte le lettere precedenti: ciascuna lettera del codice avrà un valore basato sul suo contenuto <em>e sulla sua posizione</em> (in questo modo è a prova di scambi di posizione); quest’ultima lettera funge da controllo sulla correttezza delle precedenti lettere del codice</li>
+</ul><aside class="inserto nota" aria-label="Nota generica" data-heading="Nota: "><p>L’associazione mese-lettera è la seguente:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>mese</th><th>lettera</th></tr></thead><tbody><tr><td>gennaio</td><td>A</td></tr><tr><td>febbraio</td><td>B</td></tr><tr><td>marzo</td><td>C</td></tr><tr><td>aprile</td><td>D</td></tr><tr><td>maggio</td><td>E</td></tr><tr><td>giugno</td><td>H</td></tr><tr><td>luglio</td><td>L</td></tr><tr><td>agosto</td><td>M</td></tr><tr><td>settembre</td><td>P</td></tr><tr><td>ottobre</td><td>R</td></tr><tr><td>novembre</td><td>S</td></tr><tr><td>dicembre</td><td>T</td></tr></tbody></table></div><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><p>Per sviluppare una mappa che leghi i mesi alle lettere è molto più conveniente sviluppare una soluzione in stringhe o array che usare switch o if:</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// singola stringa</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> months </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">  "</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">gennaiofebbraiomarzoaprile</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> letters </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> "</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">A06----B08-----C05--D06---</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// trovare la lettera corrispondente è semplice:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> toSearch </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> "</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">febbraio</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> index </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> months.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">indexOf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(toSearch.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">toLowerCase</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">());</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">char</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> searchRes </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> letters.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">charAt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(index);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// trovare invece il mese:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">index </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> letters.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">indexOf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">'</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">D</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> length </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> Integer.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">parseInt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(letters.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">substring</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(index</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">));</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> month </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> months.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">substring</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(index, length);</span></span></code></pre><p>La stessa soluzione è implementabile con una coppia di array.</p></aside></aside><p>[1]: La lista dei comuni fu’ inizialmente generata in ordine alfabetico; nuovi comuni vengono inseriti in coda, inoltre, i comuni soppressi non vengono rimossi dalla tabella</p><section><h3 id="omocodia">Omocodia<a aria-hidden="true" tabindex="-1" href="#omocodia"><span class="icon icon-link"></span></a></h3><p>In caso di codici uguali, si fornisce un codice diverso dallo standard a ogni proprietario: il nuovo codice è ottenuto sostituendo una o più cifre numeriche del codice originale con lettere a partire da destra:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>cifra</th><th>lettera</th></tr></thead><tbody><tr><td>0</td><td>L</td></tr><tr><td>1</td><td>M</td></tr><tr><td>2</td><td>N</td></tr><tr><td>3</td><td>P</td></tr><tr><td>4</td><td>Q</td></tr><tr><td>5</td><td>R</td></tr><tr><td>6</td><td>S</td></tr><tr><td>7</td><td>T</td></tr><tr><td>8</td><td>U</td></tr><tr><td>9</td><td>V</td></tr></tbody></table></div><p>Inoltre, viene ricalcolato il carattere di controllo finale.</p><p><em>Questo metodo ammette 128 varianti per codice.</em></p></section></div></section> </div> </main> <footer class="test-footer" data-astro-cid-jyhwcbfj> <nav id="local-nav" aria-label="Navigazione Argomento" data-astro-cid-sf7rw5md> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Basi di Java" title="pagina precedente" data-astro-cid-sf7rw5md> Basi di Java </a> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Stringhe" title="pagina corrente" data-astro-cid-sf7rw5md> Stringhe in Java </a> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Array" title="pagina successiva" data-astro-cid-sf7rw5md> Array in Java </a> </nav>  <p data-astro-cid-jyhwcbfj>Pagina iniziale del sito a <a href="/NotesRepo/Web_Dev/Astro/dist/../../html/Sintassi html/" data-astro-cid-jyhwcbfj>questo indirizzo</a></p> <p data-astro-cid-gcm7ptol>Puoi trovarmi anche su
+<a href="https://www.github.com/italocorraro" data-astro-cid-gcm7ptol>github</a></p> </footer> <script type="module">const s="after-h2";const r=document.querySelectorAll(`section:has(>h2):has(>.${s})`);r.forEach(o=>{const n=o.querySelector("h2"),t=o.querySelector(`.${s}`);let i=!0,e=t.offsetHeight+5;t.style.transition="max-height 300ms",t.style.overflowY="hidden",n.addEventListener("click",()=>{i?(e=t.offsetHeight+5,t.style.maxHeight=`${e.toString()}px`,console.log(e.toString()),setTimeout(()=>{t.style.maxHeight="0"},0),i=!1):(t.style.maxHeight=`${e.toString()}px`,setTimeout(()=>{t.style.maxHeight="none"},300),i=!0)})});</script> <script type="module">const c=document.querySelectorAll("p:has(> .flexible-marker-cyan)");c.forEach(function(e){e.querySelector(".flexible-marker-cyan").addEventListener("click",()=>{e.classList.toggle("code-show-next")})});</script> </body> </html> 
