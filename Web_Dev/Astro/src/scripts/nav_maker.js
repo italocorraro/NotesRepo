@@ -163,20 +163,34 @@ const navbar = [
     content: [
       { name: 'Overview', URL: '#' },
     ]
+  },
+  {
+    name: 'Java',
+    content: [
+
+    ]
   }
 ];
 
-/*const testPosts = Object.values(import.meta.glob('../pages/posts/*.md', { eager: true }));
+const javaPages = Object.values(import.meta.glob('../pages/java/*.md', { eager: true }));
+javaPages.sort(
+  (a, b) => a.frontmatter.order - b.frontmatter.order
+);
 
-const nons = navbar[8].content.length;
-for(let k=0; k<testPosts.length; k++) {
-  let i = k + nons;
-  let post = testPosts[k];
-  navbar[8].content[i] = {
+let java_I = 0;
+while(navbar[java_I].name !== "Java") {
+  java_I++;
+}
+
+const offset = navbar[java_I].content.length;
+for(let k=0; k<javaPages.length; k++) {
+  let i = k + offset;
+  let post = javaPages[k];
+  navbar[java_I].content[i] = {
     name: post.frontmatter.title,
     URL: post.url
   }
-} */
+}
 
 const navbar_build = costruisciNav(navbar);
 const doubles = cercaDoppiHC(navbar);
