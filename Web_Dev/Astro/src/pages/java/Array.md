@@ -67,7 +67,7 @@ for(int x : v) {/*  */}
 
 In generale: 
 ```java
-for(type variable : arrayname) {/*  */}
+for(<type> <variable> : <arrayname>) {/*  */}
 ```
 :::nb
 Il costrutto appena introdotto memorizza progressivamente l'attuale elemento dell'array su cui operare in una variabile temporanea; questa variabile conterrà il riferimento (o una copia del valore del primitivo) dell'elemento, quindi non è possibile ri-assegnare gli elementi dell'array con questo costrutto, ma è necessario un ciclo for standar per avere accesso diretto agli elementi dell'array

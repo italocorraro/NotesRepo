@@ -32,7 +32,7 @@ Il metodo `now` restituisce la data/orario correnti
 
 ### Metodi Factory
 
-I metodi *statici* `of` i vari `of*` costruiscono oggetti con i dati forniti:
+I metodi *statici* `of*` costruiscono oggetti con i dati forniti:
 - `ofMonth` parte dal mese
 - `ofDay` parte dal giorno
 - `ofYear` parte dall'anno
@@ -83,7 +83,7 @@ Period p = Period.ofMonths(5)
 Period t = Period.ofDays(5);
 ```
 
-`Period` possiede anche tutti i meodi accessor delle classi di tempo locale e, inoltre, il metodo `between` di queste classi è una "sottrazione" tra due date che restituisce un istanza di `Period`; il metodo `addTo` permette di aggiungere un `Period` a un `LocalDate` (o `LocalTime`).
+`Period` possiede anche tutti i metodi accessor delle classi di tempo locale e, inoltre, il metodo `between` di queste classi è una "sottrazione" tra due date che restituisce un istanza di `Period`; il metodo `addTo` permette di aggiungere un `Period` a un `LocalDate` (o `LocalTime`).
 
 :::nb
 Il metodo `addTo` *non restituisce un `Local*`*, ma un oggetto più generale istanza di `Temporal`; è necessario un type-cast per restringere a `Local*`

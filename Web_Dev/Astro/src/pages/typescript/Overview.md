@@ -9,9 +9,13 @@ author: 'Italo Corraro'
 ## Cos'è TypeScript
 
 **TypeScript** è un linguaggio di programmazione basato su JavaScript; 
-* TypeScript aggiunge sintassi per la ***tipizzazione statica dei dati***
-* TypeScript *compila in JavaScript*, ma tutto quello che può essere scritto in JavaScript può essere scritto in JavaScript
+* TypeScript aggiunge sintassi per la ***tipizzazione statica dei dati*** a quella di JavaScript,
+* TypeScript *compila in JavaScript*, ma tutto quello che può essere scritto con TypeScript può essere scritto in JavaScript
 * TypeScript permette di dichiarare la forma delle strutture dati
+
+### Di preciso, cosa fa?
+
+**TypeScript** non genera codice JavaScript "speciale"; quello che fa' davvero è eseguire uno *strict type-checking a **compile-time***.
 
 
 ```typescript
@@ -24,3 +28,6 @@ function somma(a: number, b: number): number {
 }
 ```
 
+## Persistenza
+
+Una cosa importante da ricordare quando si compila da TypeScript è che tutta la sintassi dei tipi svanisce nel compilato.

@@ -50,46 +50,8 @@ Le **relazioni** tra le classi sono indicatecon delle frecce che le collegano; i
 - *dipendenza* (freccia piena), cioè quando una classe/oggetto ha una dipendenza da un altra classe/oggetto
 - *ereditarietà* (freccia vuota), cioè quando un oggetto "estende" un altro, cioè ne è figlio e ne eredità proprietà e metodi
 
-## Esempio: Orologio
 
-Vogliamo Realizzare il modello di un orologio:
+## Diagramma di Sequenza
 
-### Analisi
-
-In prima analisi, possiamo dire che 
-* l'*orologio* è un'entita caratterizzata da uno stato (l'orario, della cui visualizzazione ci occuperemo in seguito);
-* la variazione dello stato è interamente dovuta al passaggio di una unità di tempo, quindi è necessario predisporre di un metodo che faccia avanzare lo stato di tale unità
-* è necessario predisporre un metodo per leggere l'orario
-
-Dobbiamo mettere a disposizione uno o più costruttori che permettano di creare orologi specificando un orario iniziale e decidere quante variabili accettare per tale orario:
-* l'orologio prende come unità di base i secondi
-* l'orologio conosce ore, minuti e secondi, ciascuno caratterizzato da un massimo
-* possiamo omettere i secondi nel costruttore e supporre che il minuto sia appena iniziato
-* possiamo fornire solo l'ora e supporre che sia appena iniziata
-* possiamo fornire l'orario in formato stringa
-
-Per quanto riguarda lo stato, di fatto necessitiamo di 3 contatori
-
-```UML
-Orologio
----
-- ora: Counter
-- min: Counter
-- sec: Counter
----
-+ Orologio(int h, int m, int s): Orologio
-+ Orologio(int h, int m): Orologio
-+ Orologio(int h): Orologio
-+ Orologio(String hhmmss): Orologio
-+ Orologio(): Orologio
-+ getOrario(): Orario
-+ getOra(): int
-+ getMin(): int
-+ getSec(): int
-+ tic()
-```
-
-## Esempio: Orologio con Display a 7 Segmenti
-
-Introduciamo la classe **SevenSegmentDisplay** che permette di creare una finestra con display a 7 segmenti tramite un metodo fabbrica.
+Un **diagramma di sequenza** descrive le interazioni tra le parti del sistema a *run time*, cioè descrive le chiamate ai metodi e alle proprietà, l'ordine in cui avvengono, da dove, ecc...
 

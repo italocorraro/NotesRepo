@@ -236,6 +236,30 @@ Le classi di JavaScript sono delle *funzioni speciali*: tramite una sintassi spe
 * dei metodi di classe, che internamente sono attaccati a `prototype` del costruttore
 * altri campi, similmente alle classi degli altri linguaggi
 
-<script>
-console.log(Object);
-</script>
+
+
+
+
+## Override
+
+Nei linguaggi di programmazione a oggetti, quando un metodo ereditato viene implementato nuovamente sull'elemento derivato, si dice che è stato sovrascritto o ha subito un *override* per quell'elemento.
+
+In JavaScript non avviene una vera sovrascrizione, semplicemente l'interprete usa il primo che trova lungo la catena dei prototipi, quindi, se un metodo viene implementato direttamente sull'elemento allora sicuramente verrà usato quello.
+
+### Polimorfismo per Sottotipo
+
+Il *polimorfismo* è la capacità di oggetti di *tipo* diverso di rispondere alla chiamata di uno stesso metodo con comportamenti specifici.
+
+L'obbiettivo di sovrascrivere un metodo su un elemento di una catena ereditaria è nella maggior parte dei casi (di buona pratica) quello di estendere o adattare la sua logica all'elemento più specifico; in questo senso si dovrebbe sviluppare il *polimorfismo per sottotipo*, ovvero la capacità dell'entità che fa' girare il codice di scegliere la versione del metodo che si è approntata per quel caso riconoscendolo dinamicamente (cioè a runtime).
+
+In JavaScript, poiché i dati sono tipizzati dinamicamente a runtime, il polimorfismo non esiste nel senso stretto del termine, ma i metodi si comportano "come se fossero polimorfi", cioè viene utilizzato il metodo giusto in base al chiamante a prescindere dal tipo, ma per un diverso motivo rispetto a linguaggi come Java e C#.
+
+### Duck Typing
+
+Javascript è (come Python) un linguaggio implementato secondo il principio del *duck-typing* (<cite>Se sembra un'anatra, nuota come un'anatra e starnazza come un'anatra, allora probabilmente è un'anatra</cite>); di base, non viene fatto alcun controllo di tipo per verificare se è possibile chiamare un metodo e quale versione chiamare, semplicemente si prova ad usarlo e se funziona, bene.
+
+La scelta del metodo avviene attraverso il meccanismo dei prototipi: non c'è un vero override, semplicemente, risalendo la catena, viene chiamato il primo metodo con quel nome che viene trovato.
+
+In pratica? Se chiamiamo il metodo `quack()` su un oggetto, non importa di quale prototipo o tipo, se anatra, papera o altro, fin quando su quell'oggetto esisterà un metodo chiamato "quack", allora questo verrà chiamato con successo; se non esiste lo si scoprirà a runtime.
+
+Questo tipo di implementazione permette di sviluppare metodi affini su classi/prototipi slegati tra loro e trascendendo quindi i legami ereditari delle classi; tuttavia, proprio per questo motivo, qualunque oggetto che implementa il metodo chiamato sarà in grado di fornire risposta, ma non è per niente detto che questa sia coerente con il risultato atteso.

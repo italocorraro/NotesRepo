@@ -261,7 +261,7 @@ Altri linguaggi, come Scala e Kotlin, implementano solo oggetti (spariscono i ti
 
 ## this
 
-La keyword `this` all'interno di un metodo, fa riferimento all'oggetto corrente (quello su cui si è invocato il metodo); è convenzione chiamre *that* eventuali riferimenti ad altri oggetti che vengono passati come argomento ai metodi
+La keyword **`this`** all'interno di un metodo, fa riferimento all'oggetto corrente (quello su cui si è invocato il metodo); è convenzione chiamre *`that`* eventuali riferimenti ad altri oggetti che vengono passati come argomento ai metodi
 
 :::eg
 ```java
@@ -315,7 +315,7 @@ public class Point {
 }
 ```
 
-### Campi private
+### Campi Privati
 
 Java permette a un oggetto di accedere ai campi privati di un altro oggetto SE appartengono alla stessa classe, cioè *l'incapsulamento è applicato SOLO a livello di classe*
 
@@ -341,6 +341,37 @@ public boolean equals(Counter other) {
 Questa flessibilità nell'incapsulamento libera il progettista dall'obbligo di creare un metodo pubblico di accesso allo stato.
 
 *Sarebbe buona prassi non violare l'incapsulamento se non è strettamente necessario.*
+
+### Cascading
+
+Alcune volte si devono svolgere più operazioni sullo stesso oggetto e risulta verboso doverlo richiamare ogni volta.
+
+Per i metodi che hanno come tipo di ritorno `void` (nello specifico, le *procedure* che servono ad alterare lo stato interno dell'oggetto) si può optare per restituire invece `this`, cioè se stessi; in questo modo, è possibile eseguire altre operazioni in sequenza.
+
+:::eg
+```java
+public class Counter {
+    /* .... */
+    public inc() {
+        this.counter++;
+        return this;
+    }
+}
+```
+Data la struttura del metodo possiamo scrivere:
+```java
+Counter c = new Counter ();
+c.inc().inc().inc(); 
+// counter aumentato di 3
+```
+o, in modo più leggibile, ma coerente:
+```java
+c.inc()
+ .inc()
+ .inc();
+```
+:::
+
 
 ## Overloading
 
@@ -372,9 +403,9 @@ public class Counter {
 ```
 :::
 
-## Overrun
+## Override
 
-Alcuni metodi sono già definiti di default per gli oggetti; è necessario fare override di questi metodi se se ne vuole creare uno omonimo; usare l'annotazione `@override` indica l'esplicita intezione di fare questa operazione (si applica anche a tutti gli altri metodi già definiti):
+Alcuni metodi sono già definiti di default per gli oggetti; è necessario fare override di questi metodi se se ne vuole creare uno omonimo; usare l'annotazione `Override` indica l'esplicita intezione di fare questa operazione (si applica anche a tutti gli altri metodi già definiti):
 
 ```java
 @Override 
@@ -384,5 +415,13 @@ public String toString() {
 ```
 
 :::nota
-L'annotazione `@override` non è strettamente necessaria, tuttavia il compilatore genererà un warning se non viene inserita dove opportuno
+L'annotazione `@Override` non è strettamente necessaria, tuttavia il compilatore genererà un warning se non viene inserita dove opportuno
 :::
+
+## Inizializzazione
+
+Una variabile può essere dichiarata e non inizializzata; di default, ogni tipo è automaticamente inizializzato a un certo valore nullo:
+- per i tipi numerici, iniziano a `0` (o `0.0` per quelli con virgola)
+- per i tipo boolean, iniziano da `false`
+- i tipi char, iniziano da `\u0000` (carattere nullo)
+- per i riferimenti a oggetti, iniziano con `null`

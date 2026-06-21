@@ -48,7 +48,7 @@ var let = 'variablie';
 
 ## Commenti
 
-I commenti in JavaScript possono essere inseriti così:
+I commenti in JavaScript possono essere inseriti tra `/*` e `*/` per commenti multi riga, oppure precedendoli con `//` per commenti a riga singola:
 
 ```javascript
 // Questo è un commento a riga singola
@@ -56,6 +56,10 @@ I commenti in JavaScript possono essere inseriti così:
 /* Questo è un commento multi-riga;
    si estende fino al terminatore */
 ```
+
+:::nota
+I commenti multi-riga che iniziano con `/**` indicano documentazione e molti IDE la riportano quando si scorre con il cursore sopra alla variabile che è stata commentata.
+:::
 
 ## Variabili
 
