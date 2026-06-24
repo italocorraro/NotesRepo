@@ -66,12 +66,12 @@ Questi metodi sono comuni a tutte le classi implementanti `Collection` e servono
 | Metodo | Descrizione |
 |---|---|
 | `toArray()` / `toArray(T[] a)` | Converte la collezione in array |
-| `addAll(Collection<? extends E> c)`[3] | Aggiunge tutti gli elementi di un'altra collezione |
+| `addAll(Collection<? extends E> c)`[^1] | Aggiunge tutti gli elementi di un'altra collezione |
 | `removeAll(Collection<?> c)` | Rimuove tutti gli elementi presenti anche in `c` |
 | `retainAll(Collection<?> c)` | Mantiene solo gli elementi presenti anche in `c` (intersezione) |
 | `containsAll(Collection<?> c)` | Verifica se contiene tutti gli elementi di `c` |
 
-[3]: utile per "trasformare" una collezione di un tipo in un altro (compatibile)
+[^1]: utile per "trasformare" una collezione di un tipo in un altro (compatibile)
 
 ### Metodi Fabbrica
 
@@ -276,7 +276,9 @@ Map.copyOf(
     Map<? extends K,? extends V> map
 ): Map<K,V>;
 ```
+### Entry
 
+<!--  -->
 
 ### Metodi di SortedMap
 
@@ -335,13 +337,13 @@ Riassumendo le proprietà principali delle strutture dati viste:
  Classe | Ordine | Duplicati | Accesso 
  --- | --- | --- | ---
  `ArrayList` | *manuale* | ammessi | *indice*
- `LinkedList` | *manuale* | ammessi | ***indice***[1]
+ `LinkedList` | *manuale* | ammessi | ***indice***[^2]
  `HashSet` | nessuno | *rimossi* | standard
- `TreeSet` | ***automatico***[2] | *rimossi* | standard
+ `TreeSet` | ***automatico***[^3] | *rimossi* | standard
  `LinkedHashSet` | *inserimento* | *rimossi* | standard
- `HashMap` | nessuno | *sovrascritti* | ***chiave***[1]
- `TreeMap` | ***auto per chiave***[2] | *sovrascritti* | ***chiave***[1]
- `LinkedHashMap` | *inserimento*  | *sovrascritti* | ***chiave***[1]
+ `HashMap` | nessuno | *sovrascritti* | ***chiave***[^2]
+ `TreeMap` | ***auto per chiave***[^3] | *sovrascritti* | ***chiave***[^2]
+ `LinkedHashMap` | *inserimento*  | *sovrascritti* | ***chiave***[^2]
 
-[1]: accesso rapido ottimizzato
-[2]: gli elementi si ordinano in automatico ad ogni modifica
+[^2]: accesso rapido ottimizzato
+[^3]: gli elementi si ordinano in automatico ad ogni modifica

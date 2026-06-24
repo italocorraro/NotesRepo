@@ -35,6 +35,8 @@ L'approccio basato sul tipo generico si chiama *polimorfismo orizzontale*, mentr
 Per motivi di retrocompatibilità, se il tipo non viene specificato al momento dell'uso, allora di default viene identificato come `Object`, in questo modo il programma compila; in questi casi il compilatore lancia un warning
 :::
 
+I tipi generici non sono **reificabili**, cioè sono un concetto completamente astratto del compilatore e non vengono trasposti nel modello dei dati (in pratica non esistono a runtime).
+
 ### Classi Generiche
 
 Sfruttand i tipi parametrici possiamo generare classi dal tipo generico non prestabilito, deciso al momento dell'istanziazione:
@@ -51,3 +53,39 @@ public class Stack<T> {
         }
     }
 }
+```
+:::warn
+*Il tipo generico non è una classe!*
+
+Il tipo generico non può istanziare nulla per sua natura (sparisce a run time)
+:::
+
+### Tipo Paramatrico Ristretto
+
+Un tipo parametrico non deve necessariamente essere "uno qualsiasi"; possiamo restringere il campo:
+
+La keyword `extends` ci permette di dichiarare un generico tipo con il vincolo che derivi da una classe o interfaccia
+
+:::eg
+```java
+public class Counter<T extends Integer>
+```
+:::
+
+La keyword `super` ci permette di dichiarare un generico tipo con il vincolo che la classe o interfaccia specificata derivi da esso.
+
+:::eg
+```java
+public class Counter<T super Double>
+```
+:::
+
+## Tipo Sconosciuto
+
+La wildcard **`?`** rappresenta un tipo qualsiasi non meglio noto e non crea vincoli particolari, tuttavia *permane a runtime*
+```java
+List<? extends Object> list;
+```
+questo tipo di dicitura generica è spesso usata nelle dichiarazioni di metodi.
+
+Il tipo sconosciuto non può essere referenziato nel metodo/classe.

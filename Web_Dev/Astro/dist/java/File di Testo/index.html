@@ -1,0 +1,635 @@
+<!DOCTYPE html><html lang="it" data-astro-cid-hpxbdaly> <head><title>File di Testo con Java</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v5.15.9"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="icon" sizes="32x32" href="/NotesRepo/Web_Dev/Astro/dist/Crocco.png" type="image/x-icon"><!-- Generic tags --><meta name="author" content="Italo Corraro"><meta name="description" content><!-- Open Graph tags --><meta property="og:title" content="File di Testo"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:locale" content="it_IT"><meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="799"><meta property="og:image:height" content="400"><!-- Twitter Card tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="File di Testo"><meta name="twitter:description" content><meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png"><link href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="/NotesRepo/Web_Dev/Astro/dist/_astro/DOM.DKphDcbY.css">
+<style>pre{padding:.4em .6em;border-radius:.5em;margin:.5em 0;border:.1em dashed cadetblue;width:fit-content;max-width:100%;overflow-x:auto}pre:before{content:attr(data-language);display:block;text-transform:uppercase;font-size:120%;text-align:left;border-bottom:.1em solid;margin-bottom:.4em}pre[data-language=js]:before{content:none}@media(prefers-color-scheme:dark){.astro-code,.astro-code span{color:var(--shiki-dark);background-color:var(--shiki-dark-bg);font-style:var(--shiki-dark-font-style);font-weight:var(--shiki-dark-font-weight);text-decoration:var(--shiki-dark-text-decoration)}}html[data-theme=dark] :is(.astro-code,.astro-code span){color:var(--shiki-dark);background-color:var(--shiki-dark-bg);font-style:var(--shiki-dark-font-style);font-weight:var(--shiki-dark-font-weight);text-decoration:var(--shiki-dark-text-decoration)}html[data-theme=light] :is(.astro-code,.astro-code span){color:var(--shiki-light);background-color:var(--shiki-light-bg);font-style:var(--shiki-light-font-style);font-weight:var(--shiki-light-font-weight);text-decoration:var(--shiki-light-text-decoration)}html[data-theme=dracula] :is(.astro-code,.astro-code span){color:var(--shiki-dracula);background-color:var(--shiki-dracula-bg);font-style:var(--shiki-dracula-font-style);font-weight:var(--shiki-dracula-font-weight);text-decoration:var(--shiki-dracula-text-decoration)}
+nav[data-astro-cid-sf7rw5md]{display:flex;padding:0 1.5em;width:100%;max-width:100%;justify-content:center}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]{width:33%;text-transform:uppercase}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]:first-child{text-align:left}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:first-child:before{content:"<"}nav[data-astro-cid-sf7rw5md]>[data-astro-cid-sf7rw5md]:last-child{text-align:right}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:last-child:after{content:">"}nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:first-child:before,nav[data-astro-cid-sf7rw5md]>a[data-astro-cid-sf7rw5md]:last-child:after{display:inline-block;transform:translateY(-.05em)}p[data-astro-cid-gcm7ptol]{margin:0}footer[data-astro-cid-jyhwcbfj]{display:flex;gap:.8rem;margin-top:2rem;padding:1rem 0;flex-direction:column}p[data-astro-cid-jyhwcbfj]{margin:0}
+</style></head> <body data-astro-cid-hpxbdaly> <header id="site-header" data-astro-cid-3ef6ksr2> <button type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu"> 
+Menu
+</button> <nav id="mainNav" aria-label="Navigazione Sito"> <ul> <li class="nav-item"><span>HTML</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Sintassi html/">Sintassi html</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Struttura Semantica/">Struttura Semantica</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/L'elemento head/">L&#39;elemento &lt;head&gt;</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Ancore/">Ancore</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Liste/">Liste</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Immagini/">Immagini</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Altri Media/">Altri Media</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Tabelle">Tabelle</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/html/Forms/">Form</a></li> </ul> </li><li class="nav-item"><span>CSS</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Sintassi CSS/">Sintassi CSS</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Selectors/">Selettori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Box Model/">Box Model</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Unità di Misura/">Unità di misura</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Colori/">Colori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Immagini/">Immagini</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Funzioni e Variabili/">Funzioni e Variabili</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Background/">Background</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Tipografia/">Tipografia</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/#liste">Liste</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/#ancore">Ancore</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Tabelle/">Tabelle</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Form/">Form</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Media Queries/">Media Queries</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Float/">Layout con Float</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Flexbox/">Layout con Flexbox</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Layout con Grid/">Layout con Grid</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Altri Stili/">Altri Stili</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/CSS/Transizioni-Animazioni/">Animazioni &amp; Transizioni</a></li> </ul> </li><li class="nav-item"><span>JavaScript</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Overview/">Overview</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Tipi di Dato/">Tipi di Dato</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Operatori/">Operatori</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Numeri/">Numeri</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Stringhe/">Stringhe</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Array/">Array</a></li><li class="nav-link"> <a href="javascript/Espressioni Regolari/">Espressioni Regolari</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Date/">Date</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Controllo di Flusso/">Controllo di Flusso</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Iterazione/">Iterazione</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Funzioni/">Funzioni</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Strict Mode/">Strict Mode</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Oggetti/">Oggetti</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Collezioni Indicizzate/">Collezioni Indicizzate</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Ereditarietà/">Ereditarietà</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Classi/">Classi</a></li><li class="nav-link"> Garbage Collection</li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Asincronia/">Asincronia</a></li><li class="nav-link"> Moduli</li> </ul> </li><li class="nav-item"><span>JS APIs</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/APIs/DOM/">DOM API</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/APIs/Eventi/">UI Events API</a></li><li class="nav-link"> Storage API</li><li class="nav-link"> URL API</li><li class="nav-link"> View Transition API</li><li class="nav-link"> Intersection Observer API</li><li class="nav-link"> Pointer Events</li> </ul> </li><li class="nav-item"><span>Struttura Pagine</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Struttura/Struttura html/">Struttura html</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Struttura/Struttura CSS/">Struttura CSS</a></li> </ul> </li><li class="nav-item"><span>TypeScript</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/typescript/Overview/">Overview</a></li> </ul> </li><li class="nav-item"><span>Markdown</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Markdown/Sintassi Markdown/">Sintassi</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/Markdown/GFM/">GitHub Flavored</a></li><li class="nav-link"> Remark Plugins</li> </ul> </li><li class="nav-item"><span>Astro</span> <ul> <li class="nav-link"> Overview</li> </ul> </li><li class="nav-item"><span>Java</span> <ul> <li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Introduzione">Introduzione</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Basi di Java">Basi di Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Stringhe">Stringhe in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Array">Array in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Packages e Moduli">Packages e Moduli in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Enumerativi">Enumerativi in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Date">Date e Gestione del Tempo in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Internazionalizzazione">Internazionalizzazione in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/JUnit">Testing in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/UML">UML in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Design Patterns">Design Patterns</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Ereditarietà">Ereditarietà in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Classi Dati">Classi Dati in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Generics">Tipi Generici in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Classi Astratte">Classi Astratte in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Interfacce">Interfacce in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Confronto">Confronto in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Null Safety">Null Safety in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Strutture Dati">Strutture Dati in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Eccezioni">Eccezioni in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Input-Output">Input e Output in Java</a></li><li class="nav-link"> <a href="/NotesRepo/Web_Dev/Astro/dist/java/File di Testo">File di Testo con Java</a></li> </ul> </li> </ul> </nav> <div id="mainNavBackdrop"></div> <script type="module">const i=document.querySelector("button:has(+ #mainNav)");i?.addEventListener("click",()=>{const t=i.getAttribute("aria-expanded")==="true";i.setAttribute("aria-expanded",`${!t}`)});const o=document.querySelector("#mainNav + div");o?.addEventListener("click",()=>{i?.setAttribute("aria-expanded","false")});function a(t,e=400){t.style.transition=`height ${e}ms ease`,t.style.height=t.scrollHeight+"px",requestAnimationFrame(()=>{t.style.height="0"}),setTimeout(()=>{t.style.display="none"},e)}function n(t,e=400){t.style.display="block";let s=t.scrollHeight;t.style.height="0",t.style.transition=`height ${e}ms ease`,requestAnimationFrame(()=>{t.style.height=s+"px"}),setTimeout(()=>{t.style.height="auto"},e)}function l(t,e=400){window.getComputedStyle(t).display==="none"?n(t,e):a(t,e)}document.querySelectorAll(".nav-item").forEach(t=>{let e=t.querySelector("ul"),s=t.querySelector("span");a(e),s?.addEventListener("click",()=>{l(e,400)})});</script> <aside aria-labelledby="site-settings"> <h2 id="site-settings">Impostazioni Tema</h2> <!-- Impostazioni TEMA SHIKI --> <form id="shiki-theme-settings" class="astro-code"> <input type="radio" name="shiki-theme" id="shiki-light" value="light"> <label for="shiki-light" title="Tema Chiaro"> <span class="text-only">Tema Chiaro</span> <svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"> <!-- Disco centrale --> <circle cx="50" cy="50" r="22" fill="var(--shiki-light)"></circle> <!-- Raggi --> <g stroke="var(--shiki-light)" stroke-width="8" stroke-linecap="round"> <line x1="50" y1="6" x2="50" y2="22"></line> <line x1="50" y1="78" x2="50" y2="94"></line> <line x1="6" y1="50" x2="22" y2="50"></line> <line x1="78" y1="50" x2="94" y2="50"></line> <line x1="21" y1="21" x2="32" y2="32"></line> <line x1="78" y1="78" x2="67" y2="67"></line> <line x1="21" y1="79" x2="32" y2="68"></line> <line x1="79" y1="21" x2="68" y2="32"></line> </g> </svg> </label> <input type="radio" name="shiki-theme" id="shiki-dark" value="dark"> <label for="shiki-dark" title="Tema Scuro"> <span class="text-only">Tema Scuro</span> <svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"> <!-- Disco completo --> <circle cx="50" cy="50" r="40" fill="var(--shiki-dark-code)" opacity="0.25"></circle> <!-- Falce luminosa (più larga rispetto alla versione precedente) --> <path d="M45 10
+           A40 40 0 1 0 45 90
+           A28 40 0 1 1 45 10Z" fill="var(--shiki-dark)"></path> </svg> </label> <input type="radio" name="shiki-theme" id="shiki-dracula" value="dracula"> <label for="shiki-dracula" title="Tema Dracula"> <span class="text-only">Tema Dracula</span> <img src="https://user-images.githubusercontent.com/33915497/214760369-5c078b43-fdab-4cdd-adfe-ad905a64b5a5.png" decoding="sync" loading="eager" alt="logo tema Dracula da GitHub" fetchpriority="auto" width="60" height="60"> </label> <input type="radio" name="shiki-theme" id="shiki-system" value="" checked> <label for="shiki-system" title="Tema Predefinito"><span class="text-only">Tema Predefinito</span> <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"> <!-- Mezzo sole a sinistra --> <g fill="var(--font-color)"> <!-- Semicerchio del sole --> <path d="M12 4a8 8 0 0 0 0 16V4z"></path> </g> <!-- Mezzo cerchio scuro a destra --> <path fill="var(--font-color)" d="M12 4a8 8 0 1 1 0 16V4z" opacity="0.4"></path> </svg> </label> </form> </aside> <script type="module">const o="my-notes-repo-theme",s=sessionStorage.getItem(o),n=document.documentElement,r=document.querySelectorAll('#shiki-theme-settings > [type="radio"]');s&&typeof s=="string"&&n.setAttribute("data-theme",s);r.forEach(e=>{if(e.id==="shiki-system")e.addEventListener("input",()=>{n.removeAttribute("data-theme"),sessionStorage.removeItem(o)});else{const t=e.getAttribute("value");t==s&&e.setAttribute("checked","true"),e.addEventListener("input",()=>{t&&typeof t=="string"&&(n.setAttribute("data-theme",t),sessionStorage.setItem(o,t))})}});</script>   <button type="button" id="to-top" aria-label="Porta in cima alla pagina" data-astro-cid-3ef6ksr2> <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" data-astro-cid-3ef6ksr2> <polygon points="12 4 20 20 4 20" fill="var(--font-color)" data-astro-cid-3ef6ksr2></polygon> </svg> </button> </header>  <script type="module">const t=document.getElementById("to-top");t?.addEventListener("click",()=>{scroll(0,0)});</script> <!-- <div id="background" aria-hidden="true"></div> --> <img src="/NotesRepo/Web_Dev/Astro/dist/_astro/teal.Cp8wgQFt_Z1ab9GP.webp" alt="background image" aria-hidden="true" id="background-big" loading="eager" decoding="sync" data-astro-cid-hpxbdaly="true" fetchpriority="auto" width="5120" height="2880"> <img src="/NotesRepo/Web_Dev/Astro/dist/_astro/hello.CW1iZbTK_Z1m486K.webp" alt="background image" aria-hidden="true" id="background-small" loading="eager" decoding="sync" data-astro-cid-hpxbdaly="true" fetchpriority="auto" width="1170" height="2532"> <main data-astro-cid-hpxbdaly> <header data-astro-cid-hpxbdaly> <h1 data-astro-cid-hpxbdaly>File di Testo con Java</h1> <div id="breadcrumbs" data-astro-cid-hpxbdaly><nav id="local-nav" aria-label="Navigazione Argomento" data-astro-cid-sf7rw5md> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Input-Output" title="pagina precedente" data-astro-cid-sf7rw5md> Input e Output in Java </a> <a href="/NotesRepo/Web_Dev/Astro/dist/java/File di Testo" title="pagina corrente" data-astro-cid-sf7rw5md> File di Testo con Java </a> <span aria-hidden="true" data-astro-cid-sf7rw5md></span> </nav> </div> </header> <div id="content" data-astro-cid-hpxbdaly> <nav aria-labelledby="page-index"> <h2 id="page-index">Indice</h2> <div id="index-list"><ul><li><a href="#reader">Reader</a></li><li><a href="#writer">Writer</a></li><li><a href="#buffered-reader">Buffered Reader</a></li><li><a href="#buffered-writer">Buffered Writer</a><ul><li><a href="#print-writer">Print Writer</a><ul><li><a href="#costruttori">Costruttori</a></li><li><a href="#metodi-print">Metodi print</a></li><li><a href="#metodi-printf--format">Metodi printf / format</a></li><li><a href="#metodi-di-controllo-e-utilità">Metodi di Controllo e Utilità</a><ul><li><a href="#specifiers">Specifiers</a></li></ul></li></ul></li></ul></li><li><a href="#console">Console</a></li><li><a href="#parsing">Parsing</a><ul><li><a href="#string-tokenizer">String Tokenizer</a></li><li><a href="#scanner">Scanner</a><ul><li><a href="#costruttori-1">Costruttori</a></li><li><a href="#metodi-di-cattura-token">Metodi di Cattura Token</a></li><li><a href="#metodi-di-configurazione">Metodi di Configurazione</a></li></ul></li><li><a href="#manipolazione-di-stringhe">Manipolazione di Stringhe</a></li></ul></li></ul></div> </nav> <p>Java usa una codifica di caratteri basata su =k<mark class="flexible-marker flexible-marker-default">UNICODE</mark>; la conversione da/a altri formati è gestita internamente dalle classi <code>Reader</code> e <code>Writer</code>.</p>
+<section><h2 id="reader">Reader<a aria-hidden="true" tabindex="-1" href="#reader"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p><code>java.io.Reader</code> <em>(abstract)</em></p><p>Stream di lettura di <strong>caratteri</strong> (Unicode).</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>read()</code></td><td><code>int</code></td><td>Legge un carattere (0–65535) o <code>-1</code> a fine stream</td></tr><tr><td><code>read(cbuf: char[])</code></td><td><code>int</code></td><td>Legge caratteri nell’array</td></tr><tr><td><code>read(cbuf: char[], off: int, len: int)</code></td><td><code>int</code></td><td>Legge al massimo <code>len</code> caratteri a partire da <code>off</code></td></tr><tr><td><code>read(target: CharBuffer)</code></td><td><code>int</code></td><td>Legge caratteri in un <code>CharBuffer</code> (NIO)</td></tr><tr><td><code>skip(n: long)</code></td><td><code>long</code></td><td>Salta <code>n</code> caratteri</td></tr><tr><td><code>ready()</code></td><td><code>boolean</code></td><td><code>true</code> se lo stream è pronto per la lettura senza bloccarsi</td></tr><tr><td><code>mark(readAheadLimit: int)</code></td><td><code>void</code></td><td>Segna la posizione corrente</td></tr><tr><td><code>reset()</code></td><td><code>void</code></td><td>Torna alla posizione marcata</td></tr><tr><td><code>markSupported()</code></td><td><code>boolean</code></td><td><code>true</code> se mark/reset sono supportati</td></tr><tr><td><code>transferTo(out: Writer)</code></td><td><code>long</code></td><td>Copia tutto in un <code>Writer</code></td></tr><tr><td><code>close()</code></td><td><code>void</code></td><td>Chiude il reader</td></tr></tbody></table></div><p>Il metodo <code>read</code> restituisce il codice del carattere Unicode (o -1);</p><p>Un file viene aperto da un’istanza di <code>FileReader</code> o <code>FileWriter</code> che leggono byte per byte; questi vengono incapsulati rispettivamente in un <code>BufferedReader</code> o <code>BufferedWriter</code>.</p><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#8BE9FD"> Lettura</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> static</span><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#E36209;--shiki-light-font-style:inherit;--shiki-dark:#FFAB70;--shiki-dark-font-style:inherit;--shiki-dracula:#FFB86C;--shiki-dracula-font-style:italic"> args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">[]) {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">        // creazione file reader</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">        FileReader</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> rd </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">        try</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">            r </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> FileReader</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(args[</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">]);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">        } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">catch</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">FileNotFoundException</span><span style="--shiki-light:#E36209;--shiki-light-font-style:inherit;--shiki-dark:#FFAB70;--shiki-dark-font-style:inherit;--shiki-dracula:#FFB86C;--shiki-dracula-font-style:italic"> e</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">            System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">File non trovato</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">            System.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">exit</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">        }</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">        // lettura</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">        try</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">            int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> chCount </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">; </span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">            int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> rd.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">read</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">            while</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">>=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> 0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">                // cast per convertire </span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">                // da int unicode a char</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">                char</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> ch </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> (</span><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">char</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) x;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">                System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">print</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(ch);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">                x </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> rd.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">read</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">            }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">            System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#FF79C6">\n</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">Tot caratteri: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> n);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">        } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">catch</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">IOException</span><span style="--shiki-light:#E36209;--shiki-light-font-style:inherit;--shiki-dark:#FFAB70;--shiki-dark-font-style:inherit;--shiki-dracula:#FFB86C;--shiki-dracula-font-style:italic"> e</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">            System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">Errore di input</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">            System.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">exit</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">}</span></span></code></pre></aside></div></section>
+<section><h2 id="writer">Writer<a aria-hidden="true" tabindex="-1" href="#writer"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p><code>java.io.Writer</code> <em>(abstract)</em></p><p>Stream di scrittura di <strong>caratteri</strong> (Unicode).</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>write(c: int)</code></td><td><code>void</code></td><td>Scrive un singolo carattere</td></tr><tr><td><code>write(cbuf: char[])</code></td><td><code>void</code></td><td>Scrive un array di caratteri</td></tr><tr><td><code>write(cbuf: char[], off: int, len: int)</code></td><td><code>void</code></td><td>Scrive <code>len</code> caratteri a partire da <code>off</code></td></tr><tr><td><code>write(str: String)</code></td><td><code>void</code></td><td>Scrive una stringa</td></tr><tr><td><code>write(str: String, off: int, len: int)</code></td><td><code>void</code></td><td>Scrive una sottostringa</td></tr><tr><td><code>append(csq: CharSequence)</code></td><td><code>Writer</code></td><td>Aggiunge una <code>CharSequence</code>; restituisce <code>this</code> (fluent)</td></tr><tr><td><code>append(csq: CharSequence, start: int, end: int)</code></td><td><code>Writer</code></td><td>Aggiunge una parte di <code>CharSequence</code></td></tr><tr><td><code>append(c: char)</code></td><td><code>Writer</code></td><td>Aggiunge un carattere</td></tr><tr><td><code>flush()</code></td><td><code>void</code></td><td>Forza la scrittura dei dati bufferizzati</td></tr><tr><td><code>close()</code></td><td><code>void</code></td><td>Flush + chiusura del writer</td></tr></tbody></table></div></div></section>
+<section><h2 id="buffered-reader">Buffered Reader<a aria-hidden="true" tabindex="-1" href="#buffered-reader"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p>La classe <code>BufferedReader</code> incapsula un <code>Reader</code> permettendogli di registrare i byte di lettura in un buffer di accumulo:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead></table></div><!-- | `read()`  | `int`  | Legge un singolo carattere (come codice Unicode), ritorna -1 se fine stream |
+| `read(cbuf: char[])`  | `int` | Legge caratteri in un array   |
+| `read(cbuf: char[], off: int, len: int)` | `int`  | Legge fino a `len` caratteri nell’array a partire da `off` | --><p>| <code>readLine()</code>   | <code>String</code>  | Legge una riga di testo (senza newline), ritorna <code>null</code> a fine stream  |
+| <code>skip(n: long)</code> | <code>long</code>  | Salta <code>n</code> caratteri   |
+| <code>ready()</code>      | <code>boolean</code>  | Indica se lo stream è pronto per la lettura senza blocco   |
+| <code>mark(readAheadLimit: int)</code>  | <code>void</code>  | Marca una posizione nello stream    |
+| <code>reset()</code>      | <code>void</code>   | Torna all’ultima posizione marcata  |
+| <code>markSupported()</code>    | <code>boolean</code>   | Indica se mark/reset sono supportati|
+| <code>close()</code>      | <code>void</code>   | Chiude lo stream  |</p><p>Questa classe continua a leggere fin quando non trova il terminatore o nulla da leggere; in tal caso restituisce <code>null</code>.</p><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">BufferedReader</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> f </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">try</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    f </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> BufferedReader</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> FileReader</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">f.txt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">    while</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">((</span><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> line </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> f.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">readLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">!=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">        /* ... */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">}</span></span></code></pre></aside></div></section>
+<section><h2 id="buffered-writer">Buffered Writer<a aria-hidden="true" tabindex="-1" href="#buffered-writer"><span class="icon icon-link"></span></a></h2><div class="after-h2"><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>write(int c)</code></td><td><code>void</code></td><td>Scrive un singolo carattere</td></tr><tr><td><code>write(char[] cbuf)</code></td><td><code>void</code></td><td>Scrive un array di caratteri</td></tr><tr><td><code>write(char[] cbuf, int off, int len)</code></td><td><code>void</code></td><td>Scrive parte di un array</td></tr><tr><td><code>write(String s)</code> <code>void</code></td><td>Scrive una stringa</td><td></td></tr><tr><td><code>write(String s, int off, int len)</code></td><td><code>void</code></td><td>Scrive parte di una stringa</td></tr><tr><td><code>newLine()</code></td><td><code>void</code></td><td>Scrive un separatore di riga del sistema</td></tr><tr><td><code>flush()</code></td><td><code>void</code></td><td>Forza la scrittura dei dati nel stream sottostante</td></tr><tr><td><code>close()</code></td><td><code>void</code></td><td>Chiude lo stream dopo aver svuotato il buffer</td></tr><tr><td><code>append(CharSequence csq)</code></td><td><code>Writer</code></td><td>Aggiunge una sequenza di caratteri</td></tr><tr><td><code>append(CharSequence csq, int start, int end)</code></td><td><code>Writer</code></td><td>Aggiunge una sottosequenza</td></tr><tr><td><code>append(char c)</code></td><td><code>Writer</code></td><td>Aggiunge un singolo carattere</td></tr></tbody></table></div><p>Questa classe però non offre metodi per stampa di righe e, inoltre, non gestisce le eccezioni.</p><section><h3 id="print-writer">Print Writer<a aria-hidden="true" tabindex="-1" href="#print-writer"><span class="icon icon-link"></span></a></h3><p><strong><code>PrintWriter</code></strong> scrive rappresentazioni testuali di valori primitivi e oggetti su uno stream di caratteri.</p><p>Non lancia <code>IOException</code>: gli errori vengono tracciati internamente e sonoconsultabili con <code>checkError()</code>.</p><section><h4 id="costruttori">Costruttori<a aria-hidden="true" tabindex="-1" href="#costruttori"><span class="icon icon-link"></span></a></h4><ul>
+<li><code>PrintWriter(out: Writer)</code></li>
+<li><code>PrintWriter(out: Writer, autoFlush: boolean)</code> flush automatico dopo <code>println</code>, <code>printf</code>, <code>format</code></li>
+<li><code>PrintWriter(out: OutputStream)</code>: wrappa in un <code>OutputStreamWriter</code></li>
+<li><code>PrintWriter(file: File)</code> / <code>PrintWriter(fileName: String)</code></li>
+</ul></section><section><h4 id="metodi-print">Metodi <code>print</code><a aria-hidden="true" tabindex="-1" href="#metodi-print"><span class="icon icon-link"></span></a></h4><p>Il metodo <code>print(x: ?): void</code> può scrivere primitivi quali <code>boolean</code>, <code>char</code> (sia singolo che array <code>char[]</code>), <code>int</code>, <code>long</code>, <code>float</code> e <code>double</code>;<br>
+può inoltre scrivere stringhe e oggetti:</p><ul>
+<li><code>String</code> (scrive <code>"null"</code> se è <code>null</code>),</li>
+<li><code>Object</code> (scrive appoggiandosi alla <code>toString</code>; <code>"null"</code> se è <code>null</code>)</li>
+</ul><p>Il metodo <code>println(x: ?): void</code> è analogo a <code>print</code>, ma aggiunge un terminatore di riga (in base al sistema <code>\n</code> o <code>\r\n</code>) a fine stampa.</p><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">PrintWriter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> f </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> PrintWriter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> FileWriter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">f.txt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">));</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* *usare i metodi print/println* */</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// Oppure più breve:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">PrintWriter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> f </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> PrintWriter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">f.txt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span></code></pre></aside></section><section><h4 id="metodi-printf--format">Metodi <code>printf</code> / <code>format</code><a aria-hidden="true" tabindex="-1" href="#metodi-printf--format"><span class="icon icon-link"></span></a></h4><p>Equivalenti tra loro; usano la sintassi <code>String.format()</code> con <code>Locale</code> opzionale.</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>printf(format: String, args: Object...)</code></td><td><code>PrintWriter</code></td><td>Scrive una stringa formattata con il <code>Locale</code> di default</td></tr><tr><td><code>printf(l: Locale, format: String, args: Object...)</code></td><td><code>PrintWriter</code></td><td>Scrive una stringa formattata con <code>Locale</code> specificato</td></tr><tr><td><code>format(format: String, args: Object...)</code></td><td><code>PrintWriter</code></td><td>Alias di <code>printf(String, Object...)</code></td></tr><tr><td><code>format(l: Locale, format: String, args: Object...)</code></td><td><code>PrintWriter</code></td><td>Alias di <code>printf(Locale, String, Object...)</code></td></tr></tbody></table></div><aside class="inserto osservazione" aria-label="Osservazione" data-heading="Osservazione: "><p>Restituiscono tutti <code>this</code>, quindi possono essere usati a cascata.</p></aside></section><section><h4 id="metodi-di-controllo-e-utilità">Metodi di Controllo e Utilità<a aria-hidden="true" tabindex="-1" href="#metodi-di-controllo-e-utilità"><span class="icon icon-link"></span></a></h4><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Tipo di ritorno</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>checkError()</code></td><td><code>boolean</code></td><td>Fa flush e restituisce <code>true</code> se si è verificato un errore (unico modo per rilevare errori, poiché non vengono lanciate eccezioni)</td></tr><tr><td><code>flush()</code></td><td><code>void</code></td><td>Forza la scrittura dei dati bufferizzati sullo stream sottostante</td></tr><tr><td><code>close()</code></td><td><code>void</code></td><td>Flush + chiusura del writer e delle risorse associate</td></tr></tbody></table></div><section><h5 id="specifiers">Specifiers<a aria-hidden="true" tabindex="-1" href="#specifiers"><span class="icon icon-link"></span></a></h5><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Specifier</th><th>Tipo</th><th>Esempio output</th></tr></thead><tbody><tr><td><code>%s</code></td><td><code>String</code> / <code>Object.toString()</code></td><td><code>"hello"</code></td></tr><tr><td><code>%d</code></td><td><code>int</code>, <code>long</code></td><td><code>42</code></td></tr><tr><td><code>%f</code></td><td><code>float</code>, <code>double</code></td><td><code>3.140000</code></td></tr><tr><td><code>%.2f</code></td><td><code>float</code>, <code>double</code></td><td><code>3.14</code></td></tr><tr><td><code>%e</code></td><td><code>float</code>, <code>double</code></td><td><code>3.14e+00</code></td></tr><tr><td><code>%b</code></td><td><code>boolean</code></td><td><code>true</code></td></tr><tr><td><code>%c</code></td><td><code>char</code></td><td><code>A</code></td></tr><tr><td><code>%n</code></td><td>:</td><td>Separatore di linea di sistema (preferibile a <code>\n</code>)</td></tr><tr><td><code>%t</code></td><td><code>Date</code>/<code>Calendar</code>/<code>Temporal</code></td><td>(vedi sotto-specifier <code>%tY</code>, <code>%tm</code>, ecc.)</td></tr><tr><td><code>%10s</code></td><td>:</td><td>Stringa allineata a destra in campo di 10</td></tr><tr><td><code>%-10s</code></td><td>:</td><td>Stringa allineata a sinistra in campo di 10</td></tr><tr><td><code>%05d</code></td><td>:</td><td>Intero con zero-padding: <code>00042</code></td></tr><tr><td><code>%X</code></td><td><code>int</code></td><td>Esadecimale maiuscolo: <code>2A</code></td></tr><tr><td><code>%o</code></td><td><code>int</code></td><td>Ottale: <code>52</code></td></tr></tbody></table></div></section></section></section></div></section>
+<section><h2 id="console">Console<a aria-hidden="true" tabindex="-1" href="#console"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p>La console in Java non è riferita al metodo <code>print</code> di <code>System.out</code>, ma a un oggetto <em>singleton</em> <code>Console</code>;</p><p>la console non viene istanziata, ma può essere invocata con <code>System.console()</code> ed è in grado di svolgere sia letture che scritture dalla sua interfaccia:</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Console</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> console </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> System.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">console</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> username </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">readLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">User Name? </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">char</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">[] password </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">readPassword</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">Password? </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* la lettura password nasconde </span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4"> * automaticamente i caratteri digitati </span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4"> * dall'utente */</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* ... */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">Arrays.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">fill</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(password, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">'</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> '</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* è pratica di sicurezza svuotare l'array</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4"> * contiene la password dopo l'uso */</span></span></code></pre><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Console</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> console;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">char</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">[] password;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">((console </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> System.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">console</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">!=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> null</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> &#x26;&#x26;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    (password </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">readPassword</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">[%s]</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">Password: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">)) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">!=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">        /* .... */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">        Arrays.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">fill</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(password, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">'</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284"> '</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    }</span></span></code></pre></aside></div></section>
+<section><h2 id="parsing">Parsing<a aria-hidden="true" tabindex="-1" href="#parsing"><span class="icon icon-link"></span></a></h2><div class="after-h2"><p>Una volta letta una stringa, il passo successivo è il <em>parsing</em> di questa, serve, cioè, estrarne le parti costituenti (<em>token</em>) in una forma strutturata utilizzabile dal programma</p><section><h3 id="string-tokenizer">String Tokenizer<a aria-hidden="true" tabindex="-1" href="#string-tokenizer"><span class="icon icon-link"></span></a></h3><p>La classe <code>StringTokenizer</code> avvolge una stringa di testo (già letto) e ne estrae le parti.</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">StringTokenizer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> stk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> StringTokenizer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(s);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> token </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> stk.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextToken</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span></code></pre><p>di default, i separatori dei token sono lo spazio, tabulazione e l’a capo;</p><p>alternativamente, è possibile passare il separatore come secondo argomento al  costruttore</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">StringTokenizer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> stk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> StringTokenizer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(s, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span></code></pre><p>oppure, direttamente alla richiesta del token:</p><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> token </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> stk.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextToken</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">|</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span></code></pre><aside class="inserto osservazione" aria-label="Osservazione" data-heading="Osservazione: "><p>Questa classe è utile per il parsing di stringhe con un pattern che non può essere scomposto con <code>split</code></p></aside><aside class="inserto notabene" aria-label="Nota importante" data-heading="Nota Bene: "><p>Questa classe va istanziata <em>per ogni riga letta</em>.</p><p>Questa classe è deprecata e poco performante su stringhe lunghe.</p></aside><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// rdr: BufferedReader</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">while</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> (</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    (riga </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> rdr.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">readLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">!=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">        StringTokenizer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> t </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> StringTokenizer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(riga, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">$</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#FF79C6">\n\r</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">        String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> nomeCognome </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> t.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextToken</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">trim</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">        String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> indirizzo </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> t.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextToken</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">trim</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">        String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> città </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> t.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextToken</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">trim</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">)</span></span></code></pre></aside></section><section><h3 id="scanner">Scanner<a aria-hidden="true" tabindex="-1" href="#scanner"><span class="icon icon-link"></span></a></h3><p>La classe <code>Scanner</code> (dal package <code>java.util</code>) è l’evoluzione di <code>StringTokenizer</code>; oltre a poter decostruire una riga, può fare parsing anche costruendolo sopra a un <code>Reader</code>, <code>FileStream</code> o <code>InputStream</code>.</p><p>È anche in grado di risolvere i problemi di encoding dei caratteri autonomamente e tiene anche conto del <code>locale</code>.</p><p>Il delimitatore di default è qualsiasi sequenza di whitespace (<code>\s+</code>).</p><section><h4 id="costruttori-1">Costruttori<a aria-hidden="true" tabindex="-1" href="#costruttori-1"><span class="icon icon-link"></span></a></h4><ul>
+<li><code>Scanner(source: InputStream, charsetName?: String)</code>: legge da uno stream di byte (es. <code>System.in</code>); opzionalmente è possibile configurare il charset</li>
+<li><code>Scanner(source: Readable)</code>: legge da qualsiasi <code>Readable</code> (es. <code>Reader</code>)</li>
+<li><code>Scanner(source: File, charsetName?: String)</code>: legge da file, eventualmente con charset specifico (può lanciare eccezioni)</li>
+<li><code>Scanner(source: Path)</code>: legge da <code>Path</code></li>
+<li><code>Scanner(source: String)</code>: legge da una stringa</li>
+<li><code>Scanner(source: InputStream)</code>: legge da tastiera</li>
+</ul></section><section><h4 id="metodi-di-cattura-token">Metodi di Cattura Token<a aria-hidden="true" tabindex="-1" href="#metodi-di-cattura-token"><span class="icon icon-link"></span></a></h4><p>Lo <code>Scanner</code>permette di conoscere in anticipo (senza consumarlo) l’input successivo:</p><ul>
+<li><code>hasNext(pattern?: String | Pattern)</code>: restituisce <code>true</code> se il prossimo token corrisponde al pattern regex (stringa grezza o pattern compilato); se nessun pattern viene usato, allora verifica solo se c’è un token</li>
+<li><code>hasNextBoolean()</code>: restituisce <code>true</code> se il prossimo token è interpretabile come <code>boolean</code></li>
+<li><code>hasNextByte(radix?: int)</code>: restituisce <code>true</code> se il prossimo token è un <code>byte</code> nella radice specificata (<em>default: 10</em>)</li>
+<li><code>hasNextShort(radix: int)</code>: restituisce <code>true</code> se il prossimo token è uno <code>short</code> nella radice specificata</li>
+<li><code>hasNextInt(radix: int)</code>: restituisce <code>true</code> se il prossimo token è un <code>int</code> nella radice specificata</li>
+<li><code>hasNextLong(radix: int)</code>: restituisce <code>true</code> se il prossimo token è un <code>long</code> nella radice specificata</li>
+<li><code>hasNextFloat()</code>: restituisce <code>true</code> se il prossimo token è interpretabile come <code>float</code></li>
+<li><code>hasNextDouble()</code>: restituisce <code>true</code> se il prossimo token è interpretabile come <code>double</code></li>
+<li><code>hasNextBigInteger()</code>: restituisce <code>true</code> se il prossimo token è interpretabile come <code>BigInteger</code></li>
+<li><code>hasNextBigDecimal()</code>: restituisce <code>true</code> se il prossimo token è interpretabile come <code>BigDecimal</code></li>
+<li><code>hasNextLine()</code>: restituisce <code>true</code> se c’è un’altra riga disponibile nell’input</li>
+</ul><p>I metodi <code>next</code> bloccano il flusso finché non è disponibile un token. Lanciano <code>NoSuchElementException</code> se non ci sono altri token, <code>IllegalStateException</code> se lo scanner è chiuso.</p><p>Tutti questi metodi sono esattamente gli stessi di <code>hasNext</code>, semplicemente restituiscono il token invece di verificarne la presenza.</p></section><section><h4 id="metodi-di-configurazione">Metodi di Configurazione<a aria-hidden="true" tabindex="-1" href="#metodi-di-configurazione"><span class="icon icon-link"></span></a></h4><p>Per configurare:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>useDelimiter(pattern: String)</code></td><td><code>Scanner</code></td><td>Imposta il delimitatore tramite pattern regex</td></tr><tr><td><code>useDelimiter(pattern: Pattern)</code></td><td><code>Scanner</code></td><td>Imposta il delimitatore tramite <code>Pattern</code> compilato</td></tr><tr><td><code>useRadix(radix: int)</code></td><td><code>Scanner</code></td><td>Imposta la radice di default per la lettura di numeri interi</td></tr><tr><td><code>useLocale(locale: Locale)</code></td><td><code>Scanner</code></td><td>Imposta il <code>Locale</code> per la formattazione dei numeri</td></tr><tr><td><code>reset()</code></td><td><code>Scanner</code></td><td>Reimposta delimitatore, radice e locale ai valori di default</td></tr></tbody></table></div><p>Tutti questi metodi restituiscono <code>this</code>, quindi possono essere concatenati.</p><p>Per conoscere l’attuale configurazione:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>delimiter()</code></td><td><code>Pattern</code></td><td>Restituisce il delimitatore corrente</td></tr><tr><td><code>radix()</code></td><td><code>int</code></td><td>Restituisce la radice corrente (<em>default: 10</em>)</td></tr><tr><td><code>locale()</code></td><td><code>Locale</code></td><td>Restituisce il <code>Locale</code> corrente</td></tr></tbody></table></div><p>Altri metodi utili:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>match()</code></td><td><code>MatchResult</code></td><td>Restituisce il <code>MatchResult</code> dell’ultima operazione di scansione riuscita</td></tr><tr><td><code>tokens()</code></td><td><code>Stream&#x3C;String></code></td><td>Stream di tutti i token rimanenti</td></tr><tr><td><code>close()</code></td><td><code>void</code></td><td>Chiude lo scanner e la sorgente sottostante (se implementa <code>Closeable</code>)</td></tr></tbody></table></div><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* Lettura da tastiera */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(System.in);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">int</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> n </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextInt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> line </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">close</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span></code></pre><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* Lettura da file */</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">try</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> (</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(Path.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">of</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">data.txt</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">))</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">    while</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> (sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">hasNextLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">        System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">());</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">}</span></span></code></pre><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* Lettura interi */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">10,20,30</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">                .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">useDelimiter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">while</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> (sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">hasNextInt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    System.out.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">println</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">nextInt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()); </span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">    // ↪ 10</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">    // ↪ 20</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">    // ↪ 30</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">}</span></span></code></pre><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// rdr: BufferedReader</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">while</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">((riga </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> rdr.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">readLine</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">!=</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9"> null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> Scanner</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(riga);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">useDelimiter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">,</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> nomeCognome </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">next</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">    // \s* &#x3C;= regex "0 o più spazi"</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">    // \s*,\s* &#x3C;= regex "virgola tra 0 o più spazi"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">skip</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#FF79C6">\\</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">s*,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#FF79C6">\\</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">s*</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">useDelimiter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">-</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> indirizzo </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">next</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">skip</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#FF79C6">\\</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">s*-</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#FF79C6">\\</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">s*</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">useDelimiter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#FF79C6">\n\r</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> citta </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> sc.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">next</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">    /* .... */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">}</span></span></code></pre></aside><aside class="inserto nota" aria-label="Nota generica" data-heading="Nota: "><p>Dopo qualsiasi <code>nextXxx()</code> il cursore si fermerà <em>dopo</em> il valore letto ma <em>prima</em> del carattere<code>\n</code>.</p><p>Una chiamata immediata a <code>nextLine()</code> leggerà la riga vuota residua.</p></aside></section></section><section><h3 id="manipolazione-di-stringhe">Manipolazione di Stringhe<a aria-hidden="true" tabindex="-1" href="#manipolazione-di-stringhe"><span class="icon icon-link"></span></a></h3><p>La classe <code>String</code> mette a disposizione delle sue istanze alcuni metodi utili a tokenizzare e manipolare stringhe:</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Return</th><th>Descrizione</th></tr></thead><tbody><tr><td><code>endsWith(suffix: String)</code></td><td><code>boolean</code></td><td>Verifica se la stringa termina con il suffisso indicato</td></tr><tr><td><code>startsWith(prefix: String)</code></td><td><code>boolean</code></td><td>Verifica se la stringa comincia con il prefisso indicato</td></tr><tr><td><code>isEmpty()</code></td><td><code>boolean</code></td><td>Verifica se la stringa ha lunghezza nulla</td></tr><tr><td><code>isBlank()</code></td><td><code>boolean</code></td><td>Verifica se la stringa è composta di soli spazi vuoti</td></tr><tr><td><code>trim()</code></td><td><code>String</code></td><td>Resituisce una nuova stringa dove rimuove tutti gli spazi vuoti agli estremi</td></tr><tr><td><code>toUpperCase()</code></td><td><code>String</code></td><td>Converte tutti i caratteri in maiuscolo</td></tr><tr><td><code>toLowerCase()</code></td><td><code>String</code></td><td>Converte tutti i caratteri in minuscolo</td></tr><tr><td><code>replaceAll(regex: String, replacement: String)</code></td><td><code>String</code></td><td>Sostituisce tutte le corrispondenze del pattern con la stringa di rimpiazzo</td></tr><tr><td><code>substring(beginIndex: int, endIndex?: int)</code></td><td><code>String</code></td><td>Restituisce una sottostringa estratta agli estremi indicati (<code>[begin;end)</code>) (se <code>endIndex</code> non è indicato, allora sarà considerato l’indice finale della stringa)</td></tr><tr><td><code>split(regex: String)</code></td><td><code>String[]</code></td><td>Separa la stringa in un array, spezzando dove trova corrispondenze con il pattern fornito</td></tr></tbody></table></div><p>Di particolare interesse è il metodo <code>split</code> che permette di ridurre facilmente una stringa separata da semplici caratteri senza pattern complessi e il metodo <code>substring</code> per campi dalla lunghezza/posizionamento fissi nella riga.</p><aside class="inserto osservazione" aria-label="Osservazione" data-heading="Osservazione: "><p>Tramite <code>match</code>, è possibile replicare (in forme anche più dettagliate) il comportamento di <code>StringTokenizer</code> con meno overhead, ma è necessario approntare il pattern regex giusto.</p><aside class="inserto esempio" aria-label="Esempio" data-heading="Esempio: "><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> firstChunk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> whole.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">substring</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">20</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> secondChunk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> whole.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">substring</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">20</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">40</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span></code></pre><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Pattern</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> p </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> Pattern.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">compile</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">(.{20})(.{20})</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Matcher</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> m </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> p.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">matcher</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(whole);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> (m.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">matches</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> firstChunk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> m.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">group</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> secondChunk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> m.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">group</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">2</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">}</span></span></code></pre><pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Pattern</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> p </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> Pattern.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">compile</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">(?&#x3C;ck>.{20})(?&#x3C;st>.{20})</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Matcher</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> m </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> p.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">matcher</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(whole);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> (m.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">matches</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">()) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> firstChunk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> m.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">group</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">ck</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">    String</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> secondChunk </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> m.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">group</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">st</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">}</span></span></code></pre><p>Le espressioni regolari sono più orientate a pattern complessi; per il caso dell’esempio è chiaramente <code>substring</code> ad essere più conveniente.</p></aside></aside></section></div></section> </div> </main> <footer class="test-footer" data-astro-cid-jyhwcbfj> <nav id="local-nav" aria-label="Navigazione Argomento" data-astro-cid-sf7rw5md> <a href="/NotesRepo/Web_Dev/Astro/dist/java/Input-Output" title="pagina precedente" data-astro-cid-sf7rw5md> Input e Output in Java </a> <a href="/NotesRepo/Web_Dev/Astro/dist/java/File di Testo" title="pagina corrente" data-astro-cid-sf7rw5md> File di Testo con Java </a> <span aria-hidden="true" data-astro-cid-sf7rw5md></span> </nav>  <p data-astro-cid-jyhwcbfj>Pagina iniziale del sito a <a href="/NotesRepo/Web_Dev/Astro/dist/../../html/Sintassi html/" data-astro-cid-jyhwcbfj>questo indirizzo</a></p> <p data-astro-cid-gcm7ptol>Puoi trovarmi anche su
+<a href="https://www.github.com/italocorraro" data-astro-cid-gcm7ptol>github</a></p> </footer> <script type="module">const s="after-h2";const r=document.querySelectorAll(`section:has(>h2):has(>.${s})`);r.forEach(o=>{const n=o.querySelector("h2"),t=o.querySelector(`.${s}`);let i=!0,e=t.offsetHeight+5;t.style.transition="max-height 300ms",t.style.overflowY="hidden",n.addEventListener("click",()=>{i?(e=t.offsetHeight+5,t.style.maxHeight=`${e.toString()}px`,console.log(e.toString()),setTimeout(()=>{t.style.maxHeight="0"},0),i=!1):(t.style.maxHeight=`${e.toString()}px`,setTimeout(()=>{t.style.maxHeight="none"},300),i=!0)})});</script> <script type="module">const c=document.querySelectorAll("p:has(> .flexible-marker-cyan)");c.forEach(function(e){e.querySelector(".flexible-marker-cyan").addEventListener("click",()=>{e.classList.toggle("code-show-next")})});</script> </body> </html> 

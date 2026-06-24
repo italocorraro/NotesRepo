@@ -46,6 +46,7 @@ public class FromInterface implements GenericInterface, OtherInterface {
     /* .... */
 }
 ```
+:::
 
 **Un'interfaccia può, come le classi, estendere un'altra interfaccia, ma, in più, può estendere due o più interfacce**.
 

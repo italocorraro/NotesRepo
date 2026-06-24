@@ -22,6 +22,7 @@ In Java, ogni classe deriva implicitamente dalla classe `Object` che fornisce al
 
 :::nota
 Il metodo `clone` è protetto, perché si possa utilizzare, è necessario che venga sovrascritto in una classe derivata come metodo pubblico.
+:::
 
 ### protected
 
@@ -31,14 +32,12 @@ La keyword `protected` rappresenta un'ulteriore tipologia di visibilità delle v
 
 Quindi, i campi *privati* non possono essere toccati fuori dalla specifica classe, mentre i campi *protetti* possono essere alterati da classi che condividono il package o che sono derivate.
 
-:::nota
 Visibilità     | `private` | default | `protected` | `public`
  ------------- | --------- | ------- | ----------- | --------
 stessa classe  | ✓ | ✓ | ✓ | ✓
 stesso package | ✖ | ✓ | ✓ | ✓
 sottoclassi    | ✖ | ✖ | ✓ | ✓
 resto del programma | ✖ | ✖ | ✖ | ✓
-:::
 
 ### override
 

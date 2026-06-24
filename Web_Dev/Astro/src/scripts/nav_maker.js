@@ -98,7 +98,7 @@ const navbar = [
       { name: 'Numeri', URL: astro + 'javascript/Numeri/' },
       { name: 'Stringhe', URL: astro + 'javascript/Stringhe/' },
       { name: 'Array', URL: astro + 'javascript/Array/' },
-      { name: 'Espressioni Regolari', URL: '#' },
+      { name: 'Espressioni Regolari', URL: 'javascript/Espressioni Regolari/' },
       { name: 'Date', URL: astro + 'javascript/Date/' },
       { name: 'Controllo di Flusso', URL: astro + 'javascript/Controllo di Flusso/' },
       { name: 'Iterazione', URL: astro + 'javascript/Iterazione/' },
@@ -153,12 +153,6 @@ const navbar = [
     ]
   },
   {
-    name: 'Svelte',
-    content: [
-      { name: 'Overview', URL:  astro + 'Svelte/Overview/' }
-    ]
-  },
-  {
     name: 'Astro',
     content: [
       { name: 'Overview', URL: '#' },
@@ -195,6 +189,4 @@ for(let k=0; k<javaPages.length; k++) {
 const navbar_build = costruisciNav(navbar);
 const doubles = cercaDoppiHC(navbar);
 
-export { navbar_build };
-export { doubles };
-export { navbar };
+export { navbar_build, doubles, navbar };
