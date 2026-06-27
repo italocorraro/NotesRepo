@@ -15,8 +15,8 @@ A ogni linguaggio di programmazione serve un'infrastruttura standardizzata su cu
 
 - L'applicazione non arriva direttamente al sistema operativo, ma passa per uno strato intermedio.
 - Il compilatore genera codice per questa infrastruttura standard; il codice è unico.
-- Le librerie non sono contenute direttamente nel codice compilato, ma vengono caricate e collegano dinamicamente (*a run time*) i componenti[1].
-- L'infrastruttura gestisce la comunicazione con il SO appoggiandosi ad uno strato base di ulteriore astrazione detto **macchina virtuale**[2], cioè un "finto" processore, interamente software, che utilizza le risorse fisiche del dispositivo che lo ospita.
+- Le librerie non sono contenute direttamente nel codice compilato, ma vengono caricate e collegano dinamicamente (*a run time*) i componenti[^1].
+- L'infrastruttura gestisce la comunicazione con il SO appoggiandosi ad uno strato base di ulteriore astrazione detto **macchina virtuale**[^2], cioè un "finto" processore, interamente software, che utilizza le risorse fisiche del dispositivo che lo ospita.
 
 L'infrastruttura serve come astrazione per il linguaggio di programmazione.
 
@@ -27,8 +27,8 @@ Lo strato infrastrutturale di Java si chiama **Java Runtime Environment** (JRE),
 **C#** usa uno schema simile: lo strato infrastrutturale è la piattaforma *.NET*.
 
 
-[1]: il collegamento viene fatto in modo dinamico per adattarsi al cambiamento del componente (un componente può cambiare da solo, senza dover ri-compilare l'intero codice); in precedenza si aveva un eseguibile auto-contenuto, che però andava ricompilato per intero ad ogni modifica.
-[2]: lo strato extra genera un minimo overhead, ma è una perdita di pochi microsecondi, irrilevante per la quasi totalità delle applicazioni.
+[^1]: il collegamento viene fatto in modo dinamico per adattarsi al cambiamento del componente (un componente può cambiare da solo, senza dover ri-compilare l'intero codice); in precedenza si aveva un eseguibile auto-contenuto, che però andava ricompilato per intero ad ogni modifica.
+[^2]: lo strato extra genera un minimo overhead, ma è una perdita di pochi microsecondi, irrilevante per la quasi totalità delle applicazioni.
 
 ### JDK 
 

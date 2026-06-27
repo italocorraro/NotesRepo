@@ -17,13 +17,21 @@ I vari approcci sono slegati dal *main* che non svolge un ruolo di collante o co
 
 L'approccio **MVC** prevede:
 
-- **Model**: le strutture dati
-- **View**: l'interfaccia utente
-- **Controller**: gestisce il flusso di controllo
+- **Model**: le strutture dati e i servizi
+- **View**: l'interfaccia utente; comunica al controller le interazione (ma non agisce)
+- **Controller**: gestisce il flusso di controllo, governa le interazioni; percepisce le comunicazioni della view e istruisce il model per svolgere qualche processo e poi restituisce il risultato alla view che lo mostra
 
 :::nota
 Teoricamente il Controller dovrebbe essere la via unica di comunicazione tra dati e UI, ma non è sempre il caso: spesso View e Model conoscono dettagli l'uno dell'altro che sono necessari ai rispettivi scopi; un esempio è la necessità della View di conoscere le rappresentazioni `toString` dei dati del Model.
 :::
+
+## MVVM
+
+Il modello **MVVM** prevede:
+
+- **Model**: le strutture dati e servizi
+- **View**: l'interfaccia utente (finestra grafica)
+- **ViewModel**: 
 
 ## Strategy
 

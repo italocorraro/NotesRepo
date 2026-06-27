@@ -91,15 +91,15 @@ La classe `BufferedReader` incapsula un `Reader` permettendogli di registrare i 
 
 | Metodo | Return | Descrizione  |
 | ----------- | --------- | ----- |
-<!-- | `read()`  | `int`  | Legge un singolo carattere (come codice Unicode), ritorna -1 se fine stream |
+| `read()`  | `int`  | Legge un singolo carattere (come codice Unicode), ritorna -1 se fine stream |
 | `read(cbuf: char[])`  | `int` | Legge caratteri in un array   |
-| `read(cbuf: char[], off: int, len: int)` | `int`  | Legge fino a `len` caratteri nell’array a partire da `off` | -->
+| `read(cbuf: char[], off: int, len: int)` | `int`  | Legge fino a `len` caratteri nell’array a partire da `off` |
 | `readLine()`   | `String`  | Legge una riga di testo (senza newline), ritorna `null` a fine stream  |
 | `skip(n: long)` | `long`  | Salta `n` caratteri   |
 | `ready()`      | `boolean`  | Indica se lo stream è pronto per la lettura senza blocco   |
 | `mark(readAheadLimit: int)`  | `void`  | Marca una posizione nello stream    |
 | `reset()`      | `void`   | Torna all’ultima posizione marcata  |
-| `markSupported()`    | `boolean`   | Indica se mark/reset sono supportati|
+| `markSupported()`    | `boolean`   | Indica se mark/reset sono supportati |
 | `close()`      | `void`   | Chiude lo stream  |
 
 Questa classe continua a leggere fin quando non trova il terminatore o nulla da leggere; in tal caso restituisce `null`.
@@ -139,7 +139,7 @@ Questa classe però non offre metodi per stampa di righe e, inoltre, non gestisc
 
 **`PrintWriter`** scrive rappresentazioni testuali di valori primitivi e oggetti su uno stream di caratteri. 
 
-Non lancia `IOException`: gli errori vengono tracciati internamente e sonoconsultabili con `checkError()`.
+Non lancia `IOException`: gli errori vengono tracciati internamente e sono consultabili con `checkError()`.
 
 #### Costruttori
 
@@ -279,7 +279,7 @@ Questa classe è deprecata e poco performante su stringhe lunghe.
 ```java
 // rdr: BufferedReader
 while (
-    (riga = rdr.readLine()) !=null {
+    (String riga = rdr.readLine()) !=null {
         StringTokenizer t = new StringTokenizer(riga, "$\n\r");
         String nomeCognome = t.nextToken().trim();
         String indirizzo = t.nextToken().trim();
@@ -456,5 +456,3 @@ if (m.matches()) {
 ```
 Le espressioni regolari sono più orientate a pattern complessi; per il caso dell'esempio è chiaramente `substring` ad essere più conveniente.
 :::
-
- 

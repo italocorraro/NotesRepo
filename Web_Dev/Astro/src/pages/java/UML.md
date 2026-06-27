@@ -55,3 +55,5 @@ Le **relazioni** tra le classi sono indicatecon delle frecce che le collegano; i
 
 Un **diagramma di sequenza** descrive le interazioni tra le parti del sistema a *run time*, cioè descrive le chiamate ai metodi e alle proprietà, l'ordine in cui avvengono, da dove, ecc...
 
+
+<!-- Associazione Qualificata -->

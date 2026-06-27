@@ -337,6 +337,24 @@ try(/* apertura risorse */) {
 
 Questo costrutto è utilizzabile solo per le istanze che implementano `AutoCloseable`; al termine del blocco, queste istanze vengono chiuse automaticamente.
 
+### Input Stream Reader & Writer
+
+La lettura da tastiera avviene tramite `System.in` che è un `InputStream` e fornisce un flosso di byte grezzi; teoricamnte `DataInputStream` dovrebbe funzionare da adapter, tuttavia non supporta caratteri unicode, quindi non converte i byte nei caratteri corrispondenti nel modo corretto.
+
+Il modo per effettuare la lettura è di usare l'adapter `InputStreamReader` e incapsularlo in un `BufferedReader`.
+
+```java
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(system.in, "CP850")
+);
+
+System.out.println("> " + in.readLine());
+```
+
+`CP850` è il character encoding usato dal prompt comandi di Windows, ma non nelle altre finestre.
+
+È possibile chiedere allo stream reader di usare il suo encoding con il metodo `getEncoding()`.
+
 ## File Interni ed Esterni
 
 Il JAR compilato è in grado di utilizzare nativamente con le classi appena descritte solo i file interni al progetto che vengono denominati "risorse".
