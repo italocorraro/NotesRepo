@@ -19,6 +19,8 @@ non appena quel `null` verrà richiesto da una funzione che non se lo aspetta, v
 
 I `null` rappresentano un problema per il debug perché sono praticamente delle mine vaganti; il punto in cui bloccano il codice non è quasi mai il punto in cui sono stati generati.
 
+Spesso conviene richiedere esplicitamente un controllo di `null`, si può fare con il metodo `Objects.requireNonNull(Object o, String errorMessage)` che genererà una `NullPointerException` con il messaggio provvisto qualora fosse necessario.
+
 ## NaN
 
 Altre costanti speciali sono `NaN` (*Not a Number*) che è un `float`, poi ci sono `POSITIVE_INFINITY` e `NEGATIVE_INFINITY`. 

@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/serious/LayoutAstro.astro
-title: 'Packages e Moduli in Java'
+title: 'Packages e Moduli'
 metaTitle: ''
 description: ''
 author: 'Italo Corraro'
