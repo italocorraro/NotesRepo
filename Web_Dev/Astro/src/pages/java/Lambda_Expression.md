@@ -4,7 +4,7 @@ title: 'Lambda Expressions di Java'
 metaTitle: 'Lambda Expressions'
 description: ''
 author: 'Italo Corraro'
-order: 23
+order: 22
 ---
 
 Da Java 8 viene introdotta una sintassi breve per creare *funzioni anonime* standalone (*senza classe*), come se fosse un oggetto a sè stante.
