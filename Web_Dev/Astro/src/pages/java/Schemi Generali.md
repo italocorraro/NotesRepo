@@ -22,6 +22,7 @@ SomeCollection<SomeType> cl = collection
         // espandere elementi in un nuovo stream:
         // si aspetta una porzione di stream da lambda
         .flatMap( el -> Stream.of(el[0],el[1]))
+        .flatMap(List::stream)
         // per iterare su una variabile restituita alla fine:
         // aggiorna `res` con il risultato della lambda
         .reduce(0, (res,v) -> res + v)
