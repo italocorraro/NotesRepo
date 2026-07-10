@@ -7,7 +7,7 @@ $ git clone git@github.com:user/repo.git
 ```
 se il file config contiene alias:
 ```git
-$ git clone@github-alias:user/repo.git
+$ git clone git@github-alias:user/repo.git
 ```
 
 Dalla cartella della repo
