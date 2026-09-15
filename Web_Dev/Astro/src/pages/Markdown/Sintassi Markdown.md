@@ -4,6 +4,7 @@ title: 'Sintassi Markdown'
 metaTitle: 'Appunti sulla Sintassi del Markdown'
 description: 'Appunti sulla sintassi di Markdown.'
 author: 'Italo Corraro'
+order: 0
 ---
 
 ## Sintassi base

@@ -1,28 +1,41 @@
+//@ts-check
 
+/**
+ * 
+ * @param {{name: string, content: {name: string, URL: string}[]}[]} barra 
+ * @returns 
+ */
 function costruisciNav(barra) {
-    const br = `\n\t\t`;
-    const br2 = `\n\t\t\t`;
-    let navigazione = `<ul>\n\t`;
-    for(const navItem of barra) {
-        if(!navItem.content || navItem.content.length < 1) continue;
+  const br = `\n\t\t`;
+  const br2 = `\n\t\t\t`;
+  let navigazione = `<ul>\n\t`;
+  for (const navItem of barra) {
+    if (!navItem.content || navItem.content.length < 1) continue;
 
-        navigazione += `<li class="flip"><span>${navItem.name}</span></li>${br}<ul class="panel">`;
-        for(const subItem of navItem.content) {
-            navigazione += `${br2}<li><a href="${subItem.URL}">${subItem.name}</a></li>`;
-        }
-        
-        navigazione += `${br}</ul>`;
+    navigazione += `<li class="flip"><span>${navItem.name}</span></li>${br}<ul class="panel">`;
+    for (const subItem of navItem.content) {
+      navigazione += `${br2}<li><a href="${subItem.URL}">${subItem.name}</a></li>`;
     }
-    navigazione += `\n</ul>`;
-    return navigazione;
+
+    navigazione += `${br}</ul>`;
+  }
+  navigazione += `\n</ul>`;
+  return navigazione;
 }
 
+/**
+ * 
+ * @param {{name: string, content: {name: string, URL: string}[]}[]} barra 
+ * @returns 
+ */
 function cercaDoppiHC(barra) {
+  /** @type {{ name: string; URL: string;}[]} */
   let html = [];
+  /** @type {{ name: string; URL: string;}[]} */
   let css = [];
   let doppi = [];
-  for(const item of barra) {
-    switch(item.name) {
+  for (const item of barra) {
+    switch (item.name) {
       case 'HTML':
         html = item.content;
         break;
@@ -33,11 +46,11 @@ function cercaDoppiHC(barra) {
     }
   }
   let i = 0;
-  for(const ht of html) {
+  for (const ht of html) {
     const nomeH = ht.name;
-    for(const cs of css) {
+    for (const cs of css) {
       const nomeC = cs.name;
-      if(nomeC == nomeH) {
+      if (nomeC == nomeH) {
         doppi[i] = { nome: nomeC, Hurl: ht.URL, Curl: cs.URL };
         i++;
         continue;
@@ -77,8 +90,8 @@ const navbar = [
       { name: 'Funzioni e Variabili', URL: base + 'CSS/Funzioni e Variabili/' },
       { name: 'Background', URL: base + 'CSS/Background/' },
       { name: 'Tipografia', URL: base + 'CSS/Tipografia/' },
-      { name: 'Liste', URL: base + 'CSS/Altri Stili/#liste'},
-      { name: 'Ancore', URL: base + 'CSS/Altri Stili/#ancore'},
+      { name: 'Liste', URL: base + 'CSS/Altri Stili/#liste' },
+      { name: 'Ancore', URL: base + 'CSS/Altri Stili/#ancore' },
       { name: 'Tabelle', URL: base + 'CSS/Tabelle/' },
       { name: 'Form', URL: base + 'CSS/Form/' },
       { name: 'Media Queries', URL: base + 'CSS/Media Queries/' },
@@ -92,7 +105,7 @@ const navbar = [
   {
     name: 'JavaScript',
     content: [
-      { name: 'Overview', URL: astro + 'javascript/Overview/'},
+      { name: 'Overview', URL: astro + 'javascript/Overview/' },
       { name: 'Tipi di Dato', URL: astro + 'javascript/Tipi di Dato/' },
       { name: 'Operatori', URL: astro + 'javascript/Operatori/' },
       { name: 'Numeri', URL: astro + 'javascript/Numeri/' },
@@ -135,56 +148,38 @@ const navbar = [
   {
     name: 'TypeScript',
     content: [
-      { name: 'Overview', URL:  astro + 'typescript/Overview/' }
-    ]
-  },
-  {
-    name: 'Git',
-    content: [
-      // Vuoto
-    ]
-  },
-  {
-    name: 'Markdown',
-    content: [
-      { name: 'Sintassi', URL: astro + 'Markdown/Sintassi Markdown/' },
-      { name: 'GitHub Flavored', URL: astro + 'Markdown/GFM/' },
-      { name: 'Remark Plugins', URL: '#' }
-    ]
-  },
-  {
-    name: 'Astro',
-    content: [
-      { name: 'Overview', URL: '#' },
-    ]
-  },
-  {
-    name: 'Java',
-    content: [
-
+      { name: 'Overview', URL: astro + 'typescript/Overview/' }
     ]
   }
 ];
 
-const javaPages = Object.values(import.meta.glob('../pages/java/*.md', { eager: true }));
-javaPages.sort(
-  (a, b) => a.frontmatter.order - b.frontmatter.order
-);
+/**
+ * 
+ * @param {{name: string, glob:{frontmatter: { order: number, title: string}, url: string}[]}} obj
+ */
+function collect(obj) {
+const {glob, name} = obj;
+  const markdownDocs = Object.values(glob);
 
-let java_I = 0;
-while(navbar[java_I].name !== "Java") {
-  java_I++;
+  const sortedPosts = markdownDocs.sort((a,b) => a.frontmatter.order - b.frontmatter.order);
+
+  const target = navbar[navbar.length] ??= { name, content: [] };
+  sortedPosts.forEach((post,i) => {
+    target.content[i] = {
+      name: post.frontmatter.title,
+      URL: post.url
+    }
+  })
 }
 
-const offset = navbar[java_I].content.length;
-for(let k=0; k<javaPages.length; k++) {
-  let i = k + offset;
-  let post = javaPages[k];
-  navbar[java_I].content[i] = {
-    name: post.frontmatter.title,
-    URL: post.url
-  }
-}
+/**@type {any} */ 
+const collections = [
+{ name: 'Java', glob: import.meta.glob('../pages/java/*.md', { eager: true })},
+{ name: 'DBMS', glob: import.meta.glob('../pages/DBMS/*.md', { eager: true })},
+{ name: 'ps', glob: import.meta.glob('../pages/ps/*.md', { eager: true })},
+{ name: 'Markdown', glob: import.meta.glob('../pages/Markdown/*.md', { eager: true })},
+]
+collections.forEach(collect);
 
 const navbar_build = costruisciNav(navbar);
 const doubles = cercaDoppiHC(navbar);
