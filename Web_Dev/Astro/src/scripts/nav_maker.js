@@ -174,10 +174,11 @@ const {glob, name} = obj;
 
 /**@type {any} */ 
 const collections = [
-{ name: 'Java', glob: import.meta.glob('../pages/java/*.md', { eager: true })},
-{ name: 'DBMS', glob: import.meta.glob('../pages/DBMS/*.md', { eager: true })},
-{ name: 'ps', glob: import.meta.glob('../pages/ps/*.md', { eager: true })},
 { name: 'Markdown', glob: import.meta.glob('../pages/Markdown/*.md', { eager: true })},
+{ name: 'Java', glob: import.meta.glob('../pages/java/*.md', { eager: true })},
+{ name: 'Basi di Dati', glob: import.meta.glob('../pages/DBMS/*.md', { eager: true })},
+{ name: 'Probabilità', glob: import.meta.glob('../pages/ps/*.md', { eager: true })},
+{ name: 'Controlli Automatici', glob: import.meta.glob('../pages/CA/*.md', { eager: true })},
 ]
 collections.forEach(collect);
 

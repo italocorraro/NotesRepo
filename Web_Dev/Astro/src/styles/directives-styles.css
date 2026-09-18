@@ -143,6 +143,11 @@ aside.inserto::before {
     border-right: 0;
 }
 
+.def-chunk {
+    background-color: #c7f1ff26;
+    border-left: 0.2rem solid #0767a3;
+}
+
 /* CODE HIDER */
 .hide-code {
     border: 2px solid red;

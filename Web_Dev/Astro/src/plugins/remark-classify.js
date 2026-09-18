@@ -54,6 +54,13 @@ const inserti = {
     class: 'exp-tab',
     aria: 'Tabella con contenuto',
     alias: ['exp', 'espanso']
+  },
+  def: {
+    element: 'div',
+    titolo: 'Def',
+    class: 'def-chunk',
+    aria: 'definition',
+    alias: ['definition']
   }
 }
 

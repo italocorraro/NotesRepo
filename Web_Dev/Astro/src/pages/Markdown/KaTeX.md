@@ -58,8 +58,9 @@ order: 3
 
 | Simbolo | Codice |
 |---|---|
-| $f'(x), f''(x), f^{(n)}(x)$ | `f'(x)` , `f''(x)` , `f^{(n)}(x)` |
-| $\frac{df}{dx}, \frac{d^2f}{dx^2}$ | `\frac{df}{dx}` , `\frac{d^2f}{dx^2}` |
+| $f'(x)$, $f''(x)$, $f^{(n)}(x)$ | `f'(x)` , `f''(x)` , `f^{(n)}(x)` |
+| $\dot{x}$, $\ddot{x}$, $\dddot{x}$ | `\dot{x}` , `\ddot{x}` , `\dddot{x}` |
+| $\frac{df}{dx}$, $\frac{d^2f}{dx^2}$ | `\frac{df}{dx}` , `\frac{d^2f}{dx^2}` |
 | $\frac{\partial f}{\partial x}$ | `\frac{\partial f}{\partial x}` |
 | $\nabla f$ (gradiente) | `\nabla f` |
 | $\Delta f$ (Laplaciano/incremento) | `\Delta f` |
@@ -73,12 +74,13 @@ order: 3
 | $\oint$ (integrale di linea chiusa) | `\oint` |
 | $\iint, \iiint$ (integrali doppi/tripli) | `\iint`, `\iiint` |
 
-## Serie e sommatorie
+## Serie e Sommatorie
 
 | Simbolo | Codice |
 |---|---|
-| $\sum_{n=0}^{\infty} a_n$ | `\sum_{n=0}^{\infty} a_n` |
-| $\prod_{i=1}^{n} a_i$ | `\prod_{i=1}^{n} a_i` |
+| $$\sum_{n=0}^{\infty} a_n$$ | `\sum_{n=0}^{\infty} a_n` |
+| $$\prod_{i=1}^{n} a_i$$ | `\prod_{i=1}^{n} a_i` |
+| $$\bigcup_{i=1}^{n} a_i$$ | `\bigcup_{i=1}^{n} a_i` |
 
 ## Funzioni comuni
 
