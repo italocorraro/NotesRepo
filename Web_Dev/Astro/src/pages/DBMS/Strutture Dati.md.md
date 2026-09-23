@@ -162,6 +162,7 @@ Aggiungere un elemento richiede di modificare il valore dell'attributo `next` de
 ```mermaid
 ---
 title: A1
+config:
 ---
 
 flowchart TB
@@ -170,23 +171,23 @@ subgraph 1
 a((a))
 end
 
-subgraph 2 
+subgraph 2
 b((b))
 end
 
-subgraph 3 
+subgraph 3
 d((d))
 end
 
-subgraph 4 
+subgraph 4
 g((a))
 end
 
-subgraph 5 
+subgraph 5
 c((c))
 end
 
-subgraph 6 
+subgraph 6
 h((a))
 end
 

@@ -10,7 +10,9 @@ order: 3
 :::def
 Dato uno spazio campione $S$, avente due eventi $A, B \in S$ con $P(B) \neq 0$, si dice *probabilità condizionata* di $A$ condizionato da $B$:
 
-$$ P(A|B) = \frac{P(A \cap B ) }{P(B)} $$
+$$ 
+P(A|B) = \frac{P(A \cap B ) }{P(B)} 
+$$
 :::
 
 :::eg
@@ -33,7 +35,9 @@ $$
 :::def
 Dato uno spazio campione $S$, avente due eventi $A, B \in S$, si dicono indipendenti se 
 
-$$P(A \cap B) = P(A) \cdot P(B)  $$
+$$
+P(A \cap B) = P(A) \cdot P(B)  
+$$
 :::
 
 :::eg
@@ -44,10 +48,14 @@ Mazzo di carte da poker
 Vogliamo trovare se i due eventi sono indipendenti:
 
 Un mazzo di carte da poker ha 52 carte, di cui 4 assi:
-$$P(A) = \frac4{52} = \frac1{13} $$
+$$
+P(A) = \frac4{52} = \frac1{13} 
+$$
 
 Il mazzo si divide in 4 categorie di carte, tra cui picche:
-$$P(A) = \frac{13}{52} = \frac1{4} $$
+$$
+P(A) = \frac{13}{52} = \frac1{4} 
+$$
 
 
 
@@ -74,11 +82,19 @@ Per $n$ eventi, vanno considerate tutte le possibili intersezioni
 Dato uno spazio campione $S$, avente due eventi $A, B \in S$, se i due eventi sono indipendenti, allora anche $A$ e $B^c$ sono indipendenti.
 
 :::dim
-$$A=(A \cap B) \cup (A \cap B^c) $$
-$$P(A)=P((A \cap B) \cup (A \cap B^c)) = \\
-= P(A \cap B) + P(A \cap B^c) \\
-\text{poichè sono indipendenti A e B} \\
+$$
+A=(A \cap B) \cup (A \cap B^c) 
+$$
+$$
+\begin{array}{rl}
+P(A) &=P((A \cap B) \cup (A \cap B^c)) = \\
+&= P(A \cap B) + P(A \cap B^c) \\
+&\text{poichè sono indipendenti A e B} 
+\end{array}
+$$
+$$
  P(A \cap B^c) = P(A) - P(A \cap B)
+ 
 $$
 :::
 :::nb
@@ -132,8 +148,6 @@ L'incidenza della malattia nella popolazione è $0.5\%$, vogliamo trovare la pro
 
 
 $P(H_1) = 0.005$, quindi $P(H_2) = 1 - P(H_1) = 0.995$
-
-
 
 $$P(E) = P(E|H_1)P(H_1) + P(E|H_2)P(H_2)$$
 

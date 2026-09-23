@@ -97,15 +97,23 @@ Si presentano due possibili modelli di estrazione:
 - viene estratta una pallina per volta (esiste un ordine),
 - vengono estratte tutte le palline insieme (non esiste alcun ordine)
 
-Se estraiamo una pallina alla volta: $$ P(D) = \frac{3 \times D_{6,1} \times D_{5,2}}{D_{11,3}} $$
+Se estraiamo una pallina alla volta: 
+$$ 
+P(D) = \frac{3 \times D_{6,1} \times D_{5,2}}{D_{11,3}} 
+$$
 
-Se estraiamo tutte insieme: $$ P(D) = \frac{C_{6,1} \times C_{5,2}}{C_{11,3}} $$
+Se estraiamo tutte insieme: 
+$$
+ P(D) = \frac{C_{6,1} \times C_{5,2}}{C_{11,3}} 
+$$
 
 Alla fine, per tutti e due i casi, il risultato è il medesimo.
 
 ###
 
-$$ P(A \cup B) = P(A) + P(B) - P(A \cap B) $$
+$$
+ P(A \cup B) = P(A) + P(B) - P(A \cap B) 
+ $$
 
 Dimostrazione:
 
@@ -114,10 +122,15 @@ Siano:
 - $E_2 = B \setminus A$ 
 - $E_3 = A \cap B$ 
 
-che sono tutti disgiunti e possiamo trovare che $ P(A \cup B) = P(E_1 \cup E_2\cup E_3)$
+che sono tutti disgiunti e possiamo trovare che $ P(A \cup B) = P(E_1 \cup E_2\cup E_3)$:
 
-$$P(A) = P(E_1 \cup E_3) =_{A_3} P(E_1) + P(E_3) $$
-$$P(B) = P(E_2 \cup E_3) =_{A_3} P(E_2) + P(E_3) $$
-$$P(E_3) = P(A \cap B) $$
-$$ P(A \cup B) = $$
+$$
+\begin{array}{}
+P(A) = P(E_1 \cup E_3) =_{A_3} P(E_1) + P(E_3) \\[8pt]
+P(B) = P(E_2 \cup E_3) =_{A_3} P(E_2) + P(E_3) \\[8pt]
+P(E_3) = P(A \cap B) \\[8pt]
+P(A \cup B) =  
+\end{array}
+$$
 
+<!-- nombre -->

@@ -22,8 +22,16 @@ Evento (lett. maiusc.): sottoinsieme dello spazio campione.
 
 :::def
 La probabilità ha diverse definizioni, più o meno
-- *classica*: Dato un esperimento e un evento $E \sub S$, dove $S$ è uno spazio campione con un numero finito di esiti *equiprobabili*, si dice **probabilità di $E$**: $$P(E)=\frac{n^{o}\text{ esiti contenuti in }E}{n^{o}\text{ esiti contenuti in }S}$$ o $$\frac{n^o\text{ esiti favorevoli}}{n^o\text{ esiti totali}}$$
-- *frequentista*: Dato un esperimento e un evento $E \sub S$, dove $S$ è uno spazio campione. Si ripete l'esperimento $N$ volte (con $N >> 1$) e si definisce **probabilità di $E$**: $$P(E)=\frac{n^{o}\text{ esperimenti in cui si osserva }E}{N}$$
+- *classica*: Dato un esperimento e un evento $E \sub S$, dove $S$ è uno spazio campione con un numero finito di esiti *equiprobabili*, si dice **probabilità di $E$**: 
+$$
+P(E)=\frac{n^{o}\text{ esiti contenuti in }E}{n^{o}\text{ esiti contenuti in }S}
+=
+\frac{n^o\text{ esiti favorevoli}}{n^o\text{ esiti totali}}
+$$
+- *frequentista*: Dato un esperimento e un evento $E \sub S$, dove $S$ è uno spazio campione. Si ripete l'esperimento $N$ volte (con $N >> 1$) e si definisce **probabilità di $E$**: 
+$$
+P(E)=\frac{n^{o}\text{ esperimenti in cui si osserva }E}{N}
+$$
 - *assiomatica*: Dato uno spazio campione $S$, ad ogni evento $E \subset S$ si associa il numero reale $P(E)$, detto *probabilità*, tale che 
     1. la probabilità è compresa tra 1 e 0, estremi inclusi: $$ P(E) \in [0,1] $$
     2. la probabilità totale (di $S$) di tutti gli eventi è 1: $$ P(S) = 1 $$
@@ -63,14 +71,21 @@ Per il principio di enumerazione, essendo 365 i giorni possibili per un complean
 
 Gli esiti di $C$ richiedono che ognuno che "pesca" il proprio compleanno, non estragga uno di quelli già estratti ($365/365$ buoni per il primo, $364/365$ per il secondo, $363/365$ per il terzo e così via).
 
-$$ n_C = D_{365,n} = \frac{365!}{(365-n)!}$$
+$$
+ n_C = D_{365,n} = \frac{365!}{(365-n)!}
+ $$
 
-Per cui $$ P(C) = \frac{365!}{(365-n)! \times 365^n}$$
+Per cui 
+$$
+ P(C) = \frac{365!}{(365-n)! \times 365^n}
+ $$
 
 :::oss
 Indiachiamo con $E$ l'evento in cui ci sono persone con la stessa data di compleanno, allora possiamo dire che l'evento complementare $E^c$, cioè che nessuno abbia la stessa data di compleanno di un altro, allora:
 
-$$ P(E) = 1 - P(E^c) $$
+$$
+ P(E) = 1 - P(E^c) 
+ $$
 :::
 
 ### 
@@ -84,7 +99,9 @@ Il numero di casi con compleanni diversi sono 6, quindi la probabilità di avere
 
 Usando il modello delle combinazioni, otteniamo invece solo 6 casi totali:
 
-$$\{1,1\},\{1,2\},\{2,2\},\{1,3\},\{3,3\},\{3,2\}$$
+$$
+\{1,1\},\{1,2\},\{2,2\},\{1,3\},\{3,3\},\{3,2\}
+$$
 qui i casi favorevoli sono solo 3, cioè $1/2$ dei casi.
 
 *Questo non è il modello giusto per rappresentare il problema, poiché le combinazioni come $\{1,2\}$ hanno più probabilità di risultare perché non consideriamo l'ordine.*
