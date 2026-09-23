@@ -20,7 +20,7 @@ import remarkTitleAccordion from './src/plugins/remark-title-accordion';
 import svelte from '@astrojs/svelte';
 import mdx from '@astrojs/mdx';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-
+import mermaid from 'astro-mermaid';
 
 // https://astro.build/config
 export default defineConfig({
@@ -39,7 +39,9 @@ export default defineConfig({
     // build.inlineStrylesheets: true|false, indica se Astro inietta CSS inline o no
     
     // Integrazioni
-    integrations: [svelte(), mdx()],
+    integrations: [svelte(), mdx(), mermaid({
+
+    })],
 
     // Impostazioni di Vite
     vite: {

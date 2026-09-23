@@ -39,9 +39,25 @@ Nel modello relazionale è implicito che due valori nulli non siano confrontabil
 
 I valori nulli possono essere valori illeciti secondo i vincoli di un certo dominio.
 
+### Integrità Referenziale
+
+Dati due schemi:
+1. $R_1(KX_1)$ e 
+2. $R_2(YX_1)$,
+
+dove
+- $K$ è la chiave primaria di $R_1$ e
+- $Y$ include lo stesso insieme di attributi di $K$, 
+
+in ogni istanza l'insieme di valori di $Y$ sia un sottoinsieme dell'insieme dei valori di $K$.
+
+L'insieme $Y$ è detto *foreign key* e non ha vincoli particolari se non quello di rappresentare tutti i valori dell'insieme $K$.
+
+La foreign key può includere attributi della stessa relazione e non deve necessariamente essere una chiave primaria.
+
 ## Vincoli di Chiave
 
-I vincoli di questo tipo vietano che più di una tupla abbia lo stesso valore su uno o più attributi.
+I vincoli di questo tipo vietano che più di una tupla abbia lo stesso valore su uno o più attributi; di fatto, fungono da identificatori univoci per le tuple.
 
 Una **superchiave** è un insieme di attributi per cui, in ogni istanza ammissibile, non esistono due tuple distinte per cui il valore su quegli attributi sia lo stesso, per cui può essere usata per distinguere due tuple come un identificatore.
 
@@ -50,3 +66,8 @@ Una **chiave** è una superchiave minimale, ovvero un insieme di superchiavi da 
 Le chiavi (o in generale, gli identificatori) permettono di correlare i dati tra relazioni diverse.
 
 Una chiave, però, non ha necessariamente vincoli di non-nullabilità; gli attributi di una chiave detta *primaria* sono vincolati a non ammettere valori nulli, per convenzione, questi attributi vengono sottolineati nelle rappresentazioni.
+
+:::nota
+Non è detto che sia possibile individuare una chiave primaria per un database; qualora ciò si verificasse, è sempre possibile introdurre un identificatore generato ad hoc per la tabella con i vincoli richiesti.
+:::
+

@@ -49,7 +49,7 @@ $$P(s) = n \times p = 1 \Rightarrow p = 1/n$$
 Concludiamo $$ P(E) = kp =_{B_1} k/n = \frac{n^o \text{ esiti di }E}{n^o \text{ esiti totali}} $$
 :::
 
-### Paradosso dei Compleanni
+## Paradosso dei Compleanni
 
 Dato un gruppo di $n$ persone, nate nello stesso anno (non bisestile), qual è la probabilità che non ci siano persone con la stessa data di compleanno? Qual è la probabilità che ci siano?
 
@@ -61,8 +61,30 @@ Anche in un gruppo numeroso, è ammesso che tutti abbiano la stessa data di comp
 
 Per il principio di enumerazione, essendo 365 i giorni possibili per un compleanno (secondo le ipotesi), allora, le possibili combinazioni di date di compleanno sono $365^n$.
 
-Gli esiti di $C$ richiedono che ognuno che "pesca" il proprio compleanno, non estragga uno di quelli già estratti ($365/365 buoni per il primo, 364/365 per il secondo, 363/365 per il terzo e così via)
+Gli esiti di $C$ richiedono che ognuno che "pesca" il proprio compleanno, non estragga uno di quelli già estratti ($365/365$ buoni per il primo, $364/365$ per il secondo, $363/365$ per il terzo e così via).
 
 $$ n_C = D_{365,n} = \frac{365!}{(365-n)!}$$
 
 Per cui $$ P(C) = \frac{365!}{(365-n)! \times 365^n}$$
+
+:::oss
+Indiachiamo con $E$ l'evento in cui ci sono persone con la stessa data di compleanno, allora possiamo dire che l'evento complementare $E^c$, cioè che nessuno abbia la stessa data di compleanno di un altro, allora:
+
+$$ P(E) = 1 - P(E^c) $$
+:::
+
+### 
+
+Immaginiamo un anno composto di 3 giorni e prendiamo $n=2$ persone che indichiamo con $A$ e $B$; le possibili combinazioni di date di nascita sono:
+
+<!-- enumera casi possibili di nascita per A e B -->
+
+Il numero di casi con compleanni diversi sono 6, quindi la probabilità di avere una coppia di persone con compleanni diversi è $6/9$
+
+
+Usando il modello delle combinazioni, otteniamo invece solo 6 casi totali:
+
+$$\{1,1\},\{1,2\},\{2,2\},\{1,3\},\{3,3\},\{3,2\}$$
+qui i casi favorevoli sono solo 3, cioè $1/2$ dei casi.
+
+*Questo non è il modello giusto per rappresentare il problema, poiché le combinazioni come $\{1,2\}$ hanno più probabilità di risultare perché non consideriamo l'ordine.*

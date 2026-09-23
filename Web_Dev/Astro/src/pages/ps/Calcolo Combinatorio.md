@@ -113,9 +113,11 @@ Siano:
 - $E_1 = A \setminus B$ 
 - $E_2 = B \setminus A$ 
 - $E_3 = A \cap B$ 
+
 che sono tutti disgiunti e possiamo trovare che $ P(A \cup B) = P(E_1 \cup E_2\cup E_3)$
 
 $$P(A) = P(E_1 \cup E_3) =_{A_3} P(E_1) + P(E_3) $$
 $$P(B) = P(E_2 \cup E_3) =_{A_3} P(E_2) + P(E_3) $$
 $$P(E_3) = P(A \cap B) $$
 $$ P(A \cup B) = $$
+

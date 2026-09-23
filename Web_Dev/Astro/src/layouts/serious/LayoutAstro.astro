@@ -55,7 +55,7 @@ const { frontmatter, headings } = Astro.props;
 		<main>
             <header>
                 <h1>{frontmatter.title}</h1>
-                <div id="breadcrumbs"><LocalNavigation current={frontmatter.url}></div>
+                <div id="breadcrumbs"><LocalNavigation current={frontmatter.url} /></div>
             </header>
             <div id="content">
                 <Index headings={headings} />
