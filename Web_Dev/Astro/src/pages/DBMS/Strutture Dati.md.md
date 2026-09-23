@@ -162,30 +162,33 @@ Aggiungere un elemento richiede di modificare il valore dell'attributo `next` de
 ```mermaid
 ---
 title: A1
-config:
-  look: classic
-  layout: dagre
 ---
 
-stateDiagram
-state 1 {
-a
-}
-state 2 {
-b
-}
-state 3 {
-d
-}
-state 4 {
-a(())
-}
-state 5 {
-c
-}
-state 6 {
-a(())
-}
+flowchart TB
+
+subgraph 1
+a((a))
+end
+
+subgraph 2 
+b((b))
+end
+
+subgraph 3 
+d((d))
+end
+
+subgraph 4 
+g((a))
+end
+
+subgraph 5 
+c((c))
+end
+
+subgraph 6 
+h((a))
+end
 
 1 --> 2
 1 --> 4
@@ -232,8 +235,7 @@ Chiavi:
 Se i valori non fossero atomici?
 
 Qualora i valori degli elementi dell'albero fossero a loro volta strutture annidate, allora saranno queste stesse strutture a conoscere l'identificativo (foreign key) al nodo dell'albero a cui appartiene (e l'attributo `VAL` sparisce).
-
-## grafi
+:::
 
 
 <!--  -->

@@ -144,7 +144,8 @@ $$P(E) = P(E|H_1)P(H_1) + P(E|H_2)P(H_2)$$
 
 Dati uno spazio campione $S$ e una sua partizione in $n$ parti $\{H_1, H_2, \ldots ,H_n\}$ e un evento $E \in S$ con $P(E) \neq 0$, 
 
-$$ P(H_k|E) 
+$$ 
+P(H_k|E) 
 = \frac{P(E|H_k)P(H_k)}{P(E)}
 = \frac{P(E|H_k)P(H_k)}{\sum_{j=1}^n P(E|H_j)P(H_j)}
 $$
