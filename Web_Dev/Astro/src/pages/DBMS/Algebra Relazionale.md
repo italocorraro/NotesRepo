@@ -18,7 +18,9 @@ Ogni operatore deve stabilire come lo schema del risultato si costruisce a parti
 
 L'operatore $\sigma$, detto *di selezione*, è un operatore unario che permette di selezionare un sottoinsieme delle tuple di una relazione, applicandovi una formula di algebra booleana $F$.
 
-$$ \sigma_{F}(R) $$
+$$
+ \sigma_{F}(R) 
+$$
 
 - F si compone di predicati connessi da `AND` ($ $), `OR` ($ $) e `NOT` ($\neg$) operatori booleani (con associate proprietà note)
 - Casi più comuni: un predicato è del tipo A  c o A  B, dove:
@@ -26,24 +28,32 @@ $$ \sigma_{F}(R) $$
     -  è un operatore di confronto,   {=, ≠, <, >, ≤, ≥} 
 
 :::nota
-$$ \sigma_{F_1 AND F_2}(E) \equiv \sigma_{F_1}(\sigma_{F_2}(E))  $$
+$$ 
+\sigma_{F_1 AND F_2}(E) \equiv \sigma_{F_1}(\sigma_{F_2}(E))  
+$$
 :::
 
 ### Operatore di Proiezione $\pi$
 
 L'operatore $\sigma$, detto *di selezione*, è un operatore unario che permette di selezionare un sottoinsieme $Y$ degli attributi di una relazione:
 
-$$ \pi_Y(R) $$
+$$
+ \pi_Y(R) 
+$$
 
 L'operazione di proiezione elimina eventuali duplicati qualora non selezionasse come sottoinsieme di attributi una superchiave.
 
 :::nota
-$$ \pi_{Y}(\pi_{YZ}(E)) \equiv \pi_{Y}(E)  $$
+$$ 
+\pi_{Y}(\pi_{YZ}(E)) \equiv \pi_{Y}(E)  
+$$
 Eliminare attributi da una selezione in più passaggi o in uno solo non altera il risultato finale.
 :::
 
 :::nota
-$$ \pi_{Y}(\sigma_{F}(E)) \equiv \sigma_{F}(\pi_{Y}(E))  $$
+$$ 
+\pi_{Y}(\sigma_{F}(E)) \equiv \sigma_{F}(\pi_{Y}(E))  
+$$
 Proiezione e Selezione sono commutative l'una rispetto all'altra.
 :::
 

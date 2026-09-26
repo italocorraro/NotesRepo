@@ -13,10 +13,12 @@ order: 0
 
 <!-- es.: pendolo, carrello-molla, attrito viscoso, coppia motrice in ingresso -->
 
-$$ \begin{cases} 
+$$ 
+\begin{cases} 
 \dot{x}(t) = f(x(t),u(t),t) & \text{ equazione di stato} \\
  y(t) = h(x(t),u(t),t) & \text{ equazione di uscita} 
-\end{cases} $$
+\end{cases} 
+$$
 
 Dati $x(t_0) = x_0$ e $u(t)$ con $t\geq t_0$, se vale che $\dot{x}(t) = f(x(t),u(t),t)$ , cioè $x(t)$, per $t \geq t_0$, soddisfa l'equazione di stato, allora $x(t)$ si dice *traiettoria di stato*.
 

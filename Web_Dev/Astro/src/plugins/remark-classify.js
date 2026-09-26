@@ -56,7 +56,6 @@ const inserti = {
     alias: ['exp', 'espanso']
   },
   def: {
-    element: 'div',
     titolo: 'Def',
     class: 'def-chunk',
     aria: 'definition',
