@@ -24,7 +24,7 @@ Si indichi con $dom(A)$ il dominio dell'attributo $A$ e si consideri un insieme 
 - Una tupla $t$ su $X$ è un insieme di tuple su $X$,
 - *L'istanza di una relazione* su $X$ è un insieme di tuple su $X$, si scrive usando il nome minuscolo della relazione
 -*Lo schema di una relazione* su $X$ è, dato da un nome $R$ della relazione e dall'insieme di attributi $X$, scritto $R(X)$
-
+:::
 
 Un database relazionale è un insieme di schemi di relazioni con nomi distinti
 

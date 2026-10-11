@@ -55,8 +55,6 @@ $$
 
 Questa equazione può essere generalizzata:
 
-<!-- align vdots to the left -->
-
 $$
 \begin{bmatrix}
 \dot{x}_1(t) \\
@@ -93,8 +91,6 @@ Chiamiamo le due matrici $A$ e $B$ rispettivamente ed esprimiamo l'equazione in 
 $$
 \underline{\dot{x}}(t) = A_{nn} \underline{x}(t) + B_{nm} \underline{u}(t)
 $$
-
-<!-- Come scrivere graffe vericali -> associa matrici formula compatta -->
 
 La matrice $A(n\times{n})$ dei coefficienti dello stato è costante (indipendente dal tempo) per un sistema *tempo invariante*; stessa cosa per la matrice $B(n\times{m})$ dei coefficienti degli ingressi.
 
@@ -243,7 +239,7 @@ $$
 
 :::
 
-Chiamiamo $J = TAT^{-1}$ e supponiamo di sapere $e^{Jt}$, allora, $e^At = T^{-1}e^{Jt}T$.
+Chiamiamo $J = TAT^{-1}$ *matrice di Jordan* e supponiamo di sapere $e^{Jt}$, allora, $e^At = T^{-1}e^{Jt}T$.
 
 :::nota
 Una matrice diagonalizzabile, si dice tale se esiste una matrice di cambio $T$ tale per cui $A=T^{-1}A^dT$, allora $A^d = TAT^{-1}$.
@@ -251,6 +247,55 @@ Una matrice diagonalizzabile, si dice tale se esiste una matrice di cambio $T$ t
 Questo finchè $A$ è diagonalizzabile
 :::
 
+:::nota
+Dato un cambio di base T, allora si dimostra che
+
+$$ 
+\dot{\hat{x}}(t) = TAT^{-1}\hat{x}(t)
+$$
+
+Calcolo traiettoria:
+$$ 
+\hat{x} = e^{Jt}\hat{x}(0)
+
+$$
+
+Ritorno a coordinate originali
+
+$$ 
+\begin{array}{ll}
+x(t) &= T^{-1}\hat{x}(t) = \\[4pt]
+&= T^{-1}e^{Jt}\hat{x}(0) =\\[4pt]
+&= T^{-1}e^{Jt}T x(0)
+\end{array}
+$$
+
+:::
+
 Data una matrice $A$ quadrata ($n\times{n}$), a coefficienti reali, esiste sempre una matrice cambio di base $T$ tale per cui la matrice risultante assume la forma di una *matrice di Jordan* $J = TAT^{-1}$, la quale è una matrice diagonale a blocchi, ciascuno associato ad un autovalore della matrice $A$
 
 $\lambda_1 \ldots \lambda_r$ sono gli autovalori di $A$ tutti distinti, i blocchi della matrice diagonale a blocchi 
+
+$$ 
+\begin{bmatrix}
+\lambda_1 & 1 & 0 & \cdots & 0 \\
+0 & \ddots & \ddots & & \vdots \\
+\vdots & & \ddots & \ddots & \vdots\\
+\vdots & & & \ddots & 1\\
+0 & \cdots & \cdots & 0 & \lambda_n
+
+\end{bmatrix}
+$$
+
+:::memo
+Gli autovalori di una matrice $A$ sono le radici del suo polinomio caratteristico:
+
+$$ 
+p(\lambda) = \det(A - \lambda I)
+$$
+
+- se le radici sono reali, allora devono essere uniche
+- se sono complesse, allora devono esistere in coppia di complessi coniugati (uguale parte reale e opposta parte immaginaria)
+- una matrice diagonalizzabile ha come matrice diagonale una matrice di tutti $0$ con gli autovalori sulla diagonale
+:::
+

@@ -4,7 +4,7 @@ title: 'Dispositivi in Serie e in Parallelo'
 metaTitle: 'Dispositivi in Serie e in Parallelo'
 description: ''
 author: 'Italo Corraro'
-order: 3
+order: 2
 ---
 
 ## Dispositivi in Serie
@@ -118,7 +118,7 @@ sommando:
 
 $$
 p_n - p_1 = q/p p_1 + (q/p)^2p_1 + \ldots + (q/p)^{n-1}p_1
-    $$
+$$
 
 
 Se assumiamo anche che la moneta sia equilibrata ($50\%$ per ciascuna faccia), allora $p = \frac1{n}$ 
@@ -130,7 +130,7 @@ $$ p_k = \frac{k}{n} \text{ con } 1 \leq k < n$$
 Nel caso in cui la moneta *non sia equilibrata*, cioè $ q \neq p$, abbiamo
 
 $$
-p_1 = \frac1{} \frac{ 1-q/p}{1- q/p} =
+p_1 = \frac1{boh} \frac{ 1-q/p}{1- q/p} =
 
 1 -q/p/1-(q/p)^n
 $$
