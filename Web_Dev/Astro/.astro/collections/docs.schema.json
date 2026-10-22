@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "order": {
+      "type": "number"
+    },
+    "title": {
+      "type": "string"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "hidden": {
+      "default": false,
+      "type": "boolean"
+    },
+    "module": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "order",
+    "title",
+    "metaTitle",
+    "description",
+    "author"
+  ]
+}

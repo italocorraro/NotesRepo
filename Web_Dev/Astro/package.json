@@ -4,9 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node sync-order.mjs & astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync": "astro sync",
+    "order": "node sync-order.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.1",

@@ -56,10 +56,40 @@ const inserti = {
     alias: ['exp', 'espanso']
   },
   def: {
-    titolo: 'Def',
+    titolo: 'Definizione: ',
     class: 'def-chunk',
     aria: 'definition',
-    alias: ['definition']
+    alias: ['definition', 'def']
+  },
+  th: {
+    titolo: 'Teorema: ',
+    class: 'theorem',
+    aria: 'teorema ',
+    alias: ['teorema', 'th', 'theorem']
+  },
+  dim: {
+    titolo: 'Dimostrazione: ',
+    class: 'demonstration',
+    aria: 'dimostrazione ',
+    alias: ['dimostrazione', 'dim', 'dem', 'demonstration']
+  },
+  li: {
+    element: 'li',
+    titolo: '',
+    class: '',
+    alias: ['li']
+  },
+  ul: {
+    element: 'ul',
+    titolo: '',
+    class: '',
+    alias: ['ul']
+  },
+  ol: {
+    element: 'ol',
+    titolo: '',
+    class: '',
+    alias: ['ol']
   }
 }
 
@@ -70,7 +100,6 @@ const inserti = {
  *    in 
  * <div class="classe"><p>...</p></div>
  */
-
 export default function remarkClassify() {
   return function (tree) {
     visit(tree, "containerDirective", (node) => {
@@ -88,14 +117,19 @@ export default function remarkClassify() {
       for (const ins in inserti) {
         if (inserti[ins].alias.includes(cN)) {
           el = inserti[ins].element ?? el;
-          className = inserti[ins].class;
+          className = [inserti[ins].class, ...Object.keys(node.attributes)].join(' ');
           aria = inserti[ins].aria;
           heading = inserti[ins].titolo;
           break;
         }
       }
 
-      if (!className) return;
+      if (!className) {
+        const hastNode = h(el);
+        data.hName = hastNode.tagName;
+        data.hProperties = hastNode.properties;
+        return;
+      };
 
       const hastNode = h(el, { 
         class: `${insert} ${className}`,

@@ -13,9 +13,17 @@ function costruisciNav(barra) {
     if (!navItem.content || navItem.content.length < 1) continue;
 
     navigazione += `<li class="flip"><span>${navItem.name}</span></li>${br}<ul class="panel">`;
-    for (const subItem of navItem.content) {
+    let culprit = 0;
+    try {
+      for (const subItem of navItem.content) {
       navigazione += `${br2}<li><a href="${subItem.URL}">${subItem.name}</a></li>`;
+        culprit++;
     }
+    } catch (e) {
+      console.error(`Missing data in ${navItem.name} at order ${culprit}`);
+      throw e
+    }
+    
 
     navigazione += `${br}</ul>`;
   }
@@ -153,34 +161,40 @@ const navbar = [
   }
 ];
 
-/**
- * 
- * @param {{name: string, glob:{frontmatter: { order: number, title: string}, url: string}[]}} obj
- */
-function collect(obj) {
-const {glob, name} = obj;
-  const markdownDocs = Object.values(glob);
+//==========================================
 
-  const sortedPosts = markdownDocs.sort((a,b) => a.frontmatter.order - b.frontmatter.order);
+import { getCollection } from 'astro:content';
 
-  const target = navbar[navbar.length] ??= { name, content: [] };
-  sortedPosts.forEach((post,i) => {
-    target.content[i] = {
-      name: post.frontmatter.title,
-      URL: post.url
-    }
-  })
+const FolderMap = new Map([
+  ['probabilità-e-statistica', 'Probabilità e Statistica'],
+  ['probabilita-e-statistica', 'Probabilità e Statistica'],
+  ['java','Java'],
+  ['controlli-automatici','Controlli Automatici'],
+  ['basi-di-dati','Basi di Dati'],
+  ['markdown','Markdown']
+])
+
+const docs = await getCollection('docs');
+
+const byFolder = Object.groupBy(docs, (e) => e.id.split('/')[0]);
+
+for (const folder in byFolder) {
+  if (folder.startsWith('_')) continue;
+  const target = navbar[navbar.length] ??= { name: FolderMap.get(folder) ?? folder, content: [] };
+  const collection = byFolder[folder];
+  let skipped = 0;
+  collection
+    ?.sort((a, b) => a.data.order - b.data.order)
+    .forEach((post, i) => {
+      if(post.data.hidden) return skipped++, undefined;
+      target.content[i - skipped] = {
+        name: post.data.title,
+        URL: astro + `${post.id/* .split('/')[1] */}/`
+      }
+    });
 }
 
-/**@type {any} */ 
-const collections = [
-{ name: 'Markdown', glob: import.meta.glob('../pages/Markdown/*.md', { eager: true })},
-{ name: 'Java', glob: import.meta.glob('../pages/java/*.md', { eager: true })},
-{ name: 'Basi di Dati', glob: import.meta.glob('../pages/DBMS/*.md', { eager: true })},
-{ name: 'Probabilità', glob: import.meta.glob('../pages/ps/*.md', { eager: true })},
-{ name: 'Controlli Automatici', glob: import.meta.glob('../pages/CA/*.md', { eager: true })},
-]
-collections.forEach(collect);
+//========================================
 
 const navbar_build = costruisciNav(navbar);
 const doubles = cercaDoppiHC(navbar);

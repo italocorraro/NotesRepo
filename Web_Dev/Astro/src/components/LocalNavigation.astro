@@ -27,7 +27,7 @@ for(const navItem of navbar) {
     });
     for(let i = 0;  i < content.length; i++) {
         const url = content[i].URL;        
-        if(current == url || `${current}/` == url) {
+        if(current == url || `${current}/` == url || url.includes(current)) {
             whereAmI.previous.name = content[i-1]?.name;
             whereAmI.previous.url = content[i-1]?.URL ?? '';   
             whereAmI.next.name = content[i+1]?.name;         

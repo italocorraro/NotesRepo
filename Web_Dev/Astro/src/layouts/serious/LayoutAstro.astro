@@ -28,7 +28,7 @@ const pageImage = {
 	width: '799',
 	height: '400'
 }
-const { frontmatter, headings } = Astro.props;
+const { frontmatter, headings, loc } = Astro.props;
 
 ---
 
@@ -55,7 +55,7 @@ const { frontmatter, headings } = Astro.props;
 		<main>
             <header>
                 <h1>{frontmatter.title}</h1>
-                <div id="breadcrumbs"><LocalNavigation current={frontmatter.url} /></div>
+                <div id="breadcrumbs"><LocalNavigation current={frontmatter.url ?? loc} /></div>
             </header>
             <div id="content">
                 <Index headings={headings} />

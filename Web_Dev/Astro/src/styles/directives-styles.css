@@ -51,6 +51,25 @@ aside.inserto::before {
     border-left: 0.2rem solid #ffff00;
 }
 
+/* Definizione */
+.def-chunk {
+    background-color: #c7f1ff26;
+    border-left: 0.2rem solid #0767a3;
+}
+
+/* Dimostrazione */
+.demonstration {
+    background-color: #cbd4a926;
+    border-left: 0.2rem solid #e3e30b;
+}
+
+/* Teorema */
+.theorem {
+    background-color: #f8c7ff26;
+    border-left: 0.2rem solid #5507a3;
+}
+
+
 /* Output */
 .output {
     background-color: rgba(222, 184, 135, 0.363);
@@ -141,11 +160,6 @@ aside.inserto::before {
 }
 .mark-tab :nth-child(even) {
     border-right: 0;
-}
-
-.def-chunk {
-    background-color: #c7f1ff26;
-    border-left: 0.2rem solid #0767a3;
 }
 
 /* CODE HIDER */
