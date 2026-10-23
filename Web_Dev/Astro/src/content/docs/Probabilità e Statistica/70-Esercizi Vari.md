@@ -264,3 +264,54 @@ $f(x,y) \neq f_X(x) \cdot f_Y(y) \Rightarrow X$ e $Y$ sono dipendenti
 $E[XY] = E[X]E[Y] \Rightarrow Cov(X,Y) = 0$
 
 
+### Es 7 (foglio 5)
+
+$$
+f(x) = 
+\begin{cases}
+k(x^2+x) & se x\in[0,1]\\
+0 & altrove
+\end{cases}
+$$
+
+$$
+f(x)\geq 0 \forall x\in\mathbb{R} \Rightarrow k\geq0
+$$
+$$
+1 = \int_{-\infty}^{+\infty} f(x)\,dx =\\
+= ... = k\frac56 => k=\frac65
+$$
+
+$$
+E[X] = \int_{}^{}xf(x)\,dx = \\
+= \frac65 \int_{0}^{1}(x^3+x^2)\,dx = ...= \frac7{10}
+$$
+
+$$
+E[X^2] = ... = \frac{27}{50}
+$$
+
+$$
+Var(X) = ... = \frac{27}{50} - (\frac7{10})^2
+$$
+
+$$
+Y= 4X^2 \\
+
+E[Y] = E[4X^2] = 4E[X^2] \\
+E[Y^2] = ... = 16E[X^4] = ... =\\
+= 16 \int_{0}^{1} x^4 \frac65 (x^2+x)\,dx = \frac{16 * 6 *13}{5*42}\\
+
+Var(Y) = *
+
+$$
+
+$$
+F(a) = P(X\leq a) = \int_{-\infty}^{a}f(x)\,dx =\\
+=
+\begin{cases}
+0 & se a<0\\
+0 + \frac65 (x^2+x)\,dx & se a \in[0,1]\\
+1 & sea>1
+\end{cases}
+$$

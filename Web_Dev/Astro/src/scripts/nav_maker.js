@@ -182,15 +182,14 @@ for (const folder in byFolder) {
   if (folder.startsWith('_')) continue;
   const target = navbar[navbar.length] ??= { name: FolderMap.get(folder) ?? folder, content: [] };
   const collection = byFolder[folder];
-  let skipped = 0;
   collection
     ?.sort((a, b) => a.data.order - b.data.order)
-    .forEach((post, i) => {
-      if(post.data.hidden) return skipped++, undefined;
-      target.content[i - skipped] = {
+    .forEach((post) => {
+      if(post.data.hidden) return;
+      target.content.push({
         name: post.data.title,
         URL: astro + `${post.id/* .split('/')[1] */}/`
-      }
+      });
     });
 }
 
