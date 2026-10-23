@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="it" data-astro-cid-s3eeaee3><head><title>JavaFX</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v7.3.4"><meta http-equiv="X-UA-Compatible" content="IE=edge"><link rel="icon" sizes="32x32" href="/NotesRepo/Web_Dev/Astro/dist/Crocco.png" type="image/x-icon"><!-- Generic tags --><meta name="author" content="Italo Corraro"><meta name="description" content><!-- Open Graph tags --><meta property="og:title" content="JavaFX"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:locale" content="it_IT"><meta property="og:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="799"><meta property="og:image:height" content="400"><!-- Twitter Card tags --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="JavaFX"><meta name="twitter:description" content><meta name="twitter:image" content="https://italocorraro.github.io/NotesRepo/Web_Dev/source/Crunch.png"><link href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" rel="stylesheet"><link rel="stylesheet" href="/NotesRepo/Web_Dev/Astro/dist/_astro/LayoutAstro.E5y1k3Rx.css"><style>pre{border:.1em dashed #5f9ea0;border-radius:.5em;width:fit-content;max-width:100%;margin:.5em 0;padding:.4em .6em;overflow-x:auto}pre:before{content:attr(data-language);text-transform:uppercase;text-align:left;border-bottom:.1em solid;margin-bottom:.4em;font-size:120%;display:block}pre[data-language=js]:before{content:none}@media (prefers-color-scheme:dark){.astro-code,.astro-code span{color:var(--shiki-dark);background-color:var(--shiki-dark-bg);font-style:var(--shiki-dark-font-style);font-weight:var(--shiki-dark-font-weight);text-decoration:var(--shiki-dark-text-decoration)}}html[data-theme=dark] :is(.astro-code,.astro-code span){color:var(--shiki-dark);background-color:var(--shiki-dark-bg);font-style:var(--shiki-dark-font-style);font-weight:var(--shiki-dark-font-weight);text-decoration:var(--shiki-dark-text-decoration)}html[data-theme=light] :is(.astro-code,.astro-code span){color:var(--shiki-light);background-color:var(--shiki-light-bg);font-style:var(--shiki-light-font-style);font-weight:var(--shiki-light-font-weight);text-decoration:var(--shiki-light-text-decoration)}html[data-theme=dracula] :is(.astro-code,.astro-code span){color:var(--shiki-dracula);background-color:var(--shiki-dracula-bg);font-style:var(--shiki-dracula-font-style);font-weight:var(--shiki-dracula-font-weight);text-decoration:var(--shiki-dracula-text-decoration)}
+nav[data-astro-cid-ltua34ov]{justify-content:center;width:100%;max-width:100%;padding:0 1.5em;display:flex}nav[data-astro-cid-ltua34ov]>[data-astro-cid-ltua34ov]{text-transform:uppercase;width:33%}nav[data-astro-cid-ltua34ov]>[data-astro-cid-ltua34ov]:first-child{text-align:left}nav[data-astro-cid-ltua34ov]>a[data-astro-cid-ltua34ov]:first-child:before{content:"<"}nav[data-astro-cid-ltua34ov]>[data-astro-cid-ltua34ov]:last-child{text-align:right}nav[data-astro-cid-ltua34ov]>a[data-astro-cid-ltua34ov]:last-child:after{content:">"}nav[data-astro-cid-ltua34ov]>a[data-astro-cid-ltua34ov]:first-child:before,nav[data-astro-cid-ltua34ov]>a[data-astro-cid-ltua34ov]:last-child:after{display:inline-block;transform:translateY(-.05em)}p[data-astro-cid-am74amct]{margin:0}footer[data-astro-cid-652hlaun]{flex-direction:column;gap:.8rem;margin-top:2rem;padding:1rem 0;display:flex}p[data-astro-cid-652hlaun]{margin:0}
+</style><script type="module" src="/NotesRepo/Web_Dev/Astro/dist/_astro/page.BTXSigGw.js"></script></head><body data-astro-cid-s3eeaee3><header id="site-header" data-astro-cid-nen7h5rs><button type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">Menu</button><nav id="mainNav" aria-label="Navigazione Sito"><ul><li class="nav-item"><span>HTML</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/Sintassi html/">Sintassi html</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/Struttura Semantica/">Struttura Semantica</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/L'elemento head/">L&#39;elemento &lt;head&gt;</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/Ancore/">Ancore</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/Liste/">Liste</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/Immagini/">Immagini</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/Altri Media/">Altri Media</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/Tabelle">Tabelle</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/html/Forms/">Form</a></li></ul></li><li class="nav-item"><span>CSS</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Sintassi CSS/">Sintassi CSS</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Selectors/">Selettori</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Box Model/">Box Model</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Unità di Misura/">Unità di misura</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Colori/">Colori</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Immagini/">Immagini</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Funzioni e Variabili/">Funzioni e Variabili</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Background/">Background</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Tipografia/">Tipografia</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Altri Stili/#liste">Liste</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Altri Stili/#ancore">Ancore</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Tabelle/">Tabelle</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Form/">Form</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Media Queries/">Media Queries</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Layout con Float/">Layout con Float</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Layout con Flexbox/">Layout con Flexbox</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Layout con Grid/">Layout con Grid</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Altri Stili/">Altri Stili</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/CSS/Transizioni-Animazioni/">Animazioni &amp; Transizioni</a></li></ul></li><li class="nav-item"><span>JavaScript</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Overview/">Overview</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Tipi di Dato/">Tipi di Dato</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Operatori/">Operatori</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Numeri/">Numeri</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Stringhe/">Stringhe</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Array/">Array</a></li><li class="nav-link"><a href="javascript/Espressioni Regolari/">Espressioni Regolari</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Date/">Date</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Controllo di Flusso/">Controllo di Flusso</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Iterazione/">Iterazione</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Funzioni/">Funzioni</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Strict Mode/">Strict Mode</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Oggetti/">Oggetti</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Collezioni Indicizzate/">Collezioni Indicizzate</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Ereditarietà/">Ereditarietà</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Classi/">Classi</a></li><li class="nav-link">Garbage Collection</li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/javascript/Asincronia/">Asincronia</a></li><li class="nav-link">Moduli</li></ul></li><li class="nav-item"><span>JS APIs</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/APIs/DOM/">DOM API</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/APIs/Eventi/">UI Events API</a></li><li class="nav-link">Storage API</li><li class="nav-link">URL API</li><li class="nav-link">View Transition API</li><li class="nav-link">Intersection Observer API</li><li class="nav-link">Pointer Events</li></ul></li><li class="nav-item"><span>Struttura Pagine</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/Struttura/Struttura html/">Struttura html</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/Struttura/Struttura CSS/">Struttura CSS</a></li></ul></li><li class="nav-item"><span>TypeScript</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/typescript/Overview/">Overview</a></li></ul></li><li class="nav-item"><span>Basi di Dati</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/basi-di-dati/intro/">Intro</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/basi-di-dati/modello-relazionale/">Modello Relazionale</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/basi-di-dati/vincoli/">Vincoli sui Dati</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/basi-di-dati/strutture-datimd/">Strutture Dati</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/basi-di-dati/algebra-relazionale/">Algebra Relazionale</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/basi-di-dati/sql-intro/">SQL</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/basi-di-dati/funzioni-aggregate/">Funzioni Derivate e Raggruppamenti</a></li></ul></li><li class="nav-item"><span>Controlli Automatici</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/controlli-automatici/intro/">Controlli Automatici</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/controlli-automatici/sistemi-lineari/">Funzione di trasferimento?</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/controlli-automatici/modi-del-sistema/">Modi del Sistema</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/controlli-automatici/stabilità-di-sistema/">Stabilità del Sistema</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/controlli-automatici/modello-ingresso-uscita/">Modello Ingresso-Uscita</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/controlli-automatici/funzione-di-trasferimento/">Funzione di Trasferimento</a></li></ul></li><li class="nav-item"><span>Java</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/introduzione/">Introduzione</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/basi_di_java/">Basi di Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/stringhe/">Stringhe in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/array/">Array in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/packages_e_moduli/">Packages e Moduli</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/enumerativi/">Enumerativi in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/date/">Date e Gestione del Tempo in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/internazionalizzazione/">Internazionalizzazione in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/junit/">Testing in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/uml/">UML in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/design_patterns/">Design Patterns</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/ereditarietà/">Ereditarietà in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/classi_dati/">Classi Dati in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/generics/">Tipi Generici in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/classi_astratte/">Classi Astratte in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/interfacce/">Interfacce in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/null_safety/">Null Safety in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/strutture_dati/">Strutture Dati in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/eccezioni/">Eccezioni in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/input-output/">Input e Output in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/file_di_testo/">File di Testo con Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/lambda_expression/">Lambda Expressions di Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/javafx/">JavaFX</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/eventi_e_componenti/">Eventi e Componenti in Java</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/stream_di_operazioni/">Stream di Operazioni</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/strutture_dati_non_sequenziali/">Strutture Dati non Sequenziali</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/java/schemi-generali/">Packages e Moduli in Java</a></li></ul></li><li class="nav-item"><span>Markdown</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/markdown/sintassi-markdown/">Sintassi Markdown</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/markdown/remark-plugins/">Remark Plugins</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/markdown/gfm/">GitHub Flavored Markdown</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/markdown/katex/">LaTex Math Symbols</a></li></ul></li><li class="nav-item"><span>Probabilità e Statistica</span><ul><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/intro/">Probabilità e statistica</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/calcolo-combinatorio/">Richiami di Calcolo Combinatorio</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/probabilità-condizionata/">Probabilità Condizionata</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/dispositivi-in-serie-e-parallelo/">Dispositivi in Serie e in Parallelo</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/variabili-casuali/">Variabili Casuali</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/coppie-di-variabili-casuali/">Coppie di Variabili Casuali</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/valore-atteso/">Valore Atteso</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/varianza-e-covarianza/">Varianza e Covarianza</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/legge-dei-grandi-numeri/">Legge dei Grandi Numeri</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/funzione-generatrice-dei-momenti/">Funzione Generatrice dei Momenti</a></li><li class="nav-link"><a href="/NotesRepo/Web_Dev/Astro/dist/probabilità-e-statistica/esercizi-vari/">Esercizi Vari </a></li></ul></li></ul></nav><div id="mainNavBackdrop"></div><script type="module">var e=document.querySelector(`button:has(+ #mainNav)`);e?.addEventListener(`click`,()=>{let t=e.getAttribute(`aria-expanded`)===`true`;e.setAttribute(`aria-expanded`,`${!t}`)}),document.querySelector(`#mainNav + div`)?.addEventListener(`click`,()=>{e?.setAttribute(`aria-expanded`,`false`)});function t(e,t=400){e.style.transition=`height ${t}ms ease`,e.style.height=e.scrollHeight+`px`,requestAnimationFrame(()=>{e.style.height=`0`}),setTimeout(()=>{e.style.display=`none`},t)}function n(e,t=400){e.style.display=`block`;let n=e.scrollHeight;e.style.height=`0`,e.style.transition=`height ${t}ms ease`,requestAnimationFrame(()=>{e.style.height=n+`px`}),setTimeout(()=>{e.style.height=`auto`},t)}function r(e,r=400){window.getComputedStyle(e).display===`none`?n(e,r):t(e,r)}document.querySelectorAll(`.nav-item`).forEach(e=>{let n=e.querySelector(`ul`),i=e.querySelector(`span`);t(n),i?.addEventListener(`click`,()=>{r(n,400)})});</script><aside aria-labelledby="site-settings"><h2 id="site-settings">Impostazioni Tema</h2><!-- Impostazioni TEMA SHIKI --><form id="shiki-theme-settings" class="astro-code"><input type="radio" name="shiki-theme" id="shiki-light" value="light"><label for="shiki-light" title="Tema Chiaro"><span class="text-only">Tema Chiaro</span><svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"><!-- Disco centrale --><circle cx="50" cy="50" r="22" fill="var(--shiki-light)"></circle><!-- Raggi --><g stroke="var(--shiki-light)" stroke-width="8" stroke-linecap="round"><line x1="50" y1="6" x2="50" y2="22"></line><line x1="50" y1="78" x2="50" y2="94"></line><line x1="6" y1="50" x2="22" y2="50"></line><line x1="78" y1="50" x2="94" y2="50"></line><line x1="21" y1="21" x2="32" y2="32"></line><line x1="78" y1="78" x2="67" y2="67"></line><line x1="21" y1="79" x2="32" y2="68"></line><line x1="79" y1="21" x2="68" y2="32"></line></g></svg></label><input type="radio" name="shiki-theme" id="shiki-dark" value="dark"><label for="shiki-dark" title="Tema Scuro"><span class="text-only">Tema Scuro</span><svg width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"><!-- Disco completo --><circle cx="50" cy="50" r="40" fill="var(--shiki-dark-code)" opacity="0.25"></circle><!-- Falce luminosa (più larga rispetto alla versione precedente) --><path d="M45 10
+           A40 40 0 1 0 45 90
+           A28 40 0 1 1 45 10Z" fill="var(--shiki-dark)"></path></svg></label><input type="radio" name="shiki-theme" id="shiki-dracula" value="dracula"><label for="shiki-dracula" title="Tema Dracula"><span class="text-only">Tema Dracula</span><img src="https://user-images.githubusercontent.com/33915497/214760369-5c078b43-fdab-4cdd-adfe-ad905a64b5a5.png" decoding="sync" loading="eager" alt="logo tema Dracula da GitHub" width="60" height="60"></label><input type="radio" name="shiki-theme" id="shiki-system" value="" checked><label for="shiki-system" title="Tema Predefinito"><span class="text-only">Tema Predefinito</span><svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"><!-- Mezzo sole a sinistra --><g fill="var(--font-color)"><!-- Semicerchio del sole --><path d="M12 4a8 8 0 0 0 0 16V4z"></path></g><!-- Mezzo cerchio scuro a destra --><path fill="var(--font-color)" d="M12 4a8 8 0 1 1 0 16V4z" opacity="0.4"></path></svg></label></form></aside><script type="module">var e=`my-notes-repo-theme`,t=sessionStorage.getItem(e),n=document.documentElement,r=document.querySelectorAll(`#shiki-theme-settings > [type="radio"]`);t&&typeof t==`string`&&n.setAttribute(`data-theme`,t),r.forEach(r=>{if(r.id===`shiki-system`)r.addEventListener(`input`,()=>{n.removeAttribute(`data-theme`),sessionStorage.removeItem(e)});else{let i=r.getAttribute(`value`);i==t&&r.setAttribute(`checked`,`true`),r.addEventListener(`input`,()=>{i&&typeof i==`string`&&(n.setAttribute(`data-theme`,i),sessionStorage.setItem(e,i))})}});</script><button type="button" id="to-top" aria-label="Porta in cima alla pagina" data-astro-cid-nen7h5rs><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" data-astro-cid-nen7h5rs><polygon points="12 4 20 20 4 20" fill="var(--font-color)" data-astro-cid-nen7h5rs></polygon></svg></button></header><script type="module">document.getElementById(`to-top`)?.addEventListener(`click`,()=>{scroll(0,0)});</script><!-- <div id="background" aria-hidden="true"></div> --><img src="/NotesRepo/Web_Dev/Astro/dist/_astro/teal.Cp8wgQFt_ZsiFPz.webp" alt="background image" aria-hidden="true" id="background-big" loading="eager" decoding="sync" data-astro-cid-s3eeaee3="true" width="5120" height="2880"><img src="/NotesRepo/Web_Dev/Astro/dist/_astro/hello.CW1iZbTK_5iWaD.webp" alt="background image" aria-hidden="true" id="background-small" loading="eager" decoding="sync" data-astro-cid-s3eeaee3="true" width="1170" height="2532"><main data-astro-cid-s3eeaee3><header data-astro-cid-s3eeaee3><h1 data-astro-cid-s3eeaee3>JavaFX</h1><div id="breadcrumbs" data-astro-cid-s3eeaee3><nav id="local-nav" aria-label="Navigazione Argomento" data-astro-cid-ltua34ov><a href="/NotesRepo/Web_Dev/Astro/dist/java/lambda_expression/" title="pagina precedente" data-astro-cid-ltua34ov>Lambda Expressions di Java</a><a href="/NotesRepo/Web_Dev/Astro/dist/java/javafx/" title="pagina corrente" data-astro-cid-ltua34ov>JavaFX</a><a href="/NotesRepo/Web_Dev/Astro/dist/java/eventi_e_componenti/" title="pagina successiva" data-astro-cid-ltua34ov>Eventi e Componenti in Java</a></nav></div></header><div id="content" data-astro-cid-s3eeaee3><nav aria-labelledby="page-index"><h2 id="page-index">Indice</h2><div id="index-list"><ul><li><a href="#layout-panes">Layout Panes</a><ul><li><a href="#hbox">HBox</a></li><li><a href="#vbox">#VBox</a></li><li><a href="#flowpane">FlowPane</a></li><li><a href="#borderpane">BorderPane</a></li><li><a href="#gridpane">GridPane</a></li><li><a href="#tilepane">TilePane</a></li><li><a href="#imageview">ImageView</a></li><li><a href="#comuni-a-tutti-i-layout">Comuni a Tutti i Layout</a></li></ul></li></ul></div></nav><p>Per costruire un software con un’interfaccia utente bisogna stabilire come reagire agli eventi generati dall’interazione.</p>
+<p><em>Il programma “reagisce”, non opera a priori.</em></p>
+<p>Stage
+Scene
+UI Elements</p>
+<p>L’applicazione estende la classe <code>Applictaion</code> ed eredita tre metodi fondamentali:</p>
+<ul>
+<li><code>init</code> - setup</li>
+<li><code>start</code> - crea GUI</li>
+<li><code>stop</code> - shutdown</li>
+</ul>
+<pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> javafx.application.Application;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> javafx.scene.Scene;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> javafx.stage.Stage;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#8BE9FD"> EgJavFX00</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> extends</span><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#B392F0;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic"> Application</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">    public</span><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> start</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Stage</span><span style="--shiki-light:#E36209;--shiki-light-font-style:inherit;--shiki-dark:#FFAB70;--shiki-dark-font-style:inherit;--shiki-dracula:#FFB86C;--shiki-dracula-font-style:italic"> stage</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">        stage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setTitle</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">Esempio </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">        stage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">show</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">    public</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6"> static</span><span style="--shiki-light:#D73A49;--shiki-light-font-style:inherit;--shiki-dark:#F97583;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic"> void</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> main</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> (</span><span style="--shiki-light:#E36209;--shiki-light-font-style:inherit;--shiki-dark:#FFAB70;--shiki-dark-font-style:inherit;--shiki-dracula:#FFB86C;--shiki-dracula-font-style:italic">string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">[] </span><span style="--shiki-light:#E36209;--shiki-light-font-style:inherit;--shiki-dark:#FFAB70;--shiki-dark-font-style:inherit;--shiki-dracula:#FFB86C;--shiki-dracula-font-style:italic">args</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">) {</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">        launch</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(args);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">}</span></span></code></pre>
+<p>In JavaFX, il compilatore aggiunge automaticamente il main di default per lanciare l’applicazione grafica con il metodo <code>launch</code>; se non si tratta di un progetto JavaFX, ma di un Java standard, è necessario inserirlo manualmente come sopra.</p>
+<p>Lo <code>stage</code> è configurabile come un oggetto qualsiasi stamite metodi <code>set</code> (<code>Width</code>, <code>Height</code>, <code>X</code>, <code>Y</code>, <code>MaxWidth</code>, <code>MinWidth</code> ecc…).</p>
+<p>È possibile recuperare le dimensione dello schermo con <code>Screen</code>:</p>
+<pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">javafx</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">.</span><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">geometry</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">.</span><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Rectangle2D</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> screen </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> Screen.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">getPrimary</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">getVisualBounds</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(); </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// eg. 1920 x 1040</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">stage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setX</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(screen.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">getMinX</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">+</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> screen.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">getWidth</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> stage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">getWidth</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">());</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* .... */</span></span></code></pre>
+<pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// dentro start:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Pane</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> root </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> Pane</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Scene</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> scene </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> </span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold">    new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> Scene</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(root, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">300</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">50</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">, Color.YELLOW);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">stage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setScene</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(scene);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">stage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">show</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span></code></pre>
+<p>La classe <code>Canvas</code> permette di disegnare dentro un pannello.</p>
+<pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* Un FlowPane dispone automaticamente</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4"> * i suoi componenti da sinistra verso destra </span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4"> * e dall'alto verso il basso */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">FlowPane</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> panel </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> FlowPane</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(); </span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">panel.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setPrefSize</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">200</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">130</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Canvas</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> canvas </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> Canvas</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">150</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">130</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">// al pannello vanno associati dei componenti:</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">panel.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">getChildren</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">add</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(canvas);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">GraphicContext</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> g </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> canvas.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">getGraphicContext2D</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">g.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setFont</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(Font.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">font</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#F1FA8C">Serif</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;--shiki-dracula:#E9F284">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">, FontWeight.BOLD, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">20</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">));</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">g.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setFill</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(Color.RED); g.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">fillRect</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">20</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">20</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">, </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">100</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">,</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;--shiki-dracula:#BD93F9">80</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D;--shiki-dracula:#6272A4">/* ... */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-light-font-style:inherit;--shiki-dark:#E1E4E8;--shiki-dark-font-style:inherit;--shiki-dracula:#8BE9FD;--shiki-dracula-font-style:italic">Scene</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2"> scene </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;--shiki-dracula:#FF79C6">=</span><span style="--shiki-light:#D73A49;--shiki-light-font-weight:inherit;--shiki-dark:#F97583;--shiki-dark-font-weight:inherit;--shiki-dracula:#FF79C6;--shiki-dracula-font-weight:bold"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B"> Scene</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(panel);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">stage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setScene</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(scene);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">stage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">show</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">();</span></span></code></pre>
+<p>Java offre due stylesheet di default che possono essere caricati:</p>
+<pre class="astro-code astro-code-themes github-light github-dark dracula" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-dracula:#F8F8F2;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;--shiki-dracula-bg:#282A36; overflow-x: auto;" tabindex="0" data-language="java"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setUserAgentStylesheet</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(STYLESHEET_MODENA);</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;--shiki-dracula:#50FA7B">setUserAgentStylesheet</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;--shiki-dracula:#F8F8F2">(STYLESHEET_CASPIAN);</span></span></code></pre>
+<section><h2 id="layout-panes">Layout Panes<a aria-hidden="true" tabindex="-1" href="#layout-panes"><span class="icon icon-link"></span></a></h2><div class="after-h2"><section><h3 id="hbox">HBox<a aria-hidden="true" tabindex="-1" href="#hbox"><span class="icon icon-link"></span></a></h3><p>Dispone i figli in una singola riga orizzontale.</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Note</th></tr></thead><tbody><tr><td><code>new HBox(double spacing)</code></td><td>Costruttore con spaziatura tra figli</td></tr><tr><td><code>setSpacing(double value)</code></td><td>Spazio tra elementi</td></tr><tr><td><code>setAlignment(Pos value)</code></td><td>Allineamento dei figli (es. <code>Pos.CENTER</code>)</td></tr><tr><td><code>setHgrow(Node node, Priority p)</code></td><td>Espansione orizzontale di un nodo</td></tr></tbody></table></div></section><section><h3 id="vbox">#VBox<a aria-hidden="true" tabindex="-1" href="#vbox"><span class="icon icon-link"></span></a></h3><p>Dispone i figli in una singola colonna verticale.</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Note</th></tr></thead><tbody><tr><td><code>new VBox(double spacing)</code></td><td>Costruttore con spaziatura tra figli</td></tr><tr><td><code>setSpacing(double value)</code></td><td>Spazio tra elementi</td></tr><tr><td><code>setAlignment(Pos value)</code></td><td>Allineamento dei figli</td></tr><tr><td><code>setVgrow(Node node, Priority p)</code></td><td>Espansione verticale di un nodo</td></tr></tbody></table></div></section><section><h3 id="flowpane">FlowPane<a aria-hidden="true" tabindex="-1" href="#flowpane"><span class="icon icon-link"></span></a></h3><p>Dispone i figli in righe, andando a capo automaticamente.</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Note</th></tr></thead><tbody><tr><td><code>new FlowPane(Orientation o, double hgap, double vgap)</code></td><td>Costruttore completo</td></tr><tr><td><code>setOrientation(Orientation o)</code></td><td><code>HORIZONTAL</code> o <code>VERTICAL</code></td></tr><tr><td><code>setHgap(double value)</code></td><td>Spaziatura orizzontale tra figli</td></tr><tr><td><code>setVgap(double value)</code></td><td>Spaziatura verticale tra righe</td></tr><tr><td><code>setAlignment(Pos value)</code></td><td>Allineamento delle righe</td></tr><tr><td><code>setRowValignment(VPos value)</code></td><td>Allineamento verticale in ogni riga</td></tr><tr><td><code>setPrefWrapLength(double value)</code></td><td>Larghezza preferita prima del wrap</td></tr></tbody></table></div></section><section><h3 id="borderpane">BorderPane<a aria-hidden="true" tabindex="-1" href="#borderpane"><span class="icon icon-link"></span></a></h3><p>Divide lo spazio in cinque zone: Top, Bottom, Left, Right, Center.</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Note</th></tr></thead><tbody><tr><td><code>setTop(Node node)</code></td><td>Zona superiore</td></tr><tr><td><code>setBottom(Node node)</code></td><td>Zona inferiore</td></tr><tr><td><code>setLeft(Node node)</code></td><td>Zona sinistra</td></tr><tr><td><code>setRight(Node node)</code></td><td>Zona destra</td></tr><tr><td><code>setCenter(Node node)</code></td><td>Zona centrale, prende lo spazio rimasto</td></tr><tr><td><code>setAlignment(Node node, Pos p)</code></td><td>Allinea un figlio nella sua zona</td></tr><tr><td><code>setMargin(Node node, Insets i)</code></td><td>Margine esterno di un figlio</td></tr></tbody></table></div></section><section><h3 id="gridpane">GridPane<a aria-hidden="true" tabindex="-1" href="#gridpane"><span class="icon icon-link"></span></a></h3><p>Dispone i figli in righe e colonne configurabili.</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Note</th></tr></thead><tbody><tr><td><code>add(Node node, int col, int row)</code></td><td>Aggiunge un nodo nella cella specificata</td></tr><tr><td><code>add(Node node, int col, int row, int colspan, int rowspan)</code></td><td>Con span su più celle</td></tr><tr><td><code>setHgap(double value)</code></td><td>Spaziatura orizzontale tra colonne</td></tr><tr><td><code>setVgap(double value)</code></td><td>Spaziatura verticale tra righe</td></tr><tr><td><code>getColumnConstraints().add(ColumnConstraints cc)</code></td><td>Vincoli di colonna (larghezza, grow)</td></tr><tr><td><code>getRowConstraints().add(RowConstraints rc)</code></td><td>Vincoli di riga (altezza, grow)</td></tr><tr><td><code>setHalignment(Node node, HPos p)</code></td><td>Allineamento orizzontale nella cella</td></tr><tr><td><code>setValignment(Node node, VPos p)</code></td><td>Allineamento verticale nella cella</td></tr><tr><td><code>setGridLinesVisible(boolean value)</code></td><td>Mostra le linee della griglia</td></tr></tbody></table></div></section><section><h3 id="tilepane">TilePane<a aria-hidden="true" tabindex="-1" href="#tilepane"><span class="icon icon-link"></span></a></h3><p>Come FlowPane, ma ogni cella ha la stessa dimensione.</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Note</th></tr></thead><tbody><tr><td><code>new TilePane(Orientation o, double hgap, double vgap)</code></td><td>Costruttore completo</td></tr><tr><td><code>setPrefColumns(int value)</code></td><td>Numero preferito di colonne</td></tr><tr><td><code>setPrefRows(int value)</code></td><td>Numero preferito di righe</td></tr><tr><td><code>setPrefTileWidth(double value)</code></td><td>Larghezza di ogni tile</td></tr><tr><td><code>setPrefTileHeight(double value)</code></td><td>Altezza di ogni tile</td></tr><tr><td><code>setTileAlignment(Pos value)</code></td><td>Allineamento del contenuto dentro ogni tile</td></tr><tr><td><code>setHgap(double value)</code></td><td>Spaziatura orizzontale tra tile</td></tr><tr><td><code>setVgap(double value)</code></td><td>Spaziatura verticale tra tile</td></tr></tbody></table></div></section><section><h3 id="imageview">ImageView<a aria-hidden="true" tabindex="-1" href="#imageview"><span class="icon icon-link"></span></a></h3><p>Nodo per visualizzare un’immagine all’interno di un layout.</p><div class="table-wrapper" tabindex="-1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metodo</th><th>Note</th></tr></thead><tbody><tr><td><code>new ImageView(Image image)</code></td><td>Costruttore da oggetto <code>Image</code></td></tr><tr><td><code>new Image(String url)</code></td><td>Crea un’immagine da URL o path</td></tr><tr><td><code>new Image(String url, double w, double h, boolean ratio, boolean smooth)</code></td><td>Crea un’immagine con ridimensionamento</td></tr><tr><td><code>setImage(Image image)</code></td><td>Imposta o cambia l’immagine</td></tr><tr><td><code>setFitWidth(double value)</code></td><td>Larghezza di visualizzazione</td></tr><tr><td><code>setFitHeight(double value)</code></td><td>Altezza di visualizzazione</td></tr><tr><td><code>setPreserveRatio(boolean value)</code></td><td>Mantiene le proporzioni originali</td></tr><tr><td><code>setSmooth(boolean value)</code></td><td>Interpolazione per ridimensionamento</td></tr><tr><td><code>setViewport(Rectangle2D rect)</code></td><td>Ritaglia una porzione dell’immagine</td></tr></tbody></table></div></section><section><h3 id="comuni-a-tutti-i-layout">Comuni a Tutti i Layout<a aria-hidden="true" tabindex="-1" href="#comuni-a-tutti-i-layout"><span class="icon icon-link"></span></a></h3><p><code>setPadding(new Insets(double top, double right, double bottom, double left))</code>; disponibile su tutti i <code>Pane</code>, <code>VBox</code> e <code>HBox</code>: aggiunge margine interno al contenitore.</p><p><code>getChildren().add(Node node)</code> e <code>getChildren().addAll(Node... nodes)</code> permettono di innestare componenti.</p><p>Per <code>GridPane</code>: <code>ColumnConstraints</code> e <code>RowConstraints</code> permettono di controllare distribuzione dello spazio con larghezze fisse, percentuali o <code>Priority.ALWAYS</code> per espansione automatica.</p></section></div></section></div></main><footer class="test-footer" data-astro-cid-652hlaun><nav id="local-nav" aria-label="Navigazione Argomento" data-astro-cid-ltua34ov><span aria-hidden="true" data-astro-cid-ltua34ov></span><a href title="pagina corrente" data-astro-cid-ltua34ov></a><span aria-hidden="true" data-astro-cid-ltua34ov></span></nav><p data-astro-cid-652hlaun>Pagina iniziale del sito a <a href="/NotesRepo/Web_Dev/Astro/dist/../../html/Sintassi html/" data-astro-cid-652hlaun>questo indirizzo</a></p><p data-astro-cid-am74amct>Puoi trovarmi anche su<a href="https://www.github.com/italocorraro" data-astro-cid-am74amct>github</a></p></footer><script type="module">document.querySelectorAll(`p:has(> .flexible-marker-cyan)`).forEach(function(e){e.querySelector(`.flexible-marker-cyan`).addEventListener(`click`,()=>{e.classList.toggle(`code-show-next`)})});</script><script type="module">var e=`after-h2`;document.querySelectorAll(`section:has(>h2):has(>.${e})`).forEach(t=>{let n=t.querySelector(`h2`),r=t.querySelector(`.${e}`),i=!0,a=r.offsetHeight+5;r.style.transition=`max-height 300ms`,r.style.overflowY=`hidden`,n.addEventListener(`click`,()=>{i?(a=r.offsetHeight+5,r.style.maxHeight=`${a.toString()}px`,console.log(a.toString()),setTimeout(()=>{r.style.maxHeight=`0`},0),i=!1):(r.style.maxHeight=`${a.toString()}px`,setTimeout(()=>{r.style.maxHeight=`none`},300),i=!0)})});</script></body></html>
