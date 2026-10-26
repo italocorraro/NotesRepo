@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/serious/LayoutAstro.astro
-title: 'Probabilità e statistica'
-metaTitle: 'Probabilità e statistica'
+title: 'Probabilità e Statistica'
+metaTitle: 'Probabilità e Statistica'
 description: ''
 author: 'Italo Corraro'
 order: 0
@@ -14,7 +14,7 @@ Chiamiamo **esiti** ($e$) i possibili risultati di un esperimento.
 :::
 
 :::def
-Chiamiamo **Spazio Campione** ($S$ o $\Omega$)l'insieme di tutti i possibili esiti di un esperimento.
+Chiamiamo **Spazio Campione** ($S$ o $\Omega$) l'insieme di tutti i possibili esiti di un esperimento.
 :::
 
 :::def
@@ -24,11 +24,11 @@ Chiamiamo **evento** ($E$) un qualunque sottoinsieme dello spazio campione.
 ### Notazione
 
 :::def
-Dati $A,B \subset S$, due eventi dello spazio campione $S$, chiamiamo **unione degli eventi**, l'evento $C$ di $S$ che contiene tutti gli esiti contenuti in $A$ e/o in $B$.
+Dati $A,B \subset S$, due eventi dello spazio campione $S$, chiamiamo **unione degli eventi** ($A\cup B$), l'evento $C$ di $S$ che contiene tutti gli esiti contenuti in $A$ e/o in $B$.
 :::
 
 :::def
-Dati $A,B \subset S$, due eventi dello spazio campione $S$, chiamiamo **intersezione degli eventi**, l'evento $C$ di $S$ che contiene tutti gli esiti contenuti sia in $A$ che in $B$.
+Dati $A,B \subset S$, due eventi dello spazio campione $S$, chiamiamo **intersezione degli eventi** ($A\cap B$), l'evento $C$ di $S$ che contiene tutti gli esiti contenuti sia in $A$ che in $B$.
 :::
 
 :::def
@@ -36,7 +36,7 @@ L'evento che non contiente alcun esito è l'**insieme vuoto**: $\emptyset$
 :::
 
 :::def
-Dati $A,B \subset S$, due eventi dello spazio campione $S$, diciamo che sono **mutualmente esclusivi** se $A\cap B = \emptyset$
+Dati $A,B \subset S$, due eventi dello spazio campione $S$, diciamo che sono **eventi mutualmente esclusivi** se $A\cap B = \emptyset$, cioè se la loro intersezione è l'insieme vuoto.
 :::
 
 :::def
@@ -46,18 +46,17 @@ $A^C=S\setminus A$ o, equivalentemente, $A\cup A^C=S$.
 
 ### Proprietà
 
-<!-- relocated -->
-1. $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
-2. A^C \cap B^C = (A\cup B)^C
-3. A^C \cup B^C = (A\cap B)^C
-Dimostrazione:
+1. $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+2. $A^C \cap B^C = (A\cup B)^C$
+3. $A^C \cup B^C = (A\cap B)^C$
 
-Siano:
+<!-- :::dim
+Consideriamo tre eventi, tutti disgiunti:
 - $E_1 = A \setminus B$ 
 - $E_2 = B \setminus A$ 
 - $E_3 = A \cap B$ 
 
-che sono tutti disgiunti e possiamo trovare che $ P(A \cup B) = P(E_1 \cup E_2\cup E_3)$:
+possiamo trovare che $ P(A \cup B) = P(E_1 \cup E_2\cup E_3)$:
 
 $$
 \begin{array}{}
@@ -68,7 +67,9 @@ P(A \cup B) =
 \end{array}
 $$
 
-<!-- nombre -->
+:::
+
+ -->
 
 ## Definizione di Probabilità
 
@@ -107,32 +108,50 @@ La definizione frequentista è libera dal vincolo di equiprobabilità degli esit
 
 ### Definizione di Probabilità Assiomatica
 
-:::::::def
-Dato uno spazio campione $S$, ad ogni evento $E \subset S$ si associa il numero reale $P(E)$, detto **probabilità di $E$**, tale che 
-:::::ul
-:::li
-**$$ P(E) \in [0,1] $$**, cioè, la probabilità è compresa tra 1 e 0, estremi inclusi,
+:::::::::def
+Dato uno spazio campione $S$, ad ogni evento $E \subset S$ si associa il numero reale $P(E)$, detto **probabilità di $E$**, tale oggetto, deve rispettare i **tre assiomi di Kolmogorov**:
+#### Assiomi di Kolmogorov
+:::::::ol
+:::::li{list: none}
+:::th{Assioma di Non-Negatività }
+Per qualunque evento $E$, la probabilità è compresa tra $1$ e $0$, estremi inclusi:
+$$ 
+P(E) \in [0,1] 
+$$
 :::
-:::li
-**$$ P(S) = 1 $$**, cioè, la probabilità totale di tutti gli eventi in $S$ è 1,
+:::::
+:::::li
+:::th{Assioma di Normalizzazione }
+La probabilità totale di tutti gli eventi dello spazio campione $S$ è $1$, cioè certa:
+$$ 
+P(S) = 1 
+$$ 
 :::
-:::li
-dati $E_1$, $E_2$ ecc... eventi disgiunti dello spazio campione, la probabilità dell'unione di tutti questi eventi è pari alla somma delle probabilità di ciascuno: 
+:::::
+:::::li
+:::th{Assioma di Numerabilità Additiva}
+Dati $E_1$, $E_2$ ecc... $n$ eventi disgiunti dello spazio campione, la probabilità dell'unione di tutti questi eventi è pari alla somma delle probabilità di ciascuno: 
 $$ 
 P(\bigcup_{j=1}^{n}) = \sum_{j=1}^{n} P(E_j) 
 $$
+:::
 :::::
 :::::::
+:::::::::::
 
 :::oss
 La definizione classica di probabilità è un caso particolare della definizione assiomatica:
 
 Dato uno spazio campione $S$ che contiene un numero finito di esiti equiprobabili:
 
-$$ S = {e_1, e_2,... e_n} \text{ con } n \in \mathbb{N} \setminus {\emptyset}$$
+$$ 
+S = {e_1, e_2,... e_n} \text{ con } n \in \mathbb{N} \setminus {\emptyset}
+$$
 sia $E \sub S$ 
+$$
+P(E) = P(e_1 \cup e_2 ... \cup e_k) = \sum_{j=1}^{k} P(e_j) 
+$$
 
-$$P(E) = P(e_1 \cup e_2 ... \cup e_k) = \sum_{j=1}^{k} P(e_j) $$
 Essendo $e_j$ equiprobabili, allora $P(e_j) = p$
 $$ P(E) = k \times p$$
 

@@ -8,31 +8,45 @@ order: 6
 ---
 
 :::def{Valore Atteso}
-<!-- anche detto Valore Medio o Media Teorica o Speranza Matematica -->
-Data una variabile casuale X, si definisce *valore atteso* $E[X]$  di X, se esiste:
+Data una variabile casuale $X$, si definisce il suo **valore atteso** (anche detto *valore medio*, *media teorica* o *speranza matematica*) $E[X]$ *la media ponderata dei suoi possibili valori*, se esiste:
 
 $$
 E[X] = 
 \begin{cases}
-\sum_{i=1}^n x_i p(x_i) & \text{ se } x \text{ è una variabile discreta} \\
-\int_{-\infty}^{+\infty} xf(x) \, dx & \text{ se } X \text{ è una variabile continua con funzione di densità }f(x)
+\displaystyle
+\sum_{i=1}^n x_i\, p(x_i) 
+& \text{per } X\text{ discreta} \\
+\displaystyle
+\int_{-\infty}^{+\infty} x\,f(x) \, dx 
+& \text{per } X \text{ continua}
 \end{cases}
 $$
 :::
 
-## Proprietà
+:::oss
+Il valore atteso di una variabile casuale è l'equivalente del concetto di baricentro di un corpo per la meccanica.
+:::
+## Proprietà del Valore Atteso
 
-Se una variabile casuale Y = g(X) con X variabile casuale, allora il valore atteso di Y è
+:::::::ol
+
+:::::li
+Data una variabile casuale $Y = g(X)$ con $X$ variabile casuale, allora il valore atteso di $Y$ è
 
 $$
 E[Y] = E[g(X)] = 
 \begin{cases}
-\sum_{i=1}^n g(x_i) p(x_i) & \text{ se } X \text{ è discreta} \\
-\int_{-\infty}^{+\infty} g(x)f(x) \, dx & \text{ se } X \text{ è continua}
+\displaystyle
+\sum_{i=1}^n g(x_i) p(x_i) 
+& \text{ se } X \text{ è discreta} \\[12pt]
+\displaystyle
+\int_{-\infty}^{+\infty} g(x)f(x) \, dx 
+& \text{ se } X \text{ è continua}
 \end{cases}
 $$
-
-Inoltre, se $Y = \alpha X + \beta$ con $\alpha, \beta \in \mathbb{R}$, allora si dimostra che $E[Y] = \alpha E[X] + \beta$.
+:::::
+:::::li
+Dalla proprietà precedente, se $Y = \alpha X + \beta$ con $\alpha, \beta \in \mathbb{R}$, allora si dimostra che $E[Y] = \alpha E[X] + \beta$.
 
 :::dim
 Se X è continua, allora 
@@ -44,22 +58,26 @@ E[\alpha X + \beta] = \int_{-\infty}^{+\infty} (\alpha x + \beta)f(x) = \\
 \end{aligned}
 $$
 :::
-
-
-Altra proprietà:
-
-se $Z = h(X_1,X_2,\ldots,X_n)$, allora
+:::::
+:::::li
+Se $Z = h(X,Y)$, allora
 
 $$
 E[Z] = 
 \begin{cases}
-\sum \sum \ldots \sum h(x_1 \ldots x_n)p() \\
-\int_{R} \ldots \int_R h(x_1,\ldots,x_n)f(x...)
+\displaystyle
+\sum_{k=1}^{n} \sum_{j=1}^{m} h(x_k, y_j)p(x_k,y_j) & \text{caso discreto}\\[14pt]
+\displaystyle
+\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}
+h(x,y)f(x,y) & \text{caso continuo}
 \end{cases}
 $$
+
+:::::
+:::::li
 Se $Z = X +Y$, allora $E[Z] = E[X] + E[Y]$
 
-:::dim
+:::dim{per il caso continuo}
 caso continuo:
 $$
 \begin{aligned}
@@ -76,9 +94,9 @@ E[Z] &=
 &= E[X] + E[Y]
 \end{aligned}
 $$
-
-\int
 :::
+:::::
+:::::::
 
 :::eg
 Dato un esperimento con $S$ spazio campione ed $E$ evento dello spazio, definiamo $X$:
@@ -105,7 +123,7 @@ E[X] = \sum_{i=0}^n x_ip(x_i) = 0 \times p(0) + 1 \times p(1) = p
 $$
 :::
 
-:::eg
+<!-- :::eg
 $$
 f(x) = 
 \begin{cases}
@@ -117,7 +135,7 @@ $$
 \begin{aligned}
 E[X] &= \int_{-\infty}^{+\infty} \!\! xf(x) \, dx = \\
 &= \int_{-\infty}^0 \!\! xf(x) \, dx + \int_0^{+\infty} \!\! xf(x) \, dx =\\
-&=<!-- per parti -->
+&=<!-- per parti 
 \end{aligned}
 $$
-::: 
+:::  -->

@@ -19,6 +19,7 @@ $$
 > Per un lancio di un Dado cubico, siano dati gli eventi:
 > - $A$: uscita di un multiplo di 3 = $\{e_3,e_6\}$
 > - $B$: uscita di un numero pari = $\{e_0,e_2,e_4,e_6\}$
+>
 > Cerchiamo la probabilità condizionata di A rispetto a B.
 
 $$ 
@@ -67,23 +68,24 @@ $$
 
 :::
 
-:::def
+:::::def
 Dato uno spazio campione $S$, avente tre eventi $A, B, C \in S$, si dicono indipendenti se
 
 $$
 \begin{cases}
-P(A \cap B \cap C) = P(A) \cdot P(B) \cdot P(C) \\
-P(A \cap B) = P(A) \cdot P(B) \\
-P(A \cap C) = P(A) \cdot P(C) \\
-P(B \cap C) = P(B) \cdot P(C)
+P(A \cap B \cap C) = P(A) \, P(B) \, P(C) \\
+P(A \cap B) = P(A) \, P(B) \\
+P(A \cap C) = P(A) \, P(C) \\
+P(B \cap C) = P(B) \, P(C)
 \end{cases}
 $$
-:::
-
+:::nota
 Per $n$ eventi, vanno considerate tutte le possibili intersezioni.
+:::
+:::::
 
 :::def
-In generale, due o più eventi dello stesso spazio campione, si dicono indipendenti se la probabilità dell'intersezione di una loro qualsiasi combinazione, anche parziale, è pari al prodotto delle probablità dei rispettivi eventi della combinazione
+In generale, due o più eventi dello stesso spazio campione, si dicono indipendenti se la probabilità dell'intersezione di una loro qualsiasi combinazione, anche parziale, è pari al prodotto delle probablità dei rispettivi eventi della combinazione.
 :::
 
 ### Indipendenza dei Complementari
@@ -97,7 +99,7 @@ Destrutturiamo l'evento $A$:
 Ricordiamo che sia $A$ che $B$ fanno parte dello stesso spazio campione e che $B\cup B^C = S$, allora la somma delle intersezioni di $A$ con $B$ e $B^C$ ridarà $A$, ciò è equivalente a dire:
 $$
 \begin{aligned}
-A &= S \cap A = \\
+A &= S \cap A  \\
 &\, \downarrow S = B \cup B^C  \\
 &= (B \cup B^C) \cap A = \\
 &= (A \cap B) \cup (A \cap B^C) 
@@ -121,14 +123,11 @@ $$
 :::
 
 :::nb
-Applicando la proprietà precedente, si dimostra anche che, se $A$ e $B$ sono indipendenti, $A$ e $B^C$ sono indipendenti, $A^C$ e $B$ sono indipendenti e $A^C$ e $B^C$ sono indipendenti
+Applicando la proprietà precedente, si dimostra anche che, se $A$ e $B$ sono indipendenti, $A$ e $B^C$ sono indipendenti, $A^C$ e $B$ sono indipendenti e $A^C$ e $B^C$ sono indipendenti.
 :::
 
-:::def
-Due eventi $A$ e $B$ si dicono *disgiunti* se $A \cap B = \emptyset$.
-:::
 :::th
-A e B sono disgiunti e indipendenti se $P(A \cap B) = P(A) \cdot P(B) = 0 $,   
+$A$ e $B$ sono disgiunti e indipendenti se $P(A \cap B) = P(A) \cdot P(B) = 0 $,   
 cioè, solo se uno dei due ha probabilità $0$.
 :::
 

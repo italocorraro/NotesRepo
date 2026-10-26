@@ -20,8 +20,9 @@ Chiamiamo in generale **gruppo** un insieme di elementi senza principio d'ordine
 Siano dati due esperimenti: il primo con $n$ possibili esiti e il secondo con $m$, allora il numero di coppie ordinate degli esiti degli esperimenti è $n \times m$.
 
 :::eg
-Cerchiamo il numero di targhe automobiliste che è possibile creare:   
-una targa è composto da una sequenza ordinata di 4 lettere e 3 cifre, quindi esistono $26^4 \times 10^3$ casi.
+> Cerchiamo il numero di targhe automobiliste che è possibile creare. 
+
+Una targa è composta da una sequenza ordinata di 4 lettere e 3 cifre, quindi esistono $26^4 \times 10^3$ casi.
 :::
 
 :::eg
@@ -140,7 +141,7 @@ Dati $n$ elementi, non necessariamente distinti, si definiscono **permutazioni *
 Supponiamo che negli $n$ elementi compaiano $p$ elementi distinti, ciascuno con molteplicità $k_j$ dove $j$ rappresenta il $j$-esimo elemento distinto, per cui $n = \sum_{j=0}^{p} k_j$.
 $$ 
 P_{n}^R = \frac{n!}{
-    \prod_{j=0}^{p}(k_j!)
+    \displaystyle\prod_{j=0}^{p}(k_j!)
 } 
 $$
 
@@ -211,7 +212,7 @@ Questa crescita rapida è il motivo per cui questo problema è chiamato "parados
 ## Esempi di Estrazione
 
 > Sia data una scatole con 6 palline rosse e 5 blu di cui se ne estraggono 3:
-:::::ul
+:::::ol
 
 :::li
 > Qual è la probabilità di estrarre prima una pallina rossa e poi 2 blu, una alla volta e in ordine con reimmissione?

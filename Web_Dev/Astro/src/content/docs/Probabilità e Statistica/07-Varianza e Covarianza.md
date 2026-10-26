@@ -10,43 +10,46 @@ order: 7
 
 ## Varianza
 
-:::def
-Data una variabile casuale $X$, si dice momento n-esimo di $X$, se esiste, la quantità
+:::def{di Momento di Variabile Casuale}
+Data una variabile casuale $X$, si dice **momento $n$-esimo** di $X$, se esiste, il valore medio della $n$-esima potenza della variabile:
 
 $$
 E[X^n] =
 \begin{cases}
-\sum x_n^k p(x_k) 
-& \text{se } X \text{ è discreta}\\
-\int{\infty} x^n f(x) \, dx 
+\displaystyle
+\sum_{k=1}^{n} x_n^k\, p(x_k) 
+& \text{se } X \text{ è discreta}\\[12pt]
+\displaystyle
+\int^{+\infty}_{-\infty} x^n f(x) \, dx 
 & \text{se } X \text{ è continua}
 \end{cases}
 $$
 :::
 
-:::def{Varianza}
-Data una variabile casuale $X$ con valor medio $E[X] = \mu$, si dice **varianza** di $X$, se esiste, 
+:::::def{Varianza}
+Data una variabile casuale $X$ con valor medio $E[X] = \mu$ definito, si dice **varianza** di $X$, se esiste, 
 $$
 Var(X) = E[(X - \mu)^2]
 $$
-:::
-
-:::oss
-Se $X$ è una variabile casuale discreta, con $X \in \{x_1, \ldots, x_n\}$
 $$
 Var(X) = 
 \begin{cases}
-\sum (x_k-\mu)^2 
-& \text{se } X \text{ è discreta}\\
+\displaystyle
+\sum_{k=1}^{n} (x_k-\mu)^2 P(x_k)
+& \text{se } X \text{ è discreta}\\[12pt]
+\displaystyle
 \int_{-\infty}^{+\infty} (x - \mu)^2 f(x) \, dx
 & \text{se } X \text{ è continua}
 \end{cases}
 $$
-:::
 
-:::oss
+La varianza è un parametro che misura di quanto si discostano i valori della variabile casuale dal suo valore atteso.
+:::nb
 La varianza è *sempre positiva*.
 :::
+:::::
+
+
 
 :::oss{sulla meccanica}
 Se il valor medio è l'analogo del baricentro in meccanica, allora la varianza lo è del momento d'inerzia.
@@ -54,7 +57,7 @@ Se il valor medio è l'analogo del baricentro in meccanica, allora la varianza l
 
 ### Proprietà della Varianza 
 
-1. La varianza è sempre positiva o, in casi particolari (quando la variabile può assumere come valore solo il suo valor medio), nulla: $Var(X) \geq 0 \ \forall X \text{ variabile casuale}$
+1. *La varianza è sempre positiva* o, in casi particolari (quando la variabile può assumere come valore solo il suo valor medio), nulla: $Var(X) \geq 0 \ \forall X \text{ variabile casuale}$
 2. $Var(X) = E[(X-\mu)^2] = E[X^2] - E[X]^2$
 3. $Var(\alpha X + \beta)= \alpha^2 Var(X)$ con $\alpha,\beta \in \mathbb{R} $
 
@@ -91,6 +94,7 @@ Var(\alpha X + \beta) &= Var(Y) =_{def} = E[(Y-\mu_Y)^2] =\\
 $$
 :::oss
 Se $\alpha = 0$, allora $Var(\beta) = 0$
+:::
 :::::
 
 ## Covarianza
@@ -103,7 +107,6 @@ Cov(X,Y) =
 E[(X - \mu_X)(Y - \mu_Y)]
 $$
 
-:::nota
 $$
 Cov(X,Y) =
 \begin{cases}
@@ -114,10 +117,9 @@ Cov(X,Y) =
 & \text{se } X, Y \text{ sono continue}
 \end{cases}
 $$
-:::
 :::::
 
-### Proprietà
+### Proprietà della Covarianza
 
 1. $Cov(X,Y) </> 0$
 2. $Cov(X,Y) = E[XY] - E[X]E[Y]$
