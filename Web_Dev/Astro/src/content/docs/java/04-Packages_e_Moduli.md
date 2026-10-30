@@ -66,7 +66,7 @@ Il nome multi-livello deve avere la corretta corrispondenza fisica, ma non è ne
 :::eg
 per avere `\it\unibo\Point.class` basta avere 1 package con nome multi-livello con nome `it.unibo` che contenga la classe `Point`;
 
-a livello di programma, il pacchetto `it` può essere completamente separato dal pacchetto `it.unibo` (a livello di file system saranno innestati), questa modalità permette di importare il contenuto del pacchetto `it` senza anche importare `it.unibo` poichè sono logicamente separati.
+a livello di programma, il pacchetto `it` può essere completamente separato dal pacchetto `it.unibo` (a livello di file system saranno innestati), questa modalità permette di importare il contenuto del pacchetto `it` senza anche importare `it.unibo` poiché sono logicamente separati.
 :::
 
 :::nota

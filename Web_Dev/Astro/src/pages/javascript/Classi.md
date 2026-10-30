@@ -166,7 +166,7 @@ Per le closures:
 - Svantaggi:
     - il corpo della funzione fabbrica non ha protezioni
     - l'oggetto che costruisce è un oggetto semplice, non ha un tipo particolare, è semplicemente un'istanza di `Object`
-    - i metodi sono istanziati direttamente sull'oggetto invece che sul prototipo (pesa sulla memoria e i processi poichè necessitano di essere istanziati a ogni creazione di oggetto)
+    - i metodi sono istanziati direttamente sull'oggetto invece che sul prototipo (pesa sulla memoria e i processi poiché necessitano di essere istanziati a ogni creazione di oggetto)
     - i campi statici vanno istanziati sulla fabbrica (non c'è una classe/prototipo di derivazione)
     - nessun uso della keyword `new` (opinabile; i metodi fabbrica sono comuni anche anche agli altri linguaggi, ma non c'è una convenzione sulla sintassi per JS, quindi qualsiasi funzione potrebbe essere una fabbrica)
 

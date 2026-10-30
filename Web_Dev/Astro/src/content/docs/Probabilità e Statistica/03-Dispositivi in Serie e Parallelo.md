@@ -91,7 +91,7 @@ Sostituendo quanto trovato nella formula delle probabilità totali:
 $$
 p_k = p_{k+1}\,p + p_{k-1}\,q
 $$
-poichè $1 = p + q$:
+poiché $1 = p + q$:
 $$
 \begin{aligned}
 p_k=(p+q)\,p_k = p_{k+1}\,p + p_{k-1}\,q \\
@@ -138,7 +138,7 @@ p_n - p_1 =
 + \left(\displaystyle\frac{q}{p}\right)^{n-1}p_1
 $$
 
-Poichè $p_n=1$, possiamo raggruppare tutti gli addendi per $p_1$ ed ottenere un'equazione che dipende solo da $p$, $n$ e $p_1$:
+poiché $p_n=1$, possiamo raggruppare tutti gli addendi per $p_1$ ed ottenere un'equazione che dipende solo da $p$, $n$ e $p_1$:
 $$
 \begin{aligned}
 1 &= p_1 

@@ -41,7 +41,7 @@ Tutti i numeri che non hanno il branding assegnato non potranno essere passati a
 
 ## Symbol Branding
 
-Utilizzare una proprietà qualsiasi non garantisce unicità assoluta, poichè chiunque potrebbe creare un tipo con lo stesso brand che risulterebbe poi compatibile con l'altro, rompendo la sicurezza di tipo:
+Utilizzare una proprietà qualsiasi non garantisce unicità assoluta, poiché chiunque potrebbe creare un tipo con lo stesso brand che risulterebbe poi compatibile con l'altro, rompendo la sicurezza di tipo:
 
 ```ts
 type uppercaseString = string & { __brand: "isUppercase" }

@@ -44,7 +44,7 @@ Y\X | -1 | 0 | 1
 0 | c | 0 | c
 1 | 0 | c | 2c
 
-- Poichè p(i,k) = P(X=i,Y=k) \in [0,1] \to c \in [0,1] \cup c\in [0,1/2]
+- poiché p(i,k) = P(X=i,Y=k) \in [0,1] \to c \in [0,1] \cup c\in [0,1/2]
 - $\sum \sum p(i,k) = 1 = 8c \Rightarrow c = \frac1{8}$
 
 <!-- Sostituisci valori tabella ^

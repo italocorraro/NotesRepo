@@ -7,7 +7,7 @@ author: 'Italo Corraro'
 order: 4
 ---
 
-:::def
+:::def{di Variabile Casuale}
 Una **variabile casuale** (detta anche *variabile aleatoria* o *variabile stocastica*) è una variabile a valori reali che assume valori diversi in base ai risultati degli esperimenti a cui è associata.
 :::
 
@@ -18,46 +18,59 @@ Si possono distinguere le variabili casuali in
 
 ## Variabili Casuali Discrete
 
-:::def
+:::def{di Variabile Casuale Discreta}
 Dato un esperimento con un numero $n$ di esiti finito (o, al più, numerabile), con con $n \gt 1$, è possibile associare ad esso una **variabile casuale discreta** $X \in \{x_1, x_2, \ldots x_n\}$ con $x_i \in \mathbb{R} \ \forall i = 1, 2 ,\ldots n$
 :::
 
 ### Funzione di Massa di Probabilità
 
-:::def
-Chiamiamo **funzione di massa di probabilità** $p_X(a)$ di una variabile casuale discreta $X$, una funzione di tipo 
+:::def{Funzione di Massa di Probabilità di Variabile Casuale Discreta}
+Chiamiamo **funzione di massa di probabilità** $p(a)$ di una variabile casuale discreta $X$, una funzione di tipo 
 $p : \mathbb{R} \rightarrow [0,1] $ che *associa a ciascun valore che $X$ può assumere la probabilità che lo assuma*; definita come:
 $$
-p_X(a)=p(X=a) =
+p(a)=p(X=a) =
 \begin{cases}
-P(X = x_k) & \text{se } a=x_k & k = 1,2, \ldots n \\
-0 & \text{se } a \neq x_k & k = 1,2, \ldots n 
+
+P(X = x_k) &  
+\small
+\begin{array}{l}
+\text{se } a=x_k \text{ con} \\ 
+k = 1,2, \ldots n
+\end{array}\\
+
+0 & 
+\small
+\begin{array}{l}
+\text{se } a=x_k \text{ con} \\ 
+k = 1,2, \ldots n
+\end{array}
+
 \end{cases}
 $$
 :::
 
 Tale funzione ha le seguenti proprietà:
-1. $0 \leq p(a) \leq 1$, perché $p_X(a)$ rappresenta una probabilità, 
+1. $0 \leq p(a) \leq 1$, perché $p(a)$ rappresenta una probabilità, 
 2. $\displaystyle 1 = P(S) = \sum_{k=1}^n P(X=x_k) = \sum_{k=1}^n p(x_k)$, cioè, considerando tutti gli esiti dell'esperimento, quindi tutti i valori che può assumere la variabile, la somma delle probabilità che la variabile li assuma è $1$.
 
 ### Funzione di Ripartizione di Probabilità
 
-:::def
+:::def{Funzione di Ripartizione di Probabilità di Variabile Casuale Discreta}
 Chiamiamo **funzione di ripartizione di probabilità $F_X(a)$** (anche detta di *distribuzione*) *di una variabile casuale discreta $X$*, una funzione di tipo 
-$F : \mathbb{R} \rightarrow [0,1] $ che associa a un certo valore $a$ la probabilità che $X$ sia minore o uguale a quel valore, cioè:
+$F : \mathbb{R} \rightarrow [0,1] $ che *associa a un certo valore $a$ la probabilità che $X$ sia minore o uguale a quel valore*, cioè:
 $$
 F(a) = P(X\leq a)\ \forall a \in \mathbb{R}
 $$
 :::
 
 Tale funzione ha le seguenti proprietà:
-1. $0 \leq F(a) \leq 1 \ \forall a \in \mathbb{R}$, poichè $F(a)$ è una probabilità,
+1. $0 \leq F(a) \leq 1 \ \forall a \in \mathbb{R}$, poiché $F(a)$ è una probabilità,
 2. $\displaystyle\lim_{a \to +\infty} F(a) = P(X \leq +\infty) = 1$, cioè, la probabilità che $X$ assuma valori minori di $+\infty$ è $1$,
 2. $\displaystyle\lim_{a \to - \infty} F(a) = P(X \leq - \infty) = 0$, cioè, la probabilità che $X$ assuma valori minori di $-\infty$ è $0$,
 4. $F(a) \leq F(b)$, cioè, $F_X(a)$ per $a,b \in \mathbb{R}$ con $a \leq b$, cioè $F$ è una funzione *non decrescente* (crescente non strettamente).
 
 :::dim{proprietà 4}
-Vogliamo dimostrare che F(a) sia sempre crescente o al più non decrescente:
+Vogliamo dimostrare che $F(a)$ sia sempre crescente o al più non decrescente:
 
 sia $a, b \in \mathbb{R}$ con $a < b$, per cui
 
@@ -88,13 +101,13 @@ F(a) =
 0 & a \lt 0 &\text{è impossibile} \\
 q & a = 0 &\text{è sotto testa} \\
 q & 0 \lt a \lt 1 &\substack{\text{solo testa è}\\\text{ inferiore a 1}}\\ 
-1 & a =1 & \text{include sia testa che croce}\\
+1 & a =1 & \substack{\text{include sia} \\\text{testa che croce}}\\
 1 & a> 1 &\text{come sopra}
 \end{cases}
 $$
 
 :::oss
-Si nota facilmente come $F_X(a)$ sia non decrescente, infatti il valore che assume per $a$ crescenti è sempre maggiore o uguale al precedente
+Si nota facilmente come $F(a)$ sia non decrescente, infatti il valore che assume per $a$ crescenti è sempre maggiore o uguale al precedente
 :::
 
 <!-- TODO: Grafico andamento a gradino -->
@@ -103,6 +116,7 @@ Si nota facilmente come $F_X(a)$ sia non decrescente, infatti il valore che assu
 
 Della funzione di ripartizione di probabilità possiamo anche dire che è continua a tratti, cioè è una *funzione a gradino*.
 
+:::::th
 Possiamo anche usarla per calcolare la **probabilità in un intervallo**: 
 
 $$
@@ -143,6 +157,7 @@ $$
 P(a < X \leq b) = F(b) - F(a)
 $$
 :::
+:::::
 
 :::::eg
 > Si estrae una pallina con reimmissione da una scatola che contiene 6 palline rosse e 4 blu. Si ripete l'esperimento 3 volte, sia $X$ il numero di palline rosse estratte: $X \in \{0, 1, 2, 3\}$
@@ -170,7 +185,7 @@ $$
 
 ## Variabili Casuali Continue
 
-:::def
+:::def{di Variabile Casuale Continua}
 Una variabile casuale $X$ si dice **continua** se l'insieme dei suoi possibili valori è un insieme continuo.
 :::
 
@@ -180,7 +195,7 @@ Non è possibile descrivere la distribuzione di probabilità di una variabile ca
 
 ### Funzione di Densità di Probabilità
 
-:::def
+:::def{Funzione di Densità di Probabilità di Variabile Casuale Continua}
 Chiamiamo **funzione di densità di probabilità** $f_X(x)$, associata a una variabile casuale continua $X$, una funzione $f : \mathbb{R} \to \mathbb{R}^+ \cup \{0\}$, che descrive la "densità" di probabilità di $X$ in ogni punto dello spazio campione ed è definita come
 
 $$
@@ -209,7 +224,7 @@ Questo perché la probabilità di ottenere con precisione infinita un valore spe
 
 Anche per una variabile casuale continua è possibile definire la funzione di ripartizione/distribuzione di probabilità:
 
-:::def
+:::def{Funzione di Ripartizione di Probabilità di Variabile Casuale Continua}
 Chiamiamo **funzione di ripartizione di probabilità $F_X(a)$** (anche detta di *distribuzione*) *di una variabile casuale continua $X$*, una funzione di tipo 
 $F : \mathbb{R} \rightarrow [0,1] $ che associa a un certo valore $a$ la probabilità che $X$ sia minore o uguale a quel valore, cioè:
 $$
@@ -239,15 +254,18 @@ Essendo che $F(a)$ è non decrescente, e la sua derivata è $f(a)$, allora $f(a)
 :::nota
 Avevamo determinato prima che $P(a)=P(X=a)=0 \ \forall a\in \mathbb{R}$; possiamo ricavarne una conseguenza per la funzione di ripartizione, cioè che $P(X \leq a) = P(X < a)$ e quindi il calcolo della probabilità in un intervallo del caso discreto qui si estende:
 $$
-P(a < X \leq b) = F(b) - F(a) \\
-\Downarrow \\[6pt]
+\begin{aligned}
+P(a < X \leq b) &= F(b) - F(a) \\
+&\,\Downarrow \\
 \begin{rcases}
 P(a < X < b) \\
 P(a < X \leq b) \\
 P(a \leq X < b) \\
 P(a \leq X \leq b)
 \end{rcases}
-= F(b) - F(a)
+&= F(b) - F(a)
+
+\end{aligned}
 $$
 :::
 

@@ -9,37 +9,37 @@ order: 0
 
 ## Definizioni Generali
 
-:::def
+:::def{ di Esiti}
 Chiamiamo **esiti** ($e$) i possibili risultati di un esperimento.
 :::
 
-:::def
+:::def{di Spazio Campione}
 Chiamiamo **Spazio Campione** ($S$ o $\Omega$) l'insieme di tutti i possibili esiti di un esperimento.
 :::
 
-:::def
+:::def{di Evento}
 Chiamiamo **evento** ($E$) un qualunque sottoinsieme dello spazio campione.
 :::
 
 ### Notazione
 
-:::def
+:::def{Unione di Eventi}
 Dati $A,B \subset S$, due eventi dello spazio campione $S$, chiamiamo **unione degli eventi** ($A\cup B$), l'evento $C$ di $S$ che contiene tutti gli esiti contenuti in $A$ e/o in $B$.
 :::
 
-:::def
+:::def{Intersezione degli Eventi}
 Dati $A,B \subset S$, due eventi dello spazio campione $S$, chiamiamo **intersezione degli eventi** ($A\cap B$), l'evento $C$ di $S$ che contiene tutti gli esiti contenuti sia in $A$ che in $B$.
 :::
 
-:::def
+:::def{Insieme Vuoto}
 L'evento che non contiente alcun esito è l'**insieme vuoto**: $\emptyset$
 :::
 
-:::def
+:::def{Eventi Mutualmente Esclusivi}
 Dati $A,B \subset S$, due eventi dello spazio campione $S$, diciamo che sono **eventi mutualmente esclusivi** se $A\cap B = \emptyset$, cioè se la loro intersezione è l'insieme vuoto.
 :::
 
-:::def
+:::def{Eventi Complementari}
 Dato $A \subset S$, evento dello spazio campione $S$, chiamiamo **evento complementare** di $A$ l'evento $A^C$ di $S$ che contiene tutti gli esiti di $S$ che non sono contenuti in $A$, tale per cui:
 $A^C=S\setminus A$ o, equivalentemente, $A\cup A^C=S$.
 :::
@@ -79,7 +79,7 @@ Principalmente sono state date 3 definizioni per il concetto, di cui si preferis
 
 ### Definizione di Probabilità Classica
 
-:::def
+:::def{Definizione Classica}
 Dato un esperimento con un numero finito di esiti *equiprobabili*, racchiusi nello spazio campione $S$, e un evento $E \sub S$, si dice **probabilità di $E$**: 
 $$
 P(E)=\frac{n^{o}\text{ esiti contenuti in }E}{n^{o}\text{ esiti contenuti in }S}
@@ -91,13 +91,13 @@ cioè, il rapporto tra il numero di esiti che c
 
 La definizione classica è la più semplice concettualmente, tuttavia ha diverse restrizioni applicative sul numero degli esiti (che necessitano di essere enumerabili e finiti) e sulla loro probabilità (devono essere equiprobabili).
 
-:::oss
+:::oss{sull'incompletezza della definizione}
 Che questa definizione non catturi il concetto di probabilità in modo appropriato è evidente dal fatto che risulta circolare: la definizione di probabilità è ristretta per spazi campione dagli esiti *equiprobabili*, che è un concetto derivato dalla probabilità stessa.
 :::
 
 ### Definizione di Probabilità Frequentista
 
-:::def
+:::def{Definizione Frequentista}
 Dato un esperimento e un evento $E \sub S$, dove $S$ è lo spazio campione associato all'esperimento. Si ripete l'esperimento $N$ volte (con $N >> 1$) in modo che ogni iterazione sia identica nei parametri e indipendente dalle altre; si definisce **probabilità di $E$**: 
 $$
 P(E)=\frac{n^{o}\text{ esperimenti con esito }E}{N}
@@ -108,11 +108,11 @@ La definizione frequentista è libera dal vincolo di equiprobabilità degli esit
 
 ### Definizione di Probabilità Assiomatica
 
-:::::::::def
+:::::::::def{Definizione Assiomatica}
 Dato uno spazio campione $S$, ad ogni evento $E \subset S$ si associa il numero reale $P(E)$, detto **probabilità di $E$**, tale oggetto, deve rispettare i **tre assiomi di Kolmogorov**:
 #### Assiomi di Kolmogorov
 :::::::ol
-:::::li{list: none}
+:::::li{list=none}
 :::th{Assioma di Non-Negatività }
 Per qualunque evento $E$, la probabilità è compresa tra $1$ e $0$, estremi inclusi:
 $$ 

@@ -64,7 +64,7 @@ $$
 
 Ne ricaviamo un sistema analogo con le stesse caratteristiche di quello originale, dove l'equilibrio $(0,0)$ di questo sistema traslato è equivalente al generico equilibrio $(x_e,u_e)$ di cui l'abbiamo traslato; quindi, tutti gli equilibri di un sistema lineare tempo-invariante hanno, di fatto, le stesse proprietà di stabilità.
 
-Per questa ragione, *per un =u=Sistema Lineare Tempo-invariante==, non ci riferiamo alla stabilità di un punto di equilibrio in questi casi, ma piuttosto alla stabilità in generale dell'intero sistema* poichè, in quel caso, i due concetti coincidono come appena dimostrato.
+Per questa ragione, *per un =u=Sistema Lineare Tempo-invariante==, non ci riferiamo alla stabilità di un punto di equilibrio in questi casi, ma piuttosto alla stabilità in generale dell'intero sistema* poiché, in quel caso, i due concetti coincidono come appena dimostrato.
 
 Se troviamo che l'equilibrio per $(0,0)$ è asintoticamente stabile, il risultato si estende a tutti gli altri punti di equilibrio del sistema, per cui diciamo che *il sistema è asintoticamente stabile*.
 

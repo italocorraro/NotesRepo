@@ -10,7 +10,7 @@ author: 'Italo Corraro'
 
 Il codice JavaScript viene eseguito su un singolo *thread*, questo significa che JavaScript, normalmente, esegue le sue operazioni in modo sequenziale (esecuzione **sincrona**) e pertanto, perché una nuova operazione possa essere eseguita, quella precedente deve essere stata completata.
 
-L'approccio sincrono funziona fin quando le operazioni possono essere completate in una quantità ristretta di tempo, ma operazioni tempo-intensive finiranno per congelare tutti gli script della pagina poichè solo una operazione può essere eseguita alla volta.
+L'approccio sincrono funziona fin quando le operazioni possono essere completate in una quantità ristretta di tempo, ma operazioni tempo-intensive finiranno per congelare tutti gli script della pagina poiché solo una operazione può essere eseguita alla volta.
 
 :::eg
 Indica quanti numeri primi generare:

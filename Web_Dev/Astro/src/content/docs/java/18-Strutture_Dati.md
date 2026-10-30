@@ -196,7 +196,7 @@ L'interfaccia **`Set<E>`** *contiene un insieme di elementi unici* ed è impleme
 
 ### Metodi
 
-- `add` permette di aggiungere un elemento al set; restituisce un `boolean` che rappresenta il risultato dell'operazione (inserire un duplicato è considerato un fallimento poichè viene rigettato e restituisce `false`).
+- `add` permette di aggiungere un elemento al set; restituisce un `boolean` che rappresenta il risultato dell'operazione (inserire un duplicato è considerato un fallimento poiché viene rigettato e restituisce `false`).
 
 ### SortedSet
 

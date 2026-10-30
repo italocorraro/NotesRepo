@@ -2,7 +2,7 @@
 layout: ../../layouts/serious/LayoutAstro.astro
 title: 'LaTex Math Symbols'
 metaTitle: 'LaTex Math Symbols'
-description: 'Chat Sheet per simboli matematici in LaTex'
+description: 'Cheat Sheet per simboli matematici in LaTex'
 author: 'Italo Corraro'
 order: 3
 ---
@@ -207,6 +207,6 @@ order: 3
 
 | Simbolo | Codice |
 |---|---|
-| $\Join$ | `$\Join$` |
+| $\bowtie$ | `$\bowtie$` |
 | $\Join$ | `$\Join$` |
 | $\imath, \jmath, \ell$ | `\imath`, `\jmath`, `\ell` |

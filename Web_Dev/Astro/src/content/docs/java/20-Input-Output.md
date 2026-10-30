@@ -63,7 +63,7 @@ Da **Java 11** sono disponibili `Path.of(String, String...)` e `Path.of(URI)` co
 :::
 
 :::oss
-In tutti i casi è consigliabile usare sempre `/` come separatore, poichè, anche quando ci si trova in Windows (dove serve `\`), il percorso viene automaticamente corretto dal costruttore
+In tutti i casi è consigliabile usare sempre `/` come separatore, poiché, anche quando ci si trova in Windows (dove serve `\`), il percorso viene automaticamente corretto dal costruttore
 :::
 
 ### Metodi di Path

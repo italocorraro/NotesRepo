@@ -188,7 +188,7 @@ $$
 Chiamiamo **funzione di densità di probabilità marginale** di $X$ della coppia di variabili casuali congiuntamente continua $(X,Y)$ una funzione del tipo $f : \mathbb{R}\to[0,1]$ definita come
 $$
 \begin{aligned}
-f_X(a) &= \frac{\partial F_X(a)}{\partial a} 
+f_X(a) &= \frac{\partial F_X(a)}{\partial a}= 
 \\[12pts]
 &=
 \frac{\partial}{\partial{a}} \int_{-\infty}^{+\infty} \left(\int_{-\infty}^a f(x,y) \, dx \right) \, dy  =

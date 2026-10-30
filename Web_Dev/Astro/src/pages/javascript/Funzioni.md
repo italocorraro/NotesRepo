@@ -532,7 +532,7 @@ contatore();
 // ↪ 1
 ```
 
-poichè `contatore` mantiene il riferimento al contesto lessicale in cui era stato definito dove esisteva `counter`, la variabile `counter` rimane accessibile a `contatore` e non viene distrutta. \
+poiché `contatore` mantiene il riferimento al contesto lessicale in cui era stato definito dove esisteva `counter`, la variabile `counter` rimane accessibile a `contatore` e non viene distrutta. \
 Non abbiamo errore di riferimento!
 
 :::nb

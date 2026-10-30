@@ -114,18 +114,33 @@ export default function remarkClassify() {
       let el = 'aside';
       // role = 'note';
 
+      const freeKeys = [];
+      const attributes = {};
+      for (const [att, val] of Object.entries(node.attributes)) {
+        if (typeof val === 'string' && val.trim() === '') {
+          freeKeys.push(att.trim());
+        } else {
+          attributes[att] = val;
+        }
+      }
+      const singleKey = freeKeys.join(' ');
+
       for (const ins in inserti) {
         if (inserti[ins].alias.includes(cN)) {
           el = inserti[ins].element ?? el;
-          className = [inserti[ins].class, ...Object.keys(node.attributes)].join(' ');
+          className = [inserti[ins].class].join(' ');
           aria = inserti[ins].aria;
-          heading = inserti[ins].titolo;
+          heading = singleKey 
+          ? (singleKey[0] === singleKey[0].toLocaleUpperCase()
+        ? singleKey : `${inserti[ins].titolo.replaceAll(':','').trim()} ${singleKey}`
+        )
+          : inserti[ins].titolo;
           break;
         }
       }
 
       if (!className) {
-        const hastNode = h(el);
+        const hastNode = singleKey ? h(el, {"data-heading": singleKey}) : h(el);
         data.hName = hastNode.tagName;
         data.hProperties = hastNode.properties;
         return;
@@ -135,6 +150,7 @@ export default function remarkClassify() {
         class: `${insert} ${className}`,
         "aria-label": aria,
         "data-heading": heading,
+        "data-info": JSON.stringify(attributes, null, 2)
       });
 
       data.hName = hastNode.tagName;

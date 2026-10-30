@@ -106,7 +106,7 @@ mario.__proto__: Person.prototype
 /* | FINE della catena dei prototìpi dell'oggetto mario    | */
 ```
 
-Ogni qual volta viene chiamata una proprietà di un oggetto, JavaScript la cerca tra quelle dell'oggetto stesso, se non la trova lì, allora la cerca tra quelle del suo prototìpo e risale la catena dei prototìpi fino a trovare la proprietà chiamata oppure finchè non raggiunge `null`, in tal caso lancia un errore poichè la proprietà non è definita per l'oggetto.
+Ogni qual volta viene chiamata una proprietà di un oggetto, JavaScript la cerca tra quelle dell'oggetto stesso, se non la trova lì, allora la cerca tra quelle del suo prototìpo e risale la catena dei prototìpi fino a trovare la proprietà chiamata oppure finchè non raggiunge `null`, in tal caso lancia un errore poiché la proprietà non è definita per l'oggetto.
 
 =u=*Gli oggetti ereditano tutte le proprietà definite per i prototìpi presenti nella loro catena dei prototìpi*==
 

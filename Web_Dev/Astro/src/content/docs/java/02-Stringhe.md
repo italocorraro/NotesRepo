@@ -11,7 +11,7 @@ order: 2
 
 In Java, come negli altri linguaggi a oggetti, le stringhe sono istanze della classe `String`, sono, cioè, oggetti.
 
-A differenza delle classi standard, `String` è speciale poichè non usa un costruttore ma viene costruita tramite uno *string literal*, cioè, invece di scrivere `new String('l','o','r','e','m')` si scrive `"lorem"`.
+A differenza delle classi standard, `String` è speciale poiché non usa un costruttore ma viene costruita tramite uno *string literal*, cioè, invece di scrivere `new String('l','o','r','e','m')` si scrive `"lorem"`.
 
 ### Caratteri
 

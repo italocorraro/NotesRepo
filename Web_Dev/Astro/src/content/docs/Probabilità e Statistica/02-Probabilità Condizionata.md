@@ -7,7 +7,7 @@ author: 'Italo Corraro'
 order: 2
 ---
 
-:::def
+:::def{di Probabilità Condizionata}
 Dato uno spazio campione $S$, avente due eventi $A, B \in S$ con $P(B) \neq 0$, si dice **probabilità di $A$ condizionata da $B$**:
 
 $$ 
@@ -32,7 +32,7 @@ $$
 
 ## Eventi Indipendenti
 
-:::def
+:::def{di Due Eventi Indipendenti}
 Dato uno spazio campione $S$, avente due eventi $A, B \in S$, si dicono **indipendenti** se 
 
 $$
@@ -68,7 +68,7 @@ $$
 
 :::
 
-:::::def
+:::::def{Eventi Indipendenti}
 Dato uno spazio campione $S$, avente tre eventi $A, B, C \in S$, si dicono indipendenti se
 
 $$
@@ -79,7 +79,7 @@ P(A \cap C) = P(A) \, P(C) \\
 P(B \cap C) = P(B) \, P(C)
 \end{cases}
 $$
-:::nota
+:::nota{ sul Numero di Eventi}
 Per $n$ eventi, vanno considerate tutte le possibili intersezioni.
 :::
 :::::
@@ -109,7 +109,7 @@ La probabilità:
 $$
 \begin{aligned}
 P(A) &= P((A \cap B) \cup (A \cap B^C)) = \\
-& \, \downarrow \text{poichè }A\text{ e }B\text{ sono indipendenti} \\
+& \, \downarrow \text{poiché }A\text{ e }B\text{ sono indipendenti} \\
 &= P(A \cap B) + P(A \cap B^C) \\
 \end{aligned}
 $$
@@ -133,7 +133,7 @@ cioè, solo se uno dei due ha probabilità $0$.
 
 ## Partizione di uno Spazio Campione
 
-:::def
+:::def{Partizione di uno Spazio Campione}
 Sia dato uno spazio campione $S$, si dice **partizione** di $S$ un insieme di eventi $H_1, H_2, \ldots H_n \in S$ con $n \in \mathbb{N} \setminus \{0,1\}$ tali che
 - l'unione restituisce $S$: $$\ \ \ S = \displaystyle\bigcup_{k=1}^n H_k $$,
 - sono tutti disgiunti: $ H_i \cap H_j = \emptyset \ \forall i,j \in \mathbb{N} \text{ con } i \neq j $
@@ -143,7 +143,7 @@ In tal caso, gli eventi $H_k$ si dicono *ipotesi*.
 
 ### Teorema delle Probabilità Totali
 
-:::th
+:::th{delle Proprietà Totali}
 Dati uno spazio campione $S$ e una sua partizione in $n$ parti $\{H_1, H_2, \ldots H_n\}$ e un evento $E \in S$, allora
 
 $$

@@ -1,10 +1,9 @@
 ---
-title: 'TBD' 
-metaTitle: 'TBD'
+title: 'Modelli di Variabili Casuali Discrete' 
+metaTitle: 'Modelli di Variabili Casuali Discrete'
 description: ''
 author: 'Italo Corraro'
 order: 10
-hidden: true
 ---
 
 ### Variabili Casuali di Poisson
@@ -171,6 +170,7 @@ Applichiamo la funzione di massa della poissoniana:
 $$
 P(X<3) = P(X=0)+P(X=1)+P(X=2) = ... \simeq 12.4\%
 $$
+:::
 :::li
 > Supponendo l'indipendenza del numero di richieste di rimborso in giorni diversi, e considerando 1 settimana lavorativa di 5 giorni, qual è la probabilità che la prossima settimana arrivino 20 richieste?
 
@@ -214,15 +214,19 @@ $$
 ### Serie Geometrica
 
 $$
-\sum_{m=0}^{+\infty} \alpha^n = \frac1{1 -\alpha}
+\sum_{j=0}^{+\infty} \alpha^j = \frac1{1 -\alpha}
 $$
 
+Per definizione di variabile casuale, il valor medio è
+
 $$
+\begin{aligned}
 \sum_{k=1}^{+\infty} p(k) = \\
-= \sum_{k=1}^{+\infty} q^{k-1}p = 
-\\ =p \sum_{j=k-1=0}^{+\infty} q^j =\\
-= p \frac1{1-q} =\\
-= p \frac1{1-(1-p)} = \frac{p}p = 1
+&= \sum_{k=1}^{+\infty} q^{k-1}p =\\ 
+&=p \sum_{j=k-1=0}^{+\infty} q^j =\\
+&= p \frac1{1-q} =\\
+&= p \frac1{1-(1-p)} = \frac{p}p = 1
+\end{aligned}
 $$
 
 
@@ -246,3 +250,128 @@ $$
 :::nb
 Le variabili casuali geometriche *non sono riproducibili*, quindi la somma di due variabili casuali geometriche NON è una variabile casuale geometrica
 :::
+
+:::dim
+$$
+\begin{aligned}
+E[X] &= 
+\sum_{1}^{+\infty} x_k \, p(X_k) =\\
+&= \sum q^{k-1} p =\\
+&= p \sum_{k=0}^{+\infty} k q^{k-1} = \\
+&= p \sum_{k=0}^{+\infty} \frac{dq^k}{dq} = \\
+&= p (\frac {d\sum_{k=0}^{+\infty} q^k}{ dq}) =\\
+&= p \frac{d}{dq} (\frac1{1-q}) =\\ 
+&= p [- (1-q)^{-2}(-1)] = \\
+&= \frac{p}{(1-q)^2} = \frac{p}{(1-(1-p))^2} = \frac{p}{p^2} = \frac1p
+\end{aligned}
+
+$$
+:::
+
+:::dim 
+$$
+\begin{aligned}
+E[X^2] &= \sum_{k=1}^{+\infty} x^2_k\, p(x_k) =\\
+&= \sum_{k=1}^{+\infty} k^2 q^{k-1} p =\\
+&= p\,q(\sum_{k=1}^{+\infty} k^2 q^{k-2})=\\
+&= p\,q [\sum_{k=1}^{+\infty}(k^2 -k +k)q^{k-2}] = \\
+&= p\,q [\sum_{k=1}^{+\infty} (k^2 -k)q^{k-2} + \sum_{k=1}^{+\infty} kq^{k-2}] =\\
+&= p [q \sum_{k=0}^{+\infty}k(k-1)q^{k-2} + \sum_{k=0}^{+\infty} k q^{k-1}] =\\
+&= p [ q \sum_{k=0}^{+\infty} \frac{d^2 q^k}{dq^2} + \sum_{k=0}^{+\infty} \frac{dq^k}{dq}] =\\
+&= p[ q \frac{d^2}{dq^2} (\sum_{k=0}^{+\infty} q^k) + \frac{d}{dq} \sum_{k=0}^{+\infty} q^k]=\\
+&\downarrow
+\text{serie geometrica}\\
+&= p [q \frac{d^2}{dq^2} \frac1{1-q} q^k + \frac{d}{dq} \frac1{1-q}] = \\
+&= p [ q\{ -2 (1-q)^{-3} (-1) \} + \frac1{p^2} ] = \\
+&= p[ \frac{2q}{p^3} +\frac1{p^2} ] = \frac{2q}{p^2} + \frac1p 
+\end{aligned}
+$$
+:::
+
+:::dim
+$$
+\begin{aligned}
+Var(X) &= E[X^2] - E[X]^2 =\\
+&= \frac{2q}{p^2} + \frac1p - (\frac1p)^2 =\\
+&= \frac{2(1-p) + p -1 }{p^2} =\\
+&= \frac{1-p }{p^2} = \frac{q}{p^2}
+\end{aligned}
+$$
+:::
+
+
+## Variabile Casuale Binomiale Negativa
+
+> Ripeto un esperimento in maniera identica e indipendente fino ad osservare $n$ volte l'evento $E$; vi associamo una variabile casuale binomiale negativa che conta quanti esperimenti si devono effettuare per osservare tale evento $n$ volte
+
+:::def
+In un esperimento l'evento $E$ si osserva con probabilità $p$. Si ripete l'esperimento in maniera identica e indipendente fino ad osservare $E$ per $r$ volte con $r\in\mathbb{N}\setminus\{0\}$. Sia $X$ la variabile che rappresenta il numero di esperimenti che occorre svolgere per poter osservare $r$ volte (anche non-consecutive) e la chiamiamo **variabile binomiale negativa**:
+$$
+X\sim NB(r, \phi)
+$$
+con $p\in]0,1[$ e $r\in\mathbb{N}\setminus\{0\}$
+:::
+
+:::dim
+Sia $X\in\{r,r+1,\ldots ,+\infty\}$
+
+con $k=r,r+1,\ldots ,+\infty$
+
+sia 
+$$
+\begin{aligned}
+p(k) &= P(X=k)=\\
+&=P \left(
+    \substack{
+        \text{nelle prime }k-1\text{ prove,}\\ 
+        E\text{ si verifica }r-1\text{ volte } 
+    }
+    \cap
+    \substack{
+        \text{nell'ultima prova }\\
+        E \text{ si verifica}
+    }
+\right)  =\\
+&=P \left(\substack{
+    \text{nelle prime }k-1\text{ prove,}\\ 
+    E\text{ si verifica }r-1\text{ volte } 
+}\right)
+\cdot P \left(\substack{
+    E \text{ si verifica}\\
+    \text{nell'ultima prova}
+}\right) =\\
+
+
+&\,\downarrow\ \small\text{poiché gli esperimenti sono condotti in maniera identica:}\\
+
+&= \binom{k-1}{r-1}p^{r-1} q^{(k-1)(r-1)} 
+\cdot P \left(\substack{
+    E \text{ si verifica}\\
+    \text{nell'ultima prova}
+}\right) = \\
+&= \binom{k-1}{r-1} p^r q^{k-r} 
+\end{aligned}
+$$
+
+Sfruttiamo la definizione di $NB$:
+Se $X\sim NB(r,p)$ e $Y_1... Y_r \sim G(p)$
+tali per cui $X=\sum_{i=1}^{r}Y_i$, 
+
+allora 
+$$
+\begin{aligned}
+E[X] &= E\left[\sum Y_i\right] =\\
+&= \sum E[Y_i] =\\
+&= \sum \frac1p = \frac{r}{p}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+Var(X) &= Var(\sum_{i=1}^{r}Y_i) =\\
+&= \sum_{i=1}^{r} Var(Y_i) =\\
+&= \sum_{i=1}^{r} \frac{q}{p^2} = r\frac{q}{p^2}
+\end{aligned}
+$$
+:::
+

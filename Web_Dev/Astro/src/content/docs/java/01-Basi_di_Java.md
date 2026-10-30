@@ -56,7 +56,7 @@ char GG = Char.toUpperCase(gg);
 
 - **Librerie**: le librerie sono componenti statici *senza stato* interno, sono cioè, collezioni di funzioni per le quali non è necessario avere più copie
 
-- **Moduli**: i moduli come *singleton* sono componenti statici *con stato*; sono oggetti in unica copia (singleton) con uno stato unico globale che va' gestito: poichè il modulo *ricorda* le sue funzioni che sono state chiamate (si suppone che alterino lo stato in qualche modo), l'ordine in cui vengono chiamate è importante
+- **Moduli**: i moduli come *singleton* sono componenti statici *con stato*; sono oggetti in unica copia (singleton) con uno stato unico globale che va' gestito: poiché il modulo *ricorda* le sue funzioni che sono state chiamate (si suppone che alterino lo stato in qualche modo), l'ordine in cui vengono chiamate è importante
 
 - **Abstract Data Types**: i tipi di dato astratto (ADT) sono definiti prima e poi vengono implementate diverse funzioni per quel tipo, che sono le sole operazioni ammissibili per il tipo; il cliente può poi creare più variabili di quel tipo in base alla necessità
 
