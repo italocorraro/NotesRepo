@@ -24,7 +24,7 @@ Dato un esperimento con un numero $n$ di esiti finito (o, al più, numerabile), 
 
 ### Funzione di Massa di Probabilità
 
-:::def{Funzione di Massa di Probabilità di Variabile Casuale Discreta}
+:::def{Funzione di Massa per Variabile Casuale Discreta}
 Chiamiamo **funzione di massa di probabilità** $p(a)$ di una variabile casuale discreta $X$, una funzione di tipo 
 $p : \mathbb{R} \rightarrow [0,1] $ che *associa a ciascun valore che $X$ può assumere la probabilità che lo assuma*; definita come:
 $$
@@ -55,7 +55,7 @@ Tale funzione ha le seguenti proprietà:
 
 ### Funzione di Ripartizione di Probabilità
 
-:::def{Funzione di Ripartizione di Probabilità di Variabile Casuale Discreta}
+:::def{Funzione di Ripartizione per Variabile Casuale Discreta}
 Chiamiamo **funzione di ripartizione di probabilità $F_X(a)$** (anche detta di *distribuzione*) *di una variabile casuale discreta $X$*, una funzione di tipo 
 $F : \mathbb{R} \rightarrow [0,1] $ che *associa a un certo valore $a$ la probabilità che $X$ sia minore o uguale a quel valore*, cioè:
 $$
@@ -69,7 +69,7 @@ Tale funzione ha le seguenti proprietà:
 2. $\displaystyle\lim_{a \to - \infty} F(a) = P(X \leq - \infty) = 0$, cioè, la probabilità che $X$ assuma valori minori di $-\infty$ è $0$,
 4. $F(a) \leq F(b)$, cioè, $F_X(a)$ per $a,b \in \mathbb{R}$ con $a \leq b$, cioè $F$ è una funzione *non decrescente* (crescente non strettamente).
 
-:::dim{proprietà 4}
+:::dim
 Vogliamo dimostrare che $F(a)$ sia sempre crescente o al più non decrescente:
 
 sia $a, b \in \mathbb{R}$ con $a < b$, per cui
@@ -195,7 +195,7 @@ Non è possibile descrivere la distribuzione di probabilità di una variabile ca
 
 ### Funzione di Densità di Probabilità
 
-:::def{Funzione di Densità di Probabilità di Variabile Casuale Continua}
+:::def{Funzione di Densità per Variabile Casuale Continua}
 Chiamiamo **funzione di densità di probabilità** $f_X(x)$, associata a una variabile casuale continua $X$, una funzione $f : \mathbb{R} \to \mathbb{R}^+ \cup \{0\}$, che descrive la "densità" di probabilità di $X$ in ogni punto dello spazio campione ed è definita come
 
 $$
@@ -224,7 +224,7 @@ Questo perché la probabilità di ottenere con precisione infinita un valore spe
 
 Anche per una variabile casuale continua è possibile definire la funzione di ripartizione/distribuzione di probabilità:
 
-:::def{Funzione di Ripartizione di Probabilità di Variabile Casuale Continua}
+:::def{Funzione di Ripartizione per Variabile Casuale Continua}
 Chiamiamo **funzione di ripartizione di probabilità $F_X(a)$** (anche detta di *distribuzione*) *di una variabile casuale continua $X$*, una funzione di tipo 
 $F : \mathbb{R} \rightarrow [0,1] $ che associa a un certo valore $a$ la probabilità che $X$ sia minore o uguale a quel valore, cioè:
 $$

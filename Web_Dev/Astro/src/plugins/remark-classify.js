@@ -123,7 +123,7 @@ export default function remarkClassify() {
           attributes[att] = val;
         }
       }
-      const singleKey = freeKeys.join(' ');
+      const singleKey = attributes['title'] ?? freeKeys.join(' ');
 
       for (const ins in inserti) {
         if (inserti[ins].alias.includes(cN)) {

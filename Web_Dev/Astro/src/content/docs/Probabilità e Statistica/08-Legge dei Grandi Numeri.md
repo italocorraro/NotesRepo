@@ -65,41 +65,6 @@ $$
 In maniera simile si può dimostrare la stessa legge per il caso discreto.
 :::
 
-:::::::eg
-> Una fabbrica produce in una settimana un numero di pezzi rappresentato da una variabile casuale di media $50$.
-> 1. Cosa si può dire sulla probalilità che la produzione non sia inferiore a $75$ pezzi nella prossima settimana?
-> 2. Se si suppone che $Var(X)=25$, cosa possiamo dire della probabilità che la produzione sia compresa tra $40$ e $60$?
-
-Sia $X$ il numero di prezzi prodotti, espresso come variabile casuale tale per cui $E[X]=50$ e $Var(X)=25$  
-
-:::::ol
-:::li
-Per la diseguaglianza di Markov:
-$$
-P(X\geq75)\leq \frac{E[X]}{75}\\
-\Downarrow\\
-P(X\geq75) \leq \frac23
-$$
-
-Quindi, la probalilità che la produzione sia almeno $75$ pezzi è al massimo $\frac23$
-:::
-:::li
-Sfruttiamo la diseguaglianza di Čebyšëv:
-$$
-\begin{aligned}
-P(40 \leq X \leq 60) &= P(<!-- - 50 a tutti -->) \\
-&= P(-10 \leq X -50 \leq 10) =\\
-&= P(|X -50|\leq 10) = \\
-&= 1 - P(|X - 50| \gt 10) approx \\ 
-& approx 1 - \underbrace{P(|X - 50| \geq10)}_{\leq Var(X)/100} \\
-&\Downarrow\\
-1 - P(|X - 50| \geq10) &\geq 1 - Var(X)/100 = 1 - 25/100 = 3/4
-\end{aligned}
-$$
-:::
-:::::
-:::::::
-
 ## Disuguaglianza di Čebyšëv
 
 Direttamente dal risultato precedente possiamo ricavare un'altra uguaglianza:
@@ -156,84 +121,220 @@ Questa fornisce stime utili in casi in cui $Var(X) \leq 1$;
 in questo caso, oltre al valor medio, occorre conoscere anche la varianza di $X$.
 :::
 
-## Legge dei Grandi Numeri
+:::::::eg
+> Una fabbrica produce in una settimana un numero di pezzi rappresentato da una variabile casuale di media $50$.
+> 1. Cosa si può dire sulla probalilità che la produzione non sia inferiore a $75$ pezzi nella prossima settimana?
+> 2. Se si suppone che $Var(X)=25$, cosa possiamo dire della probabilità che la produzione sia compresa tra $40$ e $60$?
 
-### Media Campionaria
+Sia $X$ il numero di prezzi prodotti, espresso come variabile casuale tale per cui $E[X]=50$ e $Var(X)=25$  
+
+:::::ol
+:::li
+Per la diseguaglianza di Markov:
+$$
+\begin{array}{rcc}
+\displaystyle
+P(X\geq75) &\leq &\displaystyle\frac{E[X]}{75}\\
+&\Downarrow\\
+P(X\geq75) &\leq &\displaystyle\frac23
+\end{array}
+$$
+
+Quindi, la probalilità che la produzione sia almeno $75$ pezzi è al massimo $\frac23$
+:::
+:::li
+Vogliamo trovare $P(40 \leq X \leq 50)$ sfruttando la disuguaglianza di Čebyšëv, per cui riconduciamola a una forma del tipo $P(|X - E[X]|\geq \lambda)$:
+$$
+\begin{aligned}
+P(40 \leq X \leq 60) 
+&= 
+P(-10 \leq X - \underbrace{50}_{E[X]} \leq 10) =\\
+&= 
+P(|X - 50| \leq 10) =\\
+&= 
+1 - P(|X - 50| \gt 10) \simeq \\ 
+&\simeq 
+1 - P(|X - 50| \geq 10)\\
+\end{aligned}
+$$
+
+Per sappiamo che 
+$$
+P(|X - 50| \geq 10) \leq \frac{Var(X)}{10^2} = \frac{25}{100} = \frac14
+$$
+quindi
+$$
+\begin{array}{cc}
+P(|X - 50| \geq 10) 
+&\leq 
+&\displaystyle\frac14\\
+
+&\Downarrow\\
+
+\underbrace{1 - P(|X - 50| \geq 10)} 
+&\geq  
+&1 - \displaystyle\frac14\\
+
+\downarrow&\Downarrow\\
+
+P(40 \leq X \leq 60) 
+&\geq 
+&\displaystyle\frac34
+
+\end{array}
+$$
+:::
+:::::
+:::::::
+
+
+## Media Campionaria
 
 :::def{di Media Campionaria}
-La media campionaria è una media aritmetica dei valori di un campione
+Immaginiamo di ripetere $n$ volte uno stesso esperimento e di associare a ogni ripetizione una variabile casuale $X_i$ che ne rappresenta l'esito.
+
+Se l'esperimento viene ripetuto in maniera identica e indipendente, otteniamo $n$ variabili casuali **[indipendenti] e [identicamente distribuite]** (*i.i.d.*). 
+
+[indipendenti]: ../coppie-di-variabili-casuali/#variabili-casuali-indipendenti "Variabili Casuali Indipendenti"
+[identicamente distribuite]: ../coppie-di-variabili-casuali/#variabili-casuali-identicamente-distribuite "Variabili Casuali Identicamente Distribuite"
+
+Indichiamo con $\mu$ la loro media ($E[X_i]=\mu$) e con $\sigma^2$ la loro varianza comuni ($Var(X_i)=\sigma^2$).
+
+Chiamiamo **media campionaria** la media aritmetica dei valori raccolti per il campione:
+$$
+\overline{X} = \frac{\displaystyle\sum_{i=1}^{n}X_i}{n}
+$$
+dove $n$ è la dimensione del campione, cioè il numero di valori osservati.
 :::
 
+:::nota
+Prima di raccogliere i dati, *$\overline{X}$ è una funzione di variabili casuali ed è quindi anch'essa una variabile casuale*: ripetendo l'intero campionamento otterremmo ogni volta una media leggermente diversa. 
+
+Una volta raccolti i dati, otteniamo invece un singolo numero $\overline{x}$ (una realizzazione di $\overline{X}$, cioè, come per ogni altra variabile casuale, $\overline{X}\in \{\overline{x}_1,\overline{x}_2\ldots\}$).
+:::
+
+### Proprietà della Media Campionaria
+
+Se le $X_i$ sono i.i.d., allora la media campionaria gode delle seguenti proprietà:
+:::::::ul
+:::::li
+La media campionaria ha valore atteso pari a $\mu$, uguale a quello dei singoli valori. 
+
+In media, cioè su molti campionamenti, non sovrastima né sottostima $\mu$.
+$$
+E[X_i] = \mu = E[\overline{X}]
+$$
+:::oss{title="sull'Uso della Media Campionaria"}
+La media campionaria è utile per *stimare la media $\mu$ della popolazione*, che di solito è sconosciuta: non potendo osservare tutta la popolazione, ne osserviamo una parte e ne ricaviamo la media.
+:::
+:::dim
+$$
+\begin{aligned}
+E[\overline{X}] &= \frac{E\left[\sum_{i=1}^{n}X_i\right]}{n} = \\ 
+&= \frac1{n}E\left[\sum_{i=1}^{n}X_i\right] =\\ 
+&= \frac1n \sum_{i=1}^{n}E[X_i] =\\
+&= \frac1n \sum_{i=1}^{n} \mu = \frac{\cancel{n} \mu}{\cancel{n}} = \mu
+\end{aligned}
+$$
+:::
+:::::
+:::::li
+La media campionaria ha varianza pari alla varianza comune dei valori divisa per la dimensione del campione:
+$$
+Var(\overline{X}) = \frac{\sigma^2}{n} = \frac{Var(X_i)}{n}
+$$
+
+:::dim
+$$
+\begin{aligned}
+Var(\overline{X}) 
+&= Var \left(\frac{\sum_{i=1}^{n}X_i}{n} \right) =\\
+&\,\downarrow
+\footnotesize
+\begin{array}{l}
+Var(\alpha X + \beta)= \alpha^2 Var(X) \text{;}\\
+\text{portiamo fuori la costante}
+\end{array}
+\\
+&= \frac1{n^2} Var \left(\sum_{i=1}^{n}X_i \right) =\\
+&\,\downarrow
+\footnotesize
+\text{per la varianza di una somma}
+\\
+&= \frac1{n^2} 
+\left[
+    \sum_{i=1}^{n}Var(X_i) 
+    + \underset{\text{con }i\neq j}
+    {\sum_{i=1}^{n}\sum_{j=1}^{n}}  
+    \underbrace{Cov(X_i,X_j)}
+    _{\substack{0\\
+    \text{perché indipendenti}}}
+\right]  = \\
+&= \frac1{n^2} \sum_{i=1}^{n}Var(X_i) =\\
+&= \frac1{n^2} \sum_{i=1}^{n}\sigma^2 = \frac{\cancel{n}\sigma^2}{n^{\cancel{2}}} = \frac{\sigma^2}n
+\end{aligned}
+$$
+:::
+
+Da questo risultato, osserviamo che più dati si raccolgono ($n$ cresce), più è piccola la varianza:
+$$
+\lim_{n\to\infty}Var(\overline{X}) = 0
+$$
+La deviazione standard di $\overline{X}$(detta **errore standard**), che descrive l'oscillazione di $\overline{X}$ attorno alla sua media, è pari a $\sigma/\sqrt{n}$, dove $\sigma$, ricordiamo, è la deviazione standard comune dei valori del campione.
+
+:::oss
+Per via del legame quadratico, per dimezzare l'incertezza serve un campione *quattro volte* più grande.
+:::
+:::::
+:::::::
+
+## Legge dei Grandi Numeri
 ### Enunciato Debole
 
 :::th{Legge Debole dei Grandi Numeri}
-Data una successione di variabili casuali $X_1, X_2 \ldots X_n$, tutte indipendenti e identicamente distribuite per cui si ha $\mu =E[X_k]$ e $\sigma^2 = Var(X_k)$, allora, preso un  $\epsilon > 0$ (piccolo a piacere),
+Data una successione di variabili casuali $X_1, X_2 \ldots X_n$, tutte [indipendenti] e [identicamente distribuite] per cui si ha $\mu =E[X_k]$ e $\sigma^2 = Var(X_k)$, allora, preso un  $\epsilon > 0$ (piccolo a piacere),
 
 $$
-\lim_{n\to\infty}P(\bold| 
-\frac{\sum_{i=1}^{n}X_i}{n}-\mu
+\lim_{n\to\infty}P(\bold|
+\overline{X}-\mu
 \bold| \geq \epsilon) = 0
 $$
 
 ovvero: *al crescere indefinito delle prove, la media campionaria congiunge in probabilità alla media teorica*.
 :::
+
+Detto più semplicemente: *la media campionaria approssima la media della popolazione con precisione crescente con le dimensioni del campione*.
+
 :::dim
-Definiamo $\overline{X} = \frac{\sum_{}^{}X_i}{n}$
-
-E[\overlineX]= E[''] = 
-= \frac1n 
-
-
-<!-- riportato da altra parte -->
-
-Sia $\overline{X} = \frac{\sum_{i=1}^{n}X_i}{n}$ la media aritmetica delle misure; anch'esso è una variabile casuale, con le seguenti proprietà:
-:::::ul
-:::li
+Date le ipotesi fatte sulla successione di variabili casuali (sono i.i.d.), possiamo dire che $E[\overline{X}]=\mu$, per cui:
 $$
-\begin{aligned}
-E[\overline{X}] &= \frac{E[\sum_{i=1}^{n}X_i]}{n} = \\ 
-&= \frac1{n}E[\sum_{i=1}^{n}X_i] =\\ 
-&= \frac1n \sum_{i=1}^{n}E[X_i] =\\
-&= \frac1n \sum_{i=1}^{n} \mu = \frac{n \mu}{n} = \mu
-\end{aligned}
-
+P(|\overline{X}-\mu|\geq\epsilon) = P(|\overline{X}-E[\overline{X}]|\geq\epsilon) 
 $$
-:::li
+Applicando la diseguaglianza di Čebyšëv:
 $$
-\begin{aligned}
-Var(\overline{X}) 
-&= Var \left(\frac{\sum_{i=1}^{n}X_i}{n} \right) =\\
-&= \frac1n^2 Var \left(\sum_{i=1}^{n}X_i \right) =\\
-&= \frac1n^2 
-\left[
-    \sum_{i=1}^{n}Var(X_i) 
-+ \underset{\text{con }i\neq j}{\sum_{i=1}^{n}\sum_{j=1}^{n}}  \underbrace{Cov(X_i,X_j)}_{=0\text{ per indipendenza}}
-\right]  = \\
-&= \frac1n^2 \sum_{i=1}^{n}Var(X_i) =\\
-&= \frac1n^2 \sum_{}^{}\sigma^2 = \frac{n\sigma^2}{n^2} = \frac{\sigma^2}n
-\end{aligned}
-$$
-:::::
-
-<!-- deduplica -->
-
-Ci concentriamo su 
-$P(|\overline{X}-\mu|\geq\epsilon) = P(|\overline{X}-E[\overline{X}]|\geq\epsilon) \leq \frac{Var(\overline{X})}\epsilon = \frac{\sigma^2}{n\epsilon}
-$
-$$
-\lim_{n\to\infty} P(|\overline{X}-\mu|\geq\epsilon)\leq \lim\frac{\sigma^2}{n\epsilon}=0
+P(|\overline{X}-E[\overline{X}]|\geq\epsilon) 
+\leq \frac{Var(\overline{X})}{\epsilon^2}
 $$
 
-Ma per gli assiomi di Kolmmfdj $P(|\overline{X}-\mu|\geq\epsilon)$ non può essere negativo; sarà quindi sicuramente nullo; concludiamo che 
-
+Portando al limite per $n\to\infty$, possiamo sfruttare la [proprietà relativa alla varianza della media campionaria](#proprietà-della-media-campionaria):
 $$
-\lim_{n\to\infty}P(|\overline{X}-\mu|\geq \epsilon) = 
-\lim_{n\to\infty}P\left(\left|\frac{\sum_{i=1}^{n}X_i}{n}-\mu \right|\geq \epsilon\right) = 0
+\frac{Var(\overline{X})}{\epsilon^2} 
+\underset{n\to\infty}{\longrightarrow} 0
+$$
+Risulta dunque che
+$$
+P(|\overline{X}-E[\overline{X}]|\geq\epsilon) 
+\leq 0 \tag{per $n\to\infty$} 
+$$
+Per il primo assioma di Kolmogorov, lsa probabilità non può essere negativa, quindi, l'unica possibilità è che sia nulla:
+$$
+P(|\overline{X}-E[\overline{X}]|\geq\epsilon) 
+\underset{n\to\infty}{\longrightarrow} 0
 $$
 :::
 
 
-### Corollario di Bernoulli
+### Corollario di Bernoulli (WIP)
 
 :::th{Corollario di Bernoulli}
 Al crescere indefinito del numero di prove, la frequenza relativa di un evento converge in probabilità alla probabilità teorica dell'evento.
@@ -249,7 +350,7 @@ $$
 :::
 
 :::dim
-Sia $X_i tilde B(P(E)) $ una variabile casuale di Bernoulli associata all'iesimo esperimento tale che 
+Sia $X_i \sim B(P(E)) $ una variabile casuale di Bernoulli associata all'iesimo esperimento tale che 
 $$
 X_i = 
 \begin{cases}

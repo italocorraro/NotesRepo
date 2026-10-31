@@ -1,6 +1,6 @@
 ---
-title: 'PLACEHOLDER'
-metaTitle: 'PLACEHOLDER'
+title: 'Modelli di Variabili Casuali Continue'
+metaTitle: 'Modelli di Variabili Casuali Continue'
 description: ''
 author: 'Italo Corraro'
 order: 11

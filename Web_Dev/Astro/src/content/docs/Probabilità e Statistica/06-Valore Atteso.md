@@ -15,10 +15,10 @@ E[X] =
 \begin{cases}
 \displaystyle
 \sum_{i=1}^n x_i\, p(x_i) 
-& \text{per } X\text{ discreta} \\[12pt]
+& \text{per $X$ discreta} \\[12pt]
 \displaystyle
 \int_{-\infty}^{+\infty} x\,f(x) \, dx 
-& \text{per } X \text{ continua}
+& \text{per $X$ continua}
 \end{cases}
 $$
 :::

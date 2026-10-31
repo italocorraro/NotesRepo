@@ -9,13 +9,13 @@ order: 5
 
 ## Coppia di Variabili Casuali Discrete
 
-:::def
+:::def{title="di Coppia di Variabili Casuali Discrete"}
 Due variabili casuali discrete $X$ e $Y$ con $X \in \{x_1, x_2, \ldots x_n\}$ e $Y \in \{y_1, y_2, \ldots y_m\}$ associate ad uno stesso esperimento, sono dette **coppia di variabili casuali discrete** $(X, Y)$.
 :::
 
 ### Funzione di Massa di Probabilità Congiunta
 
-:::def
+:::def{title="Funzione di Massa di Probabilità Congiunta"}
 Definiamo **funzione di massa di probabilità congiunta** della coppia di variabili casuali discrete $(X,Y)$, una funzione del tipo $p : \mathbb{R}^2 \to [0,1]$, che associa ad ogni combinazione dei loro valori la probabilità che formino quella combinazione:
 
 $$
@@ -29,7 +29,7 @@ Proprietà:
 
 ### Funzione di Massa Marginale
 
-:::def
+:::def{title="Funzione di Massa di Probabilità Marginale"}
 Definiamo **funzione di massa di probabilità marginale** di $X$ della coppia di variabili casuali discrete $(X,Y)$, una funzione di tipo $p_X : \mathbb{R} \to [0,1]$, che associa ad ogni valore assunto da $X$ la somma delle probabilità di tutte le combinazioni della coppia in cui $X$ assume tale valore:
 $$
 p_X(a) = P(X=a) = \sum_{j=1}^m p(a,y_j)
@@ -66,7 +66,7 @@ Y\X | 1 |2 | 3
 
 ### Funzione di Ripartizione di Probabilità Congiunta
 
-:::def
+:::def{title="Funzione di Ripartizione di Probabilità Congiunta"}
 Chiamiamo **funzione di ripartizione di probabilità congiunta** *della coppia di variabili casuali discrete $(X,Y)$* una funzione di tipo $F : \mathbb{R}^2 \to [0,1]$, definita come
 $$
 F(a,b) = P(X \leq a, Y \leq b) 
@@ -81,7 +81,7 @@ Proprietà:
 
 ### Funzione di Ripartizione Marginale
 
-:::def
+:::def{title="Funzione di Ripartizione di Probabilità Marginale"}
 Chiamiamo **funzione di ripartizione di probabilità marginale** di $X$ della coppia di variabili casuali discrete $(X,Y)$ una funzione di tipo $F : \mathbb{R} \to [0,1]$, definita come
 $$
 F_X(a) = P(X \leq a) = P(X \leq a, Y \leq +\infty) = F(a,+\infty)
@@ -95,7 +95,7 @@ $$
 
 ## Coppia di Variabili Casuali Congiuntamente Continue
 
-:::def
+:::def{di Coppia di Variabili Casuali Congiuntamente Continue}
 Due variabili casuali continue $X$ e $Y$, si dicono **congiuntamente continue** se ad esse è associata una funzione di tipo $f : \mathbb{R}^2 \to \mathbb{R}^+ \cup \{0\}$ tale che $\forall \mathcal{D} \subset \mathbb{R}^2$ si ha
 
 $$
@@ -111,7 +111,7 @@ Proprietà:
 
 ### Funzione di Ripartizione Congiunta
 
-:::def
+:::def{title="Funzione di Ripartizione di Probabilità Congiunta"}
 Chiamiamo **funzione di ripartizione di probabilità congiunta** *della coppia di variabili casuali congiuntamente continue $(X,Y)$* una funzione di tipo $F : \mathbb{R}^2 \to [0,1]$ definita come 
 $$
 F(a,b) = P(X\leq a, Y\leq b) = \int_{-\infty}^a \left(\int_{-\infty}^b f(x,y) \, dx \right) \, dy 
@@ -159,7 +159,7 @@ $$
 
 ### Funzioni di Ripartizione di Probabilità Marginale
 
-:::def
+:::def{title="Funzione di Ripartizione di Probabilità Marginale"}
 Chiamiamo **funzione di ripartizione di probabilità marginale** di $X$ della coppia di variabili casuali congiuntamente continue $(X,Y)$ una funzione di tipo $F : \mathbb{R} \to [0,1]$, definita come
 
 $$
@@ -184,7 +184,7 @@ $$
 
 ### Funzione di Densità di Probabilità Marginale
 
-:::def
+:::def{title="Funzione di Densità di Probabilità Marginale"}
 Chiamiamo **funzione di densità di probabilità marginale** di $X$ della coppia di variabili casuali congiuntamente continua $(X,Y)$ una funzione del tipo $f : \mathbb{R}\to[0,1]$ definita come
 $$
 \begin{aligned}
@@ -206,9 +206,9 @@ f_Y(b) &= \frac{\partial F_Y(b)}{\partial b} =\\[12pts]
 $$
 :::
 
-## Coppia di Variabili Casuali Indipendenti
+## Variabili Casuali Indipendenti
 
-:::def
+:::def{di Variabili Casuali Indipendenti}
 Due variabili casuali $X$,$Y$ si dicono indipendenti se $\forall \mathcal{A}, \mathcal{B} \subset \mathbb{R}$, la probabilità della loro intersezione è uguale al prodotto delle loro probabilità:
 $$
 P( X \in \mathcal{A}, Y \in \mathcal{B}) = P(X \in \mathcal{A})P(Y \in \mathcal{B})
@@ -218,7 +218,7 @@ $$
 La definizione enunciata è di difficile applicazione pratica
 :::
 
-:::th
+:::th{di indipendenza delle Variabili Casuali}
 *Condizione necessaria e sufficiente affinchè due variabili casuali $X$ e $Y$ siano indipendenti* è che 
 1. $F(a,b) = F_X(a)F_Y(b) \ \forall a,b \in \mathbb{R}$
 
@@ -278,6 +278,14 @@ se lo fossero dovrebbe essere $p(x_i,y_j) = p_Y(x_i)p_Y(y_j) $
 
 ma troviamo $p(2,3) = 0$ e $p_X(2)p_Y(3) = 1/3 * 1/27 \neq 0$
 :::
+
+## Variabili Casuali Identicamente Distribuite
+
+:::def{di Variabili Casuali Identicamente Distribuite}
+Due variabili casuali si dicono **identicamente distribuite** se condividono la stessa distribuzione di probabilità, cioè se hanno la stessa funzione di ripartizione (distribuzione) di probabilità.
+:::
+
+Come conseguenza di questa uguaglianza, le variabili casuali identicamente distribuite avranno uguale [valore atteso](../valore-atteso) e [varianza](../varianza-e-covarianza/#varianza).
 
 ## Vettore di Variabili Casuali
 

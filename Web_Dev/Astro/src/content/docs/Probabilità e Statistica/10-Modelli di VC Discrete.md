@@ -6,7 +6,239 @@ author: 'Italo Corraro'
 order: 10
 ---
 
-### Variabili Casuali di Poisson
+
+## Variabile Casuale di Bernoulli
+
+Si scrive $X \sim Be (p)$ cioè X si comporta come una bernulliana di parametro p:
+
+$$
+X \in \{0,1\}\\
+
+p(1) = p, p(0) = 1-p = q \\
+p \in [0,1], q \in [0,1]\\
+\phi = q + e^t p, E[X^n]= p , n\geq 1
+\\
+Var(X) = p - p^2 = pq
+$$
+
+## Variabile Casuale Binomiale
+
+Si scrive $X \sim B(n,p)$ cioè $X$ si comporta come una variabile casuale binomiale di parametri $n$ e $p$, dove $n \in \mathbb{N}\setminus\{0\}$ e $p \in [0,1]$
+
+$X$ rappresenta il numero di volte in cui si osserva un evento $E$ di probabilità $p$ in $n$ prove ripetute in maniera identica e indipendente.
+
+Per $X \in \{0,1,2,\ldots\}$  
+se $k = 1, 2, 3, \ldots$
+
+$$
+P(X=k) = p(k) = \binom{n}{k} p^k q^{n-k}
+$$
+
+:::eg
+Se $k =n $ allora
+
+$$
+p(n) = \underbrace{p \cdot p \ldots p}_{n\text{ volte}} = p^n
+$$
+
+Se $k =0 $ allora
+
+$$
+p(0) = \underbrace{q \cdot q \ldots q}_{n\text{ volte}} = q^n
+$$
+
+Per altri K, abbiamo
+
+$$
+p(k) = \underbrace{p \cdot p \ldots p}_{k\text{ volte}} \cdot \underbrace{q \cdot q \ldots q}_{n-k\text{ volte}} = p^k q^{n-k}
+$$
+
+Modello il problema come una combinazione semplice, per cui:
+
+$$
+
+$$
+
+---
+$$
+E[X] \\
+
+X = \sum_{j=1}^{n} Y_j \text{ con } T_j \sim Be(p)
+$$
+
+$$
+E[X] = E \left[\sum_{j=1}^{n} Y_j \right] = \sum_{j=1}^{n}E[Y_j]
+= \sum_{j=1}^{n}p = np
+$$
+
+La varianza:
+
+$$
+\begin{aligned}
+Var(X) &= Var(\sum_{j=1}^{n} Y_j) =\\
+&=\sum_{j=1}^{n} Var(Y_j) =\\
+&=\sum_{j=1}^{n}pq =\\
+&= npq
+\end{aligned}
+$$
+
+$$
+\phi_X(t) = \phi_{Y_1}(t) + \phi_{Y_2}(t) + \ldots \phi_{Y_n}(t)
+$$
+ ---
+$$
+\phi_{Y_j}(t) = \underbrace{(q + e^t p)(q + e^t p)\dots (q + e^t p)}_{n\text{ volte}} = (q + e^tp)^n
+$$
+:::
+
+### Proprietà di Riproducibilità
+
+Se $X \sim B(n,p)$ e $Y \sim B(m,p)$ con $p\in [0,1]$ e $n,m \in \mathbb{N}\setminus\{0\}$ e $X$ e $Y$ sono indipendenti
+
+allora
+
+$$
+X+Y \sim B(n+m,p)
+$$
+
+### Es
+
+Siano X e Y variabili casuali discrete
+$X \in {0,1}$
+$Y \in {0,1}$
+
+inoltre X \sim Be(1/2)
+P(Y=1|X=0) = \epsilon,
+P(Y=0|X=1) = 2\epsilon
+per \epsilon \in ]0, 1/2[
+
+1. determinare funzioni di massa di probabilità congiunta e marginale
+2. E[X], E[Y], Cov(X,Y)
+3. \exists \epsilon : Cov(X,Y) = 0 e per tale valore X e Y sono indipendenti?
+
+
+X\Y | 0 | 1
+--- | ---| ---
+ 0 | $\frac12 - \frac\epsilon2$ | $\epsilon$
+ 1 | $\epsilon/2$ | $\frac12 - \epsilon$
+ fm  |1/2 | 1/2
+
+- $p(0,0) + p(0,1) = p_X(0) = 1/2$
+- $p(0,0) = 1/2-  \epsilon/2$
+
+Quindi $Y \sim Be(1/2 - \epsilon/2)$   
+$E[X] =1/2, E[Y] = 1/2 - \epsilon/2$
+$$
+\begin{aligned}
+Cov(X,Y) &= E[XY] - E[X]E[Y] = \\
+&= <!--  --> =\\
+&= \frac12 - \epsilon - (\frac12 \cdot (\frac12 - \frac\epsilon2)) = \\
+&= \frac12 - \epsilon - \frac14 + \frac34 = \\
+&= \frac14 - \frac34\epsilon
+\end{aligned}
+$$
+
+$Cov(X,Y) = 0 \Leftrightarrow \epsilon = 1/3$
+
+X\Y | 0 | 1 | fm
+--- | ---| --- | ---
+ 0 | $\frac13$ | $\frac13$ | $\frac23$
+ 1 | $\frac16$ | $\frac16$ | $\frac13$
+ fm  | $\frac12$ | $\frac12$
+
+Verifichiamo che p(a,b) = p_X(a)p_Y(b) \ \forall a,b \in \mathbb{R}
+
+sono quindi indipendenti
+
+### Es 2
+
+> Data una scatola che contiene 10 palline verdi e 2 palline blu.
+> 1. Si estraggono 3 palline senza reimmissione,    
+> sia Y il numero di palline blu estratte;   
+> si vuole conoscere E[Y], Var(Y), P_Y(a)
+> 2. Si estrae 1 pallina con reimmissione per 3 volte,   
+> sia X in numero di palline blu estratte;   
+> si vuole conoscere E[X], Var(X), P_X(a)
+
+:::::::ol
+:::::li
+L'esperimento muta il numero di palline ad ogni tentativo, quindi tra loro le estrazioni non sono né indipendenti né identiche, 
+
+:::nota
+Non è possibile usare il modello delle variabili casuali binomiali.
+:::
+
+Senza reimmissione possiamo avere
+$$
+Y \in \{0,1,2\}
+$$
+$$
+P(Y=0) = P_Y(0) = \frac{10}{12} \cdot \frac9{11} \cdot \frac8{10} \\[12pt]
+
+P(Y=1) = 
+\frac2{12}\frac{10}{11}\frac9{10} 
++ \frac{10}{12}\frac2{11}\frac{9}{10}
++ \frac{10}{12}\frac9{11}\frac{2}{10}
+=
+\\= 3\cdot\frac{2 \cdot 9 \cdot 10}{12 11 10}= \frac9{22}
+
+$$
+
+$$
+P_Y(2) = 1 - P_Y(0) - P_Y(1) = \frac1{22}\\
+E[Y] = \frac{11}{22}\\
+E[Y^2] = \frac{13}{22}\\
+Var(Y) = \frac{13}{22} - (\frac{11}{22})^2\\
+$$
+
+:::::
+:::::li
+Si ripete per 3 volte un esperimento in maniera identica e indipendente, quindi
+$$
+X \in \{0,1,2,3\}\\
+\downarrow\\
+X \sim B(3,\frac16)\\
+\Downarrow\\
+\begin{aligned}
+p_X(k) = \binom{3}k (\frac16)^k  (\frac56)^{3-k} \\
+E[X] = np = \frac12 \\
+Var(X) = npq = \frac5{12}
+\\
+P(X\geq2) = P(X=2 \cup X=3) = P(X=2) + P(X=3) =\\
+= \binom32 (\frac16)^2 \frac56 + \binom33 (\frac16)^3 (\frac56)^0 = \frac2{27}
+\end{aligned}
+$$
+:::::
+:::::::
+
+
+## Variabile Casuale di Poisson
+
+Data una variabile casuale discreta $X\in \mathbb{N}$ con P_X(k) = \frac{\lambda^k e^{-\lambda}} se k \in \mathbb{N} e \lambda > 0
+e si scrive X \sim Po(\lambda)
+
+$$
+\phi_X(t) = E[e^{tX}] = \sum_{k=0}^{+\infty} e^{tk} \frac{\lambda^k e ^{-\lambda}}{k!} =\\
+
+= e^{-\lambda} \sum_{}^{}\frac{(\lambda e^t)^k}{k!} =\\
+usa il memo\\
+e^{-\lambda}\, e^{\lambda e^t} = e^{\lambda(e^t-1)}
+$$
+
+:::memo
+La serie $\sum_{k=0}^{+\infty}\frac{\alpha^k}{k!} = e^\alpha$ se $\alpha > 0$
+:::
+
+
+Quindi 
+
+$$
+E[X] =\left.\frac{d}{dt} e^{\lambda(e^t-1)}\right|_{t=0} 
+= \left.e^{\lambda(e^t-1)}\lambda e^t\right|_{t=0} =
+\lambda
+$$
+
+--- 
 
 <!-- missing context
 

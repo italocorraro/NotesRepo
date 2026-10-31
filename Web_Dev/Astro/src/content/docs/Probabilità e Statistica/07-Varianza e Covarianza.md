@@ -39,7 +39,7 @@ $$
 Var(X) = 
 \begin{cases}
 \displaystyle
-\sum_{k=1}^{n} (x_k-\mu)^2 P(x_k)
+\sum_{k=1}^{n} (x_k-\mu)^2 p(x_k)
 & \text{se } X \text{ è discreta}\\[12pt]
 \displaystyle
 \int_{-\infty}^{+\infty} (x - \mu)^2 f(x) \, dx
@@ -65,7 +65,7 @@ $Var(X) \geq 0 \ \forall X \text{ variabile casuale}$, cioè, *la varianza è se
 :::::::
 :::::::li{Legame con il Valore Atteso}
 $Var(X) = E[(X-\mu)^2] = E[X^2] - E[X]^2$
-:::dim{della proprietà 2}
+:::dim
 Partiamo dalla definizione di varianza e svolgiamo il quadrato:
 $$
 \begin{aligned}
@@ -103,7 +103,7 @@ $$
 :::::::li{Varianza e Costanti}
 $Var(\alpha X + \beta)= \alpha^2 Var(X)$ con $\alpha,\beta \in \mathbb{R} $
 
-:::::dim{della proprietà 3}
+:::::dim
 Sia $Y = \alpha X + \beta$
 quindi
 1. $E[Y] = \alpha E[X] + \beta = \mu_Y$
@@ -130,6 +130,11 @@ $$
 :::oss
 Se $\alpha = 0$, allora $Var(\beta) = 0$, cioè, *la varianza di una costante è sempre nulla*
 :::
+:::::::
+:::::::li{Varianza della Somma}
+$Var(X + Y) = Var(X) + Var(Y) + 2 Cov(X,Y)$;
+
+questa proprietà è legata alla covarianza (vedi [qui](#varianza-di-una-sommatoria))
 :::::::
 :::::::::
 
@@ -222,7 +227,20 @@ In parole semplici: *se due variabili casuali sono indipendenti, allora la loro 
 Questo perché se due variabili casuali sono indipendenti allora $E[XY] = E[X]E[Y]$, da cui segue che $Cov(X,Y) = 0$.
 ::::::::
 
-::::::::li{Varianza della Somma}
+::::::::li
+Siano $X_1,X_2 \ldots,X_n$ e $Y_1,Y_2\ldots,Y_m$ variabili casuali, allora
+$$
+Cov \left( \sum_{i=1}^{n}X_i, \sum_{j=1}^{m}Y_j \right) =
+\sum_{i=1}^{n} \sum_{j=1}^{m} Cov(X_i,Y_j)
+$$
+::::::::
+::::::::li
+Date $X$ e $Y$ variabili casuali e $\alpha \in \mathbb{R}$, si dimostra che $Cov(\alpha X,Y) = Cov(X, \alpha Y) = \alpha Cov(X,Y)$
+::::::::
+::::::::::
+
+### Varianza di una Sommatoria
+
 $Var(X + Y) = Var(X) + Var(Y) + 2 Cov(X,Y)$
 :::oss
 *La varianza non è commutativa rispetto alla somma*, infatti compare il terzo temine $2 Cov(X,Y)$
@@ -238,9 +256,26 @@ $$
 Var(X + Y) &= Var(Z) = E[(Z - \mu_Z)^2] =\\
 &= E[(X+Y - (\mu_X + \mu_Y))^2] =\\
 &= E[((X - \mu_X) + (Y - \mu_Y))^2] =\\
-&= E[(X - \mu_X)^2 + (Y - \mu_Y)^2 + 2(X - \mu_X)(Y - \mu_Y)] = \\
-&= E[(X - \mu_X)^2] +E[(Y - \mu_Y)^2] + E[2(X - \mu_X)(Y - \mu_Y)] = \\
-&= Var(X) + Var(Y) + 2 Cov(X,Y)
+&= E[(X - \mu_X)^2 + (Y - \mu_Y)^2 + 2(X - \mu_X)(Y - \mu_Y)] = \\[3pt]
+
+&\negmedspace
+\begin{array}{lcccccl}
+= 
+& \underbrace{E[(X - \mu_X)^2]} 
+&\mkern{-2em}+ \mkern{-2em}
+& \underbrace{E[(Y - \mu_Y)^2]} 
+& \mkern{-2em} + \mkern{-2em}
+& \underbrace{E[2(X - \mu_X)(Y - \mu_Y)]} 
+&= \\[10pt]
+
+= 
+&Var(X) 
+&\mkern{-2em}+\mkern{-2em}
+&Var(Y) 
+&\mkern{-2em} + \mkern{-2em}
+&2 Cov(X,Y)
+\end{array}
+
 \end{aligned}
 $$
 :::
@@ -254,18 +289,6 @@ Var \left(\sum_{i=1}^n X_i \right)
 = \sum_{i=1}^n Var(X_i) + \underset{\text{con }i \neq j}{\sum_{i=1}^n \sum_{j=1}^n} Cov(X_iX_j)
 $$
 :::
-::::::::
-::::::::li
-Siano $X_1,X_2 \ldots,X_n$ e $Y_1,Y_2\ldots,Y_m$ variabili casuali, allora
-$$
-Cov \left( \sum_{i=1}^{n}X_i, \sum_{j=1}^{m}Y_j \right) =
-\sum_{i=1}^{n} \sum_{j=1}^{m} Cov(X_i,Y_j)
-$$
-::::::::
-::::::::li
-Date $X$ e $Y$ variabili casuali e $\alpha \in \mathbb{R}$, si dimostra che $Cov(\alpha X,Y) = Cov(X, \alpha Y) = \alpha Cov(X,Y)$
-::::::::
-::::::::::
 
 
 ### Covarianza Nulla
@@ -461,32 +484,30 @@ $$
 Tramite la disuguaglianza di Cauchy-Schwarz si dimostra che che $Corr(X,Y) \in [-1,1]$.
 :::
 
+### Segno della Correlazione 
+
+- Due variabili si dicono *direttamente correlate* se il loro coefficiente è strettamente positivo ($Corr(X,Y) >0$)
+- Due variabili si dicono *inversamente correlate* se il loro coefficiente è strettamente negativo ($Corr(X,Y) <0$)
+- Due variabili si dicono *incorrelate* se il loro coefficiente è nullo ($Corr(X,Y) = 0$)
+
+Il segno del coefficiente indica il segno della eventuale relazione lineare.
+
 ### Intensità di Correlazione 
 
-Il coefficiente di correlazione esprime con quanta precisione una relazione lineare potrebbe approssimare l'andamento delle due variabili l'una rispetto all'altra:
-
+Il coefficiente di correlazione esprime con quanta precisione una relazione lineare potrebbe approssimare l'andamento delle due variabili l'una rispetto all'altra.
 
 Quanto bene questo legame approssima una relazione lineare è dato dal valore del coefficiente:
 - se $|Corr(X,Y)| \leq 0.3$ allora si parla di *correlazione debole*,
 - se $0.3 < |Corr(X,Y)| \leq 0.7$ allora si parla di *correlazione moderata*,
 - se $|Corr(X,Y)| > 0.7$ allora si parla di *correlazione forte*.
 
-Agli estremi $-1$ e $1$ si parla di *correlazione perfetta*, *negativa* o *positiva* rispettivamente, cioè tra le due variabili è possibile formulare una relazione di dipendenza lineare.
+Quanto più il coefficiente si avvicina all'unità, tanto più è forte la correlazione.
 
-### Segno della Correlazione 
-
-- Due variabili si dicono *direttamente correlate* se il loro coefficiente è strettamente positivo ($Corr(X,Y) >0$)
-- Due variabili si dicono *inversamente correlate* se il loro coefficiente è strettamente negativo ($Corr(X,Y) <0$)
-- Due variabili si dicono *incorrelate* se il loro coefficiente è nullo ($Corr(X,Y) >0$)
-
-Il segno del coefficiente indica il segno della eventuale relazione lineare.
+Agli estremi $-1$ e $1$ si parla di *correlazione perfetta*, *negativa* o *positiva* rispettivamente, cioè tra le due variabili è possibile formulare una vera relazione di dipendenza lineare.
 
 
 
-
-
-
-## Esempi
+## Esempi (WIP)
 
 ### 1
 
