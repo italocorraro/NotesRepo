@@ -41,7 +41,7 @@ k = 1,2, \ldots n
 0 & 
 \small
 \begin{array}{l}
-\text{se } a=x_k \text{ con} \\ 
+\text{se } a\neq x_k \text{ con} \\ 
 k = 1,2, \ldots n
 \end{array}
 

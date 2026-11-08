@@ -170,7 +170,7 @@ $$
 frequenza relativa di E = \frac{n_o}{N}
 $$
 
-SE $N>>1$ allora $P(E) \simeq \frac{n_{\mathcal{D}}}{N}$
+SE $N\gg1$ allora $P(E) \simeq \frac{n_{\mathcal{D}}}{N}$
 
 $$
 \frac{Area(\mathcal{D})}{Area(\mathcal{R})} \simeq \frac{n_o}{N}\\
@@ -218,7 +218,7 @@ $$
 P(\text{uno spillo interseca una retta}) \simeq \frac{n_I}{N}
 $$
 
-per $N>>1$
+per $N\gg1$
 
 Quindi 
 $$
@@ -230,3 +230,471 @@ $$
 :::nb
 Questa stima di $\pi$ è comunque possibile solo partendo dalla sua consocenza perché $\theta\in[0,\pi]$
 :::
+
+
+## Variabili Casuali Esponenziali
+
+:::def
+$X \sim E(\lambda)$ con $\lambda \in \mathbb{R}$
+
+$$
+f(x)=\begin{cases}
+\lambda e^{-\lambda x} & \text{se $x\geq 0$}\\
+0 & altrove
+\end{cases}
+$$
+:::
+
+### Funzioni Caratteristiche
+
+$$
+F(a)=P(X\leq a) = \int_{-\infty}^{a}f(x\, dx)=
+\begin{cases}
+ \int_{-\infty}^{0} 0 + \int_{0}^{a} \lambda ecc.. & \text{se $a\geq0$}\\
+ \int_{}^{} 0 & \text{se }a<0
+\end{cases}
+
+\\
+
+=
+\begin{cases}
+1-e^{-\lambda a} &\text{se }a\geq0\\
+0 & altrimenti
+\end{cases} 
+$$
+
+$$
+\phi(t) = E[e^{tX}] = \int_{-\infty}^{+\infty} e^{tX} f(x)\,dx =\\
+ =\int_{0}^{+\infty} e^{tx} \lambda e^{-\lambda x} \, dx =\\
+ = \lambda\int_{0}^{+\infty} e^{-(\lambda - t)x} \, dx =\\
+ \begin{cases}
+ \lambda [- \frac{e^{-(\lambda - t)x}}{\lambda-t}]_0^{+\infty} & \lambda - t > 0
+\\
+diverge & \text{se }\lambda - t \leq 0
+ \end{cases}
+ =\\
+
+ = \frac{\lambda}{\lambda-t} \text{ per }t < \lambda
+$$
+
+$$
+\begin{aligned}
+E[X] =
+&\,\downarrow
+\footnotesize
+\text{deriviamo in 0 la f. generatrice dei momenti:}
+\\
+= \frac1\lambda
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+E[X^2] = \\
+&\,\downarrow
+\footnotesize
+\text{deriviamo in 0 la f. generatrice dei momenti 2 volte:}
+\\
+&= \frac{2}{\lambda^2}
+\end{aligned}
+$$
+
+Allora 
+$$
+Var(X) = \frac1{\lambda^2}
+$$
+
+:::nota
+Non vale la riproducibilità, infatti 
+
+> se $X \sim E(\lambda_1)$ e $Y \sim E(\lambda_2)$ indipendenti e $\lambda\in \mathbb{R}^+$
+
+la somma:
+$$
+\phi_{X+Y} = \phi_X \phi_Y -=\\
+\frac{\lambda_1\,\lambda_2}{(\lambda_1-t)(\lambda_2-t)}
+$$
+non è la forma della funzione genratrice dei momenti di una variabile casuale esponenziale
+:::
+
+:::oss
+Le variabili casuali esponenziali vengono principalmente usate per descrivere grandezze legate al tempo.
+:::
+
+### Proprietà
+
+::::::::::ol
+::::::::li
+se $c\in\mathbb{R}^+$ allora 
+$$
+cX \sim E\left(\frac\lambda{c}\right)
+$$
+
+:::::dim
+$$
+\begin{aligned}
+\phi_{cX} 
+&= E[e^{tcX}] =\\
+&=\phi_X (tc) = \\
+&= \frac\lambda{\lambda - tc} =\\
+&= \frac{\frac\lambda{c}}{\frac\lambda{c} - t} \\
+&\,\Downarrow \\
+cX &\sim E\left(\frac\lambda{c}\right)
+\end{aligned}
+$$
+:::::
+::::::::
+::::::::li
+Dispositivi indipendenti posti in serie con durata di funzionamento di tipo esponenziale, generano un sistema descritto come v.c. esponenziale con parametro la sommatoria dei parametri dei singoli dispositivi.
+
+Siano $D_1\ldots D_n$ dispositivi in serie, dove $X_k$ indica la durata di funzionamento di $D_k$, allora $X_k \sim E[\lambda_k]$ con $\lambda_k \in \mathbb{R}^+$ e $k$ da 1 a n.
+
+Sia $Y$ la durata di funzionamento del sistema, cioè il minimo tra gli $X_k$.
+
+Studiamo la sua funzione di ripartzione:
+$$
+\begin{aligned}
+F_Y(a) &= P(Y\leq a) =\\
+&= P(\min(X_1,X_2\ldots,X_n)\leq a) =\\
+&\,\downarrow
+\footnotesize
+\text{nel caso complementare}
+\\
+&=  1 - P(\min(X_1,X_2\ldots,X_n)> a)=\\
+
+&=  1 - P(X_1 > a \cap X_2 > a \ldots) = \\
+&\,\downarrow
+\footnotesize
+\text{per l'indipendenza}
+\\
+&= 1 - P(\prod_{i=1}^n (X_i > a))\\
+&= 1- 
+\begin{cases}
+e^{\lambda_1 a} e^{\lambda_2 a} \ldots e^{\lambda_n a} 
+& \text{se } a\geq0\\
+\underbrace{1 \cdot 1 \cdot 1 \ldots \cdot 1}_{n \text{ volte}} & \text{se }a < 0
+\end{cases} =\\
+
+&\,\downarrow
+\footnotesize
+\text{portiamo dentro l'}1
+\\
+&=
+\begin{cases}
+1 - e^{\sum_{k=1}^{n}\lambda_k a}
+& \text{se } a\geq 0\\
+0 & \text{se }a < 0
+\end{cases}
+\\
+&\,\Downarrow\\
+Y &\sim E\left(\sum_{k=1}^{n}\lambda_k\right)
+\end{aligned}
+$$
+
+
+::::::::
+::::::::li
+Dispositivi in parallelo indipendenti con durata di funzionamento esponenziale.
+
+Consideriamo le ipotesi:
+- $X_k$ durata di funzionamento di $D_k$
+- $X_k \sim E[\lambda_k]$
+- $\lambda_k \in \mathbb{R}^+$
+- $X_k$ tutti indipendeti tra loro
+
+Sia $Z$ la durata di funzionamento del sistema, quindi:
+$$
+Z = \max(X_1,X_2\ldots, X_n)
+$$
+
+Quindi
+$$
+\begin{aligned}
+F_Z(a) = P(Z \leq a) 
+&= P(\max(X_1,X_2\ldots, X_n)\leq a) =\\
+&= P(X_1 \leq a \cap X_2 \leq a  \ldots \cap X_n \leq a) =\\
+&= P(\bigcap_{k=1}^n X_k \leq a) =\\
+&\,\downarrow
+\footnotesize
+\text{per l'indipendenza}
+\\
+&= \prod_{k=1}^{n}  P(X_k \leq a) =\\
+&= \prod_{k=1}^{n} F_{X_k}(a) =\\
+&= \begin{cases}
+\displaystyle
+\prod_{k=1}^{n} (1-e^{-\lambda xa}) 
+& \text{se }a\geq0\\[12pt]
+0 & \text{se } a <0
+\end{cases}
+\end{aligned}
+
+$$
+::::::::
+::::::::li
+:::::th{Assegnazione di Memoria}
+$$
+{\def\arraystretch{2}
+\begin{aligned}
+P(X > t+s | X > t) 
+&= \frac{P(X>t+s \cap X>t)}{P(X>t)} =\\
+&= \frac{P(>t+s)}{P(X>t)} =\\
+&= \frac{e^{-\lambda(t+s)}}{e^{-\lambda t}} = \\
+&= e^{-\lambda s} = P(X>s)
+\end{aligned}}
+$$
+:::::
+
+:::eg
+Una lampadina usata 6 mesi, secondo questa proprietà, che duri *altri* 6 mesi è la stessa che da nuova duri 6 mesi
+:::
+
+:::nb
+Questa proprietà non è significativa per tempi lunghi.
+:::
+::::::::
+::::::::::
+
+
+## Variabile Casuale Gaussiana
+
+Una **variabile casuale gaussiana**, anche detta *normale*, è caratterizzata da 2 parametri:
+- $\mu \in \mathbb{R}$
+- $\sigma \in \mathbb{R}^+$
+
+$X \sim N(\mu,\sigma^2)$ è una varaibile casuale continua con funzione di densità:
+$$
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{\frac{-(x-\mu)^2}{2\sigma^2}}
+$$
+
+:::nota
+Questa variabile casuale era originariamente usata per approssimare la variabile casuale binomiale,<!--  ma, tramite il teorema del limite centrale -->
+:::
+
+$$
+\lim_{n\to\infty} \sum X \text{i.i.d.} \simeq N(\mu,\sigma^2)
+$$
+
+:::oss
+Ha grande rilevanza per l'inferenza statistica in quanto approssimazione.
+:::
+
+
+:::oss
+Con $\sigma <0$ la funzione di densità risulterebbe negativa, per questo tale caso non è ammesso.
+:::
+
+La funzione di densità della gaussiana ha la forma di una campana di Gauss, le code della gaussiana sono tendenzialmente trascurate ai limiti.
+
+Il picco della gaussiana si trova essere a $x=\mu$
+
+:::dim
+$$
+\frac{d f(x)}{dx} = 0
+\begin{aligned}
+\frac1{\sigma\sqrt{2\pi}} e ^{\ldots} (-2 (x -\mu))  \Rightarrow x= \mu
+\end{aligned}
+$$
+:::
+
+
+Al variare di $\mu$ per $\sigma$ costante, la curva trasla senza modificare il proprio andamento.
+
+Al varaire di $\sigma$ per $\mu$ costante, il picco resta su $\mu$ ma 
+- per $\sigma$ crescenti la curva si stringe e il picco si alza
+- per $\sigma$ decrescenti, la curva si appiattisce e il picco scende
+
+:::nota
+I termini non sono scelti a caso:
+- $\sigma$ rappresenta la deviazione standard,
+- $\mu$ rappresenta il valore atteso
+:::
+
+Calcoliamo la funzione generatrice dei momenti:
+
+$$
+\begin{aligned}
+\phi(t) 
+&= \int_{-\infty}^{+\infty} e^{tx} f(x)\, dx =\\
+&=
+\frac{1}{\sigma \sqrt{2\pi}} \int_{-\infty}^{+\infty} e^{tx} e^{\frac{-(x-\mu)^2}{2\sigma^2}} \, dx
+=\\
+&\,\left\downarrow
+\footnotesize
+{\def\arraystretch{1.6}
+\begin{array}{l}
+\text{sia }z= \frac{x-\mu}\sigma \text{ per cui }dx = \sigma dz\\
+tx - \frac{(x-\mu)^2}{2\sigma^2} =\\
+= t (z\sigma +\mu) - \frac{z^2}2 =\\
+= tz\sigma + t\mu - \frac{z^2}2 =\\
+= \frac12 (z +t\sigma)^2 -\frac12 t^2 \sigma^2 - t\mu =\\
+= - t\mu - \frac12 t^2 \sigma^2 -\frac12 (z + t\sigma)^2 =\\
+
+\,\downarrow
+\footnotesize
+\text{sia } y= z + t\sigma \text{ per cui }dz = dy
+\\
+=t\mu- \frac12 t^2 \sigma^2 -\frac12 (y)^2 
+\end{array}}\right.
+\\
+&= 
+\frac{e^{t\mu + \frac12 t^2 \sigma^2}}
+{\cancel{\sigma} \sqrt{2\pi}} \cancel{\sigma}
+\int_{-\infty}^{+\infty} e^{-\frac{y^2}2}\, dy =\\
+&\,\downarrow
+\footnotesize
+\text{calcolo dell'integrale tramite il suo quadrato}
+\\
+&=  
+\frac{e^{t\mu + \frac12 t^2 \sigma^2}}
+{ \bcancel{\sqrt{2\pi}}} 
+\bcancel{\sqrt{2\pi}} = \\
+&= e^{t\mu + \frac12 t^2 \sigma^2}
+\end{aligned}
+$$
+
+
+Ricaviamo i momenti:
+- $E[X] = \ldots = \mu$
+- $Var(X) = \ldots = \sigma^2 $
+
+### Proprietà
+
+::::::::::ul
+::::::::li
+Riproducibilità: $X$ e $Y$ gaussiane indipendenti
+
+$$
+\phi_{X+Y} = \phi_X \, \phi_Y = e^{t(\mu_x + \mu_y) + \frac{t^2}2 (\sigma_x^2 + \sigma_y^2)}
+$$
+::::::::
+::::::::li
+Una trasformazione lineare di una gaussiana restituisce una gaussiana.
+
+Immaginiamo di avere $\alpha,\beta\in\mathbb{R}$ con $\alpha \neq 0$ e sia $X\sim N(\mu,\sigma^2)$ e $Y = \alpha X + \beta$
+$$
+\begin{aligned}
+\phi_Y &= E[e^{t(\alpha X + \beta)}] = E[e^{t\beta} e^{t\alpha X}] =\\
+&= e^{t\beta} E[e^{(t\alpha)X}] =\\
+&= e^{t\beta} \phi_X(t\alpha)=\\
+&= e^{t\beta} e^{t\alpha\mu + \frac12 t^2 \alpha^2 \sigma^2} =\\
+&= e^{t\beta + t\alpha\mu + \frac12 t^2 \alpha^2 \sigma^2} =\\
+&= e^{t(\beta + \alpha\mu) + \frac12 t^2 \alpha^2 \sigma^2} =\\
+&\,\Downarrow\\
+Y &\sim N(\alpha\mu + \beta, \alpha^2 \sigma^2)
+\end{aligned}
+$$
+::::::::
+::::::::::
+
+
+
+$$
+F(a) = P(X\leq a) = \int_{-\infty}^{a} f(x)\,dx =\\
+= 
+$$
+
+Questo integrale converge, ma non è possibile risolverlo.
+
+Introduciamo la *variabile casuale normale standard* : $Z\sim N(0,1)$ per cui $F_z(a) =P(Z\leq a) $ è fornita sotto forma di tabella
+
+se $X\sim N(\mu,\sigma^2)$, allora $F_X(a) = P(X-\mu \leq a -\mu) = P(\frac{X-\mu}{\sigma})$
+
+$$
+E[\frac{X -\mu}{\sigma}] = \frac1\sigma (E[X] -\mu) = 0\\
+Var(\frac{X-\mu}{\sigma}) = \ldots = 1
+$$
+
+Troviamo che $\frac{X-\mu}\sigma$ è una normale standard in quanto $\frac{X-\mu}\sigma = Z \sim N(0,1)$
+
+
+:::::::eg
+
+> Le precipitazioni annuali a Los Angeles hanno distribuzione normale con media di $12.08$ pollici e $\sigma=3.1$ pollici.
+>
+> Si assume che le precipitazioni di anni successivi siani indipendenti.
+>
+> 1. Determinare la probabilità che le precipitazioni dei prossimi 2 anni superino complessivamente 25 pollici.
+> 2. Determinare la probabilità che le precipitazioni del 2027 superino quelle del 2028 per più di 3 pollici.
+
+Siano $X_1$ le precipitazioni del 2027 e $X_2$ del 2028, che sappiamo essere: $X \sim N(12.08, 3.1^2)$ 
+
+:::::ol
+:::li
+$$
+\begin{aligned}
+P(X_1 + X_2 > 25) =\\
+&\,\downarrow
+\footnotesize
+\text{per la riproducibilità}
+\\
+&= 
+\end{aligned}
+$$ 
+:::
+:::li
+$$
+\begin{aligned}
+P(X_1 > X_2 +3) = 
+\int_{-\infty}^{+\infty} 
+\left(
+    \int_{x_2+3}^{+\infty} 
+    f(x_1,x_2) \, dx_1 
+\right)\, dx_2 =\\
+= 
+\int_{-\infty}^{+\infty} (
+    \int_{x_2+3}^{+\infty} 
+    f_{x_1}(x_1)f_{x_2}(x_2) \, dx_1 
+    )\, dx_2 =\\
+=
+\int_{-\infty}^{+\infty} 
+f_{x_2}(x_2) \left(
+    \int_{x_2+3}^{+\infty} 
+    f_{x_1}(x_1) \, dx_1 
+\right)\, dx_2 =\\
+=
+\end{aligned}
+$$
+Questa strada non è conveniente: l'integrale di $f_{x_1}$ è difficile da determinare; scegliamo un'altra strada:
+$$
+\begin{aligned}
+P(X_1 > X_2 +3) 
+&= 
+P(X_1 - X_2 > 3) =\\
+&\,\downarrow
+\footnotesize
+\begin{array}{l}
+\text{per la prima proprietà delle gaussiane,}
+\\ \text{consideriamo $X_2$: }\\
+\text{questa è una trasformazione lineare di $X_1$}\\
+Y = -X_2 \sim \mathcal{N}(-12.08, (3.1)^2)
+\end{array}
+\\
+&= P(X_1 + Y> 3) =\\
+&\,\downarrow
+\footnotesize
+\begin{array}{l}
+\text{Riconduciamo a una forma in cui}\\
+\text{possiamo usare la riproducibilità:}\\
+X_1 \sim \mathcal{N}(12.08, (3.1)^2)\\
+T = X_1 - Y \sim \mathcal{N}(0, 2(3.1)^2)
+\end{array}\\
+&= P(T>3) =\\
+&= 
+P \left(
+    \frac{T-0}{\sqrt{2(3.1)^2}} >
+    \frac{3-0}{\sqrt{2(3.1)^2}} 
+\right) =\\
+&\,\downarrow
+\footnotesize
+\text{sfruttando le tavole}
+\\
+&=
+P(Z > 0.68)
+
+
+\end{aligned}
+$$
+:::
+:::::
+:::::::
+

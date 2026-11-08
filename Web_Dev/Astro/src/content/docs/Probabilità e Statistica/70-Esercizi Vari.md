@@ -315,3 +315,5 @@ F(a) = P(X\leq a) = \int_{-\infty}^{a}f(x)\,dx =\\
 1 & sea>1
 \end{cases}
 $$
+
+

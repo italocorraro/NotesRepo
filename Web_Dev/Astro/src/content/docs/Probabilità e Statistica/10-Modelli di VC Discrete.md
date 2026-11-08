@@ -9,159 +9,402 @@ order: 10
 
 ## Variabile Casuale di Bernoulli
 
-Si scrive $X \sim Be (p)$ cioè X si comporta come una bernulliana di parametro p:
+:::def{Variabile Casuale di Beroulli}
+Chiamiamo **variabile casuale di Bernoulli** una variabile casuale discreta che può assumere solo i due valori $0$ e $1$, detti anche *fallimento* e *successo*.
+
+Si scrive $X \sim \mathcal{Be} (p)$ cioè $X$ si comporta come una bernulliana di parametro $p \in [0,1]$:
 
 $$
-X \in \{0,1\}\\
-
-p(1) = p, p(0) = 1-p = q \\
-p \in [0,1], q \in [0,1]\\
-\phi = q + e^t p, E[X^n]= p , n\geq 1
-\\
-Var(X) = p - p^2 = pq
+X =
+\begin{cases}
+1 & \text{successo}\\
+0 & \text{fallimento}
+\end{cases}
 $$
+con
+- $P(X=1) = p$
+- $P(X=0) = q=1-p $
+
+cioè, la sua funzione di massa di probabilità è 
+$$
+P(X=a)=
+p(a) = 
+\begin{cases}
+p &\text{se }a = 1\\
+q &\text{se }a=0\\
+0 &\text{altrimenti}
+\end{cases}
+$$
+:::
+
+### Parametri Caratteristici
+
+:::::::ul
+:::::li
+La **funzione generatrice dei momenti** di una bernulliana è $\phi_X(t) = q + p\,e^t$.
+:::dim
+$$
+\begin{aligned}
+
+\phi_X(t) &=
+\sum_{i=1}^{n} e^{tx_i}p(x_i) 
+=\\
+
+&= e^{t \cdot 1} \cdot p 
++ e^{t \cdot 0} \cdot q 
+=\\
+&=
+q + e^t  p
+
+\end{aligned}
+$$
+:::
+:::::
+:::::li
+i **momenti semplici** sono $E[X^n]= p$, con $n\in\mathbb{N}\setminus\{0\}$, quindi il valore atteso è $p$,
+:::::
+:::::li
+la **varianza** è $Var(X) = p - p^2 = pq$.
+:::::
+:::::::
 
 ## Variabile Casuale Binomiale
 
-Si scrive $X \sim B(n,p)$ cioè $X$ si comporta come una variabile casuale binomiale di parametri $n$ e $p$, dove $n \in \mathbb{N}\setminus\{0\}$ e $p \in [0,1]$
+:::def{Variabile Casuale Binomiale}
+A una serie di $n$ ripetizioni di un esperimento, effettuate in maniera identica e indipendente, in cui un certo evento $E$ si verifica (*successo*) in una prova con probabilità $P(E)=p$, associamo la variabile casuale discreta $X$ che rappresenta il numero di successi della ripetizione; tale variabile è detta **variabile casuale binomiale**.
 
-$X$ rappresenta il numero di volte in cui si osserva un evento $E$ di probabilità $p$ in $n$ prove ripetute in maniera identica e indipendente.
-
-Per $X \in \{0,1,2,\ldots\}$  
-se $k = 1, 2, 3, \ldots$
+Alternativamente, possiamo dire che a una successione di $n$ bernoulliane ($X_1,X_2,\ldots$) tutte con lo stesso parametro $p$ (probabilità di successo di una prova) associamo una variabile casuale binomiale che descrive il numero di successi della successione.
 
 $$
-P(X=k) = p(k) = \binom{n}{k} p^k q^{n-k}
+X = X_1 + X_2 + \ldots +X_n
+\Rightarrow 0\leq X \leq n
 $$
 
-:::eg
+Si scrive $X \sim \mathcal{B}(n,p)$, cioè $X$ si comporta come una variabile casuale binomiale di parametri $n$ e $p$, con $n \in \mathbb{N}\setminus\{0\}$ numero di prove effettuate e $p \in [0,1]$ la probabilità di successo di una prova.
+
+$$
+X = 
+\sum_{j=1}^{n} (    Y_j ) 
+\ \ \text{con }X \sim \mathcal{B}(n,p)
+\text{ e }Y_j \sim \mathcal{Be}(p)
+$$
+
+La sua funzione di massa di probabilità è 
+
+$$
+P(X=k)=
+p(k) = 
+\begin{cases}
+\displaystyle
+\binom{n}{k} p^k q^{n-k} &\text{se } k \in [1,n]\subset\mathbb{N}
+\\[8pt]
+0 &\text{altrimenti}
+\end{cases}
+$$
+:::
+
+:::::::eg
+:::::ul
+:::li
+
 Se $k =n $ allora
 
 $$
 p(n) = \underbrace{p \cdot p \ldots p}_{n\text{ volte}} = p^n
 $$
-
+:::
+:::li
 Se $k =0 $ allora
 
 $$
 p(0) = \underbrace{q \cdot q \ldots q}_{n\text{ volte}} = q^n
 $$
-
-Per altri K, abbiamo
+:::
+:::li
+Per altri $k$, abbiamo
 
 $$
 p(k) = \underbrace{p \cdot p \ldots p}_{k\text{ volte}} \cdot \underbrace{q \cdot q \ldots q}_{n-k\text{ volte}} = p^k q^{n-k}
 $$
 
-Modello il problema come una combinazione semplice, per cui:
+:::
+:::::
+:::::::
 
-$$
+### Parametri Caratteristici
 
-$$
+:::::::ul
+:::::li
+il *valore atteso* è 
+$\displaystyle
+E[X]=n\,p
+$
 
----
-$$
-E[X] \\
-
-X = \sum_{j=1}^{n} Y_j \text{ con } T_j \sim Be(p)
-$$
-
-$$
-E[X] = E \left[\sum_{j=1}^{n} Y_j \right] = \sum_{j=1}^{n}E[Y_j]
-= \sum_{j=1}^{n}p = np
-$$
-
-La varianza:
-
+:::dim
 $$
 \begin{aligned}
-Var(X) &= Var(\sum_{j=1}^{n} Y_j) =\\
-&=\sum_{j=1}^{n} Var(Y_j) =\\
-&=\sum_{j=1}^{n}pq =\\
-&= npq
+E[X] 
+&= E \left[\sum_{j=1}^{n} Y_j \right] =\\
+&= \sum_{j=1}^{n}E[Y_j] =\\
+&\,\downarrow
+\footnotesize
+\text{dato che $Y_j$ è una bernoulliana}
+\\
+&= \sum_{j=1}^{n}p =\\
+&= n\,p
 \end{aligned}
 $$
+:::
+:::::
+:::::li
+La *varianza* è 
+$\displaystyle
+Var(X) = n\,p\,q
+$
 
+:::dim
 $$
-\phi_X(t) = \phi_{Y_1}(t) + \phi_{Y_2}(t) + \ldots \phi_{Y_n}(t)
-$$
- ---
-$$
-\phi_{Y_j}(t) = \underbrace{(q + e^t p)(q + e^t p)\dots (q + e^t p)}_{n\text{ volte}} = (q + e^tp)^n
+\begin{aligned}
+Var(X) &= Var \left(
+    \sum_{j=1}^{n} Y_j
+\right) =\\
+&=\sum_{j=1}^{n} Var(Y_j) =\\
+&\,\downarrow
+\footnotesize
+\text{dato che $Y_j$ è una bernoulliana}
+\\
+&=\sum_{j=1}^{n}p\,q =\\
+&= n\,p\,q
+\end{aligned}
 $$
 :::
+:::::
+:::::li
+La *funzione generatrice dei momenti* è 
+$\displaystyle
+\phi_X(t) = (q + p\,e^t)^n
+$
+
+:::dim
+$$
+\begin{aligned}
+\phi_X(t) 
+&= \phi_{Y_1}(t) 
++ \phi_{Y_2}(t) 
++ \ldots 
++ \phi_{Y_n}(t) =\\
+&\,\downarrow
+\footnotesize
+\text{dato che $Y_j$ è una bernoulliana}
+\\
+&= \underbrace{
+    (q + e^t p)\,(q + e^t p)\ldots (q + e^t p)}_{n\text{ volte}} =\\
+&= (q + e^tp)^n
+
+\end{aligned}
+$$
+:::
+:::::
+:::::::
 
 ### Proprietà di Riproducibilità
 
-Se $X \sim B(n,p)$ e $Y \sim B(m,p)$ con $p\in [0,1]$ e $n,m \in \mathbb{N}\setminus\{0\}$ e $X$ e $Y$ sono indipendenti
-
-allora
+Dati $X \sim \mathcal{B}(n,p)$ e $Y \sim \mathcal{B}(m,p)$ due variabili casuali binomiali indipendenti con $p\in [0,1]$ e $n,m \in \mathbb{N}\setminus\{0\}$, allora
 
 $$
-X+Y \sim B(n+m,p)
+X+Y \sim \mathcal{B}(n+m,p)
 $$
 
-### Es
+### Esempi
 
-Siano X e Y variabili casuali discrete
-$X \in {0,1}$
-$Y \in {0,1}$
+:::::::::::eg
+> Siano date $X$ e $Y$ due variabili casuali discrete
+> - $X \in \{0,1\}$
+> - $Y \in \{0,1\}$
+> 
+> inoltre $X \sim \mathcal{Be}(1/2)$
+> - $P(Y=1|X=0) = p(1,0) = \epsilon$,
+> - $P(Y=0|X=1) = p(0,1) = 2\epsilon$
+> per $\epsilon \in ]0, 1/2[$
+> 
+> 1. determinare funzioni di massa di probabilità congiunta e marginale
+> 2. determinare $E[X]$, $E[Y]$ e $Cov(X,Y)$
+> 3. determinare $\epsilon$ tale che $Cov(X,Y) = 0$; per tale valore $X$ e $Y$ sono indipendenti?
 
-inoltre X \sim Be(1/2)
-P(Y=1|X=0) = \epsilon,
-P(Y=0|X=1) = 2\epsilon
-per \epsilon \in ]0, 1/2[
+:::::::::ol
+:::::::li
+Se $X$ è una bernoulliana di parametro $1/2$, allora vuol dire che $p_X(0) = p_X(1) = 1/2$;
+determiniamo i valori della funzione di massa congiunta:
 
-1. determinare funzioni di massa di probabilità congiunta e marginale
-2. E[X], E[Y], Cov(X,Y)
-3. \exists \epsilon : Cov(X,Y) = 0 e per tale valore X e Y sono indipendenti?
-
-
-X\Y | 0 | 1
---- | ---| ---
- 0 | $\frac12 - \frac\epsilon2$ | $\epsilon$
- 1 | $\epsilon/2$ | $\frac12 - \epsilon$
- fm  |1/2 | 1/2
-
-- $p(0,0) + p(0,1) = p_X(0) = 1/2$
-- $p(0,0) = 1/2-  \epsilon/2$
-
-Quindi $Y \sim Be(1/2 - \epsilon/2)$   
-$E[X] =1/2, E[Y] = 1/2 - \epsilon/2$
+:::::ul
+:::li
+Cerchiamo $p(0,1)$:
 $$
 \begin{aligned}
-Cov(X,Y) &= E[XY] - E[X]E[Y] = \\
-&= <!--  --> =\\
-&= \frac12 - \epsilon - (\frac12 \cdot (\frac12 - \frac\epsilon2)) = \\
-&= \frac12 - \epsilon - \frac14 + \frac34 = \\
-&= \frac14 - \frac34\epsilon
+P(Y=1|X=0) = \epsilon
+&= 
+\frac{P(Y=1,X=0)}{P(X=0)} =\\
+&=
+\frac{p(0,1)}{p_X(0)} \\
+&\,\Downarrow\\
+p(0,1) 
+&=
+p_X(0)\cdot P(Y=1|X=0) =\\
+&= 1/2 \cdot \epsilon
 \end{aligned}
 $$
+:::
+:::li
+Cerchiamo $p(1,0)$:
+$$
+\begin{aligned}
+P(Y=0|X=1) = 2\epsilon
+&= 
+\frac{P(Y=0,X=1)}{P(X=1)} =\\
+&=
+\frac{p(1,0)}{p_X(1)} \\
+&\,\Downarrow\\
+p(1,0) 
+&=
+p_X(1)\cdot P(Y=0|X=1) =\\
+&= 1/2 \cdot 2\epsilon = \epsilon
+\end{aligned}
+$$
+:::
+:::li
+Cerchiamo $p(0,0)$:
+$$
+\begin{array}{c}
+\underbrace{p_X(0)}
+&= 
+&p(0,0) 
+&+ 
+&\underbrace{p(0,1)} \\
 
+\downarrow&\Downarrow&&&\downarrow\\
+
+1/2 
+&= 
+&p(0,0)
+&+
+&\epsilon/2 \\
+
+&\Downarrow\\
+
+p(0,0) 
+&= 
+&1/2 
+& - 
+&\epsilon/2
+\end{array}
+$$
+:::
+:::li
+analogamente per $p(1,1)$: 
+$$
+\begin{array}{c}
+\underbrace{p_X(1)}
+&= 
+& \underbrace{p(1,0)}
+&+ 
+& p(1,1)\\
+
+\downarrow&\Downarrow&\downarrow&&\\
+
+1/2 
+&= 
+&\epsilon
+&+
+&p(1,1) \\
+
+&\Downarrow\\
+
+p(1,1) 
+&= 
+&1/2 
+& - 
+&\epsilon
+\end{array}
+$$
+:::
+:::::
+
+Costruiamo la tabella dei valori della coppia:
+ $X\backslash Y$ | $0$ | $1$ | $p_X$
+ --- | ---| --- | ---
+ $0$ | $1/2 - \epsilon/2$ | $\epsilon/2$ | $1/2$
+ $1$ | $\epsilon$ | $1/2 - \epsilon$ | $1/2$
+ $p_Y$  | $1/2 + \epsilon/2$ | $1/2-\epsilon/2$ | 
+
+Quindi $Y \sim \mathcal{Be}(1/2 - \epsilon/2)$
+:::::::
+:::::::li
+$E[X] =1/2$ e $E[Y] = 1/2 - \epsilon/2$ essendo entrambe delle bernoulliane.
+
+Per la covarianza serve trovare $E[XY]$:
+$$
+\begin{aligned}
+XY &= 
+\begin{cases}
+1 &\text{se }X=1\cap Y=1\\
+0 &\text{se }X=0\cup Y=0
+\end{cases}\\
+&\,\Downarrow\\
+P(XY = a) &=
+\begin{cases}
+p(1,1) &\text{se }a = 1\\
+p(0,1) + p(0,0) + p(1,0) &\text{se }a=0\\
+0 &\text{altrove}
+\end{cases}\\
+&\,\Downarrow\\
+E[XY] &=
+1\cdot1\cdot p(1,1) + 1\cdot0 \cdot(p(0,1) + p(0,0) + p(1,0)) =\\
+&= 1/2 - \epsilon
+\end{aligned}
+$$
+quindi
+$$
+{\def\arraystretch{1.8}
+\begin{aligned}
+Cov(X,Y) &= E[XY] - E[X]E[Y] = \\
+&= \frac12 - \epsilon - \left(
+    \frac12 \cdot \left(
+        \frac12 - \frac\epsilon2
+    \right)
+\right) = \\
+&= \frac12 - \epsilon - \frac14 - \frac\epsilon4 = \\
+&= \frac14 - \frac34\epsilon
+\end{aligned}}
+$$
+:::::::
+:::::::li
 $Cov(X,Y) = 0 \Leftrightarrow \epsilon = 1/3$
 
-X\Y | 0 | 1 | fm
+$X\backslash Y$ | $0$ | $1$ | $p_X$
 --- | ---| --- | ---
- 0 | $\frac13$ | $\frac13$ | $\frac23$
- 1 | $\frac16$ | $\frac16$ | $\frac13$
- fm  | $\frac12$ | $\frac12$
+ $0$ | $\displaystyle\frac13$ | $\displaystyle\frac16$ | $\displaystyle\frac12$
+ $1$ | $\displaystyle\frac13$ | $\displaystyle\frac16$ | $\displaystyle\frac12$
+ $p_Y$  | $\displaystyle\frac23$ | $\displaystyle\frac13$
 
-Verifichiamo che p(a,b) = p_X(a)p_Y(b) \ \forall a,b \in \mathbb{R}
+Verifichiamo che $p(a,b) = p_X(a)p_Y(b) \ \forall a,b \in \mathbb{R}$
 
 sono quindi indipendenti
 
-### Es 2
+:::::::
+:::::::::
+:::::::::::
 
-> Data una scatola che contiene 10 palline verdi e 2 palline blu.
-> 1. Si estraggono 3 palline senza reimmissione,    
-> sia Y il numero di palline blu estratte;   
-> si vuole conoscere E[Y], Var(Y), P_Y(a)
-> 2. Si estrae 1 pallina con reimmissione per 3 volte,   
-> sia X in numero di palline blu estratte;   
-> si vuole conoscere E[X], Var(X), P_X(a)
+:::::::::::eg
+> Data una scatola che contiene $10$ palline verdi e $2$ palline blu.
+> 1. Si estraggono $3$ palline senza reimmissione,    
+> sia $Y$ il numero di palline blu estratte;   
+> si vuole conoscere $E[Y]$, $Var(Y)$ e $p_Y(a)$
+> 2. Si estrae $1$ pallina con reimmissione per $3$ volte,   
+> sia $X$ in numero di palline blu estratte;   
+> si vuole conoscere $E[X]$, $Var(X)$ e $p_X(a)$
 
-:::::::ol
-:::::li
+:::::::::ol
+:::::::li
 L'esperimento muta il numero di palline ad ogni tentativo, quindi tra loro le estrazioni non sono né indipendenti né identiche, 
 
 :::nota
@@ -169,109 +412,208 @@ Non è possibile usare il modello delle variabili casuali binomiali.
 :::
 
 Senza reimmissione possiamo avere
-$$
-Y \in \{0,1,2\}
-$$
-$$
-P(Y=0) = P_Y(0) = \frac{10}{12} \cdot \frac9{11} \cdot \frac8{10} \\[12pt]
+$Y \in \{0,1,2\}$, quindi tre casi
 
-P(Y=1) = 
+:::::ol
+:::li
+Nessuna pallina blu estratta:
+$$
+p_Y(0) = \frac{10}{12} \cdot \frac9{11} \cdot \frac8{10} = \frac{6}{11}
+$$
+:::
+:::li
+Una pallina blu estratta:
+$$
+\begin{aligned}
+p_Y(1) &= 
 \frac2{12}\frac{10}{11}\frac9{10} 
 + \frac{10}{12}\frac2{11}\frac{9}{10}
 + \frac{10}{12}\frac9{11}\frac{2}{10}
-=
-\\= 3\cdot\frac{2 \cdot 9 \cdot 10}{12 11 10}= \frac9{22}
+=\\[8pt]
+&= 3\cdot\frac{2 \cdot 9 \cdot 10}{12 \cdot 11 \cdot 10}= \frac9{22}
 
-$$
-
-$$
-P_Y(2) = 1 - P_Y(0) - P_Y(1) = \frac1{22}\\
-E[Y] = \frac{11}{22}\\
-E[Y^2] = \frac{13}{22}\\
-Var(Y) = \frac{13}{22} - (\frac{11}{22})^2\\
-$$
-
-:::::
-:::::li
-Si ripete per 3 volte un esperimento in maniera identica e indipendente, quindi
-$$
-X \in \{0,1,2,3\}\\
-\downarrow\\
-X \sim B(3,\frac16)\\
-\Downarrow\\
-\begin{aligned}
-p_X(k) = \binom{3}k (\frac16)^k  (\frac56)^{3-k} \\
-E[X] = np = \frac12 \\
-Var(X) = npq = \frac5{12}
-\\
-P(X\geq2) = P(X=2 \cup X=3) = P(X=2) + P(X=3) =\\
-= \binom32 (\frac16)^2 \frac56 + \binom33 (\frac16)^3 (\frac56)^0 = \frac2{27}
 \end{aligned}
 $$
+:::
+:::li
+Due palline blu estratte:
+$$
+\begin{aligned}
+p_Y(2) &= 1 - P_Y(0) - P_Y(1) =\\
+&= 1 -\frac{12}{22} - \frac9{22} =\\
+&= \frac1{22}
+\end{aligned}
+$$
+:::
 :::::
+
+Quindi il valore atteso è
+$$
+E[Y] = 2\cdot \frac1{22} + 1\cdot\frac9{22}= \frac{11}{22}
+$$
+mentre, la varianza è
+$$
+\begin{aligned}
+E[Y^2] 
+&= (2)^2\cdot \frac1{22} + \frac9{22}
+=\\ 
+&= \frac{13}{22}\\
+&\,\Downarrow\\
+Var(Y) &= E[Y^2] - E[Y]^2 =\\
+&= \frac{13}{22} - \left(\frac{11}{22}\right)^2 =\\
+&= \frac{13\cdot 22 - 11^2}{22^2} =\\
+&= \frac{15}{44}
+
+\end{aligned}
+
+$$
 :::::::
+:::::::li
+Si ripete per 3 volte un esperimento in maniera identica e indipendente; l'esperimento ha successo quando si estrae una pallina blu, quindi ha $2/12$ di probabilità di avere successo e possiamo descrivere i successi come una variabile binomiale:
+
+sia $X \in \{0,1,2,3\}$, per cui $X \sim \mathcal{B}(3,\frac16)$.
+
+- La sua funzione di massa è $p_X(k) = \binom{3}k (\frac16)^k  (\frac56)^{3-k} $,
+- il suo valore atteso è $E[X] = np = \frac12 $
+- la sua varianza è $Var(X) = npq = \frac5{12}$
+
+Troviamo $F(2)$:
+$$
+\begin{aligned}
+P(X\geq2) &= P(X=2 \cup X=3) =\\
+&= P(X=2) + P(X=3) =\\
+&= \binom32 \left(\frac16\right)^2 \frac56 + \binom33 \left(\frac16\right)^3 \left(\frac56\right)^0 =\\
+&= \frac2{27}
+\end{aligned}
+$$
+:::::::
+:::::::::
+:::::::::::
 
 
 ## Variabile Casuale di Poisson
 
-Data una variabile casuale discreta $X\in \mathbb{N}$ con P_X(k) = \frac{\lambda^k e^{-\lambda}} se k \in \mathbb{N} e \lambda > 0
-e si scrive X \sim Po(\lambda)
+:::def{Variabile Casuale di Poisson}
+Descriviamo il numero di volte in cui un certo evento (*evento raro*) si verifica in un certo arco di tempo (o qualsiasi altra misura che possa definire un ambito circoscritto) tramite una **variabile casuale di Poisson**.
 
+Si scrive $X \sim \mathcal{Po}(\lambda)$, cioè $X$ si comporta come una variabile casuale di Poisson di parametro $\lambda$, con $\lambda \in \mathbb{R}^+$.
+
+La sua funzione di massa di probabilità è
 $$
-\phi_X(t) = E[e^{tX}] = \sum_{k=0}^{+\infty} e^{tk} \frac{\lambda^k e ^{-\lambda}}{k!} =\\
-
-= e^{-\lambda} \sum_{}^{}\frac{(\lambda e^t)^k}{k!} =\\
-usa il memo\\
-e^{-\lambda}\, e^{\lambda e^t} = e^{\lambda(e^t-1)}
+p(k) = P(X=k) = \begin{cases}
+\displaystyle
+\frac{\lambda^k}{k!} e^{-\lambda} &\text{se }k \in \mathbb{N}\\[8pt]
+0 &\text{altrimenti}
+\end{cases}
 $$
-
-:::memo
-La serie $\sum_{k=0}^{+\infty}\frac{\alpha^k}{k!} = e^\alpha$ se $\alpha > 0$
 :::
 
+### Parametri Caratteristici
 
-Quindi 
+:::::::::::ul
+:::::::::li
+La *funzione generatrice dei momenti* è $\phi(t) = e^{\lambda (e^t - 1)}$
 
-$$
-E[X] =\left.\frac{d}{dt} e^{\lambda(e^t-1)}\right|_{t=0} 
-= \left.e^{\lambda(e^t-1)}\lambda e^t\right|_{t=0} =
-\lambda
-$$
-
---- 
-
-<!-- missing context
-
-Proprietà:? -->
-
-$$
-e^{-\lambda(e^t-1)}
-$$
-
-<!-- missing calc -->
+:::dim
 $$
 \begin{aligned}
-E[X] &=\left. \frac{d\phi(t)}{dt}\right|_{t=0} 
+\phi_X(t) 
+&= E[e^{tX}] =\\
+&= \sum_{k=0}^{+\infty} e^{tk} 
+\frac{\lambda^k e ^{-\lambda}}{k!} =\\
+
+&= e^{-\lambda} 
+\sum_{k=0}^{+\infty}
+\frac{(\lambda e^t)^k}{k!} =\\
+&\,\downarrow
+\footnotesize
+\begin{array}{l}
+\text{La serie }
+\sum_{k=0}^{n}
+\frac{\alpha^k}{k!}\\
+\text{converge a }e^\alpha\\
+\text{per }n\to\infty\text{ e }\alpha > 0
+\end{array}
+\\
+&= e^{-\lambda}\, e^{\lambda e^t} =\\
+&= e^{\lambda(e^t-1)}
+\end{aligned}
+$$
+:::
+:::::::::
+:::::::::li
+
+Il *valore atteso* è $E[X]=\lambda$ 
+
+:::dim
+Dalla funzione generatrice dei momenti:
+$$
+\begin{aligned}
+E[X] 
+&=
+\left.\frac{d\phi(t)}{dt}\right|_{t=0} 
+=\\[12pt]
+&=
+\left.\frac{d}{dt} 
+e^{\lambda(e^t-1)}\right|_{t=0} =\\[12pt]
+&= \left.e^{\lambda(e^t-1)}\lambda e^t\right|_{t=0} =
+\lambda
+\end{aligned}
+$$
+:::
+
+:::::::::
+:::::::::li
+La *varianza* è $Var(X) = \lambda$.
+
+:::dim
+Troviamo $E[X^2]$ dalla funzione generatrice dei momenti:
+$$
+\begin{aligned}
+E[X^2]
+&=
+\left. \frac{d^2\phi(t)}{dt^2}\right|_{t=0} 
 =\\
 &= 
-\left.\lambda e^{-\lambda(e^t-1)} \frac{d}{dt}\lambda e^{-\lambda(e^t-1)} \right|_{t=0} =\\&= ... = \lambda
+\left.\frac{d^2}{dt^2} 
+e^{\lambda(e^t-1)}\right|_{t=0} =\\[12pt]
+&=
+\left.\frac{d}{dt} 
+e^{\lambda(e^t-1)} \,
+\lambda e^t \right|_{t=0} =\\[12pt]
+&=
+\left.\frac{d}{dt} 
+\lambda
+e^{\lambda(e^t-1) + t} 
+\right|_{t=0} =\\[12pt]
+&=
+\left.
+\lambda
+e^{\lambda(e^t-1) + t} 
+(\lambda e^t + 1)
+\right|_{t=0} =\\
+&=
+\lambda (\lambda + 1) =\\
+&= \lambda^2 + \lambda
 \end{aligned}
+$$
+Quindi la varianza:
+$$
+\begin{aligned}
+Var(X) &= 
+E[X^2] - E[X]^2 =\\
+&= \lambda^2 + \lambda - \lambda^2 =\\
+&= \lambda 
+\end{aligned}
+$$
+:::
+:::::::::
+:::::::::::
 
-$$
-
-<!-- missing calc -->
-$$
-E[X^2] =\left. \frac{d^2 \phi(t)}{dt^2}\right|_{t=0} = ... 
-= \lambda^2 + \lambda
-$$
-
-$$
-Var(X) = E[X^2] - E[X]^2 = \lambda^2 + \lambda - \lambda^2 = \lambda 
-$$
 
 ### Riproducibilità
 
-Verifichiamo se vale la proprietà di riprodcucibilità:
+Verifichiamo se vale la proprietà di riproducibilità:
 
 > Immaginiamo $X \sim Po(\lambda_1)$ e $Y \sim Po(\lambda_2)$ con $\lambda \in \mathbb{R}$ e X e Y indipendenti, allora $X+Y \sim Po(\lambda_1+\lambda_2)$:
 
@@ -286,13 +628,13 @@ $$
 
 Troviamo quindi la tesi.
 
----
+### Legame con la Binomiale
 
 > Come una variabile casuale di Poisson è legata ad una binomiale?
 
-Supponiamo che $X\sim B(n,p)$ con $n>>1$ e anche $n\,p = \lambda \in \mathbb{R}^+$
+Supponiamo che $X\sim B(n,p)$ con $n\gg1$ e anche $n\,p = \lambda \in \mathbb{R}^+$
 
-$p << 1$
+$p \ll 1$
 
 $$
 \begin{aligned}
@@ -342,11 +684,11 @@ Se $X\sim B(n,p)$ allora $E[X]=np$, mantre se $X \sim Po(\lambda)$ allora $E[X] 
 $Var(X) = np(1-p) \ n\to\infty \Rightarrow Var(X)=\lambda$
 :::
 
-:::eg{variabili casuali poissoniane}
-Errori di stampa di un libro, errori di chiamata dei call center, accessi a un sito internet, decadimento di un particella radioattiva, numero di difetti su produzione giornaliera (vari), numero di incidenti in un tratto di autostrada.
+:::eg{di Variabili Casuali Poissoniane}
+Errori di stampa di un libro, errori di chiamata dei call center, accessi a un sito internet, decadimento di un particella radioattiva, numero di difetti su produzione giornaliera (vari), numero di incidenti in un tratto di autostrada...
 :::
 
-### Esercizi
+### Esempi
 
 #### 1
 
@@ -377,7 +719,7 @@ P(X\leq1) = \binom{10}{0} 0.1^0 (0.9)^10 + \binom{10}10.1 (0.9)^9 = ... \simeq 0
 $$
 
 Proviamo ad usare la poissoniana:
-$n>>1$ e $p <<1$
+$n\gg1$ e $p \ll1$
 $X' \sim Po(np)=Po(1)$
 $$
 P(X'\leq1) = ... \simeq 0.7358
@@ -402,8 +744,8 @@ Applichiamo la funzione di massa della poissoniana:
 $$
 P(X<3) = P(X=0)+P(X=1)+P(X=2) = ... \simeq 12.4\%
 $$
-:::
-:::li
+:::::
+:::::li
 > Supponendo l'indipendenza del numero di richieste di rimborso in giorni diversi, e considerando 1 settimana lavorativa di 5 giorni, qual è la probabilità che la prossima settimana arrivino 20 richieste?
 
 Sia $X_i$ il numero di richieste nel giorno $i$, con $i=1,2,3,4,5$ e sappiamo che le $X_i$ sono indipendenti tra loro.
@@ -416,8 +758,8 @@ P(Y=20) = \frac{25^{20}}{20!}e^{-25}
 $$
 
 Tutto questo perché gli eventi sono riproducibili
-:::
-:::li
+:::::
+:::::li
 > Con le stesse ipotesi della domanda precedente, qual è la probabilità che in una settiamna lavorativa in esattamente 3 giorni arrivino 4 richieste al giorno?
 
 Se $X$ è il numero di richieste in un giorno, $Po(5)$, allora 

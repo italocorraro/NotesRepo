@@ -98,7 +98,7 @@ Che questa definizione non catturi il concetto di probabilità in modo appropria
 ### Definizione di Probabilità Frequentista
 
 :::def{Definizione Frequentista}
-Dato un esperimento e un evento $E \sub S$, dove $S$ è lo spazio campione associato all'esperimento. Si ripete l'esperimento $N$ volte (con $N >> 1$) in modo che ogni iterazione sia identica nei parametri e indipendente dalle altre; si definisce **probabilità di $E$**: 
+Dato un esperimento e un evento $E \sub S$, dove $S$ è lo spazio campione associato all'esperimento. Si ripete l'esperimento $N$ volte (con $N \gg 1$) in modo che ogni iterazione sia identica nei parametri e indipendente dalle altre; si definisce **probabilità di $E$**: 
 $$
 P(E)=\frac{n^{o}\text{ esperimenti con esito }E}{N}
 $$
