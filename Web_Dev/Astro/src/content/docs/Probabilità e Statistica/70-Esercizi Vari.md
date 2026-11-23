@@ -34,9 +34,10 @@ $$
 $$
 
 ## ES
+
 $X, Y \in \{-1,0,1\}$
 
-$p(i,k) = c|i + k|$
+$p(i,k) = c|i + k| $
 
 Y\X | -1 | 0 | 1
 -- | --- | --- | ---
@@ -44,7 +45,7 @@ Y\X | -1 | 0 | 1
 0 | c | 0 | c
 1 | 0 | c | 2c
 
-- poiché p(i,k) = P(X=i,Y=k) \in [0,1] \to c \in [0,1] \cup c\in [0,1/2]
+- poiché $p(i,k) = P(X=i,Y=k) \in [0,1] \to c \in [0,1] \cup c\in [0,1/2]$
 - $\sum \sum p(i,k) = 1 = 8c \Rightarrow c = \frac1{8}$
 
 <!-- Sostituisci valori tabella ^
@@ -57,8 +58,10 @@ $X$ e $Y$ hanno la stessa funzione di massa di probabilità
 :::
 
 $$
+\begin{aligned}
 E[X] = \sum i p(i) = -1 \times \frac38 + 0 \times\frac28 + 1 \times\frac38 = 0 \\[8pt]
 E[Y] = E[X]
+\end{aligned}
 $$
 
 Per verificare l'indipendenza è necessario verificare che $p(i,k)?= p_X(i)p_Y(k)$:
@@ -82,8 +85,8 @@ $Y$ \ $X$ | 0 | 1 | 2 | 3
 1 | 0 | 1/4 | 1/4 | 0
 2 | 1/8  |  1/8 | 0 | 0
 
-- p(3,0) = (\frac12)^3
-- p(0,2) = (\frac12)^3
+- $p(3,0) = (\frac12)^3$
+- $p(0,2) = (\frac12)^3$
 
 - $p(2,0) = P(T_1 \cap C_2 \cap C_3) = \frac18$
 - $p(1,2) = P(C_1 \cap T_2 \cap T_3) = \frac18$
@@ -110,13 +113,19 @@ $p_X(0) p_Y(0) = \frac18 \times \frac14 \neq 0$
 > Qual è il numero medio di email che arrivano all'indirizzo giusto?
 
 Il numero di email che vanno all'indirizzo giusto è una variabile casuale discreta $Y$ con valori compresi tra $0$ e $n$; tuttavia il metodo migliore per risolvere il problema è assegnare una variabile casuale ad ogni email:
-- sia $X_k$ la variabile casuale associata alla k-esima email tale per cui $
-X = \begin{cases}
+:::::ul
+:::li
+sia $X_k$ la variabile casuale associata alla k-esima email tale per cui 
+$$
+X = 
+\begin{cases}
 1 & \text{se è stata inviata correttamente}\\
 0 & \text{altrimenti}
 \end{cases}
-$
-- è una variabile di Benoulli: 
+$$
+:::
+:::li
+è una variabile di Benoulli: 
 $$
 P_{X_n}(a) = 
 \begin{cases}
@@ -125,10 +134,14 @@ n-1/n & a=0\\
 0 & \text{altrimenti}
 \end{cases}
 $$
+:::
+:::::
 per cui $E[X_k] = 0 \times \frac{n-1}{n} + 1 \times \frac1n = \frac1n$
 
-Troviamo che $Y$ è $
-Y = \sum X_k$, quindi $E[Y] = E\left[\sum{X_k}\right] = \sum E[X_k]$
+Troviamo che $Y$ è 
+$$
+Y = \sum X_k$, quindi $E[Y] = E\left[\sum{X_k}\right] = \sum E[X_k]
+$$
 
 
 ### ES
@@ -278,13 +291,17 @@ $$
 f(x)\geq 0 \forall x\in\mathbb{R} \Rightarrow k\geq0
 $$
 $$
+\begin{aligned}
 1 = \int_{-\infty}^{+\infty} f(x)\,dx =\\
 = ... = k\frac56 => k=\frac65
+\end{aligned}
 $$
 
 $$
+\begin{aligned}
 E[X] = \int_{}^{}xf(x)\,dx = \\
 = \frac65 \int_{0}^{1}(x^3+x^2)\,dx = ...= \frac7{10}
+\end{aligned}
 $$
 
 $$
@@ -296,6 +313,7 @@ Var(X) = ... = \frac{27}{50} - (\frac7{10})^2
 $$
 
 $$
+\begin{aligned}
 Y= 4X^2 \\
 
 E[Y] = E[4X^2] = 4E[X^2] \\
@@ -304,9 +322,11 @@ E[Y^2] = ... = 16E[X^4] = ... =\\
 
 Var(Y) = *
 
+\end{aligned}
 $$
 
 $$
+\begin{aligned}
 F(a) = P(X\leq a) = \int_{-\infty}^{a}f(x)\,dx =\\
 =
 \begin{cases}
@@ -314,6 +334,218 @@ F(a) = P(X\leq a) = \int_{-\infty}^{a}f(x)\,dx =\\
 0 + \frac65 (x^2+x)\,dx & se a \in[0,1]\\
 1 & sea>1
 \end{cases}
+
+\end{aligned}
 $$
+
+
+### Es 6 F 8
+
+Sia $X,Y\sim \mathcal{N}(0,\sigma^2)$ indipendenti
+
+$R = \sqrt{X^2+Y^2}$
+
+Cerchiamo $F_R(a) = P(R\leq a)$
+
+$$
+\begin{aligned}
+&= 
+\begin{cases}
+0 &\text{se }a<0\\
+* &\text{se }a\geq 0
+\end{cases}
+\end{aligned}
+$$
+
+*
+$$
+\begin{aligned}
+*& = \iint_{R\leq a} f(x,y)\,dx\,dy =\\
+&\,\downarrow
+\footnotesize
+\text{per l'indipendenza}
+\\
+&= 
+\iint_{R\leq a} f_X(x)f_Y(y)\,dx\,dy\\
+&=
+\frac1{\sigma^2 2\pi} \iint_{R\leq a} e^{\frac{-R^2}{2\sigma^2}}\,dx\,dy =\\
+&\,\downarrow
+\footnotesize
+\begin{array}{l}
+\text{risolviamo in coordinate polari:}\\
+x = \rho \cos(\theta)\\
+y = \rho \sin(\theta)
+\end{array}
+\\
+&= 
+\frac1{\sigma^2 2\pi} 
+\int_{0}^{2\pi} \int_{0}^{a} e^{\frac{-\rho^2}{2\sigma^2}} \rho \,d\rho\,d\theta =\\
+&= 
+\frac1{2\pi} 
+\int_{0}^{2\pi} \int_{0}^{a} \frac{\rho}{\sigma^2} e^{\frac{-\rho^2}{2\sigma^2}} \,d\rho\,d\theta =\\
+&=
+\frac1{2\pi} 
+\int_{0}^{2\pi} \left[ 
+
+\right] =\\
+\ldots &= 1 - e^{\frac{-a^2}{2\sigma^2}}
+\end{aligned}
+$$
+
+
+
+---
+
+:::oss
+Per una variabile casuale continua, il valore più probabile è il massimo, se esiste, della sua funzione di densità di probabilità.
+:::
+<!-- Relocate -->
+
+$$
+f_R(a) = \text{dalla derivata}
+$$
+
+Per trovare il massimo, possiamo derivare $f_R$ e trovare i punti critici
+
+<!-- svolgimento derivate -->
+
+Il risultato è $a = \sigma$, cioè varianza nulla.
+
+
+### Es 1 foglio 8
+
+> % che il peso sia tra 70 e 90
+
+$X \sim \mathcal{N}(\mu,\sigma^2)$
+
+$P(70\leq X \leq 90) = P( X \leq 90) - P(X \leq 70)$
+
+$$
+\begin{aligned}
+= P(\frac{X - \mu}{\sigma}\leq\frac{90-\mu}\sigma)-P(\frac{X - \mu}{\sigma}\leq\frac{70-\mu}\sigma) \\
+&\,\downarrow
+\footnotesize
+\text{sia }Z = \frac{X - \mu}{\sigma}
+\\
+= F_Z(\frac{90-\mu}\sigma) - F_Z(\frac{70-\mu}\sigma)
+\end{aligned}
+$$
+
+> prob sia > 95
+
+> prob X < 60 U X > 110
+
+I due eventi sono disgiunti:
+$$
+\begin{aligned}
+P(X<60\cup X>110) &= P() + p()=\\
+&= P(X\lt 60) + 1 - P(X \leq 110) =\\
+&\,\downarrow
+\footnotesize
+
+\\
+&=
+F_Z(\frac{60-\mu}\sigma) + 1 - F_Z(\frac{110-\mu}\sigma)
+\end{aligned}
+$$
+
+
+### ??
+
+> Si consideriono due punto $X$ e $Y$ scelti a caso di modo che $X\in[0,1]$ e $Y\in[1,2]$
+>
+> 1. Qual è la probabilità che la loro distanza sia maggiore di 2/3?
+> 2. Sia $M = \displaystyle\frac{X+Y}2$, determinare $P(M=1)$,$P(M>1)$
+> 3. Determinare la funzione di ripartizione di $M$ ($F_M(a)$)
+
+Sia $D=Y-X$ la distanza tra $X$ e $Y$; necessariamente $0\leq D\leq2$ per gli intervalli di valori che le due variabili possono assumere.
+
+- $X\sim \mathcal{U}(0,1)$
+- $Y\sim \mathcal{U}(1,2)$
+
+<!-- vedi graph 17/11 -->
+
+$P(M=1) = P(X+Y=2)$
+
+<!-- metodo grafico -->
+
+r) $y = x -2$
+
+---
+
+Calcoliamo $P(M>a)$:  
+Per l'intervallo di definizione delle variabili, abbiamo che $1\leq X+Y<\leq3$
+$$
+P(X+Y\geq 2a) =
+\begin{cases}
+0 &\text{se }2a<1\\
+1 &\text{se }2a>3\\
+* &\text{se }1\leq2a\leq3
+\end{cases}
+$$
+** * **
+Graficamente troviamo le rette $y= -x + 2a$,
+
+la probabilità che cerchiamo è la parte di area del quadrato dove esistono $X$ e $Y$ compresa tra le due rette
+
+
+
+## ES2 F9
+
+- $X_i$ numero di articoli venduti in un giorno $i$, con $X_i\sim \mathcal{Po}(4)$
+- $Y= \sum_{i=1}^{25}X_i$
+
+Cerchiamo $P(Y\leq N) = 0.95$
+
+Supponiamo ragionevolmente che le $X_i$ siano i.i.d.
+
+Se la poissoniana è riproducibile, allora $Y\sim \mathcal{Po}(25\cdot4)$.
+
+$$
+\begin{aligned}
+P(Y\leq N) &= 0.95\\
+&\,\Downarrow\\
+\sum_{j=0}^{N} P(Y=j) &= 0.95
+\end{aligned}
+$$
+
+Alternativamente, possiamo applicare il teorema del limite centrale (anche se 25 non è 30, ma abbastanza vicino):
+
+$$
+\begin{aligned}
+Y &\dot\sim\, \mathcal{N}(100,100)\\
+P(\frac{Y-100}{10}
+&\leq\frac{N-100}{10})
+&=0.95\\
+P(Z
+&\leq\frac{N-100}{10})
+&=0.95\\
+&\,\downarrow
+\footnotesize
+\text{per le tavole}
+\\
+P(Z
+&\leq 1.65)
+&=0.95\\
+N &\simeq 116.5
+\end{aligned}
+$$
+
+Invece, con approssimazione alla continuità
+
+$$
+\begin{aligned}
+P(Y&\leq N) = P(Y \leq N +0.5)\\
+P(Z&\leq\frac{N+0.5-100}{10})=0.95\\
+&\frac{N+0.5-100}{10} \simeq 1.65\\
+N&\simeq 100 + 16.5 - 0.5 = 116
+\end{aligned}
+$$
+
+## ES4F9
+
+Sia $Y$ il numero di dispositivi sostituiti entro 6 mesi: $Y \sim \mathcal{B}(6,p)$ dove $p$ è la probabilità che $X_i\lt\frac12$, per cui $P(Y\geq3)=\sum_{i=3}^{6} P(Y=i)$, oppure $P(Y\geq3) = 1 - P(\lt3)$ con conseguenti calcoli alternativi.
+
+Se $T$ è il numero di dispositivi sostituiti in 6 mesi su $100$ dispositivi, allora $T\sim \mathcal{B}(100,p)\dot\sim\, \mathcal{N}(100p,100pq)$, quindi si applica il teorema del limite centrale con approssimazione alla continuità.
 
 

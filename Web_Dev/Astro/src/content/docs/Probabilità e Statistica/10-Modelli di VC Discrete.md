@@ -525,15 +525,16 @@ $$
 &= e^{-\lambda} 
 \sum_{k=0}^{+\infty}
 \frac{(\lambda e^t)^k}{k!} =\\
-&\,\downarrow
+&\,\left\downarrow
 \footnotesize
+{\def\arraystretch{1.4}
 \begin{array}{l}
 \text{La serie }
 \sum_{k=0}^{n}
 \frac{\alpha^k}{k!}\\
 \text{converge a }e^\alpha\\
 \text{per }n\to\infty\text{ e }\alpha > 0
-\end{array}
+\end{array}}\right.
 \\
 &= e^{-\lambda}\, e^{\lambda e^t} =\\
 &= e^{\lambda(e^t-1)}
@@ -630,9 +631,9 @@ Troviamo quindi la tesi.
 
 ### Legame con la Binomiale
 
-> Come una variabile casuale di Poisson è legata ad una binomiale?
+> Vogliamo verificare il tipo di legame che sussiste tra una variabile casuale poissoniana e una binomiale
 
-Supponiamo che $X\sim B(n,p)$ con $n\gg1$ e anche $n\,p = \lambda \in \mathbb{R}^+$
+Supponiamo che $X\sim \mathcal{B}(n,p)$ con $n\gg1$ e anche $n\,p = \lambda \in \mathbb{R}^+$
 
 $p \ll 1$
 
@@ -656,7 +657,7 @@ $$
 \end{aligned}
 $$
 
-che è la funzione di massa di probabilità di $X\sim Po(\lambda)$
+che è la funzione di massa di probabilità di $X\sim \mathcal{Po}(\lambda)$
 
 :::nota
 $$

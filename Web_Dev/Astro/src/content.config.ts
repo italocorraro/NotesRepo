@@ -1,9 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-
-import { slug } from 'github-slugger'; // già installato come dipendenza di Astro
-
+import { slug } from 'github-slugger'; 
 
 
 const docs = defineCollection({

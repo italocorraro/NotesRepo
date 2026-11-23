@@ -93,10 +93,10 @@ order: 3
 
 | Simbolo | Codice |
 |---|---|
-| $$\displaystyle\sum_{i=0}^{n} a_i$$ | `\sum_{i=0}^{n} a_i` |
-| $$\displaystyle\prod_{i=1}^{n} a_i$$ | `\prod_{i=1}^{n} a_i` |
-| $$\displaystyle\bigcup_{i=1}^{n} a_i$$ | `\bigcup_{i=1}^{n} a_i` |
-| $$\displaystyle\bigcap_{i=1}^{n} a_i$$ | `\bigcap_{i=1}^{n} a_i` |
+| $\displaystyle\sum_{i=0}^{n} a_i$ | `\sum_{i=0}^{n} a_i` |
+| $\displaystyle\prod_{i=1}^{n} a_i$ | `\prod_{i=1}^{n} a_i` |
+| $\displaystyle\bigcup_{i=1}^{n} a_i$ | `\bigcup_{i=1}^{n} a_i` |
+| $\displaystyle\bigcap_{i=1}^{n} a_i$ | `\bigcap_{i=1}^{n} a_i` |
 
 ### Funzioni comuni
 
@@ -175,11 +175,11 @@ order: 3
 
 | Simbolo | Codice |
 |---|---|
-| $\begin{aligned}a&=2+1\\ &=3\end{aligned}$ | `\begin{aligned}` `a&=2+1\\&=3` `\end{aligned}` |
-| $\begin{bmatrix}a&b\\c&d\end{bmatrix}$ | `\begin{bmatrix}` `a&b\\c&d` `\end{bmatrix}` |
-| $\begin{cases}0&\text{se }x<0\\f(x)&\text{se }x\geq0\end{cases}$ | `\begin{cases}` `0&\text{se }x<0\\` `f(x)&\text{se }x\geq0` `\end{cases}` |
-| $\begin{array}{cr}---&---\\b&d\end{array}$ | `\begin{array}` `{cr}---&---\\b&d` `\end{array}` |
-| $\begin{array}{rl}---&---\\b&d\end{array}$ | `\begin{array}` `{rl}---&---\\b&d` `\end{array}` |
+| $\begin{aligned}a&=2+1\\ &=3\end{aligned}$ | `\begin{aligned}` <br/> `a&=2+1\\&=3` <br/> `\end{aligned}` |
+| $\begin{bmatrix}a&b\\c&d\end{bmatrix}$ | `\begin{bmatrix}`<br/> `a&b\\c&d` <br/>`\end{bmatrix}` |
+| $\begin{cases}0&\text{se }x<0\\f(x)&\text{se }x\geq0\end{cases}$ | `\begin{cases}` <br/>`0 & \text{se }x<0\\` <br/>`f(x) & \text{se }x\geq0` <br/>`\end{cases}` |
+| $\begin{array}{cr}---&---\\b&d\end{array}$ | `\begin{array}{cr}`<br/>`---&---\\b&d`<br/> `\end{array}` |
+| $\begin{array}{rl}---&---\\b&d\end{array}$ | `\begin{array}{rl}`<br/>`---&---\\b&d` <br/>`\end{array}` |
 
 
 ### Layout

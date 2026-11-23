@@ -18,3 +18,5 @@ for (const rel of files) {
     console.log(`${rel} -> ${newName}`);
   }
 }
+
+console.log('Tutte le collections sono in ordine');
